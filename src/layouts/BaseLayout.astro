@@ -1,0 +1,166 @@
+---
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+import '../styles/animations.css';
+import '../styles/responsive.css';
+
+interface Props {
+  title: string;
+  description: string;
+  currentPage?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  currentPage = '',
+  ogImage = '/favicon/og-image.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = currentPage ? `${title} | ecooa` : title;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <meta name="author" content="ecooa">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href={canonicalURL}>
+  <meta name="theme-color" content="#FAF8F6">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ecooa">
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:image" content={new URL(ogImage, Astro.site)}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={fullTitle}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site)}>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+
+  <!-- Font preloads -->
+  <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- DNS prefetch -->
+  <link rel="dns-prefetch" href="https://wa.me">
+  <link rel="dns-prefetch" href="https://www.instagram.com">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "ecooa",
+    "description": "Clínica multidisciplinar de saúde, estética e longevidade em Porto Alegre",
+    "url": "https://ecooa.com.br",
+    "telephone": "+5551991460909",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Mariante, 180, 9º andar",
+      "addressLocality": "Porto Alegre",
+      "addressRegion": "RS",
+      "postalCode": "90430-180",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -30.0277,
+      "longitude": -51.2007
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "20:00"
+    }],
+    "sameAs": ["https://instagram.com/somos.ecooa"],
+    "priceRange": "$$$",
+    "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"]
+  })} />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+  <Nav currentPage={currentPage} />
+
+  <main id="main-content" role="main">
+    <slot />
+  </main>
+
+  <Footer />
+  <WhatsAppFab />
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      menu?.classList.toggle('open');
+      document.body.style.overflow = expanded ? '' : 'hidden';
+    });
+
+    // Close menu on link click
+    menu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        toggle?.setAttribute('aria-expanded', 'false');
+        menu?.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Close menu on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu?.classList.contains('open')) {
+        toggle?.setAttribute('aria-expanded', 'false');
+        menu?.classList.remove('open');
+        document.body.style.overflow = '';
+        (toggle as HTMLElement)?.focus();
+      }
+    });
+  </script>
+
+  <!-- Reveal animation (IntersectionObserver) -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.r').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Custom cursor (desktop only) -->
+  <script>
+    import '../scripts/cursor';
+  </script>
+</body>
+</html>

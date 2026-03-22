@@ -1,0 +1,46 @@
+---
+import WavePattern from './WavePattern.astro';
+
+interface Props {
+  heading: string;
+  subtext: string;
+  image?: string;
+}
+
+const { heading, subtext, image } = Astro.props;
+const WA = 'https://wa.me/5551991460909';
+---
+
+<section class={`cf ${image ? 'cf-img' : ''}`} aria-label="Chamada para ação">
+  {image ? (
+    <img src={image} alt="ecooa — Moinhos de Vento, Porto Alegre" loading="lazy" decoding="async" class="cf-bg" />
+  ) : (
+    <svg class="wsv" style="opacity:.04" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice">
+      <g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} y0={80} step={55} /></g>
+    </svg>
+  )}
+  <p class="cf-lbl r">ecooa · Porto Alegre</p>
+  <h2 class="cf-h r d1" set:html={heading} />
+  <p class="cf-s r d2">{subtext}</p>
+  <div class="cf-bt r d3">
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw">falar pelo whatsapp</a>
+    <a href="/agendamento" class="bow">agendar avaliação</a>
+  </div>
+</section>
+
+<style>
+  .cf-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .cf-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    opacity: .13;
+    z-index: 0;
+  }
+</style>

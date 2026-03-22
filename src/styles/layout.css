@@ -1,0 +1,37 @@
+/* ══════════════════════════════════════════════
+   ecooa Layout — Wrappers, Grids, Page Hero
+   ══════════════════════════════════════════════ */
+
+/* Section wrapper */
+.w { padding: var(--section-py) var(--section-px); }
+.w-sm { padding: var(--section-py-sm) var(--section-px); }
+
+/* Grids */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.g2c { align-items: center; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px; }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+
+/* Page Hero */
+.ph {
+  min-height: 55vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 120px var(--section-px) 76px;
+  position: relative;
+  overflow: hidden;
+}
+.ph-c { position: relative; z-index: 2; max-width: 720px; }
+.ph-c .lbl { margin-bottom: 20px; }
+
+/* Divider */
+.div { height: 1px; background: var(--color-stone); margin: 0 var(--section-px); }
+
+/* Two-column header + desc */
+.ph2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 52px;
+  align-items: end;
+  margin-bottom: 52px;
+}

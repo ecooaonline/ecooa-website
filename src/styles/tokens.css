@@ -1,0 +1,52 @@
+/* ══════════════════════════════════════════════
+   ecooa Design Tokens
+   ══════════════════════════════════════════════ */
+
+:root {
+  /* Colors — Brand */
+  --color-brand: #C4BBB8;
+  --color-brand-light: #DDD8D5;
+  --color-brand-mid: #AEA5A2;
+  --color-brand-deep: #918886;
+
+  /* Colors — Neutral */
+  --color-white: #FFFFFF;
+  --color-warm: #FAF8F6;
+  --color-cream: #F3EEEA;
+  --color-stone: #E5DDD8;
+  --color-mist: #EDE8E4;
+
+  /* Colors — Ink */
+  --color-ink: #1C1917;
+  --color-ink-mid: #3D3835;
+  --color-ink-soft: #6B6360;
+  --color-ink-ghost: #837D7A; /* Adjusted from #9C9896 for WCAG AA contrast */
+  --color-black: #100E0D;
+
+  /* Typography */
+  --font-primary: 'Arboria', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Spacing Scale */
+  --space-xs: 8px;
+  --space-sm: 14px;
+  --space-md: 22px;
+  --space-lg: 36px;
+  --space-xl: 60px;
+  --space-2xl: 86px;
+  --space-3xl: 108px;
+
+  /* Section Padding (overridden via media queries) */
+  --section-px: 60px;
+  --section-py: 108px;
+  --section-py-sm: 76px;
+
+  /* Easing */
+  --ease-spring: cubic-bezier(.22, .68, 0, 1.2);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.5s;
+}

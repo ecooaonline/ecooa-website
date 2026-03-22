@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import LocationCard from '../components/LocationCard.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="Contato | ecooa"
+  description="Entre em contato com a ecooa. WhatsApp, e-mail e Instagram. Estamos prontos para te ouvir, orientar e receber. Moinhos de Vento, Porto Alegre."
+  currentPage="contato"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-cream);min-height:42vh">
+  <svg class="wsv" style="opacity:.26" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl r">contato</div>
+    <h1 class="h1 r d1" style="margin-top:18px">Fale com a<br><em>ecooa.</em></h1>
+    <p class="body r d2" style="margin-top:16px;max-width:420px">Estamos prontos para te ouvir, orientar e receber. O canal mais ágil é sempre o WhatsApp.</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Canais de contato -->
+<section style="background:var(--color-warm)" aria-label="Canais de contato">
+  <div class="w">
+    <div class="g2">
+      <div>
+        <div class="lbl r" style="margin-bottom:16px">fale conosco</div>
+        <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(26px,3vw,42px)">A conversa<br>começa <em>aqui.</em></h2>
+        <div class="r d2">
+          <div class="ci-ct">
+            <p class="ci-cl">WhatsApp · pacientes e visitantes</p>
+            <p class="ci-cv">(51) 99146-0909</p>
+            <p class="ci-cs">Canal principal · Segunda a Sexta 9h–20h · Sábado a consultar</p>
+            <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" style="display:inline-block">abrir whatsapp</a>
+          </div>
+          <div class="ci-ct">
+            <p class="ci-cl">E-mail · administrativo e parcerias</p>
+            <p class="ci-cv">ecooa.adm@gmail.com</p>
+            <p class="ci-cs">Para parcerias, fornecedores e assuntos administrativos</p>
+            <a href="mailto:ecooa.adm@gmail.com" class="bo" style="display:inline-block">enviar e-mail</a>
+          </div>
+          <div class="ci-ct">
+            <p class="ci-cl">Instagram</p>
+            <p class="ci-cv">@somos.ecooa</p>
+            <p class="ci-cs">Acompanhe nossa comunidade e conteúdos</p>
+            <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" class="ghost" style="margin-top:8px;display:inline-flex">ver no instagram <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="ci-ct" style="border-bottom:none">
+            <p class="ci-cl">Para profissionais de saúde</p>
+            <p class="ci-cv">Quer atender na ecooa?</p>
+            <p class="ci-cs">Entre em contato pelo WhatsApp e nos fale sobre você e sua prática</p>
+            <a href={WA} target="_blank" rel="noopener noreferrer" class="ghost" style="margin-top:8px;display:inline-flex">falar pelo whatsapp <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="r d2"><LocationCard /></div>
+    </div>
+  </div>
+</section>
+
+<CtaSection heading='Pronta para<br><em>começar?</em>' subtext="A primeira conversa é o passo mais importante. A ecooa está aqui para te receber." />
+
+</BaseLayout>

@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import ProfessionalCard from '../components/ProfessionalCard.astro';
+import B2BBanner from '../components/B2BBanner.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="Profissionais | ecooa"
+  description="Conheça os especialistas da ecooa. Equipe multidisciplinar de médicos, nutricionistas, psicólogos e profissionais de estética em Moinhos de Vento, Porto Alegre."
+  currentPage="profissionais"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-cream)">
+  <svg class="wsv" style="opacity:.26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl r">corpo clínico</div>
+    <h1 class="h1 r d1" style="margin-top:18px">Especialistas que<br><em>definem padrões.</em></h1>
+    <p class="body r d2" style="margin-top:16px;max-width:480px">Uma equipe multidisciplinar reunida em torno de um propósito: oferecer o melhor cuidado possível, com humanidade e excelência técnica.</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Profissionais -->
+<section style="background:var(--color-warm)" aria-label="Equipe de profissionais">
+  <div class="w">
+
+    <!-- Liderança -->
+    <div class="lbl r" style="margin-bottom:10px">liderança</div>
+    <h2 class="h2 r d1" style="margin-bottom:40px">Quem faz a ecooa<br><em>existir.</em></h2>
+    <div class="g4" style="margin-bottom:72px">
+      <ProfessionalCard name="Gustavo Gehrke" role="Sócio · Diretor Executivo · Médico" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@gustavogehrke" photo="/team/gustavo.webp" />
+      <ProfessionalCard name="Jessica Stein" role="Sócia · Diretora de Ensino · Nutricionista · Professora de Pós-Graduação" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@jessicastein.nutri" photo="/team/jessica.webp" />
+      <ProfessionalCard name="Maria Luísa Beltran" role="Diretora Administrativa · Nutricionista · Atleta de Crossfit" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@marialuisabeltran.nutri" photo="/team/maria-luisa.webp" />
+      <ProfessionalCard name="Rafaela Teixeira" role="Secretária · Atendimento e Relacionamento" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" photo="/team/rafaela.webp" />
+    </div>
+
+    <!-- Medicina -->
+    <div class="div" style="margin:0 0 64px"></div>
+    <div class="lbl r" style="margin-bottom:9px">ecooa.med</div>
+    <h3 style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:32px;letter-spacing:-.02em" class="r d1">Medicina</h3>
+    <div class="g4" style="margin-bottom:72px">
+      <ProfessionalCard name="Gustavo Gehrke" role="Médico Generalista · Metabolismo · Hormônios · Emagrecimento · Estilo de Vida" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@gustavogehrke" photo="/team/gustavo.webp" />
+    </div>
+
+    <!-- Estética -->
+    <div class="div" style="margin:0 0 64px"></div>
+    <div class="lbl r" style="margin-bottom:18px">ecooa.esthetic</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Dermatologia Clínica</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Dermatologia Estética</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Tricologia</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Transplante Capilar</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Biomedicina Estética</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Fisioterapia Dermatofuncional</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Osteopatia</span>
+    </div>
+    <div class="g4" style="margin-bottom:72px">
+      <ProfessionalCard name="Danusa Pires" role="Enfermeira · Tricologista · Soroterapia" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@dradanusapires" photo="/team/danusa.webp" />
+      <ProfessionalCard name="Viviane Fagundes" role="Biomédica · Tricologista" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@dravivianefagundes" photo="/team/viviane.webp" />
+      <ProfessionalCard name="Yale Jeronimo" role="Médica · Tricologista" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@dra.yale" photo="/team/yale.webp" />
+      <ProfessionalCard name="Larissa Wiebbelling" role="Médica · Implante Capilar" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@larissawiebbelling" photo="/team/larissa.webp" />
+      <ProfessionalCard name="Cris Neumann" role="Fisioterapeuta Dermatofuncional" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@dracrisneumann_" photo="/team/cris.webp" />
+      <ProfessionalCard name="Susan Flach" role="Biomédica · Tricologia e Gerenciamento de Pele" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@dra.susanflach" photo="/team/susan.webp" />
+      <ProfessionalCard name="Natálie Queiroz" role="Osteopata · Adultos, Crianças e Bebês" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@osteonataliequeiroz" photo="/team/natalie.webp" />
+      <ProfessionalCard name="Vitória Machado" role="Médica Dermatologista" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@vitoriadermato" photo="/team/vitoria.webp" />
+      <ProfessionalCard name="Renata Bohn" role="Médica Dermatologista" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@renatabohn_dermato" photo="/team/renata.webp" />
+      <ProfessionalCard name="Karine Ellwanger" role="Biomédica · Estética" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@karine.belezainteligente" photo="/team/karine.webp" />
+      <ProfessionalCard name="Leticia de Melo" role="Biomédica · Estética" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@draleticiademelo" />
+      <ProfessionalCard name="Jennifer Adam" role="Biomédica · Estética" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@dra.jenniferadam" photo="/team/jennifer-adam.webp" />
+      <ProfessionalCard name="Jamylle Farias" role="Biomédica · Harmonização Facial" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@drajamyllefarias" photo="/team/jamylle.webp" />
+      <ProfessionalCard name="Adriana" role="Terapeuta Integrativa · Biorressonância" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" photo="/team/ortomolecular.webp" />
+    </div>
+
+    <!-- Nutrição -->
+    <div class="div" style="margin:0 0 64px"></div>
+    <div class="lbl r" style="margin-bottom:9px">ecooa.working</div>
+    <h3 style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:36px;letter-spacing:-.02em" class="r d1">Nutrição especializada</h3>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:72px">
+      <ProfessionalCard name="Jessica Stein" role="Nutricionista · Veganos e Vegetarianos · Introdução Alimentar para Veganos · Análise Bioquímica · Emagrecimento" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@jessicastein.nutri" photo="/team/jessica.webp" />
+      <ProfessionalCard name="Maria Luísa Beltran" role="Nutricionista · Performance Esportiva · Composição Corporal · Veganos e Vegetarianos" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@marialuisabeltran.nutri" photo="/team/maria-luisa.webp" />
+      <ProfessionalCard name="Adriano Lenz" role="Nutricionista · Ortomolecular · Metabolômica · Nutrigenômica" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@adrianolenz" photo="/team/adriano.webp" />
+      <ProfessionalCard name="Giancarla Rochemback" role="Nutricionista · Performance Esportiva · Composição Corporal" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@gi_rochemback" photo="/team/giancarla.webp" />
+      <ProfessionalCard name="Vitoria Serpa" role="Nutricionista · Performance Esportiva · Composição Corporal" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@vitoriaserpa" photo="/team/vitoria-serpa.webp" />
+      <ProfessionalCard name="Lara Caye" role="Nutricionista · Performance Esportiva · Composição Corporal" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@laracaye" photo="/team/lara-caye.webp" />
+      <ProfessionalCard name="Gabrieli Klagenberg" role="Nutricionista · Nutrição Comportamental" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@gabrieliklagenberg" photo="/team/gabrielli.webp" />
+      <ProfessionalCard name="Daniel Forster" role="Nutricionista" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@daniel.nutricionista" photo="/team/daniel-forster.webp" />
+      <ProfessionalCard name="Marvin Marques" role="Nutricionista" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@nutrimarvin" photo="/team/marvin.webp" />
+      <ProfessionalCard name="Camila Cadore" role="Nutricionista" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@nutricamilacadore" photo="/team/camila-cadore.webp" />
+      <ProfessionalCard name="Nasser Salem" role="Nutricionista" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" ig="@nutri.nasser_" photo="/team/nasser.webp" />
+      <ProfessionalCard name="Verena Cattani" role="Nutricionista" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@nutriverena" photo="/team/verena.webp" />
+    </div>
+
+    <!-- Saúde Mental -->
+    <div class="div" style="margin:0 0 64px"></div>
+    <div class="lbl r" style="margin-bottom:9px">ecooa.mind</div>
+    <h3 style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em" class="r d1">Saúde mental</h3>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Psicologia</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Psiquiatria</span>
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Terapia Holística</span>
+    </div>
+    <div class="g4" style="margin-bottom:64px">
+      <ProfessionalCard name="Manuela Vanti" role="Psicóloga Clínica · TCC" bg="linear-gradient(145deg,#C8C0BC,#AEA5A2)" ig="@manuelavanti.psi" photo="/team/manuela.webp" />
+      <ProfessionalCard name="Augusto Kauer" role="Psicólogo Esportivo" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@rotinadeatleta_psi" photo="/team/augusto.webp" />
+      <ProfessionalCard name="Francielle Beria" role="Psicóloga Clínica · TCC" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@psifrancielleberia" photo="/team/francielle.webp" />
+    </div>
+
+  </div>
+</section>
+
+<B2BBanner />
+
+<CtaSection heading='Conheça nossa<br><em>equipe pessoalmente.</em>' subtext="Agende sua avaliação e descubra qual profissional da ecooa é o ideal para o seu momento." />
+
+</BaseLayout>

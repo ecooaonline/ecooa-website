@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import B2BBanner from '../components/B2BBanner.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="ecooa.esthetic | ecooa"
+  description="Estética avançada em Moinhos de Vento, Porto Alegre. Procedimentos que respeitam a beleza natural, com técnica refinada e muito bom gosto."
+  currentPage="ecooa-esthetic"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-brand)">
+  <svg class="wsv" style="opacity:.15" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl lbl-br r">ecooa.esthetic</div>
+    <h1 style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px" class="r d1">Estética avançada.<br>Sem exageros,<br><em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)">com muito bom gosto.</em></h1>
+    <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px" class="r d2">Procedimentos de última geração que respeitam e revelam a sua beleza natural. Com olhar clínico apurado, técnica refinada e a estética como extensão da saúde.</p>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Foto do espaço -->
+<section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
+  <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+    <img src="/clinic/esthetic.webp" alt="Sala de procedimentos estéticos da ecooa.esthetic" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" />
+  </div>
+</section>
+
+<!-- Procedimentos -->
+<section style="background:var(--color-warm)" aria-label="Procedimentos">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">o que oferecemos</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">Procedimentos que<br>cuidam e <em>revelam.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">01</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Rejuvenescimento Facial</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Toxina botulínica, preenchimento com ácido hialurônico, bioremodeladores e bioestimuladores de colágeno. O objetivo é sempre um resultado harmonioso, natural e com muito bom gosto.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">02</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Transplante Capilar, de Barba e Sobrancelha</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Referência em Porto Alegre. Técnica FUE e FUE Safira para restauração capilar, reconstrução de barba e definição de sobrancelhas. Resultado natural e permanente para homens e mulheres.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">03</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Tricologia Clínica</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Diagnóstico completo da saúde dos fios e do couro cabeludo, com tratamentos específicos por causa: hormonal, nutricional, inflamatória ou genética. Avaliamos, prescrevemos e acompanhamos.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">04</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">PRP Capilar e Facial</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Plasma rico em plaquetas para estimular renovação celular, crescimento capilar e rejuvenescimento facial com base em evidências clínicas sólidas.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">05</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Soroterapia Capilar e Vitamínica</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Ativos específicos via microinjeção ou soroterapia para cabelos, pele e imunidade. Rápidos, eficazes e com alta tolerabilidade.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">06</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Mesoterapia Facial e Corporal</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Aplicação de coquetéis de ativos para hidratação profunda, gordura localizada, celulite e firmeza. Mínima invasão, excelente resultado.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">07</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Peeling e Renovação da Pele</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Peeling químico, enzimático e físico para renovação celular, manchas, textura e luminosidade. Com indicação personalizada e abordagem clínica.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">08</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Injetáveis Corporais e Bioestimuladores</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Firmeza, modelagem e rejuvenescimento corporal com estímulo à produção natural de colágeno e elastina.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">09</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Osteopatia</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Avaliação e tratamento osteopático para adultos, crianças e bebês. Abordagem manual que identifica e corrige restrições musculoesqueléticas, favorecendo o equilíbrio do sistema nervoso, postural e visceral. Indicada para dores crônicas, cólicas, problemas posturais e muito mais.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:30px 28px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">10</p><h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Fisioterapia Estética</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Drenagem linfática, modelagem corporal, radiofrequência e eletroestimulação com profissional especializado em estética clínica.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Filosofia -->
+<section style="background:var(--color-brand);padding:86px 60px;position:relative;overflow:hidden" aria-label="Nossa filosofia">
+  <svg class="wsv" style="opacity:.13" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div style="position:relative;z-index:2;max-width:580px">
+    <div class="lbl lbl-br r" style="margin-bottom:18px">nossa filosofia</div>
+    <h2 style="font-size:clamp(28px,3.6vw,52px);font-weight:200;color:white;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px" class="r d1">"Estética com ciência.<br>Resultados que <em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.55)">respeitam quem você é.</em>"</h2>
+    <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.54)" class="r d2">Nossos procedimentos são indicados com base na sua anatomia, expectativa e saúde. Nunca pelo modismo, sempre pelo que valoriza você de verdade.</p>
+  </div>
+</section>
+
+<!-- Nosso Espaço -->
+<section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.esthetic">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
+    <div style="aspect-ratio:16/9;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:16/9;overflow:hidden" class="r d1"><img src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+  </div>
+</section>
+
+<B2BBanner />
+
+<CtaSection heading='Agende sua<br><em>avaliação estética.</em>' subtext="Nossa equipe analisa suas queixas e indica os procedimentos mais adequados para o seu caso." />
+
+</BaseLayout>

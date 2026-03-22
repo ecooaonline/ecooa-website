@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import PillarCard from '../components/PillarCard.astro';
+import ProfessionalCard from '../components/ProfessionalCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="ecooa | Saúde, Estética e Longevidade · Moinhos de Vento, Porto Alegre"
+  description="A ecooa é uma clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina humanizada, estética avançada, nutrição e saúde mental."
+>
+
+<!-- Hero -->
+<section class="hero" aria-label="Apresentação ecooa">
+  <div class="hl">
+    <div class="hl-lbl lbl">Porto Alegre · Moinhos de Vento</div>
+    <h1 class="hh1">Um lugar que <em>acolhe</em><br>pessoas que cuidam<br>e são <em>cuidadas.</em></h1>
+    <p class="hl-sub body">Medicina humanizada, estética avançada, nutrição, saúde mental e longevidade: um ecossistema onde o seu cuidado pode ecooar.</p>
+    <div class="hl-act">
+      <a href="/quem-somos" class="bd">conhecer a ecooa</a>
+      <a href={WA} target="_blank" rel="noopener noreferrer" class="ghost">falar pelo whatsapp <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="hl-ft"><div class="sl"></div><span class="sl-t">scroll</span></div>
+  </div>
+  <div class="hr">
+    <svg class="wsv" viewBox="0 0 700 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect width="700" height="900" fill="#C4BBB8"/>
+      <g fill="none" stroke="rgba(255,255,255,0.17)" stroke-width="1.3"><WavePattern count={22} x0={-80} y0={80} step={40} width={700} /></g>
+      <g transform="translate(170, 380) scale(1.6)" opacity="1">
+        <path fill-rule="evenodd" fill="#FFFFFF" d="M140.3,34.5L140.3,41.3L141.0,41.3L142.3,41.5L142.3,34.8L141.3,34.8Z M137.5,33.5L137.5,40.7L138.3,41.0L139.3,41.2L139.2,34.2L138.8,34.2L138.3,34.0Z M134.0,31.2L134.0,39.3L135.0,39.8L135.8,40.2L135.8,32.7L135.5,32.3Z M130.7,26.3L130.7,37.2L131.3,37.7L132.0,38.0L132.0,28.8L131.5,28.0L131.2,27.7L130.7,26.7Z M124.0,6.8L124.0,35.0L124.8,34.0L124.8,7.8Z M128.5,6.7L127.5,7.8L127.5,34.0L128.5,35.2Z M132.0,3.8L130.7,4.7L130.7,15.5L130.7,15.2L131.2,14.2L131.5,13.8L132.0,13.0Z M120.3,3.8L120.3,38.0L121.7,37.2L121.7,4.7Z M116.5,1.8L116.5,40.0L116.8,40.0L118.3,39.3L118.3,2.5Z M135.8,1.7L135.0,2.0L134.0,2.5L134.0,10.7L134.5,10.2L135.5,9.5L135.8,9.2Z M139.3,0.7L139.0,0.7L138.3,0.8L137.5,1.2L137.5,8.3L138.3,7.8L138.7,7.8L139.3,7.5Z M113.0,0.7L113.0,41.2L115.0,40.7L115.0,1.2Z M175.5,5.3L172.3,8.8L170.2,12.7L169.0,16.2L168.5,19.7L168.7,23.8L169.8,28.3L171.7,32.0L173.7,34.7L179.3,39.2L185.7,41.3L191.7,41.5L195.5,40.7L199.0,39.2L203.0,36.3L203.2,41.5L209.8,41.5L209.8,0.3L203.2,0.3L203.0,5.5L197.7,2.0L191.7,0.3L186.7,0.3L182.8,1.2L179.3,2.7Z M188.5,6.8L192.8,7.3L196.3,8.8L198.0,10.0L200.2,12.2L201.3,13.8L202.2,15.5L203.2,19.2L203.2,22.7L202.2,26.3L200.2,29.7L198.0,31.8L196.3,33.0L192.8,34.5L189.8,35.0L187.0,34.8L184.0,34.0L182.0,33.0L180.2,31.7L178.5,30.0L176.7,27.3L175.7,24.8L175.2,22.3L175.2,19.5L175.7,17.0L176.7,14.5L178.5,11.8L180.2,10.2L182.0,8.8L185.5,7.3Z M143.0,0.3L143.0,6.8L145.7,7.0L148.7,7.8L152.5,10.2L155.8,14.2L157.5,19.3L157.5,22.5L157.0,24.8L155.8,27.7L154.3,29.8L151.7,32.3L148.7,34.0L145.7,34.8L143.0,35.0L143.0,41.5L146.0,41.5L149.8,40.7L153.3,39.2L156.2,37.3L159.2,34.5L161.3,31.5L163.3,27.0L164.2,22.5L164.2,19.3L163.8,16.8L162.7,13.0L160.3,8.8L157.2,5.3L153.3,2.7L150.3,1.3L146.0,0.3Z M142.3,0.3L141.2,0.3L140.3,0.5L140.3,7.3L141.3,7.0L142.3,7.0Z M110.2,0.3L110.2,41.5L112.0,41.3L112.0,0.5Z M106.3,0.3L103.0,1.0L98.7,2.8L95.3,5.2L92.3,8.3L91.0,10.3L89.0,14.8L88.2,19.2L88.2,22.7L89.0,27.0L91.0,31.5L93.2,34.5L95.3,36.7L98.7,39.0L101.5,40.3L105.2,41.3L109.3,41.5L109.3,0.3Z M66.0,0.3L62.7,1.0L58.3,2.8L55.0,5.2L52.0,8.3L50.0,11.5L48.5,15.3L47.8,19.2L48.0,24.2L49.2,28.5L52.7,34.3L55.8,37.3L62.7,40.8L66.0,41.5L71.0,41.5L74.8,40.7L78.3,39.2L82.2,36.5L84.2,34.3L79.5,29.7L75.7,33.0L70.7,34.8L66.3,34.8L61.3,33.0L57.5,29.7L55.5,26.3L54.5,22.7L54.5,19.2L55.5,15.5L57.5,12.2L59.7,10.0L64.8,7.3L67.8,6.8L72.2,7.3L75.7,8.8L79.5,12.2L84.2,7.3L80.0,3.7L75.3,1.3L71.0,0.3Z M18.5,0.3L15.2,1.0L10.5,3.0L7.8,4.8L4.3,8.5L1.0,15.2L0.3,23.2L1.3,27.7L2.8,31.0L5.0,34.2L8.5,37.5L15.2,40.8L18.5,41.5L23.3,41.5L28.7,40.2L31.7,38.7L36.7,34.3L31.8,29.7L27.8,33.2L24.0,34.7L20.2,35.0L15.8,34.0L13.0,32.5L9.8,29.5L7.8,26.0L7.5,24.2L41.3,24.2L41.5,18.3L40.2,13.2L36.7,7.3L31.3,3.0L26.7,1.0L23.3,0.3Z M7.3,17.3L7.8,15.8L8.8,13.8L9.8,12.3L12.3,9.8L14.3,8.5L15.8,7.8L18.0,7.2L20.2,6.8L23.0,7.0L25.2,7.5L27.8,8.7L29.3,9.7L32.2,12.5L33.8,15.3L34.5,17.3Z"/>
+        <text x="214" y="12" font-family="system-ui,sans-serif" font-size="22" font-weight="300" fill="#FFFFFF">®</text>
+      </g>
+    </svg>
+    <div class="hq">
+      <blockquote>"Nossa voz é a de muitos. É a voz de quem acredita na inovação, em relações genuínas e humanas, e num mercado de saúde cujo cuidado pode ecooar longe."</blockquote>
+      <cite>ecooa · nosso propósito</cite>
+    </div>
+  </div>
+</section>
+
+<Marquee />
+
+<!-- Quem somos (intro) -->
+<section style="background:var(--color-warm)" aria-label="Quem somos">
+  <div class="w">
+    <div class="g2 g2c">
+      <div>
+        <div class="lbl r">quem somos</div>
+        <h2 class="h2 r d1" style="margin-top:15px">Somos a ecooa,<br>a clínica que <em>abraça</em><br>pessoas que cuidam<br>e são cuidadas.</h2>
+        <p class="body r d2" style="margin-top:18px">Somos um ecossistema de crescimento, inovação, networking, bem-estar e ciência, onde cada detalhe foi pensado para que você se sinta vista, acolhida e cuidada do jeito que merece.</p>
+        <a href="/quem-somos" class="bo r d3" style="margin-top:28px">nossa história</a>
+        <div class="ia r d4">
+          <div><span class="aw">acolhedora</span><span class="ad">um lugar onde você se sente em casa</span></div>
+          <div><span class="aw">especialista</span><span class="ad">profissionais de referência em cada área</span></div>
+          <div><span class="aw">integradora</span><span class="ad">todas as especialidades conectadas por você</span></div>
+          <div><span class="aw">transformadora</span><span class="ad">do cuidado pontual à mudança que ecooa</span></div>
+        </div>
+      </div>
+      <div class="iv r d2">
+        <div class="ic ic-m" style="overflow:hidden">
+          <img src="/clinic/recepcao.webp" alt="Recepção da ecooa — Moinhos de Vento" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" />
+        </div>
+        <div class="ic ic-f"><p class="if-lbl">cuidando com excelência</p><p class="if-v">desde 2021</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Ecossistema -->
+<section style="background:var(--color-cream)" aria-label="Serviços">
+  <div class="w">
+    <div class="ph2">
+      <div>
+        <div class="lbl r">o ecossistema ecooa</div>
+        <h2 class="h2 r d1" style="margin-top:15px">Diferentes serviços.<br><em>Um propósito.</em></h2>
+      </div>
+      <p class="body r d2">Um ecossistema de cuidado completo, onde cada área ecooa com as demais para cuidar de você de dentro para fora.</p>
+    </div>
+    <div class="pg r">
+      <PillarCard number="01" name="Medicina Humanizada" description="Diagnóstico metabólico, hormônios, emagrecimento e longevidade com cuidado genuíno." label="ecooa.med" href="/ecooa-med" />
+      <PillarCard number="02" name="Estética Avançada" description="Procedimentos que respeitam a beleza natural, com técnica refinada e muito bom gosto." label="ecooa.esthetic" href="/ecooa-esthetic" />
+      <PillarCard number="03" name="Nutrição" description="Clínica, esportiva, estética e comportamental, integrada a toda a sua jornada de saúde." label="ecooa.working" href="/ecooa-working" />
+      <PillarCard number="04" name="Transplante Capilar" description="Referência em Porto Alegre para cabelos e couro cabeludo, do diagnóstico ao procedimento." label="ecooa.esthetic" href="/ecooa-esthetic" />
+      <PillarCard number="05" name="Saúde Mental" description="Psicologia e psiquiatria integradas ao cuidado, porque saúde plena começa pela mente." label="ecooa.mind" href="/ecooa-mind" />
+    </div>
+  </div>
+</section>
+
+<!-- Metodologia -->
+<section class="ap" aria-label="Metodologia">
+  <div class="ap-vis" style="overflow:hidden">
+    <img src="/clinic/reuniao-edit.webp" alt="Reunião na ecooa — metodologia de cuidado" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" />
+  </div>
+  <div class="ap-cp">
+    <div class="lbl lbl-lt r">nossa metodologia</div>
+    <h2 class="h2 h2-w r d1" style="margin-top:15px">Cuidado que<br>começa na <em>escuta</em><br>e nunca termina.</h2>
+    <p class="body body-lt r d2" style="margin-top:16px">Não trabalhamos com protocolos genéricos. Entendemos sua história, analisamos seus dados e construímos com você um caminho feito para os seus objetivos.</p>
+    <div class="st st-dk r d3" style="margin-top:32px">
+      <div class="sr"><span class="sn">01</span><div><div class="st-t">Diagnóstico e escuta ativa</div><div class="st-b">Nossa equipe multidisciplinar se conhece e se comunica. Cada especialista sabe o momento certo de envolver os demais, de forma natural e coordenada.</div></div></div>
+      <div class="sr"><span class="sn">02</span><div><div class="st-t">Testes genéticos e biomarcadores</div><div class="st-b">Análise aprofundada dos seus dados para um panorama preciso e real da sua saúde.</div></div></div>
+      <div class="sr"><span class="sn">03</span><div><div class="st-t">Protocolo baseado nos seus objetivos</div><div class="st-b">Nada genérico, nada imposto. Construído com base nas suas informações e no que você quer alcançar.</div></div></div>
+      <div class="sr"><span class="sn">04</span><div><div class="st-t">Acompanhamento humanizado</div><div class="st-b">Contínuo e presente, onde o objetivo principal é sempre você e a sua evolução.</div></div></div>
+    </div>
+    <a href="/ecooa-med" class="bow r d4" style="margin-top:36px">conhecer a metodologia</a>
+  </div>
+</section>
+
+<!-- Números -->
+<section style="background:var(--color-mist);padding:72px var(--section-px)" aria-label="Números da ecooa">
+  <div class="nr">
+    <div class="ni r"><p class="nv">9</p><p class="nl">Salas de atendimento</p></div>
+    <div class="ni r d1"><p class="nv">30<sup>+</sup></p><p class="nl">Especialistas</p></div>
+    <div class="ni r d2"><p class="nv">6</p><p class="nl">Sub-marcas integradas</p></div>
+    <div class="ni r d3"><p class="nv">2021</p><p class="nl">Fundação</p></div>
+  </div>
+</section>
+
+<!-- Cuidado -->
+<section style="background:var(--color-warm)" aria-label="Para quem busca cuidado">
+  <div class="w">
+    <div class="ci-w">
+      <div class="ci-sk">
+        <div class="lbl r">para quem busca cuidado</div>
+        <h2 class="h2 r d1" style="margin-top:15px">Você merece<br>um lugar que<br><em>cuida de verdade.</em></h2>
+        <p class="body r d2" style="margin-top:16px">Aqui, você não é um número. Cada consulta é uma conversa. Cada protocolo é construído pensando em quem você é, no que você sente e onde quer chegar.</p>
+        <a href={WA} target="_blank" rel="noopener noreferrer" class="bd r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+      </div>
+      <div class="ci-ls">
+        <div class="ci-row r">
+          <div class="ci-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="#C4BBB8" stroke-width="1"/></svg></div>
+          <div><p class="ci-t">Acolhimento genuíno</p><p class="ci-b">Antes de qualquer protocolo, escutamos você. Com tempo, atenção e sem pressa.</p></div>
+        </div>
+        <div class="ci-row r d1">
+          <div class="ci-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#C4BBB8" stroke-width="1"/><path d="M9 12l2 2 4-4" stroke="#C4BBB8" stroke-width="1" stroke-linecap="round"/></svg></div>
+          <div><p class="ci-t">Medicina humanizada e precisa</p><p class="ci-b">Diagnóstico metabólico, testes genéticos e biomarcadores para um protocolo verdadeiramente seu.</p></div>
+        </div>
+        <div class="ci-row r d2">
+          <div class="ci-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#C4BBB8" stroke-width="1"/></svg></div>
+          <div><p class="ci-t">Estética que respeita você</p><p class="ci-b">Para realçar, não transformar. Para revelar a melhor versão de quem você já é.</p></div>
+        </div>
+        <div class="ci-row r d3">
+          <div class="ci-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C6 22 2 17 2 11c0-2 1-4 2-5 1 4 4 6 8 6s7-2 8-6c1 1 2 3 2 5 0 6-4 11-10 11z" stroke="#C4BBB8" stroke-width="1"/></svg></div>
+          <div><p class="ci-t">Longevidade como estilo de vida</p><p class="ci-b">Com energia, vitalidade e propósito. Um acompanhamento que transforma hábitos em resultados que ecooam.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nosso Espaço -->
+<section aria-label="Nosso espaço premium" style="background:var(--color-ink);padding:0;overflow:hidden">
+  <div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden">
+    <img src="/clinic/respire.webp" alt="Sala Respire da ecooa — consultório premium com jardim vertical e letreiro neon" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(28,25,23,.7) 0%,transparent 50%)"></div>
+    <div style="position:absolute;bottom:40px;left:60px;right:60px;z-index:2">
+      <div class="lbl lbl-lt r" style="margin-bottom:12px">nosso espaço</div>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,48px);font-weight:300;color:white;line-height:1.15;letter-spacing:-.02em" class="r d1">Salas que valorizam quem <em>cuida</em> e quem é <em>cuidado.</em></h2>
+    </div>
+  </div>
+  <div style="padding:64px 60px 72px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
+    <div>
+      <p class="body body-lt r" style="max-width:480px">Cada consultório da ecooa foi projetado para elevar a experiência de quem atende e de quem é atendido. Painéis de madeira, jardim vertical, iluminação pensada e uma vista privilegiada de Porto Alegre criam o cenário ideal para consultas que transformam.</p>
+      <a href="/quem-somos" class="bow r d1" style="margin-top:32px">conhecer o espaço</a>
+    </div>
+    <div class="st st-dk r d1">
+      <div class="sr"><span class="sn">01</span><div><div class="st-t">Valor para o profissional</div><div class="st-b">O ambiente sofisticado eleva a percepção do seu trabalho, fortalece sua marca pessoal e atrai pacientes que valorizam excelência.</div></div></div>
+      <div class="sr"><span class="sn">02</span><div><div class="st-t">Conforto para o paciente</div><div class="st-b">Quando o paciente entra num espaço que acolhe, a confiança no tratamento começa antes da primeira palavra. Cada detalhe comunica cuidado.</div></div></div>
+      <div class="sr"><span class="sn">03</span><div><div class="st-t">Infraestrutura premium</div><div class="st-b">9 salas equipadas, recepção dedicada e áreas comuns que refletem o padrão ecooa.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Liderança -->
+<section style="background:var(--color-warm)" aria-label="Equipe de liderança">
+  <div class="w" style="padding-top:0">
+    <div class="tm-h">
+      <div><div class="lbl r">liderança</div><h2 class="h2 r d1" style="margin-top:13px">Quem faz a ecooa<br><em>existir.</em></h2></div>
+      <a href="/profissionais" class="ghost r">ver todos os profissionais <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="g4">
+      <ProfessionalCard name="Gustavo Gehrke" role="Sócio · Diretor Executivo · Médico" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" photo="/team/gustavo.webp" />
+      <ProfessionalCard name="Jessica Stein" role="Sócia · Diretora de Ensino · Nutricionista · Professora de Pós-Graduação" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" photo="/team/jessica.webp" />
+      <ProfessionalCard name="Maria Luísa Beltran" role="Diretora Administrativa · Nutricionista · Atleta de Crossfit" bg="linear-gradient(145deg,#E2DDD9,#C8C0BC)" photo="/team/maria-luisa.webp" />
+      <ProfessionalCard name="Rafaela Teixeira" role="Atendimento e Relacionamento" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" photo="/team/rafaela.webp" />
+    </div>
+  </div>
+</section>
+
+<!-- Depoimentos -->
+<section style="background:var(--color-brand);padding:86px var(--section-px);overflow:hidden;position:relative" aria-label="Depoimentos de pacientes">
+  <svg class="wsv" style="opacity:.1" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="white" stroke-width="1"><WavePattern count={6} y0={80} step={60} /></g>
+  </svg>
+  <div style="position:relative;z-index:2">
+    <div class="lbl lbl-br" style="margin-bottom:36px">
+      <span style="width:18px;height:1px;background:rgba(255,255,255,.14);display:inline-block;margin-right:11px"></span>o que dizem sobre nós
+    </div>
+    <div class="tt" id="tt" role="region" aria-roledescription="carrossel" aria-label="Depoimentos">
+      <TestimonialCard quote='"Pela primeira vez me senti realmente escutada. Não é uma clínica, é um lugar onde você importa como pessoa."' author="paciente · longevidade" />
+      <TestimonialCard quote='"O ambiente é diferente de tudo que já vi em Porto Alegre. Chega aqui e já sente que está sendo cuidada."' author="paciente · estética avançada" />
+      <TestimonialCard quote='"Minha saúde mudou completamente. Mais energia, mais disposição, mais eu. A ecooa ecooou na minha vida."' author="paciente · medicina humanizada" />
+      <TestimonialCard quote='"A equipe sabe o que faz e ainda assim sabe como fazer você se sentir importante. Isso é raro."' author="paciente · acompanhamento" />
+      <TestimonialCard quote='"Em poucos meses já notei resultados que não consegui em anos de outras clínicas."' author="paciente · nutrição e medicina" />
+    </div>
+  </div>
+</section>
+
+<!-- Working -->
+<section class="ws" aria-label="ecooa.working">
+  <div class="wt">Para nutricionistas e profissionais de saúde</div>
+  <div class="wv">
+    <img src="/clinic/working-sala.webp" alt="Consultório ecooa.working — espaço premium para nutricionistas" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" />
+    <div style="position:absolute;bottom:36px;left:36px;font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.26);line-height:2;text-shadow:0 1px 3px rgba(0,0,0,.3)">
+      Rua Mariante, 180 · 9º andar<br>Moinhos de Vento · Porto Alegre<br>ecooa.working
+    </div>
+  </div>
+  <div class="wc">
+    <div class="lbl r">ecooa.working</div>
+    <h2 class="h2 r d1" style="margin-top:15px">O espaço que<br>a sua carreira<br><em>merece.</em></h2>
+    <p class="body r d2" style="margin-top:16px">Coworking premium para nutricionistas em Moinhos de Vento. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe.</p>
+    <div class="wg r d3">
+      <div><p class="wgl">Localização</p><p class="wgv">Moinhos de Vento, Porto Alegre</p></div>
+      <div><p class="wgl">Infraestrutura</p><p class="wgv">2 consultórios e recepção dedicada</p></div>
+      <div><p class="wgl">Comunidade</p><p class="wgv">Network integrado ao ecossistema ecooa</p></div>
+      <div><p class="wgl">Acesso</p><p class="wgv">Por seleção de perfil profissional</p></div>
+    </div>
+    <a href="/ecooa-working" class="bd r d4" style="margin-top:36px">conhecer o working</a>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section style="background:var(--color-warm)" aria-label="Instagram ecooa">
+  <div class="w">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px">
+      <div><div class="lbl r">siga a ecooa</div><h2 class="h2 r d1" style="margin-top:13px">Acompanhe nossa<br><em>comunidade.</em></h2></div>
+      <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:400;color:var(--color-ink-soft);text-decoration:none;border:1px solid var(--color-stone);padding:9px 16px" class="r">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+        @somos.ecooa
+      </a>
+    </div>
+    <div class="ig r">
+      <a href="https://www.instagram.com/p/DJnIaMjsMAP/" target="_blank" rel="noopener noreferrer" class="ip ip-t" aria-label="Post Instagram: Resultados que falam por si"><div class="ip-bg" style="background:linear-gradient(145deg,#D8D3CF,#C4BBB8)"></div><div class="ip-ov"><span class="ip-tg">ecooa.esthetic</span></div><div class="ip-cp">Resultados que falam por si</div></a>
+      <div class="ic-l">
+        <a href="https://www.instagram.com/reel/DJrbUEER3Yc/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Saúde que transforma"><div class="ip-bg" style="background:linear-gradient(145deg,#E2DDD9,#C8C0BC)"></div><div class="ip-ov"><span class="ip-tg">ecooa.med</span></div><div class="ip-cp">Saúde que transforma</div></a>
+        <a href="https://www.instagram.com/reel/C7kLv-QOOR5/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Mente e corpo integrados"><div class="ip-bg" style="background:linear-gradient(145deg,#DDD8D5,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">ecooa.mind</span></div><div class="ip-cp">Mente e corpo integrados</div></a>
+      </div>
+      <div class="ic-l">
+        <a href="https://www.instagram.com/reel/C6E3YoQuDpa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Carreiras que ecooam"><div class="ip-bg" style="background:linear-gradient(145deg,#C8C0BC,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">nutrição</span></div><div class="ip-cp">Carreiras que ecooam</div></a>
+        <a href="https://www.instagram.com/somos.ecooa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Post: Nutrição com propósito"><div class="ip-bg" style="background:linear-gradient(145deg,#EDE8E4,#D8D3CF)"></div><div class="ip-ov"><span class="ip-tg">ecooa.working</span></div><div class="ip-cp">Nutrição com propósito</div></a>
+      </div>
+    </div>
+    <div style="margin-top:28px;text-align:center" class="r">
+      <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" class="bo">ver no instagram</a>
+    </div>
+  </div>
+</section>
+
+<CtaSection heading='O primeiro passo começa<br>com uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você e construir juntos um cuidado que ecooe." image="/clinic/faxada-predio.webp" />
+
+<script>
+  import '../scripts/carousel';
+</script>
+
+</BaseLayout>

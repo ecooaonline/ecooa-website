@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="ecooa.working | ecooa"
+  description="Coworking premium para nutricionistas em Moinhos de Vento, Porto Alegre. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe."
+  currentPage="ecooa-working"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-brand-mid)">
+  <svg class="wsv" style="opacity:.14" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl lbl-br r">ecooa.working</div>
+    <h1 style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px" class="r d1">O espaço que<br>a sua carreira<br><em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)">merece.</em></h1>
+    <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px" class="r d2">Coworking premium para nutricionistas em Moinhos de Vento. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe.</p>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">quero saber mais</a>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Foto do espaço -->
+<section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
+  <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+    <img src="/clinic/working.webp" alt="Espaço de coworking premium da ecooa.working" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" />
+  </div>
+</section>
+
+<!-- Nutrição para pacientes -->
+<section style="background:var(--color-cream)" aria-label="Nutrição para pacientes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:15px">nutrição para você · pacientes</div>
+    <h2 class="h2 r d1" style="margin-bottom:14px">Nossa equipe de<br>nutrição está<br><em>aqui por você.</em></h2>
+    <p class="body r d2" style="margin-bottom:44px;max-width:640px">A ecooa.working abriga nutricionistas especializados em diferentes áreas, integrados ao ecossistema ecooa. Você é atendido por quem melhor responde ao seu caso, com toda a estrutura de uma clínica premium.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Vegana e Vegetariana</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Planejamento alimentar plant-based com segurança nutricional e ciência aplicada.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Clínica</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Saúde metabólica, doenças crônicas e bem-estar geral.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Esportiva</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Performance, composição corporal e recuperação.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Emagrecimento</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Estratégias integradas à medicina para resultados reais. Para quem busca suporte nutricional no uso de medicamentos como tirzepatida e similares, nossa equipe atua em parceria com o acompanhamento médico para potencializar e sustentar os resultados.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Estética</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Pele, cabelo, unhas e composição corporal.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Análise de Exames e Testes Genéticos</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Interpretação de exames bioquímicos e mapeamento genético aplicado à nutrição individualizada.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Comportamental</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Comportamento alimentar e relação saudável com a comida.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Prescrição de Suplementos</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Indicação baseada em exames e objetivos individuais.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Bioimpedância e Avaliação</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Análise detalhada da composição corporal.</p></div>
+      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Soroterapia Nutricional</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Reposição de micronutrientes via soroterapia, sob supervisão médica. Indicada para deficiências identificadas em exames, fadiga, queda de imunidade e otimização metabólica.</p></div>
+    </div>
+    <div style="margin-top:32px;text-align:center" class="r"><a href={WA} target="_blank" rel="noopener noreferrer" class="bd">agendar consulta de nutrição</a></div>
+  </div>
+</section>
+
+<!-- Para profissionais -->
+<section style="background:var(--color-ink);padding:86px 60px" aria-label="Para profissionais">
+  <div class="g2 g2c">
+    <div>
+      <div class="lbl lbl-lt r" style="margin-bottom:15px">para profissionais</div>
+      <h2 class="h2 h2-w r d1" style="margin-bottom:18px">Acreditamos que é<br>possível ter <em>seu próprio<br>negócio.</em></h2>
+      <p class="body body-lt r d2" style="margin-bottom:28px">A ecooa.working foi criada para tirar do papel o sonho de nutricionistas que querem empreender com qualidade, sem montar uma clínica do zero, com o apoio de uma marca consolidada.</p>
+      <div class="wg r d3" style="border-top-color:rgba(255,255,255,.08);padding-top:28px;margin-top:0">
+        <div><p class="wgl" style="color:var(--color-brand-deep)">Localização</p><p class="wgv" style="color:rgba(255,255,255,.65)">Moinhos de Vento, Porto Alegre</p></div>
+        <div><p class="wgl" style="color:var(--color-brand-deep)">Salas</p><p class="wgv" style="color:rgba(255,255,255,.65)">2 consultórios equipados</p></div>
+        <div><p class="wgl" style="color:var(--color-brand-deep)">Recepção</p><p class="wgv" style="color:rgba(255,255,255,.65)">Coordenadora de relacionamento dedicada</p></div>
+        <div><p class="wgl" style="color:var(--color-brand-deep)">Acesso</p><p class="wgv" style="color:rgba(255,255,255,.65)">Por entrevista com nossa diretora de ensino</p></div>
+        <div><p class="wgl" style="color:var(--color-brand-deep)">Networking</p><p class="wgv" style="color:rgba(255,255,255,.65)">Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa</p></div>
+      </div>
+      <a href={WA} target="_blank" rel="noopener noreferrer" class="bow r d4" style="margin-top:32px;display:inline-block">entrar em contato</a>
+    </div>
+    <div class="r d2">
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:40px 34px">
+        <p style="font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-brand-deep);margin-bottom:24px">processo seletivo</p>
+        <div class="st st-dk">
+          <div class="sr"><span class="sn">01</span><div><div class="st-t">Contato inicial</div><div class="st-b">Nos fale sobre você e sua prática pelo WhatsApp.</div></div></div>
+          <div class="sr"><span class="sn">02</span><div><div class="st-t">Visita ao espaço</div><div class="st-b">Conheça pessoalmente a estrutura, a equipe e a cultura ecooa.</div></div></div>
+          <div class="sr"><span class="sn">03</span><div><div class="st-t">Alinhamento e contrato</div><div class="st-b">Definimos juntos o melhor modelo de uso e formalizamos a parceria.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mais do espaço -->
+<section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Mais do espaço">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px">
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r d2"><img src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+  </div>
+</section>
+
+<CtaSection heading='Construa sua carreira<br>no espaço que você <em>merece.</em>' subtext="Entre em contato e venha conhecer pessoalmente a ecooa.working." />
+
+</BaseLayout>

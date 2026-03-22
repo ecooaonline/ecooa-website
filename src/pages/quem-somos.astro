@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import ProfessionalCard from '../components/ProfessionalCard.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="Quem Somos | ecooa"
+  description="Conheça a história da ecooa, clínica multidisciplinar de saúde em Moinhos de Vento, Porto Alegre. Fundada em 2021, um ecossistema de saúde, inovação e cuidado genuíno."
+  currentPage="quem-somos"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-cream)">
+  <svg class="wsv" style="opacity:.26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl r">nossa história</div>
+    <h1 class="h1 r d1" style="margin-top:18px">Somos a ecooa.<br>Um ecossistema de<br>saúde, <em>inovação</em><br>e cuidado genuíno.</h1>
+    <p class="body r d2" style="margin-top:16px;max-width:500px">Fundada em 2021 em Moinhos de Vento, nascemos com um propósito claro: transformar a forma como a saúde é vivida em Porto Alegre, um lugar onde o cuidado pode ecooar além dos consultórios.</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Propósito -->
+<section style="background:var(--color-warm)" aria-label="Nosso propósito">
+  <div class="w">
+    <div class="g2 g2c">
+      <div>
+        <div class="lbl r">nosso propósito</div>
+        <h2 class="h2 r d1" style="margin-top:15px">Queremos que nossa<br>voz <em>ecooe</em> por<br>onde passa.</h2>
+        <p class="body r d2" style="margin-top:18px">Preenchendo pessoas que buscam um espaço de conexão. Uma voz nossa, sua e de todos que acreditam na inovação, em relações genuínas e num mercado de saúde mais igualitário.</p>
+        <p class="body r d3" style="margin-top:14px">Somos uma clínica multidisciplinar que abraça pessoas que cuidam e são cuidadas. Diferentes serviços com o mesmo propósito.</p>
+      </div>
+      <div class="r d2">
+        <div style="background:var(--color-brand);padding:48px 40px;position:relative;overflow:hidden">
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.13" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1.2"><WavePattern count={10} x0={-40} y0={50} step={40} width={440} /></g></svg>
+          <p style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.55;position:relative;z-index:1">"Um lugar onde saúde, ciência e cuidado genuíno se encontram para transformar vidas."</p>
+          <p style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:20px;position:relative;z-index:1">ecooa · manifesto</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bandeiras -->
+<section style="background:var(--color-cream)" aria-label="Nossas bandeiras">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">o que nos move</div>
+    <h2 class="h2 r d1" style="margin-bottom:48px">Nossas <em>bandeiras.</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">01</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">É possível ter o seu próprio negócio</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">02</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Acredite e viva o processo</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">03</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Trabalho em equipe nos leva mais longe</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">04</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Acreditamos em inovação em saúde</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">05</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Priorizamos e garantimos a excelência</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">06</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Acreditamos em uma gestão humanizada</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">07</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Não aceitamos exploração</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">08</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Acreditamos no multidisciplinar</p></div>
+      <div class="r" style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:28px 24px"><p style="font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-mid);margin-bottom:9px">09</p><p style="font-size:15px;font-weight:400;line-height:1.45;color:var(--color-ink)">Competição não define meu lugar</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Nosso Espaço -->
+<section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Nosso espaço">
+  <div style="padding:86px 60px 40px">
+    <div class="lbl r" style="margin-bottom:16px">nosso espaço</div>
+    <h2 class="h2 r d1" style="margin-bottom:12px">Projetado para<br><em>acolher.</em></h2>
+    <p class="body r d2" style="max-width:540px;margin-bottom:44px">Cada detalhe do nosso espaço foi pensado para transmitir conforto, sofisticação e cuidado. Conheça a ecooa em Moinhos de Vento, Porto Alegre.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:0 4px 4px">
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r d1"><img src="/clinic/ecooa-med-armario.webp" alt="Armário do consultório ecooa.med" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r d2"><img src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r"><img src="/clinic/mentorias.webp" alt="Espaço de mentorias ecooa.cademy" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r d1"><img src="/clinic/mind.webp" alt="Sala ecooa.mind" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:4/3;overflow:hidden" class="r d2"><img src="/clinic/working.webp" alt="Espaço ecooa.working" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+  </div>
+</section>
+
+<!-- Liderança -->
+<section style="background:var(--color-ink);padding:86px 60px" aria-label="Liderança">
+  <div class="lbl lbl-lt r" style="margin-bottom:16px">liderança</div>
+  <h2 class="h2 h2-w r d1" style="margin-bottom:44px">Quem faz a ecooa<br><em>existir.</em></h2>
+  <div class="g4">
+    <ProfessionalCard name="Gustavo Gehrke" role="Sócio · Diretor Executivo · Médico" bg="linear-gradient(145deg,#3D3835,#2A2725)" ig="@gustavogehrke" photo="/team/gustavo.webp" />
+    <ProfessionalCard name="Jessica Stein" role="Sócia · Diretora de Ensino · Nutricionista · Professora de Pós-Graduação" bg="linear-gradient(145deg,#3D3835,#2A2725)" ig="@jessicastein.nutri" photo="/team/jessica.webp" />
+    <ProfessionalCard name="Maria Luísa Beltran" role="Diretora Administrativa · Nutricionista · Atleta de Crossfit" bg="linear-gradient(145deg,#3D3835,#2A2725)" ig="@marialuisabeltran.nutri" photo="/team/maria-luisa.webp" />
+    <ProfessionalCard name="Rafaela Teixeira" role="Secretária · Atendimento e Relacionamento" bg="linear-gradient(145deg,#3D3835,#2A2725)" photo="/team/rafaela.webp" />
+  </div>
+</section>
+
+<CtaSection heading='Venha conhecer a<br><em>ecooa.</em>' subtext="A primeira conversa é o passo mais importante. Estamos prontos para te receber." />
+
+</BaseLayout>

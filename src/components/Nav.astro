@@ -1,0 +1,59 @@
+---
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage = '' } = Astro.props;
+
+const links = [
+  { href: '/quem-somos', label: 'quem somos' },
+  { href: '/ecooa-med', label: 'ecooa.med' },
+  { href: '/ecooa-esthetic', label: 'ecooa.esthetic' },
+  { href: '/ecooa-mind', label: 'ecooa.mind' },
+  { href: '/ecooa-working', label: 'ecooa.working' },
+  { href: '/profissionais', label: 'profissionais' },
+  { href: '/mentorias', label: 'mentorias' },
+];
+---
+
+<header>
+  <nav class="nav" id="nav" aria-label="Menu principal">
+    <a class="nav-logo" href="/" aria-label="ecooa — Página inicial">
+      <svg height="24" viewBox="0 0 222 42" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill-rule="evenodd" fill="#1C1917" d="M140.3,34.5L140.3,41.3L141.0,41.3L142.3,41.5L142.3,34.8L141.3,34.8Z M137.5,33.5L137.5,40.7L138.3,41.0L139.3,41.2L139.2,34.2L138.8,34.2L138.3,34.0Z M134.0,31.2L134.0,39.3L135.0,39.8L135.8,40.2L135.8,32.7L135.5,32.3Z M130.7,26.3L130.7,37.2L131.3,37.7L132.0,38.0L132.0,28.8L131.5,28.0L131.2,27.7L130.7,26.7Z M124.0,6.8L124.0,35.0L124.8,34.0L124.8,7.8Z M128.5,6.7L127.5,7.8L127.5,34.0L128.5,35.2Z M132.0,3.8L130.7,4.7L130.7,15.5L130.7,15.2L131.2,14.2L131.5,13.8L132.0,13.0Z M120.3,3.8L120.3,38.0L121.7,37.2L121.7,4.7Z M116.5,1.8L116.5,40.0L116.8,40.0L118.3,39.3L118.3,2.5Z M135.8,1.7L135.0,2.0L134.0,2.5L134.0,10.7L134.5,10.2L135.5,9.5L135.8,9.2Z M139.3,0.7L139.0,0.7L138.3,0.8L137.5,1.2L137.5,8.3L138.3,7.8L138.7,7.8L139.3,7.5Z M113.0,0.7L113.0,41.2L115.0,40.7L115.0,1.2Z M175.5,5.3L172.3,8.8L170.2,12.7L169.0,16.2L168.5,19.7L168.7,23.8L169.8,28.3L171.7,32.0L173.7,34.7L179.3,39.2L185.7,41.3L191.7,41.5L195.5,40.7L199.0,39.2L203.0,36.3L203.2,41.5L209.8,41.5L209.8,0.3L203.2,0.3L203.0,5.5L197.7,2.0L191.7,0.3L186.7,0.3L182.8,1.2L179.3,2.7Z M188.5,6.8L192.8,7.3L196.3,8.8L198.0,10.0L200.2,12.2L201.3,13.8L202.2,15.5L203.2,19.2L203.2,22.7L202.2,26.3L200.2,29.7L198.0,31.8L196.3,33.0L192.8,34.5L189.8,35.0L187.0,34.8L184.0,34.0L182.0,33.0L180.2,31.7L178.5,30.0L176.7,27.3L175.7,24.8L175.2,22.3L175.2,19.5L175.7,17.0L176.7,14.5L178.5,11.8L180.2,10.2L182.0,8.8L185.5,7.3Z M143.0,0.3L143.0,6.8L145.7,7.0L148.7,7.8L152.5,10.2L155.8,14.2L157.5,19.3L157.5,22.5L157.0,24.8L155.8,27.7L154.3,29.8L151.7,32.3L148.7,34.0L145.7,34.8L143.0,35.0L143.0,41.5L146.0,41.5L149.8,40.7L153.3,39.2L156.2,37.3L159.2,34.5L161.3,31.5L163.3,27.0L164.2,22.5L164.2,19.3L163.8,16.8L162.7,13.0L160.3,8.8L157.2,5.3L153.3,2.7L150.3,1.3L146.0,0.3Z M142.3,0.3L141.2,0.3L140.3,0.5L140.3,7.3L141.3,7.0L142.3,7.0Z M110.2,0.3L110.2,41.5L112.0,41.3L112.0,0.5Z M106.3,0.3L103.0,1.0L98.7,2.8L95.3,5.2L92.3,8.3L91.0,10.3L89.0,14.8L88.2,19.2L88.2,22.7L89.0,27.0L91.0,31.5L93.2,34.5L95.3,36.7L98.7,39.0L101.5,40.3L105.2,41.3L109.3,41.5L109.3,0.3Z M66.0,0.3L62.7,1.0L58.3,2.8L55.0,5.2L52.0,8.3L50.0,11.5L48.5,15.3L47.8,19.2L48.0,24.2L49.2,28.5L52.7,34.3L55.8,37.3L62.7,40.8L66.0,41.5L71.0,41.5L74.8,40.7L78.3,39.2L82.2,36.5L84.2,34.3L79.5,29.7L75.7,33.0L70.7,34.8L66.3,34.8L61.3,33.0L57.5,29.7L55.5,26.3L54.5,22.7L54.5,19.2L55.5,15.5L57.5,12.2L59.7,10.0L64.8,7.3L67.8,6.8L72.2,7.3L75.7,8.8L79.5,12.2L84.2,7.3L80.0,3.7L75.3,1.3L71.0,0.3Z M18.5,0.3L15.2,1.0L10.5,3.0L7.8,4.8L4.3,8.5L1.0,15.2L0.3,23.2L1.3,27.7L2.8,31.0L5.0,34.2L8.5,37.5L15.2,40.8L18.5,41.5L23.3,41.5L28.7,40.2L31.7,38.7L36.7,34.3L31.8,29.7L27.8,33.2L24.0,34.7L20.2,35.0L15.8,34.0L13.0,32.5L9.8,29.5L7.8,26.0L7.5,24.2L41.3,24.2L41.5,18.3L40.2,13.2L36.7,7.3L31.3,3.0L26.7,1.0L23.3,0.3Z M7.3,17.3L7.8,15.8L8.8,13.8L9.8,12.3L12.3,9.8L14.3,8.5L15.8,7.8L18.0,7.2L20.2,6.8L23.0,7.0L25.2,7.5L27.8,8.7L29.3,9.7L32.2,12.5L33.8,15.3L34.5,17.3Z"/>
+        <text x="214" y="12" font-family="system-ui,sans-serif" font-size="22" font-weight="300" fill="#1C1917">®</text>
+      </svg>
+    </a>
+
+    <div class="nav-right">
+      <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" class="nav-ig" aria-label="Instagram @somos.ecooa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <ul class="nav-links" id="nav-menu" role="list">
+      {links.map(link => (
+        <li>
+          <a
+            href={link.href}
+            aria-current={currentPage === link.href.slice(1) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li class="nav-cta-mobile-wrapper">
+        <a href="/agendamento" class="nav-cta-mobile">agendar avaliação</a>
+      </li>
+    </ul>
+
+    <a href="/agendamento" class="nav-cta">agendar avaliação</a>
+  </nav>
+</header>

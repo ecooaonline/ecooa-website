@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import B2BBanner from '../components/B2BBanner.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="ecooa.mind | ecooa"
+  description="Saúde mental integrada ao cuidado completo. Psicologia e psiquiatria em Moinhos de Vento, Porto Alegre. Ambiente acolhedor, seguro e sem julgamento."
+  currentPage="ecooa-mind"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-ink)">
+  <svg class="wsv" style="opacity:.05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl lbl-lt r">ecooa.mind</div>
+    <h1 class="h1 h1-w r d1" style="margin-top:18px">Saúde mental<br>integrada ao<br><em>cuidado completo.</em></h1>
+    <p class="body body-lt r d2" style="margin-top:16px;max-width:480px">Psicologia e psiquiatria em um ambiente acolhedor, seguro e sem julgamento. Porque saúde plena começa pela mente.</p>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Foto do espaço -->
+<section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
+  <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+    <img src="/clinic/mind.webp" alt="Sala de terapia da ecooa.mind — ambiente acolhedor e seguro" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" />
+  </div>
+</section>
+
+<!-- Abordagem -->
+<section style="background:var(--color-warm)" aria-label="Nossa abordagem">
+  <div class="w">
+    <div class="g2 g2c">
+      <div>
+        <div class="lbl r">nossa abordagem</div>
+        <h2 class="h2 r d1" style="margin-top:15px">Mente e corpo<br>não se <em>separam.</em></h2>
+        <p class="body r d2" style="margin-top:18px">A ecooa.mind nasceu da compreensão de que saúde plena é impossível sem saúde mental. Nossa equipe trabalha integrada ao restante do ecossistema ecooa: quando seu médico percebe que o componente emocional influencia seus resultados, a conexão com a ecooa.mind acontece de forma natural.</p>
+        <p class="body r d3" style="margin-top:13px">Sem burocracia, sem recomeçar do zero. A equipe já se conhece e você é o centro de tudo.</p>
+      </div>
+      <div class="r d2">
+        <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
+          <div class="lbl" style="margin-bottom:20px">áreas de atuação</div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Psicoterapia individual</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Psiquiatria clínica</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Ansiedade e Transtornos de Humor</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Burnout e Estresse Crônico</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Saúde Mental Feminina e Hormonal</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Transtornos Alimentares</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Suporte Psicológico em Doenças Crônicas</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Psicologia Esportiva</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Protocolo Oxford de Emagrecimento</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">TDAH em adultos</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Terapia de casal</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diferenciais -->
+<section style="background:var(--color-cream)" aria-label="Diferenciais ecooa.mind">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">um ambiente seguro</div>
+    <h2 class="h2 r d1" style="margin-bottom:40px">Por que a <em>ecooa.mind</em><br>é diferente.</h2>
+    <div class="g3">
+      <div style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Integrado ao ecossistema</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">O psicólogo ou psiquiatra já tem contexto sobre o seu cuidado clínico geral, sem que você precise repetir sua história a cada profissional.</p></div>
+      <div style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Ambiente pensado para você</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Nossa sala foi projetada para transmitir acolhimento, privacidade e calma. O ambiente faz parte do tratamento e precisa ecooar segurança.</p></div>
+      <div style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Sem lista de espera</h3><p style="font-size:13px;font-weight:300;line-height:1.8;color:var(--color-ink-soft)">Agendamento ágil e atendimento dentro do prazo esperado. Sabemos que quem busca ajuda não pode esperar.</p></div>
+    </div>
+  </div>
+</section>
+
+<B2BBanner />
+
+<CtaSection heading='O cuidado começa<br>quando você <em>pede ajuda.</em>' subtext="Agende sua consulta em um ambiente seguro, acolhedor e sem julgamento." />
+
+</BaseLayout>

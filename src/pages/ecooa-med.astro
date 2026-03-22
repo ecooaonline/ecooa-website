@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import B2BBanner from '../components/B2BBanner.astro';
+import CtaSection from '../components/CtaSection.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="ecooa.med | ecooa"
+  description="Medicina humanizada e de precisão em Moinhos de Vento, Porto Alegre. Diagnóstico metabólico, hormônios, emagrecimento e longevidade com cuidado genuíno."
+  currentPage="ecooa-med"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-ink)">
+  <svg class="wsv" style="opacity:.05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl lbl-lt r">ecooa.med</div>
+    <h1 class="h1 h1-w r d1" style="margin-top:18px">Medicina humanizada.<br>Diagnóstico preciso.<br><em>Resultado real.</em></h1>
+    <p class="body body-lt r d2" style="margin-top:16px;max-width:500px">Medicina de precisão que começa pela escuta. Protocolos construídos com base nos seus dados, no seu histórico e, principalmente, nos seus objetivos.</p>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Foto do espaço -->
+<section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
+  <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+    <img src="/clinic/med.webp" alt="Consultório médico da ecooa.med em Moinhos de Vento" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" />
+  </div>
+</section>
+
+<!-- Abordagem -->
+<section style="background:var(--color-warm)" aria-label="Nossa abordagem">
+  <div class="w">
+    <div class="g2 g2c">
+      <div>
+        <div class="lbl r">nossa abordagem</div>
+        <h2 class="h2 r d1" style="margin-top:15px">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
+        <p class="body r d2" style="margin-top:18px">A ecooa.med reúne profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética.</p>
+        <p class="body r d3" style="margin-top:13px">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-mid);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato.</a></p>
+      </div>
+      <div class="r d2">
+        <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
+          <div class="lbl" style="margin-bottom:20px">áreas de atuação</div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina Metabólica e Endocrinologia</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Nutrologia e Emagrecimento</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Envelhecimento Saudável e Estilo de Vida</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Performance Cognitiva e Física</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Hipertrofia e Composição Corporal</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Hormonologia e Saúde Feminina e Masculina</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Implantes Subcutâneos Bioabsorvíveis</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina do Esporte e Anabolismo Fisiológico</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina Preventiva e Checkup Metabólico</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Testes Genéticos</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Metodologia -->
+<section style="background:var(--color-ink);padding:86px 60px" aria-label="Metodologia">
+  <div class="g2">
+    <div>
+      <div class="lbl lbl-lt r" style="margin-bottom:16px">metodologia</div>
+      <h2 class="h2 h2-w r d1" style="margin-bottom:20px">Como <em>funciona</em><br>na prática.</h2>
+      <p class="body body-lt r d2">Cada consulta começa com tempo real de escuta. Depois vêm os exames, a análise e o protocolo. Sempre nessa ordem, sempre centrado em você.</p>
+    </div>
+    <div class="st st-dk r d2">
+      <div class="sr"><span class="sn">01</span><div><div class="st-t">Anamnese e escuta ativa</div><div class="st-b">Tempo real de escuta, sem pressa. Entendemos sua história, sintomas e objetivos antes de qualquer prescrição.</div></div></div>
+      <div class="sr"><span class="sn">02</span><div><div class="st-t">Diagnóstico metabólico e genético</div><div class="st-b">Análise de biomarcadores, painel hormonal, composição corporal e, quando indicado, mapeamento genético para decisões ainda mais precisas.</div></div></div>
+      <div class="sr"><span class="sn">03</span><div><div class="st-t">Protocolo baseado nos seus objetivos</div><div class="st-b">Construído com os dados colhidos e o que você quer alcançar. Pode incluir suplementação, injetáveis modernos, implantes bioabsorvíveis ou combinações multidisciplinares.</div></div></div>
+      <div class="sr"><span class="sn">04</span><div><div class="st-t">Acompanhamento humanizado</div><div class="st-b">Retornos periódicos para ajustar o protocolo conforme sua evolução. Você não anda sozinho.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Protocolos -->
+<section style="background:var(--color-cream)" aria-label="Protocolos ecooa.med">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">protocolos ecooa.med</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">Programas que<br><em>entregam resultados.</em></h2>
+    <div class="g3">
+      <div class="ec r"><p class="ec-n">01</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Inclui manejo clínico com implantes bioabsorvíveis de liberação lenta quando indicados clinicamente, com base em protocolos médicos atuais.</p></div>
+      <div class="ec r"><p class="ec-n">02</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">Avaliação completa da saúde hormonal masculina com protocolos individualizados para vitalidade, libido, composição corporal e bem-estar, incluindo terapia hormonal bioabsorvível quando aplicável.</p></div>
+      <div class="ec r"><p class="ec-n">03</p><h3 class="ec-t">Emagrecimento Avançado</h3><p class="ec-d">Abordagem metabólica e hormonal com uso de injetáveis de nova geração como tirzepatida, além de protocolos manipulados e ajuste nutricional integrado.</p></div>
+      <div class="ec r"><p class="ec-n">04</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.</p></div>
+      <div class="ec r"><p class="ec-n">05</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e estratégias preventivas baseadas em biomarcadores e evidência clínica.</p></div>
+      <div class="ec r"><p class="ec-n">06</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil inflamatório para uma visão real do seu estado de saúde.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Nosso Espaço -->
+<section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.med">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
+    <div style="aspect-ratio:16/9;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa em Moinhos de Vento" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+    <div style="aspect-ratio:16/9;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" /></div>
+  </div>
+</section>
+
+<B2BBanner />
+
+<CtaSection heading='Comece pela<br><em>avaliação.</em>' subtext="Agende sua primeira consulta e descubra como a medicina humanizada pode mudar sua qualidade de vida." />
+
+</BaseLayout>

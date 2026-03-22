@@ -1,0 +1,16 @@
+---
+import WavePattern from './WavePattern.astro';
+const WA = 'https://wa.me/5551991460909';
+---
+
+<section style="background:var(--color-ink);padding:86px 60px;position:relative;overflow:hidden" aria-label="Convite para profissionais">
+  <svg class="wsv" style="opacity:.05" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="white" stroke-width="1"><WavePattern count={7} y0={80} step={55} /></g>
+  </svg>
+  <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center">
+    <div class="lbl lbl-br r" style="justify-content:center;margin-bottom:22px">para profissionais de saúde</div>
+    <h2 style="font-size:clamp(30px,3.8vw,54px);font-weight:200;color:white;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px" class="r d1">Quer atender<br>na <em style="font-family:var(--font-serif);font-style:italic;color:var(--color-brand-light)">ecooa?</em></h2>
+    <p style="font-size:15px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.52);max-width:500px;margin:0 auto 36px" class="r d2">Somos um ecossistema de saúde premium em Moinhos de Vento. Se você é profissional de saúde e quer um espaço que eleva sua prática, vamos conversar.</p>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="display:inline-block">falar pelo whatsapp</a>
+  </div>
+</section>

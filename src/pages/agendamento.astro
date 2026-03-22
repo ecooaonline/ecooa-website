@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import LocationCard from '../components/LocationCard.astro';
+
+const WA = 'https://wa.me/5551991460909';
+---
+
+<BaseLayout
+  title="Agendamento | ecooa"
+  description="Agende sua avaliação na ecooa. A forma mais rápida de marcar sua consulta é pelo WhatsApp. Moinhos de Vento, Porto Alegre."
+  currentPage="agendamento"
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-cream);min-height:44vh">
+  <svg class="wsv" style="opacity:.26" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl r">agendamento</div>
+    <h1 class="h1 r d1" style="margin-top:18px">Inicie sua<br><em>jornada de cuidado.</em></h1>
+    <p class="body r d2" style="margin-top:16px;max-width:440px">A forma mais rápida de marcar sua avaliação é pelo WhatsApp. Estamos prontos para te receber.</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Contato -->
+<section style="background:var(--color-warm)" aria-label="Informações de contato">
+  <div class="w">
+    <div class="g2">
+      <div>
+        <div class="lbl r" style="margin-bottom:16px">entre em contato</div>
+        <h2 class="h2 r d1" style="margin-bottom:20px;font-size:clamp(26px,3vw,42px)">Prefira o <em>WhatsApp.</em><br>É mais rápido.</h2>
+        <p class="body r d2" style="margin-bottom:32px">Nossa equipe responde pelo WhatsApp durante o horário de atendimento. Para agendamentos, dúvidas sobre serviços ou orientações, é o canal mais ágil e direto.</p>
+        <div class="r d3">
+          <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" style="display:inline-flex;align-items:center;gap:11px;margin-bottom:12px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.486a.5.5 0 00.608.65l5.788-1.517A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.901 0-3.682-.516-5.21-1.415l-.374-.223-3.432.9.913-3.35-.244-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            (51) 99146-0909
+          </a>
+          <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-bottom:28px">Segunda a Sexta: 9h às 20h · Sábado: a consultar</p>
+          <a href="mailto:ecooa.adm@gmail.com" class="bo" style="display:inline-flex;align-items:center;gap:9px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.2"/></svg>
+            ecooa.adm@gmail.com
+          </a>
+          <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-top:9px">Para parcerias e assuntos administrativos</p>
+        </div>
+      </div>
+      <div class="r d2"><LocationCard /></div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>

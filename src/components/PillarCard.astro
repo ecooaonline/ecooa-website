@@ -1,0 +1,18 @@
+---
+interface Props {
+  number: string;
+  name: string;
+  description: string;
+  label: string;
+  href: string;
+}
+
+const { number, name, description, label, href } = Astro.props;
+---
+
+<div class="pl">
+  <p class="pl-n">{number}</p>
+  <p class="pl-nm">{name}</p>
+  <p class="pl-d">{description}</p>
+  <a href={href} class="pl-lk">{label} <span aria-hidden="true">→</span></a>
+</div>

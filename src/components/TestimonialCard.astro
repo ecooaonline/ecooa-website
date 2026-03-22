@@ -1,0 +1,16 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+}
+
+const { quote, author } = Astro.props;
+---
+
+<div class="tc" role="group" aria-label={`Depoimento: ${author}`}>
+  <div class="ts" aria-hidden="true">
+    <div class="tst"></div><div class="tst"></div><div class="tst"></div><div class="tst"></div><div class="tst"></div>
+  </div>
+  <p class="tq">{quote}</p>
+  <p class="ta">{author}</p>
+</div>
