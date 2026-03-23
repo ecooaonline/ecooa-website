@@ -214,7 +214,7 @@
 .hq cite {
   display: block; margin-top: 9px; font-family: var(--font-primary);
   font-size: 9px; font-weight: 500; letter-spacing: .2em;
-  text-transform: uppercase; color: rgba(28,25,23,.6); font-style: normal;
+  text-transform: uppercase; color: rgba(28,25,23,.75); font-style: normal;
 }
 
 /* ── INTRO ── */
