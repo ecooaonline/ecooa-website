@@ -8,6 +8,8 @@
   --color-brand-light: #DDD8D5;
   --color-brand-mid: #AEA5A2;
   --color-brand-deep: #918886;
+  --color-brand-text: #706662; /* AA ≥ 4.5:1 on warm, cream, and mist backgrounds */
+  --color-brand-accent: #8D8381; /* AA ≥ 3:1 on warm and cream for large text */
 
   /* Colors — Neutral */
   --color-white: #FFFFFF;
@@ -20,7 +22,7 @@
   --color-ink: #1C1917;
   --color-ink-mid: #3D3835;
   --color-ink-soft: #6B6360;
-  --color-ink-ghost: #837D7A; /* Adjusted from #9C9896 for WCAG AA contrast */
+  --color-ink-ghost: #6E6865; /* WCAG AA ≥ 4.5:1 on all light backgrounds */
   --color-black: #100E0D;
 
   /* Typography */

@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://ecooa.com.br',
+  site: 'https://www.somosecooa.com.br',
   integrations: [sitemap()],
 });

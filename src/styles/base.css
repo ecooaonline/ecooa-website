@@ -24,13 +24,6 @@
   font-display: swap;
   src: url('/fonts/arboria-500.woff2') format('woff2');
 }
-@font-face {
-  font-family: 'Arboria';
-  font-weight: 700;
-  font-style: normal;
-  font-display: optional;
-  src: url('/fonts/arboria-700.woff2') format('woff2');
-}
 
 /* @font-face — Playfair Display (self-hosted, subset latin) */
 @font-face {
