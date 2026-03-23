@@ -62,9 +62,11 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
 
-  <!-- Font preloads -->
+  <!-- Font preloads (all fonts in critical rendering path) -->
   <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/arboria-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/playfair-italic.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- DNS prefetch -->
   <link rel="dns-prefetch" href="https://wa.me">

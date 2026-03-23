@@ -5,28 +5,28 @@
 /* Reveal system */
 .r {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
+  transform: translateY(16px);
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
 }
 .r.in {
   opacity: 1;
   transform: none;
 }
-.d1 { transition-delay: .1s; }
-.d2 { transition-delay: .2s; }
-.d3 { transition-delay: .3s; }
-.d4 { transition-delay: .4s; }
+.d1 { transition-delay: .05s; }
+.d2 { transition-delay: .1s; }
+.d3 { transition-delay: .15s; }
+.d4 { transition-delay: .2s; }
 
 /* Marquee roll */
 @keyframes roll {
   to { transform: translateX(-50%); }
 }
 
-/* Scroll bar indicator */
+/* Scroll bar indicator (GPU-composited with transform) */
 @keyframes sb {
-  0% { left: -100%; }
-  50% { left: 100%; }
-  100% { left: 100%; }
+  0% { transform: translateX(-200%); }
+  50% { transform: translateX(200%); }
+  100% { transform: translateX(200%); }
 }
 
 /* Hero entrance */
