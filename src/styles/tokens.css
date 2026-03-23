@@ -8,8 +8,8 @@
   --color-brand-light: #DDD8D5;
   --color-brand-mid: #AEA5A2;
   --color-brand-deep: #918886;
-  --color-brand-text: #756B68; /* AA-safe on light backgrounds for small text */
-  --color-brand-accent: #908785; /* AA ≥ 3:1 on all light backgrounds for large text */
+  --color-brand-text: #706662; /* AA ≥ 4.5:1 on warm, cream, and mist backgrounds */
+  --color-brand-accent: #8D8381; /* AA ≥ 3:1 on warm and cream for large text */
 
   /* Colors — Neutral */
   --color-white: #FFFFFF;
