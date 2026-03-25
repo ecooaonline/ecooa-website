@@ -5,12 +5,34 @@ interface Props {
   bg: string;
   ig?: string;
   photo?: string;
+  description?: string;
+  tags?: string[];
+  clickable?: boolean;
 }
 
-const { name, role, bg, ig, photo } = Astro.props;
+const { name, role, bg, ig, photo, description, tags, clickable = false } = Astro.props;
+const waMessage = encodeURIComponent(`Olá, vim pelo site da ecooa e tenho interesse em agendar uma avaliação com ${name}.`);
+const waLink = `https://wa.me/5551991460909?text=${waMessage}`;
+const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 ---
 
-<div class="pc r">
+<div
+  class={`pc r ${clickable ? 'pc-clickable' : ''}`}
+  {...clickable ? {
+    'data-modal': 'true',
+    'data-name': name,
+    'data-role': role,
+    'data-photo': photo || '',
+    'data-ig': ig || '',
+    'data-ig-url': igUrl,
+    'data-wa': waLink,
+    'data-desc': description || '',
+    'data-tags': tags ? tags.join('|') : '',
+    role: 'button',
+    tabindex: '0',
+    'aria-label': `Ver perfil de ${name}`,
+  } : {}}
+>
   <div class="pc-ph">
     {photo ? (
       <img
@@ -35,9 +57,9 @@ const { name, role, bg, ig, photo } = Astro.props;
   <div class="pc-i">
     <p class="pc-n">{name}</p>
     <p class="pc-r">{role}</p>
-    {ig && (
+    {ig && !clickable && (
       <a
-        href={`https://instagram.com/${ig.replace('@', '')}`}
+        href={igUrl}
         target="_blank"
         rel="noopener noreferrer"
         style="font-size:10px;font-weight:400;color:var(--color-brand-text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:6px;letter-spacing:.03em"
