@@ -1,0 +1,24 @@
+{
+  "name": "ecooa - Saúde, Estética e Longevidade",
+  "short_name": "ecooa",
+  "description": "Clínica multidisciplinar de saúde, estética e longevidade em Porto Alegre",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F6",
+  "theme_color": "#FAF8F6",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "categories": ["health", "medical", "beauty"],
+  "icons": [
+    {
+      "src": "/favicon/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

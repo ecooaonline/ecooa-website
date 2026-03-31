@@ -60,9 +60,14 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <meta name="twitter:description" content={description}>
   <meta name="twitter:image" content={new URL(ogImage, Astro.site)}>
 
-  <!-- Favicons -->
+  <!-- Favicons + PWA -->
   <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ecooa">
 
   <!-- Font preloads (all fonts in critical rendering path) -->
   <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
@@ -244,6 +249,61 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <script>
     import { initAnalyticsEvents } from '../scripts/analytics-events';
     initAnalyticsEvents();
+  </script>
+
+  <!-- Service Worker (PWA) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
+      });
+    }
+  </script>
+
+  <!-- Exit Intent Popup -->
+  <div id="exit-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(28,25,23,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center" role="dialog" aria-modal="true" aria-label="Agende sua avaliacao">
+    <div style="background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative">
+      <button id="exit-popup-close" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer" aria-label="Fechar">&#10005;</button>
+      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px">antes de ir</p>
+      <p style="font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px">Que tal agendar<br>sua <em>avaliacao?</em></p>
+      <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px">Converse com nossa equipe e descubra o melhor caminho para seus objetivos.</p>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <a href="https://wa.me/5551991460909" target="_blank" rel="noopener noreferrer" class="bd" style="width:100%;text-align:center">falar pelo whatsapp</a>
+        <a href="/agendamento" class="ghost" style="width:100%;text-align:center">agendar avaliacao</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const popup = document.getElementById('exit-popup');
+      const closeBtn = document.getElementById('exit-popup-close');
+      if (!popup || !closeBtn) return;
+      let shown = false;
+      const key = 'ecooa_exit_shown';
+      if (sessionStorage.getItem(key)) return;
+
+      function show() {
+        if (shown) return;
+        shown = true;
+        sessionStorage.setItem(key, '1');
+        popup.style.display = 'flex';
+        window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
+      }
+
+      // Desktop: mouse leaves viewport top
+      document.addEventListener('mouseout', (e) => {
+        if (e.clientY <= 0) show();
+      });
+
+      // Mobile: show after 45s of engagement
+      if ('ontouchstart' in window) {
+        setTimeout(show, 45000);
+      }
+
+      closeBtn.addEventListener('click', () => { popup.style.display = 'none'; });
+      popup.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popup.style.display = 'none'; });
+    })();
   </script>
 </body>
 </html>
