@@ -571,6 +571,35 @@
   body.hz .cursor-ring { width: 48px; height: 48px; border-color: var(--color-ink-soft); }
 }
 
+/* ── BLOG CONTENT ── */
+.blog-content h2 {
+  font-family: var(--font-serif); font-size: clamp(20px, 3vw, 26px); font-weight: 300;
+  color: var(--color-ink); line-height: 1.3; letter-spacing: -.02em;
+  margin: 36px 0 14px;
+}
+.blog-content h3 {
+  font-size: 16px; font-weight: 500; color: var(--color-ink);
+  letter-spacing: -.01em; margin: 28px 0 10px;
+}
+.blog-content p {
+  font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--color-ink-soft);
+  margin-bottom: 18px;
+}
+.blog-content ul, .blog-content ol {
+  padding-left: 20px; margin-bottom: 18px;
+}
+.blog-content li {
+  font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--color-ink-soft);
+  margin-bottom: 6px;
+}
+.blog-content strong { font-weight: 500; color: var(--color-ink); }
+.blog-content a {
+  color: var(--color-brand-text); text-decoration: none;
+  border-bottom: 1px solid var(--color-stone);
+  transition: border-color var(--transition-base);
+}
+.blog-content a:hover { border-color: var(--color-brand-text); }
+
 /* Page transition */
 .page-content { opacity: 1; transition: opacity var(--transition-base) ease; }
 .page-content.out { opacity: 0; }

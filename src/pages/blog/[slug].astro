@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const WA = 'https://wa.me/5551991460909';
+const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  currentPage="blog"
+  ogImage={post.data.image || '/favicon/og-image.jpg'}
+  breadcrumbs={[{ name: "Blog", url: "/blog" }, { name: post.data.title, url: `/blog/${post.id}` }]}
+>
+
+<!-- Article Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": `https://www.somosecooa.com.br${post.data.image || '/favicon/og-image.jpg'}`,
+  "datePublished": post.data.date,
+  "author": {
+    "@type": "Person",
+    "name": post.data.author,
+    "worksFor": { "@type": "MedicalBusiness", "name": "ecooa" }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ecooa",
+    "url": "https://www.somosecooa.com.br",
+    "logo": "https://www.somosecooa.com.br/favicon/favicon.svg"
+  },
+  "mainEntityOfPage": `https://www.somosecooa.com.br/blog/${post.id}`
+})} />
+
+<article style="background:var(--color-warm);padding:48px var(--section-px) 72px">
+  <div style="max-width:700px;margin:0 auto">
+
+    <!-- Meta -->
+    <div style="margin-bottom:24px" class="r">
+      <a href="/blog" style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);text-decoration:none">← blog</a>
+    </div>
+
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" class="r d1">
+      <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">{post.data.category}</span>
+      <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{dateFormatted}</span>
+    </div>
+
+    <h1 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:var(--color-ink);line-height:1.2;letter-spacing:-.02em;margin-bottom:16px" class="r d1">{post.data.title}</h1>
+
+    <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:32px" class="r d2">por <strong style="font-weight:500">{post.data.author}</strong></p>
+
+    <!-- Tags -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:40px" class="r d2">
+      {post.data.tags.map(tag => (
+        <span style="font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-ink-soft);border:1px solid var(--color-stone);padding:4px 10px">{tag}</span>
+      ))}
+    </div>
+
+    <!-- Content -->
+    <div class="blog-content r d3">
+      <Content />
+    </div>
+
+    <!-- CTA inline -->
+    <div style="margin-top:48px;padding:32px;background:var(--color-cream);text-align:center" class="r d4">
+      <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:8px">Quer saber mais?</p>
+      <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">Agende sua avaliacao com nossos especialistas.</p>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a href={WA} target="_blank" rel="noopener noreferrer" class="bd">falar pelo whatsapp</a>
+        <a href="/agendamento" class="ghost">agendar avaliacao</a>
+      </div>
+    </div>
+
+  </div>
+</article>
+
+<CtaSection heading='O cuidado comeca com<br>uma <em>conversa.</em>' subtext="Estamos prontos para ouvir voce." />
+
+</BaseLayout>
