@@ -73,17 +73,9 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ecooa">
 
-  <!-- Font preloads (all fonts in critical rendering path) -->
-  <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
+  <!-- Font preloads (only critical above-fold fonts) -->
   <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/arboria-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/playfair-italic.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- DNS prefetch + preconnect for Google services -->
-  <link rel="dns-prefetch" href="https://wa.me">
-  <link rel="dns-prefetch" href="https://www.instagram.com">
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Structured Data: Organization -->
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -167,7 +159,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     })} />
   )}
 
-  <!-- Google Tag Manager (deferred for mobile performance) -->
+  <!-- Google Tag Manager (deferred for performance) -->
   <script>
   window.dataLayer=window.dataLayer||[];
   function loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=true;
@@ -175,13 +167,11 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   var j=document.createElement('script');j.async=true;
   j.src='https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
   document.head.appendChild(j);}
-  if(requestIdleCallback){requestIdleCallback(loadGTM)}
-  else{setTimeout(loadGTM,2000)}
+  setTimeout(loadGTM,3500);
   document.addEventListener('scroll',loadGTM,{once:true,passive:true});
   document.addEventListener('click',loadGTM,{once:true});
   document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
   </script>
-  <!-- End Google Tag Manager -->
 </head>
 <body>
   <!-- Google Tag Manager (noscript) -->
@@ -199,25 +189,34 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <Footer />
   <WhatsAppFab />
 
+  <!-- Core UI scripts (menu, reveal, cursor) -->
   <script>
-    // Mobile menu toggle
+    // Mobile menu
     const toggle = document.querySelector('.nav-toggle');
     const menu = document.getElementById('nav-menu');
-    toggle?.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      menu?.classList.toggle('open');
-      document.body.style.overflow = expanded ? '' : 'hidden';
-    });
-
-    // Close menu on link click
-    menu?.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle?.setAttribute('aria-expanded', 'false');
-        menu?.classList.remove('open');
-        document.body.style.overflow = '';
+    if (toggle && menu) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        menu.classList.toggle('open');
+        document.body.style.overflow = expanded ? '' : 'hidden';
       });
-    });
+      menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          toggle.setAttribute('aria-expanded', 'false');
+          menu.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // Reveal animation
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      }
+    }, { threshold: 0.05 });
+    document.querySelectorAll('.r').forEach(el => obs.observe(el));
 
     // Close menu on Escape
     document.addEventListener('keydown', (e) => {
@@ -230,77 +229,50 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     });
   </script>
 
-  <!-- Reveal animation (IntersectionObserver) -->
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.05 });
-
-    document.querySelectorAll('.r').forEach(el => observer.observe(el));
-  </script>
-
   <!-- Custom cursor (desktop only) -->
   <script>
     import '../scripts/cursor';
   </script>
 
-  <!-- Google Analytics Events Tracking (deferred) -->
+  <!-- Deferred: analytics, service worker, exit intent -->
   <script>
-    const _ric = window.requestIdleCallback || ((cb: Function) => setTimeout(cb, 200));
-    _ric(() => {
-      import('../scripts/analytics-events').then(m => m.initAnalyticsEvents());
-    });
-  </script>
+    const _idle = window.requestIdleCallback || ((cb: Function) => setTimeout(cb, 300));
 
-  <!-- Service Worker (PWA) -->
-  <script>
+    // Analytics events
+    _idle(() => { import('../scripts/analytics-events').then(m => m.initAnalyticsEvents()); });
+
+    // Service Worker
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').catch(() => {});
-      });
+      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
     }
-  </script>
 
-  <!-- Exit Intent Popup -->
-  <div id="exit-popup" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(28,25,23,.6);backdrop-filter:blur(4px);align-items:center;justify-content:center" role="dialog" aria-modal="true" aria-label="Agende sua avaliacao">
-    <div style="background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative">
-      <button id="exit-popup-close" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer" aria-label="Fechar">&#10005;</button>
-      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px">antes de ir</p>
-      <p style="font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px">Que tal agendar<br>sua <em>avaliacao?</em></p>
-      <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px">Converse com nossa equipe e descubra o melhor caminho para seus objetivos.</p>
-      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
-        <a href="https://wa.me/5551991460909" target="_blank" rel="noopener noreferrer" class="bd" style="width:100%;text-align:center">falar pelo whatsapp</a>
-        <a href="/agendamento" class="ghost" style="width:100%;text-align:center">agendar avaliacao</a>
-      </div>
-    </div>
-  </div>
-  <script>
+    // Exit intent popup (lazy-injected)
     window.addEventListener('load', () => {
-      const popup = document.getElementById('exit-popup');
-      const closeBtn = document.getElementById('exit-popup-close');
-      if (!popup || !closeBtn) return;
-      let shown = false;
       const key = 'ecooa_exit_shown';
       if (sessionStorage.getItem(key)) return;
+      let shown = false;
 
       function show() {
         if (shown) return;
         shown = true;
         sessionStorage.setItem(key, '1');
-        popup.style.display = 'flex';
+        const d = document.createElement('div');
+        d.id = 'exit-popup';
+        d.setAttribute('role', 'dialog');
+        d.setAttribute('aria-modal', 'true');
+        d.setAttribute('aria-label', 'Agende sua avaliacao');
+        d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(28,25,23,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center';
+        d.innerHTML = '<div style="background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative"><button id="exit-popup-close" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer" aria-label="Fechar">&#10005;</button><p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px">antes de ir</p><p style="font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px">Que tal agendar<br>sua <em>avaliacao?</em></p><p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px">Converse com nossa equipe e descubra o melhor caminho para seus objetivos.</p><div style="display:flex;flex-direction:column;gap:10px;align-items:center"><a href="https://wa.me/5551991460909" target="_blank" rel="noopener noreferrer" class="bd" style="width:100%;text-align:center">falar pelo whatsapp</a><a href="/agendamento" class="ghost" style="width:100%;text-align:center">agendar avaliacao</a></div></div>';
+        document.body.appendChild(d);
         window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
+        const close = () => { d.remove(); };
+        d.querySelector('#exit-popup-close')!.addEventListener('click', close);
+        d.addEventListener('click', (e) => { if (e.target === d) close(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
       }
 
-      document.addEventListener('mouseout', (e) => { if (e.clientY <= 0) show(); });
+      document.addEventListener('mouseout', (e) => { if ((e as MouseEvent).clientY <= 0) show(); });
       if ('ontouchstart' in window) setTimeout(show, 45000);
-      closeBtn.addEventListener('click', () => { popup.style.display = 'none'; });
-      popup.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popup.style.display = 'none'; });
     });
   </script>
 </body>
