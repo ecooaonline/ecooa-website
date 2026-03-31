@@ -19,7 +19,9 @@ const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 <div
   class={`pc r ${clickable ? 'pc-clickable' : ''}`}
   {...clickable ? {
-    'data-modal': 'true',
+    'data-modal': 'professional',
+    'data-professional-name': name,
+    'data-specialty': role.split('·')[0].trim(),
     'data-name': name,
     'data-role': role,
     'data-photo': photo || '',

@@ -160,6 +160,7 @@ const WA = 'https://wa.me/5551991460909';
     pmDesc.textContent = desc;
     pmTags.innerHTML = tags.map(t => `<span class="pro-modal-tag">${t}</span>`).join('');
     pmWa.href = wa;
+    pmWa.setAttribute('data-professional-name', name);
     if (igUrl) {
       pmIg.href = igUrl;
       pmIgLabel.textContent = ig;
@@ -181,7 +182,7 @@ const WA = 'https://wa.me/5551991460909';
   }
 
   // Click on card
-  document.querySelectorAll('[data-modal="true"]').forEach(card => {
+  document.querySelectorAll('[data-modal="professional"]').forEach(card => {
     card.addEventListener('click', () => openModal(card as HTMLElement));
     card.addEventListener('keydown', (e) => {
       if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
