@@ -15,6 +15,7 @@ interface Props {
   description: string;
   currentPage?: string;
   ogImage?: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 
 const {
@@ -22,6 +23,7 @@ const {
   description,
   currentPage = '',
   ogImage = '/favicon/og-image.jpg',
+  breadcrumbs,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -68,18 +70,23 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <link rel="preload" href="/fonts/arboria-500.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/playfair-italic.woff2" as="font" type="font/woff2" crossorigin>
 
-  <!-- DNS prefetch -->
+  <!-- DNS prefetch + preconnect for Google services -->
   <link rel="dns-prefetch" href="https://wa.me">
   <link rel="dns-prefetch" href="https://www.instagram.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+  <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <!-- Structured Data -->
+  <!-- Structured Data: Organization -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     "name": "ecooa",
-    "description": "Clínica multidisciplinar de saúde, estética e longevidade em Porto Alegre",
+    "alternateName": "ecooa - Saúde, Estética e Longevidade",
+    "description": "Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.",
     "url": "https://www.somosecooa.com.br",
     "telephone": "+5551991460909",
+    "image": "https://www.somosecooa.com.br/favicon/og-image.jpg",
+    "logo": "https://www.somosecooa.com.br/favicon/favicon.svg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Rua Mariante, 180, 9º andar",
@@ -93,16 +100,63 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
       "latitude": -30.0277,
       "longitude": -51.2007
     },
+    "hasMap": "https://www.google.com/maps/place/ecooa",
     "openingHoursSpecification": [{
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
       "opens": "09:00",
       "closes": "20:00"
     }],
-    "sameAs": ["https://instagram.com/somos.ecooa"],
+    "sameAs": [
+      "https://instagram.com/somos.ecooa",
+      "https://www.google.com/maps/place/ecooa"
+    ],
     "priceRange": "$$$",
-    "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"]
+    "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "65",
+      "reviewCount": "65"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Porto Alegre",
+      "sameAs": "https://pt.wikipedia.org/wiki/Porto_Alegre"
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Gustavo Gehrke",
+      "jobTitle": "Médico Generalista"
+    },
+    "numberOfEmployees": {
+      "@type": "QuantitativeValue",
+      "minValue": 30
+    },
+    "foundingDate": "2021",
+    "knowsLanguage": ["pt-BR"],
+    "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
+    "currenciesAccepted": "BRL"
   })} />
+
+  {/* Breadcrumb Structured Data */}
+  {breadcrumbs && breadcrumbs.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.somosecooa.com.br" },
+        ...breadcrumbs.map((bc, i) => ({
+          "@type": "ListItem",
+          "position": i + 2,
+          "name": bc.name,
+          "item": `https://www.somosecooa.com.br${bc.url}`
+        }))
+      ]
+    })} />
+  )}
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGHD7NZ5CG"></script>
