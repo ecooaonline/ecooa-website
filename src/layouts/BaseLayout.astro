@@ -174,5 +174,11 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <script>
     import '../scripts/cursor';
   </script>
+
+  <!-- Google Analytics Events Tracking -->
+  <script>
+    import { initAnalyticsEvents } from '../scripts/analytics-events';
+    initAnalyticsEvents();
+  </script>
 </body>
 </html>
