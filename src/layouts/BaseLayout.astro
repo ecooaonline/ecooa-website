@@ -158,12 +158,20 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     })} />
   )}
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TSR4GDMK');</script>
+  <!-- Google Tag Manager (deferred for mobile performance) -->
+  <script>
+  window.dataLayer=window.dataLayer||[];
+  function loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=true;
+  dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var j=document.createElement('script');j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
+  document.head.appendChild(j);}
+  if(requestIdleCallback){requestIdleCallback(loadGTM)}
+  else{setTimeout(loadGTM,2000)}
+  document.addEventListener('scroll',loadGTM,{once:true,passive:true});
+  document.addEventListener('click',loadGTM,{once:true});
+  document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
+  </script>
   <!-- End Google Tag Manager -->
 </head>
 <body>
