@@ -32,7 +32,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https:; frame-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src 'none'">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
@@ -103,6 +103,15 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     "priceRange": "$$$",
     "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"]
   })} />
+
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-CGHD7NZ5CG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CGHD7NZ5CG');
+  </script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
