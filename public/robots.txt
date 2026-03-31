@@ -1,4 +1,33 @@
+# ecooa - www.somosecooa.com.br
 User-agent: *
 Allow: /
+Disallow: /agendamento
+Disallow: /_astro/
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block AI scrapers from training on content
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
 
 Sitemap: https://www.somosecooa.com.br/sitemap-index.xml
