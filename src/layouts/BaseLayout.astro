@@ -245,10 +245,12 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     import '../scripts/cursor';
   </script>
 
-  <!-- Google Analytics Events Tracking -->
+  <!-- Google Analytics Events Tracking (deferred) -->
   <script>
-    import { initAnalyticsEvents } from '../scripts/analytics-events';
-    initAnalyticsEvents();
+    const _ric = window.requestIdleCallback || ((cb: Function) => setTimeout(cb, 200));
+    _ric(() => {
+      import('../scripts/analytics-events').then(m => m.initAnalyticsEvents());
+    });
   </script>
 
   <!-- Service Worker (PWA) -->
@@ -274,7 +276,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     </div>
   </div>
   <script>
-    (function(){
+    window.addEventListener('load', () => {
       const popup = document.getElementById('exit-popup');
       const closeBtn = document.getElementById('exit-popup-close');
       if (!popup || !closeBtn) return;
@@ -290,20 +292,12 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
         window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
       }
 
-      // Desktop: mouse leaves viewport top
-      document.addEventListener('mouseout', (e) => {
-        if (e.clientY <= 0) show();
-      });
-
-      // Mobile: show after 45s of engagement
-      if ('ontouchstart' in window) {
-        setTimeout(show, 45000);
-      }
-
+      document.addEventListener('mouseout', (e) => { if (e.clientY <= 0) show(); });
+      if ('ontouchstart' in window) setTimeout(show, 45000);
       closeBtn.addEventListener('click', () => { popup.style.display = 'none'; });
       popup.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') popup.style.display = 'none'; });
-    })();
+    });
   </script>
 </body>
 </html>
