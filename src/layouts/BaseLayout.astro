@@ -34,7 +34,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.clarity.ms; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com; worker-src 'self' blob:">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -159,7 +159,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     })} />
   )}
 
-  <!-- Google Tag Manager (deferred for performance) -->
+  <!-- Google Tag Manager (interaction-only for max performance) -->
   <script>
   window.dataLayer=window.dataLayer||[];
   function loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=true;
@@ -167,10 +167,11 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   var j=document.createElement('script');j.async=true;
   j.src='https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
   document.head.appendChild(j);}
-  setTimeout(loadGTM,3500);
   document.addEventListener('scroll',loadGTM,{once:true,passive:true});
   document.addEventListener('click',loadGTM,{once:true});
   document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
+  document.addEventListener('keydown',loadGTM,{once:true});
+  setTimeout(loadGTM,12000);
   </script>
 </head>
 <body>
