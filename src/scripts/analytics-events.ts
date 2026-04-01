@@ -180,9 +180,4 @@ function trackEngagement() {
   }, 10000);
 }
 
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAnalyticsEvents);
-} else {
-  initAnalyticsEvents();
-}
+// Exported for deferred initialization via dynamic import
