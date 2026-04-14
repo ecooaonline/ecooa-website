@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { name, role, bg, ig, photo, description, tags, clickable = false } = Astro.props;
-const waMessage = encodeURIComponent(`Olá, vim pelo site da ecooa e tenho interesse em agendar uma avaliação com ${name}.`);
+const waMessage = encodeURIComponent(`Olá, gostaria de agendar com ${name}`);
 const waLink = `https://wa.me/5551991460909?text=${waMessage}`;
 const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 ---
