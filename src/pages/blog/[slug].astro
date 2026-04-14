@@ -18,13 +18,13 @@ const { Content } = await render(post);
 const professionalMap: Record<string, { name: string; specialty: string; instagram?: string }> = {
   'Dr. Gustavo Gehrke': { name: 'Dr. Gustavo Gehrke', specialty: 'Medicina de Alta Performance', instagram: 'gustavo.gehrke' },
   'Dra. Larissa Wiebbelling': { name: 'Dra. Larissa Wiebbelling', specialty: 'Tricologia e Transplante Capilar', instagram: 'dra.larissawiebbelling' },
-  'Dra. Yale': { name: 'Dra. Yale', specialty: 'Saude Capilar Feminina' },
-  'Manuela Vanti': { name: 'Manuela Vanti', specialty: 'Psicologia Clinica' },
-  'Jessica Stein': { name: 'Jessica Stein', specialty: 'Nutricao Clinica' },
-  'Maria Luisa Beltran': { name: 'Maria Luisa Beltran', specialty: 'Nutricao Esportiva' },
+  'Dra. Yale': { name: 'Dra. Yale', specialty: 'Saúde Capilar Feminina' },
+  'Manuela Vanti': { name: 'Manuela Vanti', specialty: 'Psicologia Clínica' },
+  'Jessica Stein': { name: 'Jessica Stein', specialty: 'Nutrição Clínica' },
+  'Maria Luisa Beltran': { name: 'Maria Luisa Beltran', specialty: 'Nutrição Esportiva' },
   'Adriano Lenz': { name: 'Adriano Lenz', specialty: 'Medicina Ortomolecular' },
-  'Viviane Fagundes': { name: 'Viviane Fagundes', specialty: 'Teste Genetico Capilar' },
-  'Giancarla': { name: 'Giancarla', specialty: 'Nutricao e Bioimpedancia' },
+  'Viviane Fagundes': { name: 'Viviane Fagundes', specialty: 'Teste Genético Capilar' },
+  'Giancarla': { name: 'Giancarla', specialty: 'Nutrição e Bioimpedância' },
   'Danusa': { name: 'Danusa', specialty: 'Soroterapia' },
 };
 
@@ -107,7 +107,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
         <>
           <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">{professional.specialty}</p>
           <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:6px">Converse com {professional.name}</p>
-          <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:22px">Agende sua avaliacao e receba orientacao personalizada.</p>
+          <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:22px">Agende sua avaliação e receba orientação personalizada.</p>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
             <a href={WA_PROFESSIONAL} target="_blank" rel="noopener noreferrer" class="bd">agendar com {professional.name.split(' ')[0]}</a>
             {professional.instagram && (
@@ -118,10 +118,10 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
       ) : (
         <>
           <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:8px">Quer saber mais?</p>
-          <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">Agende sua avaliacao com nossos especialistas.</p>
+          <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">Agende sua avaliação com nossos especialistas.</p>
           <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
             <a href={WA_PROFESSIONAL} target="_blank" rel="noopener noreferrer" class="bd">falar pelo whatsapp</a>
-            <a href="/agendamento" class="ghost">agendar avaliacao com nossa equipe</a>
+            <a href="/agendamento" class="ghost">agendar avaliação com nossa equipe</a>
           </div>
         </>
       )}
@@ -144,9 +144,9 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
 
     <!-- Newsletter -->
     <div style="margin-top:48px;padding:36px;background:var(--color-ink);text-align:center" class="r">
-      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px">semana em saude</p>
-      <p style="font-family:var(--font-serif);font-size:clamp(20px,3vw,24px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:8px">A ecooa te atualizando<br>sobre o <em>mundo da saude.</em></p>
-      <p style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px">Novidades, ofertas e conteudo exclusivo em primeira mao. Sem spam, a cada 15 dias.</p>
+      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px">semana em saúde</p>
+      <p style="font-family:var(--font-serif);font-size:clamp(20px,3vw,24px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:8px">A ecooa te atualizando<br>sobre o <em>mundo da saúde.</em></p>
+      <p style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px">Novidades, ofertas e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.</p>
       <form action="https://formspree.io/f/placeholder" method="POST" style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center">
         <input type="email" name="email" required placeholder="seu melhor e-mail" style="flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none" />
         <button type="submit" style="padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer">aceito</button>
@@ -156,6 +156,6 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
   </div>
 </article>
 
-<CtaSection heading='O cuidado comeca com<br>uma <em>conversa.</em>' subtext="Estamos prontos para ouvir voce." />
+<CtaSection heading='O cuidado começa com<br>uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você." />
 
 </BaseLayout>
