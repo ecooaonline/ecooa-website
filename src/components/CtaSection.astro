@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { heading, subtext, image } = Astro.props;
-const WA = 'https://wa.me/5551991460909';
+const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
 ---
 
 <section class={`cf ${image ? 'cf-img' : ''}`} aria-label="Chamada para ação">
@@ -24,7 +24,7 @@ const WA = 'https://wa.me/5551991460909';
   <p class="cf-s r d2">{subtext}</p>
   <div class="cf-bt r d3">
     <a href={WA} target="_blank" rel="noopener noreferrer" class="bw">falar pelo whatsapp</a>
-    <a href="/agendamento" class="bow">agendar avaliação</a>
+    <a href="/agendamento" class="bow">agendar avaliação com nossa equipe</a>
   </div>
 </section>
 
