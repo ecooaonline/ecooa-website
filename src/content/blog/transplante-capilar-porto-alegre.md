@@ -107,22 +107,22 @@ A recuperação do transplante capilar segue uma cronologia que o paciente deve 
 
 **Mês 6 a 8**: o crescimento se torna mais evidente. O paciente já percebe diferença significativa na cobertura e no volume.
 
-**Mes 10 a 14**: resultado considerado final. Os fios atingem espessura, comprimento e textura definitivos. Em alguns pacientes, o resultado continua melhorando além dos doze meses.
+**Mês 10 a 14**: resultado considerado final. Os fios atingem espessura, comprimento e textura definitivos. Em alguns pacientes, o resultado continua melhorando além dos doze meses.
 
 ## O que diferencia um transplante capilar bem feito
 
-A qualidade de um transplante capilar não se mede apenas pela quantidade de foliculos implantados, mas por vários fatores que determinam a naturalidade e a durabilidade do resultado:
+A qualidade de um transplante capilar não se mede apenas pela quantidade de folículos implantados, mas por vários fatores que determinam a naturalidade e a durabilidade do resultado:
 
 - **Desenho da linha capilar**: linhas excessivamente retas ou baixas demais parecem artificiais. O planejamento deve considerar a idade atual, a projeção de envelhecimento e a harmonia facial.
 - **Ângulo de implantação**: os fios naturais não crescem perpendiculares ao couro cabeludo. Respeitar o ângulo original de cada região é essencial para um resultado imperceptível.
 - **Distribuição por unidades foliculares**: folículos com um fio são posicionados na linha frontal para criar transição suave, enquanto unidades com dois a quatro fios preenchem áreas de maior densidade.
-- **Preservação da área doadora**: a extração deve ser distribuída de forma homogênea para que a área doadora mantenha aparencia natural.
+- **Preservação da área doadora**: a extração deve ser distribuída de forma homogênea para que a área doadora mantenha aparência natural.
 
 Na ecooa, esses detalhes são parte do protocolo padrão, porque o resultado de um transplante capilar é permanente e deve ser planejado com rigor.
 
 ## O papel do tratamento clínico antes e após o transplante
 
-O transplante capilar não funciona como intervenção isolada. Antes do procedimento, estabilizar a queda com tratamento clínico é fundamental para proteger os folículos nativos. Apos o procedimento, a manutencao com terapias como minoxidil, PRP ou suporte nutricional preserva o resultado e protege áreas não transplantadas.
+O transplante capilar não funciona como intervenção isolada. Antes do procedimento, estabilizar a queda com tratamento clínico é fundamental para proteger os folículos nativos. Após o procedimento, a manutenção com terapias como minoxidil, PRP ou suporte nutricional preserva o resultado e protege áreas não transplantadas.
 
 Na ecooa, em Moinhos de Vento, o transplante está inserido dentro de um plano terapêutico completo. O paciente não recebe apenas o procedimento cirúrgico, mas um acompanhamento continuado que inclui retornos programados, ajustes terapêuticos e monitoramento da evolução dos folículos.
 
@@ -140,13 +140,13 @@ Agende sua consulta e tire suas dúvidas com nossa equipe.
 
 ## Perguntas frequentes
 
-## O transplante capilar doi?
+## O transplante capilar dói?
 
 O procedimento é realizado com anestesia local, o que elimina a dor durante a cirurgia. O momento da aplicação da anestesia pode causar desconforto leve, mas é breve. No pós-operatório, a maioria dos pacientes relata mais incômodo do que dor propriamente dita, e o desconforto é controlado com medicação prescrita.
 
 ## Em quanto tempo o resultado do transplante aparece?
 
-Os primeiros fios novos começam a surgir entre o terceiro e o quarto mês após o procedimento. O crescimento se intensifica a partir do sexto mes, e o resultado considerado final é avaliado entre dez e catorze meses. Cada paciente tem um ritmo individual de crescimento, e o acompanhamento regular permite monitorar a evolução.
+Os primeiros fios novos começam a surgir entre o terceiro e o quarto mês após o procedimento. O crescimento se intensifica a partir do sexto mês, e o resultado considerado final é avaliado entre dez e catorze meses. Cada paciente tem um ritmo individual de crescimento, e o acompanhamento regular permite monitorar a evolução.
 
 ## Transplante capilar tem resultado permanente?
 
