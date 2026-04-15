@@ -4,3 +4,6 @@ export const GOOGLE_MAPS = 'https://www.google.com/maps/place/ecooa';
 export const INSTAGRAM = 'https://instagram.com/somos.ecooa';
 export const PHONE = '(51) 99146-0909';
 export const EMAIL = 'ecooa.adm@gmail.com';
+
+// Google Apps Script - URL do formulário (substituir após deploy)
+export const FORM_ACTION = 'AGUARDANDO_URL_DO_DEPLOY';

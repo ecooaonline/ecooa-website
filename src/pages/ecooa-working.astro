@@ -4,7 +4,7 @@ import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
@@ -113,12 +113,32 @@ const workingFaqSchema = {
         <div><p class="wgl" style="color:var(--color-brand-deep)">Acesso</p><p class="wgv" style="color:rgba(255,255,255,.65)">Por entrevista com nossa diretora de ensino</p></div>
         <div><p class="wgl" style="color:var(--color-brand-deep)">Networking</p><p class="wgv" style="color:rgba(255,255,255,.65)">Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa</p></div>
       </div>
-      <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form r d4" style="margin-top:32px">
+      <form action={FORM_ACTION} method="POST" class="b2b-form r d4" style="margin-top:32px" id="form-b2b-nutri">
+        <input type="hidden" name="_formType" value="b2b-nutricao" />
         <input type="text" name="nome" placeholder="Nome" required aria-label="Nome completo" class="b2b-input" />
         <input type="text" name="area" placeholder="Área de atuação" required aria-label="Área de atuação" class="b2b-input" />
         <input type="tel" name="whatsapp" placeholder="WhatsApp" required aria-label="Número de WhatsApp" class="b2b-input" />
         <button type="submit" class="b2b-submit">enviar interesse</button>
+        <p id="form-b2b-nutri-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-deep);margin-top:4px">Recebemos seu interesse. Entraremos em contato em breve.</p>
       </form>
+      <script>
+        document.getElementById('form-b2b-nutri')?.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const form = e.target as HTMLFormElement;
+          const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+          btn.textContent = 'enviando...';
+          btn.disabled = true;
+          try {
+            await fetch(form.action, { method: 'POST', body: new FormData(form) });
+            form.reset();
+            btn.style.display = 'none';
+            document.getElementById('form-b2b-nutri-ok')!.style.display = 'block';
+          } catch {
+            btn.textContent = 'erro. tente novamente';
+            btn.disabled = false;
+          }
+        });
+      </script>
     </div>
     <div class="r d2">
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:40px 34px">

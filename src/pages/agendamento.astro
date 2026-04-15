@@ -4,7 +4,7 @@ import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
 
 const WA = WA_DEFAULT;
 ---
@@ -60,7 +60,8 @@ const WA = WA_DEFAULT;
     <div class="lbl r" style="margin-bottom:16px;justify-content:center">prefere formulário?</div>
     <h2 class="h2 r d1" style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)">Deixe seus dados.<br>Nós <em>entramos em contato.</em></h2>
     <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas no seu WhatsApp.</p>
-    <form action="https://formspree.io/f/placeholder" method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3">
+    <form action={FORM_ACTION} method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3" id="form-agendamento">
+      <input type="hidden" name="_formType" value="agendamento" />
       <div>
         <label for="form-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">como podemos te chamar?</label>
         <input type="text" id="form-name" name="name" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
@@ -81,7 +82,26 @@ const WA = WA_DEFAULT;
         </select>
       </div>
       <button type="submit" class="bd" style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer">quero ser atendido</button>
+      <p id="form-agendamento-ok" style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px">Recebemos seus dados. Entraremos em contato em até 24h.</p>
     </form>
+    <script>
+      document.getElementById('form-agendamento')?.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const form = e.target as HTMLFormElement;
+        const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+        btn.textContent = 'enviando...';
+        btn.disabled = true;
+        try {
+          await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          form.reset();
+          btn.style.display = 'none';
+          document.getElementById('form-agendamento-ok')!.style.display = 'block';
+        } catch {
+          btn.textContent = 'erro. tente novamente';
+          btn.disabled = false;
+        }
+      });
+    </script>
   </div>
 </section>
 
