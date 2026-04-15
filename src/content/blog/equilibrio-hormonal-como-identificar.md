@@ -8,63 +8,63 @@ tags: ["hormônios", "equilibrio hormonal", "tireoide", "testosterona", "menopau
 image: "/clinic/med.webp"
 ---
 
-## O que e equilibrio hormonal?
+## O que é equilíbrio hormonal?
 
-Hormonios sao mensageiros quimicos que regulam praticamente todas as funções do corpo: metabolismo, sono, humor, energia, libido, composição corporal e muito mais. Quando estao em equilibrio, você se sente bem. Quando não, os sintomas aparecem de formas que nem sempre associamos a hormônios.
+Hormônios são mensageiros químicos que regulam praticamente todas as funções do corpo: metabolismo, sono, humor, energia, libido, composição corporal e muito mais. Quando estão em equilíbrio, você se sente bem. Quando não, os sintomas aparecem de formas que nem sempre associamos a hormônios.
 
-## Sinais de desequilibrio hormonal
+## Sinais de desequilíbrio hormonal
 
 ### Em mulheres
 
-- Cansaco constante mesmo dormindo bem
-- Ganho de peso inexplicavel, especialmente na região abdominal
-- Alteracoes no ciclo menstrual
+- Cansaço constante mesmo dormindo bem
+- Ganho de peso inexplicável, especialmente na região abdominal
+- Alterações no ciclo menstrual
 - Queda de cabelo
 - Dificuldade para dormir
-- Irritabilidade e mudancas de humor
+- Irritabilidade e mudanças de humor
 - Pele seca ou acneica
-- Reducao da libido
+- Redução da libido
 
 ### Em homens
 
 - Perda de massa muscular
 - Aumento de gordura abdominal
-- Cansaco e falta de motivação
+- Cansaço e falta de motivação
 - Dificuldade de concentração
-- Reducao da libido
+- Redução da libido
 - Irritabilidade
 - Dificuldade para dormir
 
 ## Causas comuns
 
-O desequilibrio hormonal pode ser causado por:
+O desequilíbrio hormonal pode ser causado por:
 
 - **Estresse crônico**: eleva o cortisol, que desregula todos os outros hormônios
-- **Alimentacao inadequada**: deficiencias nutricionais impactam a produção hormonal
-- **Sedentarismo**: a falta de exercicio afeta hormônios como testosterona e insulina
-- **Idade**: mudancas naturais como menopausa e andropausa
-- **Condicoes médicas**: hipotireoidismo, resistência insulinica, síndrome dos ovarios policisticos
+- **Alimentação inadequada**: deficiências nutricionais impactam a produção hormonal
+- **Sedentarismo**: a falta de exercício afeta hormônios como testosterona e insulina
+- **Idade**: mudanças naturais como menopausa e andropausa
+- **Condições médicas**: hipotireoidismo, resistência insulínica, síndrome dos ovários policísticos
 
 ## Como investigar
 
-O caminho comeca com exames laboratoriais específicos. Na ecooa, realizamos:
+O caminho começa com exames laboratoriais específicos. Na ecooa, realizamos:
 
 - Painel hormonal completo (tireoide, sexuais, adrenais)
-- Avaliacao de biomarcadores metabólicos
+- Avaliação de biomarcadores metabólicos
 - Testes genéticos quando indicados
-- Avaliacao clínica detalhada com escuta ativa
+- Avaliação clínica detalhada com escuta ativa
 
 ## Tratamento personalizado
 
 O tratamento depende do diagnóstico. Pode envolver:
 
-- Ajustes no estilo de vida (sono, exercicio, alimentação)
-- Suplementacao direcionada
-- Reposicao hormonal quando indicada
+- Ajustes no estilo de vida (sono, exercício, alimentação)
+- Suplementação direcionada
+- Reposição hormonal quando indicada
 - Acompanhamento integrado com nutricionista e profissionais de saúde mental
 
 ## Na ecooa, tudo se conecta
 
-O diferencial da ecooa e que seu tratamento hormonal pode ser integrado com nutrição, saúde mental e estética. Porque seus hormônios não funcionam isolados, e o cuidado também não deveria.
+O diferencial da ecooa é que seu tratamento hormonal pode ser integrado com nutrição, saúde mental e estética. Porque seus hormônios não funcionam isolados, e o cuidado também não deveria.
 
-Agende sua avaliação e descubra como esta seu equilibrio hormonal.
+Agende sua avaliação e descubra como está seu equilíbrio hormonal.

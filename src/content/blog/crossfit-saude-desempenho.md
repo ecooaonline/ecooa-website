@@ -66,26 +66,26 @@ O plano e estruturado em pilares:
 
 ## O diferencial do acompanhamento especializado
 
-CrossFit não e musculacao. Nao e corrida. Nao e ginastica. E uma modalidade que demanda uma abordagem nutricional própria. Aplicar protocolos genericos de outras modalidades e uma das razoes mais comuns para estagnacao e lesoes.
+CrossFit não é musculação. Não é corrida. Não é ginástica. É uma modalidade que demanda uma abordagem nutricional própria. Aplicar protocolos genéricos de outras modalidades é uma das razões mais comuns para estagnação e lesões.
 
-Na ecooa, em Moinhos de Vento, Porto Alegre, o acompanhamento de praticantes de CrossFit integra nutrição, análise laboratorial e compreensao da modalidade. Maria Luisa Beltran combina formação clínica com vivencia prática no universo do CrossFit, o que permite planos realmente alinhados com a realidade do esporte.
+Na ecooa, em Moinhos de Vento, Porto Alegre, o acompanhamento de praticantes de CrossFit integra nutrição, análise laboratorial e compreensão da modalidade. Maria Luisa Beltran combina formação clínica com vivência prática no universo do CrossFit, o que permite planos realmente alinhados com a realidade do esporte.
 
-A integração com a equipe médica da ecooa também permite monitorar marcadores hormonais e inflamatorios que impactam diretamente a capacidade de treino e recuperação.
+A integração com a equipe médica da ecooa também permite monitorar marcadores hormonais e inflamatórios que impactam diretamente a capacidade de treino e recuperação.
 
 ## Agende sua consulta
 
-Se você prática CrossFit e quer levar seu desempenho e sua saúde a serio, o primeiro passo e uma avaliação completa. Agende na ecooa em Porto Alegre e descubra o que uma nutrição realmente específica pode fazer pelo seu treino.
+Se você pratica CrossFit e quer levar seu desempenho e sua saúde a sério, o primeiro passo é uma avaliação completa. Agende na ecooa em Porto Alegre e descubra o que uma nutrição realmente específica pode fazer pelo seu treino.
 
 ## Perguntas frequentes
 
 ## Quantas calorias um praticante de CrossFit precisa consumir?
 
-Nao existe um número único. A demanda calorica depende do peso corporal, composição corporal, volume e intensidade de treino, objetivos (performance, emagrecimento ou recomposicao) e metabolismo individual. Um praticante que treina cinco vezes por semana com alta intensidade pode precisar de significativamente mais calorias do que imagina, especialmente em carboidratos.
+Não existe um número único. A demanda calórica depende do peso corporal, composição corporal, volume e intensidade de treino, objetivos (performance, emagrecimento ou recomposição) e metabolismo individual. Um praticante que treina cinco vezes por semana com alta intensidade pode precisar de significativamente mais calorias do que imagina, especialmente em carboidratos.
 
-## Creatina e realmente util para CrossFit?
+## Creatina é realmente útil para CrossFit?
 
-Sim. A creatina e um dos suplementos com maior evidência cientifica e beneficia diretamente esforcos de alta intensidade e curta duracao, que sao frequentes no CrossFit. Alem disso, auxilia na recuperação entre series e sessoes. A dose padrão e de 3 a 5 gramas por dia, mas o protocolo ideal deve considerar o perfil individual.
+Sim. A creatina é um dos suplementos com maior evidência científica e beneficia diretamente esforços de alta intensidade e curta duração, que são frequentes no CrossFit. Além disso, auxilia na recuperação entre séries e sessões. A dose padrão é de 3 a 5 gramas por dia, mas o protocolo ideal deve considerar o perfil individual.
 
-## Como a nutrição ajuda a prevenir lesoes no CrossFit?
+## Como a nutrição ajuda a prevenir lesões no CrossFit?
 
-A nutrição suporta a integridade do tecido conjuntivo por meio de nutrientes como colágeno, vitamina C, zinco e cobre. O controle inflamatorio com omega-3 e antioxidantes reduz o risco de lesoes por sobrecarga. Alem disso, níveis adequados de vitamina D e magnésio estao associados a melhor função muscular e menor risco de fraturas por estresse.
+A nutrição suporta a integridade do tecido conjuntivo por meio de nutrientes como colágeno, vitamina C, zinco e cobre. O controle inflamatório com omega-3 e antioxidantes reduz o risco de lesões por sobrecarga. Além disso, níveis adequados de vitamina D e magnésio estão associados a melhor função muscular e menor risco de fraturas por estresse.
