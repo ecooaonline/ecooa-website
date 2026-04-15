@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
+import CtaSection from '../components/CtaSection.astro';
 
 const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
 ---
@@ -51,5 +52,38 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
     </div>
   </div>
 </section>
+
+<!-- Formulário de contato -->
+<section style="background:var(--color-cream);padding:86px 60px" aria-label="Formulário de agendamento">
+  <div style="max-width:500px;margin:0 auto">
+    <div class="lbl r" style="margin-bottom:16px;justify-content:center">prefere formulário?</div>
+    <h2 class="h2 r d1" style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)">Deixe seus dados.<br>Nós <em>entramos em contato.</em></h2>
+    <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas no seu WhatsApp.</p>
+    <form action="https://formspree.io/f/placeholder" method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3">
+      <div>
+        <label for="form-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">como podemos te chamar?</label>
+        <input type="text" id="form-name" name="name" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+      </div>
+      <div>
+        <label for="form-whatsapp" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu whatsapp</label>
+        <input type="tel" id="form-whatsapp" name="whatsapp" required placeholder="(51) 99999-9999" style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+      </div>
+      <div>
+        <label for="form-interest" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">o que te trouxe aqui?</label>
+        <select id="form-interest" name="interest" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;appearance:none">
+          <option value="">selecione</option>
+          <option value="medicina">medicina</option>
+          <option value="estetica">estética</option>
+          <option value="nutricao">nutrição</option>
+          <option value="saude-mental">saúde mental</option>
+          <option value="outro">outro</option>
+        </select>
+      </div>
+      <button type="submit" class="bd" style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer">quero ser atendido</button>
+    </form>
+  </div>
+</section>
+
+<CtaSection heading='A primeira conversa<br>é o passo mais <em>importante.</em>' subtext="Estamos prontos para te receber." />
 
 </BaseLayout>

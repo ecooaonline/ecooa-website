@@ -2,10 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
 
 const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+
+const estheticFaqs = [
+  { q: "O transplante capilar dói?", a: "O procedimento é realizado com anestesia local e sedação leve. O desconforto é mínimo durante e após o procedimento." },
+  { q: "Quanto tempo dura o resultado do botox?", a: "Em média, de 4 a 6 meses. A duração varia conforme o metabolismo de cada pessoa e a área tratada." },
+  { q: "Posso fazer vários procedimentos estéticos ao mesmo tempo?", a: "Sim, quando indicado clinicamente. Nossa equipe avalia o melhor plano de tratamento combinado para o seu caso." },
+  { q: "Qual a diferença entre bioestimulador e preenchimento?", a: "O preenchimento repõe volume imediato. O bioestimulador estimula a produção natural de colágeno, com resultado progressivo e mais duradouro." },
+];
+
+const estheticFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": estheticFaqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
 ---
 
 <BaseLayout
@@ -28,6 +46,15 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 </div>
 
 <Marquee />
+
+<script type="application/ld+json" set:html={JSON.stringify(estheticFaqSchema)} />
+
+<QuizSection options={[
+  { title: "meu cabelo", subtitle: "está caindo", waText: "Olá, gostaria de avaliação para queda de cabelo" },
+  { title: "rejuvenescer", subtitle: "com naturalidade", waText: "Olá, gostaria de avaliação para rejuvenescimento facial" },
+  { title: "transplante", subtitle: "capilar", waText: "Olá, gostaria de avaliação para transplante capilar" },
+  { title: "quero uma", subtitle: "avaliação", waText: "Olá, gostaria de uma avaliação estética personalizada" },
+]} />
 
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
@@ -75,6 +102,22 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 </section>
 
 <B2BBanner />
+
+<!-- Perguntas frequentes -->
+<section style="background:var(--color-warm)" aria-label="Perguntas frequentes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
+    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.esthetic.</em></h2>
+    <div class="faq-section">
+      {estheticFaqs.map((faq) => (
+        <div class="faq-item">
+          <p class="faq-q">{faq.q}</p>
+          <p class="faq-a">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
 <CtaSection heading='Agende sua<br><em>avaliação estética.</em>' subtext="Nossa equipe analisa suas queixas e indica os procedimentos mais adequados para o seu caso." />
 

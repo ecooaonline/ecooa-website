@@ -2,10 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
 
 const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+
+const mindFaqs = [
+  { q: "Como funciona a primeira sessão de terapia?", a: "A primeira sessão é um espaço de acolhimento e escuta. Você conta o que está sentindo e, juntos, definimos os próximos passos do processo terapêutico." },
+  { q: "Qual a diferença entre psicólogo e psiquiatra?", a: "O psicólogo trabalha com psicoterapia (conversa estruturada). O psiquiatra é médico e pode prescrever medicamentos. Na ecooa.mind, ambos atuam de forma integrada." },
+  { q: "Preciso de medicação para começar terapia?", a: "Não necessariamente. A necessidade de medicação é avaliada individualmente. Muitos pacientes se beneficiam apenas da psicoterapia." },
+  { q: "Vocês atendem online?", a: "Sim. Oferecemos atendimento presencial em Moinhos de Vento e online, conforme a preferência e indicação clínica." },
+];
+
+const mindFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": mindFaqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
 ---
 
 <BaseLayout
@@ -28,6 +46,15 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 </div>
 
 <Marquee />
+
+<script type="application/ld+json" set:html={JSON.stringify(mindFaqSchema)} />
+
+<QuizSection options={[
+  { title: "ansiedade", subtitle: "", waText: "Olá, gostaria de agendar uma consulta para ansiedade" },
+  { title: "esgotamento", subtitle: "", waText: "Olá, estou com sinais de esgotamento e gostaria de avaliação" },
+  { title: "começar", subtitle: "terapia", waText: "Olá, gostaria de agendar minha primeira sessão de terapia" },
+  { title: "preciso de", subtitle: "ajuda", waText: "Olá, sinto que preciso de ajuda e gostaria de conversar com a equipe ecooa.mind" },
+]} />
 
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
@@ -80,6 +107,22 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 </section>
 
 <B2BBanner />
+
+<!-- Perguntas frequentes -->
+<section style="background:var(--color-warm)" aria-label="Perguntas frequentes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
+    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.mind.</em></h2>
+    <div class="faq-section">
+      {mindFaqs.map((faq) => (
+        <div class="faq-item">
+          <p class="faq-q">{faq.q}</p>
+          <p class="faq-a">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
 <CtaSection heading='O cuidado começa<br>quando você <em>pede ajuda.</em>' subtext="Agende sua consulta em um ambiente seguro, acolhedor e sem julgamento." />
 
