@@ -2,8 +2,26 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
+
+const medFaqs = [
+  { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o tipo de consulta. Entre em contato pelo WhatsApp para informações atualizadas." },
+  { q: "Preciso de indicação para agendar?", a: "Não. Você pode agendar diretamente pelo WhatsApp ou pelo site, sem necessidade de encaminhamento." },
+  { q: "A ecooa.med atende por plano de saúde?", a: "Nosso atendimento é particular. Trabalhamos com valores acessíveis e condições especiais para acompanhamento contínuo." },
+  { q: "O que é uma consulta de medicina de precisão?", a: "É uma consulta baseada em análise detalhada de exames, biomarcadores e histórico para criar um protocolo individualizado para os seus objetivos." },
+];
+
+const medFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": medFaqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
 
 const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
 ---
@@ -29,6 +47,15 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 
 <Marquee />
 
+<script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
+
+<QuizSection options={[
+  { title: "emagrecer", subtitle: "com acompanhamento médico", waText: "Olá, gostaria de avaliação para emagrecimento com acompanhamento médico" },
+  { title: "hormônios", subtitle: "desregulados", waText: "Olá, gostaria de avaliação hormonal com a equipe ecooa.med" },
+  { title: "check-up", subtitle: "completo", waText: "Olá, gostaria de agendar um check-up metabólico completo" },
+  { title: "não sei", subtitle: "por onde começar", waText: "Olá, tenho algumas queixas de saúde e gostaria de orientação da equipe ecooa" },
+]} />
+
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
@@ -44,7 +71,13 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
         <div class="lbl r">nossa abordagem</div>
         <h2 class="h2 r d1" style="margin-top:15px">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
         <p class="body r d2" style="margin-top:18px">A ecooa.med reúne profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética.</p>
-        <p class="body r d3" style="margin-top:13px">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato.</a></p>
+        <p class="body r d3" style="margin-top:13px">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
+        <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form" style="margin-top:20px">
+          <input type="text" name="nome" placeholder="Nome" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" />
+          <input type="text" name="area" placeholder="Área de atuação" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" />
+          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" />
+          <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
+        </form>
       </div>
       <div class="r d2">
         <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
@@ -107,6 +140,22 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 </section>
 
 <B2BBanner />
+
+<!-- Perguntas frequentes -->
+<section style="background:var(--color-warm)" aria-label="Perguntas frequentes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
+    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
+    <div class="faq-section">
+      {medFaqs.map((faq) => (
+        <div class="faq-item">
+          <p class="faq-q">{faq.q}</p>
+          <p class="faq-a">{faq.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
 <CtaSection heading='Comece pela<br><em>avaliação.</em>' subtext="Agende sua primeira consulta e descubra como a medicina humanizada pode mudar sua qualidade de vida." />
 

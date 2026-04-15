@@ -44,6 +44,12 @@
 .g4 { grid-template-columns: 1fr; gap: 14px; }
 .ph2 { grid-template-columns: 1fr; gap: 24px; }
 
+/* Quiz */
+.quiz-grid { grid-template-columns: 1fr; }
+
+/* B2B form */
+.b2b-form { max-width: 100%; }
+
 /* Pillars */
 .pg { grid-template-columns: 1fr; }
 
@@ -103,6 +109,7 @@
   .g4 { grid-template-columns: 1fr 1fr; }
   .pg { grid-template-columns: 1fr 1fr; }
   .hh1 { font-size: clamp(36px, 7vw, 48px); }
+  .quiz-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* ── MD (≥ 768px) ── */

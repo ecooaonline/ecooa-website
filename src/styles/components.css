@@ -603,3 +603,44 @@
 /* Page transition */
 .page-content { opacity: 1; transition: opacity var(--transition-base) ease; }
 .page-content.out { opacity: 0; }
+
+/* ── QUIZ GRID ── */
+.quiz-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.quiz-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--color-cream); border: 1px solid var(--color-stone);
+  padding: 18px 20px; text-decoration: none;
+  transition: border-color var(--transition-base);
+}
+.quiz-card:hover { border-color: var(--color-brand); }
+.quiz-title { font-size: 14px; font-weight: 400; color: var(--color-ink); line-height: 1.3; }
+.quiz-sub { font-size: 12px; font-weight: 300; color: var(--color-ink-soft); line-height: 1.4; margin-top: 2px; }
+
+/* ── FAQ SECTION ── */
+.faq-section { max-width: 700px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--color-stone); padding: 22px 0; }
+.faq-q { font-size: 15px; font-weight: 400; color: var(--color-ink); margin-bottom: 8px; }
+.faq-a { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--color-ink-soft); }
+
+/* ── B2B FORM ── */
+.b2b-form { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; max-width: 380px; }
+.b2b-input {
+  background: transparent; border: 1px solid rgba(255,255,255,.22);
+  color: var(--color-white); padding: 13px 16px;
+  font-size: 13px; font-weight: 300; font-family: var(--font-primary);
+  transition: border-color var(--transition-base);
+}
+.b2b-input::placeholder { color: rgba(255,255,255,.35); }
+.b2b-input:focus { outline: none; border-color: rgba(255,255,255,.5); }
+.b2b-submit {
+  display: inline-block; font-size: 11px; font-weight: 500;
+  letter-spacing: .1em; color: var(--color-ink);
+  background: var(--color-white); border: 1px solid var(--color-white);
+  padding: 13px 34px; cursor: pointer; font-family: var(--font-primary);
+  text-decoration: none; text-transform: lowercase;
+  transition: background var(--transition-base), color var(--transition-base);
+  align-self: flex-start;
+}
+.b2b-submit:hover { background: transparent; color: var(--color-white); }
