@@ -10,59 +10,59 @@ image: "/clinic/med.webp"
 
 ## CrossFit exige mais do seu corpo, e exige mais da sua nutrição
 
-O CrossFit combina levantamento de peso olimpico, ginastica e condicionamento metabólico em alta intensidade. Essa diversidade e o que torna a modalidade tao eficiente, mas também e o que torna as demandas nutricionais tao complexas. Comer "bem" não basta. O praticante de CrossFit precisa comer de forma estrategica.
+O CrossFit combina levantamento de peso olímpico, ginástica e condicionamento metabólico em alta intensidade. Essa diversidade é o que torna a modalidade tão eficiente, mas também é o que torna as demandas nutricionais tão complexas. Comer "bem" não basta. O praticante de CrossFit precisa comer de forma estratégica.
 
-Em Porto Alegre, a comunidade de CrossFit cresce rapidamente, e junto vem uma demanda por acompanhamento nutricional que entenda as especificidades da modalidade. Na ecooa, Maria Luisa Beltran trabalha diretamente com atletas de CrossFit, combinando experiência clínica com conhecimento prático das exigencias do esporte.
+Em Porto Alegre, a comunidade de CrossFit cresce rapidamente, e junto vem uma demanda por acompanhamento nutricional que entenda as especificidades da modalidade. Na ecooa, Maria Luisa Beltran trabalha diretamente com atletas de CrossFit, combinando experiência clínica com conhecimento prático das exigências do esporte.
 
 ## O que torna a demanda nutricional do CrossFit única
 
-O CrossFit não e uma modalidade linear. Um WOD pode exigir forca máxima, resistência anaeróbica e capacidade aeróbica na mesma sessao. Isso significa que o corpo precisa acessar diferentes vias energeticas de forma rapida e alternada.
+O CrossFit não é uma modalidade linear. Um WOD pode exigir força máxima, resistência anaeróbica e capacidade aeróbica na mesma sessão. Isso significa que o corpo precisa acessar diferentes vias energéticas de forma rápida e alternada.
 
-As consequências para a nutrição sao significativas:
+As consequências para a nutrição são significativas:
 
-- **Demanda energética alta e variavel**: o gasto calorico flutua conforme o tipo de WOD, tornando o planejamento alimentar mais complexo que em modalidades previsíveis
-- **Estresse mecânico elevado**: movimentos como snatch, clean and jerk e muscle-ups geram alta carga sobre articulacoes, tendoes e tecido muscular
-- **Volume inflamatorio**: a combinação de intensidade e volume produz inflamação muscular significativa que precisa ser gerenciada nutricionalmente
-- **Demanda de recuperação**: muitos praticantes treinam cinco ou seis vezes por semana, reduzindo a janela de recuperação entre sessoes
+- **Demanda energética alta e variável**: o gasto calórico flutua conforme o tipo de WOD, tornando o planejamento alimentar mais complexo que em modalidades previsíveis
+- **Estresse mecânico elevado**: movimentos como snatch, clean and jerk e muscle-ups geram alta carga sobre articulações, tendões e tecido muscular
+- **Volume inflamatório**: a combinação de intensidade e volume produz inflamação muscular significativa que precisa ser gerenciada nutricionalmente
+- **Demanda de recuperação**: muitos praticantes treinam cinco ou seis vezes por semana, reduzindo a janela de recuperação entre sessões
 
-## Mecanismos fisiologicos que impactam o desempenho
+## Mecanismos fisiológicos que impactam o desempenho
 
-O desempenho no CrossFit depende de varios sistemas trabalhando de forma integrada:
+O desempenho no CrossFit depende de vários sistemas trabalhando de forma integrada:
 
-- **Sistema fosfocreatina**: alimenta esforcos de curtissima duracao e máxima intensidade, como um deadlift pesado. Creatina muscular adequada e determinante
-- **Glicólise anaeróbica**: sustenta esforcos de média duracao e alta intensidade, como um AMRAP de poucos minutos. Estoques de glicogenio muscular precisam estar repostos
-- **Sistema oxidativo**: suporta WODs mais longos. Disponibilidade de gordura como substrato e capacidade mitocondrial sao fatores limitantes
-- **Integridade do tecido conjuntivo**: colágeno, vitamina C, zinco e cobre participam da síntese e reparo de tendoes e ligamentos constantemente exigidos
+- **Sistema fosfocreatina**: alimenta esforços de curtíssima duração e máxima intensidade, como um deadlift pesado. Creatina muscular adequada é determinante
+- **Glicólise anaeróbica**: sustenta esforços de média duração e alta intensidade, como um AMRAP de poucos minutos. Estoques de glicogênio muscular precisam estar repostos
+- **Sistema oxidativo**: suporta WODs mais longos. Disponibilidade de gordura como substrato e capacidade mitocondrial são fatores limitantes
+- **Integridade do tecido conjuntivo**: colágeno, vitamina C, zinco e cobre participam da síntese e reparo de tendões e ligamentos constantemente exigidos
 
-## Sinais de que a nutrição esta limitando seu CrossFit
+## Sinais de que a nutrição está limitando seu CrossFit
 
-- Queda de rendimento em WODs que antes eram confortaveis
+- Queda de rendimento em WODs que antes eram confortáveis
 - Dor articular persistente que não melhora com descanso
-- Lesoes recorrentes em ombros, joelhos ou punhos
-- Dificuldade para recuperar entre sessoes consecutivas
-- Sensacao de fraqueza no inicio do treino
-- Composicao corporal que não melhora apesar do volume de treino
-- Caimbras frequentes durante ou apos os WODs
+- Lesões recorrentes em ombros, joelhos ou punhos
+- Dificuldade para recuperar entre sessões consecutivas
+- Sensação de fraqueza no início do treino
+- Composição corporal que não melhora apesar do volume de treino
+- Câimbras frequentes durante ou após os WODs
 
-## Avaliacao clínica para praticantes de CrossFit
+## Avaliação clínica para praticantes de CrossFit
 
-Na ecooa, em Moinhos de Vento, a avaliação de atletas de CrossFit vai alem do plano alimentar convencional:
+Na ecooa, em Moinhos de Vento, a avaliação de atletas de CrossFit vai além do plano alimentar convencional:
 
-- **Painel bioquimico direcionado**: ferritina, magnésio, vitamina D, zinco, PCR ultrassensivel (inflamação), CK (dano muscular), perfil hormonal e metabólico
-- **Avaliacao de composição corporal**: relação entre massa magra, gordura e hidratacao
-- **Mapeamento da rotina de treinos**: tipo de programacao, volume semanal, intensidade e objetivos competitivos
-- **Historico de lesoes**: padrões de lesao podem indicar deficiencias nutricionais específicas
-- **Revisao de suplementação**: muitos praticantes usam suplementos sem orientação, com doses inadequadas ou produtos sem evidência
+- **Painel bioquímico direcionado**: ferritina, magnésio, vitamina D, zinco, PCR ultrassensível (inflamação), CK (dano muscular), perfil hormonal e metabólico
+- **Avaliação de composição corporal**: relação entre massa magra, gordura e hidratação
+- **Mapeamento da rotina de treinos**: tipo de programação, volume semanal, intensidade e objetivos competitivos
+- **Histórico de lesões**: padrões de lesão podem indicar deficiências nutricionais específicas
+- **Revisão de suplementação**: muitos praticantes usam suplementos sem orientação, com doses inadequadas ou produtos sem evidência
 
 ## Abordagem nutricional para CrossFit
 
 O plano e estruturado em pilares:
 
-1. **Energia e macronutrientes**: calculo individualizado de calorias, carboidratos, proteínas e gorduras conforme o volume e a intensidade do treinamento semanal
-2. **Periodizacao por tipo de treino**: dias de WODs metabólicos exigem mais carboidrato, dias de forca máxima exigem timing proteico diferente, dias de descanso pedem ajustes na carga calorica
-3. **Prevencao de lesoes via nutrição**: protocolos com colágeno, vitamina C, omega-3 e micronutrientes que suportam a saúde articular e do tecido conjuntivo
-4. **Manejo inflamatorio**: equilibrio entre omega-3 e omega-6, antioxidantes estrategicos e alimentos anti-inflamatorios para controlar o volume de inflamação gerado pelo treino
-5. **Suplementacao com evidência**: creatina, cafeina, beta-alanina, vitamina D, magnésio e omega-3 com doses e protocolos definidos individualmente
+1. **Energia e macronutrientes**: cálculo individualizado de calorias, carboidratos, proteínas e gorduras conforme o volume e a intensidade do treinamento semanal
+2. **Periodização por tipo de treino**: dias de WODs metabólicos exigem mais carboidrato, dias de força máxima exigem timing proteico diferente, dias de descanso pedem ajustes na carga calórica
+3. **Prevenção de lesões via nutrição**: protocolos com colágeno, vitamina C, omega-3 e micronutrientes que suportam a saúde articular e do tecido conjuntivo
+4. **Manejo inflamatório**: equilíbrio entre omega-3 e omega-6, antioxidantes estratégicos e alimentos anti-inflamatórios para controlar o volume de inflamação gerado pelo treino
+5. **Suplementação com evidência**: creatina, cafeína, beta-alanina, vitamina D, magnésio e omega-3 com doses e protocolos definidos individualmente
 
 ## O diferencial do acompanhamento especializado
 

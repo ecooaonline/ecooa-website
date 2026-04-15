@@ -81,6 +81,9 @@ const firstName = p.name.split(' ')[0];
       <span style="display:inline-block;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-deep);border:1px solid var(--color-brand-deep);padding:4px 12px;margin-top:12px" class="r d1">fundador(a)</span>
     )}
     <p class="body body-lt r d2" style="margin-top:16px;max-width:480px">{p.role}</p>
+    {p.personalTouch && (
+      <p class="body body-lt r d2" style="margin-top:14px;max-width:480px;font-style:italic;font-family:var(--font-serif);font-size:clamp(15px,1.6vw,18px);color:rgba(255,255,255,.65);line-height:1.5">"{p.personalTouch}"</p>
+    )}
   </div>
 </div>
 

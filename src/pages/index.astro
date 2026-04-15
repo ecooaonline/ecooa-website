@@ -7,8 +7,13 @@ import ProfessionalCard from '../components/ProfessionalCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_DEFAULT } from '../data/constants';
+import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
+
+const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -20,8 +25,8 @@ const WA = WA_DEFAULT;
 <section class="hero" aria-label="Apresentação ecooa">
   <div class="hl">
     <div class="hl-lbl lbl">Porto Alegre · Moinhos de Vento</div>
-    <h1 class="hh1">Medicina, estética e<br><em>longevidade</em> com os melhores<br>especialistas de <em>Porto Alegre.</em></h1>
-    <p class="hl-sub body">Clínica multidisciplinar em Moinhos de Vento. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental integrados para cuidar de você.</p>
+    <h1 class="hh1">Sua saúde merece mais do que<br><em>respostas genéricas.</em></h1>
+    <p class="hl-sub body">Medicina, nutrição, psicologia e estética integrados em um só lugar. 30 especialistas que se comunicam para cuidar de você por inteiro.</p>
     <div class="hl-act">
       <a href="/agendamento" class="bd">agendar avaliação</a>
       <a href={WA} target="_blank" rel="noopener noreferrer" class="ghost" data-intent="homepage-hero">falar pelo whatsapp <span aria-hidden="true">→</span></a>
@@ -49,6 +54,52 @@ const WA = WA_DEFAULT;
 </section>
 
 <Marquee />
+
+<!-- Empatia -->
+<section class="empathy-section" aria-label="Você se identifica?">
+  <div class="empathy-wrap">
+    <div class="empathy-questions">
+      <p class="empathy-q r">Você já saiu de uma consulta sentindo que não foi ouvido?</p>
+      <p class="empathy-q r d1">Já fez exames e ninguém explicou direito o que significam?</p>
+      <p class="empathy-q r d2">Já tentou emagrecer sem entender por que não funciona?</p>
+    </div>
+    <div class="empathy-answer r d3">
+      <p class="empathy-lead">Na ecooa, cada paciente é um caso único.</p>
+      <p class="empathy-body body">Nosso time de 30 especialistas trabalha junto para encontrar respostas reais. Medicina, nutrição, psicologia e estética conectados por um objetivo: cuidar de você de verdade.</p>
+      <a href="/agendamento" class="bd" style="margin-top:24px;display:inline-block">agendar avaliação</a>
+    </div>
+  </div>
+</section>
+
+<!-- Persona -->
+<section class="persona-section" aria-label="Como podemos ajudar">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:14px;justify-content:center;text-align:center">como podemos ajudar</div>
+    <h2 class="h2 r d1" style="text-align:center;margin-bottom:48px">O que você precisa<br><em>neste momento?</em></h2>
+    <div class="persona-grid">
+      <a href="/ecooa-med" class="persona-card r">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="currentColor" stroke-width="1"/></svg></span>
+        <span class="persona-label">quero cuidar da minha saúde</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/ecooa-esthetic" class="persona-card r d1">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1"/></svg></span>
+        <span class="persona-label">quero cuidar da minha estética</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/ecooa-mind" class="persona-card r d2">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>
+        <span class="persona-label">quero cuidar da minha mente</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/ecooa-working" class="persona-card r d3">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C6 22 2 17 2 11c0-2 1-4 2-5 1 4 4 6 8 6s7-2 8-6c1 1 2 3 2 5 0 6-4 11-10 11z" stroke="currentColor" stroke-width="1"/></svg></span>
+        <span class="persona-label">quero cuidar da minha nutrição</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- Google Reviews -->
 <section style="background:var(--color-warm);padding:56px var(--section-px)" aria-label="Avaliações no Google">
@@ -291,6 +342,28 @@ const WA = WA_DEFAULT;
     </div>
   </div>
 </section>
+
+<!-- Artigos recentes -->
+{recentPosts.length > 0 && (
+<section style="background:var(--color-cream)" aria-label="Artigos recentes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>recentes</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="blog-grid-home">
+      {recentPosts.map((post, i) => (
+        <a href={`/blog/${post.id}`} class={`blog-card-home r d${i}`} style="display:block;background:var(--color-warm);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
+          <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>
+          <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">{post.data.title}</h3>
+          <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+    <div style="margin-top:32px;text-align:center" class="r d3">
+      <a href="/blog" class="bo">ver todos os artigos</a>
+    </div>
+  </div>
+</section>
+)}
 
 <CtaSection heading='O primeiro passo começa<br>com uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você e construir juntos um cuidado que ecooe." image="/clinic/faxada-predio.webp" />
 

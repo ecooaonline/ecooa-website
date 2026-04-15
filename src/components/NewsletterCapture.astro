@@ -1,0 +1,67 @@
+---
+interface Props {
+  variant?: 'inline' | 'banner' | 'footer';
+  heading?: string;
+  subtext?: string;
+}
+
+const {
+  variant = 'inline',
+  heading = 'semana em saúde',
+  subtext = 'Novidades, conteúdo exclusivo e ofertas em primeira mão. Sem spam, a cada 15 dias.',
+} = Astro.props;
+
+const formAction = 'https://formspree.io/f/placeholder-newsletter';
+
+/* ── variant-based styles ── */
+
+const sectionStyles: Record<string, string> = {
+  inline: 'padding:36px;background:var(--color-cream);text-align:center',
+  banner: 'padding:64px 24px;background:var(--color-ink);text-align:center',
+  footer: 'padding:28px 0;text-align:center',
+};
+
+const labelStyles: Record<string, string> = {
+  inline: 'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px',
+  banner: 'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px',
+  footer: 'font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brand-deep);margin-bottom:10px',
+};
+
+const subtextStyles: Record<string, string> = {
+  inline: 'font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:22px;max-width:420px;margin-left:auto;margin-right:auto',
+  banner: 'font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px;max-width:420px;margin-left:auto;margin-right:auto',
+  footer: 'font-size:11px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:16px;max-width:340px;margin-left:auto;margin-right:auto',
+};
+
+const inputStyles: Record<string, string> = {
+  inline: 'flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
+  banner: 'flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
+  footer: 'flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--color-white);font-family:var(--font-primary);font-size:12px;font-weight:300;outline:none',
+};
+
+const buttonStyles: Record<string, string> = {
+  inline: 'padding:12px 24px;background:var(--color-ink);color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
+  banner: 'padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
+  footer: 'padding:10px 20px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
+};
+---
+
+<div style={sectionStyles[variant]}>
+  <p style={labelStyles[variant]}>{heading}</p>
+  <p style={subtextStyles[variant]}>{subtext}</p>
+  <form
+    action={formAction}
+    method="POST"
+    style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center"
+  >
+    <input type="hidden" name="_source" value={`newsletter-${variant}`} />
+    <input
+      type="email"
+      name="email"
+      required
+      placeholder="seu melhor e-mail"
+      style={inputStyles[variant]}
+    />
+    <button type="submit" style={buttonStyles[variant]}>aceito</button>
+  </form>
+</div>

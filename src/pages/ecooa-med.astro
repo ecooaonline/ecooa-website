@@ -6,6 +6,7 @@ import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_DEFAULT } from '../data/constants';
+import { getCollection } from 'astro:content';
 
 const medFaqs = [
   { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o tipo de consulta. Entre em contato pelo WhatsApp para informações atualizadas." },
@@ -25,6 +26,9 @@ const medFaqSchema = {
 };
 
 const WA = WA_DEFAULT;
+
+const allMedPosts = await getCollection('blog', ({data}) => !data.draft && data.category === 'medicina');
+const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0, 3);
 ---
 
 <BaseLayout
@@ -166,6 +170,79 @@ const WA = WA_DEFAULT;
     </div>
   </div>
 </section>
+
+<!-- Como funciona -->
+<section style="background:var(--color-cream)" aria-label="Como funciona">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:960px;margin:0 auto">
+      <div class="r" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">1</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Agendamento</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Entre em contato pelo WhatsApp. Respondemos em minutos e encontramos o melhor horário para você.</p>
+      </div>
+      <div class="r d1" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">2</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Avaliação completa</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Consulta com tempo real de escuta, análise de exames e entendimento dos seus objetivos.</p>
+      </div>
+      <div class="r d2" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">3</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Protocolo personalizado</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Plano construído com base nos seus dados, na sua rotina e no que você quer alcançar.</p>
+      </div>
+      <div class="r d3" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">4</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Acompanhamento</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Retornos periódicos para ajustar o protocolo e garantir que os resultados se mantenham.</p>
+      </div>
+    </div>
+    <p class="r d3" style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em">Primeira consulta sem compromisso. Você decide se quer continuar.</p>
+  </div>
+</section>
+
+<!-- Depoimentos -->
+<section style="background:var(--color-cream)" aria-label="Depoimentos de pacientes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">social proof</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="r" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"Pela primeira vez senti que um médico realmente ouviu o que eu tinha para dizer. O protocolo fez sentido desde o início e os resultados apareceram em semanas."</p>
+        <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Marina S.</p>
+      </div>
+      <div class="r d1" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"Depois de anos ouvindo que meus exames estavam normais, finalmente entendi o que estava acontecendo com o meu corpo. Recuperei minha energia e disposição."</p>
+        <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Ricardo M.</p>
+      </div>
+      <div class="r d2" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"O acompanhamento contínuo faz toda a diferença. Não é só uma consulta, é um cuidado real que evolui comigo."</p>
+        <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Fernanda L.</p>
+      </div>
+    </div>
+    <p class="r d3" style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em">Depoimentos reais publicados com autorização dos pacientes.</p>
+  </div>
+</section>
+
+<!-- Artigos relacionados -->
+{medPosts.length > 0 && (
+<section style="background:var(--color-warm)" aria-label="Artigos relacionados">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      {medPosts.map((post, i) => (
+        <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
+          <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>
+          <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">{post.data.title}</h3>
+          <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+)}
 
 <CtaSection heading='Comece pela<br><em>avaliação.</em>' subtext="Agende sua primeira consulta e descubra como a medicina humanizada pode mudar sua qualidade de vida." />
 

@@ -8,6 +8,7 @@ export interface Professional {
   description: string;
   tags: string[];
   isFounder?: boolean;
+  personalTouch?: string;
 }
 
 export const professionals: Professional[] = [
@@ -22,6 +23,7 @@ export const professionals: Professional[] = [
     description: 'Medicina de alta performance com foco em diagnóstico metabólico preciso, equilíbrio hormonal e emagrecimento saudável. Fundador e diretor executivo da ecooa.',
     tags: ['Metabolismo', 'Hormônios', 'Emagrecimento', 'Longevidade', 'Estilo de Vida'],
     isFounder: true,
+    personalTouch: 'Acredita que saúde de verdade começa por entender o próprio corpo.',
   },
 
   // ── ecooa.esthetic ──
@@ -34,6 +36,7 @@ export const professionals: Professional[] = [
     ig: '@dradanusapires',
     description: 'Enfermeira especialista em tricologia e soroterapia. Tratamentos capilares avançados e terapia intravenosa personalizada.',
     tags: ['Tricologia', 'Soroterapia', 'Saúde Capilar'],
+    personalTouch: 'Enxerga cada fio como uma história que merece cuidado.',
   },
   {
     slug: 'viviane-fagundes',
@@ -44,6 +47,7 @@ export const professionals: Professional[] = [
     ig: '@dravivianefagundes',
     description: 'Biomédica com foco em tricologia avançada. Diagnóstico e tratamento de queda capilar e doenças do couro cabeludo.',
     tags: ['Tricologia', 'Queda Capilar', 'Couro Cabeludo'],
+    personalTouch: 'Transforma a ciência capilar em confiança de volta.',
   },
   {
     slug: 'yale-jeronimo',
@@ -54,6 +58,7 @@ export const professionals: Professional[] = [
     ig: '@dra.yale',
     description: 'Médica tricologista com expertise em diagnóstico e tratamento de alopécias e doenças capilares.',
     tags: ['Tricologia', 'Alopécias', 'Medicina Capilar'],
+    personalTouch: 'Ouve a história por trás de cada paciente antes de tratar.',
   },
   {
     slug: 'larissa-wiebbelling',
@@ -64,6 +69,7 @@ export const professionals: Professional[] = [
     ig: '@larissawiebbelling',
     description: 'Médica especialista em transplante e implante capilar com técnicas avançadas FUE e Sapphire.',
     tags: ['Transplante Capilar', 'Implante', 'FUE', 'Sapphire'],
+    personalTouch: 'Devolve autoestima com precisão e delicadeza em cada procedimento.',
   },
   {
     slug: 'cris-neumann',
@@ -74,6 +80,7 @@ export const professionals: Professional[] = [
     ig: '@dracrisneumann_',
     description: 'Fisioterapeuta dermatofuncional especializada em tratamentos corporais e faciais com abordagem integrativa.',
     tags: ['Fisioterapia', 'Dermatofuncional', 'Corporal', 'Facial'],
+    personalTouch: 'Cuida do corpo como um todo, nunca só do sintoma.',
   },
   {
     slug: 'susan-flach',
@@ -84,6 +91,7 @@ export const professionals: Professional[] = [
     ig: '@dra.susanflach',
     description: 'Biomédica com atuação em tricologia e gerenciamento de pele. Protocolos avançados de rejuvenescimento.',
     tags: ['Tricologia', 'Gerenciamento de Pele', 'Rejuvenescimento'],
+    personalTouch: 'Acredita que a pele reflete como você se sente por dentro.',
   },
   {
     slug: 'natalie-queiroz',
@@ -94,6 +102,7 @@ export const professionals: Professional[] = [
     ig: '@osteonataliequeiroz',
     description: 'Osteopata com atendimento para adultos, crianças e bebês. Terapia manual para equilíbrio do corpo.',
     tags: ['Osteopatia', 'Adultos', 'Crianças', 'Bebês'],
+    personalTouch: 'Mãos que acolhem desde os bebês até os adultos com carinho.',
   },
   {
     slug: 'vitoria-machado',
@@ -104,6 +113,7 @@ export const professionals: Professional[] = [
     ig: '@vitoriadermato',
     description: 'Médica dermatologista com foco em estética e rejuvenescimento facial. Procedimentos de alta precisão.',
     tags: ['Dermatologia', 'Estética Facial', 'Rejuvenescimento'],
+    personalTouch: 'Valoriza a beleza que já existe e realça com sutileza.',
   },
   {
     slug: 'renata-bohn',
@@ -114,6 +124,7 @@ export const professionals: Professional[] = [
     ig: '@renatabohn_dermato',
     description: 'Dermatologista com atuação em dermatologia clínica e estética. Cuidados avançados com a pele.',
     tags: ['Dermatologia', 'Estética', 'Cuidados com a Pele'],
+    personalTouch: 'Cada pele conta uma história, e ela sabe ouvir.',
   },
   {
     slug: 'karine-ellwanger',
@@ -124,6 +135,7 @@ export const professionals: Professional[] = [
     ig: '@karine.belezainteligente',
     description: 'Biomédica estética com harmonização orofacial. Procedimentos que realçam a beleza natural com inteligência.',
     tags: ['Biomedicina Estética', 'HOF', 'Harmonização'],
+    personalTouch: 'Defende que beleza inteligente é a que respeita quem você é.',
   },
   {
     slug: 'leticia-de-melo',
@@ -134,6 +146,7 @@ export const professionals: Professional[] = [
     ig: '@draleticiademelo',
     description: 'Biomédica especialista em estética facial e harmonização orofacial com técnica refinada.',
     tags: ['Biomedicina Estética', 'HOF', 'Estética Facial'],
+    personalTouch: 'Busca o resultado natural que faz você se reconhecer no espelho.',
   },
   {
     slug: 'jennifer-adam',
@@ -144,6 +157,7 @@ export const professionals: Professional[] = [
     ig: '@dra.jenniferadam',
     description: 'Biomédica com atuação em estética avançada e harmonização orofacial.',
     tags: ['Biomedicina Estética', 'HOF', 'Estética Avançada'],
+    personalTouch: 'Combina técnica e sensibilidade para resultados que encantam.',
   },
   {
     slug: 'jamylle-farias',
@@ -154,6 +168,7 @@ export const professionals: Professional[] = [
     ig: '@drajamyllefarias',
     description: 'Odontóloga com especialização em estética e harmonização orofacial. Resultados naturais e sofisticados.',
     tags: ['Odontologia', 'HOF', 'Estética'],
+    personalTouch: 'Acredita que um sorriso bonito muda a forma como você vive.',
   },
   {
     slug: 'adriana',
@@ -163,6 +178,7 @@ export const professionals: Professional[] = [
     photo: '/team/ortomolecular.webp',
     description: 'Terapeuta integrativa com foco em biorressonância. Abordagem complementar para equilíbrio e bem-estar.',
     tags: ['Terapia Integrativa', 'Biorressonância', 'Bem-estar'],
+    personalTouch: 'Enxerga o equilíbrio como caminho para o bem-estar verdadeiro.',
   },
 
   // ── ecooa.working (nutrição) ──
@@ -176,6 +192,7 @@ export const professionals: Professional[] = [
     description: 'Nutricionista referência em nutrição vegana e vegetariana, com expertise em análise bioquímica e emagrecimento. Sócia e diretora de ensino da ecooa.',
     tags: ['Nutrição Vegana', 'Emagrecimento', 'Análise Bioquímica'],
     isFounder: true,
+    personalTouch: 'Apaixonada por provar que comer bem pode ser simples e gostoso.',
   },
   {
     slug: 'maria-luisa-beltran',
@@ -186,6 +203,7 @@ export const professionals: Professional[] = [
     ig: '@marialuisabeltran.nutri',
     description: 'Nutricionista esportiva com foco em performance e composição corporal. Atleta de Crossfit.',
     tags: ['Performance Esportiva', 'Composição Corporal', 'Nutrição Vegana'],
+    personalTouch: 'Vive na prática tudo o que orienta, dentro e fora do box.',
   },
   {
     slug: 'adriano-lenz',
@@ -196,6 +214,7 @@ export const professionals: Professional[] = [
     ig: '@adrianolenz',
     description: 'Nutricionista com abordagem ortomolecular, metabolômica e nutrigenômica. Protocolos personalizados baseados em genética.',
     tags: ['Ortomolecular', 'Metabolômica', 'Nutrigenômica'],
+    personalTouch: 'Desvenda o que a genética diz para criar um plano só seu.',
   },
   {
     slug: 'giancarla-rochemback',
@@ -206,6 +225,7 @@ export const professionals: Professional[] = [
     ig: '@gi_rochemback',
     description: 'Nutricionista focada em performance esportiva e otimização de composição corporal.',
     tags: ['Performance Esportiva', 'Composição Corporal'],
+    personalTouch: 'Entende que performance é consequência de se alimentar com propósito.',
   },
   {
     slug: 'vitoria-serpa',
@@ -216,6 +236,7 @@ export const professionals: Professional[] = [
     ig: '@vitoriaserpa',
     description: 'Nutricionista esportiva especializada em composição corporal e performance de alta intensidade.',
     tags: ['Performance Esportiva', 'Composição Corporal'],
+    personalTouch: 'Transforma metas em rotina com leveza e dedicação real.',
   },
   {
     slug: 'lara-caye',
@@ -226,6 +247,7 @@ export const professionals: Professional[] = [
     ig: '@laracaye',
     description: 'Nutricionista com foco em performance esportiva e resultados de composição corporal.',
     tags: ['Performance Esportiva', 'Composição Corporal'],
+    personalTouch: 'Acredita que resultado duradouro nasce de consistência, não de pressa.',
   },
   {
     slug: 'gabrieli-klagenberg',
@@ -236,6 +258,7 @@ export const professionals: Professional[] = [
     ig: '@gabrieliklagenberg',
     description: 'Nutricionista com abordagem comportamental. Trabalho integrado entre alimentação, emoções e hábitos.',
     tags: ['Nutrição Comportamental', 'Hábitos Alimentares'],
+    personalTouch: 'Sabe que a relação com a comida começa na mente.',
   },
   {
     slug: 'daniel-forster',
@@ -246,6 +269,7 @@ export const professionals: Professional[] = [
     ig: '@daniel.nutricionista',
     description: 'Nutricionista com abordagem integrada e personalizada para diferentes objetivos de saúde.',
     tags: ['Nutrição Clínica', 'Personalizada'],
+    personalTouch: 'Escuta primeiro, planeja depois, e caminha junto com você.',
   },
   {
     slug: 'marvin-marques',
@@ -256,6 +280,7 @@ export const professionals: Professional[] = [
     ig: '@nutrimarvin',
     description: 'Nutricionista com atendimento personalizado e foco em resultados práticos e sustentáveis.',
     tags: ['Nutrição', 'Resultados Sustentáveis'],
+    personalTouch: 'Faz da nutrição algo prático que cabe na sua vida real.',
   },
   {
     slug: 'camila-cadore',
@@ -266,6 +291,7 @@ export const professionals: Professional[] = [
     ig: '@nutricamilacadore',
     description: 'Nutricionista com abordagem humanizada e personalizada para cada fase da vida.',
     tags: ['Nutrição', 'Personalizada'],
+    personalTouch: 'Respeita o tempo de cada pessoa e cada fase da vida.',
   },
   {
     slug: 'nasser-salem',
@@ -276,6 +302,7 @@ export const professionals: Professional[] = [
     ig: '@nutri.nasser_',
     description: 'Nutricionista com foco em resultados e acompanhamento contínuo.',
     tags: ['Nutrição', 'Acompanhamento'],
+    personalTouch: 'Está presente em cada etapa, não só na primeira consulta.',
   },
   {
     slug: 'verena-cattani',
@@ -286,6 +313,7 @@ export const professionals: Professional[] = [
     ig: '@nutriverena',
     description: 'Nutricionista com atendimento integrado ao ecossistema ecooa.',
     tags: ['Nutrição', 'Integrada'],
+    personalTouch: 'Conecta nutrição com todas as áreas do seu cuidado.',
   },
 
   // ── ecooa.mind ──
@@ -298,6 +326,7 @@ export const professionals: Professional[] = [
     ig: '@manuelavanti.psi',
     description: 'Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental. Atendimento humanizado e acolhedor.',
     tags: ['Psicologia Clínica', 'TCC', 'Ansiedade', 'Depressão'],
+    personalTouch: 'Cria espaço seguro para que cada pessoa possa ser vulnerável.',
   },
   {
     slug: 'augusto-kauer',
@@ -308,6 +337,7 @@ export const professionals: Professional[] = [
     ig: '@rotinadeatleta_psi',
     description: 'Psicólogo esportivo especializado em performance mental, foco e motivação para atletas e praticantes.',
     tags: ['Psicologia Esportiva', 'Performance Mental', 'Foco'],
+    personalTouch: 'Sabe que a mente forte é o que separa treino de conquista.',
   },
   {
     slug: 'francielle-beria',
@@ -318,6 +348,7 @@ export const professionals: Professional[] = [
     ig: '@psifrancielleberia',
     description: 'Psicóloga clínica com foco em TCC. Atendimento para ansiedade, estresse e questões emocionais.',
     tags: ['Psicologia Clínica', 'TCC', 'Ansiedade', 'Estresse'],
+    personalTouch: 'Acolhe sem julgamento e ajuda a encontrar clareza emocional.',
   },
 ];
 

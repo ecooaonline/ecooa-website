@@ -50,6 +50,12 @@
 /* B2B form */
 .b2b-form { max-width: 100%; }
 
+/* Persona */
+.persona-grid { grid-template-columns: 1fr; }
+
+/* Blog home */
+.blog-grid-home { grid-template-columns: 1fr !important; }
+
 /* Pillars */
 .pg { grid-template-columns: 1fr; }
 
@@ -110,6 +116,8 @@
   .pg { grid-template-columns: 1fr 1fr; }
   .hh1 { font-size: clamp(36px, 7vw, 48px); }
   .quiz-grid { grid-template-columns: 1fr 1fr; }
+  .persona-grid { grid-template-columns: 1fr 1fr; }
+  .blog-grid-home { grid-template-columns: 1fr 1fr !important; }
 }
 
 /* ── MD (≥ 768px) ── */
@@ -124,6 +132,8 @@
   .ph2 { grid-template-columns: 1fr 1fr; }
   .ig { grid-template-columns: 1fr 1fr 1fr; }
   .ip-t { grid-row: span 2; aspect-ratio: 1/2.05; }
+  .persona-grid { grid-template-columns: repeat(4, 1fr); }
+  .blog-grid-home { grid-template-columns: repeat(3, 1fr) !important; }
   .fg { grid-template-columns: 1fr 1fr; }
   .fb { flex-direction: row; }
   .fa { text-align: right; }

@@ -6,8 +6,12 @@ import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_DEFAULT } from '../data/constants';
+import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
+
+const allEstheticPosts = await getCollection('blog', ({data}) => !data.draft && data.category === 'estetica');
+const estheticPosts = allEstheticPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0, 3);
 
 const estheticFaqs = [
   { q: "O transplante capilar dói?", a: "O procedimento é realizado com anestesia local e sedação leve. O desconforto é mínimo durante e após o procedimento." },
@@ -128,6 +132,79 @@ const estheticFaqSchema = {
     </div>
   </div>
 </section>
+
+<!-- Como funciona -->
+<section style="background:var(--color-cream)" aria-label="Como funciona">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:960px;margin:0 auto">
+      <div class="r" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">1</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Agendamento</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Fale com a gente pelo WhatsApp. Respondemos rápido e marcamos no melhor horário para você.</p>
+      </div>
+      <div class="r d1" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">2</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Avaliação personalizada</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Análise da sua anatomia, expectativas e indicação dos procedimentos mais adequados.</p>
+      </div>
+      <div class="r d2" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">3</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Procedimento</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Realizado com técnica refinada, segurança e foco em resultado natural.</p>
+      </div>
+      <div class="r d3" style="text-align:center">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">4</span>
+        <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Acompanhamento</h3>
+        <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Retorno incluído para avaliar o resultado e garantir sua satisfação.</p>
+      </div>
+    </div>
+    <p class="r d3" style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em">Satisfação garantida. Cada procedimento é planejado para o resultado que você espera.</p>
+  </div>
+</section>
+
+<!-- Depoimentos -->
+<section style="background:var(--color-cream)" aria-label="Depoimentos de pacientes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">social proof</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      <div class="r" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"Fiz o transplante capilar e o resultado ficou completamente natural. Ninguém percebe que fiz, só notam que estou diferente. Era exatamente o que eu queria."</p>
+        <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Carlos A.</p>
+      </div>
+      <div class="r d1" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"Sempre tive medo de ficar com aparência artificial. Na ecooa, o resultado foi tão sutil e bonito que me senti eu mesma, só que mais descansada e confiante."</p>
+        <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Juliana R.</p>
+      </div>
+      <div class="r d2" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"O atendimento é impecável, desde a recepção até o procedimento. Saí de lá me sentindo cuidada de verdade."</p>
+        <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Patrícia F.</p>
+      </div>
+    </div>
+    <p class="r d3" style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em">Depoimentos reais publicados com autorização dos pacientes.</p>
+  </div>
+</section>
+
+<!-- Artigos relacionados -->
+{estheticPosts.length > 0 && (
+<section style="background:var(--color-warm)" aria-label="Artigos relacionados">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
+    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+      {estheticPosts.map((post, i) => (
+        <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
+          <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>
+          <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">{post.data.title}</h3>
+          <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">{post.data.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+)}
 
 <CtaSection heading='Agende sua<br><em>avaliação estética.</em>' subtext="Nossa equipe analisa suas queixas e indica os procedimentos mais adequados para o seu caso." />
 
