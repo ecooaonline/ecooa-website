@@ -9,10 +9,11 @@ import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const medFaqs = [
-  { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o tipo de consulta. Entre em contato pelo WhatsApp para informações atualizadas." },
+  { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o tipo de consulta. Para emagrecimento e acompanhamento com canetas emagrecedoras, oferecemos consultas com preços especiais. Entre em contato pelo WhatsApp para informações atualizadas." },
   { q: "Preciso de indicação para agendar?", a: "Não. Você pode agendar diretamente pelo WhatsApp ou pelo site, sem necessidade de encaminhamento." },
   { q: "A ecooa.med atende por plano de saúde?", a: "Nosso atendimento é particular. Trabalhamos com valores acessíveis e condições especiais para acompanhamento contínuo." },
-  { q: "O que é uma consulta de medicina de precisão?", a: "É uma consulta baseada em análise detalhada de exames, biomarcadores e histórico para criar um protocolo individualizado para os seus objetivos." },
+  { q: "Como funciona a consulta para avaliação do uso de canetas emagrecedoras?", a: "A consulta inclui anamnese completa, solicitação de exames laboratoriais específicos para avaliar a segurança no uso, e acompanhamento médico recorrente durante todo o processo. O objetivo é garantir que o tratamento seja seguro, eficaz e adaptado ao seu perfil clínico, com preços facilitados." },
+  { q: "As consultas médicas recebem plano alimentar junto?", a: "Não. A ecooa e o Dr. Gustavo acreditam e respeitam cada área da saúde, e entendem que plano alimentar é prescrito por nutricionista. Contamos com mais de 10 nutricionistas na equipe, com conhecimento especializado e direcionado para cada necessidade." },
 ];
 
 const medFaqSchema = {
@@ -32,8 +33,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 ---
 
 <BaseLayout
-  title="Medicina de Precisão e Emagrecimento | ecooa · Porto Alegre"
-  description="Medicina humanizada e de precisão em Moinhos de Vento, Porto Alegre. Diagnóstico metabólico, hormônios, emagrecimento e longevidade com cuidado genuíno."
+  title="Medicina, Emagrecimento e Canetas Emagrecedoras | ecooa · Porto Alegre"
+  description="Medicina humanizada em Moinhos de Vento, Porto Alegre. Emagrecimento com canetas (semaglutida, tirzepatida), saúde capilar, hormônios e longevidade com preços especiais."
   currentPage="ecooa-med"
   ogImage="/clinic/med.webp"
   breadcrumbs={[{ name: "ecooa.med", url: "/ecooa-med" }]}
@@ -58,7 +59,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 
 <QuizSection options={[
   { title: "emagrecer", subtitle: "com acompanhamento médico", waText: "Olá, gostaria de avaliação para emagrecimento com acompanhamento médico" },
+  { title: "canetas", subtitle: "emagrecedoras", waText: "Olá, gostaria de avaliação para uso de canetas emagrecedoras" },
   { title: "hormônios", subtitle: "desregulados", waText: "Olá, gostaria de avaliação hormonal com a equipe ecooa.med" },
+  { title: "queda capilar", subtitle: "tratamento médico", waText: "Olá, gostaria de avaliação médica para queda de cabelo" },
   { title: "check-up", subtitle: "completo", waText: "Olá, gostaria de agendar um check-up metabólico completo" },
   { title: "não sei", subtitle: "por onde começar", waText: "Olá, tenho algumas queixas de saúde e gostaria de orientação da equipe ecooa" },
 ]} />
@@ -85,12 +88,14 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
       <div>
         <div class="lbl r">nossa abordagem</div>
         <h2 class="h2 r d1" style="margin-top:15px">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
-        <p class="body r d2" style="margin-top:18px">A ecooa.med reúne profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética.</p>
+        <p class="body r d2" style="margin-top:18px">Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a cada atendimento, com escuta total ao paciente e trabalho multiprofissional.</p>
         <p class="body r d3" style="margin-top:13px">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
-        <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form" style="margin-top:20px">
-          <input type="text" name="nome" placeholder="Nome" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Nome completo" />
-          <input type="text" name="area" placeholder="Área de atuação" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Área de atuação" />
-          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Número de WhatsApp" />
+        <div class="lbl r" style="margin-top:24px;margin-bottom:10px">para profissionais de saúde</div>
+        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px">Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.</p>
+        <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form" style="margin-top:0">
+          <input type="text" name="nome" placeholder="Nome completo" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Nome completo" />
+          <input type="text" name="area" placeholder="Especialidade médica" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Especialidade médica" />
+          <input type="tel" name="whatsapp" placeholder="WhatsApp para contato" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Número de WhatsApp" />
           <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
         </form>
       </div>
@@ -138,10 +143,12 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     <div class="g3">
       <div class="ec r"><p class="ec-n">01</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Inclui manejo clínico com implantes bioabsorvíveis de liberação lenta quando indicados clinicamente, com base em protocolos médicos atuais.</p></div>
       <div class="ec r"><p class="ec-n">02</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">Avaliação completa da saúde hormonal masculina com protocolos individualizados para vitalidade, libido, composição corporal e bem-estar, incluindo terapia hormonal bioabsorvível quando aplicável.</p></div>
-      <div class="ec r"><p class="ec-n">03</p><h3 class="ec-t">Emagrecimento Avançado</h3><p class="ec-d">Abordagem metabólica e hormonal com uso de injetáveis de nova geração como tirzepatida, além de protocolos manipulados e ajuste nutricional integrado.</p></div>
-      <div class="ec r"><p class="ec-n">04</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.</p></div>
-      <div class="ec r"><p class="ec-n">05</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e estratégias preventivas baseadas em biomarcadores e evidência clínica.</p></div>
-      <div class="ec r"><p class="ec-n">06</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil inflamatório para uma visão real do seu estado de saúde.</p></div>
+      <div class="ec r"><p class="ec-n">03</p><h3 class="ec-t">Emagrecimento com preços especiais</h3><p class="ec-d">Consultas com valores facilitados para emagrecimento, incluindo acompanhamento com canetas emagrecedoras (semaglutida, tirzepatida), protocolos manipulados e integração com nutrição.</p></div>
+      <div class="ec r"><p class="ec-n">04</p><h3 class="ec-t">Acompanhamento com canetas emagrecedoras</h3><p class="ec-d">Consulta de anamnese completa, exames laboratoriais específicos para avaliar segurança no uso, e acompanhamento recorrente durante todo o processo, com preços facilitados.</p></div>
+      <div class="ec r"><p class="ec-n">05</p><h3 class="ec-t">Saúde Capilar</h3><p class="ec-d">Investigação clínica da queda de cabelo com exames hormonais, metabólicos e, quando indicado, testes genéticos. Protocolos individualizados para tratamento e prevenção da alopecia.</p></div>
+      <div class="ec r"><p class="ec-n">06</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.</p></div>
+      <div class="ec r"><p class="ec-n">07</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e estratégias preventivas baseadas em biomarcadores e evidência clínica.</p></div>
+      <div class="ec r"><p class="ec-n">08</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil inflamatório para uma visão real do seu estado de saúde.</p></div>
     </div>
   </div>
 </section>
@@ -199,7 +206,6 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
         <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Retornos periódicos para ajustar o protocolo e garantir que os resultados se mantenham.</p>
       </div>
     </div>
-    <p class="r d3" style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em">Primeira consulta sem compromisso. Você decide se quer continuar.</p>
   </div>
 </section>
 
