@@ -11,9 +11,11 @@ interface Props {
   slug?: string;
 }
 
+import { WA_BASE } from '../data/constants';
+
 const { name, role, bg, ig, photo, description, tags, clickable = false, slug } = Astro.props;
 const waMessage = encodeURIComponent(`Olá, gostaria de agendar com ${name}`);
-const waLink = `https://wa.me/5551991460909?text=${waMessage}`;
+const waLink = `${WA_BASE}?text=${waMessage}`;
 const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 ---
 

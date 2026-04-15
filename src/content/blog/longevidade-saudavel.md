@@ -1,6 +1,6 @@
 ---
-title: "Longevidade saudavel: medicina preventiva e de precisao em Porto Alegre"
-description: "Entenda o que e longevidade saudavel, como a medicina preventiva e os biomarcadores ajudam a envelhecer melhor. Protocolos personalizados na ecooa."
+title: "Longevidade saudável: medicina preventiva e de precisão em Porto Alegre"
+description: "Entenda o que é longevidade saudável, como a medicina preventiva e os biomarcadores ajudam a envelhecer melhor. Protocolos personalizados na ecooa."
 date: "2026-04-01"
 author: "Dr. Gustavo Gehrke"
 category: "longevidade"

@@ -5,8 +5,9 @@ import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
+import { WA_DEFAULT } from '../data/constants';
 
-const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+const WA = WA_DEFAULT;
 
 const mindFaqs = [
   { q: "Como funciona a primeira sessão de terapia?", a: "A primeira sessão é um espaço de acolhimento e escuta. Você conta o que está sentindo e, juntos, definimos os próximos passos do processo terapêutico." },
@@ -27,7 +28,7 @@ const mindFaqSchema = {
 ---
 
 <BaseLayout
-  title="ecooa.mind"
+  title="Psicologia e Psiquiatria | ecooa.mind · Porto Alegre"
   description="Saúde mental integrada ao cuidado completo. Psicologia e psiquiatria em Moinhos de Vento, Porto Alegre. Ambiente acolhedor, seguro e sem julgamento."
   currentPage="ecooa-mind"
   ogImage="/clinic/mind.webp"

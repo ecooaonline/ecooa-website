@@ -1,6 +1,6 @@
 ---
-title: "Equilibrio hormonal: sinais de que seus hormônios precisam de atenção"
-description: "Cansaco, ganho de peso, insonia e mudancas de humor podem ser sinais de desequilibrio hormonal. Saiba como identificar e tratar com acompanhamento médico."
+title: "Equilíbrio hormonal: sinais de que seus hormônios precisam de atenção"
+description: "Cansaço, ganho de peso, insônia e mudanças de humor podem ser sinais de desequilíbrio hormonal. Saiba como identificar e tratar com acompanhamento médico."
 date: "2026-03-22"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"

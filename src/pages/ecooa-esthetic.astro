@@ -5,8 +5,9 @@ import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
+import { WA_DEFAULT } from '../data/constants';
 
-const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+const WA = WA_DEFAULT;
 
 const estheticFaqs = [
   { q: "O transplante capilar dói?", a: "O procedimento é realizado com anestesia local e sedação leve. O desconforto é mínimo durante e após o procedimento." },
@@ -27,7 +28,7 @@ const estheticFaqSchema = {
 ---
 
 <BaseLayout
-  title="ecooa.esthetic"
+  title="Estética Avançada e Transplante Capilar | ecooa · Porto Alegre"
   description="Estética avançada em Moinhos de Vento, Porto Alegre. Procedimentos que respeitam a beleza natural, com técnica refinada e muito bom gosto."
   currentPage="ecooa-esthetic"
   ogImage="/clinic/esthetic.webp"

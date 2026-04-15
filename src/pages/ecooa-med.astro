@@ -5,6 +5,7 @@ import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
+import { WA_DEFAULT } from '../data/constants';
 
 const medFaqs = [
   { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o tipo de consulta. Entre em contato pelo WhatsApp para informações atualizadas." },
@@ -23,11 +24,11 @@ const medFaqSchema = {
   }))
 };
 
-const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+const WA = WA_DEFAULT;
 ---
 
 <BaseLayout
-  title="ecooa.med"
+  title="Medicina de Precisão e Emagrecimento | ecooa · Porto Alegre"
   description="Medicina humanizada e de precisão em Moinhos de Vento, Porto Alegre. Diagnóstico metabólico, hormônios, emagrecimento e longevidade com cuidado genuíno."
   currentPage="ecooa-med"
   ogImage="/clinic/med.webp"

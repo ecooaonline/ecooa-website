@@ -1,6 +1,6 @@
 ---
-title: "Emagrecimento saudavel: como perder peso com acompanhamento médico em Porto Alegre"
-description: "Descubra como emagrecer de forma saudavel com acompanhamento médico especializado. Diagnostico metabólico, equilibrio hormonal e protocolo personalizado na ecooa."
+title: "Emagrecimento saudável: como perder peso com acompanhamento médico em Porto Alegre"
+description: "Descubra como emagrecer de forma saudável com acompanhamento médico especializado. Diagnóstico metabólico, equilíbrio hormonal e protocolo personalizado na ecooa."
 date: "2026-03-28"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"

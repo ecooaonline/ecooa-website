@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaSection from '../../components/CtaSection.astro';
+import { WA_BASE, WA_DEFAULT } from '../../data/constants';
 import { getCollection, render } from 'astro:content';
+import { professionals } from '../../data/professionals';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -14,7 +16,24 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-// Professional mapping for contextual CTAs
+// Reading time calculation
+const wordCount = post.body?.split(/\s+/).length || 0;
+const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+// Match author to professional by last name (flexible matching)
+const authorName = post.data.author;
+const authorClean = authorName.replace(/^(Dra?\.\s*|Dra?\s+)/i, '');
+const authorLastName = authorClean.split(/\s+/).pop()?.toLowerCase() || '';
+const matchedProfessional = professionals.find(p => {
+  const profLastName = p.name.split(/\s+/).pop()?.toLowerCase() || '';
+  return profLastName === authorLastName;
+}) || professionals.find(p => {
+  const profNameLower = p.name.toLowerCase();
+  const authorLower = authorClean.toLowerCase();
+  return profNameLower.includes(authorLower) || authorLower.includes(profNameLower);
+});
+
+// Professional mapping for contextual CTAs (keep legacy map for specialty labels)
 const professionalMap: Record<string, { name: string; specialty: string; instagram?: string }> = {
   'Dr. Gustavo Gehrke': { name: 'Dr. Gustavo Gehrke', specialty: 'Medicina de Alta Performance', instagram: 'gustavo.gehrke' },
   'Dra. Larissa Wiebbelling': { name: 'Dra. Larissa Wiebbelling', specialty: 'Tricologia e Transplante Capilar', instagram: 'dra.larissawiebbelling' },
@@ -32,14 +51,22 @@ const professional = professionalMap[post.data.author];
 const waTextProfessional = professional
   ? encodeURIComponent(`Olá, gostaria de agendar uma avaliação com ${professional.name}`)
   : encodeURIComponent('Olá, gostaria de agendar uma avaliação com a equipe ecooa');
-const WA_PROFESSIONAL = `https://wa.me/5551991460909?text=${waTextProfessional}`;
+const WA_PROFESSIONAL = `${WA_BASE}?text=${waTextProfessional}`;
 
 const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 const relatedPosts = allPosts.filter(p => p.data.category === post.data.category && p.id !== post.id).slice(0, 3);
 
-const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+const WA = WA_DEFAULT;
 const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+// Share URLs
+const SITE_URL = 'https://www.somosecooa.com.br';
+const articleUrl = `${SITE_URL}/blog/${post.id}`;
+const shareText = encodeURIComponent(post.data.title);
+const shareWhatsApp = `https://wa.me/?text=${shareText}%20${encodeURIComponent(articleUrl)}`;
+const shareTwitter = `https://twitter.com/intent/tweet?text=${shareText}&url=${encodeURIComponent(articleUrl)}`;
+const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`;
 ---
 
 <BaseLayout
@@ -58,6 +85,7 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
   "description": post.data.description,
   "image": `https://www.somosecooa.com.br${post.data.image || '/favicon/og-image.jpg'}`,
   "datePublished": post.data.date,
+  "dateModified": post.data.lastModified || post.data.date,
   "author": {
     "@type": "Person",
     "name": post.data.author,
@@ -80,14 +108,42 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
       <a href="/blog" style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);text-decoration:none">← blog</a>
     </div>
 
-    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap" class="r d1">
+    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center" class="r d1">
       <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">{post.data.category}</span>
       <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{dateFormatted}</span>
+      <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">·</span>
+      <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{readingTime} min de leitura</span>
     </div>
 
     <h1 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:var(--color-ink);line-height:1.2;letter-spacing:-.02em;margin-bottom:16px" class="r d1">{post.data.title}</h1>
 
-    <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:32px" class="r d2">por <strong style="font-weight:500">{post.data.author}</strong></p>
+    <!-- Author block -->
+    {matchedProfessional ? (
+      <div style="display:flex;align-items:center;gap:16px;padding:20px;background:var(--color-cream);margin-bottom:32px" class="r d2">
+        <img
+          src={matchedProfessional.photo}
+          alt={matchedProfessional.name}
+          width="56"
+          height="56"
+          style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0"
+          loading="lazy"
+        />
+        <div style="min-width:0">
+          <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin-bottom:2px">{post.data.author}</p>
+          <p style="font-size:11px;font-weight:300;color:var(--color-ink-soft);margin-bottom:4px;line-height:1.4">{matchedProfessional.role}</p>
+          {matchedProfessional.ig && (
+            <a
+              href={`https://instagram.com/${matchedProfessional.ig.replace('@', '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-size:11px;font-weight:400;color:var(--color-brand-text);text-decoration:none"
+            >{matchedProfessional.ig}</a>
+          )}
+        </div>
+      </div>
+    ) : (
+      <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:32px" class="r d2">por <strong style="font-weight:500">{post.data.author}</strong></p>
+    )}
 
     <!-- Tags -->
     <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:40px" class="r d2">
@@ -96,9 +152,24 @@ const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day
       ))}
     </div>
 
+    <!-- Highlight -->
+    {post.data.highlight && (
+      <div style="padding:24px 28px;background:var(--color-brand-light, #f0ebe3);border-left:3px solid var(--color-brand-text);margin-bottom:32px;font-family:var(--font-serif);font-size:clamp(16px,2.5vw,20px);font-weight:300;color:var(--color-ink);line-height:1.5;font-style:italic" class="r d3">
+        {post.data.highlight}
+      </div>
+    )}
+
     <!-- Content -->
     <div class="blog-content r d3">
       <Content />
+    </div>
+
+    <!-- Share buttons -->
+    <div style="margin-top:36px;display:flex;align-items:center;gap:10px;flex-wrap:wrap" class="r">
+      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-soft)">compartilhar</span>
+      <a href={shareWhatsApp} target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s">WhatsApp</a>
+      <a href={shareTwitter} target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s">X</a>
+      <a href={shareLinkedIn} target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s">LinkedIn</a>
     </div>
 
     <!-- Professional CTA -->

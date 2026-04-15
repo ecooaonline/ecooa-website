@@ -1,6 +1,6 @@
 ---
 title: "CrossFit, saúde e desempenho: nutrição específica para quem treina pesado"
-description: "Nutricao para CrossFit: como otimizar desempenho, prevenir lesoes e recuperar melhor com acompanhamento especializado. Nutricionista na ecooa, Porto Alegre."
+description: "Nutrição para CrossFit: como otimizar desempenho, prevenir lesões e recuperar melhor com acompanhamento especializado. Nutricionista na ecooa, Porto Alegre."
 date: "2026-04-01"
 author: "Maria Luisa Beltran"
 category: "nutricao"

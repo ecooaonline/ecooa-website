@@ -1,6 +1,6 @@
 ---
 title: "Menopausa e tratamento hormonal: guia completo sobre reposição hormonal feminina"
-description: "Saiba quando iniciar a terapia hormonal na menopausa, riscos, beneficios e como a abordagem personalizada faz diferenca. Atendimento em Porto Alegre."
+description: "Saiba quando iniciar a terapia hormonal na menopausa, riscos, benefícios e como a abordagem personalizada faz diferença. Atendimento em Porto Alegre."
 date: "2026-04-01"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"

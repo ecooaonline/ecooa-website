@@ -4,8 +4,9 @@ import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import CtaSection from '../components/CtaSection.astro';
+import { WA_DEFAULT } from '../data/constants';
 
-const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+const WA = WA_DEFAULT;
 
 const workingFaqs = [
   { q: "Preciso de pedido médico para consultar com nutricionista?", a: "Não. Você pode agendar diretamente. Em casos que envolvam aspectos médicos, nossa equipe faz o encaminhamento interno." },
@@ -26,7 +27,7 @@ const workingFaqSchema = {
 ---
 
 <BaseLayout
-  title="ecooa.working"
+  title="Nutrição Clínica e Esportiva | ecooa · Porto Alegre"
   description="Coworking premium para nutricionistas em Moinhos de Vento, Porto Alegre. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe."
   currentPage="ecooa-working"
   ogImage="/clinic/working.webp"

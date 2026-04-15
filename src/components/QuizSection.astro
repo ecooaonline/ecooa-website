@@ -4,8 +4,10 @@ interface Props {
   options: { title: string; subtitle: string; waText: string }[];
 }
 
+import { WA_BASE } from '../data/constants';
+
 const { heading = "O que te trouxe até aqui?", options } = Astro.props;
-const WA_BASE = 'https://wa.me/5551991460909?text=';
+const WA_TEXT_BASE = `${WA_BASE}?text=`;
 
 function slugify(text: string): string {
   return text
@@ -23,7 +25,7 @@ function slugify(text: string): string {
     <div class="quiz-grid">
       {options.map((opt) => (
         <a
-          href={`${WA_BASE}${encodeURIComponent(opt.waText)}`}
+          href={`${WA_TEXT_BASE}${encodeURIComponent(opt.waText)}`}
           target="_blank"
           rel="noopener noreferrer"
           class="quiz-card r"

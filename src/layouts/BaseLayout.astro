@@ -45,6 +45,8 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <meta name="author" content="ecooa">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href={canonicalURL}>
+  <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
+  <link rel="alternate" hreflang="x-default" href={canonicalURL} />
   <meta name="theme-color" content="#FAF8F6">
 
   <!-- Open Graph -->
@@ -81,6 +83,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
+    "@id": "https://www.somosecooa.com.br/#organization",
     "name": "ecooa",
     "alternateName": "ecooa - Saúde, Estética e Longevidade",
     "description": "Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.",

@@ -1,6 +1,6 @@
 ---
-title: "Bioimpedancia InBody em Porto Alegre: o exame que revela sua composição corporal real"
-description: "Descubra como a bioimpedancia InBody analisa massa magra, gordura e água corporal com precisao. Exame disponivel em Porto Alegre."
+title: "Bioimpedância InBody em Porto Alegre: o exame que revela sua composição corporal real"
+description: "Descubra como a bioimpedância InBody analisa massa magra, gordura e água corporal com precisão. Exame disponível em Porto Alegre."
 date: "2026-04-01"
 author: "Giancarla"
 category: "medicina"

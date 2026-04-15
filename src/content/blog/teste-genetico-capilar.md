@@ -1,6 +1,6 @@
 ---
 title: "Teste genético capilar: como o DNA guia o tratamento personalizado para queda de cabelo"
-description: "Saiba como o teste genético capilar identifica predisposicao a calvicie e orienta tratamentos personalizados. Tricogenetica em Porto Alegre."
+description: "Saiba como o teste genético capilar identifica predisposição a calvície e orienta tratamentos personalizados. Tricogenética em Porto Alegre."
 date: "2026-04-01"
 author: "Viviane Fagundes"
 category: "estetica"

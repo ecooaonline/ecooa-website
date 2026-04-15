@@ -4,6 +4,7 @@ import WavePattern from '../../components/WavePattern.astro';
 import Marquee from '../../components/Marquee.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import { professionals } from '../../data/professionals';
+import { WA_BASE } from '../../data/constants';
 import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
@@ -31,7 +32,7 @@ const unitPages: Record<string, string> = {
 };
 
 const waText = encodeURIComponent(`Olá, gostaria de agendar uma avaliação com ${p.name}`);
-const WA = `https://wa.me/5551991460909?text=${waText}`;
+const WA = `${WA_BASE}?text=${waText}`;
 
 // Blog articles by this professional
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);

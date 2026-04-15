@@ -1,6 +1,6 @@
 ---
-title: "Medicina ortomolecular: beneficios, evidências e aplicações clínicas reais"
-description: "Entenda o que e medicina ortomolecular, seus beneficios reais e como ela e aplicada com base em evidências na ecooa em Porto Alegre, Moinhos de Vento."
+title: "Medicina ortomolecular: benefícios, evidências e aplicações clínicas reais"
+description: "Entenda o que é medicina ortomolecular, seus benefícios reais e como ela é aplicada com base em evidências na ecooa em Porto Alegre, Moinhos de Vento."
 date: "2026-04-01"
 author: "Adriano Lenz"
 category: "medicina"

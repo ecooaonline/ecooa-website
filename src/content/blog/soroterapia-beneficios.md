@@ -1,6 +1,6 @@
 ---
-title: "Soroterapia: beneficios, indicacoes e o que a ciência diz"
-description: "Entenda o que e soroterapia, seus beneficios reais, indicacoes clínicas e o que ela pode ou não fazer pela sua saúde. Guia completo."
+title: "Soroterapia: benefícios, indicações e o que a ciência diz"
+description: "Entenda o que é soroterapia, seus benefícios reais, indicações clínicas e o que ela pode ou não fazer pela sua saúde. Guia completo."
 date: "2026-04-01"
 author: "Danusa"
 category: "medicina"

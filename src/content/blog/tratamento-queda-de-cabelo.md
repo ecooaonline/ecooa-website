@@ -1,6 +1,6 @@
 ---
 title: "Tratamento para queda de cabelo: opções clínicas que funcionam"
-description: "Conheca os tratamentos para queda de cabelo com evidência clínica: medicamentos, PRP, laser e suporte nutricional. Saiba qual e indicado para você."
+description: "Conheça os tratamentos para queda de cabelo com evidência clínica: medicamentos, PRP, laser e suporte nutricional. Saiba qual é indicado para você."
 date: "2026-04-01"
 author: "Dra. Larissa Wiebbelling"
 category: "estetica"

@@ -1,5 +1,5 @@
 ---
-title: "Libido masculina baixa: causas hormonais, metabolicas e tratamento personalizado"
+title: "Libido masculina baixa: causas hormonais, metabólicas e tratamento personalizado"
 description: "Entenda as causas da libido masculina baixa, o papel da testosterona e como a avaliação clínica completa pode identificar o melhor tratamento."
 date: "2026-04-01"
 author: "Dr. Gustavo Gehrke"

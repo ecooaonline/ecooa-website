@@ -1,6 +1,6 @@
 ---
-title: "Saude mental e emagrecimento: por que emagrecer sem cuidar da mente não funciona"
-description: "Entenda como ansiedade, compulsao alimentar e emoções sabotam o emagrecimento. Abordagem integrada de psicologia e nutrição em Porto Alegre."
+title: "Saúde mental e emagrecimento: por que emagrecer sem cuidar da mente não funciona"
+description: "Entenda como ansiedade, compulsão alimentar e emoções sabotam o emagrecimento. Abordagem integrada de psicologia e nutrição em Porto Alegre."
 date: "2026-04-01"
 author: "Manuela Vanti"
 category: "saude-mental"

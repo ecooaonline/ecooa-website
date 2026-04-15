@@ -1,6 +1,6 @@
 ---
-title: "Interpretacao de exames bioquimicos: o que seus resultados realmente dizem"
-description: "Entenda a interpretacao de exames bioquimicos alem dos valores de referência. Analise funcional de exames de sangue na ecooa em Porto Alegre."
+title: "Interpretação de exames bioquímicos: o que seus resultados realmente dizem"
+description: "Entenda a interpretação de exames bioquímicos além dos valores de referência. Análise funcional de exames de sangue na ecooa em Porto Alegre."
 date: "2026-04-01"
 author: "Jessica Stein"
 category: "medicina"

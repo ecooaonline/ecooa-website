@@ -11,6 +11,8 @@ const blog = defineCollection({
     category: z.enum(['medicina', 'estetica', 'nutricao', 'saude-mental', 'longevidade', 'ecooa']),
     tags: z.array(z.string()),
     image: z.string().optional(),
+    highlight: z.string().optional(),
+    lastModified: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

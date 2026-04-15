@@ -1,5 +1,5 @@
 ---
-title: "Saude capilar feminina: causas da queda e como cuidar dos fios"
+title: "Saúde capilar feminina: causas da queda e como cuidar dos fios"
 description: "Entenda os desafios da saúde capilar feminina, da queda hormonal ao afinamento dos fios. Saiba como a tricologia pode ajudar."
 date: "2026-04-01"
 author: "Dra. Yale"

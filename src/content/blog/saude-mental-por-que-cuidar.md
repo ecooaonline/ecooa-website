@@ -1,6 +1,6 @@
 ---
-title: "Saude mental: por que cuidar da mente e tao importante quanto cuidar do corpo"
-description: "Ansiedade, estresse e burnout afetam sua saúde como um todo. Entenda por que a saúde mental e fundamental e como buscar ajuda profissional em Porto Alegre."
+title: "Saúde mental: por que cuidar da mente é tão importante quanto cuidar do corpo"
+description: "Ansiedade, estresse e burnout afetam sua saúde como um todo. Entenda por que a saúde mental é fundamental e como buscar ajuda profissional em Porto Alegre."
 date: "2026-03-15"
 author: "Manuela Vanti"
 category: "saude-mental"
