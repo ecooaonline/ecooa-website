@@ -546,12 +546,11 @@
 
 /* ── WHATSAPP FAB ── */
 .waf {
-  position: fixed; bottom: 28px; right: 28px; z-index: 300;
   width: 52px; height: 52px; background: #25D366; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 20px rgba(37,211,102,.32);
   transition: transform var(--transition-base) var(--ease-out), box-shadow var(--transition-base);
-  text-decoration: none;
+  text-decoration: none; flex-shrink: 0;
 }
 .waf:hover { transform: scale(1.1); box-shadow: 0 8px 26px rgba(37,211,102,.44); }
 
