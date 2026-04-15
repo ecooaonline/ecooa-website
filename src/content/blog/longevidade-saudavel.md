@@ -6,6 +6,7 @@ author: "Dr. Gustavo Gehrke"
 category: "longevidade"
 tags: ["longevidade", "medicina preventiva", "envelhecimento saudavel", "check-up", "biomarcadores"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Viver mais ou viver melhor? O verdadeiro significado da longevidade

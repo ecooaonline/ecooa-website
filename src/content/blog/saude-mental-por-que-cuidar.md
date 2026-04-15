@@ -6,6 +6,7 @@ author: "Manuela Vanti"
 category: "saude-mental"
 tags: ["saúde mental", "psicologia", "ansiedade", "estresse", "terapia", "porto alegre"]
 image: "/clinic/mind.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Mente e corpo não são coisas separadas

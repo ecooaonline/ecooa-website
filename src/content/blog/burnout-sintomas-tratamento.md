@@ -6,6 +6,8 @@ author: "Manuela Vanti"
 category: "saude-mental"
 tags: ["burnout", "saúde mental", "estresse crônico", "esgotamento profissional", "saúde mental trabalho"]
 image: "/clinic/mind.webp"
+lastModified: "2026-04-15"
+highlight: "Burnout não é frescura. É uma síndrome reconhecida pela OMS que exige tratamento profissional."
 ---
 
 ## Quando o trabalho cobra mais do que você pode dar

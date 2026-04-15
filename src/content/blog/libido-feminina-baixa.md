@@ -6,6 +6,8 @@ author: "Dr. Gustavo Gehrke"
 category: "medicina"
 tags: ["libido feminina", "desejo sexual feminino", "hormônios femininos", "saúde sexual", "menopausa"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "A libido feminina baixa não é simplesmente uma questão de falta de vontade. Ela tem bases fisiológicas, hormonais e psicológicas."
 ---
 
 ## O silêncio em torno do desejo sexual feminino

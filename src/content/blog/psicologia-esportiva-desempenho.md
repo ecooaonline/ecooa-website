@@ -6,6 +6,7 @@ author: "Manuela Vanti"
 category: "saude-mental"
 tags: ["psicologia esportiva desempenho", "psicologia do esporte", "mental game atleta", "foco e concentração esporte", "ansiedade competição", "mentalidade vencedora"]
 image: "/clinic/mind.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Você treina o corpo todos os dias, mas quando treinou a mente pela última vez?

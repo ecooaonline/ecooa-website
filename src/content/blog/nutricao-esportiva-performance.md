@@ -6,6 +6,7 @@ author: "Maria Luisa Beltran"
 category: "nutricao"
 tags: ["nutrição esportiva", "performance", "composição corporal", "suplementação", "porto alegre"]
 image: "/clinic/working.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Mais do que comer bem: comer certo para o seu objetivo

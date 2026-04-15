@@ -426,7 +426,7 @@
 .ft { font-size: 12px; font-weight: 300; line-height: 1.85; color: rgba(255,255,255,.48); max-width: 210px; margin-top: 13px; }
 .fh { font-size: 9px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--color-brand-deep); margin-bottom: 14px; }
 .fl { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.fl a { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.48); text-decoration: none; transition: color .25s; }
+.fl a { font-size: 12px; font-weight: 300; color: rgba(255,255,255,.62); text-decoration: none; transition: color .25s; }
 .fl a:hover { color: var(--color-brand-light); }
 .fb { display: flex; justify-content: space-between; align-items: center; padding-top: 24px; }
 .fc { font-size: 10px; font-weight: 300; letter-spacing: .05em; color: rgba(255,255,255,.48); }
@@ -622,6 +622,10 @@
 .faq-item { border-bottom: 1px solid var(--color-stone); padding: 22px 0; }
 .faq-q { font-size: 15px; font-weight: 400; color: var(--color-ink); margin-bottom: 8px; }
 .faq-a { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--color-ink-soft); }
+.faq-item summary { cursor: pointer; list-style: none; }
+.faq-item summary::marker { display: none; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item[open] .faq-a { animation: fadeIn .3s ease; }
 
 /* ── B2B FORM ── */
 .b2b-form { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; max-width: 380px; }

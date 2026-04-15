@@ -6,6 +6,7 @@ author: "Dr. Gustavo Gehrke"
 category: "estetica"
 tags: ["estética", "pós-procedimento", "botox", "preenchimento", "cuidados"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 draft: false
 ---
 

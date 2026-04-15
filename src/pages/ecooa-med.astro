@@ -48,7 +48,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     <p class="body body-lt r d2" style="margin-top:16px;max-width:500px">Medicina de precisão que começa pela escuta. Protocolos construídos com base nos seus dados, no seu histórico e, principalmente, nos seus objetivos.</p>
     <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
     <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
-    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Agenda limitada. Atendemos um número reduzido de pacientes por dia para garantir qualidade.</p>
+    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Consultas de 50+ minutos. Vagas limitadas para garantir atendimento completo.</p>
   </div>
 </div>
 
@@ -88,9 +88,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
         <p class="body r d2" style="margin-top:18px">A ecooa.med reúne profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética.</p>
         <p class="body r d3" style="margin-top:13px">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
         <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form" style="margin-top:20px">
-          <input type="text" name="nome" placeholder="Nome" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" />
-          <input type="text" name="area" placeholder="Área de atuação" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" />
-          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" />
+          <input type="text" name="nome" placeholder="Nome" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Nome completo" />
+          <input type="text" name="area" placeholder="Área de atuação" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Área de atuação" />
+          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Número de WhatsApp" />
           <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
         </form>
       </div>
@@ -163,10 +163,10 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
     <div class="faq-section">
       {medFaqs.map((faq) => (
-        <div class="faq-item">
-          <p class="faq-q">{faq.q}</p>
+        <details class="faq-item">
+          <summary class="faq-q">{faq.q}</summary>
           <p class="faq-a">{faq.a}</p>
-        </div>
+        </details>
       ))}
     </div>
   </div>

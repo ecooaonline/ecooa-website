@@ -6,6 +6,8 @@ author: "Jessica Stein"
 category: "nutricao"
 tags: ["nutrição vegetariana", "dieta plant-based", "proteína vegetal", "deficiência B12", "vegetarianismo nutrientes", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "O problema não é o vegetarianismo em si. O problema é a falta de acompanhamento profissional."
 ---
 
 ## Ser vegetariano é saudável, mas exige atenção nutricional

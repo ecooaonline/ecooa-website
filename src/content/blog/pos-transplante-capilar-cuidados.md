@@ -6,6 +6,7 @@ author: "Dra. Larissa Wiebbelling"
 category: "estetica"
 tags: ["transplante capilar", "pós-operatório", "cuidados capilares", "recuperação"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 draft: false
 ---
 

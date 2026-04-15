@@ -6,6 +6,8 @@ author: "Adriano Lenz"
 category: "medicina"
 tags: ["medicina ortomolecular", "terapia ortomolecular", "vitaminas e minerais", "estresse oxidativo", "radicais livres", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "A medicina ortomolecular séria não é a que promete rejuvenescimento milagroso. É a que identifica desequilíbrios reais e intervém com base em dados."
 ---
 
 ## Entre promessas exageradas e ceticismo infundado, existe a ciência

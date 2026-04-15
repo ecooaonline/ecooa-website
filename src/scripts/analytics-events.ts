@@ -10,8 +10,22 @@ declare global {
 }
 
 export function initAnalyticsEvents() {
-  if (typeof window === 'undefined' || !window.gtag) return;
+  if (typeof window === 'undefined') return;
 
+  function onGtagReady(callback: () => void) {
+    if (window.gtag) { callback(); return; }
+    const check = setInterval(() => {
+      if (window.gtag) { clearInterval(check); callback(); }
+    }, 500);
+    setTimeout(() => clearInterval(check), 30000);
+  }
+
+  onGtagReady(() => {
+    setupTracking();
+  });
+}
+
+function setupTracking() {
   // Capture UTM parameters on landing
   trackUTMParameters();
 
@@ -98,25 +112,33 @@ export function initAnalyticsEvents() {
 
   // Track page engagement time
   trackEngagement();
+
+  // Track funnel steps
+  trackFunnelSteps();
 }
 
 function trackUTMParameters() {
   const params = new URLSearchParams(window.location.search);
-  const utmSource = params.get('utm_source');
-  const utmMedium = params.get('utm_medium');
-  const utmCampaign = params.get('utm_campaign');
-  const utmContent = params.get('utm_content');
-  const utmTerm = params.get('utm_term');
+  const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
+  const utmData: Record<string, string> = {};
 
-  if (utmSource) {
+  utmKeys.forEach(key => {
+    const val = params.get(key) || sessionStorage.getItem(`ecooa_${key}`) || '';
+    if (val) {
+      utmData[key] = val;
+      sessionStorage.setItem(`ecooa_${key}`, val);
+    }
+  });
+
+  if (!sessionStorage.getItem('ecooa_landing')) {
+    sessionStorage.setItem('ecooa_landing', document.location.pathname);
+  }
+
+  if (utmData.utm_source) {
     window.gtag?.('event', 'campaign_landing', {
       event_category: 'acquisition',
-      utm_source: utmSource,
-      utm_medium: utmMedium || '(not set)',
-      utm_campaign: utmCampaign || '(not set)',
-      utm_content: utmContent || '(not set)',
-      utm_term: utmTerm || '(not set)',
-      landing_page: document.location.pathname,
+      ...utmData,
+      landing_page: sessionStorage.getItem('ecooa_landing') || document.location.pathname,
     });
   }
 }
@@ -178,6 +200,28 @@ function trackEngagement() {
       });
     }
   }, 10000);
+}
+
+function trackFunnelSteps() {
+  const path = document.location.pathname;
+  const funnelMap: Record<string, string> = {
+    '/': 'funnel_homepage',
+    '/ecooa-med': 'funnel_service_med',
+    '/ecooa-esthetic': 'funnel_service_esthetic',
+    '/ecooa-mind': 'funnel_service_mind',
+    '/ecooa-working': 'funnel_service_working',
+    '/agendamento': 'funnel_scheduling',
+    '/contato': 'funnel_contact',
+    '/profissionais': 'funnel_professionals',
+  };
+  const step = funnelMap[path];
+  if (step) {
+    window.gtag?.('event', step, {
+      event_category: 'funnel',
+      page_location: path,
+      referrer: document.referrer,
+    });
+  }
 }
 
 // Exported for deferred initialization via dynamic import

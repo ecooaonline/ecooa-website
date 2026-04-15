@@ -6,6 +6,7 @@ author: "Jessica Stein"
 category: "medicina"
 tags: ["exames bioquimicos", "hemograma interpretacao", "marcadores bioquimicos", "check-up laboratorial", "exames preventivos", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Seus exames deram "normais", mas você continua sem se sentir bem

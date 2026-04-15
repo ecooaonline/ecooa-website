@@ -6,6 +6,7 @@ author: "Giancarla"
 category: "medicina"
 tags: ["bioimpedancia InBody", "exame bioimpedancia", "composição corporal", "massa magra massa gorda", "InBody exame", "avaliação corporal"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
 ---
 
 ## A balança diz um número, mas não diz a verdade sobre o seu corpo

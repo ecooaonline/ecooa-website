@@ -6,6 +6,8 @@ author: "Viviane Fagundes"
 category: "estetica"
 tags: ["teste genético capilar", "DNA capilar", "genética queda cabelo", "exame genético alopecia", "predisposição calvície", "tricogenética"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
+highlight: "O teste genético mostra tendências que acompanham o paciente ao longo de toda a vida. Isso permite uma abordagem preventiva, e não apenas reativa."
 ---
 
 ## Você trata a queda de cabelo, mas ela volta. Já pensou que o problema pode estar no seu DNA?

@@ -6,6 +6,8 @@ author: "Dr. Gustavo Gehrke"
 category: "medicina"
 tags: ["menopausa", "reposição hormonal", "climatério", "hormônios femininos", "saúde da mulher"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "A menopausa não é doença. É uma transição fisiológica que merece acompanhamento médico qualificado."
 ---
 
 ## Menopausa: muito além dos fogachos

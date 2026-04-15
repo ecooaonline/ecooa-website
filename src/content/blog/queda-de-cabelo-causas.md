@@ -6,6 +6,7 @@ author: "Dra. Larissa Wiebbelling"
 category: "estetica"
 tags: ["queda de cabelo", "alopecia", "perda capilar", "tricologia", "queda capilar hormonal"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Por que o cabelo cai tanto e o que está por trás disso

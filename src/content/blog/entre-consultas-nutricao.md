@@ -6,6 +6,7 @@ author: "Jessica Stein"
 category: "nutricao"
 tags: ["nutrição", "acompanhamento nutricional", "hábitos alimentares", "resultados"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 draft: false
 ---
 

@@ -2,6 +2,7 @@
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFab from '../components/WhatsAppFab.astro';
+import CookieConsent from '../components/CookieConsent.astro';
 import { WA_DEFAULT } from '../data/constants';
 
 import '../styles/tokens.css';
@@ -193,6 +194,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
 
   <Footer />
   <WhatsAppFab />
+  <CookieConsent />
 
   <!-- Core UI scripts (menu, reveal, cursor) -->
   <script>
@@ -259,6 +261,8 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
 
       function show() {
         if (shown) return;
+        const isConversionPage = ['/agendamento', '/contato'].some(p => window.location.pathname.includes(p));
+        if (isConversionPage) return;
         shown = true;
         sessionStorage.setItem(key, '1');
         const d = document.createElement('div');
@@ -270,6 +274,22 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
         d.innerHTML = '<div style="background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative"><button id="exit-popup-close" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer" aria-label="Fechar">&#10005;</button><p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px">antes de ir</p><p style="font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px">Que tal agendar<br>sua <em>avaliação?</em></p><p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px">Converse com nossa equipe e descubra o melhor caminho para seus objetivos.</p><div style="display:flex;flex-direction:column;gap:10px;align-items:center"><a href="' + document.body.dataset.wa + '" target="_blank" rel="noopener noreferrer" class="bd" style="width:100%;text-align:center">falar pelo whatsapp</a><a href="/agendamento" class="ghost" style="width:100%;text-align:center">agendar avaliação</a></div></div>';
         document.body.appendChild(d);
         window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
+
+        // Focus trap
+        const focusableEls = d.querySelectorAll<HTMLElement>('a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
+        const firstFocusable = focusableEls[0];
+        const lastFocusable = focusableEls[focusableEls.length - 1];
+        firstFocusable?.focus();
+
+        d.addEventListener('keydown', (e) => {
+          if (e.key !== 'Tab') return;
+          if (e.shiftKey) {
+            if (document.activeElement === firstFocusable) { e.preventDefault(); lastFocusable?.focus(); }
+          } else {
+            if (document.activeElement === lastFocusable) { e.preventDefault(); firstFocusable?.focus(); }
+          }
+        });
+
         const close = () => { d.remove(); };
         d.querySelector('#exit-popup-close')!.addEventListener('click', close);
         d.addEventListener('click', (e) => { if (e.target === d) close(); });

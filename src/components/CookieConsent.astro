@@ -1,0 +1,29 @@
+---
+---
+
+<div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--color-ink);color:#fff;padding:16px;font-size:13px;font-weight:300;line-height:1.7" role="alert">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+    <p style="margin:0;flex:1;min-width:260px">Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="/politica-de-privacidade" style="color:var(--color-brand-light);text-decoration:underline">política de privacidade</a>.</p>
+    <div style="display:flex;gap:12px;align-items:center;flex-shrink:0">
+      <a href="/politica-de-privacidade" style="color:rgba(255,255,255,.6);font-size:12px;font-weight:400;text-decoration:underline">saiba mais</a>
+      <button id="cookie-accept" style="background:var(--color-brand);color:#fff;border:none;padding:10px 28px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">aceitar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var key = 'ecooa_cookie_consent';
+    if (localStorage.getItem(key)) return;
+    var banner = document.getElementById('cookie-consent');
+    if (!banner) return;
+    banner.style.display = 'block';
+    var btn = document.getElementById('cookie-accept');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        localStorage.setItem(key, '1');
+        banner.style.display = 'none';
+      });
+    }
+  })();
+</script>

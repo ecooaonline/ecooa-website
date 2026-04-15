@@ -6,6 +6,7 @@ author: "Dra. Larissa Wiebbelling"
 category: "estetica"
 tags: ["tratamento queda de cabelo", "PRP capilar", "minoxidil", "terapia capilar", "finasterida"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Quando o cabelo continua caindo e você já tentou de tudo

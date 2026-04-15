@@ -6,6 +6,8 @@ author: "Dr. Gustavo Gehrke"
 category: "medicina"
 tags: ["libido masculina", "testosterona", "saúde sexual", "reposição hormonal masculina", "hipogonadismo"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "A libido masculina baixa raramente é um problema isolado. Ela é, com frequência, uma janela para o estado geral da saúde do homem."
 ---
 
 ## Quando a falta de desejo sexual é mais do que cansaço

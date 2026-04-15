@@ -6,6 +6,8 @@ author: "Dr. Gustavo Gehrke"
 category: "medicina"
 tags: ["emagrecimento", "metabolismo", "hormônios", "medicina", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "Emagrecer de forma saudável não é sobre restrição extrema. É sobre entender o que o seu corpo precisa."
 ---
 
 ## Por que a maioria das dietas falha?

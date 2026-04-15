@@ -6,6 +6,7 @@ author: "Danusa"
 category: "medicina"
 tags: ["soroterapia", "soro vitaminas", "infusão intravenosa", "soroterapia benefícios", "hidratação intravenosa"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Soroterapia: entre o que você ouviu falar e o que realmente funciona

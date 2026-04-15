@@ -6,6 +6,7 @@ author: "Maria Luisa Beltran"
 category: "nutricao"
 tags: ["crossfit nutrição", "crossfit saúde", "crossfit suplementação", "crossfit lesoes prevenção", "WOD nutrição", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
 ---
 
 ## CrossFit exige mais do seu corpo, e exige mais da sua nutrição

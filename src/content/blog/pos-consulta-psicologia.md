@@ -6,6 +6,7 @@ author: "Manuela Vanti"
 category: "saude-mental"
 tags: ["terapia", "psicologia", "saúde mental", "processo terapêutico", "autoconhecimento"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 draft: false
 ---
 

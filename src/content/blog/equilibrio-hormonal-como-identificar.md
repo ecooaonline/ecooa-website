@@ -6,6 +6,8 @@ author: "Dr. Gustavo Gehrke"
 category: "medicina"
 tags: ["hormônios", "equilibrio hormonal", "tireoide", "testosterona", "menopausa", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
+highlight: "O equilíbrio hormonal é dinâmico. Ele muda com a idade, com o estilo de vida e com fatores ambientais."
 ---
 
 ## O que é equilíbrio hormonal?

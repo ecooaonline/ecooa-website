@@ -6,6 +6,7 @@ author: "Maria Luisa Beltran"
 category: "nutricao"
 tags: ["performance esportiva", "otimização", "rendimento esportivo", "periodização nutricional", "recuperação muscular", "porto alegre"]
 image: "/clinic/med.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Você treina duro, mas os resultados estagnaram

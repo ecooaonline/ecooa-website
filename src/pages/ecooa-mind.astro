@@ -48,7 +48,7 @@ const mindFaqSchema = {
     <p class="body body-lt r d2" style="margin-top:16px;max-width:480px">Psicologia e psiquiatria em um ambiente acolhedor, seguro e sem julgamento. Porque saúde plena começa pela mente.</p>
     <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
     <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
-    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Agenda limitada. Atendemos um número reduzido de pacientes por dia para garantir qualidade.</p>
+    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Primeira sessão em até 5 dias úteis. Sem lista de espera.</p>
   </div>
 </div>
 
@@ -130,10 +130,10 @@ const mindFaqSchema = {
     <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.mind.</em></h2>
     <div class="faq-section">
       {mindFaqs.map((faq) => (
-        <div class="faq-item">
-          <p class="faq-q">{faq.q}</p>
+        <details class="faq-item">
+          <summary class="faq-q">{faq.q}</summary>
           <p class="faq-a">{faq.a}</p>
-        </div>
+        </details>
       ))}
     </div>
   </div>

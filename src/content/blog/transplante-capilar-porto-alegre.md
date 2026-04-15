@@ -6,6 +6,8 @@ author: "Dra. Larissa Wiebbelling"
 category: "estetica"
 tags: ["transplante capilar", "transplante capilar FUE", "implante capilar", "cirurgia capilar", "transplante capilar resultado"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
+highlight: "Os folículos transplantados mantêm suas características genéticas originais, o que significa que continuam crescendo naturalmente no novo local."
 ---
 
 ## A decisão pelo transplante capilar e o que você precisa saber antes

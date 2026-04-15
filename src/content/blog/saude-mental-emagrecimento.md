@@ -6,6 +6,7 @@ author: "Manuela Vanti"
 category: "saude-mental"
 tags: ["saúde mental emagrecimento", "psicologia e emagrecimento", "compulsão alimentar tratamento", "ansiedade e peso", "relação emocional com comida", "comportamento alimentar"]
 image: "/clinic/mind.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Você já fez tudo certo na dieta e mesmo assim não conseguiu manter o resultado?

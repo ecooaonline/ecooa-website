@@ -6,6 +6,7 @@ author: "Dra. Yale"
 category: "estetica"
 tags: ["saúde capilar feminina", "queda cabelo mulher", "alopecia feminina", "tricologia feminina", "couro cabeludo"]
 image: "/clinic/esthetic.webp"
+lastModified: "2026-04-15"
 ---
 
 ## Por que a queda de cabelo feminina é diferente e exige uma abordagem própria
