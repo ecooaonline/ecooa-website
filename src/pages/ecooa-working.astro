@@ -47,6 +47,7 @@ const workingFaqSchema = {
     <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px" class="r d2">Coworking premium para nutricionistas em Moinhos de Vento. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe.</p>
     <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">quero saber mais</a>
     <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.45);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
+    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Agenda limitada. Atendemos um número reduzido de pacientes por dia para garantir qualidade.</p>
   </div>
 </div>
 
@@ -82,7 +83,7 @@ const workingFaqSchema = {
     <div class="lbl r" style="margin-bottom:15px">nutrição para você · pacientes</div>
     <h2 class="h2 r d1" style="margin-bottom:14px">Nossa equipe de<br>nutrição está<br><em>aqui por você.</em></h2>
     <p class="body r d2" style="margin-bottom:44px;max-width:640px">A ecooa.working abriga nutricionistas especializados em diferentes áreas, integrados ao ecossistema ecooa. Você é atendido por quem melhor responde ao seu caso, com toda a estrutura de uma clínica premium.</p>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
       <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Vegana e Vegetariana</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Planejamento alimentar plant-based com segurança nutricional e ciência aplicada.</p></div>
       <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Clínica</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Saúde metabólica, doenças crônicas e bem-estar geral.</p></div>
       <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Esportiva</h3><p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Performance, composição corporal e recuperação.</p></div>
@@ -162,7 +163,7 @@ const workingFaqSchema = {
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:960px;margin:0 auto">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto">
       <div class="r" style="text-align:center">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">1</span>
         <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Agendamento</h3>
@@ -191,9 +192,9 @@ const workingFaqSchema = {
 <!-- Depoimentos -->
 <section style="background:var(--color-cream)" aria-label="Depoimentos de pacientes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">social proof</div>
+    <div class="lbl r" style="margin-bottom:16px">depoimentos</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
       <div class="r" style="background:var(--color-white);border:1px solid var(--color-stone);padding:32px 28px">
         <p style="font-family:var(--font-serif);font-style:italic;font-size:14px;line-height:1.8;color:var(--color-ink);margin-bottom:16px">"Finalmente entendi que nutrição não é sobre restrição. O plano se encaixou na minha rotina e os resultados vieram naturalmente."</p>
         <p style="font-size:12px;font-weight:400;color:var(--color-ink-soft)">Gabriela V.</p>
@@ -217,7 +218,7 @@ const workingFaqSchema = {
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
       {nutriPosts.map((post, i) => (
         <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
           <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>
@@ -230,6 +231,6 @@ const workingFaqSchema = {
 </section>
 )}
 
-<CtaSection heading='Construa sua carreira<br>no espaço que você <em>merece.</em>' subtext="Entre em contato e venha conhecer pessoalmente a ecooa.working." />
+<CtaSection heading='Comece sua transformação<br>pela <em>nutrição.</em>' subtext="Agende sua consulta e descubra como um plano alimentar personalizado pode mudar a sua relação com a saúde." />
 
 </BaseLayout>

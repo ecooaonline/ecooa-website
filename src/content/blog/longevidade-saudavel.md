@@ -70,52 +70,52 @@ Essa avaliação cria um mapa completo do estado biológico atual do paciente e 
 
 ## Tratamento: protocolos personalizados de longevidade
 
-Nao existe um protocolo único de longevidade que funcione para todos. O tratamento e construido a partir dos dados individuais de cada paciente, e pode incluir diversas frentes:
+Não existe um protocolo único de longevidade que funcione para todos. O tratamento é construído a partir dos dados individuais de cada paciente, e pode incluir diversas frentes:
 
-**Otimizacao hormonal**
-Quando indicada, a modulacao hormonal busca restaurar níveis fisiologicos adequados, respeitando a individualidade biológica. Isso pode envolver reposição de testosterona, estradiol, progesterona, DHEA, pregnenolona ou hormônios tireoidianos, sempre com monitoramento rigoroso.
+**Otimização hormonal**
+Quando indicada, a modulação hormonal busca restaurar níveis fisiológicos adequados, respeitando a individualidade biológica. Isso pode envolver reposição de testosterona, estradiol, progesterona, DHEA, pregnenolona ou hormônios tireoidianos, sempre com monitoramento rigoroso.
 
-**Suplementacao baseada em evidências**
-A suplementação não e generica. Cada micronutriente e prescrito com base em deficiencias documentadas e objetivos clínicos claros. Omega-3, vitamina D, magnésio, coenzima Q10 e NAD+ sao exemplos de substancias frequentemente avaliadas no contexto de longevidade.
+**Suplementação baseada em evidências**
+A suplementação não é genérica. Cada micronutriente é prescrito com base em deficiências documentadas e objetivos clínicos claros. Omega-3, vitamina D, magnésio, coenzima Q10 e NAD+ são exemplos de substâncias frequentemente avaliadas no contexto de longevidade.
 
-**Estrategias nutricionais individualizadas**
-A alimentação e um dos pilares da longevidade funcional. Mas não se trata de seguir dietas da moda. Com base nos exames, e possível definir a melhor estrategia nutricional, seja para controle de resistência insulinica, redução de inflamação ou preservação de massa muscular.
+**Estratégias nutricionais individualizadas**
+A alimentação é um dos pilares da longevidade funcional. Mas não se trata de seguir dietas da moda. Com base nos exames, é possível definir a melhor estratégia nutricional, seja para controle de resistência insulínica, redução de inflamação ou preservação de massa muscular.
 
-**Exercicio físico prescrito**
-O exercicio e o intervenção isolada com maior evidência em longevidade. Treino de forca para preservar massa muscular e óssea, treino aeróbico para saúde cardiovascular e treino de mobilidade para funcionalidade sao ajustados conforme as necessidades e limitacoes de cada paciente.
+**Exercício físico prescrito**
+O exercício é a intervenção isolada com maior evidência em longevidade. Treino de força para preservar massa muscular e óssea, treino aeróbico para saúde cardiovascular e treino de mobilidade para funcionalidade são ajustados conforme as necessidades e limitações de cada paciente.
 
-**Gestao do sono e do estresse**
-Sono de qualidade e manejo do estresse crônico sao tao importantes quanto qualquer suplemento ou medicacao. Estrategias para higiene do sono, técnicas de regulação do sistema nervoso e, quando necessario, suporte farmacológico fazem parte do protocolo.
+**Gestão do sono e do estresse**
+Sono de qualidade e manejo do estresse crônico são tão importantes quanto qualquer suplemento ou medicação. Estratégias para higiene do sono, técnicas de regulação do sistema nervoso e, quando necessário, suporte farmacológico fazem parte do protocolo.
 
-## O diferencial da ecooa: precisao, tecnologia e olhar integral
+## O diferencial da ecooa: precisão, tecnologia e olhar integral
 
-O que diferencia a abordagem da ecooa de um check-up convencional ou de clínicas que oferecem protocolos genericos?
+O que diferencia a abordagem da ecooa de um check-up convencional ou de clínicas que oferecem protocolos genéricos?
 
-**Medicina de precisao aplicada**
-Cada decisão clínica e baseada em dados objetivos. Nao prescrevemos suplementos ou hormônios "porque esta na moda". Prescrevemos porque os exames indicam necessidade e porque ha evidência cientifica que sustenta a intervenção.
+**Medicina de precisão aplicada**
+Cada decisão clínica é baseada em dados objetivos. Não prescrevemos suplementos ou hormônios "porque está na moda". Prescrevemos porque os exames indicam necessidade e porque há evidência científica que sustenta a intervenção.
 
 **Acompanhamento longitudinal**
-Longevidade não se resolve em uma consulta. Na ecooa, o acompanhamento e continuo, com reavaliacao periodica de biomarcadores e ajuste fino dos protocolos. Isso permite corrigir rotas e adaptar o plano conforme o corpo responde.
+Longevidade não se resolve em uma consulta. Na ecooa, o acompanhamento é contínuo, com reavaliação periódica de biomarcadores e ajuste fino dos protocolos. Isso permite corrigir rotas e adaptar o plano conforme o corpo responde.
 
 **Equipe multidisciplinar integrada**
-Em Moinhos de Vento, a ecooa reune profissionais de diferentes especialidades que trabalham de forma coordenada. Medicos, nutricionistas, profissionais de saúde mental e outros especialistas compartilham informacoes para que o cuidado seja verdadeiramente integral.
+Em Moinhos de Vento, a ecooa reúne profissionais de diferentes especialidades que trabalham de forma coordenada. Médicos, nutricionistas, profissionais de saúde mental e outros especialistas compartilham informações para que o cuidado seja verdadeiramente integral.
 
-**Tecnologia a servico do paciente**
+**Tecnologia a serviço do paciente**
 Utilizamos ferramentas atualizadas para análise de dados, acompanhamento remoto e comunicação com o paciente. A tecnologia não substitui a relação médico-paciente, mas a potencializa.
 
 ## Se você quer envelhecer com saúde, comece agora
 
-A melhor hora para investir em longevidade saudavel e antes dos sintomas se tornarem doencas. Quanto mais cedo comecamos a monitorar e otimizar, maiores sao as chances de preservar funcionalidade e qualidade de vida por muitos anos.
+A melhor hora para investir em longevidade saudável é antes dos sintomas se tornarem doenças. Quanto mais cedo começamos a monitorar e otimizar, maiores são as chances de preservar funcionalidade e qualidade de vida por muitos anos.
 
-Se você esta em Porto Alegre e busca um cuidado médico que vai alem do básico, a ecooa pode ser o ponto de partida para uma nova relação com sua saúde. Agende sua avaliação e descubra o que seus biomarcadores revelam sobre o seu envelhecimento.
+Se você está em Porto Alegre e busca um cuidado médico que vai além do básico, a ecooa pode ser o ponto de partida para uma nova relação com sua saúde. Agende sua avaliação e descubra o que seus biomarcadores revelam sobre o seu envelhecimento.
 
 ## Perguntas frequentes
 
-**A partir de que idade devo me preocupar com longevidade saudavel?**
-Nao existe uma idade mínima para comecar. Idealmente, a partir dos 30 anos já e possível mapear biomarcadores e adotar estrategias preventivas. No entanto, pacientes de qualquer idade podem se beneficiar de uma avaliação completa, especialmente se já apresentam sintomas como fadiga, ganho de peso ou queda de disposicao.
+**A partir de que idade devo me preocupar com longevidade saudável?**
+Não existe uma idade mínima para começar. Idealmente, a partir dos 30 anos já é possível mapear biomarcadores e adotar estratégias preventivas. No entanto, pacientes de qualquer idade podem se beneficiar de uma avaliação completa, especialmente se já apresentam sintomas como fadiga, ganho de peso ou queda de disposição.
 
-**Longevidade saudavel e a mesma coisa que medicina anti-aging?**
-Embora os termos sejam usados como sinonimos, a longevidade saudavel tem uma abordagem mais ampla e baseada em evidências. Nao se trata de "parecer jovem", mas de preservar funcionalidade, prevenir doencas crônicas e otimizar a biologia individual ao longo do tempo. Na ecooa, trabalhamos com ciência, não com promessas esteticas.
+**Longevidade saudável é a mesma coisa que medicina anti-aging?**
+Embora os termos sejam usados como sinônimos, a longevidade saudável tem uma abordagem mais ampla e baseada em evidências. Não se trata de "parecer jovem", mas de preservar funcionalidade, prevenir doenças crônicas e otimizar a biologia individual ao longo do tempo. Na ecooa, trabalhamos com ciência, não com promessas estéticas.
 
-**Quais exames sao feitos em um check-up de longevidade?**
-O painel inclui avaliacoes hormonais completas, marcadores inflamatorios, perfil metabólico avancado, vitaminas e minerais, alem de análise de composição corporal. Dependendo do caso, podem ser incluidos testes genéticos e marcadores de estresse oxidativo. Tudo e definido de forma individualizada na consulta inicial.
+**Quais exames são feitos em um check-up de longevidade?**
+O painel inclui avaliações hormonais completas, marcadores inflamatórios, perfil metabólico avançado, vitaminas e minerais, além de análise de composição corporal. Dependendo do caso, podem ser incluídos testes genéticos e marcadores de estresse oxidativo. Tudo é definido de forma individualizada na consulta inicial.

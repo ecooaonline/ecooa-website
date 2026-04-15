@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaSection from '../../components/CtaSection.astro';
+import DisclaimerMedico from '../../components/DisclaimerMedico.astro';
 import { WA_BASE, WA_DEFAULT } from '../../data/constants';
 import { getCollection, render } from 'astro:content';
 import { professionals } from '../../data/professionals';
@@ -163,6 +164,8 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
     <div class="blog-content r d3">
       <Content />
     </div>
+
+    <DisclaimerMedico />
 
     <!-- Share buttons -->
     <div style="margin-top:36px;display:flex;align-items:center;gap:10px;flex-wrap:wrap" class="r">

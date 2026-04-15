@@ -10,33 +10,33 @@ image: "/clinic/esthetic.webp"
 
 ## Quando o cabelo continua caindo e você já tentou de tudo
 
-A frustração de ver o cabelo caindo sem resposta aos produtos que você comprou na farmacia e uma das queixas mais frequentes nos consultorios de tricologia. Shampoos antiqueda, vitaminas de prateleira, receitas caseiras, nada parece funcionar. E, na maior parte das vezes, o motivo e simples: o tratamento não foi direcionado para a causa real.
+A frustração de ver o cabelo caindo sem resposta aos produtos que você comprou na farmácia é uma das queixas mais frequentes nos consultórios de tricologia. Shampoos antiqueda, vitaminas de prateleira, receitas caseiras, nada parece funcionar. E, na maior parte das vezes, o motivo é simples: o tratamento não foi direcionado para a causa real.
 
-Tratar a queda de cabelo com eficácia exige diagnóstico preciso seguido de intervenção clínica adequada. Na ecooa, em Porto Alegre, a Dra. Larissa Wiebbelling conduz essa jornada de forma estruturada, utilizando terapias com respaldo cientifico e adaptadas ao perfil de cada paciente.
+Tratar a queda de cabelo com eficácia exige diagnóstico preciso seguido de intervenção clínica adequada. Na ecooa, em Porto Alegre, a Dra. Larissa Wiebbelling conduz essa jornada de forma estruturada, utilizando terapias com respaldo científico e adaptadas ao perfil de cada paciente.
 
-Este artigo apresenta as principais opções de tratamento para queda de cabelo disponiveis na prática clínica atual, quando cada uma e indicada e o que esperar de cada abordagem.
+Este artigo apresenta as principais opções de tratamento para queda de cabelo disponíveis na prática clínica atual, quando cada uma é indicada e o que esperar de cada abordagem.
 
 ## O que define um tratamento capilar eficaz
 
-Um tratamento capilar eficaz parte de um principio inegociavel: o diagnóstico correto. Sem ele, qualquer intervenção se torna uma tentativa sem direcao. Uma vez identificada a causa da queda, o plano terapêutico e montado com base no tipo de alopecia, no estagio em que se encontra, no perfil do paciente e nas suas expectativas.
+Um tratamento capilar eficaz parte de um princípio inegociável: o diagnóstico correto. Sem ele, qualquer intervenção se torna uma tentativa sem direção. Uma vez identificada a causa da queda, o plano terapêutico é montado com base no tipo de alopecia, no estágio em que se encontra, no perfil do paciente e nas suas expectativas.
 
-Os tratamentos podem ser farmacologicos, procedimentais ou nutricionais, e muitas vezes a melhor resposta vem da combinação de mais de uma estrategia.
+Os tratamentos podem ser farmacológicos, procedimentais ou nutricionais, e muitas vezes a melhor resposta vem da combinação de mais de uma estratégia.
 
-## Tratamentos farmacologicos
+## Tratamentos farmacológicos
 
 ### Minoxidil
 
-O minoxidil e um vasodilatador topico que prolonga a fase anagena (crescimento) do fio e estimula foliculos miniaturizados a produzirem cabelos mais espessos. Disponivel em concentracoes de 2% e 5%, pode ser usado por homens e mulheres, embora a indicação e a concentração variem conforme o caso.
+O minoxidil é um vasodilatador tópico que prolonga a fase anágena (crescimento) do fio e estimula folículos miniaturizados a produzirem cabelos mais espessos. Disponível em concentrações de 2% e 5%, pode ser usado por homens e mulheres, embora a indicação e a concentração variem conforme o caso.
 
-Seu uso deve ser continuo. A interrupcao tende a reverter os ganhos obtidos em poucos meses. A resposta inicial costuma aparecer entre o terceiro e o sexto mes, e o resultado pleno pode levar até um ano. Em alguns pacientes, ocorre uma queda temporaria nas primeiras semanas de uso (shedding), que e esperada e indica que novos fios estao entrando no ciclo de crescimento.
+Seu uso deve ser contínuo. A interrupção tende a reverter os ganhos obtidos em poucos meses. A resposta inicial costuma aparecer entre o terceiro e o sexto mês, e o resultado pleno pode levar até um ano. Em alguns pacientes, ocorre uma queda temporária nas primeiras semanas de uso (shedding), que é esperada e indica que novos fios estão entrando no ciclo de crescimento.
 
 ### Finasterida e dutasterida
 
-A finasterida bloqueia a enzima 5-alfa-redutase tipo 2, reduzindo a conversão de testosterona em DHT no foliculo capilar. E o tratamento oral mais estabelecido para alopecia androgenetica masculina.
+A finasterida bloqueia a enzima 5-alfa-redutase tipo 2, reduzindo a conversão de testosterona em DHT no folículo capilar. É o tratamento oral mais estabelecido para alopecia androgenética masculina.
 
 A dutasterida atua de forma mais ampla, inibindo tanto o tipo 1 quanto o tipo 2 da enzima, com potencial de efeito superior em alguns casos. Ambos os medicamentos exigem prescrição médica e acompanhamento regular, já que podem apresentar efeitos colaterais que devem ser discutidos abertamente com o paciente.
 
-Em mulheres, o uso dessas substancias e mais restrito e demanda avaliação hormonal criteriosa antes da indicação.
+Em mulheres, o uso dessas substâncias é mais restrito e demanda avaliação hormonal criteriosa antes da indicação.
 
 ### Terapias topicas combinadas
 

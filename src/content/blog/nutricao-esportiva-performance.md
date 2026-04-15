@@ -10,53 +10,53 @@ image: "/clinic/working.webp"
 
 ## Mais do que comer bem: comer certo para o seu objetivo
 
-Nutricao esportiva não e so para atletas profissionais. Se você treina, corre, faz musculacao, crossfit, joga futebol ou prática qualquer atividade física, a alimentação e o fator que separa resultados mediocres de resultados excepcionais.
+Nutrição esportiva não é só para atletas profissionais. Se você treina, corre, faz musculação, crossfit, joga futebol ou pratica qualquer atividade física, a alimentação é o fator que separa resultados medíocres de resultados excepcionais.
 
 ## O que a nutrição esportiva resolve
 
 ### Performance
 
-A composição e o timing das refeicoes impactam diretamente:
+A composição e o timing das refeições impactam diretamente:
 
-- **Energia durante o treino**: carboidratos estrategicos no momento certo evitam fadiga precoce
-- **Forca e potência**: proteínas adequadas suportam a demanda muscular
-- **Hidratacao**: a perda de apenas 2% de água corporal já reduz a performance
+- **Energia durante o treino**: carboidratos estratégicos no momento certo evitam fadiga precoce
+- **Força e potência**: proteínas adequadas suportam a demanda muscular
+- **Hidratação**: a perda de apenas 2% de água corporal já reduz a performance
 
-### Composicao corporal
+### Composição corporal
 
-Se você quer perder gordura e ganhar massa muscular ao mesmo tempo (recomposicao corporal), a nutrição e mais importante que o treino. Um plano alimentar personalizado define:
+Se você quer perder gordura e ganhar massa muscular ao mesmo tempo (recomposição corporal), a nutrição é mais importante que o treino. Um plano alimentar personalizado define:
 
 - Calorias e macronutrientes ajustados ao seu metabolismo
-- Periodizacao nutricional (dias de treino vs. descanso)
-- Estrategias de timing nutricional
+- Periodização nutricional (dias de treino vs. descanso)
+- Estratégias de timing nutricional
 
-### Recuperacao
+### Recuperação
 
-A recuperação entre treinos e tao importante quanto o treino em si. A nutrição adequada:
+A recuperação entre treinos é tão importante quanto o treino em si. A nutrição adequada:
 
 - Reduz inflamação muscular
 - Acelera a síntese proteica
 - Melhora a qualidade do sono
-- Previne lesoes por overtraining
+- Previne lesões por overtraining
 
 ## Como funciona o acompanhamento na ecooa
 
 Na ecooa, nossas nutricionistas esportivas trabalham com:
 
-1. **Avaliacao completa**: composição corporal, rotina de treino, objetivos e histórico alimentar
-2. **Plano personalizado**: não usamos dietas genericas, cada plano e construido para você
-3. **Ajustes periodicos**: conforme seus resultados e mudancas no treino
-4. **Integracao médica**: se necessario, integramos com acompanhamento médico para otimizar hormônios e biomarcadores
+1. **Avaliação completa**: composição corporal, rotina de treino, objetivos e histórico alimentar
+2. **Plano personalizado**: não usamos dietas genéricas, cada plano é construído para você
+3. **Ajustes periódicos**: conforme seus resultados e mudanças no treino
+4. **Integração médica**: se necessário, integramos com acompanhamento médico para otimizar hormônios e biomarcadores
 
-## Para quem e a nutrição esportiva
+## Para quem é a nutrição esportiva
 
-- Praticantes de musculacao que querem resultados visiveis
+- Praticantes de musculação que querem resultados visíveis
 - Atletas de crossfit que precisam de energia e recuperação
-- Corredores que buscam performance e prevenção de lesoes
-- Qualquer pessoa que treina e quer tirar o máximo do seu esforco
+- Corredores que buscam performance e prevenção de lesões
+- Qualquer pessoa que treina e quer tirar o máximo do seu esforço
 
 ## O ecossistema ecooa a seu favor
 
-Na ecooa, sua nutrição esportiva pode ser integrada com medicina de alta performance, acompanhamento hormonal e saúde mental. Porque performance de verdade e um conjunto.
+Na ecooa, sua nutrição esportiva pode ser integrada com medicina de alta performance, acompanhamento hormonal e saúde mental. Porque performance de verdade é um conjunto.
 
 Agende com uma de nossas nutricionistas esportivas e leve seu treino para o próximo nível.
