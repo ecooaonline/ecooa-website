@@ -165,7 +165,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     })} />
   )}
 
-  <!-- Google Tag Manager (interaction-only for max performance) -->
+  <!-- Google Tag Manager (interaction-only, consent-gated) -->
   <script>
   window.dataLayer=window.dataLayer||[];
   function loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=true;
@@ -173,17 +173,18 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   var j=document.createElement('script');j.async=true;
   j.src='https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
   document.head.appendChild(j);}
+  function setupGTMListeners(){
   document.addEventListener('scroll',loadGTM,{once:true,passive:true});
   document.addEventListener('click',loadGTM,{once:true});
   document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
   document.addEventListener('keydown',loadGTM,{once:true});
-  setTimeout(loadGTM,12000);
+  setTimeout(loadGTM,12000);}
+  if(localStorage.getItem('ecooa_cookie_consent')==='accepted'){setupGTMListeners();}
+  window.addEventListener('ecooa_consent_accepted',function(){setupGTMListeners();});
   </script>
 </head>
 <body data-wa={WA_DEFAULT}>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSR4GDMK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <!-- GTM noscript fallback removed: cannot be consent-gated without JS -->
 
   <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
 

@@ -3,7 +3,7 @@
    ══════════════════════════════════════════════ */
 
 :root {
-  /* Colors — Brand */
+  /* Colors, Brand */
   --color-brand: #C4BBB8;
   --color-brand-light: #DDD8D5;
   --color-brand-mid: #AEA5A2;
@@ -11,14 +11,14 @@
   --color-brand-text: #706662; /* AA ≥ 4.5:1 on warm, cream, and mist backgrounds */
   --color-brand-accent: #8D8381; /* AA ≥ 3:1 on warm and cream for large text */
 
-  /* Colors — Neutral */
+  /* Colors, Neutral */
   --color-white: #FFFFFF;
   --color-warm: #FAF8F6;
   --color-cream: #F3EEEA;
   --color-stone: #E5DDD8;
   --color-mist: #EDE8E4;
 
-  /* Colors — Ink */
+  /* Colors, Ink */
   --color-ink: #1C1917;
   --color-ink-mid: #3D3835;
   --color-ink-soft: #6B6360;

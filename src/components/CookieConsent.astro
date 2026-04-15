@@ -6,6 +6,7 @@
     <p style="margin:0;flex:1;min-width:260px">Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa <a href="/politica-de-privacidade" style="color:var(--color-brand-light);text-decoration:underline">política de privacidade</a>.</p>
     <div style="display:flex;gap:12px;align-items:center;flex-shrink:0">
       <a href="/politica-de-privacidade" style="color:rgba(255,255,255,.6);font-size:12px;font-weight:400;text-decoration:underline">saiba mais</a>
+      <button id="cookie-reject" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 28px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">rejeitar</button>
       <button id="cookie-accept" style="background:var(--color-brand);color:#fff;border:none;padding:10px 28px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">aceitar</button>
     </div>
   </div>
@@ -14,14 +15,23 @@
 <script>
   (function() {
     var key = 'ecooa_cookie_consent';
-    if (localStorage.getItem(key)) return;
+    var value = localStorage.getItem(key);
+    if (value === 'accepted' || value === 'rejected') return;
     var banner = document.getElementById('cookie-consent');
     if (!banner) return;
     banner.style.display = 'block';
-    var btn = document.getElementById('cookie-accept');
-    if (btn) {
-      btn.addEventListener('click', function() {
-        localStorage.setItem(key, '1');
+    var acceptBtn = document.getElementById('cookie-accept');
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', function() {
+        localStorage.setItem(key, 'accepted');
+        banner.style.display = 'none';
+        window.dispatchEvent(new CustomEvent('ecooa_consent_accepted'));
+      });
+    }
+    var rejectBtn = document.getElementById('cookie-reject');
+    if (rejectBtn) {
+      rejectBtn.addEventListener('click', function() {
+        localStorage.setItem(key, 'rejected');
         banner.style.display = 'none';
       });
     }
