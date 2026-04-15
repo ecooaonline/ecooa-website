@@ -38,70 +38,70 @@ A dutasterida atua de forma mais ampla, inibindo tanto o tipo 1 quanto o tipo 2 
 
 Em mulheres, o uso dessas substâncias é mais restrito e demanda avaliação hormonal criteriosa antes da indicação.
 
-### Terapias topicas combinadas
+### Terapias tópicas combinadas
 
-Alem do minoxidil isolado, formulacoes magistrais podem combinar ativos como latanoprosta, melatonina topica, cafeina e fatores de crescimento. A Dra. Larissa Wiebbelling ajusta essas formulacoes conforme a resposta clínica do paciente, otimizando resultados ao longo do acompanhamento.
+Além do minoxidil isolado, formulações magistrais podem combinar ativos como latanoprosta, melatonina tópica, cafeína e fatores de crescimento. A Dra. Larissa Wiebbelling ajusta essas formulações conforme a resposta clínica do paciente, otimizando resultados ao longo do acompanhamento.
 
 ## PRP capilar: plasma rico em plaquetas
 
-O PRP capilar e um procedimento que utiliza o próprio sangue do paciente. Apos a coleta, o sangue e centrifugado para concentrar as plaquetas, que sao ricas em fatores de crescimento. Esse concentrado e então aplicado no couro cabeludo por meio de microinjecoes.
+O PRP capilar é um procedimento que utiliza o próprio sangue do paciente. Após a coleta, o sangue é centrifugado para concentrar as plaquetas, que são ricas em fatores de crescimento. Esse concentrado é então aplicado no couro cabeludo por meio de microinjeções.
 
-Os fatores de crescimento liberados pelas plaquetas atuam estimulando a vascularizacao do foliculo, prolongando a fase anagena e promovendo um ambiente mais favoravel ao crescimento capilar.
+Os fatores de crescimento liberados pelas plaquetas atuam estimulando a vascularização do folículo, prolongando a fase anágena e promovendo um ambiente mais favorável ao crescimento capilar.
 
-O protocolo habitual envolve sessoes mensais nos primeiros tres a quatro meses, seguidas de sessoes de manutencao a cada tres ou seis meses. O PRP e especialmente util como terapia complementar ao tratamento farmacológico, potencializando a resposta clínica.
+O protocolo habitual envolve sessões mensais nos primeiros três a quatro meses, seguidas de sessões de manutenção a cada três ou seis meses. O PRP é especialmente útil como terapia complementar ao tratamento farmacológico, potencializando a resposta clínica.
 
-Na ecooa, o PRP capilar e realizado com protocolo padronizado e equipamento de centrifugacao que garante a concentração adequada de plaquetas para eficácia terapêutica.
+Na ecooa, o PRP capilar é realizado com protocolo padronizado e equipamento de centrifugação que garante a concentração adequada de plaquetas para eficácia terapêutica.
 
 ## Terapia com laser de baixa intensidade
 
-A fotobiomodulacao com laser de baixa intensidade (LLLT) estimula a atividade mitocondrial das células do foliculo capilar, promovendo maior produção de energia celular (ATP) e favorecendo o crescimento do fio.
+A fotobiomodulação com laser de baixa intensidade (LLLT) estimula a atividade mitocondrial das células do folículo capilar, promovendo maior produção de energia celular (ATP) e favorecendo o crescimento do fio.
 
-Essa terapia pode ser realizada em consultorio ou com dispositivos domesticos indicados pelo médico. E uma opção não invasiva, sem efeitos colaterais significativos, e que funciona melhor quando associada a outras terapias. Isoladamente, seu efeito tende a ser modesto, mas como parte de um protocolo combinado, contribui de forma relevante.
+Essa terapia pode ser realizada em consultório ou com dispositivos domésticos indicados pelo médico. É uma opção não invasiva, sem efeitos colaterais significativos, e que funciona melhor quando associada a outras terapias. Isoladamente, seu efeito tende a ser modesto, mas como parte de um protocolo combinado, contribui de forma relevante.
 
 ## Suporte nutricional e soroterapia capilar
 
-A saúde do fio depende diretamente do estado nutricional do organismo. Quando exames laboratoriais revelam deficiencias de ferritina, zinco, vitamina D, vitaminas do complexo B ou proteínas, a correção desses níveis e parte indispensavel do tratamento.
+A saúde do fio depende diretamente do estado nutricional do organismo. Quando exames laboratoriais revelam deficiências de ferritina, zinco, vitamina D, vitaminas do complexo B ou proteínas, a correção desses níveis é parte indispensável do tratamento.
 
-Em alguns casos, a suplementação oral pode não ser suficiente pela velocidade necessaria ou por questões de absorção. A soroterapia intravenosa permite a entrega direta de nutrientes na corrente sanguinea, acelerando a correção de deficiencias que impactam o ciclo capilar.
+Em alguns casos, a suplementação oral pode não ser suficiente pela velocidade necessária ou por questões de absorção. A soroterapia intravenosa permite a entrega direta de nutrientes na corrente sanguínea, acelerando a correção de deficiências que impactam o ciclo capilar.
 
 Na ecooa, a integração entre tricologia e nutrologia permite que o suporte nutricional seja parte do mesmo plano terapêutico, sem que o paciente precise circular entre diferentes clínicas em Porto Alegre.
 
 ## Microagulhamento do couro cabeludo
 
-O microagulhamento consiste na aplicação de microagulhas no couro cabeludo, criando microlesoes controladas que estimulam a produção de colágeno e fatores de crescimento locais. Alem do efeito direto sobre o foliculo, o microagulhamento aumenta a permeacao de ativos topicos como o minoxidil, potencializando sua ação.
+O microagulhamento consiste na aplicação de microagulhas no couro cabeludo, criando microlesões controladas que estimulam a produção de colágeno e fatores de crescimento locais. Além do efeito direto sobre o folículo, o microagulhamento aumenta a permeação de ativos tópicos como o minoxidil, potencializando sua ação.
 
-Estudos clínicos tem demonstrado que a associacao de microagulhamento com minoxidil apresenta resultados superiores ao uso de minoxidil isoladamente. As sessoes sao realizadas em consultorio com intervalos de duas a quatro semanas.
+Estudos clínicos têm demonstrado que a associação de microagulhamento com minoxidil apresenta resultados superiores ao uso de minoxidil isoladamente. As sessões são realizadas em consultório com intervalos de duas a quatro semanas.
 
 ## Quando o transplante capilar entra na conversa
 
-Nem toda queda de cabelo tem indicação de transplante. Essa opção e considerada quando a perda capilar já estabilizou, quando ha área doadora viavel e quando os tratamentos clínicos sozinhos não sao capazes de restaurar a cobertura desejada.
+Nem toda queda de cabelo tem indicação de transplante. Essa opção é considerada quando a perda capilar já estabilizou, quando há área doadora viável e quando os tratamentos clínicos sozinhos não são capazes de restaurar a cobertura desejada.
 
-O transplante não substitui o tratamento clínico, ele o complementa. Muitos pacientes que realizam transplante continuam utilizando terapias de manutencao para proteger os foliculos nativos e preservar o resultado ao longo do tempo.
+O transplante não substitui o tratamento clínico, ele o complementa. Muitos pacientes que realizam transplante continuam utilizando terapias de manutenção para proteger os folículos nativos e preservar o resultado ao longo do tempo.
 
-Na ecooa, em Moinhos de Vento, a indicação de transplante e feita somente apos avaliação completa e quando os criterios clínicos sao favoraveis.
+Na ecooa, em Moinhos de Vento, a indicação de transplante é feita somente após avaliação completa e quando os critérios clínicos são favoráveis.
 
 ## O diferencial de um tratamento integrado
 
-O que diferencia uma abordagem capilar com bons resultados de uma tentativa frustrada e a integração entre diagnóstico, tratamento e acompanhamento. Na ecooa, o ecossistema de saúde permite que a tricologia trabalhe lado a lado com a nutrologia, a medicina integrativa e, quando necessario, a cirurgia capilar.
+O que diferencia uma abordagem capilar com bons resultados de uma tentativa frustrada é a integração entre diagnóstico, tratamento e acompanhamento. Na ecooa, o ecossistema de saúde permite que a tricologia trabalhe lado a lado com a nutrologia, a medicina integrativa e, quando necessário, a cirurgia capilar.
 
-Isso significa que o paciente não recebe apenas uma prescrição isolada. Ele recebe um plano, com etapas definidas, retornos programados e ajustes conforme a evolucao clínica. Essa precisao evita o ciclo de tentativa e erro que tantos pacientes vivem antes de chegar a uma clínica especializada em Moinhos de Vento.
+Isso significa que o paciente não recebe apenas uma prescrição isolada. Ele recebe um plano, com etapas definidas, retornos programados e ajustes conforme a evolução clínica. Essa precisão evita o ciclo de tentativa e erro que tantos pacientes vivem antes de chegar a uma clínica especializada em Moinhos de Vento.
 
 ## Agende sua avaliação com a equipe de tricologia
 
-Se a queda de cabelo esta afetando sua rotina e você busca um tratamento com embasamento clínico, o primeiro passo e uma avaliação especializada. Na ecooa, em Porto Alegre, você encontra uma equipe preparada para investigar a causa e montar um plano terapêutico adequado ao seu perfil.
+Se a queda de cabelo está afetando sua rotina e você busca um tratamento com embasamento clínico, o primeiro passo é uma avaliação especializada. Na ecooa, em Porto Alegre, você encontra uma equipe preparada para investigar a causa e montar um plano terapêutico adequado ao seu perfil.
 
-Agende sua consulta e inicie um caminho com direcao.
+Agende sua consulta e inicie um caminho com direção.
 
 ## Perguntas frequentes
 
 ## Quanto tempo leva para um tratamento capilar dar resultado?
 
-A maioria dos tratamentos clínicos para queda de cabelo comeca a mostrar sinais de resposta entre o terceiro e o sexto mes de uso continuo. O resultado pleno pode levar de oito a doze meses, dependendo do tipo de alopecia e da combinação de terapias utilizadas. O acompanhamento regular com o especialista permite ajustes ao longo do processo.
+A maioria dos tratamentos clínicos para queda de cabelo começa a mostrar sinais de resposta entre o terceiro e o sexto mês de uso contínuo. O resultado pleno pode levar de oito a doze meses, dependendo do tipo de alopecia e da combinação de terapias utilizadas. O acompanhamento regular com o especialista permite ajustes ao longo do processo.
 
 ## O PRP capilar funciona para todos os tipos de queda?
 
-O PRP capilar apresenta melhor resposta em casos de alopecia androgenetica leve a moderada e em efluvios telogenos. Ele não e indicado como tratamento isolado para todos os tipos de queda, mas funciona muito bem como terapia complementar. A indicação deve ser feita apos avaliação clínica individualizada.
+O PRP capilar apresenta melhor resposta em casos de alopecia androgenética leve a moderada e em eflúvios telógenos. Ele não é indicado como tratamento isolado para todos os tipos de queda, mas funciona muito bem como terapia complementar. A indicação deve ser feita após avaliação clínica individualizada.
 
 ## Posso usar minoxidil por conta própria?
 
-Embora o minoxidil seja vendido sem receita em algumas apresentacoes, o uso sem orientação médica pode levar a escolha da concentração inadequada, efeitos colaterais evitaveis e, principalmente, ao tratamento de uma condição que exigia outra abordagem. A avaliação com um especialista em tricologia garante que o minoxidil, se indicado, sera parte de um plano completo e não uma tentativa isolada.
+Embora o minoxidil seja vendido sem receita em algumas apresentações, o uso sem orientação médica pode levar à escolha da concentração inadequada, efeitos colaterais evitáveis e, principalmente, ao tratamento de uma condição que exigia outra abordagem. A avaliação com um especialista em tricologia garante que o minoxidil, se indicado, será parte de um plano completo e não uma tentativa isolada.

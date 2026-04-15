@@ -8,9 +8,9 @@ tags: ["saúde mental", "psicologia", "ansiedade", "estresse", "terapia", "porto
 image: "/clinic/mind.webp"
 ---
 
-## Mente e corpo não sao coisas separadas
+## Mente e corpo não são coisas separadas
 
-Quando falamos em saúde, muitas pessoas pensam apenas no corpo. Mas a ciência já provou: mente e corpo estao profundamente conectados. Estresse crônico eleva cortisol, que desregula hormônios, que afeta sono, que impacta metabolismo, que gera ganho de peso, que gera mais estresse. Um ciclo que so se quebra quando cuidamos da saúde como um todo.
+Quando falamos em saúde, muitas pessoas pensam apenas no corpo. Mas a ciência já provou: mente e corpo estão profundamente conectados. Estresse crônico eleva cortisol, que desregula hormônios, que afeta sono, que impacta metabolismo, que gera ganho de peso, que gera mais estresse. Um ciclo que só se quebra quando cuidamos da saúde como um todo.
 
 ## Sinais de que você precisa de ajuda profissional
 
@@ -18,48 +18,48 @@ Quando falamos em saúde, muitas pessoas pensam apenas no corpo. Mas a ciência 
 - Dificuldade para dormir ou sono não reparador
 - Irritabilidade constante
 - Perda de interesse em coisas que antes te davam prazer
-- Sensacao de esgotamento (burnout)
+- Sensação de esgotamento (burnout)
 - Dificuldade de concentração
-- Mudancas de apetite (comer demais ou de menos)
+- Mudanças de apetite (comer demais ou de menos)
 - Isolamento social
 
 Se você se identifica com 3 ou mais desses sinais, considere buscar acompanhamento profissional.
 
-## Terapia não e para "loucos"
+## Terapia não é para "loucos"
 
-Esse estigma precisa acabar. Terapia e para quem quer se conhecer melhor, lidar de forma mais saudavel com desafios e construir ferramentas emocionais para a vida.
+Esse estigma precisa acabar. Terapia é para quem quer se conhecer melhor, lidar de forma mais saudável com desafios e construir ferramentas emocionais para a vida.
 
 Na ecooa, oferecemos:
 
-### Psicologia Clinica (TCC)
+### Psicologia Clínica (TCC)
 
-A Terapia Cognitivo-Comportamental e baseada em evidências e trabalha com pensamentos, emoções e comportamentos. E especialmente eficaz para:
+A Terapia Cognitivo-Comportamental é baseada em evidências e trabalha com pensamentos, emoções e comportamentos. É especialmente eficaz para:
 
 - Ansiedade
-- Depressao
+- Depressão
 - Fobias
 - Transtornos alimentares
-- Estresse pós-traumatico
+- Estresse pós-traumático
 
 ### Psicologia Esportiva
 
 Para atletas e praticantes de atividade física que buscam:
 
 - Foco e motivação
-- Controle emocional em competicoes
-- Resiliencia mental
-- Equilibrio entre treino e vida pessoal
+- Controle emocional em competições
+- Resiliência mental
+- Equilíbrio entre treino e vida pessoal
 
 ## O ambiente importa
 
-O local onde você faz terapia influência diretamente sua experiência. Na ecooa, criamos um espaco que acolhe: salas com iluminacao pensada, jardim vertical, privacidade total e um ambiente que comunica cuidado antes mesmo da primeira palavra.
+O local onde você faz terapia influencia diretamente sua experiência. Na ecooa, criamos um espaço que acolhe: salas com iluminação pensada, jardim vertical, privacidade total e um ambiente que comunica cuidado antes mesmo da primeira palavra.
 
-## Saude mental integrada
+## Saúde mental integrada
 
-O diferencial da ecooa e a integração. Se sua ansiedade esta afetando seu sono e seu peso, podemos integrar seu acompanhamento psicológico com medicina e nutrição. Porque não faz sentido tratar sintomas isolados quando a causa e mais profunda.
+O diferencial da ecooa é a integração. Se sua ansiedade está afetando seu sono e seu peso, podemos integrar seu acompanhamento psicológico com medicina e nutrição. Porque não faz sentido tratar sintomas isolados quando a causa é mais profunda.
 
 ## O primeiro passo
 
-Buscar ajuda e um ato de coragem, não de fraqueza. Se você esta em Porto Alegre e sente que precisa de suporte, nossa equipe de saúde mental esta pronta para ouvir você.
+Buscar ajuda é um ato de coragem, não de fraqueza. Se você está em Porto Alegre e sente que precisa de suporte, nossa equipe de saúde mental está pronta para ouvir você.
 
-Agende sua primeira sessao e de o primeiro passo.
+Agende sua primeira sessão e dê o primeiro passo.

@@ -4,7 +4,7 @@ description: "Descubra como otimizar sua performance esportiva com acompanhament
 date: "2026-04-01"
 author: "Maria Luisa Beltran"
 category: "nutricao"
-tags: ["performance esportiva", "otimizacao", "rendimento esportivo", "periodizacao nutricional", "recuperação muscular", "porto alegre"]
+tags: ["performance esportiva", "otimização", "rendimento esportivo", "periodização nutricional", "recuperação muscular", "porto alegre"]
 image: "/clinic/med.webp"
 ---
 

@@ -98,8 +98,8 @@ Não. Na verdade, muitos pacientes procuram ajuda justamente porque dietas repet
 
 ## A terapia substitui o acompanhamento nutricional?
 
-Nao. Psicologia e nutrição sao complementares, não excludentes. O trabalho psicológico atua nos padrões emocionais e comportamentais que dificultam a adesao a mudancas alimentares. O acompanhamento nutricional define o que e como comer. Na ecooa, essas duas frentes funcionam de forma integrada.
+Não. Psicologia e nutrição são complementares, não excludentes. O trabalho psicológico atua nos padrões emocionais e comportamentais que dificultam a adesão a mudanças alimentares. O acompanhamento nutricional define o que e como comer. Na ecooa, essas duas frentes funcionam de forma integrada.
 
-## Quantas sessoes sao necessarias para ver resultado?
+## Quantas sessões são necessárias para ver resultado?
 
-Cada caso e único, e não ha um número fixo. Pacientes com padrões de comer emocional costumam perceber mudancas na consciência alimentar nas primeiras semanas. Mudancas mais profundas em compulsao alimentar ou distorção de imagem corporal demandam acompanhamento mais longo. O plano terapêutico e ajustado conforme a evolucao de cada paciente.
+Cada caso é único, e não há um número fixo. Pacientes com padrões de comer emocional costumam perceber mudanças na consciência alimentar nas primeiras semanas. Mudanças mais profundas em compulsão alimentar ou distorção de imagem corporal demandam acompanhamento mais longo. O plano terapêutico é ajustado conforme a evolução de cada paciente.

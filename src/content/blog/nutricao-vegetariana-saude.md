@@ -4,7 +4,7 @@ description: "Saiba como manter uma nutrição vegetariana saudável, evitar def
 date: "2026-04-01"
 author: "Jessica Stein"
 category: "nutricao"
-tags: ["nutrição vegetariana", "dieta plant-based", "proteína vegetal", "deficiencia B12", "vegetarianismo nutrientes", "porto alegre"]
+tags: ["nutrição vegetariana", "dieta plant-based", "proteína vegetal", "deficiência B12", "vegetarianismo nutrientes", "porto alegre"]
 image: "/clinic/med.webp"
 ---
 

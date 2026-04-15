@@ -4,7 +4,7 @@ description: "Entenda o que é soroterapia, seus benefícios reais, indicações
 date: "2026-04-01"
 author: "Danusa"
 category: "medicina"
-tags: ["soroterapia", "soro vitaminas", "infusao intravenosa", "soroterapia beneficios", "hidratacao intravenosa"]
+tags: ["soroterapia", "soro vitaminas", "infusão intravenosa", "soroterapia benefícios", "hidratação intravenosa"]
 image: "/clinic/med.webp"
 ---
 
@@ -120,4 +120,4 @@ Não. A soroterapia tem contraindicações, como insuficiência renal, insufici�
 
 ## Soroterapia substitui a suplementação oral?
 
-Nao substitui. A soroterapia e uma ferramenta complementar, especialmente util quando ha necessidade de correção rapida, quando a absorção oral esta comprometida ou quando os níveis de determinado nutriente precisam atingir concentracoes que a via oral não alcanca. A suplementação oral e a alimentação equilibrada continuam sendo a base da manutencao nutricional a longo prazo.
+Não substitui. A soroterapia é uma ferramenta complementar, especialmente útil quando há necessidade de correção rápida, quando a absorção oral está comprometida ou quando os níveis de determinado nutriente precisam atingir concentrações que a via oral não alcança. A suplementação oral e a alimentação equilibrada continuam sendo a base da manutenção nutricional a longo prazo.

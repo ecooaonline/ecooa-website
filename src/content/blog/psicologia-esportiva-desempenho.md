@@ -99,12 +99,12 @@ Agende uma sessão com a equipe da ecooa e comece a treinar o que realmente defi
 
 ## Preciso ser atleta profissional para buscar psicologia esportiva?
 
-Nao. A psicologia esportiva atende qualquer pessoa que pratique atividade física e queira melhorar a relação entre mente e desempenho. Corredores amadores, praticantes de musculacao, ciclistas de fim de semana, todos podem se beneficiar do trabalho mental, independente do nível competitivo.
+Não. A psicologia esportiva atende qualquer pessoa que pratique atividade física e queira melhorar a relação entre mente e desempenho. Corredores amadores, praticantes de musculação, ciclistas de fim de semana, todos podem se beneficiar do trabalho mental, independente do nível competitivo.
 
 ## Em quanto tempo vou perceber resultados?
 
-Os primeiros ganhos em consciência mental costumam aparecer nas primeiras sessoes. Mudancas consistentes em desempenho, como melhor controle emocional em competicoes ou superacao de bloqueios, geralmente se consolidam ao longo de semanas de prática das técnicas aprendidas. O processo e progressivo e depende da dedicacao do atleta em aplicar as ferramentas no dia a dia.
+Os primeiros ganhos em consciência mental costumam aparecer nas primeiras sessões. Mudanças consistentes em desempenho, como melhor controle emocional em competições ou superação de bloqueios, geralmente se consolidam ao longo de semanas de prática das técnicas aprendidas. O processo é progressivo e depende da dedicação do atleta em aplicar as ferramentas no dia a dia.
 
-## A psicologia esportiva pode ajudar na recuperação de lesoes?
+## A psicologia esportiva pode ajudar na recuperação de lesões?
 
-Sim. O retorno ao esporte apos uma lesao envolve não apenas a reabilitacao física, mas a superacao do medo de se lesionar novamente. A psicologia esportiva trabalha a confianca no corpo, a gestão da ansiedade durante o retorno gradual e a readaptacao mental a intensidade do treino e da competicao.
+Sim. O retorno ao esporte após uma lesão envolve não apenas a reabilitação física, mas a superação do medo de se lesionar novamente. A psicologia esportiva trabalha a confiança no corpo, a gestão da ansiedade durante o retorno gradual e a readaptação mental à intensidade do treino e da competição.
