@@ -181,7 +181,13 @@ const WA = WA_BASE;
     pmName.textContent = name;
     pmRole.textContent = role;
     pmDesc.textContent = desc;
-    pmTags.innerHTML = tags.map(t => `<span class="pro-modal-tag">${t}</span>`).join('');
+    pmTags.textContent = '';
+    tags.forEach(t => {
+      const span = document.createElement('span');
+      span.className = 'pro-modal-tag';
+      span.textContent = t;
+      pmTags.appendChild(span);
+    });
     pmWa.href = wa;
     pmWa.setAttribute('data-professional-name', name);
     if (igUrl) {
