@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WavePattern from '../../components/WavePattern.astro';
+import Marquee from '../../components/Marquee.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import { professionals } from '../../data/professionals';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return professionals.map(p => ({
+    params: { slug: p.slug },
+    props: { professional: p },
+  }));
+}
+
+const { professional } = Astro.props;
+const p = professional;
+
+const unitLabels: Record<string, string> = {
+  med: 'ecooa.med',
+  esthetic: 'ecooa.esthetic',
+  working: 'ecooa.working',
+  mind: 'ecooa.mind',
+};
+
+const unitPages: Record<string, string> = {
+  med: '/ecooa-med',
+  esthetic: '/ecooa-esthetic',
+  working: '/ecooa-working',
+  mind: '/ecooa-mind',
+};
+
+const waText = encodeURIComponent(`Olá, gostaria de agendar uma avaliação com ${p.name}`);
+const WA = `https://wa.me/5551991460909?text=${waText}`;
+
+// Blog articles by this professional
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const authorVariants = [p.name, `Dr. ${p.name}`, `Dra. ${p.name}`];
+const articles = allPosts
+  .filter(post => authorVariants.some(v => post.data.author.includes(v) || post.data.author.includes(p.name.split(' ')[0])))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 6);
+
+const firstName = p.name.split(' ')[0];
+---
+
+<BaseLayout
+  title={`${p.name} | ecooa`}
+  description={`${p.description} Agende sua consulta em Moinhos de Vento, Porto Alegre.`}
+  currentPage="profissionais"
+  ogImage={p.photo}
+  breadcrumbs={[{ name: "Profissionais", url: "/profissionais" }, { name: p.name, url: `/profissionais/${p.slug}` }]}
+>
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": p.name,
+  "jobTitle": p.role.split(' · ')[0],
+  "description": p.description,
+  "image": `https://www.somosecooa.com.br${p.photo}`,
+  "url": `https://www.somosecooa.com.br/profissionais/${p.slug}`,
+  "worksFor": {
+    "@type": "MedicalBusiness",
+    "name": "ecooa",
+    "url": "https://www.somosecooa.com.br"
+  },
+  ...(p.ig ? { "sameAs": [`https://instagram.com/${p.ig.replace('@', '')}`] } : {}),
+})} />
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-ink)">
+  <svg class="wsv" style="opacity:.05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <a href="/profissionais" style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:20px;display:inline-block" class="r">← profissionais</a>
+    <div class="lbl lbl-lt r" style="margin-bottom:12px">{unitLabels[p.unit]}</div>
+    <h1 class="h1 h1-w r d1" style="margin-top:10px">{p.name}</h1>
+    {p.isFounder && (
+      <span style="display:inline-block;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-deep);border:1px solid var(--color-brand-deep);padding:4px 12px;margin-top:12px" class="r d1">fundador(a)</span>
+    )}
+    <p class="body body-lt r d2" style="margin-top:16px;max-width:480px">{p.role}</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Sobre -->
+<section style="background:var(--color-warm)" aria-label={`Sobre ${p.name}`}>
+  <div class="w">
+    <div class="g2 g2c">
+      <div>
+        <div class="lbl r" style="margin-bottom:16px">sobre</div>
+        <h2 class="h2 r d1" style="margin-bottom:18px">Conheça<br><em>{firstName}.</em></h2>
+        <p class="body r d2" style="margin-bottom:24px">{p.description}</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px" class="r d3">
+          <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" data-intent={`profissional-${p.slug}`}>agendar com {firstName}</a>
+          {p.ig && (
+            <a href={`https://instagram.com/${p.ig.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="ghost">
+              {p.ig}
+            </a>
+          )}
+        </div>
+        <a href={unitPages[p.unit]} style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none" class="r d3">ver todos de {unitLabels[p.unit]} →</a>
+      </div>
+      <div class="r d2">
+        <div style="aspect-ratio:3/4;overflow:hidden">
+          <img src={p.photo} alt={p.name} loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" width="480" height="640" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Especialidades -->
+<section style="background:var(--color-cream)" aria-label="Especialidades">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">especialidades</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px" class="r d1">
+      {p.tags.map(tag => (
+        <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">{tag}</span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Artigos -->
+{articles.length > 0 && (
+  <section style="background:var(--color-warm)" aria-label="Artigos">
+    <div class="w">
+      <div class="lbl r" style="margin-bottom:16px">artigos por {firstName}</div>
+      <h2 class="h2 r d1" style="margin-bottom:32px;font-size:clamp(26px,3vw,42px)">Conteúdo que<br><em>transforma.</em></h2>
+      <div style="display:grid;gap:16px">
+        {articles.map(article => (
+          <a href={`/blog/${article.id}`} style="display:block;padding:24px;background:var(--color-cream);text-decoration:none;color:inherit;border:1px solid var(--color-stone);transition:border-color .2s" class="r">
+            <div style="display:flex;gap:8px;margin-bottom:8px">
+              <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">{article.data.category}</span>
+              <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{new Date(article.data.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
+            </div>
+            <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--color-ink);line-height:1.3;margin-bottom:6px">{article.data.title}</p>
+            <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7">{article.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<CtaSection heading={`Agende com<br><em>${firstName}.</em>`} subtext={`Converse diretamente com ${p.name} e receba orientação personalizada para o seu caso.`} />
+
+</BaseLayout>

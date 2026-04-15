@@ -2,9 +2,27 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import QuizSection from '../components/QuizSection.astro';
 import CtaSection from '../components/CtaSection.astro';
 
 const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20com%20a%20equipe%20ecooa';
+
+const workingFaqs = [
+  { q: "Preciso de pedido médico para consultar com nutricionista?", a: "Não. Você pode agendar diretamente. Em casos que envolvam aspectos médicos, nossa equipe faz o encaminhamento interno." },
+  { q: "Quantas consultas preciso para ter resultado?", a: "Depende do objetivo. Em geral, o acompanhamento inicial envolve retornos mensais. Resultados começam a aparecer nas primeiras semanas." },
+  { q: "A nutricionista da ecooa atende veganos?", a: "Sim. Temos nutricionistas especializadas em nutrição vegana e vegetariana, com foco em segurança nutricional." },
+  { q: "O que é bioimpedância?", a: "É um exame que analisa a composição corporal: percentual de gordura, massa muscular, hidratação e metabolismo basal. Rápido e indolor." },
+];
+
+const workingFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": workingFaqs.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
 ---
 
 <BaseLayout
@@ -27,6 +45,15 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
 </div>
 
 <Marquee />
+
+<script type="application/ld+json" set:html={JSON.stringify(workingFaqSchema)} />
+
+<QuizSection options={[
+  { title: "emagrecer", subtitle: "saudável", waText: "Olá, gostaria de agendar consulta de nutrição para emagrecimento" },
+  { title: "nutrição", subtitle: "esportiva", waText: "Olá, gostaria de avaliação de nutrição esportiva" },
+  { title: "relação com", subtitle: "a comida", waText: "Olá, gostaria de consulta de nutrição comportamental" },
+  { title: "orientação", subtitle: "nutricional", waText: "Olá, gostaria de uma orientação nutricional para entender o melhor caminho" },
+]} />
 
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
@@ -71,7 +98,12 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
         <div><p class="wgl" style="color:var(--color-brand-deep)">Acesso</p><p class="wgv" style="color:rgba(255,255,255,.65)">Por entrevista com nossa diretora de ensino</p></div>
         <div><p class="wgl" style="color:var(--color-brand-deep)">Networking</p><p class="wgv" style="color:rgba(255,255,255,.65)">Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa</p></div>
       </div>
-      <a href={WA} target="_blank" rel="noopener noreferrer" class="bow r d4" style="margin-top:32px;display:inline-block">entrar em contato</a>
+      <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form r d4" style="margin-top:32px">
+        <input type="text" name="nome" placeholder="Nome" required class="b2b-input" />
+        <input type="text" name="area" placeholder="Área de atuação" required class="b2b-input" />
+        <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input" />
+        <button type="submit" class="b2b-submit">enviar interesse</button>
+      </form>
     </div>
     <div class="r d2">
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:40px 34px">
@@ -92,6 +124,22 @@ const WA = 'https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agend
     <div style="aspect-ratio:4/3;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"  width="1000" height="1233" /></div>
     <div style="aspect-ratio:4/3;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"  width="1200" height="799" /></div>
     <div style="aspect-ratio:4/3;overflow:hidden" class="r d2"><img src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"  width="1000" height="666" /></div>
+  </div>
+</section>
+
+<!-- Perguntas frequentes -->
+<section style="background:var(--color-warm)" aria-label="Perguntas frequentes">
+  <div class="w">
+    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
+    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre<br><em>nutrição.</em></h2>
+    <div class="faq-section">
+      {workingFaqs.map((faq) => (
+        <div class="faq-item">
+          <p class="faq-q">{faq.q}</p>
+          <p class="faq-a">{faq.a}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 
