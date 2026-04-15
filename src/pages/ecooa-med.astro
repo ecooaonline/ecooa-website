@@ -93,9 +93,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
         <div class="lbl r" style="margin-top:24px;margin-bottom:10px">para profissionais de saúde</div>
         <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px">Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.</p>
         <form action="https://formspree.io/f/placeholder" method="POST" class="b2b-form" style="margin-top:0">
-          <input type="text" name="nome" placeholder="Nome completo" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Nome completo" />
-          <input type="text" name="area" placeholder="Especialidade médica" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Especialidade médica" />
-          <input type="tel" name="whatsapp" placeholder="WhatsApp para contato" required class="b2b-input" style="border-color:var(--color-stone);color:var(--color-ink)" aria-label="Número de WhatsApp" />
+          <input type="text" name="nome" placeholder="Nome completo" required class="b2b-input b2b-light" aria-label="Nome completo" />
+          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input b2b-light" aria-label="Número de WhatsApp" />
+          <input type="email" name="email" placeholder="E-mail" required class="b2b-input b2b-light" aria-label="E-mail profissional" />
           <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
         </form>
       </div>

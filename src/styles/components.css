@@ -637,6 +637,9 @@
 }
 .b2b-input::placeholder { color: rgba(255,255,255,.35); }
 .b2b-input:focus { outline: none; border-color: rgba(255,255,255,.5); }
+.b2b-input.b2b-light { background: var(--color-white); border-color: var(--color-stone); color: var(--color-ink); }
+.b2b-input.b2b-light::placeholder { color: var(--color-ink-soft); }
+.b2b-input.b2b-light:focus { border-color: var(--color-brand-mid); }
 .b2b-submit {
   display: inline-block; font-size: 11px; font-weight: 500;
   letter-spacing: .1em; color: var(--color-ink);
