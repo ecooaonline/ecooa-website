@@ -174,13 +174,14 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   j.src='https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
   document.head.appendChild(j);}
   function setupGTMListeners(){
+  if(window._gtmListenersAttached)return;window._gtmListenersAttached=true;
   document.addEventListener('scroll',loadGTM,{once:true,passive:true});
   document.addEventListener('click',loadGTM,{once:true});
   document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
   document.addEventListener('keydown',loadGTM,{once:true});
   setTimeout(loadGTM,12000);}
   if(localStorage.getItem('ecooa_cookie_consent')==='accepted'){setupGTMListeners();}
-  window.addEventListener('ecooa_consent_accepted',function(){setupGTMListeners();});
+  window.addEventListener('ecooa_consent_accepted',function(){setupGTMListeners();},{once:true});
   </script>
 </head>
 <body data-wa={WA_DEFAULT}>
@@ -267,13 +268,60 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
         if (isConversionPage) return;
         shown = true;
         sessionStorage.setItem(key, '1');
+
+        const previousFocus = document.activeElement as HTMLElement | null;
+
         const d = document.createElement('div');
         d.id = 'exit-popup';
         d.setAttribute('role', 'dialog');
         d.setAttribute('aria-modal', 'true');
         d.setAttribute('aria-label', 'Agende sua avaliação');
         d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(28,25,23,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center';
-        d.innerHTML = '<div style="background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative"><button id="exit-popup-close" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer" aria-label="Fechar">&#10005;</button><p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px">antes de ir</p><p style="font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px">Que tal agendar<br>sua <em>avaliação?</em></p><p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px">Converse com nossa equipe e descubra o melhor caminho para seus objetivos.</p><div style="display:flex;flex-direction:column;gap:10px;align-items:center"><a href="' + document.body.dataset.wa + '" target="_blank" rel="noopener noreferrer" class="bd" style="width:100%;text-align:center">falar pelo whatsapp</a><a href="/agendamento" class="ghost" style="width:100%;text-align:center">agendar avaliação</a></div></div>';
+
+        const inner = document.createElement('div');
+        inner.style.cssText = 'background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.id = 'exit-popup-close';
+        closeBtn.style.cssText = 'position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer';
+        closeBtn.setAttribute('aria-label', 'Fechar');
+        closeBtn.textContent = '\u2715';
+
+        const label = document.createElement('p');
+        label.style.cssText = 'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px';
+        label.textContent = 'antes de ir';
+
+        const title = document.createElement('p');
+        title.style.cssText = 'font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px';
+        const em = document.createElement('em');
+        em.textContent = 'avaliação?';
+        title.append('Que tal agendar', document.createElement('br'), 'sua ', em);
+
+        const subtitle = document.createElement('p');
+        subtitle.style.cssText = 'font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px';
+        subtitle.textContent = 'Converse com nossa equipe e descubra o melhor caminho para seus objetivos.';
+
+        const actions = document.createElement('div');
+        actions.style.cssText = 'display:flex;flex-direction:column;gap:10px;align-items:center';
+
+        const waLink = document.createElement('a');
+        const waHref = document.body.dataset.wa || '';
+        waLink.href = /^https?:\/\//i.test(waHref) ? waHref : '#';
+        waLink.target = '_blank';
+        waLink.rel = 'noopener noreferrer';
+        waLink.className = 'bd';
+        waLink.style.cssText = 'width:100%;text-align:center';
+        waLink.textContent = 'falar pelo whatsapp';
+
+        const scheduleLink = document.createElement('a');
+        scheduleLink.href = '/agendamento';
+        scheduleLink.className = 'ghost';
+        scheduleLink.style.cssText = 'width:100%;text-align:center';
+        scheduleLink.textContent = 'agendar avaliação';
+
+        actions.append(waLink, scheduleLink);
+        inner.append(closeBtn, label, title, subtitle, actions);
+        d.append(inner);
         document.body.appendChild(d);
         window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
 
@@ -292,8 +340,8 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
           }
         });
 
-        const close = () => { d.remove(); };
-        d.querySelector('#exit-popup-close')!.addEventListener('click', close);
+        const close = () => { d.remove(); previousFocus?.focus?.(); };
+        closeBtn.addEventListener('click', close);
         d.addEventListener('click', (e) => { if (e.target === d) close(); });
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
       }

@@ -54,7 +54,8 @@ const buttonStyles: Record<string, string> = {
     action={formAction}
     method="POST"
     style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center"
-    class="ecooa-newsletter-form"
+    class="ecooa-form"
+    data-success-text="Inscrito com sucesso."
   >
     <input type="hidden" name="_formType" value="newsletter" />
     <input type="hidden" name="_source" value={`newsletter-${variant}`} />
@@ -68,25 +69,9 @@ const buttonStyles: Record<string, string> = {
     />
     <button type="submit" style={buttonStyles[variant]}>inscrever-se</button>
   </form>
-  <p class="ecooa-newsletter-ok" style={`display:none;font-size:13px;font-weight:400;margin-top:10px;${variant === 'footer' || variant === 'banner' ? 'color:var(--color-brand-deep)' : 'color:var(--color-brand-text)'}`}>Inscrito com sucesso.</p>
+  <p class="ecooa-form-ok" style={`display:none;font-size:13px;font-weight:400;margin-top:10px;${variant === 'footer' || variant === 'banner' ? 'color:var(--color-brand-deep)' : 'color:var(--color-brand-text)'}`}>Inscrito com sucesso.</p>
 </div>
 <script>
-  document.querySelectorAll('.ecooa-newsletter-form').forEach(form => {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const f = e.target as HTMLFormElement;
-      const btn = f.querySelector('button[type="submit"]') as HTMLButtonElement;
-      btn.textContent = 'enviando...';
-      btn.disabled = true;
-      try {
-        await fetch(f.action, { method: 'POST', body: new FormData(f) });
-        f.style.display = 'none';
-        const ok = f.parentElement?.querySelector('.ecooa-newsletter-ok') as HTMLElement;
-        if (ok) ok.style.display = 'block';
-      } catch {
-        btn.textContent = 'erro. tente novamente';
-        btn.disabled = false;
-      }
-    });
-  });
+  import { initFormSubmit } from '../scripts/form-submit';
+  initFormSubmit();
 </script>

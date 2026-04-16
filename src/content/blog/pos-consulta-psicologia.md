@@ -5,7 +5,7 @@ date: "2026-04-15"
 author: "Manuela Vanti"
 category: "saude-mental"
 tags: ["terapia", "psicologia", "saúde mental", "processo terapêutico", "autoconhecimento"]
-image: "/clinic/esthetic.webp"
+image: "/clinic/mind.webp"
 lastModified: "2026-04-15"
 draft: false
 ---

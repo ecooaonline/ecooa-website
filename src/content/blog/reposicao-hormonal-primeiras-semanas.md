@@ -5,7 +5,7 @@ date: "2026-04-15"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"
 tags: ["reposição hormonal", "hormônios", "tratamento hormonal", "acompanhamento médico"]
-image: "/clinic/esthetic.webp"
+image: "/clinic/med.webp"
 lastModified: "2026-04-15"
 draft: false
 ---

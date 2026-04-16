@@ -635,7 +635,7 @@
   font-size: 13px; font-weight: 300; font-family: var(--font-primary);
   transition: border-color var(--transition-base);
 }
-.b2b-input::placeholder { color: rgba(255,255,255,.35); }
+.b2b-input::placeholder { color: rgba(255,255,255,.6); }
 .b2b-input:focus { outline: none; border-color: rgba(255,255,255,.5); }
 .b2b-input.b2b-light { background: var(--color-white); border-color: var(--color-stone); color: var(--color-ink); }
 .b2b-input.b2b-light::placeholder { color: var(--color-ink-soft); }
