@@ -107,8 +107,7 @@ function setupTracking() {
   // Track scroll depth
   trackScrollDepth();
 
-  // Track form submissions
-  trackFormSubmissions();
+  // form_submit tracking moved to form-submit.ts (fires form_submit_success/error)
 
   // Track page engagement time
   trackEngagement();
@@ -166,17 +165,6 @@ function trackScrollDepth() {
       ticking = false;
     });
   }, { passive: true });
-}
-
-function trackFormSubmissions() {
-  document.addEventListener('submit', (e) => {
-    const form = e.target as HTMLFormElement;
-    window.gtag?.('event', 'form_submit', {
-      event_category: 'conversion',
-      event_label: form.id || form.action || 'unknown',
-      page_location: document.location.pathname,
-    });
-  });
 }
 
 function trackEngagement() {

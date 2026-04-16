@@ -1,6 +1,6 @@
 ---
 title: "Por que o acompanhamento médico contínuo faz diferença nos seus resultados"
-description: "Entenda por que uma consulta isolada não é suficiente, como o acompanhamento médico contínuo potencializa resultados e quais marcadores acompanhar ao longo do tempo."
+description: "Por que uma consulta isolada não basta, como o acompanhamento médico contínuo amplia resultados e quais marcadores monitorar ao longo do tempo."
 date: "2026-04-15"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"

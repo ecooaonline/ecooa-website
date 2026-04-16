@@ -1,6 +1,6 @@
 ---
 title: "Depois da sessão de terapia: como aproveitar melhor o processo terapêutico"
-description: "Entenda o que acontece após uma sessão de terapia, por que algumas sessões são mais intensas, e como potencializar o processo terapêutico entre os encontros."
+description: "O que acontece após uma sessão de terapia, por que algumas são mais intensas e como potencializar o processo entre os encontros."
 date: "2026-04-15"
 author: "Manuela Vanti"
 category: "saude-mental"

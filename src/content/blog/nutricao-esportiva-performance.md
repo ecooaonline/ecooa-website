@@ -1,6 +1,6 @@
 ---
 title: "Nutrição esportiva: como a alimentação impacta sua performance"
-description: "Entenda como a nutrição esportiva pode transformar sua performance, composição corporal e recuperação. Nutricionistas especializadas na ecooa em Porto Alegre."
+description: "Como a nutrição esportiva transforma performance, composição corporal e recuperação. Nutricionistas na ecooa em Porto Alegre."
 date: "2026-03-18"
 author: "Maria Luisa Beltran"
 category: "nutricao"

@@ -5,5 +5,14 @@ export const INSTAGRAM = 'https://instagram.com/somos.ecooa';
 export const PHONE = '(51) 99146-0909';
 export const EMAIL = 'ecooa.adm@gmail.com';
 
+// Endereço
+export const ADDRESS_STREET = 'Rua Mariante, 180';
+export const ADDRESS_FLOOR = '9º andar';
+export const ADDRESS_NEIGHBORHOOD = 'Moinhos de Vento';
+export const ADDRESS_CITY = 'Porto Alegre';
+export const ADDRESS_STATE = 'RS';
+export const ADDRESS_ZIP = '90430-180';
+export const ADDRESS_FULL = `${ADDRESS_STREET} · ${ADDRESS_FLOOR} · ${ADDRESS_NEIGHBORHOOD} · ${ADDRESS_CITY}, ${ADDRESS_STATE}`;
+
 // Google Apps Script - URL do formulário (substituir após deploy)
 export const FORM_ACTION = 'AGUARDANDO_URL_DO_DEPLOY';

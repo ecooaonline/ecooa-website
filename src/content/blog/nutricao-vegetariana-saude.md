@@ -1,6 +1,6 @@
 ---
 title: "Nutrição vegetariana e saúde: como manter uma dieta plant-based equilibrada"
-description: "Saiba como manter uma nutrição vegetariana saudável, evitar deficiências nutricionais e monitorar sua saúde com exames. Nutricionista na ecooa em Porto Alegre."
+description: "Como manter nutrição vegetariana saudável, evitar deficiências e monitorar exames. Nutricionista na ecooa em Porto Alegre."
 date: "2026-04-01"
 author: "Jessica Stein"
 category: "nutricao"

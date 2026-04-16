@@ -1,6 +1,6 @@
 ---
 title: "Performance esportiva e otimização: a abordagem clínica para resultados reais"
-description: "Descubra como otimizar sua performance esportiva com acompanhamento clínico, exames e periodização nutricional. Nutricionista esportiva na ecooa, Porto Alegre."
+description: "Otimize performance esportiva com acompanhamento clínico, exames e periodização nutricional. Nutricionista esportiva na ecooa, Porto Alegre."
 date: "2026-04-01"
 author: "Maria Luisa Beltran"
 category: "nutricao"

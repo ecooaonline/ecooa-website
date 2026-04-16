@@ -31,15 +31,20 @@ if (window.matchMedia('(pointer: fine)').matches) {
     if (!looping) { looping = true; requestAnimationFrame(loop); }
   });
 
-  // Hover zone toggle
-  document.querySelectorAll('a, button, .pl-lk, .pl, .pc, .ip, .ec').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hz'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hz'));
-  });
+  // Zone toggles via event delegation (single listener pair instead of N per zone)
+  const HOVER_SELECTOR = 'a, button, .pl-lk, .pl, .pc, .ip, .ec';
+  const DARK_SELECTOR = '.ap-cp, .ap-vis, .hr, .wv, .cf, .footer, [style*="background:var(--color-ink)"]';
 
-  // Dark zone toggle
-  document.querySelectorAll('.ap-cp, .ap-vis, .hr, .wv, .cf, .footer, [style*="background:var(--color-ink)"]').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('dz'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('dz'));
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target as Element | null;
+    if (!target?.closest) return;
+    if (target.closest(HOVER_SELECTOR)) document.body.classList.add('hz');
+    if (target.closest(DARK_SELECTOR)) document.body.classList.add('dz');
+  });
+  document.addEventListener('mouseout', (e) => {
+    const target = e.target as Element | null;
+    if (!target?.closest) return;
+    if (target.closest(HOVER_SELECTOR)) document.body.classList.remove('hz');
+    if (target.closest(DARK_SELECTOR)) document.body.classList.remove('dz');
   });
 }

@@ -1,6 +1,6 @@
 ---
 title: "Reposição hormonal: o que esperar nas primeiras semanas de tratamento"
-description: "Entenda o que acontece no corpo nas primeiras semanas de reposição hormonal, os efeitos esperados, quando os resultados aparecem e a importância do acompanhamento."
+description: "O que acontece no corpo nas primeiras semanas de reposição hormonal, efeitos esperados, quando os resultados aparecem e o papel do acompanhamento."
 date: "2026-04-15"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"
