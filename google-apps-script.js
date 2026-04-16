@@ -9,7 +9,7 @@ const SHEET_NAME = 'ecooa-formularios';
 
 // Segurança
 const ALLOWED_FORM_TYPES = ['agendamento', 'b2b-medicina', 'b2b-nutricao', 'newsletter'];
-const ALLOWED_REDIRECT_HOSTS = ['ecooa.com.br', 'www.ecooa.com.br', 'ecooaonline.github.io'];
+const ALLOWED_REDIRECT_HOSTS = ['somosecooa.com.br', 'www.somosecooa.com.br', 'ecooaonline.github.io'];
 const MAX_FIELD_LENGTH = 500;
 const MAX_SUBMISSIONS_PER_HOUR = 10;
 const MAX_TOTAL_FIELDS = 20;
