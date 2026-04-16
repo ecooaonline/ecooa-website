@@ -15,4 +15,4 @@ export const ADDRESS_ZIP = '90430-180';
 export const ADDRESS_FULL = `${ADDRESS_STREET} · ${ADDRESS_FLOOR} · ${ADDRESS_NEIGHBORHOOD} · ${ADDRESS_CITY}, ${ADDRESS_STATE}`;
 
 // Google Apps Script - URL do formulário
-export const FORM_ACTION = 'https://script.google.com/macros/s/AKfycbw9ztX83B9mZBe_U1_ugFyTlxEEswQiH4vyIGhbBkpXsKL2pKDMEBFa-WXMr_6tUmGFpA/exec';
+export const FORM_ACTION = 'https://script.google.com/macros/s/AKfycbx3NOzVryn9prCJvKuBH20EFGiHoCENEZdR73zjaeiiUCl9PXk2sKrzGxrcrQ3ahQ-v/exec';
