@@ -77,12 +77,12 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <img src="/clinic/med.webp" alt="Consultório médico da ecooa.med em Moinhos de Vento" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"  width="1000" height="667" />
+    <img src="/clinic/med.webp" alt="Consultório médico da ecooa.med em Moinhos de Vento" loading="lazy" decoding="async" class="u-cover"  width="1000" height="667" />
   </div>
 </section>
 
 <!-- Abordagem -->
-<section style="background:var(--color-warm)" aria-label="Nossa abordagem">
+<section class="u-bg-warm" aria-label="Nossa abordagem">
   <div class="w">
     <div class="g2 g2c">
       <div>
@@ -108,16 +108,16 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
       <div class="r d2">
         <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
           <div class="lbl" style="margin-bottom:20px">áreas de atuação</div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina Metabólica e Endocrinologia</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Nutrologia e Emagrecimento</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Envelhecimento Saudável e Estilo de Vida</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Performance Cognitiva e Física</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Hipertrofia e Composição Corporal</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Hormonologia e Saúde Feminina e Masculina</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Implantes Subcutâneos Bioabsorvíveis</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina do Esporte e Anabolismo Fisiológico</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina Preventiva e Checkup Metabólico</span></div>
-          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span style="width:5px;height:5px;border-radius:50%;background:var(--color-brand-mid);flex-shrink:0"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Testes Genéticos</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina Metabólica e Endocrinologia</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Nutrologia e Emagrecimento</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Envelhecimento Saudável e Estilo de Vida</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Performance Cognitiva e Física</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Hipertrofia e Composição Corporal</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Hormonologia e Saúde Feminina e Masculina</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Implantes Subcutâneos Bioabsorvíveis</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina do Esporte e Anabolismo Fisiológico</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Medicina Preventiva e Checkup Metabólico</span></div>
+          <div style="display:flex;align-items:center;gap:13px;padding:10px 0;border-bottom:1px solid var(--color-stone)"><span class="u-dot"></span><span style="font-size:13px;font-weight:400;color:var(--color-ink)">Testes Genéticos</span></div>
         </div>
       </div>
     </div>
@@ -142,7 +142,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 </section>
 
 <!-- Protocolos -->
-<section style="background:var(--color-cream)" aria-label="Protocolos ecooa.med">
+<section class="u-bg-cream" aria-label="Protocolos ecooa.med">
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">protocolos ecooa.med</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">Programas que<br><em>entregam resultados.</em></h2>
@@ -162,15 +162,15 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Nosso Espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.med">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
-    <div style="aspect-ratio:16/9;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa em Moinhos de Vento" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"  width="1000" height="1233" /></div>
-    <div style="aspect-ratio:16/9;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block"  width="1200" height="799" /></div>
+    <div style="aspect-ratio:16/9;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa em Moinhos de Vento" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></div>
+    <div style="aspect-ratio:16/9;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></div>
   </div>
 </section>
 
 <B2BBanner />
 
 <!-- Perguntas frequentes -->
-<section style="background:var(--color-warm)" aria-label="Perguntas frequentes">
+<section class="u-bg-warm" aria-label="Perguntas frequentes">
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
     <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
@@ -186,27 +186,27 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 </section>
 
 <!-- Como funciona -->
-<section style="background:var(--color-cream)" aria-label="Como funciona">
+<section class="u-bg-cream" aria-label="Como funciona">
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto">
-      <div class="r" style="text-align:center">
+      <div class="r u-tac">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">1</span>
         <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Agendamento</h3>
         <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Entre em contato pelo WhatsApp. Respondemos em minutos e encontramos o melhor horário para você.</p>
       </div>
-      <div class="r d1" style="text-align:center">
+      <div class="r d1 u-tac">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">2</span>
         <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Avaliação completa</h3>
         <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Consulta com tempo real de escuta, análise de exames e entendimento dos seus objetivos.</p>
       </div>
-      <div class="r d2" style="text-align:center">
+      <div class="r d2 u-tac">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">3</span>
         <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Protocolo personalizado</h3>
         <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Plano construído com base nos seus dados, na sua rotina e no que você quer alcançar.</p>
       </div>
-      <div class="r d3" style="text-align:center">
+      <div class="r d3 u-tac">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:1px solid var(--color-stone);font-family:var(--font-primary);font-size:16px;font-weight:400;color:var(--color-brand-text);margin-bottom:14px">4</span>
         <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);margin-bottom:6px">Acompanhamento</h3>
         <p style="font-size:12px;font-weight:300;line-height:1.75;color:var(--color-ink-soft)">Retornos periódicos para ajustar o protocolo e garantir que os resultados se mantenham.</p>
@@ -216,7 +216,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 </section>
 
 <!-- Depoimentos -->
-<section style="background:var(--color-cream)" aria-label="Depoimentos de pacientes">
+<section class="u-bg-cream" aria-label="Depoimentos de pacientes">
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">depoimentos</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
@@ -240,7 +240,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 
 <!-- Artigos relacionados -->
 {medPosts.length > 0 && (
-<section style="background:var(--color-warm)" aria-label="Artigos relacionados">
+<section class="u-bg-warm" aria-label="Artigos relacionados">
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
     <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>

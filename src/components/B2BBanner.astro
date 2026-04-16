@@ -1,6 +1,6 @@
 ---
 import WavePattern from './WavePattern.astro';
-import { WA_BASE } from '../data/constants';
+import { WA_BASE, ADDRESS_NEIGHBORHOOD } from '../data/constants';
 
 const WA = WA_BASE;
 ---
@@ -12,7 +12,7 @@ const WA = WA_BASE;
   <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center">
     <div class="lbl lbl-br r" style="justify-content:center;margin-bottom:22px">para profissionais de saúde</div>
     <h2 style="font-size:clamp(30px,3.8vw,54px);font-weight:200;color:white;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px" class="r d1">Quer atender<br>na <em style="font-family:var(--font-serif);font-style:italic;color:var(--color-brand-light)">ecooa?</em></h2>
-    <p style="font-size:15px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto 36px" class="r d2">Somos um ecossistema de saúde premium em Moinhos de Vento. Se você é profissional de saúde e quer um espaço que eleva sua prática, vamos conversar.</p>
+    <p style="font-size:15px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto 36px" class="r d2">Somos um ecossistema de saúde premium em {ADDRESS_NEIGHBORHOOD}. Se você é profissional de saúde e quer um espaço que eleva sua prática, vamos conversar.</p>
     <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="display:inline-block">falar pelo whatsapp</a>
   </div>
 </section>

@@ -1,5 +1,5 @@
 ---
-import { GOOGLE_MAPS } from '../data/constants';
+import { GOOGLE_MAPS, ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP } from '../data/constants';
 
 const MAPS = GOOGLE_MAPS;
 const WAZE = 'https://waze.com/ul?q=Rua+Mariante+180+Porto+Alegre';
@@ -7,9 +7,9 @@ const WAZE = 'https://waze.com/ul?q=Rua+Mariante+180+Porto+Alegre';
 
 <div style="background:var(--color-ink);border:none;padding:44px 40px">
   <p class="label-sm" style="color:var(--color-brand-deep);margin-bottom:20px">como nos encontrar</p>
-  <p style="font-size:17px;font-weight:400;color:rgba(255,255,255,.82);margin-bottom:4px">Rua Mariante, 180</p>
-  <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:2px">9º andar · Moinhos de Vento</p>
-  <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:3px">Porto Alegre, RS · CEP 90430-180</p>
+  <p style="font-size:17px;font-weight:400;color:rgba(255,255,255,.82);margin-bottom:4px">{ADDRESS_STREET}</p>
+  <p style="font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:2px">{ADDRESS_FLOOR} · {ADDRESS_NEIGHBORHOOD}</p>
+  <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,.5);margin-bottom:3px">{ADDRESS_CITY}, {ADDRESS_STATE} · CEP {ADDRESS_ZIP}</p>
   <div class="ml">
     <a href={MAPS} target="_blank" rel="noopener noreferrer" aria-label="Abrir no Google Maps">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>

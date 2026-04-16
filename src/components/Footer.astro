@@ -1,5 +1,5 @@
 ---
-import { WA_BASE, ADDRESS_FULL } from '../data/constants';
+import { WA_BASE, ADDRESS_FULL, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP } from '../data/constants';
 import NewsletterCapture from './NewsletterCapture.astro';
 import EcooaLogo from './EcooaLogo.astro';
 
@@ -51,6 +51,6 @@ const WA = WA_BASE;
   </div>
   <div class="fb">
     <p class="fc">© 2026 ecooa®. Todos os direitos reservados.</p>
-    <p class="fa">Moinhos de Vento · Porto Alegre, RS<br>CEP 90430-180</p>
+    <p class="fa">{ADDRESS_NEIGHBORHOOD} · {ADDRESS_CITY}, {ADDRESS_STATE}<br>CEP {ADDRESS_ZIP}</p>
   </div>
 </footer>

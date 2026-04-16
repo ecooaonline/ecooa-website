@@ -158,6 +158,8 @@
   display: flex; white-space: nowrap;
   animation: roll 34s linear infinite;
 }
+.mq:hover .mq-track,
+.mq:focus-within .mq-track { animation-play-state: paused; }
 .mq-item {
   font-size: 10px; font-weight: 400; letter-spacing: .18em;
   text-transform: uppercase; color: var(--color-brand-mid);

@@ -90,7 +90,7 @@ const firstName = p.name.split(' ')[0];
 <Marquee />
 
 <!-- Sobre -->
-<section style="background:var(--color-warm)" aria-label={`Sobre ${p.name}`}>
+<section class="u-bg-warm" aria-label={`Sobre ${p.name}`}>
   <div class="w">
     <div class="g2 g2c">
       <div>
@@ -109,7 +109,7 @@ const firstName = p.name.split(' ')[0];
       </div>
       <div class="r d2">
         <div style="aspect-ratio:3/4;overflow:hidden">
-          <img src={p.photo} alt={p.name} loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block" width="480" height="640" />
+          <img src={p.photo} alt={p.name} loading="lazy" decoding="async" class="u-cover" width="480" height="640" />
         </div>
       </div>
     </div>
@@ -117,7 +117,7 @@ const firstName = p.name.split(' ')[0];
 </section>
 
 <!-- Especialidades -->
-<section style="background:var(--color-cream)" aria-label="Especialidades">
+<section class="u-bg-cream" aria-label="Especialidades">
   <div class="w">
     <div class="lbl r" style="margin-bottom:16px">especialidades</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px" class="r d1">
@@ -130,7 +130,7 @@ const firstName = p.name.split(' ')[0];
 
 <!-- Artigos -->
 {articles.length > 0 && (
-  <section style="background:var(--color-warm)" aria-label="Artigos">
+  <section class="u-bg-warm" aria-label="Artigos">
     <div class="w">
       <div class="lbl r" style="margin-bottom:16px">artigos por {firstName}</div>
       <h2 class="h2 r d1" style="margin-bottom:32px;font-size:clamp(26px,3vw,42px)">Conteúdo que<br><em>transforma.</em></h2>

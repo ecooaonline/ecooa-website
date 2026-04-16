@@ -111,6 +111,13 @@ ul, ol {
 /* Screen-reader only */
 .sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
 
+/* ── UTILITIES ── */
+.u-bg-warm { background: var(--color-warm); }
+.u-bg-cream { background: var(--color-cream); }
+.u-tac { text-align: center; }
+.u-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+.u-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--color-brand-mid); flex-shrink: 0; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

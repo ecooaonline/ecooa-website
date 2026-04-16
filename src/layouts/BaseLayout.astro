@@ -3,7 +3,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFab from '../components/WhatsAppFab.astro';
 import CookieConsent from '../components/CookieConsent.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { WA_DEFAULT, ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP } from '../data/constants';
 
 import '../styles/tokens.css';
 import '../styles/base.css';
@@ -96,10 +96,10 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
     "logo": "https://www.somosecooa.com.br/favicon/favicon.svg",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Rua Mariante, 180, 9º andar",
-      "addressLocality": "Porto Alegre",
-      "addressRegion": "RS",
-      "postalCode": "90430-180",
+      "streetAddress": `${ADDRESS_STREET}, ${ADDRESS_FLOOR}`,
+      "addressLocality": ADDRESS_CITY,
+      "addressRegion": ADDRESS_STATE,
+      "postalCode": ADDRESS_ZIP,
       "addressCountry": "BR"
     },
     "geo": {
