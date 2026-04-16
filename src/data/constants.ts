@@ -14,5 +14,5 @@ export const ADDRESS_STATE = 'RS';
 export const ADDRESS_ZIP = '90430-180';
 export const ADDRESS_FULL = `${ADDRESS_STREET} · ${ADDRESS_FLOOR} · ${ADDRESS_NEIGHBORHOOD} · ${ADDRESS_CITY}, ${ADDRESS_STATE}`;
 
-// Google Apps Script - URL do formulário (substituir após deploy)
-export const FORM_ACTION = 'AGUARDANDO_URL_DO_DEPLOY';
+// Google Apps Script - URL do formulário
+export const FORM_ACTION = 'https://script.google.com/macros/s/AKfycbw9ztX83B9mZBe_U1_ugFyTlxEEswQiH4vyIGhbBkpXsKL2pKDMEBFa-WXMr_6tUmGFpA/exec';
