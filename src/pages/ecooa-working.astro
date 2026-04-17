@@ -45,7 +45,7 @@ const workingFaqSchema = {
     <div class="lbl lbl-br r">ecooa.working</div>
     <h1 style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px" class="r d1">O espaço que<br>a sua carreira<br><em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)">merece.</em></h1>
     <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px" class="r d2">Coworking premium para nutricionistas em Moinhos de Vento. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe.</p>
-    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">quero saber mais</a>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta">quero saber mais</a>
     <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.45);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
     <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Acompanhamento individualizado. Vagas limitadas por nutricionista.</p>
   </div>
@@ -64,7 +64,7 @@ const workingFaqSchema = {
 
 <!-- Empatia -->
 <section style="background:var(--color-cream);padding:64px var(--section-px)" aria-label="Entendemos você">
-  <div style="max-width:640px;margin:0 auto;text-align:center">
+  <div class="u-narrow">
     <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">Você já tentou dieta da moda, cortou grupos alimentares inteiros, fez jejuns sem orientação. Perdeu peso, voltou a ganhar. Sente culpa quando come algo fora do plano. Sabe que precisa de ajuda profissional, mas não sabe por onde começar.</p>
     <p class="body r d1" style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400">Na ecooa, nutrição é ciência e escuta. Sem julgamento, sem fórmula mágica. Um plano que funciona porque foi feito para a sua vida.</p>
   </div>
@@ -73,7 +73,7 @@ const workingFaqSchema = {
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <img src="/clinic/working.webp" alt="Espaço de coworking premium da ecooa.working" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" />
+    <picture><source srcset="/clinic/working.avif" type="image/avif" /><img src="/clinic/working.webp" alt="Espaço de coworking premium da ecooa.working" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture>
   </div>
 </section>
 
@@ -81,19 +81,19 @@ const workingFaqSchema = {
 <section class="u-bg-cream" aria-label="Nutrição para pacientes">
   <div class="w">
     <div class="lbl r" style="margin-bottom:15px">nutrição para você · pacientes</div>
-    <h2 class="h2 r d1" style="margin-bottom:14px">Nossa equipe de<br>nutrição está<br><em>aqui por você.</em></h2>
+    <h2 class="h2 r d1 u-mb-14">Nossa equipe de<br>nutrição está<br><em>aqui por você.</em></h2>
     <p class="body r d2" style="margin-bottom:44px;max-width:640px">A ecooa.working abriga nutricionistas especializados em diferentes áreas, integrados ao ecossistema ecooa. Você é atendido por quem melhor responde ao seu caso, com toda a estrutura de uma clínica premium.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Vegana e Vegetariana</h3><p class="it-d">Planejamento alimentar plant-based com segurança nutricional e ciência aplicada.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Clínica</h3><p class="it-d">Saúde metabólica, doenças crônicas e bem-estar geral.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Esportiva</h3><p class="it-d">Performance, composição corporal e recuperação.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Emagrecimento</h3><p class="it-d">Estratégias integradas à medicina para resultados reais. Para quem busca suporte nutricional no uso de medicamentos como tirzepatida e similares, nossa equipe atua em parceria com o acompanhamento médico para potencializar e sustentar os resultados.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Estética</h3><p class="it-d">Pele, cabelo, unhas e composição corporal.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Análise de Exames e Testes Genéticos</h3><p class="it-d">Interpretação de exames bioquímicos e mapeamento genético aplicado à nutrição individualizada.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Nutrição Comportamental</h3><p class="it-d">Comportamento alimentar e relação saudável com a comida.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Prescrição de Suplementos</h3><p class="it-d">Indicação baseada em exames e objetivos individuais.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Bioimpedância e Avaliação</h3><p class="it-d">Análise detalhada da composição corporal.</p></div>
-      <div style="border-right:1px solid var(--color-stone);border-bottom:1px solid var(--color-stone);padding:24px 20px"><h3 style="font-size:14px;font-weight:400;color:var(--color-ink);margin-bottom:5px">Soroterapia Nutricional</h3><p class="it-d">Reposição de micronutrientes via soroterapia, sob supervisão médica. Indicada para deficiências identificadas em exames, fadiga, queda de imunidade e otimização metabólica.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Nutrição Vegana e Vegetariana</h3><p class="it-d">Planejamento alimentar plant-based com segurança nutricional e ciência aplicada.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Nutrição Clínica</h3><p class="it-d">Saúde metabólica, doenças crônicas e bem-estar geral.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Nutrição Esportiva</h3><p class="it-d">Performance, composição corporal e recuperação.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Emagrecimento</h3><p class="it-d">Estratégias integradas à medicina para resultados reais. Para quem busca suporte nutricional no uso de medicamentos como tirzepatida e similares, nossa equipe atua em parceria com o acompanhamento médico para potencializar e sustentar os resultados.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Nutrição Estética</h3><p class="it-d">Pele, cabelo, unhas e composição corporal.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Análise de Exames e Testes Genéticos</h3><p class="it-d">Interpretação de exames bioquímicos e mapeamento genético aplicado à nutrição individualizada.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Nutrição Comportamental</h3><p class="it-d">Comportamento alimentar e relação saudável com a comida.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Prescrição de Suplementos</h3><p class="it-d">Indicação baseada em exames e objetivos individuais.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Bioimpedância e Avaliação</h3><p class="it-d">Análise detalhada da composição corporal.</p></div>
+      <div class="gc-sm"><h3 class="it-t-sm">Soroterapia Nutricional</h3><p class="it-d">Reposição de micronutrientes via soroterapia, sob supervisão médica. Indicada para deficiências identificadas em exames, fadiga, queda de imunidade e otimização metabólica.</p></div>
     </div>
     <div style="margin-top:32px;text-align:center" class="r"><a href={WA} target="_blank" rel="noopener noreferrer" class="bd">agendar consulta de nutrição</a></div>
   </div>
@@ -104,8 +104,8 @@ const workingFaqSchema = {
   <div class="g2 g2c">
     <div>
       <div class="lbl lbl-lt r" style="margin-bottom:15px">para profissionais</div>
-      <h2 class="h2 h2-w r d1" style="margin-bottom:18px">Acreditamos que é<br>possível ter <em>seu próprio<br>negócio.</em></h2>
-      <p class="body body-lt r d2" style="margin-bottom:28px">A ecooa.working foi criada para tirar do papel o sonho de nutricionistas que querem empreender com qualidade, sem montar uma clínica do zero, com o apoio de uma marca consolidada.</p>
+      <h2 class="h2 h2-w r d1 u-mb-18">Acreditamos que é<br>possível ter <em>seu próprio<br>negócio.</em></h2>
+      <p class="body body-lt r d2 u-mb-28">A ecooa.working foi criada para tirar do papel o sonho de nutricionistas que querem empreender com qualidade, sem montar uma clínica do zero, com o apoio de uma marca consolidada.</p>
       <div class="wg r d3" style="border-top-color:rgba(255,255,255,.08);padding-top:28px;margin-top:0">
         <div><p class="wgl" style="color:var(--color-brand-deep)">Localização</p><p class="wgv" style="color:rgba(255,255,255,.65)">Moinhos de Vento, Porto Alegre</p></div>
         <div><p class="wgl" style="color:var(--color-brand-deep)">Salas</p><p class="wgv" style="color:rgba(255,255,255,.65)">2 consultórios equipados</p></div>
@@ -113,7 +113,7 @@ const workingFaqSchema = {
         <div><p class="wgl" style="color:var(--color-brand-deep)">Acesso</p><p class="wgv" style="color:rgba(255,255,255,.65)">Por entrevista com nossa diretora de ensino</p></div>
         <div><p class="wgl" style="color:var(--color-brand-deep)">Networking</p><p class="wgv" style="color:rgba(255,255,255,.65)">Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa</p></div>
       </div>
-      <form action={FORM_ACTION} method="POST" class="b2b-form r d4 ecooa-form" style="margin-top:32px" id="form-b2b-nutri" data-ok-target="#form-b2b-nutri-ok" data-success-text="Recebemos seu interesse. Entraremos em contato em breve.">
+      <form action={FORM_ACTION} method="POST" class="b2b-form r d4 ecooa-form u-mt-32" id="form-b2b-nutri" data-ok-target="#form-b2b-nutri-ok" data-success-text="Recebemos seu interesse. Entraremos em contato em breve.">
         <input type="hidden" name="_formType" value="b2b-nutricao" />
         <input type="text" name="nome" placeholder="Nome" required aria-label="Nome completo" class="b2b-input" />
         <input type="text" name="area" placeholder="Área de atuação" required aria-label="Área de atuação" class="b2b-input" />
@@ -142,17 +142,17 @@ const workingFaqSchema = {
 <!-- Mais do espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Mais do espaço">
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px">
-    <div style="aspect-ratio:4/3;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></div>
-    <div style="aspect-ratio:4/3;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></div>
-    <div style="aspect-ratio:4/3;overflow:hidden" class="r d2"><img src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="666" /></div>
+    <div class="u-img-43 r"><picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
+    <div class="u-img-43 r d1"><picture><source srcset="/clinic/cafe.avif" type="image/avif" /><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture></div>
+    <div class="u-img-43 r d2"><picture><source srcset="/clinic/reuniao.avif" type="image/avif" /><img src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="666" /></picture></div>
   </div>
 </section>
 
 <!-- Perguntas frequentes -->
 <section class="u-bg-warm" aria-label="Perguntas frequentes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
-    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre<br><em>nutrição.</em></h2>
+    <div class="lbl r u-mb-16">perguntas frequentes</div>
+    <h2 class="h2 r d1 u-mb-40">Dúvidas sobre<br><em>nutrição.</em></h2>
     <div class="faq-section">
       {workingFaqs.map((faq) => (
         <details class="faq-item">
@@ -167,8 +167,8 @@ const workingFaqSchema = {
 <!-- Como funciona -->
 <section class="u-bg-cream" aria-label="Como funciona">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
+    <div class="lbl r u-mb-16">sua jornada</div>
+    <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto">
       <div class="r u-tac">
         <span class="step-num">1</span>
@@ -198,9 +198,9 @@ const workingFaqSchema = {
 <!-- Depoimentos -->
 <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">depoimentos</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+    <div class="lbl r u-mb-16">depoimentos</div>
+    <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+    <div class="grid-auto-260">
       <div class="r card-w">
         <p class="q-serif">"Achava que nutrição era só dieta restritiva. O plano que recebi respeita minha rotina e os resultados vieram de forma natural."</p>
         <p class="sm-soft">G.V.</p>
@@ -222,9 +222,9 @@ const workingFaqSchema = {
 {nutriPosts.length > 0 && (
 <section class="u-bg-warm" aria-label="Artigos relacionados">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+    <div class="lbl r u-mb-16">do nosso blog</div>
+    <h2 class="h2 r d1 u-mb-44">artigos <em>relacionados</em></h2>
+    <div class="grid-auto-260">
       {nutriPosts.map((post, i) => (
         <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
           <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>

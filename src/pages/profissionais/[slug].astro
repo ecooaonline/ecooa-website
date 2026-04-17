@@ -72,11 +72,11 @@ const firstName = p.name.split(' ')[0];
 
 <!-- Hero -->
 <div class="ph" style="background:var(--color-ink)">
-  <svg class="wsv" style="opacity:.05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <svg class="wsv u-op-05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
   <div class="ph-c">
     <a href="/profissionais" style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:20px;display:inline-block" class="r">← profissionais</a>
-    <div class="lbl lbl-lt r" style="margin-bottom:12px">{unitLabels[p.unit]}</div>
-    <h1 class="h1 h1-w r d1" style="margin-top:10px">{p.name}</h1>
+    <div class="lbl lbl-lt r u-mb-12">{unitLabels[p.unit]}</div>
+    <h1 class="h1 h1-w r d1 u-mt-10">{p.name}</h1>
     {p.isFounder && (
       <span style="display:inline-block;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-brand-deep);border:1px solid var(--color-brand-deep);padding:4px 12px;margin-top:12px" class="r d1">fundador(a)</span>
     )}
@@ -94,9 +94,9 @@ const firstName = p.name.split(' ')[0];
   <div class="w">
     <div class="g2 g2c">
       <div>
-        <div class="lbl r" style="margin-bottom:16px">sobre</div>
-        <h2 class="h2 r d1" style="margin-bottom:18px">Conheça<br><em>{firstName}.</em></h2>
-        <p class="body r d2" style="margin-bottom:24px">{p.description}</p>
+        <div class="lbl r u-mb-16">sobre</div>
+        <h2 class="h2 r d1 u-mb-18">Conheça<br><em>{firstName}.</em></h2>
+        <p class="body r d2 u-mb-24">{p.description}</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px" class="r d3">
           <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" data-intent={`profissional-${p.slug}`}>agendar com {firstName}</a>
           {p.ig && (
@@ -109,7 +109,10 @@ const firstName = p.name.split(' ')[0];
       </div>
       <div class="r d2">
         <div style="aspect-ratio:3/4;overflow:hidden">
-          <img src={p.photo} alt={p.name} loading="lazy" decoding="async" class="u-cover" width="480" height="640" />
+          <picture>
+            <source srcset={p.photo.replace(/\.webp$/, '.avif')} type="image/avif" />
+            <img src={p.photo} alt={p.name} loading="lazy" decoding="async" class="u-cover" width="480" height="640" />
+          </picture>
         </div>
       </div>
     </div>
@@ -119,10 +122,10 @@ const firstName = p.name.split(' ')[0];
 <!-- Especialidades -->
 <section class="u-bg-cream" aria-label="Especialidades">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">especialidades</div>
+    <div class="lbl r u-mb-16">especialidades</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px" class="r d1">
       {p.tags.map(tag => (
-        <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">{tag}</span>
+        <span class="tag-pill">{tag}</span>
       ))}
     </div>
   </div>
@@ -132,7 +135,7 @@ const firstName = p.name.split(' ')[0];
 {articles.length > 0 && (
   <section class="u-bg-warm" aria-label="Artigos">
     <div class="w">
-      <div class="lbl r" style="margin-bottom:16px">artigos por {firstName}</div>
+      <div class="lbl r u-mb-16">artigos por {firstName}</div>
       <h2 class="h2 r d1" style="margin-bottom:32px;font-size:clamp(26px,3vw,42px)">Conteúdo que<br><em>transforma.</em></h2>
       <div style="display:grid;gap:16px">
         {articles.map(article => (

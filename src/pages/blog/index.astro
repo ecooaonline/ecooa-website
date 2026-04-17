@@ -27,10 +27,10 @@ const categories = [
 
 <!-- Hero -->
 <div class="ph u-bg-cream">
-  <svg class="wsv" style="opacity:.26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <svg class="wsv u-op-26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
   <div class="ph-c">
     <div class="lbl r">blog ecooa</div>
-    <h1 class="h1 r d1" style="margin-top:18px">Conteúdo que<br><em>transforma.</em></h1>
+    <h1 class="h1 r d1 u-mt-18">Conteúdo que<br><em>transforma.</em></h1>
     <p class="body r d2" style="margin-top:16px;max-width:480px">Artigos escritos por nossos especialistas para ajudar você a cuidar melhor da sua saúde, estética e bem-estar.</p>
   </div>
 </div>
@@ -41,7 +41,7 @@ const categories = [
 <section style="background:var(--color-warm);padding:32px var(--section-px) 0">
   <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" class="r">
     {categories.map(cat => (
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">{cat.label}</span>
+      <span class="tag-pill">{cat.label}</span>
     ))}
   </div>
 </section>

@@ -144,11 +144,11 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <section style="background:var(--color-cream);padding:86px 60px" aria-label="Fundadores">
   <div style="max-width:900px;margin:0 auto;text-align:center">
     <div class="lbl r" style="justify-content:center;margin-bottom:16px">quem lidera a ecooa</div>
-    <h2 class="h2 r d1" style="margin-bottom:48px">Fundadores que<br><em>vivem o propósito.</em></h2>
+    <h2 class="h2 r d1 u-mb-48">Fundadores que<br><em>vivem o propósito.</em></h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:left">
       <div class="r">
         <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:20px">
-          <img src="/team/gustavo.webp" alt="Dr. Gustavo Gehrke, fundador da ecooa" loading="lazy" decoding="async" class="u-cover" width="480" height="640" />
+          <picture><source srcset="/team/gustavo.avif" type="image/avif" /><img src="/team/gustavo.webp" alt="Dr. Gustavo Gehrke, fundador da ecooa" loading="lazy" decoding="async" class="u-cover" width="480" height="640" /></picture>
         </div>
         <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">fundador</p>
         <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:4px">Dr. Gustavo Gehrke</p>
@@ -157,7 +157,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
       <div class="r d1">
         <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:20px">
-          <img src="/team/jessica.webp" alt="Jessica Stein, fundadora da ecooa" loading="lazy" decoding="async" class="u-cover" width="480" height="640" />
+          <picture><source srcset="/team/jessica.avif" type="image/avif" /><img src="/team/jessica.webp" alt="Jessica Stein, fundadora da ecooa" loading="lazy" decoding="async" class="u-cover" width="480" height="640" /></picture>
         </div>
         <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">fundadora</p>
         <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:4px">Jessica Stein</p>
@@ -174,9 +174,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="g2 g2c">
       <div>
         <div class="lbl r">quem somos</div>
-        <h2 class="h2 r d1" style="margin-top:15px">Somos a ecooa,<br>a clínica que <em>abraça</em><br>pessoas que cuidam<br>e são cuidadas.</h2>
-        <p class="body r d2" style="margin-top:18px">Somos um ecossistema de crescimento, inovação, networking, bem-estar e ciência, onde cada detalhe foi pensado para que você se sinta vista, acolhida e cuidada do jeito que merece.</p>
-        <a href="/quem-somos" class="bo r d3" style="margin-top:28px">nossa história</a>
+        <h2 class="h2 r d1 u-mt-15">Somos a ecooa,<br>a clínica que <em>abraça</em><br>pessoas que cuidam<br>e são cuidadas.</h2>
+        <p class="body r d2 u-mt-18">Somos um ecossistema de crescimento, inovação, networking, bem-estar e ciência, onde cada detalhe foi pensado para que você se sinta vista, acolhida e cuidada do jeito que merece.</p>
+        <a href="/quem-somos" class="bo r d3 u-mt-28">nossa história</a>
         <div class="ia r d4">
           <div><span class="aw">acolhedora</span><span class="ad">um lugar onde você se sente em casa</span></div>
           <div><span class="aw">especialista</span><span class="ad">profissionais de referência em cada área</span></div>
@@ -186,7 +186,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
       <div class="iv r d2">
         <div class="ic ic-m" style="overflow:hidden">
-          <img src="/clinic/recepcao.webp" alt="Recepção da ecooa, Moinhos de Vento" loading="lazy" decoding="async" width="1000" height="1233" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" />
+          <picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa, Moinhos de Vento" loading="lazy" decoding="async" width="1000" height="1233" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" /></picture>
         </div>
         <div class="ic ic-f"><p class="if-lbl">cuidando com excelência</p><p class="if-v">desde 2021</p></div>
       </div>
@@ -200,7 +200,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="ph2">
       <div>
         <div class="lbl r">o ecossistema ecooa</div>
-        <h2 class="h2 r d1" style="margin-top:15px">Diferentes serviços.<br><em>Um propósito.</em></h2>
+        <h2 class="h2 r d1 u-mt-15">Diferentes serviços.<br><em>Um propósito.</em></h2>
       </div>
       <p class="body r d2">Um ecossistema de cuidado completo, onde cada área ecooa com as demais para cuidar de você de dentro para fora.</p>
     </div>
@@ -217,13 +217,13 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <!-- Metodologia -->
 <section class="ap" aria-label="Metodologia">
   <div class="ap-vis" style="overflow:hidden">
-    <img src="/clinic/reuniao-edit.webp" alt="Reunião na ecooa, metodologia de cuidado" loading="lazy" decoding="async" width="800" height="533" class="u-cover" />
+    <picture><source srcset="/clinic/reuniao-edit.avif" type="image/avif" /><img src="/clinic/reuniao-edit.webp" alt="Reunião na ecooa, metodologia de cuidado" loading="lazy" decoding="async" width="800" height="533" class="u-cover" /></picture>
   </div>
   <div class="ap-cp">
     <div class="lbl lbl-lt r">nossa metodologia</div>
-    <h2 class="h2 h2-w r d1" style="margin-top:15px">Cuidado que<br>começa na <em>escuta</em><br>e nunca termina.</h2>
-    <p class="body body-lt r d2" style="margin-top:16px">Não trabalhamos com protocolos genéricos. Entendemos sua história, analisamos seus dados e construímos com você um caminho feito para os seus objetivos.</p>
-    <div class="st st-dk r d3" style="margin-top:32px">
+    <h2 class="h2 h2-w r d1 u-mt-15">Cuidado que<br>começa na <em>escuta</em><br>e nunca termina.</h2>
+    <p class="body body-lt r d2 u-mt-16">Não trabalhamos com protocolos genéricos. Entendemos sua história, analisamos seus dados e construímos com você um caminho feito para os seus objetivos.</p>
+    <div class="st st-dk r d3 u-mt-32">
       <div class="sr"><span class="sn">01</span><div><div class="st-t">Diagnóstico e escuta ativa</div><div class="st-b">Nossa equipe multidisciplinar se conhece e se comunica. Cada especialista sabe o momento certo de envolver os demais, de forma natural e coordenada.</div></div></div>
       <div class="sr"><span class="sn">02</span><div><div class="st-t">Testes genéticos e biomarcadores</div><div class="st-b">Análise aprofundada dos seus dados para um panorama preciso e real da sua saúde.</div></div></div>
       <div class="sr"><span class="sn">03</span><div><div class="st-t">Protocolo baseado nos seus objetivos</div><div class="st-b">Nada genérico, nada imposto. Construído com base nas suas informações e no que você quer alcançar.</div></div></div>
@@ -249,9 +249,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div class="ci-w">
       <div class="ci-sk">
         <div class="lbl r">para quem busca cuidado</div>
-        <h2 class="h2 r d1" style="margin-top:15px">Você merece<br>um lugar que<br><em>cuida de verdade.</em></h2>
-        <p class="body r d2" style="margin-top:16px">Aqui, você não é um número. Cada consulta é uma conversa. Cada protocolo é construído pensando em quem você é, no que você sente e onde quer chegar.</p>
-        <a href={WA} target="_blank" rel="noopener noreferrer" class="bd r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+        <h2 class="h2 r d1 u-mt-15">Você merece<br>um lugar que<br><em>cuida de verdade.</em></h2>
+        <p class="body r d2 u-mt-16">Aqui, você não é um número. Cada consulta é uma conversa. Cada protocolo é construído pensando em quem você é, no que você sente e onde quer chegar.</p>
+        <a href={WA} target="_blank" rel="noopener noreferrer" class="bd r d3 u-cta">falar pelo whatsapp</a>
       </div>
       <div class="ci-ls">
         <div class="ci-row r">
@@ -278,17 +278,17 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <!-- Nosso Espaço -->
 <section aria-label="Nosso espaço premium" style="background:var(--color-ink);padding:0;overflow:hidden">
   <div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden">
-    <img src="/clinic/respire.webp" alt="Sala Respire da ecooa, consultório premium com jardim vertical e letreiro neon" loading="lazy" decoding="async" width="1200" height="799" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" />
+    <picture><source srcset="/clinic/respire.avif" type="image/avif" /><img src="/clinic/respire.webp" alt="Sala Respire da ecooa, consultório premium com jardim vertical e letreiro neon" loading="lazy" decoding="async" width="1200" height="799" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" /></picture>
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(28,25,23,.7) 0%,transparent 50%)"></div>
     <div style="position:absolute;bottom:40px;left:60px;right:60px;z-index:2">
-      <div class="lbl lbl-lt r" style="margin-bottom:12px">nosso espaço</div>
+      <div class="lbl lbl-lt r u-mb-12">nosso espaço</div>
       <h2 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,48px);font-weight:300;color:white;line-height:1.15;letter-spacing:-.02em" class="r d1">Salas que valorizam quem <em>cuida</em> e quem é <em>cuidado.</em></h2>
     </div>
   </div>
   <div style="padding:64px 60px 72px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start">
     <div>
       <p class="body body-lt r" style="max-width:480px">Cada consultório da ecooa foi projetado para elevar a experiência de quem atende e de quem é atendido. Painéis de madeira, jardim vertical, iluminação pensada e uma vista privilegiada de Porto Alegre criam o cenário ideal para consultas que transformam.</p>
-      <a href="/quem-somos" class="bow r d1" style="margin-top:32px">conhecer o espaço</a>
+      <a href="/quem-somos" class="bow r d1 u-mt-32">conhecer o espaço</a>
     </div>
     <div class="st st-dk r d1">
       <div class="sr"><span class="sn">01</span><div><div class="st-t">Valor para o profissional</div><div class="st-b">O ambiente sofisticado eleva a percepção do seu trabalho, fortalece sua marca pessoal e atrai pacientes que valorizam excelência.</div></div></div>
@@ -318,8 +318,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px">
       <div>
         <div class="lbl r">siga a ecooa</div>
-        <h2 class="h2 r d1" style="margin-top:13px">Acompanhe nossa<br><em>comunidade.</em></h2>
-        <p class="body r d2" style="margin-top:10px">Acompanhe resultados reais, bastidores e nossos profissionais em ação</p>
+        <h2 class="h2 r d1 u-mt-13">Acompanhe nossa<br><em>comunidade.</em></h2>
+        <p class="body r d2 u-mt-10">Acompanhe resultados reais, bastidores e nossos profissionais em ação</p>
       </div>
       <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:400;color:var(--color-ink-soft);text-decoration:none;border:1px solid var(--color-stone);padding:9px 16px" class="r">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
@@ -347,8 +347,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 {recentPosts.length > 0 && (
 <section class="u-bg-cream" aria-label="Artigos recentes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>recentes</em></h2>
+    <div class="lbl r u-mb-16">do nosso blog</div>
+    <h2 class="h2 r d1 u-mb-44">artigos <em>recentes</em></h2>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="blog-grid-home">
       {recentPosts.map((post, i) => (
         <a href={`/blog/${post.id}`} class={`blog-card-home r d${i}`} style="display:block;background:var(--color-warm);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">

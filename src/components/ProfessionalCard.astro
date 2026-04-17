@@ -41,15 +41,18 @@ const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 >
   <div class="pc-ph">
     {photo ? (
-      <img
-        src={photo}
-        alt={name}
-        class="pc-img"
-        loading="lazy"
-        decoding="async"
-        width="700"
-        height="1050"
-      />
+      <picture>
+        <source srcset={photo.replace(/\.webp$/, '.avif')} type="image/avif" />
+        <img
+          src={photo}
+          alt={name}
+          class="pc-img"
+          loading="lazy"
+          decoding="async"
+          width="700"
+          height="1050"
+        />
+      </picture>
     ) : (
       <>
         <div class="pc-bg" style={`background:${bg}`}></div>

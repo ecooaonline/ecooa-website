@@ -72,12 +72,6 @@
 .ci-w { grid-template-columns: 1fr; gap: 40px; }
 .ci-sk { position: static; }
 
-/* Working */
-.ws { grid-template-columns: 1fr; }
-.wv { min-height: 280px; }
-.wc { padding: 48px var(--section-px); }
-.wt { position: static; transform: none; text-align: center; padding: 12px var(--section-px); background: var(--color-cream); border: 1px solid var(--color-stone); }
-
 /* Instagram */
 .ig { grid-template-columns: 1fr 1fr; }
 .ip-t { grid-row: span 1; aspect-ratio: 1; }
@@ -94,9 +88,6 @@
 
 /* B2B band */
 .bb { flex-direction: column; text-align: center; padding: 32px var(--section-px); }
-
-/* Team header */
-.tm-h { flex-direction: column; gap: 16px; align-items: flex-start; }
 
 /* Touch targets */
 @media (pointer: coarse) {

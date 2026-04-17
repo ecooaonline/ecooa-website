@@ -51,10 +51,10 @@ const schemaMembers = professionals.map((p) => {
 
 <!-- Hero -->
 <div class="ph u-bg-cream">
-  <svg class="wsv" style="opacity:.26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <svg class="wsv u-op-26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
   <div class="ph-c">
     <div class="lbl r">corpo clínico</div>
-    <h1 class="h1 r d1" style="margin-top:18px">Especialistas que<br><em>definem padrões.</em></h1>
+    <h1 class="h1 r d1 u-mt-18">Especialistas que<br><em>definem padrões.</em></h1>
     <p class="body r d2" style="margin-top:16px;max-width:480px">Uma equipe multidisciplinar reunida em torno de um propósito: oferecer o melhor cuidado possível, com humanidade e excelência técnica.</p>
   </div>
 </div>
@@ -84,15 +84,15 @@ const schemaMembers = professionals.map((p) => {
 
     <!-- Estética -->
     <div class="div" style="margin:0 0 64px"></div>
-    <div class="lbl r" style="margin-bottom:18px">ecooa.esthetic</div>
+    <div class="lbl r u-mb-18">ecooa.esthetic</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Dermatologia Clínica</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Dermatologia Estética</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Tricologia</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Transplante Capilar</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Biomedicina Estética</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Fisioterapia Dermatofuncional</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Osteopatia</span>
+      <span class="tag-pill">Dermatologia Clínica</span>
+      <span class="tag-pill">Dermatologia Estética</span>
+      <span class="tag-pill">Tricologia</span>
+      <span class="tag-pill">Transplante Capilar</span>
+      <span class="tag-pill">Biomedicina Estética</span>
+      <span class="tag-pill">Fisioterapia Dermatofuncional</span>
+      <span class="tag-pill">Osteopatia</span>
     </div>
     <div class="g4" style="margin-bottom:72px">
       <ProfessionalCard clickable name="Danusa Pires" role="Enfermeira · Tricologista · Soroterapia" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@dradanusapires" photo="/team/danusa.webp" description="Enfermeira especialista em tricologia e soroterapia. Tratamentos capilares avançados e terapia intravenosa personalizada." tags={["Tricologia", "Soroterapia", "Saúde Capilar"]} />
@@ -135,11 +135,11 @@ const schemaMembers = professionals.map((p) => {
     <div class="lbl r" style="margin-bottom:9px">ecooa.mind</div>
     <h3 style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em" class="r d1">Saúde mental</h3>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Psicologia</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Psiquiatria</span>
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink);border:1px solid var(--color-stone);padding:6px 14px">Terapia Holística</span>
+      <span class="tag-pill">Psicologia</span>
+      <span class="tag-pill">Psiquiatria</span>
+      <span class="tag-pill">Terapia Holística</span>
     </div>
-    <div class="g4" style="margin-bottom:64px">
+    <div class="g4 u-mb-64">
       <ProfessionalCard clickable name="Manuela Vanti" role="Psicóloga Clínica · TCC" bg="linear-gradient(145deg,#C8C0BC,#AEA5A2)" ig="@manuelavanti.psi" photo="/team/manuela.webp" description="Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental. Atendimento humanizado e acolhedor." tags={["Psicologia Clínica", "TCC", "Ansiedade", "Depressão"]} />
       <ProfessionalCard clickable name="Augusto Kauer" role="Psicólogo Esportivo" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" ig="@rotinadeatleta_psi" photo="/team/augusto.webp" description="Psicólogo esportivo especializado em performance mental, foco e motivação para atletas e praticantes." tags={["Psicologia Esportiva", "Performance Mental", "Foco"]} />
       <ProfessionalCard clickable name="Francielle Beria" role="Psicóloga Clínica · TCC" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@psifrancielleberia" photo="/team/francielle.webp" description="Psicóloga clínica com foco em TCC. Atendimento para ansiedade, estresse e questões emocionais." tags={["Psicologia Clínica", "TCC", "Ansiedade", "Estresse"]} />

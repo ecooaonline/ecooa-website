@@ -42,12 +42,12 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 
 <!-- Hero -->
 <div class="ph" style="background:var(--color-ink)">
-  <svg class="wsv" style="opacity:.05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <svg class="wsv u-op-05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
   <div class="ph-c">
     <div class="lbl lbl-lt r">ecooa.med</div>
-    <h1 class="h1 h1-w r d1" style="margin-top:18px">Medicina humanizada.<br>Diagnóstico preciso.<br><em>Resultado real.</em></h1>
+    <h1 class="h1 h1-w r d1 u-mt-18">Medicina humanizada.<br>Diagnóstico preciso.<br><em>Resultado real.</em></h1>
     <p class="body body-lt r d2" style="margin-top:16px;max-width:500px">Medicina de precisão que começa pela escuta. Protocolos construídos com base nos seus dados, no seu histórico e, principalmente, nos seus objetivos.</p>
-    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta">falar pelo whatsapp</a>
     <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
     <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Consultas de 50+ minutos. Vagas limitadas para garantir atendimento completo.</p>
   </div>
@@ -68,7 +68,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 
 <!-- Empatia -->
 <section style="background:var(--color-cream);padding:64px var(--section-px)" aria-label="Entendemos você">
-  <div style="max-width:640px;margin:0 auto;text-align:center">
+  <div class="u-narrow">
     <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">Você já tentou dietas, passou por médicos que mal olharam os seus exames, ouviu que "está tudo normal" mesmo sentindo que algo não vai bem. Cansaço constante, dificuldade para emagrecer, insônia, queda de libido. Você sabe que pode estar melhor.</p>
     <p class="body r d1" style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400">Na ecooa.med, a gente ouve o que os exames dizem e o que você sente. Porque medicina de verdade começa pela escuta.</p>
   </div>
@@ -77,7 +77,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <img src="/clinic/med.webp" alt="Consultório médico da ecooa.med em Moinhos de Vento" loading="lazy" decoding="async" class="u-cover"  width="1000" height="667" />
+    <picture><source srcset="/clinic/med.avif" type="image/avif" /><img src="/clinic/med.webp" alt="Consultório médico da ecooa.med em Moinhos de Vento" loading="lazy" decoding="async" class="u-cover"  width="1000" height="667" /></picture>
   </div>
 </section>
 
@@ -87,9 +87,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     <div class="g2 g2c">
       <div>
         <div class="lbl r">nossa abordagem</div>
-        <h2 class="h2 r d1" style="margin-top:15px">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
-        <p class="body r d2" style="margin-top:18px">Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a cada atendimento, com escuta total ao paciente e trabalho multiprofissional.</p>
-        <p class="body r d3" style="margin-top:13px">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
+        <h2 class="h2 r d1 u-mt-15">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
+        <p class="body r d2 u-mt-18">Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a cada atendimento, com escuta total ao paciente e trabalho multiprofissional.</p>
+        <p class="body r d3 u-mt-13">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
         <div class="lbl r" style="margin-top:24px;margin-bottom:10px">para profissionais de saúde</div>
         <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px">Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.</p>
         <form action={FORM_ACTION} method="POST" class="b2b-form ecooa-form" style="margin-top:0" id="form-b2b-med" data-ok-target="#form-b2b-med-ok" data-success-text="Recebemos seu interesse. Entraremos em contato em breve.">
@@ -107,7 +107,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
       </div>
       <div class="r d2">
         <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
-          <div class="lbl" style="margin-bottom:20px">áreas de atuação</div>
+          <div class="lbl u-mb-20">áreas de atuação</div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Metabólica e Endocrinologia</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Nutrologia e Emagrecimento</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Envelhecimento Saudável e Estilo de Vida</span></div>
@@ -128,8 +128,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <section style="background:var(--color-ink);padding:86px 60px" aria-label="Metodologia">
   <div class="g2">
     <div>
-      <div class="lbl lbl-lt r" style="margin-bottom:16px">metodologia</div>
-      <h2 class="h2 h2-w r d1" style="margin-bottom:20px">Como <em>funciona</em><br>na prática.</h2>
+      <div class="lbl lbl-lt r u-mb-16">metodologia</div>
+      <h2 class="h2 h2-w r d1 u-mb-20">Como <em>funciona</em><br>na prática.</h2>
       <p class="body body-lt r d2">Cada consulta começa com tempo real de escuta. Depois vêm os exames, a análise e o protocolo. Sempre nessa ordem, sempre centrado em você.</p>
     </div>
     <div class="st st-dk r d2">
@@ -144,8 +144,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Protocolos -->
 <section class="u-bg-cream" aria-label="Protocolos ecooa.med">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">protocolos ecooa.med</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">Programas que<br><em>entregam resultados.</em></h2>
+    <div class="lbl r u-mb-16">protocolos ecooa.med</div>
+    <h2 class="h2 r d1 u-mb-44">Programas que<br><em>entregam resultados.</em></h2>
     <div class="g3">
       <div class="ec r"><p class="ec-n">01</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Inclui manejo clínico com implantes bioabsorvíveis de liberação lenta quando indicados clinicamente, com base em protocolos médicos atuais.</p></div>
       <div class="ec r"><p class="ec-n">02</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">Avaliação completa da saúde hormonal masculina com protocolos individualizados para vitalidade, libido, composição corporal e bem-estar, incluindo terapia hormonal bioabsorvível quando aplicável.</p></div>
@@ -162,8 +162,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Nosso Espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.med">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
-    <div style="aspect-ratio:16/9;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa em Moinhos de Vento" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></div>
-    <div style="aspect-ratio:16/9;overflow:hidden" class="r d1"><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></div>
+    <div class="u-img-169 r"><picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa em Moinhos de Vento" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
+    <div class="u-img-169 r d1"><picture><source srcset="/clinic/cafe.avif" type="image/avif" /><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture></div>
   </div>
 </section>
 
@@ -172,8 +172,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Perguntas frequentes -->
 <section class="u-bg-warm" aria-label="Perguntas frequentes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
-    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
+    <div class="lbl r u-mb-16">perguntas frequentes</div>
+    <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
     <div class="faq-section">
       {medFaqs.map((faq) => (
         <details class="faq-item">
@@ -188,8 +188,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Como funciona -->
 <section class="u-bg-cream" aria-label="Como funciona">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
+    <div class="lbl r u-mb-16">sua jornada</div>
+    <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto">
       <div class="r u-tac">
         <span class="step-num">1</span>
@@ -218,9 +218,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <!-- Depoimentos -->
 <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">depoimentos</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+    <div class="lbl r u-mb-16">depoimentos</div>
+    <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+    <div class="grid-auto-260">
       <div class="r card-w">
         <p class="q-serif">"A consulta durou quase uma hora. O médico olhou todos os meus exames anteriores, pediu novos e montou um plano que fez sentido. Em dois meses já senti diferença na disposição."</p>
         <p class="sm-soft">L. R.</p>
@@ -242,9 +242,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 {medPosts.length > 0 && (
 <section class="u-bg-warm" aria-label="Artigos relacionados">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+    <div class="lbl r u-mb-16">do nosso blog</div>
+    <h2 class="h2 r d1 u-mb-44">artigos <em>relacionados</em></h2>
+    <div class="grid-auto-260">
       {medPosts.map((post, i) => (
         <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
           <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>

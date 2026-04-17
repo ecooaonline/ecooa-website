@@ -46,7 +46,7 @@ const estheticFaqSchema = {
     <div class="lbl lbl-br r">ecooa.esthetic</div>
     <h1 style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px" class="r d1">Estética avançada.<br>Sem exageros,<br><em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.82)">com muito bom gosto.</em></h1>
     <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.82);max-width:500px" class="r d2">Procedimentos de última geração que respeitam e revelam a sua beleza natural. Com olhar clínico apurado, técnica refinada e a estética como extensão da saúde.</p>
-    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3" style="margin-top:28px;display:inline-block">falar pelo whatsapp</a>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta">falar pelo whatsapp</a>
     <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.65);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
     <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.55);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Avaliação personalizada. Vagas limitadas para garantir resultado natural e seguro.</p>
   </div>
@@ -65,7 +65,7 @@ const estheticFaqSchema = {
 
 <!-- Empatia -->
 <section style="background:var(--color-cream);padding:64px var(--section-px)" aria-label="Entendemos você">
-  <div style="max-width:640px;margin:0 auto;text-align:center">
+  <div class="u-narrow">
     <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">Você olha no espelho e algo incomoda. Pode ser a queda de cabelo que ninguém leva a sério, as linhas que apareceram cedo demais, ou a insegurança que nenhum produto cosmético resolve. Você quer cuidar de si, mas com segurança e sem exageros.</p>
     <p class="body r d1" style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400">Na ecooa.esthetic, cada procedimento é indicado com base na sua anatomia, na sua expectativa e no que valoriza quem você realmente é.</p>
   </div>
@@ -74,15 +74,15 @@ const estheticFaqSchema = {
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <img src="/clinic/esthetic.webp" alt="Sala de procedimentos estéticos da ecooa.esthetic" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" />
+    <picture><source srcset="/clinic/esthetic.avif" type="image/avif" /><img src="/clinic/esthetic.webp" alt="Sala de procedimentos estéticos da ecooa.esthetic" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture>
   </div>
 </section>
 
 <!-- Procedimentos -->
 <section class="u-bg-warm" aria-label="Procedimentos">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">o que oferecemos</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">Procedimentos que<br>cuidam e <em>revelam.</em></h2>
+    <div class="lbl r u-mb-16">o que oferecemos</div>
+    <h2 class="h2 r d1 u-mb-44">Procedimentos que<br>cuidam e <em>revelam.</em></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
       <div class="gc"><p class="gc-tag">01</p><h3 class="it-t">Rejuvenescimento Facial</h3><p class="it-d-lg">Toxina botulínica, preenchimento com ácido hialurônico, bioremodeladores e bioestimuladores de colágeno. O objetivo é sempre um resultado harmonioso, natural e com muito bom gosto.</p></div>
       <div class="gc"><p class="gc-tag">02</p><h3 class="it-t">Transplante Capilar, de Barba e Sobrancelha</h3><p class="it-d-lg">Referência em Porto Alegre. Técnica FUE e FUE Safira para restauração capilar, reconstrução de barba e definição de sobrancelhas. Resultado natural e permanente para homens e mulheres.</p></div>
@@ -102,7 +102,7 @@ const estheticFaqSchema = {
 <section style="background:var(--color-brand);padding:86px 60px;position:relative;overflow:hidden" aria-label="Nossa filosofia">
   <svg class="wsv" style="opacity:.13" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
   <div style="position:relative;z-index:2;max-width:580px">
-    <div class="lbl lbl-br r" style="margin-bottom:18px">nossa filosofia</div>
+    <div class="lbl lbl-br r u-mb-18">nossa filosofia</div>
     <h2 style="font-size:clamp(28px,3.6vw,52px);font-weight:200;color:white;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px" class="r d1">"Estética com ciência.<br>Resultados que <em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.55)">respeitam quem você é.</em>"</h2>
     <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.54)" class="r d2">Nossos procedimentos são indicados com base na sua anatomia, expectativa e saúde. Nunca pelo modismo, sempre pelo que valoriza você de verdade.</p>
   </div>
@@ -111,8 +111,8 @@ const estheticFaqSchema = {
 <!-- Nosso Espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.esthetic">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
-    <div style="aspect-ratio:16/9;overflow:hidden" class="r"><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></div>
-    <div style="aspect-ratio:16/9;overflow:hidden" class="r d1"><img src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" loading="lazy" decoding="async" class="u-cover"  width="945" height="792" /></div>
+    <div class="u-img-169 r"><picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
+    <div class="u-img-169 r d1"><picture><source srcset="/clinic/detalhes.avif" type="image/avif" /><img src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" loading="lazy" decoding="async" class="u-cover"  width="945" height="792" /></picture></div>
   </div>
 </section>
 
@@ -121,8 +121,8 @@ const estheticFaqSchema = {
 <!-- Perguntas frequentes -->
 <section class="u-bg-warm" aria-label="Perguntas frequentes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">perguntas frequentes</div>
-    <h2 class="h2 r d1" style="margin-bottom:40px">Dúvidas sobre a<br><em>ecooa.esthetic.</em></h2>
+    <div class="lbl r u-mb-16">perguntas frequentes</div>
+    <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br><em>ecooa.esthetic.</em></h2>
     <div class="faq-section">
       {estheticFaqs.map((faq) => (
         <details class="faq-item">
@@ -137,8 +137,8 @@ const estheticFaqSchema = {
 <!-- Como funciona -->
 <section class="u-bg-cream" aria-label="Como funciona">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">sua jornada</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">como <em>funciona</em></h2>
+    <div class="lbl r u-mb-16">sua jornada</div>
+    <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto">
       <div class="r u-tac">
         <span class="step-num">1</span>
@@ -168,9 +168,9 @@ const estheticFaqSchema = {
 <!-- Depoimentos -->
 <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">depoimentos</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">o que nossos pacientes <em>dizem</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+    <div class="lbl r u-mb-16">depoimentos</div>
+    <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+    <div class="grid-auto-260">
       <div class="r card-w">
         <p class="q-serif">"Fiz o transplante e o resultado ficou tão natural que meus amigos acharam que eu só tinha mudado o corte de cabelo. Exatamente o que eu queria."</p>
         <p class="sm-soft">E. C.</p>
@@ -192,9 +192,9 @@ const estheticFaqSchema = {
 {estheticPosts.length > 0 && (
 <section class="u-bg-warm" aria-label="Artigos relacionados">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:16px">do nosso blog</div>
-    <h2 class="h2 r d1" style="margin-bottom:44px">artigos <em>relacionados</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+    <div class="lbl r u-mb-16">do nosso blog</div>
+    <h2 class="h2 r d1 u-mb-44">artigos <em>relacionados</em></h2>
+    <div class="grid-auto-260">
       {estheticPosts.map((post, i) => (
         <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
           <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>

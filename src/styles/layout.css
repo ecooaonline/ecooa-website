@@ -4,7 +4,6 @@
 
 /* Section wrapper */
 .w { padding: var(--section-py) var(--section-px); }
-.w-sm { padding: var(--section-py-sm) var(--section-px); }
 
 /* Grids */
 .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
