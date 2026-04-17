@@ -238,6 +238,26 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
       </script>
     </div>
 
+    <script define:vars={{ title: post.data.title, category: post.data.category, slug: post.id }}>
+      (function trackBlogViewContent() {
+        function fire() {
+          window.fbq && window.fbq('track', 'ViewContent', {
+            content_name: title,
+            content_category: category,
+            content_ids: [slug],
+            content_type: 'article',
+          });
+        }
+        if (window.fbq) { fire(); return; }
+        var tries = 0;
+        var iv = setInterval(function () {
+          tries++;
+          if (window.fbq) { clearInterval(iv); fire(); }
+          else if (tries > 60) { clearInterval(iv); }
+        }, 500);
+      })();
+    </script>
+
   </div>
 </article>
 

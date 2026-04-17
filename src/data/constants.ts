@@ -16,3 +16,6 @@ export const ADDRESS_FULL = `${ADDRESS_STREET} · ${ADDRESS_FLOOR} · ${ADDRESS_
 
 // Google Apps Script - URL do formulário
 export const FORM_ACTION = 'https://script.google.com/macros/s/AKfycbx3NOzVryn9prCJvKuBH20EFGiHoCENEZdR73zjaeiiUCl9PXk2sKrzGxrcrQ3ahQ-v/exec';
+
+// Meta Pixel (Facebook/Instagram Ads)
+export const META_PIXEL_ID = '795926643274151';

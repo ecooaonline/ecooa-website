@@ -6,6 +6,7 @@
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
   }
 }
 
@@ -56,6 +57,7 @@ function setupTracking() {
         event_label: professionalName,
         page_location: document.location.pathname,
       });
+      window.fbq?.('track', 'Contact', { content_name: professionalName });
     }
 
     // Instagram clicks

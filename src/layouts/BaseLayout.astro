@@ -3,7 +3,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFab from '../components/WhatsAppFab.astro';
 import CookieConsent from '../components/CookieConsent.astro';
-import { WA_DEFAULT, ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP } from '../data/constants';
+import { WA_DEFAULT, ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP, META_PIXEL_ID } from '../data/constants';
 
 import '../styles/tokens.css';
 import '../styles/base.css';
@@ -36,7 +36,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://*.google-analytics.com https://*.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com; worker-src 'self' blob:; form-action 'self' https://script.google.com https://*.google.com; base-uri 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://*.google-analytics.com https://*.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com https://www.facebook.com; worker-src 'self' blob:; form-action 'self' https://script.google.com https://*.google.com; base-uri 'self'">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -182,6 +182,26 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   setTimeout(loadGTM,12000);}
   if(localStorage.getItem('ecooa_cookie_consent')==='accepted'){setupGTMListeners();}
   window.addEventListener('ecooa_consent_accepted',function(){setupGTMListeners();},{once:true});
+  </script>
+
+  <!-- Meta Pixel (interaction-only, consent-gated) -->
+  <script define:vars={{ pixelId: META_PIXEL_ID }}>
+  function loadMetaPixel(){if(window._fbqLoaded)return;window._fbqLoaded=true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  window.fbq('init',pixelId);window.fbq('track','PageView');}
+  function setupPixelListeners(){
+  if(window._fbqListenersAttached)return;window._fbqListenersAttached=true;
+  document.addEventListener('scroll',loadMetaPixel,{once:true,passive:true});
+  document.addEventListener('click',loadMetaPixel,{once:true});
+  document.addEventListener('touchstart',loadMetaPixel,{once:true,passive:true});
+  document.addEventListener('keydown',loadMetaPixel,{once:true});
+  setTimeout(loadMetaPixel,12000);}
+  if(localStorage.getItem('ecooa_cookie_consent')==='accepted'){setupPixelListeners();}
+  window.addEventListener('ecooa_consent_accepted',function(){setupPixelListeners();},{once:true});
   </script>
 </head>
 <body data-wa={WA_DEFAULT}>

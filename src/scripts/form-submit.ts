@@ -5,6 +5,12 @@
 //   - data-error-text:   texto a exibir em caso de erro
 //   - data-ok-target:    selector alternativo para o elemento de sucesso (padrão: .ecooa-form-ok irmão)
 
+declare global {
+  interface Window {
+    fbq?: (...args: any[]) => void;
+  }
+}
+
 const TIMEOUT_MS = 15000;
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 1500;
@@ -63,10 +69,17 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
           okEl.textContent = successText;
           okEl.style.display = 'block';
         }
+        const formType = (form.querySelector('[name="_formType"]') as HTMLInputElement | null)?.value || 'unknown';
         window.gtag?.('event', 'form_submit_success', {
           event_category: 'conversion',
-          event_label: (form.querySelector('[name="_formType"]') as HTMLInputElement | null)?.value || 'unknown',
+          event_label: formType,
         });
+        // Meta Pixel: Lead para formulários de conversão, Subscribe para newsletter
+        if (formType === 'newsletter') {
+          window.fbq?.('track', 'Subscribe');
+        } else if (formType === 'agendamento' || formType === 'b2b-medicina' || formType === 'b2b-nutricao') {
+          window.fbq?.('track', 'Lead', { content_name: formType });
+        }
       } catch (err) {
         if (btn) {
           btn.textContent = errorText;
