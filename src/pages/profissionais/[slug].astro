@@ -43,6 +43,21 @@ const articles = allPosts
   .slice(0, 6);
 
 const firstName = p.name.split(' ')[0];
+
+function isPhysician(role: string) {
+  return /\bMédic[oa]\b/i.test(role);
+}
+
+function medicalSpecialty(role: string): string {
+  const lower = role.toLowerCase();
+  if (lower.includes('dermato') || lower.includes('capilar') || lower.includes('tricolog')) return 'Dermatology';
+  if (lower.includes('psiquiatr')) return 'Psychiatric';
+  if (lower.includes('endocrin')) return 'Endocrine';
+  if (lower.includes('ortomolecular') || lower.includes('metabol') || lower.includes('hormôn') || lower.includes('longevidade') || lower.includes('emagrecimento')) return 'PrimaryCare';
+  return 'PrimaryCare';
+}
+
+const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
 ---
 
 <BaseLayout
@@ -56,12 +71,13 @@ const firstName = p.name.split(' ')[0];
 <!-- Structured Data -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": schemaType,
   "name": p.name,
   "jobTitle": p.role.split(' · ')[0],
   "description": p.description,
   "image": `https://www.somosecooa.com.br${p.photo}`,
   "url": `https://www.somosecooa.com.br/profissionais/${p.slug}`,
+  ...(schemaType === 'Physician' ? { "medicalSpecialty": medicalSpecialty(p.role) } : {}),
   "worksFor": {
     "@type": "MedicalBusiness",
     "name": "ecooa",

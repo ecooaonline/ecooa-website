@@ -56,6 +56,16 @@ O caminho começa com exames laboratoriais específicos. Na ecooa, realizamos:
 - Testes genéticos quando indicados
 - Avaliação clínica detalhada com escuta ativa
 
+### Entendendo os exames hormonais
+
+Uma avaliação hormonal completa vai muito além de um simples exame de sangue. O painel tireoidiano, por exemplo, inclui TSH, T3 livre, T4 livre e anticorpos, porque avaliar apenas o TSH pode mascarar disfunções subclínicas que já causam sintomas.
+
+Para mulheres, é comum solicitar estradiol, progesterona, FSH, LH, testosterona total e livre, DHEA-S e prolactina. A fase do ciclo menstrual em que o exame é coletado faz diferença no resultado, e por isso o acompanhamento médico é essencial para a interpretação correta.
+
+Para homens, além da testosterona total e livre, avaliamos SHBG, estradiol e marcadores de função adrenal. A relação entre esses valores conta mais do que números isolados. Um nível de testosterona dentro da referência laboratorial pode, ainda assim, estar inadequado para aquele paciente específico.
+
+Outros marcadores importantes incluem insulina de jejum, cortisol salivar em diferentes momentos do dia e vitamina D, que atua como um pré-hormônio no organismo. A combinação desses dados com a história clínica permite um diagnóstico muito mais preciso.
+
 ## Tratamento personalizado
 
 O tratamento depende do diagnóstico. Pode envolver:
@@ -64,6 +74,14 @@ O tratamento depende do diagnóstico. Pode envolver:
 - Suplementação direcionada
 - Reposição hormonal quando indicada
 - Acompanhamento integrado com nutricionista e profissionais de saúde mental
+
+### Como funciona o tratamento na prática
+
+Na ecooa, cada plano de tratamento é desenhado individualmente. Não existe protocolo genérico, porque cada organismo responde de forma diferente.
+
+Quando ajustes no estilo de vida são suficientes, priorizamos essa abordagem. Mudanças na qualidade do sono, na prática de exercícios e na alimentação podem ter impacto significativo sobre os níveis hormonais. A nutrição funcional, por exemplo, pode corrigir deficiências de zinco, magnésio e selênio que estão diretamente relacionadas à produção de hormônios tireoidianos e sexuais.
+
+Nos casos em que a reposição hormonal é indicada, ela é feita com critério, com doses individualizadas e monitoramento frequente. O objetivo não é simplesmente elevar um número em um exame, mas devolver ao paciente a qualidade de vida que ele perdeu. Reavaliações periódicas garantem que o tratamento continue adequado ao longo do tempo, já que as necessidades do organismo mudam com a idade e o contexto de vida.
 
 ## Na ecooa, tudo se conecta
 

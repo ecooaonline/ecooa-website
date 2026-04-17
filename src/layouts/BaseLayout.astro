@@ -77,6 +77,24 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="ecooa">
 
+  <!-- Speculation Rules (prerender provável, Chrome 121+) -->
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": ["/profissionais/*", "/ecooa-med", "/ecooa-esthetic", "/ecooa-mind", "/ecooa-working", "/quem-somos", "/agendamento"] },
+        "eagerness": "moderate"
+      }
+    ],
+    "prefetch": [
+      {
+        "where": { "href_matches": "/blog/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
+
   <!-- Font preloads (only critical above-fold fonts) -->
   <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>

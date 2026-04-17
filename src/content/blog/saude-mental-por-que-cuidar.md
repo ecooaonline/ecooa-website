@@ -26,6 +26,20 @@ Quando falamos em saúde, muitas pessoas pensam apenas no corpo. Mas a ciência 
 
 Se você se identifica com 3 ou mais desses sinais, considere buscar acompanhamento profissional.
 
+### Quando a atenção precisa ser imediata
+
+Alguns sinais merecem atenção especial e indicam que a busca por ajuda não deve ser adiada. Pensamentos recorrentes de desesperança, crises de pânico frequentes, uso de substâncias como forma de alívio emocional e dificuldade em realizar atividades básicas do cotidiano, como trabalhar ou se alimentar, são situações que pedem acolhimento profissional o quanto antes.
+
+Vale lembrar que nem sempre os sinais são óbvios. Muitas vezes, dores físicas sem causa aparente, como cefaleia constante, tensão muscular crônica e problemas gastrointestinais, têm origem emocional. O corpo fala quando a mente precisa de cuidado.
+
+## O papel da psicologia na saúde integrativa
+
+Na abordagem integrativa, a psicologia não atua de forma isolada. Ela é parte de um cuidado mais amplo, que reconhece a influência direta da saúde emocional sobre o funcionamento do organismo.
+
+Quando um paciente chega à ecooa com queixas de insônia, por exemplo, a investigação pode envolver tanto a avaliação psicológica quanto a médica e nutricional. Estresse emocional pode elevar o cortisol e desregular a melatonina. A alimentação pode estar deficiente em nutrientes essenciais para a produção de neurotransmissores. E tudo isso se conecta.
+
+Esse olhar integrado permite que o tratamento vá além do sintoma. Em vez de apenas medicar a insônia, buscamos entender e tratar o que está por trás dela. É uma forma de cuidado mais profunda, mais humana e mais eficaz a longo prazo.
+
 ## Terapia não é para "loucos"
 
 Esse estigma precisa acabar. Terapia é para quem quer se conhecer melhor, lidar de forma mais saudável com desafios e construir ferramentas emocionais para a vida.
@@ -58,6 +72,10 @@ O local onde você faz terapia influencia diretamente sua experiência. Na ecooa
 ## Saúde mental integrada
 
 O diferencial da ecooa é a integração. Se sua ansiedade está afetando seu sono e seu peso, podemos integrar seu acompanhamento psicológico com medicina e nutrição. Porque não faz sentido tratar sintomas isolados quando a causa é mais profunda.
+
+## Cuidar da mente é um investimento de longo prazo
+
+Diferente do que muitos imaginam, o acompanhamento psicológico não serve apenas para momentos de crise. Ele é uma ferramenta de autoconhecimento e prevenção. Ao desenvolver inteligência emocional e estratégias de enfrentamento, você constrói uma base mais sólida para lidar com os desafios que a vida naturalmente apresenta. Relacionamentos, carreira, saúde física. Tudo se beneficia quando a mente está bem cuidada.
 
 ## O primeiro passo
 

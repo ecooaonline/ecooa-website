@@ -23,6 +23,10 @@ A composição e o timing das refeições impactam diretamente:
 - **Força e potência**: proteínas adequadas suportam a demanda muscular
 - **Hidratação**: a perda de apenas 2% de água corporal já reduz a performance
 
+Cada macronutriente desempenha um papel específico na performance. Os carboidratos são a principal fonte de energia para exercícios de alta intensidade e devem ser priorizados antes e durante treinos mais longos ou intensos. As proteínas são fundamentais para a reparação e construção muscular, e sua distribuição ao longo do dia importa tanto quanto a quantidade total. Já as gorduras boas participam da produção hormonal e da absorção de vitaminas lipossolúveis, sendo essenciais para a saúde geral do atleta.
+
+O timing nutricional, ou seja, o momento em que você consome cada nutriente, pode fazer diferença significativa. Uma refeição rica em carboidratos de fácil digestão 60 a 90 minutos antes do treino garante energia disponível. No pós-treino, a combinação de proteínas e carboidratos favorece a recuperação muscular e a reposição dos estoques de glicogênio.
+
 ### Composição corporal
 
 Se você quer perder gordura e ganhar massa muscular ao mesmo tempo (recomposição corporal), a nutrição é mais importante que o treino. Um plano alimentar personalizado define:
@@ -56,8 +60,18 @@ Na ecooa, nossas nutricionistas esportivas trabalham com:
 - Corredores que buscam performance e prevenção de lesões
 - Qualquer pessoa que treina e quer tirar o máximo do seu esforço
 
+## A importância do acompanhamento profissional
+
+Informação sobre nutrição está por toda parte, mas isso não substitui o olhar individualizado de um profissional qualificado. Cada pessoa tem um metabolismo diferente, uma rotina específica, demandas físicas distintas e objetivos próprios. O que funciona para um colega de treino pode não funcionar para você.
+
+Um nutricionista esportivo avalia seu gasto energético real, analisa sua composição corporal com precisão e considera fatores como qualidade do sono, nível de estresse e possíveis deficiências nutricionais. A partir desses dados, constrói um plano que evolui junto com você, acompanhando suas fases de treino e adaptando a alimentação conforme os resultados aparecem.
+
+A suplementação, quando necessária, também deve ser orientada por um profissional. Suplementos como creatina, whey protein, cafeína e eletrólitos podem trazer benefícios reais quando utilizados no contexto correto. Porém, sem orientação adequada, é comum gastar dinheiro com produtos desnecessários ou que não se encaixam no seu perfil.
+
 ## O ecossistema ecooa a seu favor
 
 Na ecooa, sua nutrição esportiva pode ser integrada com medicina de alta performance, acompanhamento hormonal e saúde mental. Porque performance de verdade é um conjunto.
+
+Quando a alimentação está alinhada com o treino, o sono e o equilíbrio emocional, os resultados aparecem de forma mais consistente e duradoura. Essa visão integrada é o que diferencia um acompanhamento completo de uma simples dieta impressa.
 
 Agende com uma de nossas nutricionistas esportivas e leve seu treino para o próximo nível.

@@ -94,8 +94,17 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
   "author": {
     "@type": "Person",
     "name": post.data.author,
+    "url": matchedProfessional ? `https://www.somosecooa.com.br/profissionais/${matchedProfessional.slug}` : undefined,
     "worksFor": { "@type": "MedicalBusiness", "name": "ecooa" }
   },
+  ...(isMedical && matchedProfessional ? {
+    "reviewedBy": {
+      "@type": "Person",
+      "name": matchedProfessional.name,
+      "url": `https://www.somosecooa.com.br/profissionais/${matchedProfessional.slug}`
+    },
+    "lastReviewed": post.data.lastModified || post.data.date
+  } : {}),
   "publisher": {
     "@type": "Organization",
     "name": "ecooa",
@@ -130,7 +139,7 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
           alt={matchedProfessional.name}
           width="56"
           height="56"
-          style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0"
+          style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;aspect-ratio:1/1"
           loading="lazy"
         />
         <div style="min-width:0">
