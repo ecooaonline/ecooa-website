@@ -38,6 +38,33 @@
   text-transform: uppercase;
 }
 
+/* Item title + description (used in step lists, service cards, feature grids) */
+.it-t { font-size: 15px; font-weight: 400; color: var(--color-ink); margin-bottom: 6px; }
+.it-d { font-size: 12px; font-weight: 300; line-height: 1.75; color: var(--color-ink-soft); }
+.it-d-lg { font-size: 13px; font-weight: 300; line-height: 1.8; color: var(--color-ink-soft); }
+
+/* Numbered circle badge (48px) used in process/step sections */
+.step-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 1px solid var(--color-stone);
+  font-family: var(--font-primary); font-size: 16px; font-weight: 400;
+  color: var(--color-brand-text); margin-bottom: 14px;
+}
+
+/* Grid cell for service grids (border system) */
+.gc { border-right: 1px solid var(--color-stone); border-bottom: 1px solid var(--color-stone); padding: 30px 28px; }
+.gc-tag { font-size: 9px; font-weight: 500; letter-spacing: .15em; text-transform: uppercase; color: var(--color-brand-text); margin-bottom: 9px; }
+
+/* White bordered card + serif italic quote + soft author (testimonials on subpages) */
+.card-w { background: var(--color-white); border: 1px solid var(--color-stone); padding: 32px 28px; }
+.q-serif { font-family: var(--font-serif); font-style: italic; font-size: 14px; line-height: 1.8; color: var(--color-ink); margin-bottom: 16px; }
+.sm-soft { font-size: 12px; font-weight: 400; color: var(--color-ink-soft); }
+
+/* List row with bottom border (area-of-expertise lists) */
+.lr { display: flex; align-items: center; gap: 13px; padding: 10px 0; border-bottom: 1px solid var(--color-stone); }
+.body-md { font-size: 13px; font-weight: 400; color: var(--color-ink); }
+
 /* ── BUTTONS ── */
 .btn-base {
   display: inline-block; font-size: 11px; font-weight: 500;
