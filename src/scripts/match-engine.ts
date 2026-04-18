@@ -68,77 +68,178 @@ export function tokenize(text: string): string[] {
 // Expansão de sinônimos pt-BR específica para o domínio da clínica.
 // Esta curadoria é o coração do sistema: mapeia linguagem do paciente para
 // vocabulário clínico. Bagagem de conhecimento difícil de copiar.
-const SYNONYMS: Record<string, string[]> = {
-  // Emagrecimento
-  emagrecer: ['perder', 'peso', 'gordura', 'magro', 'magra', 'obeso', 'obesa', 'barriga', 'dieta'],
-  magro: ['emagrecer', 'perder', 'peso', 'definir'],
-  gordura: ['emagrecer', 'peso', 'flacidez'],
+//
+// Organização por cluster semântico. A relação é simétrica: adicionar um
+// sinônimo em um cluster expande todos os outros termos do mesmo grupo.
+// Cobertura: medicina geral, emagrecimento/metabolismo, hormônios, estética
+// (pele, cabelo, HOF, corpo), nutrição (esportiva, comportamental, clínica),
+// saúde mental (transtornos, performance, relacionamentos), dores/osteopatia,
+// nutrição materno-infantil.
+const SYNONYM_CLUSTERS: string[][] = [
+  // ── emagrecimento / peso / composição ──
+  ['emagrecer', 'perder peso', 'gordura', 'magro', 'magra', 'obeso', 'obesa', 'obesidade', 'barriga', 'pancinha', 'abdomen', 'dieta', 'regime', 'restrição', 'deficit', 'calorico'],
+  ['peso', 'balanca', 'quilo', 'kilos', 'pesando', 'engordar', 'engordei', 'engordou', 'engordou muito'],
+  ['massa muscular', 'hipertrofia', 'musculo', 'musculatura', 'volume muscular', 'bulking', 'ganho massa', 'ganhar musculo'],
+  ['composicao corporal', 'bioimpedancia', 'bodyfat', 'percentual gordura', 'inbody', 'DEXA', 'dexa', 'definicao'],
 
-  // Hormônios
-  hormonal: ['hormonio', 'reposicao', 'menopausa', 'andropausa', 'tireoide', 'cortisol', 'testosterona', 'estrogenio'],
-  tireoide: ['hormonal', 'metabolismo', 'hipotireoidismo'],
-  menopausa: ['hormonal', 'climaterio', 'reposicao'],
+  // ── metabolismo / medicina geral ──
+  ['metabolismo', 'metabolico', 'acelerar', 'metabolizar', 'queimar caloria', 'basal'],
+  ['cansaco', 'fadiga', 'exausto', 'exausta', 'sem energia', 'cansaca', 'cansada', 'prostrado', 'moleza', 'sono', 'sonolencia'],
+  ['check up', 'checkup', 'exame preventivo', 'medicina preventiva', 'avaliacao medica', 'exames laboratoriais', 'exame sangue', 'rotina'],
+  ['pressao alta', 'hipertensao', 'hipertenso', 'pressao arterial'],
+  ['diabetes', 'glicose', 'acucar alto', 'insulina', 'pre diabetes', 'resistencia insulina', 'a1c', 'hemoglobina glicada'],
+  ['colesterol', 'triglicerides', 'ldl', 'hdl', 'lipidograma', 'dislipidemia'],
+  ['intestino', 'constipacao', 'prisao de ventre', 'diarreia', 'sibo', 'sii', 'intestino irritavel', 'microbioma', 'probiotico', 'disbiose'],
+  ['refluxo', 'gastrite', 'helicobacter', 'azia', 'queimacao', 'estomago'],
+  ['inflamacao', 'inflamado', 'pcr', 'marcadores inflamatorios', 'inflamacao cronica'],
+  ['imunidade', 'imunidade baixa', 'defesas', 'gripa toda hora', 'adoecendo', 'resfriado frequente'],
+  ['detox', 'desintoxicacao', 'limpeza', 'sobrecarga', 'toxinas'],
+  ['inchaco', 'retencao', 'retencao liquido', 'edema', 'inchada', 'incha'],
 
-  // Cabelo
-  cabelo: ['fio', 'fios', 'couro', 'cabeludo', 'calvicie', 'alopecia', 'tricologia', 'queda'],
-  queda: ['cabelo', 'caindo', 'alopecia', 'calvicie', 'rarefacao'],
-  calvicie: ['cabelo', 'queda', 'alopecia', 'transplante'],
-  transplante: ['implante', 'capilar', 'fue', 'restauracao'],
+  // ── hormônios / reposição ──
+  ['hormonal', 'hormonio', 'endocrino', 'reposicao hormonal', 'reposicao', 'TRH', 'trh'],
+  ['tireoide', 'hipotireoidismo', 'hipertireoidismo', 'hashimoto', 'tsh', 't3', 't4', 'nodulo tireoide'],
+  ['cortisol', 'stress hormonal', 'fadiga adrenal', 'adrenal'],
+  ['testosterona', 'androgenio', 'anabolico', 'baixa testosterona', 'andropausa', 'andropausa masculina'],
+  ['estrogenio', 'progesterona', 'estradiol', 'ciclo hormonal'],
+  ['menopausa', 'climaterio', 'perimenopausa', 'pos menopausa', 'calorao', 'fogacho', 'suor noturno'],
+  ['tpm', 'tensao pre menstrual', 'menstruacao', 'ciclo menstrual', 'colica menstrual', 'sangramento', 'dismenorreia'],
+  ['sop', 'ovario policistico', 'ciclo irregular', 'acne hormonal', 'hirsutismo'],
+  ['libido', 'desejo sexual', 'baixa libido', 'disfuncao erétil', 'impotencia', 'performance sexual', 'saude sexual'],
+  ['fertilidade', 'engravidar', 'tentando engravidar', 'gestacao', 'gravidez', 'pre natal', 'pos parto', 'puerperio'],
+  ['longevidade', 'antienvelhecimento', 'anti aging', 'envelhecimento saudavel', 'idade biologica', 'healthspan'],
 
-  // Pele
-  pele: ['dermatologia', 'rosto', 'face', 'facial', 'rugas', 'manchas', 'acne'],
-  rugas: ['rejuvenescimento', 'envelhecimento', 'firmeza'],
-  manchas: ['melasma', 'hiperpigmentacao', 'clareamento'],
-  acne: ['espinha', 'espinhas', 'cravos', 'oleosidade'],
+  // ── vitaminas e minerais ──
+  ['vitamina d', 'vitamina d3', 'deficiencia vitamina'],
+  ['b12', 'vitamina b12', 'complexo b'],
+  ['ferro', 'anemia', 'ferritina', 'ferropenia'],
+  ['magnesio', 'zinco', 'selenio', 'mineral'],
+  ['omega 3', 'omega tres', 'dha', 'epa'],
+  ['suplemento', 'suplementacao', 'whey', 'creatina', 'bcaa', 'colageno', 'glutamina'],
+  ['soroterapia', 'terapia intravenosa', 'vitamina injetavel', 'hidratacao endovenosa', 'vitaminico iv'],
 
-  // HOF
-  harmonizacao: ['hof', 'preenchimento', 'bichectomia', 'botox', 'labial', 'labios', 'lipo'],
-  botox: ['harmonizacao', 'toxina', 'expressao'],
-  labios: ['labial', 'preenchimento', 'harmonizacao'],
+  // ── cabelo / tricologia ──
+  ['cabelo', 'cabelos', 'fio', 'fios', 'couro cabeludo', 'capilar'],
+  ['queda cabelo', 'queda de cabelo', 'cabelo caindo', 'afinamento', 'rarefacao', 'cabelo fino', 'perda capilar', 'cai muito'],
+  ['calvicie', 'alopecia', 'alopecia androgenetica', 'alopecia areata', 'calvo', 'careca', 'entradas'],
+  ['tricologia', 'tricologista', 'doenca capilar', 'dermatite couro', 'dermatite seborreica', 'seborreia'],
+  ['transplante capilar', 'implante capilar', 'fue', 'sapphire', 'restauracao capilar', 'cirurgia capilar'],
+  ['caspa', 'oleosidade couro', 'coceira couro'],
+  ['prp capilar', 'microinfusao', 'mmp', 'mesoterapia capilar', 'intradermoterapia capilar'],
 
-  // Corpo
-  celulite: ['corporal', 'flacidez', 'dermatofuncional'],
-  flacidez: ['corporal', 'celulite', 'firmeza'],
+  // ── pele / dermatologia ──
+  ['pele', 'rosto', 'face', 'facial', 'cutis', 'epiderme', 'dermatologia', 'dermatologico'],
+  ['acne', 'espinha', 'espinhas', 'cravos', 'oleosidade', 'seborreia', 'pele oleosa', 'cicatriz acne', 'acne adulta', 'acne hormonal'],
+  ['manchas', 'melasma', 'hiperpigmentacao', 'clareamento', 'mancha sol', 'mancha gravidez', 'cloasma'],
+  ['rugas', 'linhas expressao', 'pe galinha', 'bigode chines', 'codigo de barras', 'testa', 'glabela'],
+  ['rejuvenescimento', 'envelhecimento', 'firmeza', 'elasticidade', 'flacidez facial', 'pele flacida'],
+  ['rosacea', 'vermelhidao', 'sensibilidade', 'pele sensivel'],
+  ['dermatite', 'eczema', 'vitiligo', 'psoriase', 'micose', 'fungo'],
+  ['olheira', 'bolsa ocular', 'cansaco facial', 'area periocular'],
+  ['estria', 'cicatriz', 'queloide', 'stretch marks'],
+  ['peeling', 'peeling quimico', 'limpeza de pele', 'limpeza profunda', 'skincare', 'dermapen', 'microagulhamento'],
+  ['laser', 'luz pulsada', 'ipl', 'lavieen', 'fraxel', 'co2'],
+  ['radiofrequencia', 'ultraformer', 'hifu', 'ultrassom facial'],
+  ['suor', 'hiperidrose', 'suor excessivo', 'axilas', 'maos suadas'],
+  ['unha', 'onicomicose', 'fungo unha', 'onicolise'],
 
-  // Mente
-  ansiedade: ['panico', 'crise', 'nervoso', 'preocupacao', 'tcc', 'psicologia'],
-  depressao: ['tristeza', 'triste', 'desanimo', 'psicologia'],
-  triste: ['tristeza', 'depressao', 'desanimo', 'psicologia'],
-  tristeza: ['triste', 'depressao', 'desanimo'],
-  estresse: ['burnout', 'esgotamento', 'cansaco', 'sobrecarga'],
-  burnout: ['estresse', 'esgotamento', 'exaustao'],
-  choro: ['triste', 'tristeza', 'depressao'],
-  medo: ['ansiedade', 'panico', 'fobia'],
+  // ── HOF / harmonização orofacial ──
+  ['hof', 'harmonizacao', 'harmonizacao orofacial', 'harmonizacao facial', 'desenho facial'],
+  ['botox', 'toxina botulinica', 'toxina', 'dysport', 'preencher expressao'],
+  ['preenchimento', 'acido hialuronico', 'volumizar'],
+  ['labios', 'labial', 'lip flip', 'preenchimento labial', 'boca carnuda', 'volume labial'],
+  ['bichectomia', 'maca do rosto', 'definir mandibula', 'jaw'],
+  ['bioestimulador', 'sculptra', 'radiesse', 'ellanse', 'poli l lactico', 'bioestimulacao'],
+  ['fios pdo', 'fios de sustentacao', 'lifting sem cirurgia'],
+  ['skinbooster', 'hidratacao profunda', 'skin booster'],
+  ['papada', 'gordura submentoniana', 'duplo queixo', 'deoxicolato', 'belkyra'],
+  ['sobrancelha', 'design sobrancelha', 'micropigmentacao', 'designer'],
 
-  // Nutrição
-  vegana: ['vegetariana', 'vegetariano', 'vegano', 'plant', 'plantbased', 'veggie'],
-  performance: ['atleta', 'esportiva', 'treino', 'academia', 'crossfit'],
-  atleta: ['performance', 'esportiva', 'esporte'],
-  crossfit: ['performance', 'atleta'],
+  // ── odontologia estética ──
+  ['sorriso', 'estetica dental', 'dente', 'dentes', 'clareamento dental', 'lente de contato', 'faceta', 'design do sorriso'],
 
-  // Dores
-  dor: ['coluna', 'costas', 'cervical', 'lombar', 'enxaqueca', 'osteopata', 'tensao'],
-  coluna: ['dor', 'costas', 'osteopatia'],
-  bebe: ['crianca', 'infantil', 'recem', 'nascido'],
-  crianca: ['bebe', 'infantil', 'pediatrica'],
-};
+  // ── corpo / dermatofuncional ──
+  ['celulite', 'furinhos', 'casca laranja', 'hgg'],
+  ['flacidez', 'flacida', 'pele flacida', 'barriga flacida', 'firmeza corporal'],
+  ['gordura localizada', 'gordinha', 'pneu', 'culote', 'flanco', 'gordura teimosa'],
+  ['drenagem linfatica', 'drenagem', 'massagem modeladora', 'lymphatic'],
+  ['pos operatorio', 'pos cirurgia', 'lipo pos operatorio', 'abdominoplastia', 'lipoescultura'],
+  ['criolipolise', 'crio', 'manthus', 'ultrassom corporal', 'tecarterapia', 'lipolaser'],
+  ['pilates', 'rpg', 'core'],
 
-// Índice de sinônimos pré-stemado para bater contra tokens já stemados.
-const SYNONYMS_STEMMED: Record<string, string[]> = (() => {
-  const out: Record<string, string[]> = {};
-  for (const [key, vals] of Object.entries(SYNONYMS)) {
-    const stemKey = stem(normalize(key));
-    const stemVals = vals.map((v) => stem(normalize(v)));
-    if (!out[stemKey]) out[stemKey] = [];
-    out[stemKey].push(...stemVals);
+  // ── mente / psicologia ──
+  ['ansiedade', 'ansiedade generalizada', 'tag', 'panico', 'sindrome do panico', 'crise de ansiedade', 'crise', 'nervosismo', 'nervoso', 'preocupacao', 'apreensivo', 'angustia'],
+  ['depressao', 'depressao maior', 'triste', 'tristeza', 'desanimo', 'anedonia', 'vazio', 'choro', 'chorando', 'nada da vontade', 'sem animo', 'desmotivado'],
+  ['estresse', 'stress', 'sobrecarga', 'esgotamento', 'burnout', 'exaustao', 'workaholic', 'pressao trabalho'],
+  ['tcc', 'terapia cognitivo comportamental', 'psicoterapia', 'terapia', 'psicologia', 'psicologa', 'psicologo', 'psi'],
+  ['psiquiatria', 'psiquiatra', 'medicacao psiquiatrica', 'antidepressivo'],
+  ['medo', 'fobia', 'fobia social', 'agorafobia', 'claustrofobia'],
+  ['toc', 'obsessivo compulsivo', 'ritual', 'pensamento intrusivo', 'rumina'],
+  ['tdah', 'deficit atencao', 'hiperatividade', 'concentracao', 'distracao', 'procrastinacao', 'executivo'],
+  ['trauma', 'tept', 'estresse pos traumatico', 'abuso', 'violencia', 'acidente'],
+  ['luto', 'perda', 'morte', 'pesar', 'saudade', 'separacao', 'divorcio'],
+  ['autoestima', 'autoimagem', 'autoconfianca', 'autocuidado', 'autoconhecimento', 'identidade'],
+  ['relacionamento', 'casal', 'casamento', 'conjugal', 'afetivo', 'conflito familiar', 'familia', 'comunicacao'],
+  ['maternidade', 'paternidade', 'puerperal', 'maternagem'],
+  ['adolescencia', 'adolescente', 'jovem', 'teenager'],
+  ['performance mental', 'psicologia esportiva', 'foco', 'concentracao esportiva', 'motivacao', 'disciplina', 'resiliencia', 'mentalidade', 'mindset'],
+  ['competicao', 'prova', 'atleta competitivo', 'pressao competitiva', 'controle emocional esporte'],
+  ['insonia', 'sono ruim', 'dormir mal', 'sono leve', 'despertar noturno', 'higiene sono', 'apneia'],
+  ['raiva', 'irritabilidade', 'explosao', 'agressividade', 'temperamento'],
+  ['transtorno alimentar', 'compulsao', 'bulimia', 'anorexia', 'binge eating', 'comer emocional'],
+
+  // ── nutrição ──
+  ['nutricao', 'nutricionista', 'nutri', 'alimentacao', 'plano alimentar', 'dieta personalizada', 'reeducacao alimentar'],
+  ['vegano', 'vegana', 'vegetariano', 'vegetariana', 'plant based', 'plantbased', 'veggie', 'flexitariano'],
+  ['performance esportiva', 'nutricao esportiva', 'atleta', 'treino', 'academia', 'musculacao', 'corrida', 'running', 'maratona', 'triathlon', 'ciclismo'],
+  ['crossfit', 'alta intensidade', 'hit', 'hiit', 'wod', 'treino funcional'],
+  ['ortomolecular', 'nutricao ortomolecular', 'nutricao funcional', 'nutrigenomica', 'metabolomica', 'teste genetico', 'nutrigenetica'],
+  ['nutricao comportamental', 'comportamento alimentar', 'relacao com comida', 'compulsao alimentar', 'emocional eating', 'mindful eating'],
+  ['introducao alimentar', 'blw', 'baby led weaning', 'alimentacao do bebe', 'alimentacao infantil', 'nutricao infantil', 'pediatrica'],
+  ['intolerancia', 'alergia alimentar', 'lactose', 'gluten', 'doenca celiaca', 'fodmap'],
+  ['jejum intermitente', 'if', 'low carb', 'cetogenica', 'keto', 'paleo', 'mediterranea', 'dash'],
+
+  // ── dores / osteopatia / bebês ──
+  ['dor', 'dor cronica', 'tensao muscular', 'dor cervical', 'cervicalgia', 'dor lombar', 'lombalgia', 'dor coluna', 'dor costas', 'dor ombro', 'dor joelho', 'dor pescoco'],
+  ['enxaqueca', 'cefaleia', 'dor cabeca', 'migranea'],
+  ['osteopatia', 'osteopata', 'terapia manual', 'quiropraxia', 'rpg'],
+  ['tontura', 'vertigem', 'labirintite', 'atm', 'disfuncao temporomandibular', 'estalo mandibula'],
+  ['bebe', 'recem nascido', 'criança', 'crianca', 'infantil', 'pediatrico'],
+  ['colica bebe', 'colica do bebe', 'choro bebe', 'refluxo bebe', 'torcicolo congenito', 'plagiocefalia', 'assimetria craniana'],
+
+  // ── estética integrativa ──
+  ['biorressonancia', 'terapia integrativa', 'medicina complementar', 'medicina integrativa', 'energetica', 'reiki holistico', 'holistica'],
+];
+
+// Constroi um mapa bidirecional e stemado a partir dos clusters.
+// Cada token do cluster vira chave que aponta para todos os outros tokens do grupo.
+const SYNONYMS_STEMMED: Map<string, Set<string>> = (() => {
+  const map = new Map<string, Set<string>>();
+  for (const cluster of SYNONYM_CLUSTERS) {
+    // Tokeniza cada frase do cluster e coleta todos os termos stemados
+    const members = new Set<string>();
+    for (const phrase of cluster) {
+      for (const t of tokenize(phrase)) members.add(t);
+    }
+    // Cada termo aponta para todos os outros do cluster
+    for (const term of members) {
+      let set = map.get(term);
+      if (!set) {
+        set = new Set<string>();
+        map.set(term, set);
+      }
+      for (const other of members) {
+        if (other !== term) set.add(other);
+      }
+    }
   }
-  return out;
+  return map;
 })();
 
 export function expandTokens(tokens: string[]): string[] {
   const expanded = new Set(tokens);
   for (const t of tokens) {
-    const syns = SYNONYMS_STEMMED[t];
+    const syns = SYNONYMS_STEMMED.get(t);
     if (syns) syns.forEach((s) => expanded.add(s));
   }
   return Array.from(expanded);
