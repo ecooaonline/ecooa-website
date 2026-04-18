@@ -515,6 +515,26 @@
 .ec-t { font-size: 15px; font-weight: 400; color: var(--color-ink); margin-bottom: 6px; line-height: 1.35; }
 .ec-d { font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--color-ink-soft); }
 
+/* ── MATCH HANDOFF BANNER ── */
+.match-handoff {
+  background: var(--color-cream); border-bottom: 1px solid var(--color-stone);
+  padding: 14px var(--section-px); opacity: 0;
+  transition: opacity .4s var(--ease-out);
+}
+.match-handoff.is-visible { opacity: 1; }
+.match-handoff-inner {
+  max-width: 720px; margin: 0 auto;
+  display: flex; align-items: center; gap: 10px;
+}
+.match-handoff-inner svg { color: var(--color-brand-deep); flex-shrink: 0; }
+.match-handoff-inner p {
+  font-size: 12px; font-weight: 400; color: var(--color-ink-soft);
+  letter-spacing: .03em; margin: 0;
+}
+.match-handoff-inner strong {
+  font-weight: 500; color: var(--color-brand-text);
+}
+
 /* ── GEHRKE 360° TIERS ── */
 .gehrke-tiers {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;

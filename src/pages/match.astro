@@ -547,7 +547,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
             <span class="match-card-reason">${m.reason}</span>
           </div>
           <div class="match-card-actions">
-            <a class="match-card-cta" href="/profissionais/${p.slug}" data-intent="match-profile-${p.slug}">ver perfil →</a>
+            <a class="match-card-cta" href="/profissionais/${p.slug}?from=match&r=${encodeURIComponent(m.reason)}" data-intent="match-profile-${p.slug}">ver perfil →</a>
             <a class="match-card-cta" href="${wa}" target="_blank" rel="noopener noreferrer" data-intent="match-wa-${p.slug}" style="color:var(--color-brand-deep)">agendar →</a>
           </div>
         </div>

@@ -3,7 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import WavePattern from '../../components/WavePattern.astro';
 import Marquee from '../../components/Marquee.astro';
 import CtaSection from '../../components/CtaSection.astro';
+import ProfessionalCard from '../../components/ProfessionalCard.astro';
 import { professionals } from '../../data/professionals';
+import { curatedIntents } from '../../data/match-intents';
 import { WA_BASE } from '../../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -23,7 +25,12 @@ const unitLabels: Record<string, string> = {
   working: 'ecooa.working',
   mind: 'ecooa.mind',
 };
-
+const unitNames: Record<string, string> = {
+  med: 'Medicina',
+  esthetic: 'Estética',
+  working: 'Nutrição',
+  mind: 'Saúde Mental',
+};
 const unitPages: Record<string, string> = {
   med: '/ecooa-med',
   esthetic: '/ecooa-esthetic',
@@ -34,7 +41,6 @@ const unitPages: Record<string, string> = {
 const waText = encodeURIComponent(`Olá, gostaria de agendar uma avaliação com ${p.name}`);
 const WA = `${WA_BASE}?text=${waText}`;
 
-// Blog articles by this professional
 const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const authorVariants = [p.name, `Dr. ${p.name}`, `Dra. ${p.name}`];
 const articles = allPosts
@@ -48,21 +54,45 @@ function isPhysician(role: string) {
   return /\bMédic[oa]\b/i.test(role);
 }
 
+function credentialCategory(role: string): string {
+  const lower = role.toLowerCase();
+  if (/\bmedic[oa]?\b|\bmédic[oa]\b/.test(lower)) return 'CRM';
+  if (lower.includes('nutricion')) return 'CRN';
+  if (lower.includes('psicólog') || lower.includes('psicolog')) return 'CRP';
+  if (lower.includes('bioméd') || lower.includes('biomed')) return 'CRBM';
+  if (lower.includes('fisioterapeut') || lower.includes('osteop')) return 'CREFITO';
+  if (lower.includes('enfermei')) return 'COREN';
+  if (lower.includes('odontólog') || lower.includes('odontolog')) return 'CRO';
+  return '';
+}
+
 function medicalSpecialty(role: string): string {
   const lower = role.toLowerCase();
   if (lower.includes('dermato') || lower.includes('capilar') || lower.includes('tricolog')) return 'Dermatology';
   if (lower.includes('psiquiatr')) return 'Psychiatric';
   if (lower.includes('endocrin')) return 'Endocrine';
-  if (lower.includes('ortomolecular') || lower.includes('metabol') || lower.includes('hormôn') || lower.includes('longevidade') || lower.includes('emagrecimento')) return 'PrimaryCare';
   return 'PrimaryCare';
 }
 
 const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
+const credential = credentialCategory(p.role);
+
+const relatedIntents = curatedIntents.filter(
+  (intent) => intent.topSlugs.includes(p.slug) || intent.unit === p.unit
+).slice(0, 5);
+
+const relatedProfessionals = professionals
+  .filter((pp) => pp.unit === p.unit && pp.slug !== p.slug)
+  .slice(0, 3);
+
+const roleKeywords = p.role.split(' · ').filter(Boolean);
+const seoTitle = `${p.name} - ${roleKeywords[0]} em Porto Alegre | ecooa`;
+const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. Agende sua consulta na ecooa, Moinhos de Vento, Porto Alegre.`;
 ---
 
 <BaseLayout
-  title={`${p.name} | ecooa`}
-  description={`${p.description} Agende sua consulta em Moinhos de Vento, Porto Alegre.`}
+  title={seoTitle}
+  description={seoDescription}
   currentPage="profissionais"
   ogImage={p.photo}
   breadcrumbs={[{ name: "Profissionais", url: "/profissionais" }, { name: p.name, url: `/profissionais/${p.slug}` }]}
@@ -72,19 +102,59 @@ const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": schemaType,
+  "@id": `https://www.somosecooa.com.br/profissionais/${p.slug}`,
   "name": p.name,
-  "jobTitle": p.role.split(' · ')[0],
+  "givenName": firstName,
+  "jobTitle": roleKeywords[0],
   "description": p.description,
   "image": `https://www.somosecooa.com.br${p.photo}`,
   "url": `https://www.somosecooa.com.br/profissionais/${p.slug}`,
   ...(schemaType === 'Physician' ? { "medicalSpecialty": medicalSpecialty(p.role) } : {}),
+  "knowsAbout": p.tags,
+  ...(credential ? {
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": credential,
+    }
+  } : {}),
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": roleKeywords[0],
+    "occupationalCategory": unitNames[p.unit],
+  },
+  "memberOf": {
+    "@type": "MedicalBusiness",
+    "@id": "https://www.somosecooa.com.br/#organization",
+    "name": "ecooa",
+  },
   "worksFor": {
     "@type": "MedicalBusiness",
+    "@id": "https://www.somosecooa.com.br/#organization",
     "name": "ecooa",
     "url": "https://www.somosecooa.com.br"
   },
+  "workLocation": {
+    "@type": "Place",
+    "name": "ecooa - Moinhos de Vento",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Mariante, 180, 9º andar",
+      "addressLocality": "Porto Alegre",
+      "addressRegion": "RS",
+      "postalCode": "90430-180",
+      "addressCountry": "BR"
+    }
+  },
   ...(p.ig ? { "sameAs": [`https://instagram.com/${p.ig.replace('@', '')}`] } : {}),
 })} />
+
+<!-- Match handoff banner (reads ?from=match&r=reason via client) -->
+<div id="match-handoff" class="match-handoff" hidden aria-live="polite">
+  <div class="match-handoff-inner">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+    <p>encontrado via <strong>ecooa.match</strong> <span id="match-handoff-reason"></span></p>
+  </div>
+</div>
 
 <!-- Hero -->
 <div class="ph" style="background:var(--color-ink)">
@@ -113,6 +183,9 @@ const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
         <div class="lbl r u-mb-16">sobre</div>
         <h2 class="h2 r d1 u-mb-18">Conheça<br><em>{firstName}.</em></h2>
         <p class="body r d2 u-mb-24">{p.description}</p>
+        {credential && (
+          <p class="r d2" style="font-size:11px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em;margin-bottom:20px">Registro profissional: {credential}</p>
+        )}
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px" class="r d3">
           <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" data-intent={`profissional-${p.slug}`}>agendar com {firstName}</a>
           {p.ig && (
@@ -127,7 +200,7 @@ const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
         <div style="aspect-ratio:3/4;overflow:hidden">
           <picture>
             <source srcset={p.photo.replace(/\.webp$/, '.avif')} type="image/avif" />
-            <img src={p.photo} alt={p.name} loading="lazy" decoding="async" class="u-cover" width="480" height="640" />
+            <img src={p.photo} alt={p.name} loading="eager" decoding="async" class="u-cover" width="480" height="640" fetchpriority="high" />
           </picture>
         </div>
       </div>
@@ -139,11 +212,24 @@ const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
 <section class="u-bg-cream" aria-label="Especialidades">
   <div class="w">
     <div class="lbl r u-mb-16">especialidades</div>
+    <h2 class="h2 r d1" style="margin-bottom:24px;font-size:clamp(22px,2.6vw,36px)">Áreas de<br><em>atuação.</em></h2>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px" class="r d1">
       {p.tags.map(tag => (
         <span class="tag-pill">{tag}</span>
       ))}
     </div>
+    {relatedIntents.length > 0 && (
+      <div class="r d2" style="margin-top:8px">
+        <p style="font-size:11px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em;margin-bottom:10px">temas relacionados no ecooa.match:</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          {relatedIntents.map(intent => (
+            <a href={`/match?q=${encodeURIComponent(intent.query)}`} class="tag-pill" style="font-size:9px;padding:4px 10px;text-decoration:none;color:var(--color-brand-text);border-color:var(--color-brand-deep);transition:all .15s">
+              {intent.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
 </section>
 
@@ -169,6 +255,42 @@ const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
   </section>
 )}
 
+<!-- Profissionais relacionados -->
+{relatedProfessionals.length > 0 && (
+  <section class="u-bg-cream" aria-label="Profissionais relacionados">
+    <div class="w">
+      <div class="lbl r u-mb-16">na mesma unidade</div>
+      <h2 class="h2 r d1" style="margin-bottom:32px;font-size:clamp(22px,2.6vw,36px)">Conheça também<br><em>quem atua junto.</em></h2>
+      <div class="grid-auto-260">
+        {relatedProfessionals.map((rp, i) => (
+          <a href={`/profissionais/${rp.slug}`} class={`r d${i}`} style="text-decoration:none;color:inherit">
+            <ProfessionalCard name={rp.name} role={rp.role} bg="var(--color-stone)" photo={rp.photo} slug={rp.slug} />
+          </a>
+        ))}
+      </div>
+      <p class="r d3" style="text-align:center;margin-top:20px">
+        <a href="/profissionais" style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none">ver todos os profissionais →</a>
+      </p>
+    </div>
+  </section>
+)}
+
 <CtaSection heading={`Agende com<br><em>${firstName}.</em>`} subtext={`Converse diretamente com ${p.name} e receba orientação personalizada para o seu caso.`} />
 
 </BaseLayout>
+
+<script>
+  try {
+    const params = new URLSearchParams(location.search);
+    if (params.get('from') === 'match') {
+      const banner = document.getElementById('match-handoff');
+      const reasonEl = document.getElementById('match-handoff-reason');
+      if (banner && reasonEl) {
+        const reason = params.get('r') || '';
+        if (reason) reasonEl.textContent = `· ${reason}`;
+        banner.hidden = false;
+        banner.classList.add('is-visible');
+      }
+    }
+  } catch {}
+</script>
