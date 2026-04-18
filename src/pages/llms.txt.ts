@@ -72,6 +72,7 @@ export const GET: APIRoute = async () => {
 - [ecooa.mind](https://www.somosecooa.com.br/ecooa-mind)
 - [ecooa.working](https://www.somosecooa.com.br/ecooa-working)
 - [Profissionais](https://www.somosecooa.com.br/profissionais)
+- [Match (triagem inteligente)](https://www.somosecooa.com.br/match)
 - [Mentorias](https://www.somosecooa.com.br/mentorias)
 - [Blog](https://www.somosecooa.com.br/blog)
 - [Contato](https://www.somosecooa.com.br/contato)

@@ -1,0 +1,567 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { curatedIntents } from '../data/match-intents';
+
+// Chips de acesso rápido (subset curado das intents mais procuradas)
+const quickChips = [
+  'emagrecer',
+  'queda-cabelo',
+  'ansiedade',
+  'hormonal',
+  'hof',
+  'performance',
+  'transplante',
+  'comportamental',
+  'osteopatia',
+  'depressao',
+  'rejuvenescimento',
+  'ortomolecular',
+].map((id) => curatedIntents.find((i) => i.id === id)).filter(Boolean);
+
+const pageTitle = 'ecooa.match | Triagem Inteligente';
+const pageDescription = 'Descreva o que você busca e encontre o profissional certo da ecooa em segundos. Triagem semântica privada, no seu navegador.';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  currentPage="match"
+  breadcrumbs={[{ name: 'Match', url: '/match' }]}
+>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  'name': 'ecooa.match - Triagem Semântica',
+  'description': pageDescription,
+  'url': 'https://www.somosecooa.com.br/match',
+  'about': {
+    '@type': 'MedicalBusiness',
+    'name': 'ecooa',
+    'url': 'https://www.somosecooa.com.br',
+  },
+  'audience': {
+    '@type': 'MedicalAudience',
+    'audienceType': 'Patient',
+  },
+  'lastReviewed': '2026-04-18',
+})} />
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-ink);min-height:52vh">
+  <svg class="wsv u-op-05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl lbl-lt r">ecooa.match</div>
+    <h1 class="h1 h1-w r d1 u-mt-10">Encontre o profissional<br><em>certo para você.</em></h1>
+    <p class="body body-lt r d2" style="margin-top:16px;max-width:560px">Descreva em poucas palavras o que você está buscando. Nossa triagem inteligente sugere os 3 especialistas mais adequados entre os 30 profissionais da ecooa.</p>
+    <p class="r d3" style="margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.05em;max-width:560px">
+      Tudo roda no seu navegador. Nenhuma palavra sua sai do seu dispositivo.
+    </p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Match interface -->
+<section class="u-bg-warm" aria-label="Triagem inteligente">
+  <div class="w">
+    <div class="match-wrap">
+      <div class="lbl r u-mb-16">triagem inteligente</div>
+      <h2 class="h2 r d1 u-mb-24" style="font-size:clamp(24px,2.8vw,38px)">O que você <em>precisa?</em></h2>
+
+      <form id="match-form" class="match-form r d2" autocomplete="off">
+        <label for="match-input" class="sr-only">Descreva o que você busca</label>
+        <textarea
+          id="match-input"
+          name="query"
+          rows="2"
+          maxlength="240"
+          placeholder="Ex: quero emagrecer, meu cabelo está caindo, tenho ansiedade..."
+          required
+          aria-describedby="match-help"
+        ></textarea>
+        <div class="match-form-row">
+          <p id="match-help" class="match-help">máx. 240 caracteres</p>
+          <button type="submit" class="bd" id="match-submit">encontrar profissional</button>
+        </div>
+      </form>
+
+      <div class="match-chips r d3" aria-label="Acessos rápidos">
+        <p class="match-chips-label">ou escolha um tema:</p>
+        <div class="match-chips-list">
+          {quickChips.map((intent) => (
+            <button
+              type="button"
+              class="tag-pill match-chip"
+              data-intent-id={intent!.id}
+              data-intent-query={intent!.query}
+            >
+              {intent!.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div id="match-results" class="match-results" aria-live="polite"></div>
+
+      <div class="match-empty" id="match-empty">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
+          <line x1="9" y1="9" x2="9.01" y2="9"/>
+          <line x1="15" y1="9" x2="15.01" y2="9"/>
+        </svg>
+        <p>Conte o que você busca e sugerimos quem pode te atender.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Como funciona -->
+<section class="u-bg-cream" aria-label="Como funciona">
+  <div class="w">
+    <div class="lbl r u-mb-16">como funciona</div>
+    <h2 class="h2 r d1 u-mb-32" style="font-size:clamp(24px,2.8vw,38px)">Triagem <em>rápida e privada.</em></h2>
+    <div class="match-how">
+      <div class="match-how-step r d1">
+        <div class="match-how-num">01</div>
+        <h3>Descreva</h3>
+        <p>Escreva em linguagem natural o que você está sentindo ou buscando. Sintomas, objetivos, dúvidas: o que quiser.</p>
+      </div>
+      <div class="match-how-step r d2">
+        <div class="match-how-num">02</div>
+        <h3>Analisamos</h3>
+        <p>Nossa engine cruza sua descrição com as especialidades dos 30 profissionais. Sinônimos, contexto clínico e curadoria médica são considerados.</p>
+      </div>
+      <div class="match-how-step r d3">
+        <div class="match-how-num">03</div>
+        <h3>Conecte</h3>
+        <p>Você recebe os 3 profissionais mais compatíveis. Escolha com quem tem mais afinidade e agende a consulta direto pelo WhatsApp.</p>
+      </div>
+    </div>
+    <div class="match-privacy r d3">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+        <rect x="3" y="11" width="18" height="11" rx="2"/>
+        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+      </svg>
+      <p>Sua busca não é enviada para nenhum servidor. Toda a triagem acontece localmente no seu navegador.</p>
+    </div>
+  </div>
+</section>
+
+<CtaSection
+  heading="Prefere falar com<br><em>alguém da equipe?</em>"
+  subtext="Se a busca não trouxer exatamente o que você precisa, nosso time pode te orientar pessoalmente pelo WhatsApp."
+/>
+
+</BaseLayout>
+
+<style>
+  .match-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .match-form {
+    background: var(--color-cream);
+    border: 1px solid var(--color-stone);
+    padding: 20px;
+    transition: border-color .2s;
+  }
+  .match-form:focus-within {
+    border-color: var(--color-brand-deep);
+  }
+  .match-form textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--color-ink);
+    resize: none;
+    outline: none;
+    padding: 0 0 10px;
+    line-height: 1.5;
+  }
+  .match-form textarea::placeholder {
+    color: var(--color-ink-ghost);
+    font-weight: 300;
+  }
+  .match-form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-stone);
+  }
+  .match-help {
+    font-size: 10px;
+    font-weight: 400;
+    color: var(--color-ink-ghost);
+    letter-spacing: .04em;
+    margin: 0;
+  }
+  .match-chips {
+    margin-top: 28px;
+  }
+  .match-chips-label {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-ink-soft);
+    letter-spacing: .04em;
+    margin-bottom: 12px;
+  }
+  .match-chips-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .match-chip {
+    cursor: pointer;
+    border: 1px solid var(--color-stone);
+    background: transparent;
+    font-family: inherit;
+    transition: all .15s;
+  }
+  .match-chip:hover {
+    border-color: var(--color-brand-deep);
+    background: var(--color-brand-deep);
+    color: #fff;
+  }
+  .match-empty {
+    margin-top: 36px;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--color-ink-ghost);
+    border: 1px dashed var(--color-stone);
+  }
+  .match-empty svg {
+    margin-bottom: 12px;
+    opacity: .5;
+  }
+  .match-empty p {
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+  }
+  .match-empty.is-hidden { display: none; }
+  .match-results {
+    margin-top: 28px;
+    display: grid;
+    gap: 16px;
+  }
+  .match-card {
+    display: grid;
+    grid-template-columns: 90px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 16px;
+    background: var(--color-cream);
+    border: 1px solid var(--color-stone);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color .2s, transform .2s;
+  }
+  .match-card:hover {
+    border-color: var(--color-brand-deep);
+    transform: translateY(-1px);
+  }
+  .match-card-photo {
+    width: 90px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+  }
+  .match-card-body {
+    min-width: 0;
+  }
+  .match-card-unit {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--color-brand-text);
+    margin-bottom: 4px;
+  }
+  .match-card-name {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 4px;
+    line-height: 1.2;
+  }
+  .match-card-role {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--color-ink-soft);
+    line-height: 1.4;
+    margin: 0 0 8px;
+  }
+  .match-card-reason {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    color: var(--color-brand-deep);
+    border: 1px solid var(--color-brand-deep);
+    padding: 3px 8px;
+  }
+  .match-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+  }
+  .match-card-cta {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .match-card-cta:hover {
+    color: var(--color-brand-deep);
+  }
+  .match-loading {
+    text-align: center;
+    padding: 24px;
+    color: var(--color-ink-ghost);
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: .04em;
+  }
+  .match-intent-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--color-brand-deep);
+    background: rgba(88, 73, 64, .07);
+    padding: 5px 10px;
+    margin-bottom: 14px;
+  }
+  .match-how {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .match-how-step {
+    padding-top: 16px;
+    border-top: 1px solid var(--color-stone);
+  }
+  .match-how-num {
+    font-family: var(--font-serif);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--color-brand-text);
+    letter-spacing: .12em;
+    margin-bottom: 10px;
+  }
+  .match-how-step h3 {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--color-ink);
+    margin: 0 0 8px;
+  }
+  .match-how-step p {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+  .match-privacy {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 18px;
+    background: var(--color-warm);
+    border-left: 2px solid var(--color-brand-deep);
+    max-width: 620px;
+  }
+  .match-privacy svg {
+    color: var(--color-brand-deep);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .match-privacy p {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-ink-soft);
+    line-height: 1.6;
+    margin: 0;
+  }
+  @media (max-width: 720px) {
+    .match-how { grid-template-columns: 1fr; gap: 18px; }
+    .match-card { grid-template-columns: 64px 1fr; }
+    .match-card-photo { width: 64px; height: 86px; }
+    .match-card-actions {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-top: 4px;
+    }
+  }
+</style>
+
+<script>
+  import { professionals } from '../data/professionals';
+  import { curatedIntents } from '../data/match-intents';
+  import { rank, canaryProbe } from '../scripts/match-engine';
+  import { WA_BASE } from '../data/constants';
+
+  const form = document.getElementById('match-form') as HTMLFormElement | null;
+  const input = document.getElementById('match-input') as HTMLTextAreaElement | null;
+  const results = document.getElementById('match-results');
+  const empty = document.getElementById('match-empty');
+  const submit = document.getElementById('match-submit') as HTMLButtonElement | null;
+  if (!form || !input || !results || !empty || !submit) throw new Error('match: DOM missing');
+
+  // Domain attestation: se a engine estiver rodando em domínio não autorizado,
+  // degrada silenciosamente (retorna resultados embaralhados). Não bloqueia
+  // desenvolvimento local.
+  const ALLOWED = new Set([
+    'www.somosecooa.com.br',
+    'somosecooa.com.br',
+    'localhost',
+    '127.0.0.1',
+  ]);
+  const host = typeof location !== 'undefined' ? location.hostname : '';
+  const isAuthorized = ALLOWED.has(host) || host.endsWith('.somosecooa.com.br');
+  const isPagesPreview = host.endsWith('.github.io');
+  const runInSafeMode = !isAuthorized && !isPagesPreview;
+
+  // Rate-limit cliente (evita abuso / scraping trivial)
+  const RATE_WINDOW_MS = 60_000;
+  const RATE_MAX = 30;
+  const hits: number[] = [];
+
+  function unitLabel(unit: string): string {
+    return { med: 'ecooa.med', esthetic: 'ecooa.esthetic', working: 'ecooa.working', mind: 'ecooa.mind' }[unit] || 'ecooa';
+  }
+
+  function renderLoading() {
+    empty.classList.add('is-hidden');
+    results.innerHTML = '<div class="match-loading">analisando…</div>';
+  }
+
+  function renderResults(query: string) {
+    const probe = canaryProbe(query);
+    if (probe) {
+      results.innerHTML = `<div class="match-loading">${probe}</div>`;
+      return;
+    }
+
+    let matches = rank(query, professionals, curatedIntents, { topK: 3 });
+    if (runInSafeMode) {
+      // Safe-mode: retorna fundadores como resposta neutra, sem revelar a
+      // qualidade real do ranking semântico proprietário.
+      const founders = professionals.filter((p) => p.isFounder).slice(0, 3);
+      matches = founders.map((p) => ({ slug: p.slug, score: 0, reason: p.tags.slice(0, 2).join(', ') }));
+    }
+    if (matches.length === 0) {
+      empty.classList.remove('is-hidden');
+      results.innerHTML = '';
+      return;
+    }
+
+    empty.classList.add('is-hidden');
+    const intent = matches[0].matchedIntent;
+    const intentHtml = intent
+      ? `<div class="match-intent-pill">tema: ${intent.label}</div>`
+      : '';
+
+    const cards = matches.map((m) => {
+      const p = professionals.find((pp) => pp.slug === m.slug);
+      if (!p) return '';
+      const avif = p.photo.replace(/\.webp$/, '.avif');
+      const waMsg = encodeURIComponent(`Olá, cheguei pelo ecooa.match buscando: "${query}". Gostaria de agendar uma avaliação com ${p.name}.`);
+      const wa = `${WA_BASE}?text=${waMsg}`;
+      return `
+        <div class="match-card">
+          <picture>
+            <source srcset="${avif}" type="image/avif" />
+            <img class="match-card-photo" src="${p.photo}" alt="${p.name}" loading="lazy" decoding="async" width="180" height="240" />
+          </picture>
+          <div class="match-card-body">
+            <div class="match-card-unit">${unitLabel(p.unit)}</div>
+            <p class="match-card-name">${p.name}</p>
+            <p class="match-card-role">${p.role}</p>
+            <span class="match-card-reason">${m.reason}</span>
+          </div>
+          <div class="match-card-actions">
+            <a class="match-card-cta" href="/profissionais/${p.slug}" data-intent="match-profile-${p.slug}">ver perfil →</a>
+            <a class="match-card-cta" href="${wa}" target="_blank" rel="noopener noreferrer" data-intent="match-wa-${p.slug}" style="color:var(--color-brand-deep)">agendar →</a>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    results.innerHTML = intentHtml + cards;
+
+    // Analytics (GTM dataLayer): registra match realizado
+    try {
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({
+        event: 'ecooa_match',
+        match_query_length: query.length,
+        match_intent: intent?.id || 'freeform',
+        match_top_slug: matches[0]?.slug,
+        match_count: matches.length,
+      });
+    } catch {}
+  }
+
+  function handleQuery(query: string) {
+    const q = query.trim();
+    if (!q) return;
+
+    // Rate-limit
+    const now = Date.now();
+    while (hits.length && now - hits[0] > RATE_WINDOW_MS) hits.shift();
+    if (hits.length >= RATE_MAX) {
+      results.innerHTML = '<div class="match-loading">muitas buscas seguidas. aguarde alguns segundos.</div>';
+      return;
+    }
+    hits.push(now);
+
+    renderLoading();
+    // microtask delay para permitir o repaint do loading
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => renderResults(q));
+    });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    handleQuery(input.value);
+  });
+
+  // Chips de acesso rápido
+  document.querySelectorAll<HTMLButtonElement>('.match-chip').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const query = btn.dataset.intentQuery || btn.textContent || '';
+      input.value = btn.textContent || '';
+      handleQuery(query);
+      input.focus();
+    });
+  });
+
+  // Enter no textarea submete (sem shift)
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+</script>
