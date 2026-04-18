@@ -53,7 +53,7 @@ Com essas informações, a gente:
 ✓ Aumenta sua credibilidade visual (credenciais + caso + FAQ)
 
 ## LINK DO FORMULÁRIO:
-👉 https://forms.gle/[GERE O SEU LINK ACIMA]
+👉 https://forms.gle/ZcUYDzhNcUsr5Hau5
 
 ## INSTRUÇÕES RÁPIDAS:
 1. Abra o link acima
@@ -129,47 +129,41 @@ R: Não. Na seção "áreas que você NÃO atende", fale sobre escopo (ex: "não
 ## ESTRUTURA DO EMAIL (Copiar-colar direto)
 
 ```
-Assunto: [ação requerida] Preench seu perfil profissional na ecooa — 40 minutos
+Assunto: Seu perfil profissional na ecooa — formulário de intake
 
 ---
 
-Olá [NOME],
+Olá,
 
-Você recebeu este formulário porque faz parte do core de profissionais da ecooa.
+A ecooa está lançando o ecooa.match, um sistema inteligente que direciona 
+pacientes para o profissional certo baseado na necessidade específica de cada um.
 
-A partir de agora, usamos um sistema chamado ecooa.match que direciona pacientes 
-para o profissional certo baseado em sua necessidade específica.
+Para que o match funcione bem, criamos um formulário de intake profissional.
 
-Para funcionar bem, esse sistema precisa conhecer você melhor:
-- Suas credenciais e formação
-- Suas especialidades reais
-- As 3 dores principais que seus pacientes trazem
-- Suas 10 perguntas mais frequentes (resposta sua, não AI)
-- Um caso clínico que representa bem seu trabalho
-- Seus valores e programas
+O preenchimento não é obrigatório. Sua página no site funciona normalmente 
+sem ele. Mas profissionais que completam o intake ganham vantagem real:
 
-Com isso, a gente:
-✓ Alimenta sua landing page de forma humanizada
-✓ Treina o bot para encaminhar pacientes certos
-✓ Melhora seu SEO individual
-✓ Aumenta confiança (credenciais + caso + FAQ)
+  - Landing page completa com credenciais, diferenciais e FAQs publicadas
+  - Posicionamento prioritário nas buscas do ecooa.match
+  - Mais visibilidade no Google (15-20 palavras-chave extras indexadas)
+  - Confiança visual para o paciente: caso clínico + FAQ + valores públicos
 
-LINK DO FORMULÁRIO:
-👉 https://forms.gle/[seu-link-aqui]
+Quanto mais informação o sistema tem sobre você, mais inteligente fica a 
+triagem. Paciente certo chega para você, não para o colega errado.
 
-INSTRUÇÕES:
-1. Abra o link acima
-2. Preencha com calma (~40 min)
-3. Respostas claras (FAQs são suas respostas reais, não AI)
-4. Caso clínico: paciente real sem identificação
-5. Envie quando pronto
+Leva aproximadamente 40 minutos. Preencha com calma.
 
-PRAZO: até [DATA LIMITE — T+7 DIAS]
+LINK: https://forms.gle/ZcUYDzhNcUsr5Hau5
 
-Dúvidas? Responda este email ou fale conosco.
+Algumas orientações:
+  - As FAQs devem ser suas respostas reais, não geradas por IA
+  - O caso clínico deve ser real, sem identificação do paciente
+  - Se tiver dúvida em algum campo, deixe em branco e nos avise
+
+Prazo sugerido: até 7 dias.
 
 Obrigado,
-[sua assinatura]
+Equipe ecooa
 ```
 
 ---
