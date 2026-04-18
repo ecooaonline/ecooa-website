@@ -9,10 +9,10 @@ import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const medFaqs = [
-  { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o tipo de consulta. Para emagrecimento e acompanhamento com canetas emagrecedoras, oferecemos consultas com preços especiais. Entre em contato pelo WhatsApp para informações atualizadas." },
+  { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o protocolo. O Protocolo Peso Seguro, por exemplo, tem valor de entrada especial para a consulta de avaliação. Entre em contato pelo WhatsApp para informações atualizadas." },
   { q: "Preciso de indicação para agendar?", a: "Não. Você pode agendar diretamente pelo WhatsApp ou pelo site, sem necessidade de encaminhamento." },
   { q: "A ecooa.med atende por plano de saúde?", a: "Nosso atendimento é particular. Trabalhamos com valores acessíveis e condições especiais para acompanhamento contínuo." },
-  { q: "Como funciona a consulta para avaliação do uso de canetas emagrecedoras?", a: "A consulta inclui anamnese completa, solicitação de exames laboratoriais específicos para avaliar a segurança no uso, e acompanhamento médico recorrente durante todo o processo. O objetivo é garantir que o tratamento seja seguro, eficaz e adaptado ao seu perfil clínico, com preços facilitados." },
+  { q: "Como funciona o Protocolo Peso Seguro?", a: "Começa com uma consulta de avaliação com valor de entrada especial. Inclui anamnese completa, solicitação de exames laboratoriais para avaliar a segurança no uso de canetas emagrecedoras, e acompanhamento médico recorrente durante todo o tratamento. O objetivo é resultado real com segurança clínica." },
   { q: "As consultas médicas recebem plano alimentar junto?", a: "Não. A ecooa e o Dr. Gustavo acreditam e respeitam cada área da saúde, e entendem que plano alimentar é prescrito por nutricionista. Contamos com mais de 10 nutricionistas na equipe, com conhecimento especializado e direcionado para cada necessidade." },
 ];
 
@@ -58,11 +58,11 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
 
 <QuizSection options={[
-  { title: "emagrecer", subtitle: "com acompanhamento médico", waText: "Olá, gostaria de avaliação para emagrecimento com acompanhamento médico" },
-  { title: "canetas", subtitle: "emagrecedoras", waText: "Olá, gostaria de avaliação para uso de canetas emagrecedoras" },
-  { title: "hormônios", subtitle: "desregulados", waText: "Olá, gostaria de avaliação hormonal com a equipe ecooa.med" },
-  { title: "queda capilar", subtitle: "tratamento médico", waText: "Olá, gostaria de avaliação médica para queda de cabelo" },
-  { title: "check-up", subtitle: "completo", waText: "Olá, gostaria de agendar um check-up metabólico completo" },
+  { title: "peso seguro", subtitle: "emagrecimento assistido", waText: "Olá, gostaria de saber mais sobre o Protocolo Peso Seguro" },
+  { title: "queda capilar", subtitle: "protocolo tricometabólico", waText: "Olá, gostaria de avaliação com o Protocolo Tricometabólico" },
+  { title: "hormônios", subtitle: "bioimplantes metabólicos", waText: "Olá, gostaria de avaliação hormonal e bioimplantes metabólicos" },
+  { title: "performance", subtitle: "esporte e otimização", waText: "Olá, gostaria de avaliação para performance e otimização metabólica" },
+  { title: "check-up", subtitle: "método gehrke 360°", waText: "Olá, gostaria de agendar uma avaliação pelo Método Gehrke 360°" },
   { title: "não sei", subtitle: "por onde começar", waText: "Olá, tenho algumas queixas de saúde e gostaria de orientação da equipe ecooa" },
 ]} />
 
@@ -114,7 +114,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
           <div class="lr"><span class="u-dot"></span><span class="body-md">Performance Cognitiva e Física</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Hipertrofia e Composição Corporal</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Hormonologia e Saúde Feminina e Masculina</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Implantes Subcutâneos Bioabsorvíveis</span></div>
+          <div class="lr"><span class="u-dot"></span><span class="body-md">Bioimplantes Metabólicos</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina do Esporte e Anabolismo Fisiológico</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Preventiva e Checkup Metabólico</span></div>
           <div class="lr"><span class="u-dot"></span><span class="body-md">Testes Genéticos</span></div>
@@ -124,19 +124,28 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
   </div>
 </section>
 
-<!-- Metodologia -->
-<section style="background:var(--color-ink);padding:86px 60px" aria-label="Metodologia">
-  <div class="g2">
-    <div>
-      <div class="lbl lbl-lt r u-mb-16">metodologia</div>
-      <h2 class="h2 h2-w r d1 u-mb-20">Como <em>funciona</em><br>na prática.</h2>
-      <p class="body body-lt r d2">Cada consulta começa com tempo real de escuta. Depois vêm os exames, a análise e o protocolo. Sempre nessa ordem, sempre centrado em você.</p>
-    </div>
-    <div class="st st-dk r d2">
-      <div class="sr"><span class="sn">01</span><div><div class="st-t">Anamnese e escuta ativa</div><div class="st-b">Tempo real de escuta, sem pressa. Entendemos sua história, sintomas e objetivos antes de qualquer prescrição.</div></div></div>
-      <div class="sr"><span class="sn">02</span><div><div class="st-t">Diagnóstico metabólico e genético</div><div class="st-b">Análise de biomarcadores, painel hormonal, composição corporal e, quando indicado, mapeamento genético para decisões ainda mais precisas.</div></div></div>
-      <div class="sr"><span class="sn">03</span><div><div class="st-t">Protocolo baseado nos seus objetivos</div><div class="st-b">Construído com os dados colhidos e o que você quer alcançar. Pode incluir suplementação, injetáveis modernos, implantes bioabsorvíveis ou combinações multidisciplinares.</div></div></div>
-      <div class="sr"><span class="sn">04</span><div><div class="st-t">Acompanhamento humanizado</div><div class="st-b">Retornos periódicos para ajustar o protocolo conforme sua evolução. Você não anda sozinho.</div></div></div>
+<!-- Método Gehrke 360° -->
+<section style="background:var(--color-ink);padding:86px 60px" aria-label="Método Gehrke 360°">
+  <div class="w">
+    <div class="lbl lbl-lt r u-mb-16">método exclusivo</div>
+    <h2 class="h2 h2-w r d1 u-mb-20">Método Gehrke <em>360°</em></h2>
+    <p class="body body-lt r d2" style="max-width:620px;margin-bottom:48px">Cada paciente chega em um momento diferente. O Método Gehrke 360° classifica seu estado metabólico atual em três níveis, e a partir disso constrói um protocolo sob medida, com a profundidade que cada caso exige.</p>
+    <div class="gehrke-tiers">
+      <div class="gehrke-tier r d1">
+        <div class="gehrke-tier-num">01</div>
+        <h3 class="gehrke-tier-name">Reset</h3>
+        <p class="gehrke-tier-desc">Para quem chega com múltiplas alterações metabólicas. Exames fora do padrão, sintomas acumulados, histórico de tentativas sem resultado. Protocolo intensivo para ajustar hormônios, metabolismo, inflamação e sono. Retornos frequentes até a estabilização completa.</p>
+      </div>
+      <div class="gehrke-tier r d2">
+        <div class="gehrke-tier-num">02</div>
+        <h3 class="gehrke-tier-name">Equilíbrio</h3>
+        <p class="gehrke-tier-desc">Para quem está funcionando, mas sente que pode melhorar. Pequenos ajustes hormonais, nutricionais ou de estilo de vida para pavimentar um envelhecimento saudável. Manutenção ativa com acompanhamento periódico e metas claras.</p>
+      </div>
+      <div class="gehrke-tier r d3">
+        <div class="gehrke-tier-num">03</div>
+        <h3 class="gehrke-tier-name">Performance</h3>
+        <p class="gehrke-tier-desc">Para quem já está equilibrado e quer operar no limite superior. Otimização metabólica avançada, composição corporal de elite, performance cognitiva e física. Protocolos de precisão com biomarcadores, genética e acompanhamento de alta frequência.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -147,11 +156,11 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     <div class="lbl r u-mb-16">protocolos ecooa.med</div>
     <h2 class="h2 r d1 u-mb-44">Programas que<br><em>entregam resultados.</em></h2>
     <div class="g3">
-      <div class="ec r"><p class="ec-n">01</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Inclui manejo clínico com implantes bioabsorvíveis de liberação lenta quando indicados clinicamente, com base em protocolos médicos atuais.</p></div>
-      <div class="ec r"><p class="ec-n">02</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">Avaliação completa da saúde hormonal masculina com protocolos individualizados para vitalidade, libido, composição corporal e bem-estar, incluindo terapia hormonal bioabsorvível quando aplicável.</p></div>
-      <div class="ec r"><p class="ec-n">03</p><h3 class="ec-t">Emagrecimento com preços especiais</h3><p class="ec-d">Consultas com valores facilitados para emagrecimento, incluindo acompanhamento com canetas emagrecedoras (semaglutida, tirzepatida), protocolos manipulados e integração com nutrição.</p></div>
-      <div class="ec r"><p class="ec-n">04</p><h3 class="ec-t">Acompanhamento com canetas emagrecedoras</h3><p class="ec-d">Consulta de anamnese completa, exames laboratoriais específicos para avaliar segurança no uso, e acompanhamento recorrente durante todo o processo, com preços facilitados.</p></div>
-      <div class="ec r"><p class="ec-n">05</p><h3 class="ec-t">Saúde Capilar</h3><p class="ec-d">Investigação clínica da queda de cabelo com exames hormonais, metabólicos e, quando indicado, testes genéticos. Protocolos individualizados para tratamento e prevenção da alopecia.</p></div>
+      <div class="ec r"><p class="ec-n">01</p><h3 class="ec-t">Protocolo Peso Seguro</h3><p class="ec-d">Emagrecimento com acompanhamento médico contínuo. Consulta de avaliação com valor de entrada para analisar exames, histórico e viabilidade do uso de canetas emagrecedoras (semaglutida, tirzepatida). Acompanhamento recorrente durante todo o tratamento. Resultado real com segurança clínica.</p></div>
+      <div class="ec r"><p class="ec-n">02</p><h3 class="ec-t">Protocolo Tricometabólico</h3><p class="ec-d">Investigação completa das causas da queda capilar: perfil hormonal, metabolismo, estresse oxidativo e nutrientes. Quando indicado, inclui mapeamento genético para identificar predisposição hereditária e personalizar o tratamento. Abordagem que trata a raiz metabólica da queda, não apenas o sintoma.</p></div>
+      <div class="ec r"><p class="ec-n">03</p><h3 class="ec-t">Bioimplantes Metabólicos</h3><p class="ec-d">Implantes subcutâneos bioabsorvíveis de liberação estável. Técnica que garante concentração hormonal constante ao longo do dia, sem as oscilações de métodos tradicionais. Indicado para reposição hormonal feminina e masculina, com protocolos individualizados.</p></div>
+      <div class="ec r"><p class="ec-n">04</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Manejo clínico com bioimplantes de liberação lenta quando indicados, com base em protocolos médicos atuais e acompanhamento contínuo.</p></div>
+      <div class="ec r"><p class="ec-n">05</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">Avaliação completa da saúde hormonal masculina com protocolos individualizados para vitalidade, libido, composição corporal e bem-estar, incluindo terapia com bioimplantes quando aplicável.</p></div>
       <div class="ec r"><p class="ec-n">06</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.</p></div>
       <div class="ec r"><p class="ec-n">07</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e estratégias preventivas baseadas em biomarcadores e evidência clínica.</p></div>
       <div class="ec r"><p class="ec-n">08</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil inflamatório para uma visão real do seu estado de saúde.</p></div>

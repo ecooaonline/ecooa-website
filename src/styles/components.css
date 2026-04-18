@@ -515,6 +515,34 @@
 .ec-t { font-size: 15px; font-weight: 400; color: var(--color-ink); margin-bottom: 6px; line-height: 1.35; }
 .ec-d { font-size: 12px; font-weight: 300; line-height: 1.8; color: var(--color-ink-soft); }
 
+/* ── GEHRKE 360° TIERS ── */
+.gehrke-tiers {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.gehrke-tier {
+  padding: 32px 28px; border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04); position: relative; overflow: hidden;
+  transition: border-color .3s, background .3s;
+}
+.gehrke-tier:hover {
+  border-color: rgba(255,255,255,.25); background: rgba(255,255,255,.07);
+}
+.gehrke-tier-num {
+  font-family: var(--font-serif); font-size: 11px; font-weight: 400;
+  color: var(--color-brand-light); letter-spacing: .12em; margin-bottom: 14px;
+}
+.gehrke-tier-name {
+  font-family: var(--font-serif); font-size: 26px; font-weight: 300;
+  color: #fff; margin: 0 0 12px; line-height: 1.2;
+}
+.gehrke-tier-desc {
+  font-size: 13px; font-weight: 300; line-height: 1.7;
+  color: rgba(255,255,255,.6); margin: 0;
+}
+@media (max-width: 720px) {
+  .gehrke-tiers { grid-template-columns: 1fr; gap: 16px; }
+}
+
 /* ── HERO GOOGLE BADGE ── */
 .hero-google-badge {
   text-align: center; padding: 28px;
