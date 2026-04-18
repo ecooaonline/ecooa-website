@@ -441,10 +441,57 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   const isPagesPreview = host.endsWith('.github.io');
   const runInSafeMode = !isAuthorized && !isPagesPreview;
 
-  // Rate-limit cliente (evita abuso / scraping trivial)
+  // Rate-limit cliente com cooldown progressivo (anti-scraping).
+  // Sliding window de 60s + cap de sessão + cooldown escalonado.
+  // Persiste em sessionStorage para resistir a reloads simples.
   const RATE_WINDOW_MS = 60_000;
-  const RATE_MAX = 30;
-  const hits: number[] = [];
+  const RATE_MAX_PER_MIN = 10;      // 10 buscas/min (era 30, agressivo para scraping)
+  const SESSION_CAP = 50;            // 50 buscas por sessão (bloqueio dura a sessão)
+  const MIN_QUERY_LEN = 3;           // mínimo 3 chars
+  const COOLDOWN_STEPS = [0, 5_000, 15_000, 45_000]; // escalonamento após cada bloqueio
+  const RL_KEY = 'ecooa_match_rl';
+
+  interface RateState {
+    hits: number[];
+    sessionTotal: number;
+    blockCount: number;
+    blockedUntil: number;
+  }
+  function loadRateState(): RateState {
+    try {
+      const raw = sessionStorage.getItem(RL_KEY);
+      if (raw) return JSON.parse(raw) as RateState;
+    } catch {}
+    return { hits: [], sessionTotal: 0, blockCount: 0, blockedUntil: 0 };
+  }
+  function saveRateState(s: RateState) {
+    try { sessionStorage.setItem(RL_KEY, JSON.stringify(s)); } catch {}
+  }
+  const rl: RateState = loadRateState();
+
+  function rateLimitCheck(): { ok: boolean; reason?: string } {
+    const now = Date.now();
+    if (now < rl.blockedUntil) {
+      const wait = Math.ceil((rl.blockedUntil - now) / 1000);
+      return { ok: false, reason: `muitas buscas. aguarde ${wait}s.` };
+    }
+    if (rl.sessionTotal >= SESSION_CAP) {
+      return { ok: false, reason: 'limite de buscas desta sessão atingido. recarregue amanhã ou fale pelo whatsapp.' };
+    }
+    rl.hits = rl.hits.filter((t) => now - t <= RATE_WINDOW_MS);
+    if (rl.hits.length >= RATE_MAX_PER_MIN) {
+      rl.blockCount = Math.min(rl.blockCount + 1, COOLDOWN_STEPS.length - 1);
+      const cooldown = COOLDOWN_STEPS[rl.blockCount];
+      rl.blockedUntil = now + cooldown;
+      saveRateState(rl);
+      const wait = Math.ceil(cooldown / 1000);
+      return { ok: false, reason: `muitas buscas seguidas. aguarde ${wait}s.` };
+    }
+    rl.hits.push(now);
+    rl.sessionTotal += 1;
+    saveRateState(rl);
+    return { ok: true };
+  }
 
   function unitLabel(unit: string): string {
     return { med: 'ecooa.med', esthetic: 'ecooa.esthetic', working: 'ecooa.working', mind: 'ecooa.mind' }[unit] || 'ecooa';
@@ -525,15 +572,16 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   function handleQuery(query: string) {
     const q = query.trim();
     if (!q) return;
-
-    // Rate-limit
-    const now = Date.now();
-    while (hits.length && now - hits[0] > RATE_WINDOW_MS) hits.shift();
-    if (hits.length >= RATE_MAX) {
-      results.innerHTML = '<div class="match-loading">muitas buscas seguidas. aguarde alguns segundos.</div>';
+    if (q.length < MIN_QUERY_LEN) {
+      results.innerHTML = `<div class="match-loading">descreva com pelo menos ${MIN_QUERY_LEN} caracteres.</div>`;
       return;
     }
-    hits.push(now);
+
+    const check = rateLimitCheck();
+    if (!check.ok) {
+      results.innerHTML = `<div class="match-loading">${check.reason}</div>`;
+      return;
+    }
 
     renderLoading();
     // microtask delay para permitir o repaint do loading
@@ -564,4 +612,16 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
       form.requestSubmit();
     }
   });
+
+  // Suporte a ?q= para Google Sitelinks Search Box (WebSite SearchAction schema).
+  // Aceita também ?query= para compatibilidade.
+  try {
+    const params = new URLSearchParams(location.search);
+    const urlQuery = (params.get('q') || params.get('query') || '').trim();
+    if (urlQuery) {
+      const safe = urlQuery.slice(0, 240);
+      input.value = safe;
+      requestAnimationFrame(() => handleQuery(safe));
+    }
+  } catch {}
 </script>

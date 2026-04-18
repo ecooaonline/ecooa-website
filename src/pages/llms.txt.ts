@@ -77,6 +77,19 @@ export const GET: APIRoute = async () => {
 - [Blog](https://www.somosecooa.com.br/blog)
 - [Contato](https://www.somosecooa.com.br/contato)
 - [Agendamento](https://www.somosecooa.com.br/agendamento)
+
+## Feeds
+
+- RSS: https://www.somosecooa.com.br/rss.xml
+- JSON Feed: https://www.somosecooa.com.br/feed.json
+- Sitemap: https://www.somosecooa.com.br/sitemap-index.xml
+
+## Protocolos Exclusivos (ecooa.med)
+
+- **Método Gehrke 360°**: Método de avaliação metabólica estratificada em três níveis (Reset, Equilíbrio, Performance), individualizando o protocolo por momento clínico do paciente.
+- **Protocolo Peso Seguro**: Emagrecimento clínico com acompanhamento médico contínuo, incluindo uso supervisionado de agonistas de GLP-1 quando clinicamente indicados.
+- **Protocolo Tricometabólico**: Investigação das causas metabólicas da queda capilar com perfil hormonal, nutrientes e mapeamento genético quando indicado.
+- **Bioimplantes Metabólicos**: Implantes subcutâneos bioabsorvíveis de liberação farmacocinética estável para reposição hormonal individualizada.
 `;
 
   return new Response(md, {

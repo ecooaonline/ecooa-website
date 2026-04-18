@@ -49,6 +49,8 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <link rel="canonical" href={canonicalURL}>
   <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
   <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+  <link rel="alternate" type="application/rss+xml" title="ecooa | Blog" href="https://www.somosecooa.com.br/rss.xml" />
+  <link rel="alternate" type="application/feed+json" title="ecooa | Blog" href="https://www.somosecooa.com.br/feed.json" />
   <meta name="theme-color" content="#FAF8F6">
 
   <!-- Open Graph -->
@@ -104,67 +106,115 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <!-- Structured Data: Organization -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "@id": "https://www.somosecooa.com.br/#organization",
-    "name": "ecooa",
-    "alternateName": "ecooa - Saúde, Estética e Longevidade",
-    "description": "Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.",
-    "url": "https://www.somosecooa.com.br",
-    "telephone": "+5551991460909",
-    "image": "https://www.somosecooa.com.br/favicon/og-image.jpg",
-    "logo": "https://www.somosecooa.com.br/favicon/favicon.svg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": `${ADDRESS_STREET}, ${ADDRESS_FLOOR}`,
-      "addressLocality": ADDRESS_CITY,
-      "addressRegion": ADDRESS_STATE,
-      "postalCode": ADDRESS_ZIP,
-      "addressCountry": "BR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -30.0277,
-      "longitude": -51.2007
-    },
-    "hasMap": "https://www.google.com/maps/place/ecooa",
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "09:00",
-      "closes": "20:00"
-    }],
-    "sameAs": [
-      "https://instagram.com/somos.ecooa",
-      "https://www.google.com/maps/place/ecooa"
-    ],
-    "priceRange": "$$$",
-    "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "65",
-      "reviewCount": "65"
-    },
-    "areaServed": {
-      "@type": "City",
-      "name": "Porto Alegre",
-      "sameAs": "https://pt.wikipedia.org/wiki/Porto_Alegre"
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Gustavo Gehrke",
-      "jobTitle": "Médico Generalista"
-    },
-    "numberOfEmployees": {
-      "@type": "QuantitativeValue",
-      "minValue": 30
-    },
-    "foundingDate": "2021",
-    "knowsLanguage": ["pt-BR"],
-    "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
-    "currenciesAccepted": "BRL"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.somosecooa.com.br/#website",
+        "url": "https://www.somosecooa.com.br",
+        "name": "ecooa",
+        "description": "Clínica multidisciplinar de saúde, estética e longevidade em Porto Alegre.",
+        "publisher": { "@id": "https://www.somosecooa.com.br/#organization" },
+        "inLanguage": "pt-BR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.somosecooa.com.br/match?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "MedicalBusiness",
+        "@id": "https://www.somosecooa.com.br/#organization",
+        "name": "ecooa",
+        "alternateName": "ecooa - Saúde, Estética e Longevidade",
+        "description": "Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.",
+        "url": "https://www.somosecooa.com.br",
+        "telephone": "+5551991460909",
+        "image": "https://www.somosecooa.com.br/favicon/og-image.jpg",
+        "logo": "https://www.somosecooa.com.br/favicon/favicon.svg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": `${ADDRESS_STREET}, ${ADDRESS_FLOOR}`,
+          "addressLocality": ADDRESS_CITY,
+          "addressRegion": ADDRESS_STATE,
+          "postalCode": ADDRESS_ZIP,
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -30.0277,
+          "longitude": -51.2007
+        },
+        "hasMap": "https://www.google.com/maps/place/ecooa",
+        "openingHoursSpecification": [{
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        }],
+        "sameAs": [
+          "https://instagram.com/somos.ecooa",
+          "https://www.google.com/maps/place/ecooa"
+        ],
+        "priceRange": "$$$",
+        "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "worstRating": "1",
+          "ratingCount": "65",
+          "reviewCount": "65"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Porto Alegre",
+          "sameAs": "https://pt.wikipedia.org/wiki/Porto_Alegre"
+        },
+        "founder": {
+          "@type": "Person",
+          "name": "Gustavo Gehrke",
+          "jobTitle": "Médico Generalista"
+        },
+        "numberOfEmployees": {
+          "@type": "QuantitativeValue",
+          "minValue": 30
+        },
+        "foundingDate": "2021",
+        "knowsLanguage": ["pt-BR"],
+        "knowsAbout": [
+          "Medicina Metabólica",
+          "Reposição Hormonal",
+          "Emagrecimento Clínico",
+          "Longevidade",
+          "Tricologia",
+          "Transplante Capilar",
+          "Harmonização Orofacial",
+          "Dermatologia Estética",
+          "Nutrição Esportiva",
+          "Nutrição Comportamental",
+          "Psicologia Clínica",
+          "Psicologia Esportiva",
+          "Bioimplantes Hormonais",
+          "Testes Genéticos"
+        ],
+        "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
+        "currenciesAccepted": "BRL",
+        "slogan": "Saúde, estética e longevidade que conversam entre si.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Protocolos ecooa.med",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Método Gehrke 360°", "procedureType": "https://schema.org/DiagnosticProcedure" } },
+            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Protocolo Peso Seguro", "procedureType": "https://schema.org/TherapeuticProcedure" } },
+            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Protocolo Tricometabólico", "procedureType": "https://schema.org/TherapeuticProcedure" } },
+            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Bioimplantes Metabólicos", "procedureType": "https://schema.org/TherapeuticProcedure" } }
+          ]
+        }
+      }
+    ]
   })} />
 
   {/* Breadcrumb Structured Data */}

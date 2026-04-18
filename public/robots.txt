@@ -32,3 +32,8 @@ User-agent: Google-Extended
 Allow: /
 
 Sitemap: https://www.somosecooa.com.br/sitemap-index.xml
+
+# Feeds
+# RSS: https://www.somosecooa.com.br/rss.xml
+# JSON Feed: https://www.somosecooa.com.br/feed.json
+# LLMs: https://www.somosecooa.com.br/llms.txt

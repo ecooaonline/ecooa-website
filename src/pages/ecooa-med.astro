@@ -26,6 +26,57 @@ const medFaqSchema = {
   }))
 };
 
+const medProtocolsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.somosecooa.com.br/ecooa-med#metodo-gehrke-360",
+      "name": "Método Gehrke 360°",
+      "procedureType": "https://schema.org/DiagnosticProcedure",
+      "howPerformed": "Avaliação metabólica estratificada em três níveis (Reset, Equilíbrio, Performance) com base em biomarcadores, anamnese completa e exames laboratoriais. Cada nível orienta um protocolo individualizado de intervenção.",
+      "description": "Método exclusivo de classificação metabólica que identifica o momento de saúde do paciente e direciona o protocolo adequado: Reset para múltiplas alterações, Equilíbrio para ajustes finos, Performance para otimização avançada.",
+      "url": "https://www.somosecooa.com.br/ecooa-med",
+      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
+      "bodyLocation": "Sistêmico",
+      "preparation": "Jejum conforme painel laboratorial solicitado."
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.somosecooa.com.br/ecooa-med#protocolo-peso-seguro",
+      "name": "Protocolo Peso Seguro",
+      "procedureType": "https://schema.org/TherapeuticProcedure",
+      "howPerformed": "Consulta de avaliação com valor de entrada especial. Análise de exames, histórico e viabilidade clínica para uso supervisionado de agonistas de GLP-1 (semaglutida, tirzepatida) com acompanhamento médico recorrente.",
+      "description": "Emagrecimento clínico com acompanhamento médico contínuo e monitoramento laboratorial. Foco em segurança e resultado sustentável.",
+      "url": "https://www.somosecooa.com.br/ecooa-med",
+      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
+      "followup": "Retornos periódicos para ajuste de dose e monitoramento."
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.somosecooa.com.br/ecooa-med#protocolo-tricometabolico",
+      "name": "Protocolo Tricometabólico",
+      "procedureType": "https://schema.org/DiagnosticProcedure",
+      "howPerformed": "Investigação das causas metabólicas da queda capilar: perfil hormonal, estresse oxidativo, micronutrientes. Quando indicado, inclui mapeamento genético para predisposição hereditária.",
+      "description": "Abordagem clínica que trata a raiz metabólica da queda de cabelo, não apenas o sintoma. Integra endocrinologia, nutrição e tricologia.",
+      "url": "https://www.somosecooa.com.br/ecooa-med",
+      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
+      "bodyLocation": "Couro cabeludo / sistêmico"
+    },
+    {
+      "@type": "MedicalProcedure",
+      "@id": "https://www.somosecooa.com.br/ecooa-med#bioimplantes-metabolicos",
+      "name": "Bioimplantes Metabólicos",
+      "procedureType": "https://schema.org/TherapeuticProcedure",
+      "howPerformed": "Aplicação subcutânea de implantes bioabsorvíveis de liberação estável, individualizada por avaliação clínica e laboratorial prévia.",
+      "description": "Implantes subcutâneos bioabsorvíveis com liberação farmacocinética estável, indicados para reposição hormonal feminina e masculina quando clinicamente apropriados.",
+      "url": "https://www.somosecooa.com.br/ecooa-med",
+      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
+      "bodyLocation": "Tecido subcutâneo"
+    }
+  ]
+};
+
 const WA = WA_DEFAULT;
 
 const allMedPosts = await getCollection('blog', ({data}) => !data.draft && data.category === 'medicina');
@@ -56,6 +107,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <Marquee />
 
 <script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
+<script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
 
 <QuizSection options={[
   { title: "peso seguro", subtitle: "emagrecimento assistido", waText: "Olá, gostaria de saber mais sobre o Protocolo Peso Seguro" },
