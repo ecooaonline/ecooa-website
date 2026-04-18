@@ -208,6 +208,151 @@ const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. A
   </div>
 </section>
 
+<!-- Credenciais & Formação -->
+{p.registration || p.education && (
+  <section class="u-bg-warm" aria-label="Credenciais e formação">
+    <div class="w">
+      <div class="lbl r u-mb-16">credenciais</div>
+      <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(22px,2.6vw,36px)">Trajetória<br><em>profissional.</em></h2>
+      <div class="g2 g2c">
+        <div class="r d1">
+          {p.registration && (
+            <div style="margin-bottom:28px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">registro profissional</p>
+              <p style="font-size:16px;font-weight:400">{p.registration}</p>
+            </div>
+          )}
+          {p.education?.graduation && (
+            <div style="margin-bottom:28px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">graduação</p>
+              <p style="font-size:16px;font-weight:400">{p.education.graduation}</p>
+            </div>
+          )}
+        </div>
+        <div class="r d1">
+          {p.education?.postgrad && p.education.postgrad.length > 0 && (
+            <div style="margin-bottom:28px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">pós-graduação & especialização</p>
+              <ul style="margin:0;padding:0;list-style:none">
+                {p.education.postgrad.map(pg => (
+                  <li style="font-size:14px;font-weight:300;line-height:1.6;margin-bottom:6px">{pg}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {p.education?.residency && (
+            <div style="margin-bottom:28px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">residência</p>
+              <p style="font-size:14px;font-weight:300;line-height:1.6">{p.education.residency}</p>
+            </div>
+          )}
+          {p.education?.courses && p.education.courses.length > 0 && (
+            <div style="margin-bottom:28px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">cursos & certificações</p>
+              <ul style="margin:0;padding:0;list-style:none">
+                {p.education.courses.map(course => (
+                  <li style="font-size:14px;font-weight:300;line-height:1.6;margin-bottom:4px">• {course}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Diferencial Clínico -->
+{p.clinicalDifferential && (
+  <section class="u-bg-cream" aria-label="Diferencial clínico">
+    <div class="w">
+      <div class="lbl r u-mb-16">abordagem</div>
+      <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(22px,2.6vw,36px)">O que te<br><em>diferencia.</em></h2>
+      <p class="body r d2" style="max-width:600px;font-size:clamp(14px,1.2vw,18px);line-height:1.7;color:var(--color-ink)">{p.clinicalDifferential}</p>
+      {p.mainComplaints && p.mainComplaints.length > 0 && (
+        <div style="margin-top:32px;padding:20px;background:var(--color-warm);border-left:4px solid var(--color-brand-deep)" class="r d3">
+          <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:12px">principais dores de seus pacientes</p>
+          <ul style="margin:0;padding-left:20px;list-style:disc">
+            {p.mainComplaints.map(complaint => (
+              <li style="font-size:14px;font-weight:300;line-height:1.6;color:var(--color-ink);margin-bottom:8px">{complaint}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<!-- Dúvidas Frequentes -->
+{p.faqPairs && p.faqPairs.length > 0 && (
+  <section class="u-bg-warm" aria-label="Dúvidas frequentes">
+    <div class="w">
+      <div class="lbl r u-mb-16">perguntas</div>
+      <h2 class="h2 r d1" style="margin-bottom:32px;font-size:clamp(22px,2.6vw,36px)">Dúvidas<br><em>frequentes.</em></h2>
+      <div style="max-width:700px" class="r d2">
+        {p.faqPairs.map((pair, idx) => (
+          <details style="margin-bottom:20px;padding:16px;background:var(--color-cream);border:1px solid var(--color-stone);cursor:pointer;border-radius:4px" open={idx === 0}>
+            <summary style="font-weight:500;font-size:14px;line-height:1.5;color:var(--color-ink);outline:none">{pair.question}</summary>
+            <p style="font-size:14px;font-weight:300;line-height:1.7;color:var(--color-ink);margin-top:12px;padding-top:12px;border-top:1px solid var(--color-stone)">{pair.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Caso Clínico -->
+{p.caseStudy && (
+  <section class="u-bg-cream" aria-label="Caso clínico representativo">
+    <div class="w">
+      <div class="lbl r u-mb-16">exemplar</div>
+      <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(22px,2.6vw,36px)">Caso que<br><em>representa seu trabalho.</em></h2>
+      <div class="r d2" style="max-width:700px;background:var(--color-warm);padding:28px;border-left:4px solid var(--color-brand-deep);border-radius:2px">
+        <p style="font-size:14px;font-weight:300;line-height:1.8;color:var(--color-ink);white-space:pre-wrap">{p.caseStudy}</p>
+        <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-top:16px;font-style:italic">Caso documentado sem identificação do paciente, com autorização de uso educacional.</p>
+      </div>
+    </div>
+  </section>
+)}
+
+<!-- Valores & Agendamento -->
+{p.pricing && (
+  <section class="u-bg-warm" aria-label="Valores e agendamento">
+    <div class="w">
+      <div class="lbl r u-mb-16">investimento</div>
+      <h2 class="h2 r d1" style="margin-bottom:32px;font-size:clamp(22px,2.6vw,36px)">Valores e<br><em>formas de atendimento.</em></h2>
+      <div class="g2 g2c">
+        <div class="r d1">
+          {p.pricing.firstConsultation && (
+            <div style="margin-bottom:24px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">primeira consulta</p>
+              <p style="font-size:32px;font-weight:300">R$ {p.pricing.firstConsultation}</p>
+            </div>
+          )}
+          {p.pricing.return && (
+            <div style="margin-bottom:24px">
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:8px">consulta de retorno</p>
+              <p style="font-size:32px;font-weight:300">R$ {p.pricing.return}</p>
+            </div>
+          )}
+        </div>
+        <div class="r d1">
+          {p.pricing.packages && p.pricing.packages.length > 0 && (
+            <div>
+              <p style="font-size:11px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:12px">programas & pacotes</p>
+              <ul style="margin:0;padding:0;list-style:none">
+                {p.pricing.packages.map(pkg => (
+                  <li style="font-size:14px;font-weight:300;line-height:1.7;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--color-stone)">{pkg}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
 <!-- Especialidades -->
 <section class="u-bg-cream" aria-label="Especialidades">
   <div class="w">

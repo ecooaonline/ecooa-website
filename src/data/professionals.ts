@@ -9,6 +9,32 @@ export interface Professional {
   tags: string[];
   isFounder?: boolean;
   personalTouch?: string;
+
+  // Intake form fields (populated via Google Forms)
+  registration?: string; // CRM/CRN/CRP/CRBM/CREFITO/COREN/CRO + número
+  education?: {
+    graduation: string; // Curso + Universidade + Ano
+    postgrad?: string[]; // Múltiplas especializações separadas por ;
+    residency?: string;
+    courses?: string[]; // Máx 3 cursos relevantes
+  };
+  specialties?: string[]; // Áreas que domina e deseja ser encontrado
+  clinicalDifferential?: string; // Abordagem única (2-3 frases)
+  areasNotServed?: string; // Delimita escopo e encaminhamentos
+
+  // Match training data
+  mainComplaints?: string[]; // 3 principais queixas/dores de pacientes
+  faqPairs?: Array<{ question: string; answer: string }>; // Máx 10 pares
+  referralCriteriaFor?: string[]; // Sinais/sintomas para encaminhar para este prof
+  referralCriteriaAway?: string; // Quando encaminha para outro colega
+  caseStudy?: string; // Caso clínico representativo (sem ID paciente)
+
+  // Pricing
+  pricing?: {
+    firstConsultation: number; // Valor em reais (apenas número)
+    return: number; // Consulta de retorno
+    packages?: string[]; // Estruturas de preço adicionais
+  };
 }
 
 export const professionals: Professional[] = [
