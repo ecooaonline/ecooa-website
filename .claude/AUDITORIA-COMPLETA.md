@@ -24,7 +24,7 @@
 
 ---
 
-## PRIORIZAÇÃO (P0, P1, P2)
+## PRIORIZAÇÃO (P0, P0.5, P1, P2)
 
 ### 🔴 P0 — Crítico (Semana 1)
 Impacto: Risco legal, segurança, SEO direto
@@ -33,6 +33,13 @@ Impacto: Risco legal, segurança, SEO direto
 - [ ] Alinhar formulário entre implementação (Apps Script) e política (privacidade)
 - [ ] Documentar README operacional (setup, deploy, conteúdo)
 - [ ] Fortalecer anti-abuso em formulários (rate-limit, honeypot)
+
+### 🟠 P0.5 — Performance & Dependências (Semana 1)
+Impacto: SEO, estabilidade técnica, confiabilidade
+
+- [ ] Audit de performance (Lighthouse) em 5 páginas-chave
+- [ ] Mapear vendors críticos e SLA de suporte
+- [ ] Documentar decisões técnicas (Node version, deprecated APIs)
 
 ### 🟠 P1 — Alto (Semana 2-3)
 Impacto: Conversão, UX, SEO estrutural
@@ -324,9 +331,268 @@ Impacto: Retenção, analytics, refinamento
 
 ---
 
-## ACHADOS TRANSVERSAIS (Site Inteiro)
+---
 
-### ⚠️ Segurança & Privacidade
+## P0.5: PERFORMANCE & CORE WEB VITALS
+
+### Achado
+Auditoria foca em conteúdo/UX, mas site premium carece de validação de performance. Google dá ranking boost a sites rápidos. Astro (estático) é bom, mas há pontos de atrito:
+- LCP (Largest Contentful Paint): imagens hero não otimizadas
+- CLS (Cumulative Layout Shift): fontes self-hosted podem gerar shifts
+- FID/INP: match engine (JS) pode ter lag
+
+### Ações P0.5 (3-4h)
+
+#### 1. Lighthouse Audit (1h)
+Rodar Lighthouse em 5 páginas-chave e registrar baseline:
+
+| Página | URL | LCP | FID | CLS | Score |
+|--------|-----|-----|-----|-----|-------|
+| Home | / | TBD | TBD | TBD | TBD |
+| ecooa.med | /ecooa-med | TBD | TBD | TBD | TBD |
+| Profissional | /profissionais/gustavo-gehrke | TBD | TBD | TBD | TBD |
+| Match | /match | TBD | TBD | TBD | TBD |
+| Blog | /blog | TBD | TBD | TBD | TBD |
+
+Ferramentas:
+- PageSpeed Insights (online, real user data)
+- Lighthouse CLI local: `npm run audit` (criar script)
+
+#### 2. Identificar Top 3 Quick Wins (1-2h)
+
+Padrão comum em sites Astro:
+1. **Image optimization**: Converter JPG/PNG para AVIF, webp com fallback
+2. **Font preload**: `<link rel="preload" as="font">` para serif/sans
+3. **Script lazy-load**: Adiar GTM/analytics até user interaction
+
+#### 3. Documentar Baseline & Target (30m)
+
+```markdown
+## Performance Targets (2026-05-19)
+
+**Current Baseline** (rodar Lighthouse T+0):
+- Home: LCP 2.5s, FID 150ms, CLS 0.1
+- ecooa-med: LCP 3.2s, ...
+- ...
+
+**Target (Q2 2026)**:
+- Todas as páginas: LCP <2.5s, FID <100ms, CLS <0.1
+- Audit repetido a cada 2 semanas
+
+**Responsável**: Dev (tech lead)
+**Ferramenta**: Lighthouse + WebPageTest
+```
+
+**Prioridade**: P0.5 — Executar em paralelo com P0 (não bloqueia)
+
+---
+
+## P0.6: CONFORMIDADE MÉDICA ESTRUTURADA
+
+### Achado
+P0 pede "revisar claims médicos", mas não detalha:
+- Quais afirmações estão realmente expostas (por página)
+- Qual padrão regulatório aplicável (CFM, ANVISA, Conselho Regional, Lei de Publicidade Médica)
+- Como documenta aprovação (quem, quando, assinatura)
+
+Risco: Não é só compliance de texto; pode ser processo clínico. Clínica premium não pode afirmar resultado sem base.
+
+### Ações P0.6 (4-6h)
+
+#### 1. Levantar Claims Expostos (1.5h)
+
+Por página, listar todas as afirmações sobre resultado/eficácia:
+
+**Exemplo — /ecooa-med:**
+```
+- "emagrecimento saudável" → permitido (descreve escopo, não promete resultado)
+- "metabolismo funcional, não restrição calórica" → revisar (é claim diferencial, precisa base)
+- "ganho de peso sem causa óbvia" → permitido (descreve queixa do paciente)
+- "TSH no limite alto — Hashimoto" → ⚠️ REVISAR (diagnóstico é ato médico)
+- "perda de 8kg sustentável, energia normalizada" → ⚠️ PROIBIDO (promessa de resultado específico)
+```
+
+**Exemplo — /ecooa-esthetic:**
+```
+- "tratamentos capilares avançados" → permitido
+- "queda capilar e doenças do couro cabeludo" → permitido (descreve especialidade)
+- "devolve autoestima" → ⚠️ REVISAR (promessa de benefício psíquico sem base)
+```
+
+#### 2. Classificar por Nível de Risco (1h)
+
+Matriz simples:
+
+```
+VERDE (Permitido, publicar como está)
+- Descrição de especialidade
+- Descrição de queixa do paciente
+- Descrição de abordagem
+
+AMARELO (Revisar, pode precisar disclaimer)
+- Diferencial clínico que implica resultado
+- Casos de sucesso anônimos
+- Depoimentos de pacientes
+
+VERMELHO (Proibido, remover ou reescrever)
+- Promessa de cura ("elimina síndrome metabólica")
+- Diagnóstico feito pela clínica (só médico diagnóstica)
+- Resultado quantificado sem base ("perda garantida de 10kg")
+```
+
+#### 3. Template de Aprovação Médica (1h)
+
+Criar documento que médico/jurídico assina:
+
+```markdown
+# APROVAÇÃO DE CLAIMS MÉDICOS
+
+**Página/Seção**: /ecooa-med - Método Gehrke 360°
+
+**Claim Original**: "emagrecimento é resultado de metabolismo funcional, não de restrição calórica"
+
+**Classificação**: AMARELO (diferencial clínico)
+
+**Versão Aprovada**: "Nossa abordagem investiga causas metabólicas de ganho de peso (hormônios, inflamação, sono) em vez de restringir calorias como primeira linha"
+
+**Disclaimer Recomendado**: "Resultados variam conforme avaliação individual"
+
+**Aprovado por**: Dr. Gustavo Gehrke (Médico) + Jessica Fernandes (Jurídico)
+
+**Data**: 2026-04-19
+
+**Próxima Revisão**: 2026-07-19 (3 meses)
+
+**Vigência**: 2026-04-19 até revogação ou atualização de protocolo
+```
+
+#### 4. Matriz de Conformidade por Página (1.5h)
+
+```markdown
+## Conformidade Médica — Matriz de Páginas
+
+| Página | Total Claims | Verde | Amarelo | Vermelho | Status | Aprovador | Data |
+|--------|-------------|-------|---------|----------|--------|-----------|------|
+| /ecooa-med | 12 | 8 | 3 | 1 | ⚠️ REVISAR | Dr. Gustavo | TBD |
+| /ecooa-esthetic | 8 | 6 | 2 | 0 | ✅ OK | Dra. Danusa | TBD |
+| /ecooa-mind | 5 | 5 | 0 | 0 | ✅ OK | Manuela | TBD |
+| /ecooa-working | 3 | 3 | 0 | 0 | ✅ OK | - | TBD |
+| /blog (30 artigos) | ~60 | ~45 | ~12 | ~3 | ⚠️ REVISAR | Dr. Gustavo | TBD |
+| /profissionais (30) | ~120 | ~100 | ~18 | ~2 | ⚠️ REVISAR | Por prof. | TBD |
+
+**Status Geral**: 🔴 BLOQUEADO — não publicar até revisão
+
+**Responsável**: Gustavo (médico) + Jessica (jurídico)
+```
+
+#### 5. Protocolo de Atualização (30m)
+
+Documento que governa quando revisar:
+
+```markdown
+## Protocolo de Revisão Continuada de Claims
+
+**Trigger de Revisão**:
+- [ ] Mudança de protocolo clínico em qualquer pilar
+- [ ] Novo estudo que contradiz claim existente
+- [ ] Reclamação de paciente/órgão regulador sobre copy
+- [ ] Troca de pessoa responsável por seção (médico, nutricionista)
+- [ ] Semestral: revisão proativa (junho, dezembro)
+
+**Processo**:
+1. Médico/profissional sinaliza necessidade de atualização
+2. Jurídico + médico reunião de 30m de revisão
+3. Reescrever claims afetados
+4. Novo documento de aprovação
+5. Dev atualiza site
+6. Registrar em changelog de conformidade
+
+**SLA**: 5 dias úteis da sinalização até publicação
+
+**Arquivo de Registro**: `docs/conformidade-medica.log`
+```
+
+**Prioridade**: P0.6 — Executar em paralelo com P0
+
+**Responsáveis**: Jurídico (Jessica) + Médico (Gustavo) + Dev (implementação)
+
+---
+
+## P0.5 BONUS: DEPENDÊNCIAS & RENOVAÇÕES
+
+### Achado
+Projeto usa varios vendors externos (Formspree vs Apps Script, Vercel, GTM, etc), mas sem governança de:
+- Versões suportadas (Node >=22.12.0 — por quê?)
+- SLA de suporte de cada vendor
+- Data da última revisão de contrato/preço
+- Deprecações conhecidas que podem quebrar site
+
+Risco: Renovação de certificado, mudança de pricing, descontinuação de SDK sem aviso.
+
+### Ações P0.5 Bonus (1-2h)
+
+#### 1. Matriz de Vendors Críticos
+
+Criar tabela em `docs/vendors-e-renovacoes.md`:
+
+```markdown
+## Vendors Críticos — Matriz de Suporte
+
+| Vendor | Uso | Versão | Tipo | SLA | Próxima Revisão | Responsável |
+|--------|-----|--------|------|-----|-----------------|-------------|
+| Vercel | Deploy | - | PaaS | 99.9% | 2026-07-19 | Tech Lead |
+| Google Forms | Intake | v2 | SaaS | Best effort | 2026-05-19 | Product |
+| Google Apps Script | Agendamento form | v1 | Serverless | Best effort | 2026-05-19 | Dev |
+| Formspree | Contato (?) | v3 | API | 99% | 2026-06-19 | Dev |
+| GTM | Tracking | v2 | Container | Próprio | 2026-05-19 | Analytics |
+| Astro | Framework | 6.x | npm | LTS até 2027 | 2026-05-19 | Tech Lead |
+| Node.js | Runtime | >=22.12.0 | npm | LTS até 2026-10 | 2026-05-19 | Tech Lead |
+
+**Status**: 🟡 REVISAR — Qual é a fonte de verdade de cada vendor?
+```
+
+#### 2. Decisões Técnicas Documentadas
+
+Para cada decisão "por quê", criar entry em README:
+
+```markdown
+## Decisões Técnicas & Justificativas
+
+### Node >=22.12.0
+**Por quê**: [resposta aqui — features necessárias, breaking changes em <22.12, etc]
+**Alternativa considerada**: [...]
+**Data da decisão**: 2026-04-19
+**Responsável**: [...]
+**Próxima revisão**: 2026-10-19
+
+### Apps Script para agendamento (vs Formspree)
+**Por quê**: Integração direta com Google Sheets para relatórios
+**Trade-off**: Menos features de anti-spam (mitigado por rate-limit frontend)
+**Data da decisão**: 2026-XX-XX
+**Responsável**: [...]
+**Próxima revisão**: 2026-07-19
+
+### Astro 6 vs Next.js / Hugo
+**Por quê**: [...]
+**Quando migrar se necessário**: [...]
+```
+
+#### 3. Log de Renovações
+
+Arquivo `docs/renovacoes.log` com histórico:
+
+```
+2026-04-19: Node >=22.12.0 revisado, atualizar em Q3 2026
+2026-04-19: Vercel contract até 2027-04-19
+2026-04-15: Google Forms API revisada, sem breaking changes conhecidas
+2026-03-01: GTM atualizado para container v2
+```
+
+**Prioridade**: P0.5 Bonus — 1-2h, evita surpresas futuras
+
+**Responsável**: Tech Lead
+
+---
 
 **Issue**: `src/data/constants.ts` expõe endpoints públicos sem governança de abuso
 
@@ -391,22 +657,41 @@ Impacto: Retenção, analytics, refinamento
 
 | Tarefa | Arquivo(s) | P | T (horas) | Responsável |
 |--------|-----------|---|-----------|-------------|
+| **P0 — CRÍTICO (Semana 1)** | | | | |
 | Revisar claims médicos | ecooa-med.astro, FAQs | P0 | 4 | Jurídico/Médico |
 | Alinhar formulário vs política | constants.ts, politica-de-privacidade.astro | P0 | 2 | Ops/Dev |
 | README operacional | README.md | P0 | 3 | Tech Lead |
 | Anti-abuso em formulário | agendamento.astro, backend | P0 | 4 | Dev |
+| **P0.5 — Performance & Dependências (Semana 1, paralelo)** | | | | |
+| Lighthouse audit (5 páginas) | — | P0.5 | 1 | Tech Lead |
+| Identificar quick wins | — | P0.5 | 2 | Tech Lead/Dev |
+| Matriz de vendors | docs/vendors-e-renovacoes.md | P0.5 | 1 | Tech Lead |
+| **P0.6 — Conformidade Médica (Semana 1, paralelo)** | | | | |
+| Levantar claims por página | — | P0.6 | 1.5 | Médico |
+| Classificar por risco | — | P0.6 | 1 | Jurídico/Médico |
+| Template de aprovação | docs/aprovacao-medica.md | P0.6 | 1 | Jurídico |
+| Matriz de conformidade | docs/conformidade-medica.md | P0.6 | 1 | Médico |
+| **P1 — Alto (Semana 2-3)** | | | | |
 | Hierarquia de CTAs | index.astro, quem-somos.astro | P1 | 3 | Product/Dev |
 | Páginas de categoria | blog/categoria/[slug].astro | P1 | 4 | Dev |
 | Índice de âncoras | ecooa-med.astro | P1 | 2 | Dev |
 | Autor por slug | content.config.ts, [slug].astro, markdowns | P1 | 3 | Dev/Editorial |
 | Especialidade explícita | professionals.ts, [slug].astro | P1 | 2 | Dev |
 | Match: transparência | match.astro | P1 | 1 | Product/Dev |
+| **P2 — Médio (Semana 4+)** | | | | |
 | Instrumentation | GTM setup | P2 | 2 | Analytics/Dev |
 | Página 404 | 404.astro | P2 | 2 | Dev |
 | Mentorias: critérios | mentorias.astro | P2 | 2 | Product |
 | Contato: routing | contato.astro | P2 | 2 | Dev |
 
-**Total estimado**: ~40 horas (1 sprint de desenvolvimento)
+**Total estimado**: 
+- P0: 13 horas (semana 1)
+- P0.5: 4 horas (paralelo, semana 1)
+- P0.6: 4.5 horas (paralelo, semana 1)
+- P1: 15 horas (semana 2-3)
+- P2: 8 horas (semana 4+)
+
+**Total geral**: ~45 horas (1.5 sprints com paralelização possível)
 
 ---
 
