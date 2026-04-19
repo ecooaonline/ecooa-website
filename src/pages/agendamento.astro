@@ -62,17 +62,48 @@ const WA = WA_DEFAULT;
     <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas no seu WhatsApp.</p>
     <form action={FORM_ACTION} method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3 ecooa-form" id="form-agendamento" data-ok-target="#form-agendamento-ok" data-success-text="Recebemos seus dados. Entraremos em contato em até 24h.">
       <input type="hidden" name="_formType" value="agendamento" />
+
+      <!-- Honeypot (invisível) -->
+      <input
+        type="text"
+        name="_honeypot"
+        style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+      />
+
       <div>
         <label for="form-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">como podemos te chamar?</label>
-        <input type="text" id="form-name" name="name" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+        <input
+          type="text"
+          id="form-name"
+          name="name"
+          required
+          minlength="3"
+          style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+        />
       </div>
       <div>
         <label for="form-whatsapp" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu whatsapp</label>
-        <input type="tel" id="form-whatsapp" name="whatsapp" required placeholder="(51) 99999-9999" style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+        <input
+          type="tel"
+          id="form-whatsapp"
+          name="whatsapp"
+          required
+          placeholder="(51) 99999-9999"
+          pattern="\(\d{2}\)\s?9?\d{4}-?\d{4}|\+55\s\d{2}\s9?\d{4}-?\d{4}"
+          style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+        />
       </div>
       <div>
         <label for="form-interest" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">o que te trouxe aqui?</label>
-        <select id="form-interest" name="interest" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;appearance:none">
+        <select
+          id="form-interest"
+          name="interest"
+          required
+          style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;appearance:none"
+        >
           <option value="">selecione</option>
           <option value="medicina">medicina</option>
           <option value="estetica">estética</option>
@@ -81,11 +112,59 @@ const WA = WA_DEFAULT;
           <option value="outro">outro</option>
         </select>
       </div>
-      <button type="submit" class="bd" style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer">quero ser atendido</button>
+
+      <!-- Consentimento LGPD -->
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:8px">
+        <input
+          type="checkbox"
+          id="form-consent"
+          name="consent"
+          required
+          style="margin-top:4px;cursor:pointer;min-width:16px"
+        />
+        <label for="form-consent" style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer">
+          Concordo em compartilhar meus dados conforme a <a href="/politica-de-privacidade" style="color:var(--color-brand-text);text-decoration:underline" target="_blank">política de privacidade</a>
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        class="bd"
+        id="form-submit-btn"
+        style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer"
+      >
+        quero ser atendido
+      </button>
       <p id="form-agendamento-ok" style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px">Recebemos seus dados. Entraremos em contato em até 24h.</p>
     </form>
     <script>
       import { initFormSubmit } from '../scripts/form-submit';
+
+      // Anti-spam: honeypot validation
+      const form = document.getElementById('form-agendamento');
+      const button = document.getElementById('form-submit-btn');
+      const honeypot = form.querySelector('[name="_honeypot"]');
+
+      form.addEventListener('submit', (e) => {
+        // Verificar honeypot
+        if (honeypot && honeypot.value.trim() !== '') {
+          e.preventDefault();
+          console.warn('Honeypot triggered');
+          return false;
+        }
+
+        // Rate-limit visual: desabilitar botão por 5s
+        button.disabled = true;
+        button.textContent = 'Enviando...';
+        button.style.opacity = '0.5';
+
+        setTimeout(() => {
+          button.disabled = false;
+          button.textContent = 'quero ser atendido';
+          button.style.opacity = '1';
+        }, 5000);
+      });
+
       initFormSubmit();
     </script>
   </div>
