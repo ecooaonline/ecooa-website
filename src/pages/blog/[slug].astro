@@ -6,6 +6,7 @@ import TableOfContents from '../../components/TableOfContents.astro';
 import { WA_BASE, WA_DEFAULT, FORM_ACTION } from '../../data/constants';
 import { getCollection, render } from 'astro:content';
 import { professionals } from '../../data/professionals';
+import { getAuthorByName } from '../../data/blog-authors';
 import { generateHeadingId } from '../../scripts/extract-headings';
 
 export async function getStaticPaths() {
@@ -34,34 +35,13 @@ while ((match = headingRegex.exec(post.body || '')) !== null) {
   headings.push({ id, text, level });
 }
 
-// Match author to professional by last name (flexible matching)
-const authorName = post.data.author;
-const authorClean = authorName.replace(/^(Dra?\.\s*|Dra?\s+)/i, '');
-const authorLastName = authorClean.split(/\s+/).pop()?.toLowerCase() || '';
-const matchedProfessional = professionals.find(p => {
-  const profLastName = p.name.split(/\s+/).pop()?.toLowerCase() || '';
-  return profLastName === authorLastName;
-}) || professionals.find(p => {
-  const profNameLower = p.name.toLowerCase();
-  const authorLower = authorClean.toLowerCase();
-  return profNameLower.includes(authorLower) || authorLower.includes(profNameLower);
-});
+// Match author to professional via centralized mapping (no heuristics)
+const author = getAuthorByName(post.data.author);
+const matchedProfessional = author
+  ? professionals.find(p => p.slug === author.slug)
+  : undefined;
 
-// Professional mapping for contextual CTAs (keep legacy map for specialty labels)
-const professionalMap: Record<string, { name: string; specialty: string; instagram?: string }> = {
-  'Dr. Gustavo Gehrke': { name: 'Dr. Gustavo Gehrke', specialty: 'Medicina de Alta Performance', instagram: 'gustavo.gehrke' },
-  'Dra. Larissa Wiebbelling': { name: 'Dra. Larissa Wiebbelling', specialty: 'Tricologia e Transplante Capilar', instagram: 'dra.larissawiebbelling' },
-  'Dra. Yale': { name: 'Dra. Yale', specialty: 'Saúde Capilar Feminina' },
-  'Manuela Vanti': { name: 'Manuela Vanti', specialty: 'Psicologia Clínica' },
-  'Jessica Stein': { name: 'Jessica Stein', specialty: 'Nutrição Clínica' },
-  'Maria Luisa Beltran': { name: 'Maria Luisa Beltran', specialty: 'Nutrição Esportiva' },
-  'Adriano Lenz': { name: 'Adriano Lenz', specialty: 'Medicina Ortomolecular' },
-  'Viviane Fagundes': { name: 'Viviane Fagundes', specialty: 'Teste Genético Capilar' },
-  'Giancarla': { name: 'Giancarla', specialty: 'Nutrição e Bioimpedância' },
-  'Danusa': { name: 'Danusa', specialty: 'Soroterapia' },
-};
-
-const professional = professionalMap[post.data.author];
+const professional = author;
 const waTextProfessional = professional
   ? encodeURIComponent(`Olá, gostaria de agendar uma avaliação com ${professional.name}`)
   : encodeURIComponent('Olá, gostaria de agendar uma avaliação com a equipe ecooa');

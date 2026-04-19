@@ -37,7 +37,7 @@ Este relatório documenta a implementação completa de 5 fases críticas (P0-P5
 | Tipo | Quantidade |
 |------|-----------|
 | `/blog/categoria/[slug]` | 5 |
-| `/especialidade/[slug]` | 22 |
+| `/especialidade/[specialty]` | 22 |
 | `/blog/[slug]` | 29 |
 | `/profissionais/[slug]` | 30+ |
 | Páginas estáticas | 10 |
@@ -230,12 +230,15 @@ interface Specialty {
   name: 'Dr. Gustavo Gehrke',
   slug: 'gustavo-gehrke',
   role: 'Médico Generalista',
+  specialty: 'Medicina de Alta Performance',
   unit: 'med',
+  instagram: 'gustavo.gehrke',
 }
 ```
 
-**Autores mapeados**: 2 (Gustavo Gehrke, Jessica Stein)  
-**Extensível**: Fácil adicionar novos autores
+**10 autores mapeados**: Gustavo, Larissa, Yale, Manuela, Jessica, Maria Luísa, Adriano, Viviane, Giancarla, Danusa
+
+**Heurísticas removidas**: O matching por sobrenome e o `professionalMap` legado foram substituídos por `getAuthorByName()` centralizado. Zero heurísticas no código.
 
 ---
 
@@ -296,6 +299,8 @@ interface Specialty {
 ### P3.1 — Landing Page por Especialidade
 
 **Arquivo**: `src/pages/especialidade/[specialty].astro` (133 linhas)
+
+**Parâmetro de rota**: `[specialty]` (não `[slug]`, nome descritivo alinhado ao domínio)
 
 **Features**:
 - ✅ 22 rotas dinâmicas (uma para cada especialidade)
@@ -436,7 +441,7 @@ export async function getStaticPaths() {
 **2. `src/data/specialties.ts`**
 - 22 especialidades
 - Campos: slug, name, unit, description, keywords
-- Gerador de landing pages: `/especialidade/[slug]`
+- Gerador de landing pages: `/especialidade/[specialty]`
 - Funções: `getSpecialtiesByUnit()`, `searchSpecialties()`
 
 **3. `src/data/blog-authors.ts`**
