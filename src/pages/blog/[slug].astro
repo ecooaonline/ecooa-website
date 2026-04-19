@@ -2,9 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import DisclaimerMedico from '../../components/DisclaimerMedico.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
 import { WA_BASE, WA_DEFAULT, FORM_ACTION } from '../../data/constants';
 import { getCollection, render } from 'astro:content';
 import { professionals } from '../../data/professionals';
+import { generateHeadingId } from '../../scripts/extract-headings';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -20,6 +22,17 @@ const { Content } = await render(post);
 // Reading time calculation
 const wordCount = post.body?.split(/\s+/).length || 0;
 const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+// Extract headings from markdown body for table of contents
+const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+const headings = [];
+let match;
+while ((match = headingRegex.exec(post.body || '')) !== null) {
+  const level = match[1].length; // ## = 2, ### = 3
+  const text = match[2];
+  const id = generateHeadingId(text);
+  headings.push({ id, text, level });
+}
 
 // Match author to professional by last name (flexible matching)
 const authorName = post.data.author;
@@ -173,10 +186,20 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
       </div>
     )}
 
+    <!-- Table of Contents -->
+    {headings.length > 2 && (
+      <TableOfContents items={headings} />
+    )}
+
     <!-- Content -->
     <div class="blog-content r d3">
       <Content />
     </div>
+
+    <script>
+      import { addHeadingIds } from '../../scripts/add-heading-ids';
+      addHeadingIds();
+    </script>
 
     <DisclaimerMedico />
 

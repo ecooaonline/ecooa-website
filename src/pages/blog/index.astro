@@ -40,8 +40,11 @@ const categories = [
 <!-- Categories -->
 <section style="background:var(--color-warm);padding:32px var(--section-px) 0">
   <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" class="r">
+    <a href="/blog" style="font-size:11px;font-weight:400;color:var(--color-ink-soft);text-decoration:underline">todas</a>
     {categories.map(cat => (
-      <span class="tag-pill">{cat.label}</span>
+      <a href={`/blog/categoria/${cat.slug}`} class="tag-pill" style="text-decoration:none;display:inline-block;padding:8px 14px;border-radius:20px;background:var(--color-stone);color:var(--color-ink-soft);font-size:11px;font-weight:500;transition:all .2s ease;border:none;cursor:pointer">
+        {cat.label}
+      </a>
     ))}
   </div>
 </section>
