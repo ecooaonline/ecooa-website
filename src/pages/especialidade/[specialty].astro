@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WavePattern from '../../components/WavePattern.astro';
+import Marquee from '../../components/Marquee.astro';
+import ProfessionalCard from '../../components/ProfessionalCard.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import { WA_DEFAULT } from '../../data/constants';
+import { specialties, getSpecialtyBySlug } from '../../data/specialties';
+import { professionals } from '../../data/professionals';
+
+export async function getStaticPaths() {
+  return specialties.map(specialty => ({
+    params: { specialty: specialty.slug },
+    props: { specialty },
+  }));
+}
+
+const { specialty } = Astro.props;
+const spec = getSpecialtyBySlug(specialty);
+
+if (!spec) {
+  return new Response('Especialidade não encontrada', { status: 404 });
+}
+
+// Find professionals in this specialty's unit
+const professionalsInUnit = professionals.filter(p => p.unit === spec.unit);
+const relatedSpecialties = specialties.filter(s => s.unit === spec.unit && s.slug !== specialty).slice(0, 3);
+
+const WA = WA_DEFAULT;
+---
+
+<BaseLayout
+  title={`${spec.name} | ecooa`}
+  description={spec.description}
+  currentPage=""
+  breadcrumbs={[
+    { name: "Especialidades", url: "/especialidades" },
+    { name: spec.name, url: `/especialidade/${specialty}` }
+  ]}
+>
+
+<!-- Hero -->
+<div class="ph u-bg-cream">
+  <svg class="wsv u-op-26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#C4BBB8" stroke-width="1">
+      <WavePattern count={8} x0={-100} y0={80} step={55} width={1600} />
+    </g>
+  </svg>
+  <div class="ph-c">
+    <div class="lbl r">especialidade</div>
+    <h1 class="h1 r d1 u-mt-18">{spec.name}</h1>
+    <p class="body r d2" style="margin-top:16px;max-width:480px">{spec.description}</p>
+    <div class="hl-act r d3" style="margin-top:24px">
+      <a href="/agendamento" class="bd">agendar avaliação</a>
+      <a href={WA} target="_blank" rel="noopener noreferrer" class="ghost">falar pelo whatsapp <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Specialization details -->
+<section class="u-bg-warm" aria-label="Sobre a especialidade">
+  <div class="w">
+    <div style="max-width:700px;margin:0 auto">
+      <div class="lbl r u-mb-16">o que é</div>
+      <h2 class="h2 r d1 u-mb-32">{spec.name}</h2>
+      <p class="body r d2 u-mb-24">{spec.description}</p>
+
+      <div class="lbl r u-mb-12" style="margin-top:40px">palavras-chave</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px" class="r d1">
+        {spec.keywords.map(keyword => (
+          <span style="font-size:12px;font-weight:400;color:var(--color-ink-soft);border:1px solid var(--color-stone);padding:6px 12px;border-radius:4px">
+            {keyword}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Professionals in this specialty -->
+{professionalsInUnit.length > 0 && (
+  <section class="u-bg-cream" aria-label="Profissionais">
+    <div class="w">
+      <div class="lbl r u-mb-16">profissionais especializados</div>
+      <h2 class="h2 r d1 u-mb-44">Quem pode te ajudar</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px" class="g4">
+        {professionalsInUnit.slice(0, 4).map(prof => (
+          <a href={`/profissionais/${prof.slug}`} style="text-decoration:none;color:inherit;display:block;transition:transform .2s">
+            <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:16px;background:var(--color-stone)">
+              <picture>
+                <source srcset={prof.photo.replace('.webp', '.avif')} type="image/avif" />
+                <img src={prof.photo} alt={prof.name} loading="lazy" decoding="async" class="u-cover" width="300" height="400" />
+              </picture>
+            </div>
+            <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">{prof.unit}</p>
+            <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--color-ink);margin-bottom:4px">{prof.name}</p>
+            <p style="font-size:11px;font-weight:300;color:var(--color-ink-soft);line-height:1.5">{prof.role}</p>
+          </a>
+        ))}
+      </div>
+      {professionalsInUnit.length > 4 && (
+        <div style="text-align:center;margin-top:40px" class="r">
+          <a href="/profissionais" class="bo">ver todos os profissionais</a>
+        </div>
+      )}
+    </div>
+  </section>
+)}
+
+<!-- Related specialties -->
+{relatedSpecialties.length > 0 && (
+  <section class="u-bg-warm" aria-label="Especialidades relacionadas">
+    <div class="w">
+      <div class="lbl r u-mb-16">especialidades relacionadas</div>
+      <h2 class="h2 r d1 u-mb-44">Você também pode se interessar por</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        {relatedSpecialties.map(relSpec => (
+          <a href={`/especialidade/${relSpec.slug}`} style="display:block;padding:28px;background:var(--color-cream);text-decoration:none;color:inherit;border:1px solid var(--color-stone);transition:all .2s">
+            <p style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:8px">{relSpec.unit}</p>
+            <p style="font-family:var(--font-serif);font-size:20px;font-weight:300;color:var(--color-ink);line-height:1.3;margin-bottom:8px">{relSpec.name}</p>
+            <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.5">{relSpec.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<CtaSection heading='Pronto para cuidar da sua<br><em>saúde nesta especialidade?</em>' subtext="Agende sua avaliação com nossos especialistas." />
+
+</BaseLayout>

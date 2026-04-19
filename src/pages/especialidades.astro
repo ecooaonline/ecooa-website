@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import CtaSection from '../components/CtaSection.astro';
+import { specialties } from '../data/specialties';
+
+const unitLabels = {
+  'med': 'Medicina',
+  'esthetic': 'Estética',
+  'working': 'Nutrição',
+  'mind': 'Saúde Mental',
+};
+
+const groupedByUnit = specialties.reduce((acc, spec) => {
+  const unit = spec.unit;
+  if (!acc[unit]) acc[unit] = [];
+  acc[unit].push(spec);
+  return acc;
+}, {} as Record<string, typeof specialties>);
+---
+
+<BaseLayout
+  title="Especialidades | ecooa"
+  description="Conheça todas as especialidades da ecooa: medicina, estética, nutrição e saúde mental. Encontre o especialista certo para você."
+  currentPage=""
+  breadcrumbs={[{ name: "Especialidades", url: "/especialidades" }]}
+>
+
+<!-- Hero -->
+<div class="ph u-bg-cream">
+  <svg class="wsv u-op-26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="#C4BBB8" stroke-width="1">
+      <WavePattern count={8} x0={-100} y0={80} step={55} width={1600} />
+    </g>
+  </svg>
+  <div class="ph-c">
+    <div class="lbl r">especialidades</div>
+    <h1 class="h1 r d1 u-mt-18">Cuidado <em>multidisciplinar</em><br>em um só lugar.</h1>
+    <p class="body r d2" style="margin-top:16px;max-width:480px">Todas as especialidades da ecooa para cuidar de você de forma integrada.</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Specialties by unit -->
+{Object.entries(groupedByUnit).map(([unit, specs]) => (
+  <section style={`background:${unit === 'med' ? 'var(--color-warm)' : unit === 'esthetic' ? 'var(--color-cream)' : unit === 'working' ? 'var(--color-warm)' : 'var(--color-cream)'}; padding:72px var(--section-px)`} aria-label={unitLabels[unit]}>
+    <div class="w">
+      <div class="lbl r u-mb-16">{unitLabels[unit]}</div>
+      <h2 class="h2 r d1 u-mb-44">Especialidades em<br><em>{unitLabels[unit]}</em></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
+        {specs.map(spec => (
+          <a href={`/especialidade/${spec.slug}`} style="display:block;padding:32px;background:var(--color-white);border:1px solid var(--color-stone);text-decoration:none;color:inherit;transition:all .2s;border-radius:4px">
+            <p style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">especialidade</p>
+            <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);line-height:1.3;margin-bottom:12px">{spec.name}</p>
+            <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.6;margin-bottom:16px">{spec.description}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              {spec.keywords.slice(0, 3).map(keyword => (
+                <span style="font-size:10px;font-weight:300;color:var(--color-ink-soft);border:1px solid var(--color-stone);padding:4px 8px;border-radius:3px">
+                  {keyword}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+))}
+
+<CtaSection heading='Encontre a especialidade<br>que você <em>procura.</em>' subtext="Agende sua avaliação com nossos especialistas em qualquer área." />
+
+</BaseLayout>
