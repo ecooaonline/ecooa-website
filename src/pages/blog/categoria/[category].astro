@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Marquee from '../../../components/Marquee.astro';
+import CtaSection from '../../../components/CtaSection.astro';
+import WavePattern from '../../../components/WavePattern.astro';
+import { getCollection } from 'astro:content';
+import { FORM_ACTION } from '../../../data/constants';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const categories = [...new Set(posts.map(p => p.data.category))];
+  return categories.map(category => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const posts = allPosts.filter(p => p.data.category === category);
+
+const categoryLabels: { [key: string]: string } = {
+  'medicina': 'Medicina',
+  'estetica': 'Estética',
+  'nutricao': 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  'longevidade': 'Longevidade',
+  'ecooa': 'ecooa'
+};
+
+const categoryLabel = categoryLabels[category] || category;
+const categoryDescriptions: { [key: string]: string } = {
+  'medicina': 'Artigos sobre medicina de alta performance, metabolismo, hormônios e longevidade.',
+  'estetica': 'Conteúdo sobre estética avançada, procedimentos e cuidados com a pele.',
+  'nutricao': 'Nutrição personalizada, dietas e bem-estar através da alimentação.',
+  'saude-mental': 'Psicologia, psiquiatria e saúde mental para uma vida plena.',
+  'longevidade': 'Estratégias científicas para viver mais e melhor.',
+  'ecooa': 'Conteúdo institucional e educacional da ecooa.'
+};
+
+const categoryDescription = categoryDescriptions[category] || '';
+---
+
+<BaseLayout
+  title={`${categoryLabel} | Blog ecooa`}
+  description={categoryDescription}
+  currentPage="blog"
+  breadcrumbs={[
+    { name: "Blog", url: "/blog" },
+    { name: categoryLabel, url: `/blog/categoria/${category}` }
+  ]}
+>
+
+<!-- Hero -->
+<div class="ph u-bg-cream">
+  <svg class="wsv u-op-26" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl r">categoria</div>
+    <h1 class="h1 r d1 u-mt-18">{categoryLabel}</h1>
+    <p class="body r d2" style="margin-top:16px;max-width:480px">{categoryDescription}</p>
+  </div>
+</div>
+
+<Marquee />
+
+<!-- Filter Tags -->
+<section style="background:var(--color-warm);padding:32px var(--section-px) 0">
+  <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" class="r">
+    <a href="/blog" style="font-size:11px;font-weight:400;color:var(--color-ink-soft);text-decoration:underline">todas as categorias</a>
+    {['medicina', 'estetica', 'nutricao', 'saude-mental', 'longevidade'].map(cat => (
+      <a
+        href={`/blog/categoria/${cat}`}
+        style={`font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;${cat === category ? 'background:var(--color-brand);color:white' : 'background:var(--color-stone);color:var(--color-ink-soft)'};;text-decoration:none;transition:all .2s ease`}
+      >
+        {categoryLabels[cat]}
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- Posts -->
+<section style="background:var(--color-warm);padding:48px var(--section-px) 72px" aria-label="Artigos">
+  <div style="max-width:900px;margin:0 auto">
+    {posts.length > 0 ? (
+      <>
+        <p style="text-align:center;font-size:12px;color:var(--color-ink-soft);margin-bottom:36px" class="r">{posts.length} {posts.length === 1 ? 'artigo' : 'artigos'} em {categoryLabel}</p>
+        {posts.map((post, i) => (
+          <a href={`/blog/${post.id}`} style={`display:block;text-decoration:none;color:inherit;padding:36px 0;${i > 0 ? 'border-top:1px solid var(--color-stone)' : ''}`} class="r">
+            <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+              <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">{post.data.category}</span>
+              <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{new Date(post.data.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}</span>
+            </div>
+            <h2 style="font-family:var(--font-serif);font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.3;letter-spacing:-.02em;margin-bottom:8px">{post.data.title}</h2>
+            <p style="font-size:14px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:10px">{post.data.description}</p>
+            <span style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em">ler artigo →</span>
+          </a>
+        ))}
+      </>
+    ) : (
+      <p style="text-align:center;padding:48px 0;color:var(--color-ink-soft)">Nenhum artigo encontrado nesta categoria.</p>
+    )}
+  </div>
+</section>
+
+<!-- Newsletter -->
+<section style="background:var(--color-warm);padding:0 var(--section-px) 48px">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="padding:36px;background:var(--color-ink);text-align:center" class="r">
+      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px">semana em saúde</p>
+      <p style="font-family:var(--font-serif);font-size:clamp(20px,3vw,24px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:8px">A ecooa te atualizando<br>sobre o <em>mundo da saúde.</em></p>
+      <p style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px">Novidades, ofertas e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.</p>
+      <form action={FORM_ACTION} method="POST" style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center" class="ecooa-form" data-success-text="Inscrito com sucesso.">
+        <input type="hidden" name="_formType" value="newsletter" />
+        <input type="hidden" name="_source" value={`blog-categoria-${category}`} />
+        <input type="email" name="email" required placeholder="seu melhor e-mail" aria-label="Seu melhor e-mail" style="flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none" />
+        <button type="submit" style="padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer">aceito</button>
+      </form>
+      <p class="ecooa-form-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-deep);margin-top:10px">Inscrito com sucesso.</p>
+      <script>
+        import { initFormSubmit } from '../../../scripts/form-submit';
+        initFormSubmit();
+      </script>
+    </div>
+  </div>
+</section>
+
+<CtaSection heading='Quer cuidar da sua<br><em>saúde de verdade?</em>' subtext="Agende sua avaliação e converse com nossos especialistas." />
+
+</BaseLayout>

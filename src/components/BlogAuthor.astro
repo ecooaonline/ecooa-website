@@ -1,0 +1,134 @@
+---
+import { getAuthorByName } from '../data/blog-authors';
+
+interface Props {
+  name: string;
+  date?: string;
+}
+
+const { name, date } = Astro.props;
+const author = getAuthorByName(name);
+---
+
+<div class="blog-author">
+  {author ? (
+    <>
+      <div class="ba-content">
+        <p class="ba-label">Escrito por</p>
+        <a href={`/profissionais/${author.slug}`} class="ba-name">
+          {name}
+        </a>
+        <p class="ba-role">{author.role}</p>
+      </div>
+      <a href={`/profissionais/${author.slug}`} class="ba-cta">
+        Ver perfil completo →
+      </a>
+    </>
+  ) : (
+    <>
+      <div class="ba-content">
+        <p class="ba-label">Escrito por</p>
+        <p class="ba-name">{name}</p>
+      </div>
+    </>
+  )}
+  {date && (
+    <p class="ba-date">
+      {new Date(date).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+      })}
+    </p>
+  )}
+</div>
+
+<style>
+  .blog-author {
+    background: var(--color-warm);
+    border: 1px solid var(--color-stone);
+    border-radius: 8px;
+    padding: 24px;
+    margin: 32px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .ba-content {
+    flex: 1;
+  }
+
+  .ba-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    margin: 0 0 6px 0;
+  }
+
+  .ba-name {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--color-ink);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 4px;
+  }
+
+  .ba-name:hover {
+    color: var(--color-brand-text);
+  }
+
+  .ba-role {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+
+  .ba-cta {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-brand-text);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    white-space: nowrap;
+    align-self: center;
+  }
+
+  .ba-cta:hover {
+    text-decoration: underline;
+  }
+
+  .ba-date {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--color-ink-soft);
+    margin: 0;
+    text-align: right;
+  }
+
+  @media (max-width: 768px) {
+    .blog-author {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .ba-name {
+      font-size: 16px;
+    }
+
+    .ba-cta {
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    .ba-date {
+      text-align: left;
+    }
+  }
+</style>
