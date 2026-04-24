@@ -1,0 +1,99 @@
+name: Content Publication Notification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/content/blog/**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    name: Detect new or updated blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Detect changed posts
+        id: detect
+        shell: bash
+        run: |
+          # Compare HEAD to HEAD~1 to find added/modified blog .md files
+          CHANGED=$(git diff --name-only --diff-filter=AM HEAD~1 HEAD -- 'src/content/blog/*.md' || true)
+          if [ -z "$CHANGED" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "No blog content changes detected"
+            exit 0
+          fi
+
+          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          # Preserve list via env file for next step
+          {
+            echo 'CHANGED_FILES<<EOF'
+            echo "$CHANGED"
+            echo 'EOF'
+          } >> "$GITHUB_ENV"
+
+      - name: Extract frontmatter and summarize
+        if: steps.detect.outputs.has_changes == 'true'
+        shell: bash
+        run: |
+          echo "## Blog content update" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit: ${{ github.sha }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "### Changed posts" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+
+          # Parse frontmatter for each changed file. Minimal awk-based parser
+          # avoids external deps. Extracts title, category, author, date.
+          while IFS= read -r file; do
+            [ -z "$file" ] && continue
+            [ ! -f "$file" ] && continue
+
+            title=$(awk '/^---$/{f++; next} f==1 && /^title:/{sub(/^title:[[:space:]]*/,""); gsub(/^"|"$/,""); print; exit}' "$file")
+            category=$(awk '/^---$/{f++; next} f==1 && /^category:/{sub(/^category:[[:space:]]*/,""); gsub(/^"|"$/,""); print; exit}' "$file")
+            author=$(awk '/^---$/{f++; next} f==1 && /^author:/{sub(/^author:[[:space:]]*/,""); gsub(/^"|"$/,""); print; exit}' "$file")
+            date=$(awk '/^---$/{f++; next} f==1 && /^date:/{sub(/^date:[[:space:]]*/,""); gsub(/^"|"$/,""); print; exit}' "$file")
+            draft=$(awk '/^---$/{f++; next} f==1 && /^draft:/{sub(/^draft:[[:space:]]*/,""); print; exit}' "$file")
+
+            slug=$(basename "$file" .md)
+
+            echo "- **${title:-(sem título)}**" >> "$GITHUB_STEP_SUMMARY"
+            echo "  - slug: \`$slug\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "  - categoria: \`$category\`" >> "$GITHUB_STEP_SUMMARY"
+            echo "  - autor: $author" >> "$GITHUB_STEP_SUMMARY"
+            echo "  - data: $date" >> "$GITHUB_STEP_SUMMARY"
+            [ "$draft" = "true" ] && echo "  - status: **draft** (não publicado)" >> "$GITHUB_STEP_SUMMARY"
+            echo "  - URL: https://www.somosecooa.com.br/blog/$slug" >> "$GITHUB_STEP_SUMMARY"
+            echo "" >> "$GITHUB_STEP_SUMMARY"
+          done <<< "$CHANGED_FILES"
+
+          echo "### Próximos passos" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Seguir \`docs/distribution-checklist.md\` para distribuir o conteúdo:" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "1. Solicitar indexação no Google Search Console" >> "$GITHUB_STEP_SUMMARY"
+          echo "2. Post no Instagram (@somos.ecooa)" >> "$GITHUB_STEP_SUMMARY"
+          echo "3. WhatsApp Status" >> "$GITHUB_STEP_SUMMARY"
+          echo "4. Incluir na próxima newsletter (draft gerado via GAS a cada 2 semanas)" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Optional webhook notification
+        if: steps.detect.outputs.has_changes == 'true' && env.CONTENT_WEBHOOK_URL != ''
+        env:
+          CONTENT_WEBHOOK_URL: ${{ secrets.CONTENT_WEBHOOK_URL }}
+        shell: bash
+        run: |
+          # Sends a simple JSON payload to an optional webhook secret.
+          # Use cases: Slack incoming webhook, Discord, Zapier catch-hook, etc.
+          # The secret is optional; this step is skipped when not set.
+          payload=$(printf '{"event":"blog_content_update","commit":"%s","files":%s}' \
+            "${{ github.sha }}" \
+            "$(echo "$CHANGED_FILES" | jq -Rs 'split("\n") | map(select(length > 0))')")
+          curl -sS -X POST -H 'Content-Type: application/json' \
+            -d "$payload" "$CONTENT_WEBHOOK_URL" || true

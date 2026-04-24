@@ -18,6 +18,7 @@ interface Props {
   currentPage?: string;
   ogImage?: string;
   breadcrumbs?: { name: string; url: string }[];
+  robots?: string;
 }
 
 const {
@@ -26,6 +27,7 @@ const {
   currentPage = '',
   ogImage = '/favicon/og-image.jpg',
   breadcrumbs,
+  robots = 'index, follow',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -45,7 +47,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
   <title>{fullTitle}</title>
   <meta name="description" content={description}>
   <meta name="author" content="ecooa">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content={robots}>
   <link rel="canonical" href={canonicalURL}>
   <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
   <link rel="alternate" hreflang="x-default" href={canonicalURL} />
@@ -339,6 +341,9 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
 
     // Analytics events
     _idle(() => { import('../scripts/analytics-events').then(m => m.initAnalyticsEvents()); });
+
+    // Web Vitals monitoring (reports LCP, CLS, INP, FCP, TTFB to GA4)
+    _idle(() => { import('../scripts/web-vitals').then(m => m.initWebVitals()); });
 
     // Service Worker
     if ('serviceWorker' in navigator) {

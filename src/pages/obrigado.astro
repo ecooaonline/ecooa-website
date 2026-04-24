@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import { WA_DEFAULT, INSTAGRAM } from '../data/constants';
+import { professionals } from '../data/professionals';
+
+// Serialize minimal professional data for client-side lookup (slug -> name, photo, role).
+const profMap = professionals.reduce((acc, p) => {
+  acc[p.slug] = { name: p.name, role: p.role, photo: p.photo };
+  return acc;
+}, {} as Record<string, { name: string; role: string; photo: string }>);
+
+const WA = WA_DEFAULT;
+---
+
+<BaseLayout
+  title="Obrigado"
+  description="Recebemos seus dados. Nossa equipe entrará em contato em até 24 horas pelo WhatsApp."
+  currentPage="obrigado"
+  robots="noindex, follow"
+  breadcrumbs={[{ name: "Obrigado", url: "/obrigado" }]}
+>
+
+<!-- Hero -->
+<div class="ph" style="background:var(--color-cream);min-height:44vh">
+  <svg class="wsv u-op-26" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
+  <div class="ph-c">
+    <div class="lbl r" style="color:var(--color-brand-deep)">recebido</div>
+    <h1 class="h1 r d1 u-mt-18">Obrigado.<br><em id="thanks-name">Recebemos seus dados.</em></h1>
+    <p class="body r d2" style="margin-top:16px;max-width:520px" id="thanks-message">Nossa equipe vai entrar em contato pelo WhatsApp em até 24 horas. Se preferir, você pode falar com a gente agora.</p>
+  </div>
+</div>
+
+<!-- Professional recommendation card (if profissional query param present) -->
+<section id="thanks-prof-section" hidden aria-label="Profissional recomendado">
+  <div class="w">
+    <div style="max-width:640px;margin:0 auto;background:var(--color-warm);border:1px solid var(--color-stone);padding:28px;display:flex;gap:20px;align-items:center">
+      <div style="flex-shrink:0;width:96px;height:128px;overflow:hidden">
+        <picture>
+          <source id="thanks-prof-avif" srcset="" type="image/avif" />
+          <img id="thanks-prof-img" src="" alt="" loading="lazy" decoding="async" width="96" height="128" style="width:100%;height:100%;object-fit:cover" />
+        </picture>
+      </div>
+      <div style="flex:1;min-width:0">
+        <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-deep);margin:0 0 8px">profissional sugerido</p>
+        <p id="thanks-prof-name" style="font-size:clamp(18px,2vw,22px);font-weight:400;color:var(--color-ink);margin:0 0 4px"></p>
+        <p id="thanks-prof-role" style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin:0 0 14px;line-height:1.5"></p>
+        <a id="thanks-prof-link" href="#" style="font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:lowercase;color:var(--color-brand-text);text-decoration:none;border-bottom:1px solid var(--color-brand-text);padding-bottom:2px">ver perfil completo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Next steps -->
+<section style="background:var(--color-cream);padding:64px var(--section-px)" aria-label="Próximos passos">
+  <div style="max-width:900px;margin:0 auto">
+    <div class="lbl r" style="justify-content:center;text-align:center;margin-bottom:14px">enquanto isso</div>
+    <h2 class="h2 r d1" style="text-align:center;margin-bottom:40px;font-size:clamp(22px,2.6vw,32px)">Você pode<br><em>avançar por aqui.</em></h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
+      <a href={WA} target="_blank" rel="noopener noreferrer" data-intent="obrigado-whatsapp" style="background:var(--color-white);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .2s" class="r d1">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.486a.5.5 0 00.608.65l5.788-1.517A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.901 0-3.682-.516-5.21-1.415l-.374-.223-3.432.9.913-3.35-.244-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin:0">falar agora pelo whatsapp</p>
+        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin:0;line-height:1.5">nossa equipe responde em minutos durante o horário comercial</p>
+      </a>
+
+      <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" data-intent="obrigado-instagram" style="background:var(--color-white);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .2s" class="r d2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin:0">seguir @somos.ecooa</p>
+        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin:0;line-height:1.5">conteúdo real dos nossos profissionais e bastidores da clínica</p>
+      </a>
+
+      <a href="/blog" data-intent="obrigado-blog" style="background:var(--color-white);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;display:flex;flex-direction:column;gap:10px;transition:border-color .2s" class="r d3">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+        <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin:0">ler conteúdo da ecooa</p>
+        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin:0;line-height:1.5">artigos sobre saúde, metabolismo, estética e longevidade</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ profMap }}>
+  // Personalize thank-you page based on URL query params.
+  // ?type=<formType>   - form category (agendamento, b2b-medicina, b2b-nutricao)
+  // ?profissional=<slug> - professional recommended via ecooa.match (optional)
+  try {
+    const params = new URLSearchParams(location.search);
+    const formType = (params.get('type') || 'agendamento').trim().slice(0, 40);
+    const profSlug = (params.get('profissional') || '').trim().slice(0, 80);
+
+    // Populate professional recommendation card if slug is valid and known.
+    if (profSlug && /^[a-z0-9-]+$/.test(profSlug) && profMap[profSlug]) {
+      const prof = profMap[profSlug];
+      const section = document.getElementById('thanks-prof-section');
+      const nameEl = document.getElementById('thanks-prof-name');
+      const roleEl = document.getElementById('thanks-prof-role');
+      const linkEl = document.getElementById('thanks-prof-link');
+      const imgEl = document.getElementById('thanks-prof-img');
+      const avifEl = document.getElementById('thanks-prof-avif');
+
+      if (nameEl) nameEl.textContent = prof.name;
+      if (roleEl) roleEl.textContent = prof.role;
+      if (linkEl) linkEl.setAttribute('href', '/profissionais/' + profSlug);
+      if (imgEl) {
+        imgEl.setAttribute('src', prof.photo);
+        imgEl.setAttribute('alt', prof.name);
+      }
+      if (avifEl) avifEl.setAttribute('srcset', prof.photo.replace(/\.webp$/, '.avif'));
+      if (section) section.hidden = false;
+    }
+
+    // Fire conversion events. Gated on consent via existing gtag/fbq lazy init.
+    // Events bubble up to GTM/Meta Pixel only if user accepted cookies.
+    const conversionId = 'thanks_' + Date.now();
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        event_category: 'lead',
+        event_label: formType,
+        transaction_id: conversionId,
+        value: 1,
+        currency: 'BRL',
+      });
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'Lead', { content_name: formType });
+    }
+  } catch (err) {
+    // Silent fail: personalization and analytics are enhancements.
+  }
+</script>
+
+</BaseLayout>

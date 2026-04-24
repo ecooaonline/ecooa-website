@@ -12,6 +12,7 @@ interface Props {
 }
 
 import { WA_BASE } from '../data/constants';
+import OptimizedImage from './OptimizedImage.astro';
 
 const { name, role, bg, ig, photo, description, tags, clickable = false, slug } = Astro.props;
 const waMessage = encodeURIComponent(`Olá, gostaria de agendar com ${name}`);
@@ -41,18 +42,16 @@ const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 >
   <div class="pc-ph">
     {photo ? (
-      <picture>
-        <source srcset={photo.replace(/\.webp$/, '.avif')} type="image/avif" />
-        <img
-          src={photo}
-          alt={name}
-          class="pc-img"
-          loading="lazy"
-          decoding="async"
-          width="700"
-          height="1050"
-        />
-      </picture>
+      <OptimizedImage
+        src={photo}
+        alt={name}
+        class="pc-img"
+        loading="lazy"
+        decoding="async"
+        width={700}
+        height={1050}
+        sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
+      />
     ) : (
       <>
         <div class="pc-bg" style={`background:${bg}`}></div>

@@ -534,6 +534,8 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
       const avif = p.photo.replace(/\.webp$/, '.avif');
       const waMsg = encodeURIComponent(`Olá, cheguei pelo ecooa.match buscando: "${query}". Gostaria de agendar uma avaliação com ${p.name}.`);
       const wa = `${WA_BASE}?text=${waMsg}`;
+      const intentId = m.matchedIntent?.id || 'freeform';
+      const formHref = `/agendamento?profissional=${encodeURIComponent(p.slug)}&from=match&intent=${encodeURIComponent(intentId)}`;
       return `
         <div class="match-card">
           <picture>
@@ -548,7 +550,8 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
           </div>
           <div class="match-card-actions">
             <a class="match-card-cta" href="/profissionais/${p.slug}?from=match&r=${encodeURIComponent(m.reason)}" data-intent="match-profile-${p.slug}">ver perfil →</a>
-            <a class="match-card-cta" href="${wa}" target="_blank" rel="noopener noreferrer" data-intent="match-wa-${p.slug}" style="color:var(--color-brand-deep)">agendar →</a>
+            <a class="match-card-cta" href="${wa}" target="_blank" rel="noopener noreferrer" data-intent="match-wa-${p.slug}" style="color:var(--color-brand-deep)">whatsapp →</a>
+            <a class="match-card-cta" href="${formHref}" data-intent="match-form-${p.slug}">formulário →</a>
           </div>
         </div>
       `;

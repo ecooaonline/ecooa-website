@@ -1,0 +1,58 @@
+---
+// OptimizedImage: wrapper padronizado para imagens do ecooa.
+//
+// Aceita um path WebP em /public (ex: /team/gustavo.webp) e renderiza um
+// <picture> com source AVIF (inferido por convenção de nome) + img WebP de
+// fallback. Permite controle explícito de loading, fetchpriority, sizes,
+// decoding e dimensões.
+//
+// Decisão de design: mantemos imagens em /public/ em vez de src/assets para
+// evitar migração massiva com risco alto. O componente está desenhado para
+// permitir upgrade futuro para srcset multi-width via naming convention
+// (ex: gustavo-320w.webp) sem quebrar callers.
+
+interface Props {
+  src: string;                       // path WebP em /public (ex: /team/gustavo.webp)
+  alt: string;
+  width: number;
+  height: number;
+  sizes?: string;                    // ex: "(max-width: 768px) 100vw, 50vw"
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'async' | 'sync' | 'auto';
+  class?: string;
+  style?: string;
+}
+
+const {
+  src,
+  alt,
+  width,
+  height,
+  sizes,
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  decoding = 'async',
+  class: className,
+  style,
+} = Astro.props;
+
+// Convention: /team/gustavo.webp → /team/gustavo.avif
+const avifSrc = src.replace(/\.webp$/i, '.avif');
+---
+
+<picture>
+  <source srcset={avifSrc} type="image/avif" />
+  <img
+    src={src}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    decoding={decoding}
+    sizes={sizes}
+    class={className}
+    style={style}
+  />
+</picture>

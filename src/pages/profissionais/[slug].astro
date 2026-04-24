@@ -4,6 +4,7 @@ import WavePattern from '../../components/WavePattern.astro';
 import Marquee from '../../components/Marquee.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import ProfessionalCard from '../../components/ProfessionalCard.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
 import { professionals } from '../../data/professionals';
 import { curatedIntents } from '../../data/match-intents';
 import { WA_BASE } from '../../data/constants';
@@ -187,7 +188,8 @@ const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. A
           <p class="r d2" style="font-size:11px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em;margin-bottom:20px">Registro profissional: {credential}</p>
         )}
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px" class="r d3">
-          <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" data-intent={`profissional-${p.slug}`}>agendar com {firstName}</a>
+          <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" data-intent={`profissional-${p.slug}`}>agendar pelo whatsapp</a>
+          <a href={`/agendamento?profissional=${p.slug}`} class="bo" data-intent={`profissional-form-${p.slug}`}>agendar pelo formulário</a>
           {p.ig && (
             <a href={`https://instagram.com/${p.ig.replace('@', '')}`} target="_blank" rel="noopener noreferrer" class="ghost">
               {p.ig}
@@ -198,10 +200,17 @@ const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. A
       </div>
       <div class="r d2">
         <div style="aspect-ratio:3/4;overflow:hidden">
-          <picture>
-            <source srcset={p.photo.replace(/\.webp$/, '.avif')} type="image/avif" />
-            <img src={p.photo} alt={p.name} loading="eager" decoding="async" class="u-cover" width="480" height="640" fetchpriority="high" />
-          </picture>
+          <OptimizedImage
+            src={p.photo}
+            alt={p.name}
+            loading="eager"
+            decoding="async"
+            class="u-cover"
+            width={480}
+            height={640}
+            fetchpriority="high"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </div>
       </div>
     </div>

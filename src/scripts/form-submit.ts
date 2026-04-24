@@ -64,12 +64,8 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
 
       try {
         await postForm(form);
-        form.style.display = 'none';
-        if (okEl) {
-          okEl.textContent = successText;
-          okEl.style.display = 'block';
-        }
         const formType = (form.querySelector('[name="_formType"]') as HTMLInputElement | null)?.value || 'unknown';
+
         window.gtag?.('event', 'form_submit_success', {
           event_category: 'conversion',
           event_label: formType,
@@ -79,6 +75,23 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
           window.fbq?.('track', 'Subscribe');
         } else if (formType === 'agendamento' || formType === 'b2b-medicina' || formType === 'b2b-nutricao') {
           window.fbq?.('track', 'Lead', { content_name: formType });
+        }
+
+        // Conversion forms redirect to /obrigado with match context.
+        // Newsletter and unknown forms keep the in-place success message.
+        const CONVERSION_FORMS = ['agendamento', 'b2b-medicina', 'b2b-nutricao'];
+        if (CONVERSION_FORMS.indexOf(formType) !== -1) {
+          const matchProf = (form.querySelector('[name="matchProfessional"]') as HTMLInputElement | null)?.value || '';
+          const qs = new URLSearchParams({ type: formType });
+          if (matchProf) qs.set('profissional', matchProf);
+          window.location.href = '/obrigado?' + qs.toString();
+          return;
+        }
+
+        form.style.display = 'none';
+        if (okEl) {
+          okEl.textContent = successText;
+          okEl.style.display = 'block';
         }
       } catch (err) {
         if (btn) {

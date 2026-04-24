@@ -1,5 +1,6 @@
 ---
 import WavePattern from './WavePattern.astro';
+import OptimizedImage from './OptimizedImage.astro';
 
 interface Props {
   heading: string;
@@ -15,10 +16,16 @@ const WA = WA_DEFAULT;
 
 <section class={`cf ${image ? 'cf-img' : ''}`} aria-label="Chamada para ação">
   {image ? (
-    <picture>
-      <source srcset={image.replace(/\.webp$/, '.avif')} type="image/avif" />
-      <img src={image} alt={`ecooa, ${ADDRESS_NEIGHBORHOOD}, ${ADDRESS_CITY}`} loading="lazy" decoding="async" width="1000" height="1709" class="cf-bg" />
-    </picture>
+    <OptimizedImage
+      src={image}
+      alt={`ecooa, ${ADDRESS_NEIGHBORHOOD}, ${ADDRESS_CITY}`}
+      loading="lazy"
+      decoding="async"
+      width={1000}
+      height={1709}
+      sizes="100vw"
+      class="cf-bg"
+    />
   ) : (
     <svg class="wsv" style="opacity:.04" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
       <g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} y0={80} step={55} /></g>

@@ -5,8 +5,16 @@ import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
+import { professionals } from '../data/professionals';
 
 const WA = WA_DEFAULT;
+
+// Serialize minimal professional data for client-side lookup (slug → name, role).
+// Keeps the match handoff banner self-contained without extra network requests.
+const profMap = professionals.reduce((acc, p) => {
+  acc[p.slug] = { name: p.name, role: p.role };
+  return acc;
+}, {} as Record<string, { name: string; role: string }>);
 ---
 
 <BaseLayout
@@ -60,8 +68,20 @@ const WA = WA_DEFAULT;
     <div class="lbl r" style="margin-bottom:16px;justify-content:center">prefere formulário?</div>
     <h2 class="h2 r d1" style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)">Deixe seus dados.<br>Nós <em>entramos em contato.</em></h2>
     <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas no seu WhatsApp.</p>
+
+    <!-- Match handoff banner. Populated client-side when ?profissional= is present. -->
+    <div id="match-handoff" hidden aria-live="polite" style="background:var(--color-cream);border:1px solid var(--color-brand-light);border-left:3px solid var(--color-brand);padding:14px 16px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color:var(--color-brand-deep);margin-top:2px;flex-shrink:0"><path d="M20 6L9 17l-5-5"/></svg>
+      <div style="flex:1;min-width:0">
+        <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-deep);margin:0 0 4px">recomendação ecooa.match</p>
+        <p style="font-size:14px;font-weight:400;color:var(--color-ink);margin:0;line-height:1.5"><strong id="match-prof-name"></strong><span id="match-prof-role" style="color:var(--color-ink-soft);font-weight:300"></span></p>
+      </div>
+    </div>
+
     <form action={FORM_ACTION} method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3 ecooa-form" id="form-agendamento" data-ok-target="#form-agendamento-ok" data-success-text="Recebemos seus dados. Entraremos em contato em até 24h.">
       <input type="hidden" name="_formType" value="agendamento" />
+      <input type="hidden" name="matchProfessional" id="match-prof" value="" />
+      <input type="hidden" name="matchIntent" id="match-intent" value="" />
 
       <!-- Honeypot (invisível) -->
       <input
@@ -137,13 +157,41 @@ const WA = WA_DEFAULT;
       </button>
       <p id="form-agendamento-ok" style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px">Recebemos seus dados. Entraremos em contato em até 24h.</p>
     </form>
-    <script>
+    <script define:vars={{ profMap }}>
       import { initFormSubmit } from '../scripts/form-submit';
 
       // Anti-spam: honeypot validation
       const form = document.getElementById('form-agendamento');
       const button = document.getElementById('form-submit-btn');
       const honeypot = form.querySelector('[name="_honeypot"]');
+
+      // Match handoff: pre-fill hidden fields and show recommendation banner
+      // when user arrives from /match with ?profissional=<slug>&intent=<intentId>.
+      try {
+        const params = new URLSearchParams(location.search);
+        const profSlug = (params.get('profissional') || '').trim().slice(0, 80);
+        const intentId = (params.get('intent') || '').trim().slice(0, 80);
+
+        if (profSlug && /^[a-z0-9-]+$/.test(profSlug) && profMap[profSlug]) {
+          const prof = profMap[profSlug];
+          const profField = document.getElementById('match-prof');
+          const intentField = document.getElementById('match-intent');
+          if (profField) profField.value = profSlug;
+          if (intentField) intentField.value = intentId;
+
+          const banner = document.getElementById('match-handoff');
+          const nameEl = document.getElementById('match-prof-name');
+          const roleEl = document.getElementById('match-prof-role');
+          if (nameEl) nameEl.textContent = prof.name;
+          if (roleEl) roleEl.textContent = ' . ' + prof.role;
+          if (banner) banner.hidden = false;
+
+          // Pre-select interest based on professional unit if we can infer it
+          // (best-effort only; user can override via the select).
+        }
+      } catch (err) {
+        // Silent fail: match handoff is enhancement, not required for form submission
+      }
 
       form.addEventListener('submit', (e) => {
         // Verificar honeypot
