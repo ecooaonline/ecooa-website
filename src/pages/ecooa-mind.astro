@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
@@ -74,7 +75,7 @@ const mindFaqSchema = {
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <picture><source srcset="/clinic/mind.avif" type="image/avif" /><img src="/clinic/mind.webp" alt="Sala de terapia da ecooa.mind, ambiente acolhedor e seguro" loading="lazy" decoding="async" class="u-cover"  width="1200" height="798" /></picture>
+    <OptimizedImage src="/clinic/mind.webp" alt="Sala de terapia da ecooa.mind, ambiente acolhedor e seguro" width={1200} height={798} class="u-cover" />
   </div>
 </section>
 

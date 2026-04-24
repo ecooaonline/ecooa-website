@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import CtaSection from '../components/CtaSection.astro';
@@ -43,7 +44,7 @@ const WA = WA_DEFAULT;
       <div class="r d2">
         <div class="pc" style="max-width:320px">
           <div class="pc-ph" style="aspect-ratio:1/1.2">
-            <picture><source srcset="/team/jessica-mentoria.avif" type="image/avif" /><img src="/team/jessica-mentoria.webp" alt="Jessica Stein, Diretora de Ensino da ecooa" loading="lazy" decoding="async" width="700" height="1050" class="u-cover" /></picture>
+            <OptimizedImage src="/team/jessica-mentoria.webp" alt="Jessica Stein, Diretora de Ensino da ecooa" width={700} height={1050} class="u-cover" />
           </div>
           <div class="pc-i">
             <p class="pc-n">Jessica Stein</p>
@@ -104,7 +105,7 @@ const WA = WA_DEFAULT;
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço de ensino">
   <div style="position:relative;width:100%;aspect-ratio:16/7;overflow:hidden">
-    <picture><source srcset="/clinic/reuniao.avif" type="image/avif" /><img src="/clinic/reuniao.webp" alt="Auditório e sala de reuniões da ecooa, espaço para mentorias e eventos" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block"  width="1000" height="666" /></picture>
+    <OptimizedImage src="/clinic/reuniao.webp" alt="Auditório e sala de reuniões da ecooa, espaço para mentorias e eventos" width={1000} height={666} style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" />
   </div>
 </section>
 

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import PillarCard from '../components/PillarCard.astro';
@@ -148,7 +149,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:left">
       <div class="r">
         <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:20px">
-          <picture><source srcset="/team/gustavo.avif" type="image/avif" /><img src="/team/gustavo.webp" alt="Dr. Gustavo Gehrke, fundador da ecooa" loading="lazy" decoding="async" class="u-cover" width="480" height="640" /></picture>
+          <OptimizedImage src="/team/gustavo.webp" alt="Dr. Gustavo Gehrke, fundador da ecooa" width={480} height={640} class="u-cover" />
         </div>
         <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">fundador</p>
         <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:4px">Dr. Gustavo Gehrke</p>
@@ -157,7 +158,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
       <div class="r d1">
         <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:20px">
-          <picture><source srcset="/team/jessica.avif" type="image/avif" /><img src="/team/jessica.webp" alt="Jessica Stein, fundadora da ecooa" loading="lazy" decoding="async" class="u-cover" width="480" height="640" /></picture>
+          <OptimizedImage src="/team/jessica.webp" alt="Jessica Stein, fundadora da ecooa" width={480} height={640} class="u-cover" />
         </div>
         <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">fundadora</p>
         <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:4px">Jessica Stein</p>
@@ -186,7 +187,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
       <div class="iv r d2">
         <div class="ic ic-m" style="overflow:hidden">
-          <picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa, Moinhos de Vento" loading="lazy" decoding="async" width="1000" height="1233" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" /></picture>
+          <OptimizedImage src="/clinic/recepcao.webp" alt="Recepção da ecooa, Moinhos de Vento" width={1000} height={1233} style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block" />
         </div>
         <div class="ic ic-f"><p class="if-lbl">cuidando com excelência</p><p class="if-v">desde 2021</p></div>
       </div>
@@ -217,7 +218,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <!-- Metodologia -->
 <section class="ap" aria-label="Metodologia">
   <div class="ap-vis" style="overflow:hidden">
-    <picture><source srcset="/clinic/reuniao-edit.avif" type="image/avif" /><img src="/clinic/reuniao-edit.webp" alt="Reunião na ecooa, metodologia de cuidado" loading="lazy" decoding="async" width="800" height="533" class="u-cover" /></picture>
+    <OptimizedImage src="/clinic/reuniao-edit.webp" alt="Reunião na ecooa, metodologia de cuidado" width={800} height={533} class="u-cover" />
   </div>
   <div class="ap-cp">
     <div class="lbl lbl-lt r">nossa metodologia</div>
@@ -278,7 +279,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 <!-- Nosso Espaço -->
 <section aria-label="Nosso espaço premium" style="background:var(--color-ink);padding:0;overflow:hidden">
   <div style="position:relative;width:100%;aspect-ratio:16/9;overflow:hidden">
-    <picture><source srcset="/clinic/respire.avif" type="image/avif" /><img src="/clinic/respire.webp" alt="Sala Respire da ecooa, consultório premium com jardim vertical e letreiro neon" loading="lazy" decoding="async" width="1200" height="799" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" /></picture>
+    <OptimizedImage src="/clinic/respire.webp" alt="Sala Respire da ecooa, consultório premium com jardim vertical e letreiro neon" width={1200} height={799} style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block" />
     <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(28,25,23,.7) 0%,transparent 50%)"></div>
     <div style="position:absolute;bottom:40px;left:60px;right:60px;z-index:2">
       <div class="lbl lbl-lt r u-mb-12">nosso espaço</div>

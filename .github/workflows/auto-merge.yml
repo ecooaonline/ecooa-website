@@ -25,6 +25,13 @@ jobs:
       - run: npm ci
       - run: npm run build
 
+      - name: Lighthouse audit
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
       - name: Merge to main
         run: |
           git config user.name "github-actions[bot]"

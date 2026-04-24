@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
@@ -73,7 +74,7 @@ const workingFaqSchema = {
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <picture><source srcset="/clinic/working.avif" type="image/avif" /><img src="/clinic/working.webp" alt="Espaço de coworking premium da ecooa.working" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture>
+    <OptimizedImage src="/clinic/working.webp" alt="Espaço de coworking premium da ecooa.working" width={1200} height={799} class="u-cover" />
   </div>
 </section>
 
@@ -142,9 +143,9 @@ const workingFaqSchema = {
 <!-- Mais do espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Mais do espaço">
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px">
-    <div class="u-img-43 r"><picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
-    <div class="u-img-43 r d1"><picture><source srcset="/clinic/cafe.avif" type="image/avif" /><img src="/clinic/cafe.webp" alt="Café da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture></div>
-    <div class="u-img-43 r d2"><picture><source srcset="/clinic/reuniao.avif" type="image/avif" /><img src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="666" /></picture></div>
+    <div class="u-img-43 r"><OptimizedImage src="/clinic/recepcao.webp" alt="Recepção da ecooa" width={1000} height={1233} class="u-cover" /></div>
+    <div class="u-img-43 r d1"><OptimizedImage src="/clinic/cafe.webp" alt="Café da ecooa" width={1200} height={799} class="u-cover" /></div>
+    <div class="u-img-43 r d2"><OptimizedImage src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" width={1000} height={666} class="u-cover" /></div>
   </div>
 </section>
 

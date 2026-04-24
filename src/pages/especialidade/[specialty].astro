@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
 import WavePattern from '../../components/WavePattern.astro';
 import Marquee from '../../components/Marquee.astro';
 import ProfessionalCard from '../../components/ProfessionalCard.astro';
@@ -89,10 +90,7 @@ const WA = WA_DEFAULT;
         {professionalsInUnit.slice(0, 4).map(prof => (
           <a href={`/profissionais/${prof.slug}`} style="text-decoration:none;color:inherit;display:block;transition:transform .2s">
             <div style="aspect-ratio:3/4;overflow:hidden;margin-bottom:16px;background:var(--color-stone)">
-              <picture>
-                <source srcset={prof.photo.replace('.webp', '.avif')} type="image/avif" />
-                <img src={prof.photo} alt={prof.name} loading="lazy" decoding="async" class="u-cover" width="300" height="400" />
-              </picture>
+              <OptimizedImage src={prof.photo} alt={prof.name} width={300} height={400} class="u-cover" />
             </div>
             <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">{prof.unit}</p>
             <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--color-ink);margin-bottom:4px">{prof.name}</p>

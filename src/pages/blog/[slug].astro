@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import DisclaimerMedico from '../../components/DisclaimerMedico.astro';
 import TableOfContents from '../../components/TableOfContents.astro';
@@ -127,13 +128,12 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
     <!-- Author block -->
     {matchedProfessional ? (
       <div style="display:flex;align-items:center;gap:16px;padding:20px;background:var(--color-cream);margin-bottom:32px" class="r d2">
-        <img
+        <OptimizedImage
           src={matchedProfessional.photo}
           alt={matchedProfessional.name}
-          width="56"
-          height="56"
+          width={56}
+          height={56}
           style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;aspect-ratio:1/1"
-          loading="lazy"
         />
         <div style="min-width:0">
           <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin-bottom:2px">{post.data.author}</p>

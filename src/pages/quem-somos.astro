@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import ProfessionalCard from '../components/ProfessionalCard.astro';
@@ -157,12 +158,12 @@ const WA = WA_DEFAULT;
     <p class="body r d2" style="max-width:540px;margin-bottom:44px">Cada detalhe do nosso espaço foi pensado para transmitir conforto, sofisticação e cuidado. Conheça a ecooa em Moinhos de Vento, Porto Alegre.</p>
   </div>
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:0 4px 4px">
-    <div class="u-img-43 r"><picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
-    <div class="u-img-43 r d1"><picture><source srcset="/clinic/ecooa-med-armario.avif" type="image/avif" /><img src="/clinic/ecooa-med-armario.webp" alt="Armário do consultório ecooa.med" loading="lazy" decoding="async" class="u-cover"  width="628" height="424" /></picture></div>
-    <div class="u-img-43 r d2"><picture><source srcset="/clinic/detalhes.avif" type="image/avif" /><img src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" loading="lazy" decoding="async" class="u-cover"  width="945" height="792" /></picture></div>
-    <div class="u-img-43 r"><picture><source srcset="/clinic/mentorias.avif" type="image/avif" /><img src="/clinic/mentorias.webp" alt="Espaço de mentorias ecooa.cademy" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
-    <div class="u-img-43 r d1"><picture><source srcset="/clinic/mind.avif" type="image/avif" /><img src="/clinic/mind.webp" alt="Sala ecooa.mind" loading="lazy" decoding="async" class="u-cover"  width="1200" height="798" /></picture></div>
-    <div class="u-img-43 r d2"><picture><source srcset="/clinic/working.avif" type="image/avif" /><img src="/clinic/working.webp" alt="Espaço ecooa.working" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture></div>
+    <div class="u-img-43 r"><OptimizedImage src="/clinic/recepcao.webp" alt="Recepção da ecooa" width={1000} height={1233} class="u-cover" /></div>
+    <div class="u-img-43 r d1"><OptimizedImage src="/clinic/ecooa-med-armario.webp" alt="Armário do consultório ecooa.med" width={628} height={424} class="u-cover" /></div>
+    <div class="u-img-43 r d2"><OptimizedImage src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" width={945} height={792} class="u-cover" /></div>
+    <div class="u-img-43 r"><OptimizedImage src="/clinic/mentorias.webp" alt="Espaço de mentorias ecooa.cademy" width={1000} height={1233} class="u-cover" /></div>
+    <div class="u-img-43 r d1"><OptimizedImage src="/clinic/mind.webp" alt="Sala ecooa.mind" width={1200} height={798} class="u-cover" /></div>
+    <div class="u-img-43 r d2"><OptimizedImage src="/clinic/working.webp" alt="Espaço ecooa.working" width={1200} height={799} class="u-cover" /></div>
   </div>
 </section>
 

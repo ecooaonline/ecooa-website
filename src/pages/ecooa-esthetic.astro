@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
@@ -74,7 +75,7 @@ const estheticFaqSchema = {
 <!-- Foto do espaço -->
 <section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
   <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <picture><source srcset="/clinic/esthetic.avif" type="image/avif" /><img src="/clinic/esthetic.webp" alt="Sala de procedimentos estéticos da ecooa.esthetic" loading="lazy" decoding="async" class="u-cover"  width="1200" height="799" /></picture>
+    <OptimizedImage src="/clinic/esthetic.webp" alt="Sala de procedimentos estéticos da ecooa.esthetic" width={1200} height={799} class="u-cover" />
   </div>
 </section>
 
@@ -111,8 +112,8 @@ const estheticFaqSchema = {
 <!-- Nosso Espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.esthetic">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
-    <div class="u-img-169 r"><picture><source srcset="/clinic/recepcao.avif" type="image/avif" /><img src="/clinic/recepcao.webp" alt="Recepção da ecooa" loading="lazy" decoding="async" class="u-cover"  width="1000" height="1233" /></picture></div>
-    <div class="u-img-169 r d1"><picture><source srcset="/clinic/detalhes.avif" type="image/avif" /><img src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" loading="lazy" decoding="async" class="u-cover"  width="945" height="792" /></picture></div>
+    <div class="u-img-169 r"><OptimizedImage src="/clinic/recepcao.webp" alt="Recepção da ecooa" width={1000} height={1233} class="u-cover" /></div>
+    <div class="u-img-169 r d1"><OptimizedImage src="/clinic/detalhes.webp" alt="Detalhes do espaço ecooa" width={945} height={792} class="u-cover" /></div>
   </div>
 </section>
 
