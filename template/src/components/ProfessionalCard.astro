@@ -1,0 +1,76 @@
+---
+import { WA_BASE } from '../data/site';
+import OptimizedImage from './OptimizedImage.astro';
+
+interface Props {
+  name: string;
+  role: string;
+  bg: string;
+  ig?: string;
+  photo?: string;
+  description?: string;
+  tags?: string[];
+  clickable?: boolean;
+  slug?: string;
+}
+
+const { name, role, bg, ig, photo, description, tags, clickable = false, slug } = Astro.props;
+const waMessage = encodeURIComponent(`Ola, gostaria de agendar com ${name}`);
+const waLink = `${WA_BASE}?text=${waMessage}`;
+const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
+---
+
+<div
+  class={`pc r ${clickable ? 'pc-clickable' : ''}`}
+  {...clickable ? {
+    'data-name': name,
+    'data-role': role,
+    'data-photo': photo || '',
+    'data-ig': ig || '',
+    'data-ig-url': igUrl,
+    'data-wa': waLink,
+    'data-desc': description || '',
+    'data-tags': tags ? tags.join('|') : '',
+    'data-slug': slug || '',
+    role: 'button',
+    tabindex: '0',
+    'aria-label': `Ver perfil de ${name}`,
+  } : {}}
+>
+  <div class="pc-ph">
+    {photo ? (
+      <OptimizedImage
+        src={photo}
+        alt={name}
+        class="pc-img"
+        loading="lazy"
+        decoding="async"
+        width={700}
+        height={1050}
+        sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
+      />
+    ) : (
+      <>
+        <div class="pc-bg" style={`background:${bg}`}></div>
+        <svg class="pc-sl" viewBox="0 0 80 110" width="46" aria-hidden="true">
+          <circle cx="40" cy="30" r="20" fill="#3D3835"/>
+          <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835"/>
+        </svg>
+      </>
+    )}
+  </div>
+  <div class="pc-i">
+    <p class="pc-n">{name}</p>
+    <p class="pc-r">{role}</p>
+    {ig && !clickable && (
+      <a
+        href={igUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        style="font-size:10px;font-weight:400;color:var(--color-brand-text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:6px;letter-spacing:.03em"
+      >
+        {ig}
+      </a>
+    )}
+  </div>
+</div>

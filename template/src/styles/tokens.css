@@ -1,0 +1,48 @@
+:root {
+  /* Brand — adaptar por marca */
+  --color-brand: #C4BBB8;
+  --color-brand-light: #DDD8D5;
+  --color-brand-mid: #AEA5A2;
+  --color-brand-deep: #918886;
+  --color-brand-text: #706662;
+  --color-brand-accent: #8D8381;
+
+  /* Neutros */
+  --color-white: #FFFFFF;
+  --color-warm: #FAF8F6;
+  --color-cream: #F3EEEA;
+  --color-stone: #E5DDD8;
+  --color-mist: #EDE8E4;
+
+  /* Ink */
+  --color-ink: #1C1917;
+  --color-ink-mid: #3D3835;
+  --color-ink-soft: #6B6360;
+  --color-ink-ghost: #6E6865;
+  --color-black: #100E0D;
+
+  /* Tipografia */
+  --font-primary: 'Arboria', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Escala 8px */
+  --space-xs: 8px;
+  --space-sm: 14px;
+  --space-md: 22px;
+  --space-lg: 36px;
+  --space-xl: 60px;
+  --space-2xl: 86px;
+  --space-3xl: 108px;
+
+  /* Seções */
+  --section-px: 60px;
+  --section-py: 108px;
+  --section-py-sm: 76px;
+
+  /* Motion */
+  --ease-spring: cubic-bezier(.22, .68, 0, 1.2);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --transition-fast: 0.2s;
+  --transition-base: 0.3s;
+  --transition-slow: 0.5s;
+}

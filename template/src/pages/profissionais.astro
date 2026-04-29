@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfessionalCard from '../components/ProfessionalCard.astro';
+import { SITE } from '../data/site';
+import { professionals } from '../data/professionals';
+
+const units = [...new Set(professionals.map(p => p.unit))];
+---
+
+<BaseLayout
+  title="Profissionais"
+  description="TODO_DESCRICAO_PROFISSIONAIS"
+  currentPage="profissionais"
+  breadcrumbs={[{ name: 'Profissionais', url: '/profissionais' }]}
+>
+
+  <!-- Schema: MedicalOrganization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalOrganization",
+    "name": SITE.name,
+    "url": SITE.url,
+    "member": professionals.map(p => ({
+      "@type": "Person",
+      "name": p.name,
+      "jobTitle": p.role,
+      "url": `${SITE.url}/profissionais/${p.slug}`,
+    }))
+  })} />
+
+  <section class="hero" style="min-height:50vh">
+    <div class="hero-content">
+      <p class="lbl r">equipe</p>
+      <h1 class="r d1">TODO_TITULO_PROFISSIONAIS</h1>
+      <p class="r d2">TODO_SUBTITULO_PROFISSIONAIS</p>
+    </div>
+  </section>
+
+  {units.map(unit => (
+    <section style={unit !== units[0] ? 'background:var(--color-cream)' : ''}>
+      <p class="lbl r">{unit}</p>
+      <div class="g4" style="margin-top:var(--space-md)">
+        {professionals.filter(p => p.unit === unit).map(p => (
+          <ProfessionalCard
+            name={p.name}
+            role={p.role}
+            bg={p.bg}
+            photo={p.photo}
+            ig={p.ig}
+            slug={p.slug}
+            clickable
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+
+</BaseLayout>

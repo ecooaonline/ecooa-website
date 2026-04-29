@@ -1,0 +1,42 @@
+---
+import { SITE, NAV_LINKS } from '../data/site';
+
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage } = Astro.props;
+---
+
+<nav class="nav" role="navigation" aria-label="Menu principal">
+  <a href="/" aria-label={SITE.name}>
+    <svg class="nav-logo" viewBox="0 0 120 24" aria-hidden="true">
+      <!-- TODO: substituir pelo SVG do logo real -->
+      <text x="0" y="18" font-family="var(--font-primary)" font-size="18" font-weight="500" fill="currentColor">{SITE.name}</text>
+    </svg>
+  </a>
+
+  <ul class="nav-links" role="list">
+    {NAV_LINKS.map(link => (
+      <li role="listitem">
+        <a
+          href={link.href}
+          aria-current={currentPage === link.label ? 'page' : undefined}
+        >{link.label}</a>
+      </li>
+    ))}
+  </ul>
+
+  <a href="/agendamento" class="nav-cta">agendar</a>
+
+  <button
+    class="nav-toggle"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+    type="button"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>

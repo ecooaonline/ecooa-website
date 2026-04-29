@@ -1,0 +1,15 @@
+---
+interface Props {
+  name: string;
+  description: string;
+  href: string;
+}
+
+const { name, description, href } = Astro.props;
+---
+
+<a href={href} class="pillar-card r" style="text-decoration:none;display:block">
+  <h3>{name}</h3>
+  <p>{description}</p>
+  <span class="btn-ghost" style="margin-top:var(--space-sm)">conhecer &rarr;</span>
+</a>

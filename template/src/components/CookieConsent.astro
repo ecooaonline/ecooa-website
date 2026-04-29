@@ -1,0 +1,36 @@
+---
+---
+
+<div id="cookie-consent" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--color-ink);color:#fff;padding:16px;font-size:13px;font-weight:300;line-height:1.7" role="alert">
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;max-width:1200px;margin:0 auto">
+    <p style="margin:0;flex:1;min-width:260px">Este site utiliza cookies para melhorar sua experiencia. Ao continuar navegando, voce concorda com nossa <a href="/politica-de-privacidade" style="color:var(--color-brand-light);text-decoration:underline">politica de privacidade</a>.</p>
+    <div style="display:flex;gap:8px">
+      <button id="cookie-reject" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3);padding:10px 28px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">rejeitar</button>
+      <button id="cookie-accept" style="background:var(--color-brand);color:#fff;border:none;padding:10px 28px;font-size:12px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer">aceitar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  var key = 'cookie_consent';
+  var stored = localStorage.getItem(key);
+  if (!stored) {
+    var banner = document.getElementById('cookie-consent');
+    if (banner) banner.style.display = 'block';
+  }
+  var acceptBtn = document.getElementById('cookie-accept');
+  if (acceptBtn) {
+    acceptBtn.addEventListener('click', function() {
+      localStorage.setItem(key, 'accepted');
+      document.getElementById('cookie-consent')!.style.display = 'none';
+      window.dispatchEvent(new CustomEvent('consent_accepted'));
+    });
+  }
+  var rejectBtn = document.getElementById('cookie-reject');
+  if (rejectBtn) {
+    rejectBtn.addEventListener('click', function() {
+      localStorage.setItem(key, 'rejected');
+      document.getElementById('cookie-consent')!.style.display = 'none';
+    });
+  }
+</script>

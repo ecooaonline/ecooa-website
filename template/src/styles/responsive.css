@@ -1,0 +1,73 @@
+/* === Mobile First (< 480px base) === */
+@media (max-width: 480px) {
+  :root {
+    --section-px: 20px;
+    --section-py: 64px;
+    --section-py-sm: 48px;
+  }
+
+  .hero { min-height: 80vh; padding: 100px 20px 64px; }
+
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: flex; }
+  .nav { padding: 0 20px; }
+
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: var(--color-warm);
+    z-index: 999;
+    padding: 100px 40px;
+    gap: 20px;
+  }
+  .nav-links.open a {
+    font-size: 16px;
+  }
+
+  .cta-buttons { flex-direction: column; align-items: stretch; }
+}
+
+/* === Tablet (481-768) === */
+@media (min-width: 481px) and (max-width: 768px) {
+  :root {
+    --section-px: 32px;
+    --section-py: 80px;
+  }
+
+  .g3, .g4 { grid-template-columns: repeat(2, 1fr); }
+
+  .nav-links { gap: 16px; }
+
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* === Desktop small (769-1024) === */
+@media (min-width: 769px) and (max-width: 1024px) {
+  :root {
+    --section-px: 48px;
+  }
+
+  .g4 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* === Desktop large (1281+) === */
+@media (min-width: 1281px) {
+  :root {
+    --section-px: 80px;
+  }
+}
+
+/* === Max width container === */
+@media (min-width: 1440px) {
+  section {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+}

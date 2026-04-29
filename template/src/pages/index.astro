@@ -1,0 +1,108 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PillarCard from '../components/PillarCard.astro';
+import ProfessionalCard from '../components/ProfessionalCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import CtaSection from '../components/CtaSection.astro';
+import WavePattern from '../components/WavePattern.astro';
+import { SITE, PILLARS, WA_DEFAULT } from '../data/site';
+import { professionals } from '../data/professionals';
+---
+
+<BaseLayout
+  title="TODO_TITULO_HOME"
+  description="TODO_DESCRICAO_HOME"
+  currentPage="inicio"
+>
+
+  <!-- Hero -->
+  <section class="hero">
+    <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.03" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <g fill="none" stroke="var(--color-ink)" stroke-width="1"><WavePattern count={6} /></g>
+    </svg>
+    <div class="hero-content">
+      <p class="lbl r">TODO_LABEL</p>
+      <h1 class="r d1">TODO_HEADLINE<br><em>TODO_HEADLINE_ITALIC</em></h1>
+      <p class="r d2">TODO_SUBTITULO_HERO</p>
+      <div class="r d3" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer" class="btn btn-primary">falar pelo whatsapp</a>
+        <a href="#pilares" class="btn btn-outline">conhecer o ecossistema</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pilares -->
+  <section id="pilares" style="background:var(--color-cream)">
+    <p class="lbl r">ecossistema</p>
+    <h2 class="section-title r d1">TODO_TITULO_PILARES</h2>
+    <div class="g3" style="margin-top:var(--space-lg)">
+      {PILLARS.map(p => (
+        <PillarCard name={p.name} description={p.description} href={p.href} />
+      ))}
+    </div>
+  </section>
+
+  <!-- Autoridade -->
+  <section>
+    <p class="lbl r">autoridade</p>
+    <h2 class="section-title r d1">TODO_TITULO_AUTORIDADE</h2>
+    <p class="section-subtitle r d2">TODO_TEXTO_AUTORIDADE</p>
+  </section>
+
+  <!-- Jornadas B2C / B2B -->
+  <section style="background:var(--color-cream)">
+    <p class="lbl r">jornadas</p>
+    <h2 class="section-title r d1">TODO_TITULO_JORNADAS</h2>
+    <div class="g2" style="margin-top:var(--space-lg)">
+      <div class="pillar-card r">
+        <h3>para pacientes</h3>
+        <p>TODO_DESCRICAO_B2C</p>
+        <a href="/agendamento" class="btn-ghost" style="margin-top:var(--space-sm)">agendar &rarr;</a>
+      </div>
+      <div class="pillar-card r d1">
+        <h3>para profissionais</h3>
+        <p>TODO_DESCRICAO_B2B</p>
+        <a href="/TODO_ROTA_B2B" class="btn-ghost" style="margin-top:var(--space-sm)">saber mais &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profissionais -->
+  <section>
+    <p class="lbl r">equipe</p>
+    <h2 class="section-title r d1">TODO_TITULO_PROFISSIONAIS</h2>
+    <div class="g4" style="margin-top:var(--space-lg)">
+      {professionals.slice(0, 8).map(p => (
+        <ProfessionalCard
+          name={p.name}
+          role={p.role}
+          bg={p.bg}
+          photo={p.photo}
+          ig={p.ig}
+          slug={p.slug}
+        />
+      ))}
+    </div>
+    <div style="text-align:center;margin-top:var(--space-lg)">
+      <a href="/profissionais" class="btn btn-outline">ver todos os profissionais</a>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section style="background:var(--color-cream)">
+    <p class="lbl r">depoimentos</p>
+    <h2 class="section-title r d1">TODO_TITULO_DEPOIMENTOS</h2>
+    <div class="g3" style="margin-top:var(--space-lg)">
+      <TestimonialCard quote="TODO_DEPOIMENTO_1" author="TODO_AUTOR_1" />
+      <TestimonialCard quote="TODO_DEPOIMENTO_2" author="TODO_AUTOR_2" />
+      <TestimonialCard quote="TODO_DEPOIMENTO_3" author="TODO_AUTOR_3" />
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <CtaSection
+    heading="TODO_CTA_HEADING"
+    subtext="TODO_CTA_SUBTEXTO"
+  />
+
+</BaseLayout>

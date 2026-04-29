@@ -1,0 +1,15 @@
+---
+interface Props {
+  count?: number;
+  y0?: number;
+  step?: number;
+}
+
+const { count = 6, y0 = 80, step = 55 } = Astro.props;
+const paths = Array.from({ length: count }, (_, i) => {
+  const y = y0 + i * step;
+  return `M0 ${y} Q360 ${y - 40} 720 ${y} T1440 ${y}`;
+});
+---
+
+{paths.map(d => <path d={d} />)}
