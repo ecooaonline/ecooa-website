@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter(p => !p.data.draft)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+
+<BaseLayout
+  title="Blog"
+  description="TODO_DESCRICAO_BLOG"
+  currentPage="blog"
+  breadcrumbs={[{ name: 'Blog', url: '/blog' }]}
+>
+
+  <section class="hero" style="min-height:40vh">
+    <div class="hero-content">
+      <p class="lbl r">blog</p>
+      <h1 class="r d1">TODO_TITULO_BLOG</h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="g3">
+      {posts.map(post => (
+        <a href={`/blog/${post.id}`} class="pillar-card r" style="text-decoration:none;display:block">
+          <p style="font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:8px">{post.data.category}</p>
+          <h3 style="font-size:15px;font-weight:400;line-height:1.5;margin-bottom:8px">{post.data.title}</h3>
+          <p style="font-size:12px;color:var(--color-ink-soft)">{post.data.description}</p>
+          <p style="font-size:10px;color:var(--color-ink-ghost);margin-top:12px">{post.data.author} · {post.data.date}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>

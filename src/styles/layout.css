@@ -1,0 +1,91 @@
+/* === Grids === */
+.g2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-lg); }
+.g3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-lg); }
+.g4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-lg); }
+
+/* === Sections === */
+section {
+  padding: var(--section-py) var(--section-px);
+}
+
+.section-cream { background: var(--color-cream); }
+.section-warm { background: var(--color-warm); }
+.section-ink { background: var(--color-ink); color: var(--color-white); }
+
+/* === Hero === */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 120px var(--section-px) var(--section-py);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  margin-bottom: var(--space-md);
+}
+
+.hero p {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  max-width: 480px;
+  margin-bottom: var(--space-lg);
+}
+
+/* === Reveal Animation === */
+.r {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-slow) var(--ease-out),
+              transform var(--transition-slow) var(--ease-out);
+}
+.r.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.d1 { transition-delay: .1s; }
+.d2 { transition-delay: .2s; }
+.d3 { transition-delay: .3s; }
+
+/* === Labels === */
+.lbl {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-brand-text);
+  margin-bottom: var(--space-sm);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  margin-bottom: var(--space-md);
+}
+
+.section-subtitle {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  max-width: 520px;
+}

@@ -1,0 +1,31 @@
+# TODO_NOME_MARCA - TODO_DOMINIO.com.br
+User-agent: *
+Allow: /
+Disallow: /agendamento
+Disallow: /_astro/
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: GPTBot
+Allow: /
+Disallow: /agendamento
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://TODO_DOMINIO.com.br/sitemap-index.xml

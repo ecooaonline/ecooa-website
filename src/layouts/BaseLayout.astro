@@ -1,0 +1,228 @@
+---
+import { SITE } from '../data/site';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CookieConsent from '../components/CookieConsent.astro';
+import WhatsAppFab from '../components/WhatsAppFab.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  robots?: string;
+  breadcrumbs?: { name: string; url: string }[];
+  currentPage?: string;
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og-default.jpg',
+  robots = 'index,follow',
+  breadcrumbs,
+  currentPage,
+} = Astro.props;
+
+const fullTitle = `${title} | ${SITE.name}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/layout.css';
+import '../styles/components.css';
+import '../styles/responsive.css';
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{fullTitle}</title>
+  <meta name="description" content={description}>
+  <meta name="robots" content={robots}>
+
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://*.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com https://www.facebook.com; worker-src 'self' blob:; form-action 'self' https://script.google.com https://*.google.com; base-uri 'self'">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
+  <!-- Canonical & Hreflang -->
+  <link rel="canonical" href={canonicalURL}>
+  <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
+  <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={fullTitle}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:image" content={new URL(ogImage, Astro.site)}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content={SITE.name}>
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={fullTitle}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={new URL(ogImage, Astro.site)}>
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#FAF8F6">
+  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Font Preloads -->
+  <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/arboria-500.woff2" as="font" type="font/woff2" crossorigin>
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": SITE.name,
+        "url": SITE.url,
+      },
+      {
+        "@type": "MedicalBusiness",
+        "name": SITE.name,
+        "url": SITE.url,
+        "telephone": SITE.phone,
+        "email": SITE.email,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": `${SITE.address.street}, ${SITE.address.number}`,
+          "addressLocality": SITE.address.city,
+          "addressRegion": SITE.address.state,
+          "postalCode": SITE.address.zip,
+          "addressCountry": SITE.address.country,
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": SITE.coordinates.lat,
+          "longitude": SITE.coordinates.lng,
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "20:00",
+        },
+        "sameAs": [
+          `https://instagram.com/${SITE.instagram.replace('@','')}`,
+        ],
+      },
+    ]
+  })} />
+
+  <!-- Breadcrumbs -->
+  {breadcrumbs && breadcrumbs.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": SITE.url },
+        ...breadcrumbs.map((b, i) => ({
+          "@type": "ListItem",
+          "position": i + 2,
+          "name": b.name,
+          "item": `${SITE.url}${b.url}`,
+        })),
+      ]
+    })} />
+  )}
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Pular para o conteudo</a>
+
+  <Nav currentPage={currentPage} />
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <Footer />
+
+  <CookieConsent />
+
+  <WhatsAppFab />
+
+  <!-- Reveal Animation -->
+  <script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+  </script>
+
+  <!-- Mobile Menu -->
+  <script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && links.classList.contains('open')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+        (toggle as HTMLElement).focus();
+      }
+    });
+  }
+  </script>
+
+  <!-- GTM (consent-gated) -->
+  <script define:vars={{ gtmId: SITE.gtmId }}>
+  window.dataLayer=window.dataLayer||[];
+  function loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=true;
+  dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var j=document.createElement('script');j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+gtmId;
+  document.head.appendChild(j);}
+  function setupGTMListeners(){
+  document.addEventListener('scroll',loadGTM,{once:true,passive:true});
+  document.addEventListener('click',loadGTM,{once:true});
+  document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
+  document.addEventListener('keydown',loadGTM,{once:true});
+  setTimeout(loadGTM,12000);}
+  if(localStorage.getItem('cookie_consent')==='accepted'){setupGTMListeners();}
+  window.addEventListener('consent_accepted',function(){setupGTMListeners();},{once:true});
+  </script>
+
+  <!-- Meta Pixel (consent-gated) -->
+  <script define:vars={{ pixelId: SITE.metaPixelId }}>
+  function loadMetaPixel(){if(window._fbqLoaded)return;window._fbqLoaded=true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  window.fbq('init',pixelId);window.fbq('track','PageView');}
+  function setupPixelListeners(){if(window._fbqListenersAttached)return;window._fbqListenersAttached=true;
+  document.addEventListener('scroll',loadMetaPixel,{once:true,passive:true});
+  document.addEventListener('click',loadMetaPixel,{once:true});
+  document.addEventListener('touchstart',loadMetaPixel,{once:true,passive:true});
+  setTimeout(loadMetaPixel,12000);}
+  if(localStorage.getItem('cookie_consent')==='accepted'){setupPixelListeners();}
+  window.addEventListener('consent_accepted',function(){setupPixelListeners();},{once:true});
+  </script>
+
+  <!-- Service Worker -->
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  }
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+---
+import WavePattern from './WavePattern.astro';
+import { WA_DEFAULT, SITE } from '../data/site';
+
+interface Props {
+  heading: string;
+  subtext: string;
+}
+
+const { heading, subtext } = Astro.props;
+---
+
+<section class="cta-section" aria-label="Chamada para acao">
+  <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.04" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} y0={80} step={55} /></g>
+  </svg>
+  <p class="lbl r" style="color:rgba(255,255,255,.4)">{SITE.name} · {SITE.address.city}</p>
+  <h2 class="r d1" set:html={heading} />
+  <p class="r d2">{subtext}</p>
+  <div class="cta-buttons r d3">
+    <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer" class="btn btn-white">falar pelo whatsapp</a>
+    <a href="/agendamento" class="btn btn-outline" style="border-color:rgba(255,255,255,.3);color:#fff">agendar avaliacao</a>
+  </div>
+</section>

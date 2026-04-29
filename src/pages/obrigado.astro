@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { WA_DEFAULT, SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Obrigado"
+  description="Recebemos seus dados"
+  robots="noindex,follow"
+>
+
+  <section class="hero" style="min-height:70vh;text-align:center">
+    <div class="hero-content" style="max-width:480px;margin:0 auto">
+      <p class="lbl r">confirmacao</p>
+      <h1 class="r d1" style="font-size:clamp(28px,4vw,36px)">Recebemos seus dados</h1>
+      <p class="r d2">Nossa equipe entrara em contato em ate 24 horas.</p>
+      <div id="prof-info" class="r d2" style="display:none;margin:var(--space-md) 0;padding:16px;background:var(--color-cream);font-size:13px">
+        <strong>Profissional recomendado:</strong> <span id="prof-name"></span>
+      </div>
+      <div class="r d3" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:var(--space-lg)">
+        <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer" class="btn btn-primary">falar pelo whatsapp</a>
+        <a href="/blog" class="btn btn-outline">ler o blog</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  const params = new URLSearchParams(window.location.search);
+  const prof = params.get('profissional');
+  if (prof) {
+    const info = document.getElementById('prof-info');
+    const name = document.getElementById('prof-name');
+    if (info) info.style.display = 'block';
+    if (name) name.textContent = prof.replace(/-/g, ' ');
+  }
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', { event_category: 'form', event_label: params.get('type') || 'unknown' });
+  }
+  if (typeof window.fbq === 'function') {
+    window.fbq('track', 'Lead');
+  }
+  </script>
+
+</BaseLayout>

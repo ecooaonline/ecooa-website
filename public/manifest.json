@@ -1,0 +1,16 @@
+{
+  "name": "TODO_NOME_MARCA - TODO_TAGLINE",
+  "short_name": "TODO_NOME_MARCA",
+  "description": "TODO_DESCRICAO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F6",
+  "theme_color": "#FAF8F6",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "categories": ["health", "medical"],
+  "icons": [
+    { "src": "/favicon/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaSection from '../components/CtaSection.astro';
+---
+
+<BaseLayout
+  title="Sobre"
+  description="TODO_DESCRICAO_SOBRE"
+  currentPage="sobre"
+  breadcrumbs={[{ name: 'Sobre', url: '/sobre' }]}
+>
+
+  <section class="hero" style="min-height:60vh">
+    <div class="hero-content">
+      <p class="lbl r">sobre</p>
+      <h1 class="r d1">TODO_TITULO_SOBRE</h1>
+      <p class="r d2">TODO_TEXTO_SOBRE</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="g2">
+      <div>
+        <h2 class="section-title r">TODO_HISTORIA_TITULO</h2>
+        <p class="section-subtitle r d1" style="max-width:none">TODO_HISTORIA_TEXTO</p>
+      </div>
+      <div class="r d2" style="aspect-ratio:4/3;background:var(--color-cream);border-radius:2px">
+        <!-- TODO: foto do espaco -->
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--color-cream)">
+    <p class="lbl r">valores</p>
+    <h2 class="section-title r d1">TODO_VALORES_TITULO</h2>
+    <div class="g3" style="margin-top:var(--space-lg)">
+      <div class="r">
+        <h3 style="font-size:14px;font-weight:500;margin-bottom:8px">TODO_VALOR_1</h3>
+        <p class="section-subtitle" style="max-width:none">TODO_VALOR_1_DESC</p>
+      </div>
+      <div class="r d1">
+        <h3 style="font-size:14px;font-weight:500;margin-bottom:8px">TODO_VALOR_2</h3>
+        <p class="section-subtitle" style="max-width:none">TODO_VALOR_2_DESC</p>
+      </div>
+      <div class="r d2">
+        <h3 style="font-size:14px;font-weight:500;margin-bottom:8px">TODO_VALOR_3</h3>
+        <p class="section-subtitle" style="max-width:none">TODO_VALOR_3_DESC</p>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    heading="TODO_CTA_SOBRE"
+    subtext="TODO_CTA_SOBRE_SUB"
+  />
+
+</BaseLayout>
