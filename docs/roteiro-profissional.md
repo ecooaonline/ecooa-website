@@ -472,6 +472,32 @@ Configurar no Cloudflare (não é possível via HTML):
 - Include subdomains
 - Preload
 
+### F6.5 Cloudflare (CDN + Edge Security)
+
+Guia detalhado em `docs/cloudflare-setup.md`. Resumo:
+
+1. **Adicionar domínio ao Cloudflare** (plano Free)
+2. **DNS**: CNAME para GitHub Pages ou Cloudflare Pages, proxy ativado
+3. **SSL/TLS**: Full (strict), Always Use HTTPS, TLS 1.2+
+4. **HSTS**: 12 meses, subdomains, preload, no-sniff
+5. **Speed**: Auto Minify (HTML/CSS/JS), Brotli, HTTP/3, Early Hints
+6. **Caching**: Browser Cache TTL 1 year, Page Rules para fonts e _astro
+7. **Security**: Browser Integrity Check, WAF managed rules
+8. **Redirect www**: Page Rule com 301 para domínio canonical
+
+**Por que Cloudflare é obrigatório**:
+- HSTS com preload exige header HTTP real (meta tag não é aceita pelo hstspreload.org)
+- CDN edge reduz TTFB de 800ms para < 100ms
+- Brotli + HTTP/3 diminui transfer size
+- WAF protege contra bots e ataques básicos
+- SSL/TLS gerenciado sem custo
+
+**Verificação**:
+```bash
+curl -I https://dominio.com.br | grep -i strict-transport
+# Deve retornar: strict-transport-security: max-age=31536000; includeSubDomains; preload
+```
+
 ---
 
 ## F7: Conteúdo

@@ -1,0 +1,73 @@
+---
+import { WA_DEFAULT } from '../data/site';
+---
+
+<dialog id="exit-intent" aria-label="Antes de sair" style="
+  position:fixed;inset:0;z-index:10000;
+  width:100%;max-width:420px;
+  margin:auto;padding:var(--space-xl) var(--space-lg);
+  background:var(--color-warm);border:none;border-radius:2px;
+  box-shadow:0 24px 80px rgba(0,0,0,.2);
+  text-align:center;
+">
+  <button id="exit-close" aria-label="Fechar" style="
+    position:absolute;top:16px;right:16px;
+    background:none;border:none;cursor:pointer;
+    font-size:18px;color:var(--color-ink-soft);
+  ">&times;</button>
+
+  <p class="lbl" style="margin-bottom:var(--space-sm)">antes de sair</p>
+  <h2 style="font-family:var(--font-serif);font-style:italic;font-size:24px;margin-bottom:var(--space-sm)">TODO_EXIT_HEADING</h2>
+  <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:var(--space-lg)">TODO_EXIT_SUBTEXT</p>
+
+  <div style="display:flex;flex-direction:column;gap:10px">
+    <a href={WA_DEFAULT} target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%">falar pelo whatsapp</a>
+    <a href="/agendamento" class="btn btn-outline" style="width:100%">agendar avaliacao</a>
+  </div>
+</dialog>
+
+<style>
+  dialog::backdrop {
+    background: rgba(28,25,23,.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+</style>
+
+<script>
+const dialog = document.getElementById('exit-intent') as HTMLDialogElement;
+const closeBtn = document.getElementById('exit-close');
+if (dialog && closeBtn) {
+  let shown = false;
+
+  function show() {
+    if (shown || sessionStorage.getItem('exit_shown')) return;
+    shown = true;
+    sessionStorage.setItem('exit_shown', '1');
+    dialog.showModal();
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'exit_intent_shown', { non_interaction: true });
+    }
+  }
+
+  // Desktop: mouse leaves viewport
+  document.addEventListener('mouseout', (e) => {
+    if (e.clientY <= 0) show();
+  });
+
+  // Mobile: timeout
+  if ('ontouchstart' in window) {
+    setTimeout(show, 45000);
+  }
+
+  closeBtn.addEventListener('click', () => dialog.close());
+
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dialog.open) dialog.close();
+  });
+}
+</script>

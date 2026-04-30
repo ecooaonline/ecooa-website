@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../data/site';
+---
+
+<BaseLayout
+  title="Encontre seu profissional"
+  description="Descreva o que você busca e nosso sistema recomenda os profissionais mais indicados para você."
+  currentPage="match"
+  breadcrumbs={[{ name: 'Match', url: '/match' }]}
+>
+
+<section class="match-hero" style="padding:var(--space-3xl) var(--space-lg);text-align:center;background:var(--color-warm)">
+  <div style="max-width:640px;margin:0 auto">
+    <p class="lbl">encontre seu profissional</p>
+    <h1 style="font-family:var(--font-serif);font-style:italic;font-size:clamp(28px,4vw,40px);margin:var(--space-sm) 0">
+      TODO_MATCH_HEADING
+    </h1>
+    <p style="font-size:15px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:var(--space-xl)">
+      TODO_MATCH_SUBTEXT
+    </p>
+
+    <form id="match-form" style="display:flex;gap:10px;max-width:500px;margin:0 auto">
+      <input
+        type="text"
+        id="match-input"
+        name="q"
+        placeholder="ex: TODO_MATCH_PLACEHOLDER"
+        required
+        autocomplete="off"
+        style="flex:1;padding:14px 16px;border:1px solid var(--color-border);border-radius:2px;font-size:15px;font-family:var(--font-sans);background:white"
+      />
+      <button type="submit" class="btn btn-primary" style="white-space:nowrap">buscar</button>
+    </form>
+
+    <p id="match-empty" style="display:none;margin-top:var(--space-md);font-size:13px;color:var(--color-ink-soft)">
+      Não encontramos resultados. Tente descrever de outra forma ou <a href="/agendamento">agende diretamente</a>.
+    </p>
+  </div>
+</section>
+
+<section id="match-results" style="display:none;padding:var(--space-2xl) var(--space-lg);max-width:900px;margin:0 auto">
+  <h2 style="font-family:var(--font-serif);font-style:italic;font-size:22px;margin-bottom:var(--space-lg);text-align:center">
+    profissionais recomendados
+  </h2>
+  <div id="match-cards" style="display:grid;gap:var(--space-lg)"></div>
+</section>
+
+<script>
+import { matchProfessionals } from '../scripts/match-engine';
+
+const form = document.getElementById('match-form') as HTMLFormElement;
+const input = document.getElementById('match-input') as HTMLInputElement;
+const resultsSection = document.getElementById('match-results')!;
+const cardsContainer = document.getElementById('match-cards')!;
+const emptyMsg = document.getElementById('match-empty')!;
+
+const params = new URLSearchParams(window.location.search);
+const initialQuery = params.get('q');
+if (initialQuery) {
+  input.value = initialQuery;
+  runMatch(initialQuery);
+}
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const query = input.value.trim();
+  if (!query) return;
+
+  const url = new URL(window.location.href);
+  url.searchParams.set('q', query);
+  window.history.replaceState({}, '', url.toString());
+
+  runMatch(query);
+});
+
+function runMatch(query: string) {
+  const results = matchProfessionals(query, { topK: 3 });
+
+  if (results.length === 0) {
+    resultsSection.style.display = 'none';
+    emptyMsg.style.display = 'block';
+    return;
+  }
+
+  emptyMsg.style.display = 'none';
+  resultsSection.style.display = 'block';
+  cardsContainer.innerHTML = '';
+
+  for (const { professional: p, score } of results) {
+    const intentParam = new URLSearchParams(window.location.search).get('q') || '';
+    const card = document.createElement('div');
+    card.style.cssText = 'display:grid;grid-template-columns:120px 1fr;gap:var(--space-lg);padding:var(--space-lg);background:white;border:1px solid var(--color-border);border-radius:2px';
+
+    card.innerHTML = `
+      <div style="aspect-ratio:1;overflow:hidden;border-radius:2px;background:var(--color-warm)">
+        ${p.photo ? `<picture>
+          <source srcset="${p.photo.replace(/\.\w+$/, '.avif')}" type="image/avif">
+          <img src="${p.photo}" alt="${p.name}" width="120" height="120" loading="lazy" style="width:100%;height:100%;object-fit:cover">
+        </picture>` : '<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:40px;color:var(--color-ink-soft)">' + p.name.charAt(0) + '</div>'}
+      </div>
+      <div>
+        <h3 style="font-family:var(--font-serif);font-style:italic;font-size:18px;margin-bottom:4px">
+          <a href="/profissionais/${p.slug}" style="color:inherit;text-decoration:none">${p.name}</a>
+        </h3>
+        <p style="font-size:13px;color:var(--color-ink-soft);margin-bottom:var(--space-sm)">${p.role}</p>
+        <p style="font-size:14px;font-weight:300;line-height:1.6;margin-bottom:var(--space-md)">${p.description}</p>
+        ${p.tags ? `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--space-md)">${p.tags.map(t => `<span style="font-size:11px;padding:4px 10px;background:var(--color-warm);border-radius:2px">${t}</span>`).join('')}</div>` : ''}
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="/profissionais/${p.slug}" class="btn btn-outline" style="font-size:13px;padding:8px 16px">ver perfil</a>
+          <a href="/agendamento?profissional=${p.slug}&from=match&intent=${encodeURIComponent(intentParam)}" class="btn btn-primary" style="font-size:13px;padding:8px 16px">agendar via formulário</a>
+          ${p.whatsappUrl ? `<a href="${p.whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:13px;padding:8px 16px">whatsapp</a>` : ''}
+        </div>
+      </div>
+    `;
+
+    cardsContainer.appendChild(card);
+  }
+
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'match_search', {
+      search_term: query,
+      results_count: results.length,
+      top_result: results[0]?.professional.slug || '',
+    });
+  }
+}
+</script>
+
+<style>
+  @media (max-width: 640px) {
+    #match-cards > div {
+      grid-template-columns: 1fr !important;
+    }
+  }
+</style>
+
+</BaseLayout>

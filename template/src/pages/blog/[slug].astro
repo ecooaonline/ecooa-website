@@ -1,0 +1,129 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.filter(p => !p.data.draft).map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await post.render();
+const isMedical = ['medicina', 'TODO_CATEGORIA_1'].includes(post.data.category);
+const articleType = isMedical ? 'MedicalWebPage' : 'Article';
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogImage={post.data.image}
+  breadcrumbs={[
+    { name: 'Blog', url: '/blog' },
+    { name: post.data.title, url: `/blog/${post.id}` },
+  ]}
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": articleType,
+    "headline": post.data.title,
+    "description": post.data.description,
+    "datePublished": post.data.date,
+    "author": {
+      "@type": "Person",
+      "name": post.data.author,
+      "worksFor": { "@type": "MedicalBusiness", "name": SITE.name },
+    },
+    "publisher": {
+      "@type": "MedicalBusiness",
+      "name": SITE.name,
+      "url": SITE.url,
+    },
+    "mainEntityOfPage": `${SITE.url}/blog/${post.id}`,
+    ...(post.data.image ? { "image": `${SITE.url}${post.data.image}` } : {}),
+  })} />
+
+  <article style="padding-top:140px;max-width:720px;margin:0 auto;padding-left:var(--section-px);padding-right:var(--section-px)">
+
+    <header style="margin-bottom:var(--space-xl)">
+      <p class="lbl r">{post.data.category}</p>
+      <h1 class="r d1" style="font-family:var(--font-serif);font-style:italic;font-size:clamp(28px,4vw,40px);line-height:1.2;margin-bottom:var(--space-sm)">{post.data.title}</h1>
+      <p class="r d2" style="font-size:13px;color:var(--color-ink-soft)">{post.data.author} · {post.data.date}</p>
+    </header>
+
+    {headings.length > 2 && (
+      <nav class="r" style="margin-bottom:var(--space-xl);padding:var(--space-md);background:var(--color-cream);font-size:13px" aria-label="Indice do artigo">
+        <p style="font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:var(--space-xs)">indice</p>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+          {headings.filter(h => h.depth <= 3).map(h => (
+            <li>
+              <a href={`#${h.slug}`} style={`color:var(--color-ink-mid);text-decoration:none;${h.depth === 3 ? 'padding-left:16px;font-size:12px' : ''}`}>{h.text}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    <div class="blog-content r">
+      <Content />
+    </div>
+
+    {post.data.tags && post.data.tags.length > 0 && (
+      <div style="margin-top:var(--space-xl);display:flex;flex-wrap:wrap;gap:6px">
+        {post.data.tags.map(tag => (
+          <span style="font-size:10px;font-weight:400;letter-spacing:.06em;padding:5px 12px;background:var(--color-cream);color:var(--color-ink-soft)">{tag}</span>
+        ))}
+      </div>
+    )}
+
+  </article>
+
+</BaseLayout>
+
+<style is:global>
+  .blog-content h2 {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 22px;
+    margin: var(--space-xl) 0 var(--space-sm);
+  }
+  .blog-content h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: var(--space-lg) 0 var(--space-xs);
+  }
+  .blog-content p {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--color-ink-mid);
+    margin-bottom: var(--space-md);
+  }
+  .blog-content ul, .blog-content ol {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--color-ink-mid);
+    padding-left: 20px;
+    margin-bottom: var(--space-md);
+  }
+  .blog-content a {
+    color: var(--color-brand-text);
+    text-decoration: underline;
+  }
+  .blog-content blockquote {
+    border-left: 3px solid var(--color-brand);
+    padding-left: var(--space-md);
+    margin: var(--space-lg) 0;
+    font-style: italic;
+    color: var(--color-ink-soft);
+  }
+  .blog-content img {
+    border-radius: 2px;
+    margin: var(--space-lg) 0;
+  }
+</style>

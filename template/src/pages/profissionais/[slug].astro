@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OptimizedImage from '../../components/OptimizedImage.astro';
+import CtaSection from '../../components/CtaSection.astro';
+import { SITE, WA_BASE } from '../../data/site';
+import { professionals, getProfessionalBySlug } from '../../data/professionals';
+
+export function getStaticPaths() {
+  return professionals.map(p => ({ params: { slug: p.slug }, props: { professional: p } }));
+}
+
+const { professional: p } = Astro.props;
+const waMessage = encodeURIComponent(`Ola, gostaria de agendar com ${p.name}`);
+const waLink = `${WA_BASE}?text=${waMessage}`;
+const igUrl = p.ig ? `https://instagram.com/${p.ig.replace('@', '')}` : '';
+
+function isPhysician(role: string) {
+  return /medic|dermat|psiquia/i.test(role);
+}
+
+const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
+---
+
+<BaseLayout
+  title={p.name}
+  description={p.description}
+  breadcrumbs={[
+    { name: 'Profissionais', url: '/profissionais' },
+    { name: p.name, url: `/profissionais/${p.slug}` },
+  ]}
+>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": schemaType,
+    "name": p.name,
+    "jobTitle": p.role,
+    "description": p.description,
+    "url": `${SITE.url}/profissionais/${p.slug}`,
+    "image": p.photo ? `${SITE.url}${p.photo}` : undefined,
+    "worksFor": {
+      "@type": "MedicalBusiness",
+      "name": SITE.name,
+      "url": SITE.url,
+    },
+    ...(p.registration ? { "identifier": p.registration } : {}),
+    ...(p.education ? { "alumniOf": p.education.graduation } : {}),
+  })} />
+
+  <section style="padding-top:140px">
+    <div style="display:grid;grid-template-columns:1fr 1.5fr;gap:var(--space-xl);align-items:start">
+
+      <!-- Foto -->
+      <div class="r" style="aspect-ratio:2/3;overflow:hidden;background:var(--color-cream);border-radius:2px">
+        {p.photo ? (
+          <OptimizedImage
+            src={p.photo}
+            alt={p.name}
+            class="u-cover"
+            width={700}
+            height={1050}
+            loading="eager"
+            fetchpriority="high"
+          />
+        ) : (
+          <div style={`width:100%;height:100%;background:${p.bg};display:flex;align-items:center;justify-content:center`}>
+            <svg viewBox="0 0 80 110" width="60" aria-hidden="true">
+              <circle cx="40" cy="30" r="20" fill="#3D3835"/>
+              <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835"/>
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <!-- Info -->
+      <div>
+        <p class="lbl r">{p.unit}</p>
+        <h1 class="r d1" style="font-family:var(--font-serif);font-style:italic;font-size:clamp(28px,4vw,40px);margin-bottom:4px">{p.name}</h1>
+        <p class="r d1" style="font-size:13px;color:var(--color-ink-soft);margin-bottom:var(--space-sm)">{p.role}</p>
+
+        {p.registration && (
+          <p class="r d2" style="font-size:11px;color:var(--color-ink-ghost);letter-spacing:.04em;margin-bottom:var(--space-md)">{p.registration}</p>
+        )}
+
+        <p class="r d2" style="font-size:14px;font-weight:300;line-height:1.8;color:var(--color-ink-mid);margin-bottom:var(--space-lg)">{p.description}</p>
+
+        {p.tags && p.tags.length > 0 && (
+          <div class="r d2" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:var(--space-lg)">
+            {p.tags.map(tag => (
+              <span style="font-size:10px;font-weight:400;letter-spacing:.06em;padding:5px 12px;background:var(--color-cream);color:var(--color-ink-soft)">{tag}</span>
+            ))}
+          </div>
+        )}
+
+        {p.education && (
+          <div class="r d2" style="margin-bottom:var(--space-lg)">
+            <p style="font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-ink-ghost);margin-bottom:var(--space-xs)">formacao</p>
+            <p style="font-size:13px;font-weight:300;color:var(--color-ink-mid)">{p.education.graduation}</p>
+            {p.education.postgrad && p.education.postgrad.map(pg => (
+              <p style="font-size:13px;font-weight:300;color:var(--color-ink-mid)">{pg}</p>
+            ))}
+            {p.education.residency && (
+              <p style="font-size:13px;font-weight:300;color:var(--color-ink-mid)">{p.education.residency}</p>
+            )}
+          </div>
+        )}
+
+        <div class="r d3" style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href={waLink} target="_blank" rel="noopener noreferrer" class="btn btn-primary">agendar pelo whatsapp</a>
+          <a href={`/agendamento?profissional=${p.slug}`} class="btn btn-outline">agendar via formulario</a>
+        </div>
+
+        {p.ig && (
+          <a href={igUrl} target="_blank" rel="noopener noreferrer" class="r d3" style="display:inline-flex;align-items:center;gap:6px;margin-top:var(--space-md);font-size:11px;color:var(--color-brand-text);text-decoration:none">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="17" cy="7" r=".8" fill="currentColor"/>
+            </svg>
+            {p.ig}
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    heading="TODO_CTA_PROFISSIONAL"
+    subtext="TODO_CTA_PROFISSIONAL_SUB"
+  />
+
+</BaseLayout>
+
+<style>
+  @media (max-width: 768px) {
+    section > div { grid-template-columns: 1fr !important; }
+  }
+</style>

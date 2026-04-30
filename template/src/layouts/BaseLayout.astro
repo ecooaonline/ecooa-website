@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppFab from '../components/WhatsAppFab.astro';
+import ExitIntent from '../components/ExitIntent.astro';
 
 interface Props {
   title: string;
@@ -152,6 +153,7 @@ import '../styles/responsive.css';
   <CookieConsent />
 
   <WhatsAppFab />
+  <ExitIntent />
 
   <!-- Reveal Animation -->
   <script>
@@ -216,6 +218,13 @@ import '../styles/responsive.css';
   setTimeout(loadMetaPixel,12000);}
   if(localStorage.getItem('cookie_consent')==='accepted'){setupPixelListeners();}
   window.addEventListener('consent_accepted',function(){setupPixelListeners();},{once:true});
+  </script>
+
+  <!-- Analytics Events -->
+  <script>
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => { import('../scripts/analytics-events').then(m => m.initAnalyticsEvents()); }, { timeout: 3000 });
+  }
   </script>
 
   <!-- Form Submit -->
