@@ -218,6 +218,18 @@ import '../styles/responsive.css';
   window.addEventListener('consent_accepted',function(){setupPixelListeners();},{once:true});
   </script>
 
+  <!-- Form Submit -->
+  <script>
+  import '../scripts/form-submit';
+  </script>
+
+  <!-- Web Vitals -->
+  <script>
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => { import('../scripts/web-vitals').then(m => m.initWebVitals()); }, { timeout: 3000 });
+  }
+  </script>
+
   <!-- Service Worker -->
   <script>
   if ('serviceWorker' in navigator) {
