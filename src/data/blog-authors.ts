@@ -80,6 +80,38 @@ export const blogAuthors: BlogAuthor[] = [
     specialty: 'Soroterapia',
     unit: 'med',
   },
+  {
+    name: 'Leticia de Melo',
+    slug: 'leticia-de-melo',
+    role: 'Biomédica Estética',
+    specialty: 'Harmonização Orofacial',
+    unit: 'esthetic',
+    instagram: 'draleticiademelo',
+  },
+  {
+    name: 'Susan Flach',
+    slug: 'susan-flach',
+    role: 'Biomédica',
+    specialty: 'Gerenciamento de Pele',
+    unit: 'esthetic',
+    instagram: 'dra.susanflach',
+  },
+  {
+    name: 'Jennifer Adam',
+    slug: 'jennifer-adam',
+    role: 'Biomédica Estética',
+    specialty: 'Harmonização Orofacial',
+    unit: 'esthetic',
+    instagram: 'dra.jenniferadam',
+  },
+  {
+    name: 'Natalie Queiroz',
+    slug: 'natalie-queiroz',
+    role: 'Osteopata',
+    specialty: 'Osteopatia',
+    unit: 'esthetic',
+    instagram: 'osteonataliequeiroz',
+  },
 ];
 
 export function getAuthorByName(name: string): BlogAuthor | undefined {
