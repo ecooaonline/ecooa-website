@@ -8,8 +8,7 @@
         "http://localhost/profissionais/gustavo-gehrke/index.html",
         "http://localhost/match/index.html",
         "http://localhost/blog/index.html",
-        "http://localhost/agendamento/index.html",
-        "http://localhost/obrigado/index.html"
+        "http://localhost/agendamento/index.html"
       ],
       "numberOfRuns": 1,
       "settings": {
