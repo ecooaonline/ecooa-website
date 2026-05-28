@@ -33,6 +33,23 @@
       rejectBtn.addEventListener('click', function() {
         localStorage.setItem(key, 'rejected');
         banner.style.display = 'none';
+        var trackingCookies = ['_ga', '_gid', '_gat', '_fbp', '_fbc', '_gcl_au'];
+        var domains = [location.hostname, '.' + location.hostname];
+        trackingCookies.forEach(function(name) {
+          domains.forEach(function(domain) {
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=' + domain;
+          });
+          document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+        });
+        document.cookie.split(';').forEach(function(c) {
+          var n = c.split('=')[0].trim();
+          if (n.indexOf('_ga') === 0) {
+            domains.forEach(function(domain) {
+              document.cookie = n + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=' + domain;
+            });
+            document.cookie = n + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+          }
+        });
       });
     }
   })();

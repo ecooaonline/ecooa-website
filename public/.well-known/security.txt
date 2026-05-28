@@ -1,0 +1,4 @@
+Contact: mailto:ecooa.adm@gmail.com
+Preferred-Languages: pt-BR, en
+Canonical: https://www.somosecooa.com.br/.well-known/security.txt
+Expires: 2027-05-28T00:00:00.000Z

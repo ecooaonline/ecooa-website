@@ -26,6 +26,15 @@ function doPost(e) {
       return jsonResponse({ success: false, message: 'Limite de envios excedido. Tente novamente em uma hora.' });
     }
 
+    // Anti-bot: honeypot e time-gate (retorna sucesso falso para não revelar detecção)
+    if (e.parameter._honeypot && String(e.parameter._honeypot).trim() !== '') {
+      return jsonResponse({ success: true, message: 'Formulário recebido com sucesso.' });
+    }
+    var loadedAt = parseInt(e.parameter._loadedAt, 10);
+    if (loadedAt && (Date.now() - loadedAt) < 2000) {
+      return jsonResponse({ success: true, message: 'Formulário recebido com sucesso.' });
+    }
+
     // Sanitizar entrada
     const data = sanitizeInput(e.parameter);
 

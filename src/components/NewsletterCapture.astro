@@ -59,6 +59,8 @@ const buttonStyles: Record<string, string> = {
   >
     <input type="hidden" name="_formType" value="newsletter" />
     <input type="hidden" name="_source" value={`newsletter-${variant}`} />
+    <input type="text" name="_honeypot" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <input type="hidden" name="_loadedAt" value="" />
     <input
       type="email"
       name="email"

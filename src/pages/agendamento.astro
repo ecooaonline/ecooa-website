@@ -50,9 +50,9 @@ const profMap = professionals.reduce((acc, p) => {
             (51) 99146-0909
           </a>
           <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-bottom:28px">Segunda a Sexta: 9h às 20h · Sábado: a consultar</p>
-          <a href="mailto:ecooa.adm@gmail.com" class="bo" style="display:inline-flex;align-items:center;gap:9px">
+          <a href="#" class="bo eml-link" data-u="ecooa.adm" data-d="gmail.com" style="display:inline-flex;align-items:center;gap:9px">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.2"/></svg>
-            ecooa.adm@gmail.com
+            <span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span>
           </a>
           <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-top:9px">Para parcerias e assuntos administrativos</p>
         </div>
@@ -92,6 +92,7 @@ const profMap = professionals.reduce((acc, p) => {
         autocomplete="off"
         aria-hidden="true"
       />
+      <input type="hidden" name="_loadedAt" value="" />
 
       <div>
         <label for="form-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">como podemos te chamar?</label>

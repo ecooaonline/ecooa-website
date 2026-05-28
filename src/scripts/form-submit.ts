@@ -47,6 +47,9 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
     if ((form as any)._ecooaBound) return;
     (form as any)._ecooaBound = true;
 
+    const loadedAtField = form.querySelector<HTMLInputElement>('[name="_loadedAt"]');
+    if (loadedAtField && !loadedAtField.value) loadedAtField.value = String(Date.now());
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
@@ -56,6 +59,21 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
       const successText = form.dataset.successText || 'Recebido. Retornaremos em breve.';
       const errorText = form.dataset.errorText || 'erro. tente novamente';
       const originalLabel = btn?.textContent || '';
+
+      const hpField = form.querySelector<HTMLInputElement>('[name="_honeypot"]');
+      if (hpField && hpField.value.trim() !== '') {
+        form.style.display = 'none';
+        if (okEl) { okEl.textContent = successText; okEl.style.display = 'block'; }
+        return;
+      }
+      const ltField = form.querySelector<HTMLInputElement>('[name="_loadedAt"]');
+      if (ltField && ltField.value) {
+        if (Date.now() - parseInt(ltField.value, 10) < 2000) {
+          form.style.display = 'none';
+          if (okEl) { okEl.textContent = successText; okEl.style.display = 'block'; }
+          return;
+        }
+      }
 
       if (btn) {
         btn.textContent = 'enviando...';
