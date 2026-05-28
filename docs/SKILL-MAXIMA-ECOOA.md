@@ -1,7 +1,7 @@
 # SKILL MÁXIMA: www.somosecooa.com.br
 
 > Documento de referência absoluta do site ecooa. Contém toda a programação, dados, integrações, segredos operacionais e histórico técnico. Classificação: CONFIDENCIAL.
-> Última atualização: 2026-05-02
+> Última atualização: 2026-05-28
 
 ---
 
@@ -19,7 +19,8 @@
 | Instagram | @somos.ecooa |
 | Fundadores | Gustavo Gehrke (médico), Jessica Stein (nutricionista) |
 | Horário | Seg-Sex 09:00-20:00 |
-| Score GRADE | 85/100, Tier 5 Premium |
+| Score GRADE | 85/100, Tier 5 Premium (auditoria 2026-04-30) |
+| Auditoria segurança | 2026-05-28 (manual cibernético completo) |
 
 ---
 
@@ -631,30 +632,72 @@ schema: z.object({
 
 ---
 
-## 16. GAPS CONHECIDOS (auditoria GRADE 2026-04-30)
+## 15.1 SEGURANÇA (auditoria 2026-05-28)
+
+### Implementado (código)
+
+| Controle | Detalhe |
+|----------|---------|
+| CSP (meta tag) | `default-src 'self'`, `script-src` com allowlist, `connect-src` restrito a domínios específicos, `form-action` com allowlist |
+| X-Content-Type-Options | `nosniff` via meta |
+| X-Frame-Options | `SAMEORIGIN` via meta |
+| Referrer-Policy | `strict-origin-when-cross-origin` |
+| Permissions-Policy | camera, microphone, geolocation desabilitados |
+| Honeypot + time-gate | Todos os formulários (agendamento, contato, newsletter). Client-side + server-side (GAS) |
+| Rate limiting | GAS: 10 envios/hora por fingerprint de User-Agent |
+| Input sanitization | GAS: max 500 chars/campo, max 20 campos, allowlist de formTypes |
+| Redirect allowlist | GAS: apenas domínios somosecooa.com.br e ecooaonline.github.io |
+| Cookie consent (LGPD) | Banner com aceitar/rejeitar. Rejeitar limpa cookies de tracking (_ga, _gid, _fbp, etc.) |
+| Email obfuscation | Emails montados via JS (data-u/data-d) contra harvesting de bots |
+| security.txt | `/.well-known/security.txt` com contato e prazo |
+| robots.txt hardening | Crawlers agressivos bloqueados (AhrefsBot, SemrushBot, MJ12bot, DotBot, BLEXBot) |
+| npm audit | 0 vulnerabilidades |
+| Analytics consent-gated | GTM e Meta Pixel carregam apenas após interação + consentimento |
+
+### Pendente (requer Cloudflare)
+
+| Controle | Motivo |
+|----------|--------|
+| HSTS | Header HTTP, impossível via meta tag |
+| COOP / CORP / COEP | Headers HTTP |
+| WAF / rate limiting de borda | Proteção DDoS e bot management |
+| Cloudflare Turnstile | Challenge invisível para formulários |
+| DNSSEC | Configuração no registrar |
+
+### Limitações conhecidas
+
+- `unsafe-inline` no CSP: necessário porque Astro gera inline styles/scripts. Mitigação possível com nonce quando Astro SSR suportar.
+- `connect-src` lista domínios de analytics. Não é possível usar nonce para connect-src.
+- Honeypot é eficaz contra bots simples mas não contra ataques direcionados. Turnstile (Cloudflare) resolve isso.
+
+---
+
+## 16. GAPS CONHECIDOS (auditoria GRADE 2026-04-30, atualizado 2026-05-28)
 
 ### Presença Digital Base (95/100)
-- [ ] robots.txt e sitemap existem no código mas auditor não encontrou (verificar deploy)
-- [ ] MX não configurado (sem email @somosecooa.com.br)
+- [x] robots.txt atualizado com bloqueio de crawlers agressivos (2026-05-28)
+- [x] security.txt criado em /.well-known/ (2026-05-28)
+- [x] CSP connect-src restrito a domínios específicos (2026-05-28)
+- [ ] MX não configurado (sem email @somosecooa.com.br) — operacional
 - [ ] HSTS não configurado (precisa Cloudflare)
-- [ ] Apenas 2/7 headers de segurança em produção (CSP via meta tag, HSTS precisa header HTTP)
 
 ### Instagram (65/100)
-- [ ] Bio inconsistente ("estética e saúde POA" vs. "medicina humanizada, longevidade")
-- [ ] Ratio seguindo/seguidores desfavorável (1.171/3.439)
-- [ ] Sem UTM no link da bio
-- [ ] 644 posts → 3.439 seguidores (retorno baixo)
+- [ ] Bio inconsistente ("estética e saúde POA" vs. "medicina humanizada, longevidade") — operacional
+- [ ] Ratio seguindo/seguidores desfavorável (1.171/3.439) — operacional
+- [ ] Sem UTM no link da bio — operacional
+- [ ] 644 posts → 3.439 seguidores (retorno baixo) — operacional
 
 ### Google e Descoberta (97/100)
-- [ ] localPackSize 0 (não aparece no Local Pack)
-- [ ] 48 resultados (modesto para 2 anos de operação)
+- [ ] localPackSize 0 (não aparece no Local Pack) — operacional (Google Business Profile)
+- [ ] 48 resultados (modesto para 2 anos de operação) — conteúdo
 
 ### Conversão e Fluxo (85/100)
-- [ ] Formulário único (match engine resolve parcialmente)
-- [ ] Funil no GA4 não configurado (eventos existem, falta visualização)
+- [x] Formulário de contato adicionado em /contato com honeypot + time-gate (2026-05-28)
+- [x] 5 formulários ativos: agendamento, contato, newsletter, b2b-medicina, b2b-nutricao
+- [ ] Funil no GA4 não configurado (eventos existem, falta visualização) — operacional
 
 ### Percepção e Posicionamento (95/100)
-- [ ] Inconsistência de linguagem IG vs. Site
+- [ ] Inconsistência de linguagem IG vs. Site — operacional
 
 ---
 
@@ -675,9 +718,10 @@ schema: z.object({
 
 | Fase | Entregas | Status |
 |------|----------|--------|
-| P6 | Smart routing (match→agendamento), thank-you page, image optimization | Planejado |
-| P7 | GAS enhancement, Lighthouse CI, Web Vitals monitoring | Planejado |
-| P8 | Workflow editorial, content automation, newsletter digest | Parcial (GAS pronto) |
+| P6 | Smart routing (match→agendamento), thank-you page, image optimization | Completo |
+| P7 | GAS enhancement, Lighthouse CI, Web Vitals monitoring | Completo |
+| P8 | Workflow editorial, content automation, newsletter digest | Completo |
+| SEC | Auditoria de segurança: honeypot, CSP, email obfuscation, cookie cleanup | Completo |
 
 ### ARQ-ECOOA
 
@@ -701,7 +745,7 @@ src/scripts/web-vitals.ts     — LCP/CLS/INP/FCP/TTFB (151 linhas)
 src/layouts/BaseLayout.astro  — SEO, schema, CSP, analytics (449 linhas)
 src/pages/match.astro         — Match engine UI (630 linhas)
 src/pages/profissionais/[slug].astro — Perfil individual (450 linhas)
-google-apps-script.js         — Backend completo (572 linhas)
+google-apps-script.js         — Backend completo (590+ linhas, 5 formTypes)
 src/styles/tokens.css         — Design tokens
 public/sw.js                  — Service Worker v2
 ```

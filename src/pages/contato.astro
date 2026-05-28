@@ -4,7 +4,7 @@ import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
 
 const WA = WA_DEFAULT;
 ---
@@ -65,6 +65,49 @@ const WA = WA_DEFAULT;
       </div>
       <div class="r d2"><LocationCard /></div>
     </div>
+  </div>
+</section>
+
+<!-- Formulário de contato -->
+<section style="background:var(--color-cream);padding:86px 60px" aria-label="Formulário de contato">
+  <div style="max-width:500px;margin:0 auto">
+    <div class="lbl r" style="margin-bottom:16px;justify-content:center">formulário</div>
+    <h2 class="h2 r d1" style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)">Prefere escrever?<br>Deixe sua <em>mensagem.</em></h2>
+    <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas.</p>
+
+    <form action={FORM_ACTION} method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3 ecooa-form" id="form-contato" data-ok-target="#form-contato-ok" data-success-text="Mensagem enviada. Retornaremos em breve.">
+      <input type="hidden" name="_formType" value="contato" />
+      <input type="hidden" name="_source" value="contato" />
+      <input type="text" name="_honeypot" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="_loadedAt" value="" />
+
+      <div>
+        <label for="contato-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu nome</label>
+        <input type="text" id="contato-name" name="nome" required minlength="2" style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+      </div>
+      <div>
+        <label for="contato-email" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu e-mail</label>
+        <input type="email" id="contato-email" name="email" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+      </div>
+      <div>
+        <label for="contato-message" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">sua mensagem</label>
+        <textarea id="contato-message" name="mensagem" required minlength="10" rows="4" style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;resize:vertical"></textarea>
+      </div>
+
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:8px">
+        <input type="checkbox" id="contato-consent" name="consent" required style="margin-top:4px;cursor:pointer;min-width:16px" />
+        <label for="contato-consent" style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer">
+          Concordo em compartilhar meus dados conforme a <a href="/politica-de-privacidade" style="color:var(--color-brand-text);text-decoration:underline" target="_blank">política de privacidade</a>
+        </label>
+      </div>
+
+      <button type="submit" class="bd" style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer">enviar mensagem</button>
+      <p id="form-contato-ok" style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px">Mensagem enviada. Retornaremos em breve.</p>
+    </form>
+    <script>
+      import { initFormSubmit } from '../scripts/form-submit';
+      initFormSubmit();
+    </script>
   </div>
 </section>
 

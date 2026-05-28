@@ -8,7 +8,7 @@ const EMAIL_TO = 'ecooa.adm@gmail.com';
 const SHEET_NAME = 'ecooa-formularios';
 
 // Segurança
-const ALLOWED_FORM_TYPES = ['agendamento', 'b2b-medicina', 'b2b-nutricao', 'newsletter'];
+const ALLOWED_FORM_TYPES = ['agendamento', 'b2b-medicina', 'b2b-nutricao', 'newsletter', 'contato'];
 const ALLOWED_REDIRECT_HOSTS = ['somosecooa.com.br', 'www.somosecooa.com.br', 'ecooaonline.github.io'];
 const MAX_FIELD_LENGTH = 500;
 const MAX_SUBMISSIONS_PER_HOUR = 10;
@@ -156,6 +156,11 @@ function validateFormData(formType, data) {
     case 'newsletter':
       if (!isValidEmail(data.email)) return 'E-mail inválido.';
       break;
+    case 'contato':
+      if (!data.nome || data.nome.length < 2) return 'Nome inválido.';
+      if (!isValidEmail(data.email)) return 'E-mail inválido.';
+      if (!data.mensagem || data.mensagem.length < 10) return 'Mensagem muito curta.';
+      break;
   }
   return null;
 }
@@ -211,6 +216,8 @@ function getHeaders(formType) {
       return ['Data/Hora', 'Nome', 'Área de atuação', 'WhatsApp', 'Status'];
     case 'newsletter':
       return ['Data/Hora', 'E-mail', 'Origem', 'Status'];
+    case 'contato':
+      return ['Data/Hora', 'Nome', 'E-mail', 'Mensagem', 'Origem', 'Status'];
     default:
       return ['Data/Hora', 'Dados', 'Status'];
   }
@@ -234,6 +241,8 @@ function getRow(formType, data, timestamp) {
       return [timestamp, data.nome || '', data.area || '', data.whatsapp || '', 'Novo'];
     case 'newsletter':
       return [timestamp, data.email || '', data._source || 'site', 'Novo'];
+    case 'contato':
+      return [timestamp, data.nome || '', data.email || '', data.mensagem || '', data._source || 'site', 'Novo'];
     default:
       return [timestamp, JSON.stringify(data), 'Novo'];
   }
@@ -289,7 +298,8 @@ function sendNotification(formType, data, timestamp) {
     'agendamento': 'Novo agendamento',
     'b2b-medicina': 'Interesse B2B (Medicina)',
     'b2b-nutricao': 'Interesse B2B (Nutrição)',
-    'newsletter': 'Nova inscrição newsletter'
+    'newsletter': 'Nova inscrição newsletter',
+    'contato': 'Nova mensagem de contato'
   };
 
   const subject = 'ecooa | ' + (labels[formType] || 'Novo formulário');
