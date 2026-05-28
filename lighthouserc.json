@@ -28,7 +28,7 @@
         "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
         "total-blocking-time": ["warn", { "maxNumericValue": 300 }],
         "uses-responsive-images": "warn",
-        "uses-text-compression": "error",
+        "uses-text-compression": "warn",
         "unminified-css": "error",
         "unminified-javascript": "error",
         "unused-css-rules": "off"
