@@ -5,9 +5,12 @@
       "url": [
         "http://localhost/index.html",
         "http://localhost/ecooa-med/index.html",
+        "http://localhost/ecooa-esthetic/index.html",
         "http://localhost/profissionais/gustavo-gehrke/index.html",
+        "http://localhost/profissionais/index.html",
         "http://localhost/match/index.html",
         "http://localhost/blog/index.html",
+        "http://localhost/contato/index.html",
         "http://localhost/agendamento/index.html"
       ],
       "numberOfRuns": 1,
