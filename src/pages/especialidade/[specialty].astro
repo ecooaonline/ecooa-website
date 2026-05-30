@@ -6,7 +6,7 @@ import Marquee from '../../components/Marquee.astro';
 import ProfessionalCard from '../../components/ProfessionalCard.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import { WA_DEFAULT } from '../../data/constants';
-import { specialties, getSpecialtyBySlug } from '../../data/specialties';
+import { specialties } from '../../data/specialties';
 import { professionals } from '../../data/professionals';
 
 export async function getStaticPaths() {
@@ -17,17 +17,29 @@ export async function getStaticPaths() {
 }
 
 const { specialty } = Astro.props;
-const spec = getSpecialtyBySlug(specialty);
 
-if (!spec) {
+if (!specialty) {
   return new Response('Especialidade não encontrada', { status: 404 });
 }
 
+const spec = specialty;
+
 // Find professionals in this specialty's unit
 const professionalsInUnit = professionals.filter(p => p.unit === spec.unit);
-const relatedSpecialties = specialties.filter(s => s.unit === spec.unit && s.slug !== specialty).slice(0, 3);
+const relatedSpecialties = specialties.filter(s => s.unit === spec.unit && s.slug !== spec.slug).slice(0, 3);
 
 const WA = WA_DEFAULT;
+
+// Mapeia a unidade para uma MedicalSpecialty do schema.org (enum oficial).
+const unitToMedicalSpecialty: Record<string, string> = {
+  med: 'PrimaryCare',
+  esthetic: 'Dermatology',
+  working: 'Nutrition',
+  mind: 'Psychiatric',
+};
+
+const SITE_URL = 'https://www.somosecooa.com.br';
+const specialtyUrl = `${SITE_URL}/especialidade/${spec.slug}`;
 ---
 
 <BaseLayout
@@ -39,6 +51,24 @@ const WA = WA_DEFAULT;
     { name: spec.name, url: `/especialidade/${specialty}` }
   ]}
 >
+
+<!-- MedicalWebPage Schema (conteúdo YMYL de saúde) -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "name": `${spec.name} em Porto Alegre`,
+  "description": spec.description,
+  "url": specialtyUrl,
+  "inLanguage": "pt-BR",
+  "lastReviewed": "2026-05-30",
+  "mainEntityOfPage": specialtyUrl,
+  "medicalAudience": { "@type": "MedicalAudience", "audienceType": "Patient" },
+  "specialty": unitToMedicalSpecialty[spec.unit],
+  "about": { "@type": "MedicalEntity", "name": spec.name },
+  "keywords": spec.keywords.join(", "),
+  "isPartOf": { "@id": `${SITE_URL}/#website` },
+  "publisher": { "@id": `${SITE_URL}/#organization` }
+})} />
 
 <!-- Hero -->
 <div class="ph u-bg-cream">
