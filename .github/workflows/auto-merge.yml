@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: auto-merge-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   merge:
     runs-on: ubuntu-latest
