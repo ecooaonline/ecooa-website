@@ -11,12 +11,6 @@
 //   FCP  good ≤1800ms   needs-improvement ≤3000ms  poor >3000ms
 //   TTFB good ≤800ms    needs-improvement ≤1800ms  poor >1800ms
 
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
-
 type MetricRating = 'good' | 'needs-improvement' | 'poor';
 
 function rate(value: number, good: number, poor: number): MetricRating {
@@ -39,7 +33,10 @@ function report(name: string, value: number, rating: MetricRating): void {
   });
 }
 
-function safeObserve(type: string, callback: (entries: PerformanceObserverEntryList) => void): PerformanceObserver | null {
+function safeObserve(
+  type: string,
+  callback: (entries: PerformanceObserverEntryList) => void
+): PerformanceObserver | null {
   try {
     const observer = new PerformanceObserver(callback);
     observer.observe({ type, buffered: true });
@@ -54,7 +51,10 @@ function observeLCP(): void {
   let lastValue = 0;
   const observer = safeObserve('largest-contentful-paint', (list) => {
     const entries = list.getEntries();
-    const last = entries[entries.length - 1] as any;
+    const last = entries[entries.length - 1] as PerformanceEntry & {
+      renderTime?: number;
+      loadTime?: number;
+    };
     if (last) lastValue = last.renderTime || last.loadTime || 0;
   });
 
@@ -64,7 +64,13 @@ function observeLCP(): void {
       observer?.disconnect();
     }
   };
-  addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); }, { once: true });
+  addEventListener(
+    'visibilitychange',
+    () => {
+      if (document.visibilityState === 'hidden') flush();
+    },
+    { once: true }
+  );
   addEventListener('pagehide', flush, { once: true });
 }
 
@@ -72,10 +78,15 @@ function observeLCP(): void {
 function observeCLS(): void {
   let clsValue = 0;
   let sessionValue = 0;
-  let sessionEntries: any[] = [];
+  type LayoutShiftEntry = PerformanceEntry & {
+    hadRecentInput: boolean;
+    value: number;
+    startTime: number;
+  };
+  let sessionEntries: LayoutShiftEntry[] = [];
 
   safeObserve('layout-shift', (list) => {
-    for (const entry of list.getEntries() as any[]) {
+    for (const entry of list.getEntries() as LayoutShiftEntry[]) {
       if (entry.hadRecentInput) continue;
       const firstSessionEntry = sessionEntries[0];
       const lastSessionEntry = sessionEntries[sessionEntries.length - 1];
@@ -97,15 +108,22 @@ function observeCLS(): void {
   });
 
   const flush = () => report('CLS', clsValue, rate(clsValue, 0.1, 0.25));
-  addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); }, { once: true });
+  addEventListener(
+    'visibilitychange',
+    () => {
+      if (document.visibilityState === 'hidden') flush();
+    },
+    { once: true }
+  );
   addEventListener('pagehide', flush, { once: true });
 }
 
 // INP: track the worst interaction latency across the page lifetime.
 function observeINP(): void {
   let worstDuration = 0;
+  type EventEntry = PerformanceEntry & { interactionId?: number; duration: number };
   safeObserve('event', (list) => {
-    for (const entry of list.getEntries() as any[]) {
+    for (const entry of list.getEntries() as EventEntry[]) {
       if (entry.interactionId && entry.duration > worstDuration) {
         worstDuration = entry.duration;
       }
@@ -115,7 +133,13 @@ function observeINP(): void {
   const flush = () => {
     if (worstDuration > 0) report('INP', worstDuration, rate(worstDuration, 200, 500));
   };
-  addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); }, { once: true });
+  addEventListener(
+    'visibilitychange',
+    () => {
+      if (document.visibilityState === 'hidden') flush();
+    },
+    { once: true }
+  );
   addEventListener('pagehide', flush, { once: true });
 }
 
@@ -132,7 +156,9 @@ function observeFCP(): void {
 
 // TTFB: Time To First Byte from navigation timing.
 function observeTTFB(): void {
-  const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+  const nav = performance.getEntriesByType('navigation')[0] as
+    | PerformanceNavigationTiming
+    | undefined;
   if (!nav) return;
   const ttfb = nav.responseStart - nav.requestStart;
   if (ttfb > 0) report('TTFB', ttfb, rate(ttfb, 800, 1800));

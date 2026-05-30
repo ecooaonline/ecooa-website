@@ -19,10 +19,13 @@ const quickChips = [
   'depressao',
   'rejuvenescimento',
   'ortomolecular',
-].map((id) => curatedIntents.find((i) => i.id === id)).filter(Boolean);
+]
+  .map((id) => curatedIntents.find((i) => i.id === id))
+  .filter(Boolean);
 
 const pageTitle = 'ecooa.match | Triagem Inteligente';
-const pageDescription = 'Descreva o que você busca e encontre o profissional certo da ecooa em segundos. Triagem semântica privada, no seu navegador.';
+const pageDescription =
+  'Descreva o que você busca e encontre o profissional certo da ecooa em segundos. Triagem semântica privada, no seu navegador.';
 ---
 
 <BaseLayout
@@ -31,132 +34,180 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   currentPage="match"
   breadcrumbs={[{ name: 'Match', url: '/match' }]}
 >
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'MedicalWebPage',
+      name: 'ecooa.match - Triagem Semântica',
+      description: pageDescription,
+      url: 'https://www.somosecooa.com.br/match',
+      about: {
+        '@type': 'MedicalBusiness',
+        name: 'ecooa',
+        url: 'https://www.somosecooa.com.br',
+      },
+      audience: {
+        '@type': 'MedicalAudience',
+        audienceType: 'Patient',
+      },
+      lastReviewed: '2026-04-18',
+    })}
+  />
 
-<script type="application/ld+json" set:html={JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'MedicalWebPage',
-  'name': 'ecooa.match - Triagem Semântica',
-  'description': pageDescription,
-  'url': 'https://www.somosecooa.com.br/match',
-  'about': {
-    '@type': 'MedicalBusiness',
-    'name': 'ecooa',
-    'url': 'https://www.somosecooa.com.br',
-  },
-  'audience': {
-    '@type': 'MedicalAudience',
-    'audienceType': 'Patient',
-  },
-  'lastReviewed': '2026-04-18',
-})} />
-
-<!-- Hero -->
-<div class="ph" style="background:var(--color-ink);min-height:52vh">
-  <svg class="wsv u-op-05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
-  <div class="ph-c">
-    <div class="lbl lbl-lt r">ecooa.match</div>
-    <h1 class="h1 h1-w r d1 u-mt-10">Encontre o profissional<br><em>certo para você.</em></h1>
-    <p class="body body-lt r d2" style="margin-top:16px;max-width:560px">Descreva em poucas palavras o que você está buscando. Nossa triagem inteligente sugere os 3 especialistas mais adequados entre os 30 profissionais da ecooa.</p>
-    <p class="r d3" style="margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.05em;max-width:560px">
-      Tudo roda no seu navegador. Nenhuma palavra sua sai do seu dispositivo.
-    </p>
-  </div>
-</div>
-
-<Marquee />
-
-<!-- Como funciona -->
-<section class="u-bg-cream" aria-label="Como funciona">
-  <div class="w">
-    <div class="lbl r u-mb-16">como funciona</div>
-    <h2 class="h2 r d1 u-mb-32" style="font-size:clamp(24px,2.8vw,38px)">Triagem <em>rápida e privada.</em></h2>
-    <div class="match-how">
-      <div class="match-how-step r d1">
-        <div class="match-how-num">01</div>
-        <h3>Descreva</h3>
-        <p>Escreva em linguagem natural o que você está sentindo ou buscando. Sintomas, objetivos, dúvidas: o que quiser.</p>
-      </div>
-      <div class="match-how-step r d2">
-        <div class="match-how-num">02</div>
-        <h3>Analisamos</h3>
-        <p>Nossa engine cruza sua descrição com as especialidades dos 30 profissionais. Sinônimos, contexto clínico e curadoria médica são considerados.</p>
-      </div>
-      <div class="match-how-step r d3">
-        <div class="match-how-num">03</div>
-        <h3>Conecte</h3>
-        <p>Você recebe os 3 profissionais mais compatíveis. Escolha com quem tem mais afinidade e agende a consulta direto pelo WhatsApp.</p>
-      </div>
-    </div>
-    <div class="match-privacy r d3">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
-        <rect x="3" y="11" width="18" height="11" rx="2"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
-      <p>Sua busca não é enviada para nenhum servidor. Toda a triagem acontece localmente no seu navegador.</p>
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-ink);min-height:52vh">
+    <svg
+      class="wsv u-op-05"
+      viewBox="0 0 1440 500"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="white" stroke-width="1"
+        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl lbl-lt r">ecooa.match</div>
+      <h1 class="h1 h1-w r d1 u-mt-10">Encontre o profissional<br /><em>certo para você.</em></h1>
+      <p class="body body-lt r d2" style="margin-top:16px;max-width:560px">
+        Descreva em poucas palavras o que você está buscando. Nossa triagem inteligente sugere os 3
+        especialistas mais adequados entre os 30 profissionais da ecooa.
+      </p>
+      <p
+        class="r d3"
+        style="margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.05em;max-width:560px"
+      >
+        Tudo roda no seu navegador. Nenhuma palavra sua sai do seu dispositivo.
+      </p>
     </div>
   </div>
-</section>
 
-<!-- Match interface -->
-<section class="u-bg-warm" aria-label="Triagem inteligente">
-  <div class="w">
-    <div class="match-wrap">
-      <div class="lbl r u-mb-16">triagem inteligente</div>
-      <h2 class="h2 r d1 u-mb-24" style="font-size:clamp(24px,2.8vw,38px)">O que você <em>precisa?</em></h2>
+  <Marquee />
 
-      <form id="match-form" class="match-form r d2" autocomplete="off">
-        <label for="match-input" class="sr-only">Descreva o que você busca</label>
-        <textarea
-          id="match-input"
-          name="query"
-          rows="2"
-          maxlength="240"
-          placeholder="Ex: quero emagrecer, meu cabelo está caindo, tenho ansiedade..."
-          required
-          aria-describedby="match-help"
-        ></textarea>
-        <div class="match-form-row">
-          <p id="match-help" class="match-help">máx. 240 caracteres</p>
-          <button type="submit" class="bd" id="match-submit">encontrar profissional</button>
+  <!-- Como funciona -->
+  <section class="u-bg-cream" aria-label="Como funciona">
+    <div class="w">
+      <div class="lbl r u-mb-16">como funciona</div>
+      <h2 class="h2 r d1 u-mb-32" style="font-size:clamp(24px,2.8vw,38px)">
+        Triagem <em>rápida e privada.</em>
+      </h2>
+      <div class="match-how">
+        <div class="match-how-step r d1">
+          <div class="match-how-num">01</div>
+          <h3>Descreva</h3>
+          <p>
+            Escreva em linguagem natural o que você está sentindo ou buscando. Sintomas, objetivos,
+            dúvidas: o que quiser.
+          </p>
         </div>
-      </form>
-
-      <div class="match-chips r d3" aria-label="Acessos rápidos">
-        <p class="match-chips-label">ou escolha um tema:</p>
-        <div class="match-chips-list">
-          {quickChips.map((intent) => (
-            <button
-              type="button"
-              class="tag-pill match-chip"
-              data-intent-id={intent!.id}
-              data-intent-query={intent!.query}
-            >
-              {intent!.label}
-            </button>
-          ))}
+        <div class="match-how-step r d2">
+          <div class="match-how-num">02</div>
+          <h3>Analisamos</h3>
+          <p>
+            Nossa engine cruza sua descrição com as especialidades dos 30 profissionais. Sinônimos,
+            contexto clínico e curadoria médica são considerados.
+          </p>
+        </div>
+        <div class="match-how-step r d3">
+          <div class="match-how-num">03</div>
+          <h3>Conecte</h3>
+          <p>
+            Você recebe os 3 profissionais mais compatíveis. Escolha com quem tem mais afinidade e
+            agende a consulta direto pelo WhatsApp.
+          </p>
         </div>
       </div>
-
-      <div id="match-results" class="match-results" aria-live="polite"></div>
-
-      <div class="match-empty" id="match-empty">
-        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-          <line x1="9" y1="9" x2="9.01" y2="9"/>
-          <line x1="15" y1="9" x2="15.01" y2="9"/>
+      <div class="match-privacy r d3">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.3"
+          aria-hidden="true"
+        >
+          <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
-        <p>Conte o que você busca e sugerimos quem pode te atender.</p>
+        <p>
+          Sua busca não é enviada para nenhum servidor. Toda a triagem acontece localmente no seu
+          navegador.
+        </p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<CtaSection
-  heading="Prefere falar com<br><em>alguém da equipe?</em>"
-  subtext="Se a busca não trouxer exatamente o que você precisa, nosso time pode te orientar pessoalmente pelo WhatsApp."
-/>
+  <!-- Match interface -->
+  <section class="u-bg-warm" aria-label="Triagem inteligente">
+    <div class="w">
+      <div class="match-wrap">
+        <div class="lbl r u-mb-16">triagem inteligente</div>
+        <h2 class="h2 r d1 u-mb-24" style="font-size:clamp(24px,2.8vw,38px)">
+          O que você <em>precisa?</em>
+        </h2>
 
+        <form id="match-form" class="match-form r d2" autocomplete="off">
+          <label for="match-input" class="sr-only">Descreva o que você busca</label>
+          <textarea
+            id="match-input"
+            name="query"
+            rows="2"
+            maxlength="240"
+            placeholder="Ex: quero emagrecer, meu cabelo está caindo, tenho ansiedade..."
+            required
+            aria-describedby="match-help"></textarea>
+          <div class="match-form-row">
+            <p id="match-help" class="match-help">máx. 240 caracteres</p>
+            <button type="submit" class="bd" id="match-submit">encontrar profissional</button>
+          </div>
+        </form>
+
+        <div class="match-chips r d3" aria-label="Acessos rápidos">
+          <p class="match-chips-label">ou escolha um tema:</p>
+          <div class="match-chips-list">
+            {
+              quickChips.map((intent) => (
+                <button
+                  type="button"
+                  class="tag-pill match-chip"
+                  data-intent-id={intent!.id}
+                  data-intent-query={intent!.query}
+                >
+                  {intent!.label}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="match-results" class="match-results" aria-live="polite"></div>
+
+        <div class="match-empty" id="match-empty">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+          <p>Conte o que você busca e sugerimos quem pode te atender.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaSection
+    heading="Prefere falar com<br><em>alguém da equipe?</em>"
+    subtext="Se a busca não trouxer exatamente o que você precisa, nosso time pode te orientar pessoalmente pelo WhatsApp."
+  />
 </BaseLayout>
 
 <style>
@@ -168,7 +219,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     background: var(--color-cream);
     border: 1px solid var(--color-stone);
     padding: 20px;
-    transition: border-color .2s;
+    transition: border-color 0.2s;
   }
   .match-form:focus-within {
     border-color: var(--color-brand-deep);
@@ -202,7 +253,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     font-size: 10px;
     font-weight: 400;
     color: var(--color-ink-ghost);
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     margin: 0;
   }
   .match-chips {
@@ -212,7 +263,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     font-size: 11px;
     font-weight: 400;
     color: var(--color-ink-soft);
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     margin-bottom: 12px;
   }
   .match-chips-list {
@@ -225,7 +276,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     border: 1px solid var(--color-stone);
     background: transparent;
     font-family: inherit;
-    transition: all .15s;
+    transition: all 0.15s;
   }
   .match-chip:hover {
     border-color: var(--color-brand-deep);
@@ -241,14 +292,16 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   }
   .match-empty svg {
     margin-bottom: 12px;
-    opacity: .5;
+    opacity: 0.5;
   }
   .match-empty p {
     font-size: 14px;
     font-weight: 300;
     margin: 0;
   }
-  .match-empty.is-hidden { display: none; }
+  .match-empty.is-hidden {
+    display: none;
+  }
   .match-results {
     margin-top: 28px;
     display: grid;
@@ -264,7 +317,9 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     border: 1px solid var(--color-stone);
     text-decoration: none;
     color: inherit;
-    transition: border-color .2s, transform .2s;
+    transition:
+      border-color 0.2s,
+      transform 0.2s;
   }
   .match-card:hover {
     border-color: var(--color-brand-deep);
@@ -282,7 +337,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   .match-card-unit {
     font-size: 9px;
     font-weight: 500;
-    letter-spacing: .12em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-brand-text);
     margin-bottom: 4px;
@@ -306,7 +361,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     display: inline-block;
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     color: var(--color-brand-deep);
     border: 1px solid var(--color-brand-deep);
     padding: 3px 8px;
@@ -320,7 +375,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   .match-card-cta {
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: .06em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-ink);
     text-decoration: none;
@@ -335,16 +390,16 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     color: var(--color-ink-ghost);
     font-size: 12px;
     font-weight: 300;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
   }
   .match-intent-pill {
     display: inline-block;
     font-size: 10px;
     font-weight: 500;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-brand-deep);
-    background: rgba(88, 73, 64, .07);
+    background: rgba(88, 73, 64, 0.07);
     padding: 5px 10px;
     margin-bottom: 14px;
   }
@@ -363,7 +418,7 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     font-size: 11px;
     font-weight: 400;
     color: var(--color-brand-text);
-    letter-spacing: .12em;
+    letter-spacing: 0.12em;
     margin-bottom: 10px;
   }
   .match-how-step h3 {
@@ -402,9 +457,17 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     margin: 0;
   }
   @media (max-width: 720px) {
-    .match-how { grid-template-columns: 1fr; gap: 18px; }
-    .match-card { grid-template-columns: 64px 1fr; }
-    .match-card-photo { width: 64px; height: 86px; }
+    .match-how {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .match-card {
+      grid-template-columns: 64px 1fr;
+    }
+    .match-card-photo {
+      width: 64px;
+      height: 86px;
+    }
     .match-card-actions {
       grid-column: 1 / -1;
       flex-direction: row;
@@ -422,20 +485,15 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
 
   const form = document.getElementById('match-form') as HTMLFormElement | null;
   const input = document.getElementById('match-input') as HTMLTextAreaElement | null;
-  const results = document.getElementById('match-results');
-  const empty = document.getElementById('match-empty');
+  const results = document.getElementById('match-results') as HTMLElement;
+  const empty = document.getElementById('match-empty') as HTMLElement;
   const submit = document.getElementById('match-submit') as HTMLButtonElement | null;
   if (!form || !input || !results || !empty || !submit) throw new Error('match: DOM missing');
 
   // Domain attestation: se a engine estiver rodando em domínio não autorizado,
   // degrada silenciosamente (retorna resultados embaralhados). Não bloqueia
   // desenvolvimento local.
-  const ALLOWED = new Set([
-    'www.somosecooa.com.br',
-    'somosecooa.com.br',
-    'localhost',
-    '127.0.0.1',
-  ]);
+  const ALLOWED = new Set(['www.somosecooa.com.br', 'somosecooa.com.br', 'localhost', '127.0.0.1']);
   const host = typeof location !== 'undefined' ? location.hostname : '';
   const isAuthorized = ALLOWED.has(host) || host.endsWith('.somosecooa.com.br');
   const isPagesPreview = host.endsWith('.github.io');
@@ -445,9 +503,9 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   // Sliding window de 60s + cap de sessão + cooldown escalonado.
   // Persiste em sessionStorage para resistir a reloads simples.
   const RATE_WINDOW_MS = 60_000;
-  const RATE_MAX_PER_MIN = 10;      // 10 buscas/min (era 30, agressivo para scraping)
-  const SESSION_CAP = 50;            // 50 buscas por sessão (bloqueio dura a sessão)
-  const MIN_QUERY_LEN = 3;           // mínimo 3 chars
+  const RATE_MAX_PER_MIN = 10; // 10 buscas/min (era 30, agressivo para scraping)
+  const SESSION_CAP = 50; // 50 buscas por sessão (bloqueio dura a sessão)
+  const MIN_QUERY_LEN = 3; // mínimo 3 chars
   const COOLDOWN_STEPS = [0, 5_000, 15_000, 45_000]; // escalonamento após cada bloqueio
   const RL_KEY = 'ecooa_match_rl';
 
@@ -465,7 +523,9 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
     return { hits: [], sessionTotal: 0, blockCount: 0, blockedUntil: 0 };
   }
   function saveRateState(s: RateState) {
-    try { sessionStorage.setItem(RL_KEY, JSON.stringify(s)); } catch {}
+    try {
+      sessionStorage.setItem(RL_KEY, JSON.stringify(s));
+    } catch {}
   }
   const rl: RateState = loadRateState();
 
@@ -476,7 +536,10 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
       return { ok: false, reason: `muitas buscas. aguarde ${wait}s.` };
     }
     if (rl.sessionTotal >= SESSION_CAP) {
-      return { ok: false, reason: 'limite de buscas desta sessão atingido. recarregue amanhã ou fale pelo whatsapp.' };
+      return {
+        ok: false,
+        reason: 'limite de buscas desta sessão atingido. recarregue amanhã ou fale pelo whatsapp.',
+      };
     }
     rl.hits = rl.hits.filter((t) => now - t <= RATE_WINDOW_MS);
     if (rl.hits.length >= RATE_MAX_PER_MIN) {
@@ -494,7 +557,14 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
   }
 
   function unitLabel(unit: string): string {
-    return { med: 'ecooa.med', esthetic: 'ecooa.esthetic', working: 'ecooa.working', mind: 'ecooa.mind' }[unit] || 'ecooa';
+    return (
+      {
+        med: 'ecooa.med',
+        esthetic: 'ecooa.esthetic',
+        working: 'ecooa.working',
+        mind: 'ecooa.mind',
+      }[unit] || 'ecooa'
+    );
   }
 
   function renderLoading() {
@@ -514,7 +584,11 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
       // Safe-mode: retorna fundadores como resposta neutra, sem revelar a
       // qualidade real do ranking semântico proprietário.
       const founders = professionals.filter((p) => p.isFounder).slice(0, 3);
-      matches = founders.map((p) => ({ slug: p.slug, score: 0, reason: p.tags.slice(0, 2).join(', ') }));
+      matches = founders.map((p) => ({
+        slug: p.slug,
+        score: 0,
+        reason: p.tags.slice(0, 2).join(', '),
+      }));
     }
     if (matches.length === 0) {
       empty.classList.remove('is-hidden');
@@ -524,19 +598,20 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
 
     empty.classList.add('is-hidden');
     const intent = matches[0].matchedIntent;
-    const intentHtml = intent
-      ? `<div class="match-intent-pill">tema: ${intent.label}</div>`
-      : '';
+    const intentHtml = intent ? `<div class="match-intent-pill">tema: ${intent.label}</div>` : '';
 
-    const cards = matches.map((m) => {
-      const p = professionals.find((pp) => pp.slug === m.slug);
-      if (!p) return '';
-      const avif = p.photo.replace(/\.webp$/, '.avif');
-      const waMsg = encodeURIComponent(`Olá, cheguei pelo ecooa.match buscando: "${query}". Gostaria de agendar uma avaliação com ${p.name}.`);
-      const wa = `${WA_BASE}?text=${waMsg}`;
-      const intentId = m.matchedIntent?.id || 'freeform';
-      const formHref = `/agendamento?profissional=${encodeURIComponent(p.slug)}&from=match&intent=${encodeURIComponent(intentId)}`;
-      return `
+    const cards = matches
+      .map((m) => {
+        const p = professionals.find((pp) => pp.slug === m.slug);
+        if (!p) return '';
+        const avif = p.photo.replace(/\.webp$/, '.avif');
+        const waMsg = encodeURIComponent(
+          `Olá, cheguei pelo ecooa.match buscando: "${query}". Gostaria de agendar uma avaliação com ${p.name}.`
+        );
+        const wa = `${WA_BASE}?text=${waMsg}`;
+        const intentId = m.matchedIntent?.id || 'freeform';
+        const formHref = `/agendamento?profissional=${encodeURIComponent(p.slug)}&from=match&intent=${encodeURIComponent(intentId)}`;
+        return `
         <div class="match-card">
           <picture>
             <source srcset="${avif}" type="image/avif" />
@@ -555,7 +630,8 @@ const pageDescription = 'Descreva o que você busca e encontre o profissional ce
           </div>
         </div>
       `;
-    }).join('');
+      })
+      .join('');
 
     results.innerHTML = intentHtml + cards;
 

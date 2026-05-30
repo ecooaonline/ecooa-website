@@ -12,7 +12,7 @@ import { generateHeadingId } from '../../scripts/extract-headings';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
-  return posts.map(post => ({
+  return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
   }));
@@ -38,9 +38,7 @@ while ((match = headingRegex.exec(post.body || '')) !== null) {
 
 // Match author to professional via centralized mapping (no heuristics)
 const author = getAuthorByName(post.data.author);
-const matchedProfessional = author
-  ? professionals.find(p => p.slug === author.slug)
-  : undefined;
+const matchedProfessional = author ? professionals.find((p) => p.slug === author.slug) : undefined;
 
 const professional = author;
 const waTextProfessional = professional
@@ -48,15 +46,24 @@ const waTextProfessional = professional
   : encodeURIComponent('Olá, gostaria de agendar uma avaliação com a equipe ecooa');
 const WA_PROFESSIONAL = `${WA_BASE}?text=${waTextProfessional}`;
 
-const allPosts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-const relatedPosts = allPosts.filter(p => p.data.category === post.data.category && p.id !== post.id).slice(0, 3);
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const relatedPosts = allPosts
+  .filter((p) => p.data.category === post.data.category && p.id !== post.id)
+  .slice(0, 3);
 
 const WA = WA_DEFAULT;
-const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+const dateFormatted = new Date(post.data.date).toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
 
 // Medical categories use MedicalWebPage schema
-const isMedical = ['medicina', 'saude-mental', 'nutricao', 'longevidade'].includes(post.data.category);
+const isMedical = ['medicina', 'saude-mental', 'nutricao', 'longevidade'].includes(
+  post.data.category
+);
 const articleType = isMedical ? 'MedicalWebPage' : 'Article';
 
 // Share URLs
@@ -73,237 +80,403 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
   description={post.data.description}
   currentPage="blog"
   ogImage={post.data.image || '/favicon/og-image.jpg'}
-  breadcrumbs={[{ name: "Blog", url: "/blog" }, { name: post.data.title, url: `/blog/${post.id}` }]}
+  breadcrumbs={[
+    { name: 'Blog', url: '/blog' },
+    { name: post.data.title, url: `/blog/${post.id}` },
+  ]}
 >
-
-<!-- Article Schema -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": articleType,
-  "headline": post.data.title,
-  "description": post.data.description,
-  "image": `https://www.somosecooa.com.br${post.data.image || '/favicon/og-image.jpg'}`,
-  "datePublished": post.data.date,
-  "dateModified": post.data.lastModified || post.data.date,
-  "author": {
-    "@type": "Person",
-    "name": post.data.author,
-    "url": matchedProfessional ? `https://www.somosecooa.com.br/profissionais/${matchedProfessional.slug}` : undefined,
-    "worksFor": { "@type": "MedicalBusiness", "name": "ecooa" }
-  },
-  ...(isMedical && matchedProfessional ? {
-    "reviewedBy": {
-      "@type": "Person",
-      "name": matchedProfessional.name,
-      "url": `https://www.somosecooa.com.br/profissionais/${matchedProfessional.slug}`
-    },
-    "lastReviewed": post.data.lastModified || post.data.date
-  } : {}),
-  "publisher": {
-    "@type": "Organization",
-    "name": "ecooa",
-    "url": "https://www.somosecooa.com.br",
-    "logo": "https://www.somosecooa.com.br/favicon/favicon.svg"
-  },
-  "mainEntityOfPage": `https://www.somosecooa.com.br/blog/${post.id}`
-})} />
-
-<article style="background:var(--color-warm);padding:48px var(--section-px) 72px">
-  <div style="max-width:700px;margin:0 auto">
-
-    <!-- Meta -->
-    <div class="u-mb-24 r">
-      <a href="/blog" style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);text-decoration:none">← blog</a>
-    </div>
-
-    <div style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center" class="r d1">
-      <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">{post.data.category}</span>
-      <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{dateFormatted}</span>
-      <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">·</span>
-      <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">{readingTime} min de leitura</span>
-    </div>
-
-    <h1 style="font-family:var(--font-serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:var(--color-ink);line-height:1.2;letter-spacing:-.02em;margin-bottom:16px" class="r d1">{post.data.title}</h1>
-
-    <!-- Author block -->
-    {matchedProfessional ? (
-      <div style="display:flex;align-items:center;gap:16px;padding:20px;background:var(--color-cream);margin-bottom:32px" class="r d2">
-        <OptimizedImage
-          src={matchedProfessional.photo}
-          alt={matchedProfessional.name}
-          width={56}
-          height={56}
-          style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;aspect-ratio:1/1"
-        />
-        <div style="min-width:0">
-          <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin-bottom:2px">{post.data.author}</p>
-          <p style="font-size:11px;font-weight:300;color:var(--color-ink-soft);margin-bottom:4px;line-height:1.4">{matchedProfessional.role}</p>
-          {matchedProfessional.ig && (
-            <a
-              href={`https://instagram.com/${matchedProfessional.ig.replace('@', '')}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              style="font-size:11px;font-weight:400;color:var(--color-brand-text);text-decoration:none"
-            >{matchedProfessional.ig}</a>
-          )}
-        </div>
-      </div>
-    ) : (
-      <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:32px" class="r d2">por <strong style="font-weight:500">{post.data.author}</strong></p>
-    )}
-
-    <!-- Tags -->
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:40px" class="r d2">
-      {post.data.tags.map(tag => (
-        <span style="font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-ink-soft);border:1px solid var(--color-stone);padding:4px 10px">{tag}</span>
-      ))}
-    </div>
-
-    <!-- Highlight -->
-    {post.data.highlight && (
-      <div style="padding:24px 28px;background:var(--color-brand-light, #f0ebe3);border-left:3px solid var(--color-brand-text);margin-bottom:32px;font-family:var(--font-serif);font-size:clamp(16px,2.5vw,20px);font-weight:300;color:var(--color-ink);line-height:1.5;font-style:italic" class="r d3">
-        {post.data.highlight}
-      </div>
-    )}
-
-    <!-- Table of Contents -->
-    {headings.length > 2 && (
-      <TableOfContents items={headings} />
-    )}
-
-    <!-- Content -->
-    <div class="blog-content r d3">
-      <Content />
-    </div>
-
-    <script>
-      import { addHeadingIds } from '../../scripts/add-heading-ids';
-      addHeadingIds();
-    </script>
-
-    <DisclaimerMedico />
-
-    <!-- Share buttons -->
-    <div style="margin-top:36px;display:flex;align-items:center;gap:10px;flex-wrap:wrap" class="r">
-      <span style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-soft)">compartilhar</span>
-      <a href={shareWhatsApp} target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s">WhatsApp</a>
-      <a href={shareTwitter} target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s">X</a>
-      <a href={shareLinkedIn} target="_blank" rel="noopener noreferrer" style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s">LinkedIn</a>
-    </div>
-
-    <!-- Professional CTA -->
-    <div style="margin-top:48px;padding:36px;background:var(--color-cream);text-align:center" class="r">
-      {professional ? (
-        <>
-          <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">{professional.specialty}</p>
-          <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:6px">Converse com {professional.name}</p>
-          <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:22px">Agende sua avaliação e receba orientação personalizada.</p>
-          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <a href={WA_PROFESSIONAL} target="_blank" rel="noopener noreferrer" class="bd">agendar com {professional.name.split(' ')[0]}</a>
-            {professional.instagram && (
-              <a href={`https://instagram.com/${professional.instagram}`} target="_blank" rel="noopener noreferrer" class="ghost">conhecer no instagram</a>
-            )}
-          </div>
-        </>
-      ) : (
-        <>
-          <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:8px">Quer saber mais?</p>
-          <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">Agende sua avaliação com nossos especialistas.</p>
-          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <a href={WA_PROFESSIONAL} target="_blank" rel="noopener noreferrer" class="bd">falar pelo whatsapp</a>
-            <a href="/agendamento" class="ghost">agendar avaliação com nossa equipe</a>
-          </div>
-        </>
-      )}
-    </div>
-
-    <!-- Related articles -->
-    {relatedPosts.length > 0 && (
-      <div class="u-mt-48 r">
-        <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:20px">artigos relacionados</p>
-        <div style="display:grid;gap:16px">
-          {relatedPosts.map(rp => (
-            <a href={`/blog/${rp.id}`} style="display:block;padding:20px;background:var(--color-cream);text-decoration:none;color:inherit;transition:background .2s">
-              <p style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">{rp.data.category}</p>
-              <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--color-ink);line-height:1.3">{rp.data.title}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    )}
-
-    <!-- Newsletter -->
-    <div style="margin-top:48px;padding:36px;background:var(--color-ink);text-align:center" class="r">
-      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px">semana em saúde</p>
-      <p style="font-family:var(--font-serif);font-size:clamp(20px,3vw,24px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:8px">A ecooa te atualizando<br>sobre o <em>mundo da saúde.</em></p>
-      <p style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px">Novidades, ofertas e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.</p>
-      <form action={FORM_ACTION} method="POST" style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center" class="ecooa-form" data-success-text="Inscrito com sucesso." id="form-newsletter-blog">
-        <input type="hidden" name="_formType" value="newsletter" />
-        <input type="hidden" name="_source" value="blog-post" />
-        <!-- Honeypot -->
-        <input
-          type="text"
-          name="_honeypot"
-          style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"
-          tabindex="-1"
-          autocomplete="off"
-          aria-hidden="true"
-        />
-        <input type="email" name="email" required placeholder="seu melhor e-mail" aria-label="Seu melhor e-mail" style="flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none" />
-        <button type="submit" id="form-newsletter-submit" style="padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer">inscrever-se</button>
-      </form>
-      <script>
-        const form = document.getElementById('form-newsletter-blog');
-        const button = document.getElementById('form-newsletter-submit');
-        const honeypot = form.querySelector('[name="_honeypot"]');
-
-        form.addEventListener('submit', (e) => {
-          if (honeypot && honeypot.value.trim() !== '') {
-            e.preventDefault();
-            return false;
+  <!-- Article Schema -->
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': articleType,
+      headline: post.data.title,
+      description: post.data.description,
+      image: `https://www.somosecooa.com.br${post.data.image || '/favicon/og-image.jpg'}`,
+      datePublished: post.data.date,
+      dateModified: post.data.lastModified || post.data.date,
+      author: {
+        '@type': 'Person',
+        name: post.data.author,
+        url: matchedProfessional
+          ? `https://www.somosecooa.com.br/profissionais/${matchedProfessional.slug}`
+          : undefined,
+        worksFor: { '@type': 'MedicalBusiness', name: 'ecooa' },
+      },
+      ...(isMedical && matchedProfessional
+        ? {
+            reviewedBy: {
+              '@type': 'Person',
+              name: matchedProfessional.name,
+              url: `https://www.somosecooa.com.br/profissionais/${matchedProfessional.slug}`,
+            },
+            lastReviewed: post.data.lastModified || post.data.date,
           }
+        : {}),
+      publisher: {
+        '@type': 'Organization',
+        name: 'ecooa',
+        url: 'https://www.somosecooa.com.br',
+        logo: 'https://www.somosecooa.com.br/favicon/favicon.svg',
+      },
+      mainEntityOfPage: `https://www.somosecooa.com.br/blog/${post.id}`,
+    })}
+  />
 
-          button.disabled = true;
-          button.textContent = 'inscrevendo...';
-          button.style.opacity = '0.5';
+  <article style="background:var(--color-warm);padding:48px var(--section-px) 72px">
+    <div style="max-width:700px;margin:0 auto">
+      <!-- Meta -->
+      <div class="u-mb-24 r">
+        <a
+          href="/blog"
+          style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);text-decoration:none"
+          >← blog</a
+        >
+      </div>
 
-          setTimeout(() => {
-            button.disabled = false;
-            button.textContent = 'inscrever-se';
-            button.style.opacity = '1';
-          }, 5000);
-        });
-      </script>
-      <p class="ecooa-form-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-deep);margin-top:10px">Inscrito com sucesso.</p>
+      <div
+        style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center"
+        class="r d1"
+      >
+        <span
+          style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)"
+          >{post.data.category}</span
+        >
+        <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)"
+          >{dateFormatted}</span
+        >
+        <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">·</span>
+        <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)"
+          >{readingTime} min de leitura</span
+        >
+      </div>
+
+      <h1
+        style="font-family:var(--font-serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:var(--color-ink);line-height:1.2;letter-spacing:-.02em;margin-bottom:16px"
+        class="r d1"
+      >
+        {post.data.title}
+      </h1>
+
+      <!-- Author block -->
+      {
+        matchedProfessional ? (
+          <div
+            style="display:flex;align-items:center;gap:16px;padding:20px;background:var(--color-cream);margin-bottom:32px"
+            class="r d2"
+          >
+            <OptimizedImage
+              src={matchedProfessional.photo}
+              alt={matchedProfessional.name}
+              width={56}
+              height={56}
+              style="width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0;aspect-ratio:1/1"
+            />
+            <div style="min-width:0">
+              <p style="font-size:14px;font-weight:500;color:var(--color-ink);margin-bottom:2px">
+                {post.data.author}
+              </p>
+              <p style="font-size:11px;font-weight:300;color:var(--color-ink-soft);margin-bottom:4px;line-height:1.4">
+                {matchedProfessional.role}
+              </p>
+              {matchedProfessional.ig && (
+                <a
+                  href={`https://instagram.com/${matchedProfessional.ig.replace('@', '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="font-size:11px;font-weight:400;color:var(--color-brand-text);text-decoration:none"
+                >
+                  {matchedProfessional.ig}
+                </a>
+              )}
+            </div>
+          </div>
+        ) : (
+          <p
+            style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:32px"
+            class="r d2"
+          >
+            por <strong style="font-weight:500">{post.data.author}</strong>
+          </p>
+        )
+      }
+
+      <!-- Tags -->
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:40px" class="r d2">
+        {
+          post.data.tags.map((tag) => (
+            <span style="font-size:9px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--color-ink-soft);border:1px solid var(--color-stone);padding:4px 10px">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+
+      <!-- Highlight -->
+      {
+        post.data.highlight && (
+          <div
+            style="padding:24px 28px;background:var(--color-brand-light, #f0ebe3);border-left:3px solid var(--color-brand-text);margin-bottom:32px;font-family:var(--font-serif);font-size:clamp(16px,2.5vw,20px);font-weight:300;color:var(--color-ink);line-height:1.5;font-style:italic"
+            class="r d3"
+          >
+            {post.data.highlight}
+          </div>
+        )
+      }
+
+      <!-- Table of Contents -->
+      {headings.length > 2 && <TableOfContents items={headings} />}
+
+      <!-- Content -->
+      <div class="blog-content r d3">
+        <Content />
+      </div>
+
       <script>
-        import { initFormSubmit } from '../../scripts/form-submit';
-        initFormSubmit();
+        import { addHeadingIds } from '../../scripts/add-heading-ids';
+        addHeadingIds();
+      </script>
+
+      <DisclaimerMedico />
+
+      <!-- Share buttons -->
+      <div
+        style="margin-top:36px;display:flex;align-items:center;gap:10px;flex-wrap:wrap"
+        class="r"
+      >
+        <span
+          style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-ink-soft)"
+          >compartilhar</span
+        >
+        <a
+          href={shareWhatsApp}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s"
+          >WhatsApp</a
+        >
+        <a
+          href={shareTwitter}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s"
+          >X</a
+        >
+        <a
+          href={shareLinkedIn}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="font-size:11px;font-weight:400;color:var(--color-ink);text-decoration:none;border:1px solid var(--color-stone);padding:6px 14px;transition:background .2s"
+          >LinkedIn</a
+        >
+      </div>
+
+      <!-- Professional CTA -->
+      <div
+        style="margin-top:48px;padding:36px;background:var(--color-cream);text-align:center"
+        class="r"
+      >
+        {
+          professional ? (
+            <>
+              <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">
+                {professional.specialty}
+              </p>
+              <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:6px">
+                Converse com {professional.name}
+              </p>
+              <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:22px">
+                Agende sua avaliação e receba orientação personalizada.
+              </p>
+              <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                <a href={WA_PROFESSIONAL} target="_blank" rel="noopener noreferrer" class="bd">
+                  agendar com {professional.name.split(' ')[0]}
+                </a>
+                {professional.instagram && (
+                  <a
+                    href={`https://instagram.com/${professional.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="ghost"
+                  >
+                    conhecer no instagram
+                  </a>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <p style="font-family:var(--font-serif);font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:8px">
+                Quer saber mais?
+              </p>
+              <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">
+                Agende sua avaliação com nossos especialistas.
+              </p>
+              <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                <a href={WA_PROFESSIONAL} target="_blank" rel="noopener noreferrer" class="bd">
+                  falar pelo whatsapp
+                </a>
+                <a href="/agendamento" class="ghost">
+                  agendar avaliação com nossa equipe
+                </a>
+              </div>
+            </>
+          )
+        }
+      </div>
+
+      <!-- Related articles -->
+      {
+        relatedPosts.length > 0 && (
+          <div class="u-mt-48 r">
+            <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:20px">
+              artigos relacionados
+            </p>
+            <div style="display:grid;gap:16px">
+              {relatedPosts.map((rp) => (
+                <a
+                  href={`/blog/${rp.id}`}
+                  style="display:block;padding:20px;background:var(--color-cream);text-decoration:none;color:inherit;transition:background .2s"
+                >
+                  <p style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:6px">
+                    {rp.data.category}
+                  </p>
+                  <p style="font-family:var(--font-serif);font-size:18px;font-weight:300;color:var(--color-ink);line-height:1.3">
+                    {rp.data.title}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+
+      <!-- Newsletter -->
+      <div
+        style="margin-top:48px;padding:36px;background:var(--color-ink);text-align:center"
+        class="r"
+      >
+        <p
+          style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px"
+        >
+          semana em saúde
+        </p>
+        <p
+          style="font-family:var(--font-serif);font-size:clamp(20px,3vw,24px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:8px"
+        >
+          A ecooa te atualizando<br />sobre o <em>mundo da saúde.</em>
+        </p>
+        <p
+          style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px"
+        >
+          Novidades, ofertas e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.
+        </p>
+        <form
+          action={FORM_ACTION}
+          method="POST"
+          style="display:flex;gap:8px;max-width:380px;margin:0 auto;flex-wrap:wrap;justify-content:center"
+          class="ecooa-form"
+          data-success-text="Inscrito com sucesso."
+          id="form-newsletter-blog"
+        >
+          <input type="hidden" name="_formType" value="newsletter" />
+          <input type="hidden" name="_source" value="blog-post" />
+          <!-- Honeypot -->
+          <input
+            type="text"
+            name="_honeypot"
+            style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="seu melhor e-mail"
+            aria-label="Seu melhor e-mail"
+            style="flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none"
+          />
+          <button
+            type="submit"
+            id="form-newsletter-submit"
+            style="padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer"
+            >inscrever-se</button
+          >
+        </form>
+        <script>
+          (() => {
+            const form = document.getElementById('form-newsletter-blog') as HTMLFormElement | null;
+            const button = document.getElementById(
+              'form-newsletter-submit'
+            ) as HTMLButtonElement | null;
+            if (!form || !button) return;
+            const honeypot = form.querySelector<HTMLInputElement>('[name="_honeypot"]');
+
+            form.addEventListener('submit', (e) => {
+              if (honeypot && honeypot.value.trim() !== '') {
+                e.preventDefault();
+                return false;
+              }
+
+              button.disabled = true;
+              button.textContent = 'inscrevendo...';
+              button.style.opacity = '0.5';
+
+              setTimeout(() => {
+                button.disabled = false;
+                button.textContent = 'inscrever-se';
+                button.style.opacity = '1';
+              }, 5000);
+            });
+          })();
+        </script>
+        <p
+          class="ecooa-form-ok"
+          style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-deep);margin-top:10px"
+        >
+          Inscrito com sucesso.
+        </p>
+        <script>
+          import { initFormSubmit } from '../../scripts/form-submit';
+          initFormSubmit();
+        </script>
+      </div>
+
+      <script define:vars={{ title: post.data.title, category: post.data.category, slug: post.id }}>
+        (function trackBlogViewContent() {
+          function fire() {
+            window.fbq &&
+              window.fbq('track', 'ViewContent', {
+                content_name: title,
+                content_category: category,
+                content_ids: [slug],
+                content_type: 'article',
+              });
+          }
+          if (window.fbq) {
+            fire();
+            return;
+          }
+          var tries = 0;
+          var iv = setInterval(function () {
+            tries++;
+            if (window.fbq) {
+              clearInterval(iv);
+              fire();
+            } else if (tries > 60) {
+              clearInterval(iv);
+            }
+          }, 500);
+        })();
       </script>
     </div>
+  </article>
 
-    <script define:vars={{ title: post.data.title, category: post.data.category, slug: post.id }}>
-      (function trackBlogViewContent() {
-        function fire() {
-          window.fbq && window.fbq('track', 'ViewContent', {
-            content_name: title,
-            content_category: category,
-            content_ids: [slug],
-            content_type: 'article',
-          });
-        }
-        if (window.fbq) { fire(); return; }
-        var tries = 0;
-        var iv = setInterval(function () {
-          tries++;
-          if (window.fbq) { clearInterval(iv); fire(); }
-          else if (tries > 60) { clearInterval(iv); }
-        }, 500);
-      })();
-    </script>
-
-  </div>
-</article>
-
-<CtaSection heading='O cuidado começa com<br>uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você." />
-
+  <CtaSection
+    heading="O cuidado começa com<br>uma <em>conversa.</em>"
+    subtext="Estamos prontos para ouvir você."
+  />
 </BaseLayout>

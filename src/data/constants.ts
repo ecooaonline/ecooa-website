@@ -14,8 +14,15 @@ export const ADDRESS_STATE = 'RS';
 export const ADDRESS_ZIP = '90430-180';
 export const ADDRESS_FULL = `${ADDRESS_STREET} · ${ADDRESS_FLOOR} · ${ADDRESS_NEIGHBORHOOD} · ${ADDRESS_CITY}, ${ADDRESS_STATE}`;
 
-// Google Apps Script - URL do formulário
-export const FORM_ACTION = 'https://script.google.com/macros/s/AKfycbx3NOzVryn9prCJvKuBH20EFGiHoCENEZdR73zjaeiiUCl9PXk2sKrzGxrcrQ3ahQ-v/exec';
+// Google Tag Manager — lido de variável de ambiente; fallback para o ID de produção.
+// Para mudar: defina PUBLIC_GTM_ID no .env (ou secrets do GitHub Actions).
+export const GTM_ID = import.meta.env.PUBLIC_GTM_ID ?? 'GTM-TSR4GDMK';
 
-// Meta Pixel (Facebook/Instagram Ads)
-export const META_PIXEL_ID = '795926643274151';
+// Google Apps Script — URL do formulário.
+// Para mudar: defina FORM_ACTION no .env (ou secrets do GitHub Actions).
+export const FORM_ACTION =
+  import.meta.env.FORM_ACTION ??
+  'https://script.google.com/macros/s/AKfycbx3NOzVryn9prCJvKuBH20EFGiHoCENEZdR73zjaeiiUCl9PXk2sKrzGxrcrQ3ahQ-v/exec';
+
+// Meta Pixel (Facebook/Instagram Ads) — lido de variável de ambiente.
+export const META_PIXEL_ID = import.meta.env.PUBLIC_META_PIXEL_ID ?? '795926643274151';

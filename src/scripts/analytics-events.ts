@@ -3,20 +3,19 @@
  * Centralized event management for ecooa conversions
  */
 
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-    fbq?: (...args: any[]) => void;
-  }
-}
-
 export function initAnalyticsEvents() {
   if (typeof window === 'undefined') return;
 
   function onGtagReady(callback: () => void) {
-    if (window.gtag) { callback(); return; }
+    if (window.gtag) {
+      callback();
+      return;
+    }
     const check = setInterval(() => {
-      if (window.gtag) { clearInterval(check); callback(); }
+      if (window.gtag) {
+        clearInterval(check);
+        callback();
+      }
     }, 500);
     setTimeout(() => clearInterval(check), 30000);
   }
@@ -123,7 +122,7 @@ function trackUTMParameters() {
   const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
   const utmData: Record<string, string> = {};
 
-  utmKeys.forEach(key => {
+  utmKeys.forEach((key) => {
     const val = params.get(key) || sessionStorage.getItem(`ecooa_${key}`) || '';
     if (val) {
       utmData[key] = val;
@@ -149,24 +148,29 @@ function trackScrollDepth() {
   const tracked = new Set<number>();
   let ticking = false;
 
-  window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-      thresholds.forEach((threshold) => {
-        if (scrollPercent >= threshold && !tracked.has(threshold)) {
-          tracked.add(threshold);
-          window.gtag?.('event', 'scroll_depth', {
-            event_category: 'engagement',
-            event_label: `${Math.round(threshold * 100)}%`,
-            page_location: document.location.pathname,
-          });
-        }
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollPercent =
+          (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+        thresholds.forEach((threshold) => {
+          if (scrollPercent >= threshold && !tracked.has(threshold)) {
+            tracked.add(threshold);
+            window.gtag?.('event', 'scroll_depth', {
+              event_category: 'engagement',
+              event_label: `${Math.round(threshold * 100)}%`,
+              page_location: document.location.pathname,
+            });
+          }
+        });
+        ticking = false;
       });
-      ticking = false;
-    });
-  }, { passive: true });
+    },
+    { passive: true }
+  );
 }
 
 function trackEngagement() {

@@ -5,12 +5,6 @@
 //   - data-error-text:   texto a exibir em caso de erro
 //   - data-ok-target:    selector alternativo para o elemento de sucesso (padrão: .ecooa-form-ok irmão)
 
-declare global {
-  interface Window {
-    fbq?: (...args: any[]) => void;
-  }
-}
-
 const TIMEOUT_MS = 15000;
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 1500;
@@ -44,8 +38,8 @@ async function postForm(form: HTMLFormElement, attempt = 0): Promise<void> {
 
 export function initFormSubmit(selector = '.ecooa-form'): void {
   document.querySelectorAll<HTMLFormElement>(selector).forEach((form) => {
-    if ((form as any)._ecooaBound) return;
-    (form as any)._ecooaBound = true;
+    if ((form as HTMLFormElement & { _ecooaBound?: boolean })._ecooaBound) return;
+    (form as HTMLFormElement & { _ecooaBound?: boolean })._ecooaBound = true;
 
     const loadedAtField = form.querySelector<HTMLInputElement>('[name="_loadedAt"]');
     if (loadedAtField && !loadedAtField.value) loadedAtField.value = String(Date.now());
@@ -54,8 +48,9 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
       event.preventDefault();
       const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
       const okSelector = form.dataset.okTarget || '.ecooa-form-ok';
-      const okEl = form.parentElement?.querySelector<HTMLElement>(okSelector)
-        ?? document.querySelector<HTMLElement>(okSelector);
+      const okEl =
+        form.parentElement?.querySelector<HTMLElement>(okSelector) ??
+        document.querySelector<HTMLElement>(okSelector);
       const successText = form.dataset.successText || 'Recebido. Retornaremos em breve.';
       const errorText = form.dataset.errorText || 'erro. tente novamente';
       const originalLabel = btn?.textContent || '';
@@ -63,14 +58,20 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
       const hpField = form.querySelector<HTMLInputElement>('[name="_honeypot"]');
       if (hpField && hpField.value.trim() !== '') {
         form.style.display = 'none';
-        if (okEl) { okEl.textContent = successText; okEl.style.display = 'block'; }
+        if (okEl) {
+          okEl.textContent = successText;
+          okEl.style.display = 'block';
+        }
         return;
       }
       const ltField = form.querySelector<HTMLInputElement>('[name="_loadedAt"]');
       if (ltField && ltField.value) {
         if (Date.now() - parseInt(ltField.value, 10) < 2000) {
           form.style.display = 'none';
-          if (okEl) { okEl.textContent = successText; okEl.style.display = 'block'; }
+          if (okEl) {
+            okEl.textContent = successText;
+            okEl.style.display = 'block';
+          }
           return;
         }
       }
@@ -82,7 +83,8 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
 
       try {
         await postForm(form);
-        const formType = (form.querySelector('[name="_formType"]') as HTMLInputElement | null)?.value || 'unknown';
+        const formType =
+          (form.querySelector('[name="_formType"]') as HTMLInputElement | null)?.value || 'unknown';
 
         window.gtag?.('event', 'form_submit_success', {
           event_category: 'conversion',
@@ -91,7 +93,11 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
         // Meta Pixel: Lead para formulários de conversão, Subscribe para newsletter
         if (formType === 'newsletter') {
           window.fbq?.('track', 'Subscribe');
-        } else if (formType === 'agendamento' || formType === 'b2b-medicina' || formType === 'b2b-nutricao') {
+        } else if (
+          formType === 'agendamento' ||
+          formType === 'b2b-medicina' ||
+          formType === 'b2b-nutricao'
+        ) {
           window.fbq?.('track', 'Lead', { content_name: formType });
         }
 
@@ -99,7 +105,9 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
         // Newsletter and unknown forms keep the in-place success message.
         const CONVERSION_FORMS = ['agendamento', 'b2b-medicina', 'b2b-nutricao'];
         if (CONVERSION_FORMS.indexOf(formType) !== -1) {
-          const matchProf = (form.querySelector('[name="matchProfessional"]') as HTMLInputElement | null)?.value || '';
+          const matchProf =
+            (form.querySelector('[name="matchProfessional"]') as HTMLInputElement | null)?.value ||
+            '';
           const qs = new URLSearchParams({ type: formType });
           if (matchProf) qs.set('profissional', matchProf);
           window.location.href = '/obrigado?' + qs.toString();
@@ -115,7 +123,9 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
         if (btn) {
           btn.textContent = errorText;
           btn.disabled = false;
-          setTimeout(() => { btn.textContent = originalLabel; }, 4000);
+          setTimeout(() => {
+            btn.textContent = originalLabel;
+          }, 4000);
         }
         window.gtag?.('event', 'form_submit_error', {
           event_category: 'conversion',

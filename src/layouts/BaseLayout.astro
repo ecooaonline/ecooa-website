@@ -3,7 +3,16 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFab from '../components/WhatsAppFab.astro';
 import CookieConsent from '../components/CookieConsent.astro';
-import { WA_DEFAULT, ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP, META_PIXEL_ID } from '../data/constants';
+import {
+  WA_DEFAULT,
+  ADDRESS_STREET,
+  ADDRESS_FLOOR,
+  ADDRESS_CITY,
+  ADDRESS_STATE,
+  ADDRESS_ZIP,
+  META_PIXEL_ID,
+  GTM_ID,
+} from '../data/constants';
 
 import '../styles/tokens.css';
 import '../styles/base.css';
@@ -34,422 +43,583 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = currentPage ? `${title} | ecooa` : title;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://*.google-analytics.com https://*.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com https://www.facebook.com; worker-src 'self' blob:; form-action 'self' https://script.google.com; base-uri 'self'">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{fullTitle}</title>
-  <meta name="description" content={description}>
-  <meta name="author" content="ecooa">
-  <meta name="robots" content={robots}>
-  <link rel="canonical" href={canonicalURL}>
-  <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
-  <link rel="alternate" hreflang="x-default" href={canonicalURL} />
-  <link rel="alternate" type="application/rss+xml" title="ecooa | Blog" href="https://www.somosecooa.com.br/rss.xml" />
-  <link rel="alternate" type="application/feed+json" title="ecooa | Blog" href="https://www.somosecooa.com.br/feed.json" />
-  <meta name="theme-color" content="#FAF8F6">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.clarity.ms https://*.google-analytics.com https://*.googletagmanager.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https: wss:; frame-src https://www.googletagmanager.com https://www.facebook.com; worker-src 'self' blob:; form-action 'self' https://script.google.com; base-uri 'self'"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="ecooa" />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="ecooa | Blog"
+      href="https://www.somosecooa.com.br/rss.xml"
+    />
+    <link
+      rel="alternate"
+      type="application/feed+json"
+      title="ecooa | Blog"
+      href="https://www.somosecooa.com.br/feed.json"
+    />
+    <meta name="theme-color" content="#FAF8F6" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="ecooa">
-  <meta property="og:title" content={fullTitle}>
-  <meta property="og:description" content={description}>
-  <meta property="og:url" content={canonicalURL}>
-  <meta property="og:image" content={new URL(ogImage, Astro.site)}>
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="pt_BR">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ecooa" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="pt_BR" />
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content={fullTitle}>
-  <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content={new URL(ogImage, Astro.site)}>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
-  <!-- Favicons + PWA -->
-  <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png">
-  <link rel="manifest" href="/manifest.json">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="ecooa">
+    <!-- Favicons + PWA -->
+    <link rel="icon" href="/favicon/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="ecooa" />
 
-  <!-- Speculation Rules (prerender provável, Chrome 121+) -->
-  <script type="speculationrules">
-  {
-    "prerender": [
+    <!-- Speculation Rules (prerender provável, Chrome 121+) -->
+    <script type="speculationrules">
       {
-        "where": { "href_matches": ["/profissionais/*", "/ecooa-med", "/ecooa-esthetic", "/ecooa-mind", "/ecooa-working", "/quem-somos", "/agendamento"] },
-        "eagerness": "moderate"
-      }
-    ],
-    "prefetch": [
-      {
-        "where": { "href_matches": "/blog/*" },
-        "eagerness": "moderate"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Font preloads (only critical above-fold fonts) -->
-  <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/arboria-500.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/playfair-italic.woff2" as="font" type="font/woff2" crossorigin>
-
-  <!-- Structured Data: Organization -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://www.somosecooa.com.br/#website",
-        "url": "https://www.somosecooa.com.br",
-        "name": "ecooa",
-        "description": "Clínica multidisciplinar de saúde, estética e longevidade em Porto Alegre.",
-        "publisher": { "@id": "https://www.somosecooa.com.br/#organization" },
-        "inLanguage": "pt-BR",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://www.somosecooa.com.br/match?q={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
-      },
-      {
-        "@type": "MedicalBusiness",
-        "@id": "https://www.somosecooa.com.br/#organization",
-        "name": "ecooa",
-        "alternateName": "ecooa - Saúde, Estética e Longevidade",
-        "description": "Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.",
-        "url": "https://www.somosecooa.com.br",
-        "telephone": "+5551991460909",
-        "image": "https://www.somosecooa.com.br/favicon/og-image.jpg",
-        "logo": "https://www.somosecooa.com.br/favicon/favicon.svg",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": `${ADDRESS_STREET}, ${ADDRESS_FLOOR}`,
-          "addressLocality": ADDRESS_CITY,
-          "addressRegion": ADDRESS_STATE,
-          "postalCode": ADDRESS_ZIP,
-          "addressCountry": "BR"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -30.0277,
-          "longitude": -51.2007
-        },
-        "hasMap": "https://www.google.com/maps/place/ecooa",
-        "openingHoursSpecification": [{
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "09:00",
-          "closes": "20:00"
-        }],
-        "sameAs": [
-          "https://instagram.com/somos.ecooa",
-          "https://www.google.com/maps/place/ecooa"
-        ],
-        "priceRange": "$$$",
-        "medicalSpecialty": ["Dermatology","Nutrition","Psychology","Psychiatry","Aesthetic Medicine"],
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "bestRating": "5",
-          "worstRating": "1",
-          "ratingCount": "65",
-          "reviewCount": "65"
-        },
-        "areaServed": {
-          "@type": "City",
-          "name": "Porto Alegre",
-          "sameAs": "https://pt.wikipedia.org/wiki/Porto_Alegre"
-        },
-        "founder": {
-          "@type": "Person",
-          "name": "Gustavo Gehrke",
-          "jobTitle": "Médico Generalista"
-        },
-        "numberOfEmployees": {
-          "@type": "QuantitativeValue",
-          "minValue": 30
-        },
-        "foundingDate": "2021",
-        "knowsLanguage": ["pt-BR"],
-        "knowsAbout": [
-          "Medicina Metabólica",
-          "Reposição Hormonal",
-          "Emagrecimento Clínico",
-          "Longevidade",
-          "Tricologia",
-          "Transplante Capilar",
-          "Harmonização Orofacial",
-          "Dermatologia Estética",
-          "Nutrição Esportiva",
-          "Nutrição Comportamental",
-          "Psicologia Clínica",
-          "Psicologia Esportiva",
-          "Bioimplantes Hormonais",
-          "Testes Genéticos"
-        ],
-        "paymentAccepted": "Cash, Credit Card, Debit Card, PIX",
-        "currenciesAccepted": "BRL",
-        "slogan": "Saúde, estética e longevidade que conversam entre si.",
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Protocolos ecooa.med",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Método Gehrke 360°", "procedureType": "https://schema.org/DiagnosticProcedure" } },
-            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Protocolo Peso Seguro", "procedureType": "https://schema.org/TherapeuticProcedure" } },
-            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Protocolo Tricometabólico", "procedureType": "https://schema.org/TherapeuticProcedure" } },
-            { "@type": "Offer", "itemOffered": { "@type": "MedicalProcedure", "name": "Bioimplantes Metabólicos", "procedureType": "https://schema.org/TherapeuticProcedure" } }
-          ]
-        }
-      }
-    ]
-  })} />
-
-  {/* Breadcrumb Structured Data */}
-  {breadcrumbs && breadcrumbs.length > 0 && (
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.somosecooa.com.br" },
-        ...breadcrumbs.map((bc, i) => ({
-          "@type": "ListItem",
-          "position": i + 2,
-          "name": bc.name,
-          "item": `https://www.somosecooa.com.br${bc.url}`
-        }))
-      ]
-    })} />
-  )}
-
-  <!-- Google Tag Manager (interaction-only, consent-gated) -->
-  <script>
-  window.dataLayer=window.dataLayer||[];
-  function loadGTM(){if(window._gtmLoaded)return;window._gtmLoaded=true;
-  dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});
-  var j=document.createElement('script');j.async=true;
-  j.src='https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
-  document.head.appendChild(j);}
-  function setupGTMListeners(){
-  if(window._gtmListenersAttached)return;window._gtmListenersAttached=true;
-  document.addEventListener('scroll',loadGTM,{once:true,passive:true});
-  document.addEventListener('click',loadGTM,{once:true});
-  document.addEventListener('touchstart',loadGTM,{once:true,passive:true});
-  document.addEventListener('keydown',loadGTM,{once:true});
-  setTimeout(loadGTM,12000);}
-  if(localStorage.getItem('ecooa_cookie_consent')==='accepted'){setupGTMListeners();}
-  window.addEventListener('ecooa_consent_accepted',function(){setupGTMListeners();},{once:true});
-  </script>
-
-  <!-- Meta Pixel (interaction-only, consent-gated) -->
-  <script define:vars={{ pixelId: META_PIXEL_ID }}>
-  function loadMetaPixel(){if(window._fbqLoaded)return;window._fbqLoaded=true;
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-  (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  window.fbq('init',pixelId);window.fbq('track','PageView');}
-  function setupPixelListeners(){
-  if(window._fbqListenersAttached)return;window._fbqListenersAttached=true;
-  document.addEventListener('scroll',loadMetaPixel,{once:true,passive:true});
-  document.addEventListener('click',loadMetaPixel,{once:true});
-  document.addEventListener('touchstart',loadMetaPixel,{once:true,passive:true});
-  document.addEventListener('keydown',loadMetaPixel,{once:true});
-  setTimeout(loadMetaPixel,12000);}
-  if(localStorage.getItem('ecooa_cookie_consent')==='accepted'){setupPixelListeners();}
-  window.addEventListener('ecooa_consent_accepted',function(){setupPixelListeners();},{once:true});
-  </script>
-</head>
-<body data-wa={WA_DEFAULT}>
-  <!-- GTM noscript fallback removed: cannot be consent-gated without JS -->
-
-  <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
-
-  <Nav currentPage={currentPage} />
-
-  <main id="main-content">
-    <slot />
-  </main>
-
-  <Footer />
-  <WhatsAppFab />
-  <CookieConsent />
-
-  <!-- Core UI scripts (menu, reveal, cursor) -->
-  <script>
-    // Mobile menu
-    const toggle = document.querySelector('.nav-toggle');
-    const menu = document.getElementById('nav-menu');
-    if (toggle && menu) {
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-        menu.classList.toggle('open');
-        document.body.style.overflow = expanded ? '' : 'hidden';
-      });
-      menu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          toggle.setAttribute('aria-expanded', 'false');
-          menu.classList.remove('open');
-          document.body.style.overflow = '';
-        });
-      });
-    }
-
-    // Reveal animation
-    const obs = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-      }
-    }, { threshold: 0.05 });
-    document.querySelectorAll('.r').forEach(el => obs.observe(el));
-
-    // Close menu on Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu?.classList.contains('open')) {
-        toggle?.setAttribute('aria-expanded', 'false');
-        menu?.classList.remove('open');
-        document.body.style.overflow = '';
-        (toggle as HTMLElement)?.focus();
-      }
-    });
-
-    document.querySelectorAll<HTMLElement>('.eml').forEach(function(el) {
-      el.textContent = (el.dataset.u || '') + '@' + (el.dataset.d || '');
-    });
-    document.querySelectorAll<HTMLAnchorElement>('.eml-link').forEach(function(el) {
-      el.href = 'mailto:' + (el.dataset.u || '') + '@' + (el.dataset.d || '');
-    });
-  </script>
-
-  <!-- Custom cursor (desktop only) -->
-  <script>
-    import '../scripts/cursor';
-  </script>
-
-  <!-- Deferred: analytics, service worker, exit intent -->
-  <script>
-    const _idle = window.requestIdleCallback || ((cb: Function) => setTimeout(cb, 300));
-
-    // Analytics events
-    _idle(() => { import('../scripts/analytics-events').then(m => m.initAnalyticsEvents()); });
-
-    // Web Vitals monitoring (reports LCP, CLS, INP, FCP, TTFB to GA4)
-    _idle(() => { import('../scripts/web-vitals').then(m => m.initWebVitals()); });
-
-    // Service Worker
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
-    }
-
-    // Exit intent popup (lazy-injected)
-    window.addEventListener('load', () => {
-      const key = 'ecooa_exit_shown';
-      if (sessionStorage.getItem(key)) return;
-      let shown = false;
-
-      function show() {
-        if (shown) return;
-        const isConversionPage = ['/agendamento', '/contato'].some(p => window.location.pathname.includes(p));
-        if (isConversionPage) return;
-        shown = true;
-        sessionStorage.setItem(key, '1');
-
-        const previousFocus = document.activeElement as HTMLElement | null;
-
-        const d = document.createElement('div');
-        d.id = 'exit-popup';
-        d.setAttribute('role', 'dialog');
-        d.setAttribute('aria-modal', 'true');
-        d.setAttribute('aria-label', 'Agende sua avaliação');
-        d.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(28,25,23,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center';
-
-        const inner = document.createElement('div');
-        inner.style.cssText = 'background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative';
-
-        const closeBtn = document.createElement('button');
-        closeBtn.id = 'exit-popup-close';
-        closeBtn.style.cssText = 'position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer';
-        closeBtn.setAttribute('aria-label', 'Fechar');
-        closeBtn.textContent = '\u2715';
-
-        const label = document.createElement('p');
-        label.style.cssText = 'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px';
-        label.textContent = 'antes de ir';
-
-        const title = document.createElement('p');
-        title.style.cssText = 'font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px';
-        const em = document.createElement('em');
-        em.textContent = 'avaliação?';
-        title.append('Que tal agendar', document.createElement('br'), 'sua ', em);
-
-        const subtitle = document.createElement('p');
-        subtitle.style.cssText = 'font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px';
-        subtitle.textContent = 'Converse com nossa equipe e descubra o melhor caminho para seus objetivos.';
-
-        const actions = document.createElement('div');
-        actions.style.cssText = 'display:flex;flex-direction:column;gap:10px;align-items:center';
-
-        const waLink = document.createElement('a');
-        const waHref = document.body.dataset.wa || '';
-        waLink.href = /^https?:\/\//i.test(waHref) ? waHref : '#';
-        waLink.target = '_blank';
-        waLink.rel = 'noopener noreferrer';
-        waLink.className = 'bd';
-        waLink.style.cssText = 'width:100%;text-align:center';
-        waLink.textContent = 'falar pelo whatsapp';
-
-        const scheduleLink = document.createElement('a');
-        scheduleLink.href = '/agendamento';
-        scheduleLink.className = 'ghost';
-        scheduleLink.style.cssText = 'width:100%;text-align:center';
-        scheduleLink.textContent = 'agendar avaliação';
-
-        actions.append(waLink, scheduleLink);
-        inner.append(closeBtn, label, title, subtitle, actions);
-        d.append(inner);
-        document.body.appendChild(d);
-        window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
-
-        // Focus trap
-        const focusableEls = d.querySelectorAll<HTMLElement>('a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])');
-        const firstFocusable = focusableEls[0];
-        const lastFocusable = focusableEls[focusableEls.length - 1];
-        firstFocusable?.focus();
-
-        d.addEventListener('keydown', (e) => {
-          if (e.key !== 'Tab') return;
-          if (e.shiftKey) {
-            if (document.activeElement === firstFocusable) { e.preventDefault(); lastFocusable?.focus(); }
-          } else {
-            if (document.activeElement === lastFocusable) { e.preventDefault(); firstFocusable?.focus(); }
+        "prerender": [
+          {
+            "where": {
+              "href_matches": [
+                "/profissionais/*",
+                "/ecooa-med",
+                "/ecooa-esthetic",
+                "/ecooa-mind",
+                "/ecooa-working",
+                "/quem-somos",
+                "/agendamento"
+              ]
+            },
+            "eagerness": "moderate"
           }
-        });
+        ],
+        "prefetch": [
+          {
+            "where": { "href_matches": "/blog/*" },
+            "eagerness": "moderate"
+          }
+        ]
+      }
+    </script>
 
-        const close = () => { d.remove(); previousFocus?.focus?.(); };
-        closeBtn.addEventListener('click', close);
-        d.addEventListener('click', (e) => { if (e.target === d) close(); });
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); }, { once: true });
+    <!-- Font preloads (only critical above-fold fonts) -->
+    <link rel="preload" href="/fonts/arboria-300.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/arboria-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/arboria-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/playfair-italic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Structured Data: Organization -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'WebSite',
+            '@id': 'https://www.somosecooa.com.br/#website',
+            url: 'https://www.somosecooa.com.br',
+            name: 'ecooa',
+            description:
+              'Clínica multidisciplinar de saúde, estética e longevidade em Porto Alegre.',
+            publisher: { '@id': 'https://www.somosecooa.com.br/#organization' },
+            inLanguage: 'pt-BR',
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: {
+                '@type': 'EntryPoint',
+                urlTemplate: 'https://www.somosecooa.com.br/match?q={search_term_string}',
+              },
+              'query-input': 'required name=search_term_string',
+            },
+          },
+          {
+            '@type': 'MedicalBusiness',
+            '@id': 'https://www.somosecooa.com.br/#organization',
+            name: 'ecooa',
+            alternateName: 'ecooa - Saúde, Estética e Longevidade',
+            description:
+              'Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.',
+            url: 'https://www.somosecooa.com.br',
+            telephone: '+5551991460909',
+            image: 'https://www.somosecooa.com.br/favicon/og-image.jpg',
+            logo: 'https://www.somosecooa.com.br/favicon/favicon.svg',
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: `${ADDRESS_STREET}, ${ADDRESS_FLOOR}`,
+              addressLocality: ADDRESS_CITY,
+              addressRegion: ADDRESS_STATE,
+              postalCode: ADDRESS_ZIP,
+              addressCountry: 'BR',
+            },
+            geo: {
+              '@type': 'GeoCoordinates',
+              latitude: -30.0277,
+              longitude: -51.2007,
+            },
+            hasMap: 'https://www.google.com/maps/place/ecooa',
+            openingHoursSpecification: [
+              {
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                opens: '09:00',
+                closes: '20:00',
+              },
+            ],
+            sameAs: [
+              'https://instagram.com/somos.ecooa',
+              'https://www.google.com/maps/place/ecooa',
+            ],
+            priceRange: '$$$',
+            medicalSpecialty: [
+              'Dermatology',
+              'Nutrition',
+              'Psychology',
+              'Psychiatry',
+              'Aesthetic Medicine',
+            ],
+            aggregateRating: {
+              '@type': 'AggregateRating',
+              ratingValue: '5.0',
+              bestRating: '5',
+              worstRating: '1',
+              ratingCount: '65',
+              reviewCount: '65',
+            },
+            areaServed: {
+              '@type': 'City',
+              name: 'Porto Alegre',
+              sameAs: 'https://pt.wikipedia.org/wiki/Porto_Alegre',
+            },
+            founder: {
+              '@type': 'Person',
+              name: 'Gustavo Gehrke',
+              jobTitle: 'Médico Generalista',
+            },
+            numberOfEmployees: {
+              '@type': 'QuantitativeValue',
+              minValue: 30,
+            },
+            foundingDate: '2021',
+            knowsLanguage: ['pt-BR'],
+            knowsAbout: [
+              'Medicina Metabólica',
+              'Reposição Hormonal',
+              'Emagrecimento Clínico',
+              'Longevidade',
+              'Tricologia',
+              'Transplante Capilar',
+              'Harmonização Orofacial',
+              'Dermatologia Estética',
+              'Nutrição Esportiva',
+              'Nutrição Comportamental',
+              'Psicologia Clínica',
+              'Psicologia Esportiva',
+              'Bioimplantes Hormonais',
+              'Testes Genéticos',
+            ],
+            paymentAccepted: 'Cash, Credit Card, Debit Card, PIX',
+            currenciesAccepted: 'BRL',
+            slogan: 'Saúde, estética e longevidade que conversam entre si.',
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Protocolos ecooa.med',
+              itemListElement: [
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'MedicalProcedure',
+                    name: 'Método Gehrke 360°',
+                    procedureType: 'https://schema.org/DiagnosticProcedure',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'MedicalProcedure',
+                    name: 'Protocolo Peso Seguro',
+                    procedureType: 'https://schema.org/TherapeuticProcedure',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'MedicalProcedure',
+                    name: 'Protocolo Tricometabólico',
+                    procedureType: 'https://schema.org/TherapeuticProcedure',
+                  },
+                },
+                {
+                  '@type': 'Offer',
+                  itemOffered: {
+                    '@type': 'MedicalProcedure',
+                    name: 'Bioimplantes Metabólicos',
+                    procedureType: 'https://schema.org/TherapeuticProcedure',
+                  },
+                },
+              ],
+            },
+          },
+        ],
+      })}
+    />
+
+    {/* Breadcrumb Structured Data */}
+    {
+      breadcrumbs && breadcrumbs.length > 0 && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://www.somosecooa.com.br',
+              },
+              ...breadcrumbs.map((bc, i) => ({
+                '@type': 'ListItem',
+                position: i + 2,
+                name: bc.name,
+                item: `https://www.somosecooa.com.br${bc.url}`,
+              })),
+            ],
+          })}
+        />
+      )
+    }
+
+    <!-- Google Tag Manager (interaction-only, consent-gated) -->
+    <script define:vars={{ gtmId: GTM_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function loadGTM() {
+        if (window._gtmLoaded) return;
+        window._gtmLoaded = true;
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var j = document.createElement('script');
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + gtmId;
+        document.head.appendChild(j);
+      }
+      function setupGTMListeners() {
+        if (window._gtmListenersAttached) return;
+        window._gtmListenersAttached = true;
+        document.addEventListener('scroll', loadGTM, { once: true, passive: true });
+        document.addEventListener('click', loadGTM, { once: true });
+        document.addEventListener('touchstart', loadGTM, { once: true, passive: true });
+        document.addEventListener('keydown', loadGTM, { once: true });
+        setTimeout(loadGTM, 12000);
+      }
+      if (localStorage.getItem('ecooa_cookie_consent') === 'accepted') {
+        setupGTMListeners();
+      }
+      window.addEventListener(
+        'ecooa_consent_accepted',
+        function () {
+          setupGTMListeners();
+        },
+        { once: true }
+      );
+    </script>
+
+    <!-- Meta Pixel (interaction-only, consent-gated) -->
+    <script define:vars={{ pixelId: META_PIXEL_ID }}>
+      function loadMetaPixel() {
+        if (window._fbqLoaded) return;
+        window._fbqLoaded = true;
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = '2.0';
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        window.fbq('init', pixelId);
+        window.fbq('track', 'PageView');
+      }
+      function setupPixelListeners() {
+        if (window._fbqListenersAttached) return;
+        window._fbqListenersAttached = true;
+        document.addEventListener('scroll', loadMetaPixel, { once: true, passive: true });
+        document.addEventListener('click', loadMetaPixel, { once: true });
+        document.addEventListener('touchstart', loadMetaPixel, { once: true, passive: true });
+        document.addEventListener('keydown', loadMetaPixel, { once: true });
+        setTimeout(loadMetaPixel, 12000);
+      }
+      if (localStorage.getItem('ecooa_cookie_consent') === 'accepted') {
+        setupPixelListeners();
+      }
+      window.addEventListener(
+        'ecooa_consent_accepted',
+        function () {
+          setupPixelListeners();
+        },
+        { once: true }
+      );
+    </script>
+  </head>
+  <body data-wa={WA_DEFAULT}>
+    <!-- GTM noscript fallback removed: cannot be consent-gated without JS -->
+
+    <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
+
+    <Nav currentPage={currentPage} />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+    <WhatsAppFab />
+    <CookieConsent />
+
+    <!-- Core UI scripts (menu, reveal, cursor) -->
+    <script>
+      // Mobile menu
+      const toggle = document.querySelector('.nav-toggle');
+      const menu = document.getElementById('nav-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          menu.classList.toggle('open');
+          document.body.style.overflow = expanded ? '' : 'hidden';
+        });
+        menu.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.remove('open');
+            document.body.style.overflow = '';
+          });
+        });
       }
 
-      document.addEventListener('mouseout', (e) => { if ((e as MouseEvent).clientY <= 0) show(); });
-      if ('ontouchstart' in window) setTimeout(show, 45000);
-    });
-  </script>
-</body>
+      // Reveal animation
+      const obs = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              obs.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.05 }
+      );
+      document.querySelectorAll('.r').forEach((el) => obs.observe(el));
+
+      // Close menu on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && menu?.classList.contains('open')) {
+          toggle?.setAttribute('aria-expanded', 'false');
+          menu?.classList.remove('open');
+          document.body.style.overflow = '';
+          (toggle as HTMLElement)?.focus();
+        }
+      });
+
+      document.querySelectorAll<HTMLElement>('.eml').forEach(function (el) {
+        el.textContent = (el.dataset.u || '') + '@' + (el.dataset.d || '');
+      });
+      document.querySelectorAll<HTMLAnchorElement>('.eml-link').forEach(function (el) {
+        el.href = 'mailto:' + (el.dataset.u || '') + '@' + (el.dataset.d || '');
+      });
+    </script>
+
+    <!-- Custom cursor (desktop only) -->
+    <script>
+      import '../scripts/cursor';
+    </script>
+
+    <!-- Deferred: analytics, service worker, exit intent -->
+    <script>
+      const _idle = window.requestIdleCallback || ((cb: Function) => setTimeout(cb, 300));
+
+      // Analytics events
+      _idle(() => {
+        import('../scripts/analytics-events').then((m) => m.initAnalyticsEvents());
+      });
+
+      // Web Vitals monitoring (reports LCP, CLS, INP, FCP, TTFB to GA4)
+      _idle(() => {
+        import('../scripts/web-vitals').then((m) => m.initWebVitals());
+      });
+
+      // Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+
+      // Exit intent popup (lazy-injected)
+      window.addEventListener('load', () => {
+        const key = 'ecooa_exit_shown';
+        if (sessionStorage.getItem(key)) return;
+        let shown = false;
+
+        function show() {
+          if (shown) return;
+          const isConversionPage = ['/agendamento', '/contato'].some((p) =>
+            window.location.pathname.includes(p)
+          );
+          if (isConversionPage) return;
+          shown = true;
+          sessionStorage.setItem(key, '1');
+
+          const previousFocus = document.activeElement as HTMLElement | null;
+
+          const d = document.createElement('div');
+          d.id = 'exit-popup';
+          d.setAttribute('role', 'dialog');
+          d.setAttribute('aria-modal', 'true');
+          d.setAttribute('aria-label', 'Agende sua avaliação');
+          d.style.cssText =
+            'position:fixed;inset:0;z-index:9999;background:rgba(28,25,23,.6);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center';
+
+          const inner = document.createElement('div');
+          inner.style.cssText =
+            'background:var(--color-cream);padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative';
+
+          const closeBtn = document.createElement('button');
+          closeBtn.id = 'exit-popup-close';
+          closeBtn.style.cssText =
+            'position:absolute;top:14px;right:18px;background:none;border:none;font-size:18px;color:var(--color-ink-soft);cursor:pointer';
+          closeBtn.setAttribute('aria-label', 'Fechar');
+          closeBtn.textContent = '\u2715';
+
+          const label = document.createElement('p');
+          label.style.cssText =
+            'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:14px';
+          label.textContent = 'antes de ir';
+
+          const title = document.createElement('p');
+          title.style.cssText =
+            'font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.25;letter-spacing:-.02em;margin-bottom:12px';
+          const em = document.createElement('em');
+          em.textContent = 'avaliação?';
+          title.append('Que tal agendar', document.createElement('br'), 'sua ', em);
+
+          const subtitle = document.createElement('p');
+          subtitle.style.cssText =
+            'font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:28px';
+          subtitle.textContent =
+            'Converse com nossa equipe e descubra o melhor caminho para seus objetivos.';
+
+          const actions = document.createElement('div');
+          actions.style.cssText = 'display:flex;flex-direction:column;gap:10px;align-items:center';
+
+          const waLink = document.createElement('a');
+          const waHref = document.body.dataset.wa || '';
+          waLink.href = /^https?:\/\//i.test(waHref) ? waHref : '#';
+          waLink.target = '_blank';
+          waLink.rel = 'noopener noreferrer';
+          waLink.className = 'bd';
+          waLink.style.cssText = 'width:100%;text-align:center';
+          waLink.textContent = 'falar pelo whatsapp';
+
+          const scheduleLink = document.createElement('a');
+          scheduleLink.href = '/agendamento';
+          scheduleLink.className = 'ghost';
+          scheduleLink.style.cssText = 'width:100%;text-align:center';
+          scheduleLink.textContent = 'agendar avaliação';
+
+          actions.append(waLink, scheduleLink);
+          inner.append(closeBtn, label, title, subtitle, actions);
+          d.append(inner);
+          document.body.appendChild(d);
+          window.gtag?.('event', 'exit_intent_shown', { event_category: 'engagement' });
+
+          // Focus trap
+          const focusableEls = d.querySelectorAll<HTMLElement>(
+            'a[href], button, input, textarea, select, [tabindex]:not([tabindex="-1"])'
+          );
+          const firstFocusable = focusableEls[0];
+          const lastFocusable = focusableEls[focusableEls.length - 1];
+          firstFocusable?.focus();
+
+          d.addEventListener('keydown', (e) => {
+            if (e.key !== 'Tab') return;
+            if (e.shiftKey) {
+              if (document.activeElement === firstFocusable) {
+                e.preventDefault();
+                lastFocusable?.focus();
+              }
+            } else {
+              if (document.activeElement === lastFocusable) {
+                e.preventDefault();
+                firstFocusable?.focus();
+              }
+            }
+          });
+
+          const close = () => {
+            d.remove();
+            previousFocus?.focus?.();
+          };
+          closeBtn.addEventListener('click', close);
+          d.addEventListener('click', (e) => {
+            if (e.target === d) close();
+          });
+          document.addEventListener(
+            'keydown',
+            (e) => {
+              if (e.key === 'Escape') close();
+            },
+            { once: true }
+          );
+        }
+
+        document.addEventListener('mouseout', (e) => {
+          if ((e as MouseEvent).clientY <= 0) show();
+        });
+        if ('ontouchstart' in window) setTimeout(show, 45000);
+      });
+    </script>
+  </body>
 </html>
