@@ -1,8 +1,6 @@
 # ecooa - www.somosecooa.com.br
 User-agent: *
 Allow: /
-Disallow: /agendamento
-Disallow: /_astro/
 
 # Google
 User-agent: Googlebot
