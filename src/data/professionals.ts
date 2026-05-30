@@ -35,6 +35,14 @@ export interface Professional {
     return: number; // Consulta de retorno
     packages?: string[]; // Estruturas de preço adicionais
   };
+
+  // Blog authorship — popula blog-authors.ts via view derivada
+  blogAuthor?: {
+    name: string;      // Nome exato usado no frontmatter do blog (ex: "Dr. Gustavo Gehrke")
+    role: string;      // Papel compacto para atribuição no post
+    specialty: string; // Especialidade para exibição no blog
+    instagram?: string; // Username sem @
+  };
 }
 
 export const professionals: Professional[] = [
@@ -50,6 +58,7 @@ export const professionals: Professional[] = [
     tags: ['Metabolismo', 'Hormônios', 'Emagrecimento', 'Longevidade', 'Estilo de Vida'],
     isFounder: true,
     personalTouch: 'Acredita que saúde de verdade começa por entender o próprio corpo.',
+    blogAuthor: { name: 'Dr. Gustavo Gehrke', role: 'Médico Generalista', specialty: 'Medicina de Alta Performance', instagram: 'gustavo.gehrke' },
   },
 
   // ── ecooa.esthetic ──
@@ -63,6 +72,7 @@ export const professionals: Professional[] = [
     description: 'Enfermeira especialista em tricologia e soroterapia. Tratamentos capilares avançados e terapia intravenosa personalizada.',
     tags: ['Tricologia', 'Soroterapia', 'Saúde Capilar'],
     personalTouch: 'Enxerga cada fio como uma história que merece cuidado.',
+    blogAuthor: { name: 'Danusa', role: 'Enfermeira', specialty: 'Soroterapia' },
   },
   {
     slug: 'viviane-fagundes',
@@ -74,6 +84,7 @@ export const professionals: Professional[] = [
     description: 'Biomédica com foco em tricologia avançada. Diagnóstico e tratamento de queda capilar e doenças do couro cabeludo.',
     tags: ['Tricologia', 'Queda Capilar', 'Couro Cabeludo'],
     personalTouch: 'Transforma a ciência capilar em confiança de volta.',
+    blogAuthor: { name: 'Viviane Fagundes', role: 'Enfermeira Capilar', specialty: 'Teste Genético Capilar' },
   },
   {
     slug: 'yale-jeronimo',
@@ -85,6 +96,7 @@ export const professionals: Professional[] = [
     description: 'Médica tricologista com expertise em diagnóstico e tratamento de alopécias e doenças capilares.',
     tags: ['Tricologia', 'Alopécias', 'Medicina Capilar'],
     personalTouch: 'Ouve a história por trás de cada paciente antes de tratar.',
+    blogAuthor: { name: 'Dra. Yale', role: 'Médica Dermatologista', specialty: 'Saúde Capilar Feminina' },
   },
   {
     slug: 'larissa-wiebbelling',
@@ -96,6 +108,7 @@ export const professionals: Professional[] = [
     description: 'Médica especialista em transplante e implante capilar com técnicas avançadas FUE e Sapphire.',
     tags: ['Transplante Capilar', 'Implante', 'FUE', 'Sapphire'],
     personalTouch: 'Devolve autoestima com precisão e delicadeza em cada procedimento.',
+    blogAuthor: { name: 'Dra. Larissa Wiebbelling', role: 'Médica Tricologista', specialty: 'Tricologia e Transplante Capilar', instagram: 'dra.larissawiebbelling' },
   },
   {
     slug: 'cris-neumann',
@@ -118,6 +131,7 @@ export const professionals: Professional[] = [
     description: 'Biomédica com atuação em tricologia e gerenciamento de pele. Protocolos avançados de rejuvenescimento.',
     tags: ['Tricologia', 'Gerenciamento de Pele', 'Rejuvenescimento'],
     personalTouch: 'Acredita que a pele reflete como você se sente por dentro.',
+    blogAuthor: { name: 'Susan Flach', role: 'Biomédica', specialty: 'Gerenciamento de Pele', instagram: 'dra.susanflach' },
   },
   {
     slug: 'natalie-queiroz',
@@ -129,6 +143,7 @@ export const professionals: Professional[] = [
     description: 'Osteopata com atendimento para adultos, crianças e bebês. Terapia manual para equilíbrio do corpo.',
     tags: ['Osteopatia', 'Adultos', 'Crianças', 'Bebês'],
     personalTouch: 'Mãos que acolhem desde os bebês até os adultos com carinho.',
+    blogAuthor: { name: 'Natalie Queiroz', role: 'Osteopata', specialty: 'Osteopatia', instagram: 'osteonataliequeiroz' },
   },
   {
     slug: 'vitoria-machado',
@@ -173,6 +188,7 @@ export const professionals: Professional[] = [
     description: 'Biomédica especialista em estética facial e harmonização orofacial com técnica refinada.',
     tags: ['Biomedicina Estética', 'HOF', 'Estética Facial'],
     personalTouch: 'Busca o resultado natural que faz você se reconhecer no espelho.',
+    blogAuthor: { name: 'Leticia de Melo', role: 'Biomédica Estética', specialty: 'Harmonização Orofacial', instagram: 'draleticiademelo' },
   },
   {
     slug: 'jennifer-adam',
@@ -184,6 +200,7 @@ export const professionals: Professional[] = [
     description: 'Biomédica com atuação em estética avançada e harmonização orofacial.',
     tags: ['Biomedicina Estética', 'HOF', 'Estética Avançada'],
     personalTouch: 'Combina técnica e sensibilidade para resultados que encantam.',
+    blogAuthor: { name: 'Jennifer Adam', role: 'Biomédica Estética', specialty: 'Harmonização Orofacial', instagram: 'dra.jenniferadam' },
   },
   {
     slug: 'jamylle-farias',
@@ -219,6 +236,7 @@ export const professionals: Professional[] = [
     tags: ['Nutrição Vegana', 'Emagrecimento', 'Análise Bioquímica'],
     isFounder: true,
     personalTouch: 'Apaixonada por provar que comer bem pode ser simples e gostoso.',
+    blogAuthor: { name: 'Jessica Stein', role: 'Nutricionista', specialty: 'Nutrição Clínica' },
   },
   {
     slug: 'maria-luisa-beltran',
@@ -230,6 +248,7 @@ export const professionals: Professional[] = [
     description: 'Nutricionista esportiva com foco em performance e composição corporal. Atleta de Crossfit.',
     tags: ['Performance Esportiva', 'Composição Corporal', 'Nutrição Vegana'],
     personalTouch: 'Vive na prática tudo o que orienta, dentro e fora do box.',
+    blogAuthor: { name: 'Maria Luisa Beltran', role: 'Nutricionista', specialty: 'Nutrição Esportiva' },
   },
   {
     slug: 'adriano-lenz',
@@ -241,6 +260,7 @@ export const professionals: Professional[] = [
     description: 'Nutricionista com abordagem ortomolecular, metabolômica e nutrigenômica. Protocolos personalizados baseados em genética.',
     tags: ['Ortomolecular', 'Metabolômica', 'Nutrigenômica'],
     personalTouch: 'Desvenda o que a genética diz para criar um plano só seu.',
+    blogAuthor: { name: 'Adriano Lenz', role: 'Médico', specialty: 'Medicina Ortomolecular' },
   },
   {
     slug: 'giancarla-rochemback',
@@ -252,6 +272,7 @@ export const professionals: Professional[] = [
     description: 'Nutricionista focada em performance esportiva e otimização de composição corporal.',
     tags: ['Performance Esportiva', 'Composição Corporal'],
     personalTouch: 'Entende que performance é consequência de se alimentar com propósito.',
+    blogAuthor: { name: 'Giancarla', role: 'Nutricionista', specialty: 'Nutrição e Bioimpedância' },
   },
   {
     slug: 'vitoria-serpa',
@@ -353,6 +374,7 @@ export const professionals: Professional[] = [
     description: 'Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental. Atendimento humanizado e acolhedor.',
     tags: ['Psicologia Clínica', 'TCC', 'Ansiedade', 'Depressão'],
     personalTouch: 'Cria espaço seguro para que cada pessoa possa ser vulnerável.',
+    blogAuthor: { name: 'Manuela Vanti', role: 'Psicóloga Clínica', specialty: 'Psicologia Clínica' },
   },
   {
     slug: 'augusto-kauer',
