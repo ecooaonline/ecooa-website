@@ -47,6 +47,11 @@ jobs:
             echo "PR existente: $PR_URL"
           fi
 
-          # Habilita auto-merge (squash) — só executa quando required checks passarem
-          gh pr merge --auto --squash "$PR_URL"
-          echo "Auto-merge habilitado: $PR_URL"
+          # Habilita auto-merge (squash) — só executa quando required checks passarem.
+          # Tolerante: se "Allow auto-merge" ainda não estiver habilitado nas settings
+          # do repositório, apenas avisa em vez de falhar o job.
+          if gh pr merge --auto --squash "$PR_URL"; then
+            echo "Auto-merge habilitado: $PR_URL"
+          else
+            echo "::warning::Auto-merge não pôde ser habilitado. Verifique se 'Allow auto-merge' está ligado em Settings > General > Pull Requests."
+          fi
