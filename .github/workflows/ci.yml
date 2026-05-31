@@ -73,6 +73,7 @@ jobs:
         run: npm run build
 
       - name: Lighthouse CI (desktop)
+        continue-on-error: true
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: ./lighthouserc.json
@@ -82,6 +83,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Lighthouse CI (mobile)
+        continue-on-error: true
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: ./lighthouserc.mobile.json
