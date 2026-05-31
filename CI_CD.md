@@ -68,21 +68,31 @@ Versão pinada em `.nvmrc` (`22.12.0`). Todos os workflows usam `node-version-fi
 
 Todos os gates rodam em `ci.yml` antes do merge:
 
-| Gate                 | Ferramenta  | Bloqueante             |
-| -------------------- | ----------- | ---------------------- |
-| Format check         | Prettier    | Sim                    |
-| TypeScript           | astro check | Sim                    |
-| Lint                 | ESLint      | Sim                    |
-| Deps (high/critical) | npm audit   | Sim                    |
-| Build                | astro build | Sim                    |
-| Sitemap (≥ 100 URLs) | grep count  | Sim                    |
-| Links internos       | linkinator  | Não (warn)             |
-| Performance          | Lighthouse  | Sim (≥ 90)             |
-| Acessibilidade       | Lighthouse  | Sim (≥ 90)             |
-| Best Practices       | Lighthouse  | Sim (≥ 90)             |
-| SEO                  | Lighthouse  | Sim (≥ 95)             |
-| LCP                  | Lighthouse  | Sim (≤ 2500ms desktop) |
-| CLS                  | Lighthouse  | Sim (≤ 0.1)            |
+Gates **determinísticos** (bloqueiam o merge):
+
+| Gate                 | Ferramenta  | Bloqueante |
+| -------------------- | ----------- | ---------- |
+| Format check         | Prettier    | Sim        |
+| TypeScript           | astro check | Sim        |
+| Lint                 | ESLint      | Sim        |
+| Deps (high/critical) | npm audit   | Sim        |
+| Build                | astro build | Sim        |
+| Sitemap (≥ 100 URLs) | grep + wc   | Sim        |
+| Análise estática     | CodeQL      | Sim        |
+| Links internos       | linkinator  | Não (warn) |
+
+Gates de **performance/a11y/SEO** (relatório no CI, gate real em produção):
+
+| Métrica                                   | Onde          | Status                       |
+| ----------------------------------------- | ------------- | ---------------------------- |
+| Performance / A11y / Best Practices / SEO | Lighthouse CI | Relatório (warn)             |
+| Performance / A11y / Best Practices / SEO | PSI produção  | **Gate autoritativo (≥ 99)** |
+
+> O Lighthouse roda no CI contra servidor local HTTP, execução única, sem paridade
+> com browser real. Por isso é **relatório**, não bloqueio. A nota autoritativa é o
+> PSI contra `https://www.somosecooa.com.br` (atual: 100/100/100/100), validado no
+> `RELEASE_CHECKLIST.md`. Re-apertar thresholds do LHCI para `error` é tarefa futura,
+> após calibrar com runs estáveis (ver AI_HANDOFF, Etapa 4).
 
 ## Pre-commit (local)
 
