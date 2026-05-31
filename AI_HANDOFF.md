@@ -46,6 +46,34 @@ O que fechou os 4 pontos que faltavam em Accessibility e Best Practices (PR #29)
 > Nota: X-Frame-Options deixa de existir como meta. Quando houver controle de HTTP
 > headers (ex: Cloudflare Pages na etapa de migração), reintroduzir como header real.
 
+## CI/CD — hardening concluído (PR #39)
+
+Dimensão CI/CD elevada de 72 para faixa alta. Documentação operacional em `CI_CD.md`,
+`ROLLBACK.md` e `RELEASE_CHECKLIST.md`.
+
+O que mudou:
+
+- **Fluxo seguro**: `auto-merge.yml` deixou de fazer `git push origin main` direto.
+  Agora abre PR e habilita auto-merge squash; o merge só ocorre com o CI verde.
+- **`main` protegida**: PR obrigatório, `Quality Gates` como required check, branches
+  up-to-date, block force push, squash-only.
+- **CI unificado** (`ci.yml`, em PR): format:check, astro check, lint, `npm audit
+--audit-level=high`, build, validação de sitemap (>=100 URLs), link check
+  (não-bloqueante), Lighthouse desktop+mobile.
+- **Lighthouse é relatório, não gate** (`continue-on-error`). Roda contra servidor
+  HTTP local, sem paridade com browser real, então `is-on-https`, `canonical`,
+  `csp-xss` e timing de LCP falham por ruído. O gate autoritativo de
+  performance/a11y/SEO é o PSI em produção (100/100/100/100).
+- **Reprodutibilidade**: Node pinado em `.nvmrc` (22.12.0), usado por todos os workflows.
+- **Scripts novos**: `typecheck`, `audit:deps`, `validate`.
+
+Pendências de calibração futura (não bloqueiam a etapa):
+
+- Re-apertar thresholds do LHCI para `error` após 2-3 runs estáveis.
+- 5 vulnerabilidades `moderate` conhecidas (cadeia `yaml` via `@astrojs/check`, apenas
+  devDependency, não vai para produção). `audit:deps` usa `--audit-level=high`, então
+  não bloqueiam. Resolvem quando `@astrojs/check` atualizar a cadeia.
+
 ## Armadilhas conhecidas
 
 ### 1. Especialidades sempre retornavam 404
