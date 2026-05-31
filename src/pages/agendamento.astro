@@ -183,11 +183,17 @@ const profMap = professionals.reduce(
         />
         <input type="hidden" name="_loadedAt" value="" />
 
+        <p
+          style="font-size:10px;font-weight:400;color:var(--color-ink-soft);margin:0 0 4px;text-align:right"
+        >
+          <span aria-hidden="true">* </span>campos obrigatórios
+        </p>
+
         <div>
           <label
             for="form-name"
             style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
-            >como podemos te chamar?</label
+            >como podemos te chamar?<span aria-hidden="true"> *</span></label
           >
           <input
             type="text"
@@ -195,14 +201,15 @@ const profMap = professionals.reduce(
             name="name"
             required
             minlength="3"
-            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+            autocomplete="name"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300"
           />
         </div>
         <div>
           <label
             for="form-whatsapp"
             style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
-            >seu whatsapp</label
+            >seu whatsapp<span aria-hidden="true"> *</span></label
           >
           <input
             type="tel"
@@ -211,20 +218,21 @@ const profMap = professionals.reduce(
             required
             placeholder="(51) 99999-9999"
             pattern="\(\d{2}\)\s?9?\d{4}-?\d{4}|\+55\s\d{2}\s9?\d{4}-?\d{4}"
-            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+            autocomplete="tel"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300"
           />
         </div>
         <div>
           <label
             for="form-interest"
             style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
-            >o que te trouxe aqui?</label
+            >o que te trouxe aqui?<span aria-hidden="true"> *</span></label
           >
           <select
             id="form-interest"
             name="interest"
             required
-            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;appearance:none"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;appearance:none"
           >
             <option value="">selecione</option>
             <option value="medicina">medicina</option>
@@ -267,9 +275,16 @@ const profMap = professionals.reduce(
         </button>
         <p
           id="form-agendamento-ok"
+          aria-live="polite"
           style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px"
         >
           Recebemos seus dados. Entraremos em contato em até 24h.
+        </p>
+        <p
+          class="ecooa-form-error"
+          role="alert"
+          style="display:none;text-align:center;font-size:13px;font-weight:400;color:#c00;margin-top:8px"
+        >
         </p>
       </form>
       <script define:vars={{ profMap }}>

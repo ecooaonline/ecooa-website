@@ -145,11 +145,17 @@ const WA = WA_DEFAULT;
         />
         <input type="hidden" name="_loadedAt" value="" />
 
+        <p
+          style="font-size:10px;font-weight:400;color:var(--color-ink-soft);margin:0 0 4px;text-align:right"
+        >
+          <span aria-hidden="true">* </span>campos obrigatórios
+        </p>
+
         <div>
           <label
             for="contato-name"
             style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
-            >seu nome</label
+            >seu nome<span aria-hidden="true"> *</span></label
           >
           <input
             type="text"
@@ -157,28 +163,30 @@ const WA = WA_DEFAULT;
             name="nome"
             required
             minlength="2"
-            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+            autocomplete="name"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300"
           />
         </div>
         <div>
           <label
             for="contato-email"
             style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
-            >seu e-mail</label
+            >seu e-mail<span aria-hidden="true"> *</span></label
           >
           <input
             type="email"
             id="contato-email"
             name="email"
             required
-            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+            autocomplete="email"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300"
           />
         </div>
         <div>
           <label
             for="contato-message"
             style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
-            >sua mensagem</label
+            >sua mensagem<span aria-hidden="true"> *</span></label
           >
           <textarea
             id="contato-message"
@@ -186,7 +194,7 @@ const WA = WA_DEFAULT;
             required
             minlength="10"
             rows="4"
-            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;resize:vertical"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;resize:vertical"
           ></textarea>
         </div>
 
@@ -219,9 +227,16 @@ const WA = WA_DEFAULT;
         >
         <p
           id="form-contato-ok"
+          aria-live="polite"
           style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px"
         >
           Mensagem enviada. Retornaremos em breve.
+        </p>
+        <p
+          class="ecooa-form-error"
+          role="alert"
+          style="display:none;text-align:center;font-size:13px;font-weight:400;color:#c00;margin-top:8px"
+        >
         </p>
       </form>
       <script>

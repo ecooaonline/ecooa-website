@@ -121,11 +121,16 @@ export function initFormSubmit(selector = '.ecooa-form'): void {
         }
       } catch (err) {
         if (btn) {
-          btn.textContent = errorText;
+          btn.textContent = originalLabel;
           btn.disabled = false;
+        }
+        const errorEl = form.parentElement?.querySelector<HTMLElement>('.ecooa-form-error');
+        if (errorEl) {
+          errorEl.textContent = errorText;
+          errorEl.style.display = 'block';
           setTimeout(() => {
-            btn.textContent = originalLabel;
-          }, 4000);
+            errorEl.style.display = 'none';
+          }, 5000);
         }
         window.gtag?.('event', 'form_submit_error', {
           event_category: 'conversion',

@@ -475,6 +475,7 @@ const schemaMembers = professionals.map((p) => {
     aria-hidden="true"
     role="dialog"
     aria-modal="true"
+    aria-labelledby="pm-name"
   >
     <div class="pro-modal" id="pro-modal">
       <button class="pro-modal-close" id="pro-modal-close" aria-label="Fechar">✕</button>
@@ -621,7 +622,28 @@ const schemaMembers = professionals.map((p) => {
       if (e.target === overlay) closeModal();
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && overlay.classList.contains('active')) closeModal();
+      if (!overlay.classList.contains('active')) return;
+      if (e.key === 'Escape') {
+        closeModal();
+        return;
+      }
+      if (e.key === 'Tab') {
+        const focusable = Array.from(
+          modal.querySelectorAll<HTMLElement>(
+            'button:not([disabled]),a[href],input:not([disabled]),[tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => el.offsetParent !== null);
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
   </script>
 </BaseLayout>

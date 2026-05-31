@@ -42,11 +42,11 @@ const subtextStyles: Record<string, string> = {
 
 const inputStyles: Record<string, string> = {
   inline:
-    'flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
+    'flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:13px;font-weight:300',
   banner:
-    'flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
+    'flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300',
   footer:
-    'flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--color-white);font-family:var(--font-primary);font-size:12px;font-weight:300;outline:none',
+    'flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--color-white);font-family:var(--font-primary);font-size:12px;font-weight:300',
 };
 
 const buttonStyles: Record<string, string> = {
@@ -92,9 +92,16 @@ const buttonStyles: Record<string, string> = {
   </form>
   <p
     class="ecooa-form-ok"
+    aria-live="polite"
     style={`display:none;font-size:13px;font-weight:400;margin-top:10px;${variant === 'footer' || variant === 'banner' ? 'color:var(--color-brand-deep)' : 'color:var(--color-brand-text)'}`}
   >
     Inscrito com sucesso.
+  </p>
+  <p
+    class="ecooa-form-error"
+    role="alert"
+    style="display:none;font-size:13px;font-weight:400;margin-top:10px;color:#c00"
+  >
   </p>
 </div>
 <script>
