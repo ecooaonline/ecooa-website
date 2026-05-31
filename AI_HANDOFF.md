@@ -16,6 +16,45 @@ Documento para sincronizar contexto entre sessões de IA e entre as 9 etapas de 
 | 8     | Observabilidade (Sentry, uptime, RUM)           | Pendente        |
 | 9     | Gate de qualidade Lighthouse 99+                | Pendente        |
 
+## Segurança — validada em produção
+
+DNS propagado no registro.br, domínio ativo na Cloudflare (proxy laranja), SSL Full
+(strict). Headers servidos por Cloudflare Transform Rule + meta-tags no `BaseLayout`.
+
+Validação em produção (`https://www.somosecooa.com.br`):
+
+- **HSTS ativo**: `Strict-Transport-Security: max-age=63072000` (2 anos).
+- **Mozilla Observatory**: 80/100, 9 de 10 testes passando.
+- **securityheaders.com**: HSTS, CSP, X-Content-Type-Options, Referrer-Policy,
+  Permissions-Policy presentes.
+
+### PENDÊNCIA REGISTRADA (trazer de volta no gate final, antes de encerrar o projeto)
+
+**Subir Observatory de 80 → 90+ exige CSP nonce-based.** O único teste que falha é o
+Content Security Policy, penalizado por `'unsafe-inline'` no `script-src` (necessário hoje
+para GTM/analytics enquanto o CSP vive em `<meta>`).
+
+`nonce` não funciona em meta-tag, só em **header HTTP real**. Resolver requer mover o CSP
+para a borda (Cloudflare Worker/Transform) gerando nonce dinâmico por requisição e
+removendo `unsafe-inline`. Inviável com HTML pré-renderizado do GitHub Pages sem a camada
+de edge.
+
+Opcional para A+ no securityheaders.com (não muda o Observatory): adicionar
+`includeSubDomains; preload` ao header HSTS na Transform Rule, só após confirmar que todos
+os subdomínios servem HTTPS.
+
+## Acessibilidade (WCAG AA) — concluída (PR #40)
+
+4 blocos da auditoria implementados e mergeados:
+
+- **Foco visível**: removido `outline:none` inline dos formulários; `:focus-visible`
+  reforçado para `--color-brand-text` (#706662, ≥4,5:1).
+- **Live regions**: `aria-live="polite"` nos sucessos, `role="alert"` + `.ecooa-form-error`
+  nos erros (populado por `form-submit.ts`).
+- **Formulários**: `autocomplete` nos campos, indicação de obrigatórios (`*` + legenda).
+- **Ícones**: `aria-hidden` no SVG do Instagram (Nav) e na seta do BlogAuthor.
+- **Modal de profissionais**: focus trap Tab/Shift+Tab + `aria-labelledby`.
+
 ## Meta do projeto
 
 **99+ em todas as categorias Lighthouse** (Performance, Acessibilidade, Best Practices, SEO) com Core Web Vitals reais em verde. Sem maquiagem de nota — base técnica genuinamente sênior.
