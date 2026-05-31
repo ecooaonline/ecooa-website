@@ -91,7 +91,7 @@ ol {
   position: absolute;
   top: -100%;
   left: 16px;
-  z-index: 9999;
+  z-index: var(--z-cursor);
   padding: 12px 24px;
   background: var(--color-ink);
   color: var(--color-white);

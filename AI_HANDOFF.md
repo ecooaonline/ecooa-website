@@ -141,6 +141,34 @@ O `aggregateRating` do schema agora deriva de `reviews.ts` (`ratingValue` 5.0,
 Regra: nunca adicionar avaliação que não exista no perfil real do Google. Para atualizar,
 editar `src/data/reviews.ts` (o schema e o letreiro se atualizam juntos).
 
+## UI budget (política anti-regressão, Etapa 7)
+
+Ver `DESIGN_SYSTEM.md` para a referência completa. Regras:
+
+- Nenhuma cor nova sem token (exceto cores de terceiros já documentadas: WhatsApp, Google).
+- Nenhum tamanho de fonte/espaçamento novo sem usar a escala existente.
+- Nenhum botão novo sem variante prevista (`.bd/.bo/.bw/.bow/.ghost`) e seus estados.
+- Nenhum card novo sem reaproveitar um padrão (cantos retos, borda stone).
+- Nenhuma seção nova sem heading semântico correto.
+- Nenhum CTA novo sem destino claro; toda página termina com `CtaSection`.
+- Nenhuma animação nova sem `prefers-reduced-motion`.
+- Nenhum efeito novo via JS se CSS resolve (filosofia zero-dep no runtime).
+- Nenhum ajuste estético que derrube Performance, Acessibilidade, SEO ou Best Practices.
+- `z-index` sempre via escala `--z-*` (nada de números mágicos novos).
+
+### Decisão de escopo (Etapa 7)
+
+NÃO refatorar os ~540 estilos inline das páginas para classes: trabalho extenso, risco
+alto de regressão visual, retorno invisível num site já premium e com PSI 100. Os tokens
+novos (radius, shadow, z-index, line-height, letter-spacing) ficam disponíveis para uso
+em código novo, sem migração massiva do legado.
+
+### Pendência da Etapa 7
+
+Best Practices caiu de 100 para 92 (mobile e desktop). Aguardando o detalhe das auditorias
+que falharam no PSI para correção dirigida. Causas prováveis: cookies de terceiros
+(GTM/GA/Meta Pixel, penalizados pelo Lighthouse 12) ou aspect-ratio de imagem.
+
 ## Regras de preservação
 
 - **Identidade visual**: tokens CSS, paleta, tipografia — NÃO ALTERAR sem autorização
