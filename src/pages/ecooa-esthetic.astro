@@ -6,6 +6,7 @@ import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
+import DisclaimerMedico from '../components/DisclaimerMedico.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -190,7 +191,7 @@ const estheticFaqSchema = {
             Transplante Capilar, de Barba e Sobrancelha
           </h3><p class="it-d-lg">
             Referência em Porto Alegre. Técnica FUE e FUE Safira para restauração capilar,
-            reconstrução de barba e definição de sobrancelhas. Resultado natural e permanente para
+            reconstrução de barba e definição de sobrancelhas. Resultado natural e duradouro para
             homens e mulheres.
           </p>
         </div>
@@ -378,44 +379,7 @@ const estheticFaqSchema = {
         class="r d3"
         style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em"
       >
-        Satisfação garantida. Cada procedimento é planejado para o resultado que você espera.
-      </p>
-    </div>
-  </section>
-
-  <!-- Depoimentos -->
-  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
-    <div class="w">
-      <div class="lbl r u-mb-16">depoimentos</div>
-      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
-      <div class="grid-auto-260">
-        <div class="r card-w">
-          <p class="q-serif">
-            "Fiz o transplante e o resultado ficou tão natural que meus amigos acharam que eu só
-            tinha mudado o corte de cabelo. Exatamente o que eu queria."
-          </p>
-          <p class="sm-soft">E. C.</p>
-        </div>
-        <div class="r d1 card-w">
-          <p class="q-serif">
-            "Tinha medo de ficar com aparência artificial. O resultado foi sutil e bonito. Me senti
-            eu mesma, só que mais descansada e confiante."
-          </p>
-          <p class="sm-soft">J. R.</p>
-        </div>
-        <div class="r d2 card-w">
-          <p class="q-serif">
-            "Desde a recepção até o procedimento, tudo impecável. O espaço é lindo e a equipe
-            transmite segurança. Voltei para fazer bioestimulador e amei."
-          </p>
-          <p class="sm-soft">T. F.</p>
-        </div>
-      </div>
-      <p
-        class="r d3"
-        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
-      >
-        Depoimentos reais publicados com autorização dos pacientes.
+        Planejamento dedicado. Cada procedimento é pensado para o resultado que você espera.
       </p>
     </div>
   </section>
@@ -452,6 +416,8 @@ const estheticFaqSchema = {
       </section>
     )
   }
+
+  <div class="w"><DisclaimerMedico /></div>
 
   <CtaSection
     heading="Agende sua<br><em>avaliação estética.</em>"
