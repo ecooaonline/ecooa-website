@@ -11,10 +11,13 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "typecheck": "astro check",
     "lint": "eslint . --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "audit:deps": "npm audit --audit-level=high",
+    "validate": "npm run format:check && npm run check && npm run lint && npm run build",
     "prepare": "husky"
   },
   "lint-staged": {
