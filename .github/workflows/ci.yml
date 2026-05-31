@@ -44,7 +44,7 @@ jobs:
 
       - name: Validate sitemap
         run: |
-          count=$(grep -c '<loc>' dist/sitemap-0.xml 2>/dev/null || echo 0)
+          count=$(grep -o '<loc>' dist/sitemap-0.xml 2>/dev/null | wc -l || echo 0)
           echo "Páginas no sitemap: $count"
           [ "$count" -ge 100 ] || { echo "ERRO: sitemap com menos de 100 URLs ($count)"; exit 1; }
 
