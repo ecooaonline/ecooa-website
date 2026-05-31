@@ -22,7 +22,7 @@ const author = getAuthorByName(name);
           <p class="ba-role">{author.role}</p>
         </div>
         <a href={`/profissionais/${author.slug}`} class="ba-cta">
-          Ver perfil completo →
+          Ver perfil completo <span aria-hidden="true">→</span>
         </a>
       </>
     ) : (
