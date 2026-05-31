@@ -106,21 +106,21 @@ export const specialties: Specialty[] = [
 
   // ── ecooa.working ──
   {
-    slug: 'nutrição-clínica',
+    slug: 'nutricao-clinica',
     name: 'Nutrição Clínica',
     unit: 'working',
     description: 'Nutrição personalizada para saúde, recuperação e bem-estar.',
     keywords: ['nutrição', 'nutricional', 'dieta', 'alimentação saudável', 'clínica'],
   },
   {
-    slug: 'nutrição-esportiva',
+    slug: 'nutricao-esportiva',
     name: 'Nutrição Esportiva',
     unit: 'working',
     description: 'Performance nutricional para atletas e praticantes de esportes.',
     keywords: ['esportiva', 'atleta', 'performance', 'musculação', 'crossfit'],
   },
   {
-    slug: 'nutrição-estética',
+    slug: 'nutricao-estetica',
     name: 'Nutrição Estética',
     unit: 'working',
     description: 'Nutrição para pele, cabelo e estética corporal.',
