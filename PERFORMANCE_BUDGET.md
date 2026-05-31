@@ -3,6 +3,26 @@
 Orçamento de performance para impedir regressão. Validado pelo Lighthouse CI
 (desktop + mobile) em cada PR.
 
+## Baseline oficial (PageSpeed Insights, produção, 2026-05-31)
+
+Medido via API oficial do PSI contra `https://www.somosecooa.com.br` (homepage).
+**100 em todas as 4 categorias, mobile e desktop.**
+
+| Categoria      | Mobile  | Desktop |
+| -------------- | ------- | ------- |
+| Performance    | **100** | **100** |
+| Accessibility  | **100** | **100** |
+| Best Practices | **100** | **100** |
+| SEO            | **100** | **100** |
+
+| Métrica medida | Mobile | Desktop |
+| -------------- | ------ | ------- |
+| LCP            | 1,2 s  | 0,3 s   |
+| FCP            | 1,1 s  | 0,3 s   |
+| TBT            | 0 ms   | 0 ms    |
+| CLS            | 0      | 0       |
+| Speed Index    | 2,3 s  | 1,0 s   |
+
 ## Core Web Vitals (alvo)
 
 | Métrica | Alvo     | Gate desktop | Gate mobile                |
@@ -13,8 +33,9 @@ Orçamento de performance para impedir regressão. Validado pelo Lighthouse CI
 | FCP     | ≤ 2000ms | `warn` 2000  | `warn` 3000                |
 | TBT     | ≤ 200ms  | `warn` 300   | `warn` 600                 |
 
-> Os gates de mobile estão em `warn` propositalmente até capturarmos o baseline
-> real. Depois de otimizar e medir, serão endurecidos para `error`.
+> Os gates de mobile estão em `warn` propositalmente. Com o baseline real agora
+> capturado (LCP 1,2s mobile, folga grande contra os 2500ms), podem ser endurecidos
+> para `error` numa etapa futura sem risco de flakiness.
 
 ## Orçamento de assets (por página)
 
@@ -54,5 +75,6 @@ baseline mobile real do Lighthouse CI.
 
 - **CI automático**: cada PR roda Lighthouse desktop (`lighthouserc.json`) e mobile
   (`lighthouserc.mobile.json`). Resultados em `temporary-public-storage`.
-- **Produção (campo)**: PageSpeed Insights em `https://www.somosecooa.com.br`
-  (requer chave da API para automação, ou rodar manualmente em pagespeed.web.dev).
+- **Produção (campo)**: PageSpeed Insights em `https://www.somosecooa.com.br`.
+  Automação via API oficial já validada (chave configurada no projeto Google Cloud,
+  cota grátis 25.000 req/dia). Também é possível rodar manualmente em pagespeed.web.dev.

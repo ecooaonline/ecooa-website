@@ -4,21 +4,47 @@ Documento para sincronizar contexto entre sessões de IA e entre as 9 etapas de 
 
 ## Estado atual do projeto (atualizar a cada etapa concluída)
 
-| Etapa | Assunto                                         | Status       |
-| ----- | ----------------------------------------------- | ------------ |
-| 1     | Fundação e DX                                   | ✅ Concluída |
-| 2     | Rede de testes (Playwright, axe, snapshot)      | Pendente     |
-| 3     | Migração Cloudflare Pages                       | Pendente     |
-| 4     | Segurança (CSP nonce, edge proxy FORM_ACTION)   | Pendente     |
-| 5     | Performance e imagens (Astro Image nativo, LCP) | Pendente     |
-| 6     | Acessibilidade WCAG AA+                         | Pendente     |
-| 7     | PWA completa (ícones, screenshots, SW offline)  | Pendente     |
-| 8     | Observabilidade (Sentry, uptime, RUM)           | Pendente     |
-| 9     | Gate de qualidade Lighthouse 99+                | Pendente     |
+| Etapa | Assunto                                         | Status          |
+| ----- | ----------------------------------------------- | --------------- |
+| 1     | Fundação e DX                                   | ✅ Concluída    |
+| 2     | Rede de testes (Playwright, axe, snapshot)      | Pendente        |
+| 3     | Migração Cloudflare Pages                       | Pendente        |
+| 4     | Segurança (CSP nonce, edge proxy FORM_ACTION)   | Pendente        |
+| 5     | Performance e imagens (Astro Image nativo, LCP) | ✅ 100 (PR #28) |
+| 6     | Acessibilidade WCAG AA+                         | ✅ 100 (PR #29) |
+| 7     | PWA completa (ícones, screenshots, SW offline)  | Pendente        |
+| 8     | Observabilidade (Sentry, uptime, RUM)           | Pendente        |
+| 9     | Gate de qualidade Lighthouse 99+                | Pendente        |
 
 ## Meta do projeto
 
 **99+ em todas as categorias Lighthouse** (Performance, Acessibilidade, Best Practices, SEO) com Core Web Vitals reais em verde. Sem maquiagem de nota — base técnica genuinamente sênior.
+
+## Baseline oficial medido (PageSpeed Insights, produção)
+
+Medido em 2026-05-31 contra `https://www.somosecooa.com.br` (homepage), via API
+oficial do PageSpeed Insights. **Meta de 99+ atingida e superada: 100 em tudo.**
+
+| Categoria      | Mobile  | Desktop |
+| -------------- | ------- | ------- |
+| Performance    | **100** | **100** |
+| Accessibility  | **100** | **100** |
+| Best Practices | **100** | **100** |
+| SEO            | **100** | **100** |
+
+Core Web Vitals (mobile / desktop): LCP 1,2s / 0,3s · FCP 1,1s / 0,3s · TBT 0ms / 0ms · CLS 0 / 0.
+
+O que fechou os 4 pontos que faltavam em Accessibility e Best Practices (PR #29):
+
+- Removida `<meta http-equiv="X-Frame-Options">` (browsers ignoram via meta e logam
+  console error → `errors-in-console` passou de 0 para 1).
+- 3 correções de contraste WCAG AA (`color-contrast` passou de 0 para 1):
+  - Footer disclaimer `rgba(255,255,255,.38)` → `.6`
+  - Newsletter footer `rgba(255,255,255,.4)` → `.6`
+  - Botão ACEITAR do cookie `color:#fff` → `var(--color-ink)` (1,81:1 → 8,7:1)
+
+> Nota: X-Frame-Options deixa de existir como meta. Quando houver controle de HTTP
+> headers (ex: Cloudflare Pages na etapa de migração), reintroduzir como header real.
 
 ## Armadilhas conhecidas
 
