@@ -15,6 +15,22 @@
       ],
       "numberOfRuns": 1,
       "settings": {
+        "formFactor": "mobile",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "cpuSlowdownMultiplier": 4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.56,
+          "uploadThroughputKbps": 675
+        },
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
         "skipAudits": ["is-on-https", "canonical", "redirects-http", "csp-xss", "errors-in-console"]
       }
