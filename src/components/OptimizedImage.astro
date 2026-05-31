@@ -20,6 +20,10 @@ interface Props {
   loading?: 'lazy' | 'eager';
   fetchpriority?: 'high' | 'low' | 'auto';
   decoding?: 'async' | 'sync' | 'auto';
+  // priority: atalho para imagens LCP above-the-fold. Quando true, força
+  // loading="eager" + fetchpriority="high". USAR SOMENTE no elemento LCP real
+  // (herói above-the-fold). Em imagens below-the-fold piora a performance.
+  priority?: boolean;
   class?: string;
   style?: string;
 }
@@ -30,8 +34,9 @@ const {
   width,
   height,
   sizes,
-  loading = 'lazy',
-  fetchpriority = 'auto',
+  priority = false,
+  loading = priority ? 'eager' : 'lazy',
+  fetchpriority = priority ? 'high' : 'auto',
   decoding = 'async',
   class: className,
   style,

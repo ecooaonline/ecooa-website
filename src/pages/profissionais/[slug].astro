@@ -277,12 +277,11 @@ const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. A
             <OptimizedImage
               src={p.photo}
               alt={p.name}
-              loading="eager"
+              priority
               decoding="async"
               class="u-cover"
               width={480}
               height={640}
-              fetchpriority="high"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
