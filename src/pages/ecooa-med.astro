@@ -6,6 +6,7 @@ import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
+import DisclaimerMedico from '../components/DisclaimerMedico.astro';
 import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -564,44 +565,6 @@ const medPosts = allMedPosts
     </div>
   </section>
 
-  <!-- Depoimentos -->
-  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
-    <div class="w">
-      <div class="lbl r u-mb-16">depoimentos</div>
-      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
-      <div class="grid-auto-260">
-        <div class="r card-w">
-          <p class="q-serif">
-            "A consulta durou quase uma hora. O médico olhou todos os meus exames anteriores, pediu
-            novos e montou um plano que fez sentido. Em dois meses já senti diferença na
-            disposição."
-          </p>
-          <p class="sm-soft">L. R.</p>
-        </div>
-        <div class="r d1 card-w">
-          <p class="q-serif">
-            "Passei anos ouvindo que meus exames estavam normais, mesmo me sentindo mal. Aqui
-            olharam tudo com profundidade e finalmente encontraram o que precisava ser ajustado."
-          </p>
-          <p class="sm-soft">D. B.</p>
-        </div>
-        <div class="r d2 card-w">
-          <p class="q-serif">
-            "Comecei o acompanhamento para emagrecer e o protocolo foi completamente personalizado.
-            O retorno é rápido e o médico realmente acompanha a evolução."
-          </p>
-          <p class="sm-soft">P. A.</p>
-        </div>
-      </div>
-      <p
-        class="r d3"
-        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
-      >
-        Depoimentos reais publicados com autorização dos pacientes.
-      </p>
-    </div>
-  </section>
-
   <!-- Artigos relacionados -->
   {
     medPosts.length > 0 && (
@@ -634,6 +597,8 @@ const medPosts = allMedPosts
       </section>
     )
   }
+
+  <div class="w"><DisclaimerMedico /></div>
 
   <CtaSection
     heading="Comece pela<br><em>avaliação.</em>"
