@@ -107,6 +107,35 @@ Usar `import { z } from 'zod'` (zod é peer dep do Astro, já disponível).
 
 `Object.entries(record)` retorna `[string, V][]` mesmo com Record<'med'|..., V>. Fix: cast explícito `as [UnitKey, V][]` no template.
 
+## SEO budget (política anti-regressão, Etapa 6)
+
+Regras para impedir regressão de SEO técnico em qualquer mudança futura:
+
+- Toda página tem `title` único e `description` única (sem genéricos repetidos).
+- Quando `currentPage` é passado, o `title` NÃO deve conter ` | ecooa` (o BaseLayout
+  já concatena; senão duplica).
+- Todo `canonical` sai de `Astro.url + Astro.site` (não hardcodar).
+- Toda página indexável entra no sitemap; páginas `noindex` (ex: `/obrigado`) são
+  excluídas via `filter` em `astro.config.mjs`.
+- Nenhuma página de teste/redirect no sitemap.
+- Slugs sempre sem acento e sem caractere especial (regra do projeto). Trocar slug
+  exige redirect em `astro.config.mjs`.
+- Toda página estratégica tem H1 único e tags de heading semânticas (nunca `<div class="h1">`).
+- Nenhuma imagem informativa sem `alt` (OptimizedImage exige `alt`; manter assim).
+- **Nenhum schema sem conteúdo visível correspondente.** `FAQPage` só com FAQ real
+  visível (`<details>`); `aggregateRating`/`Review` só com avaliações reais e atribuídas
+  à fonte na página.
+- Nenhum redirect sem documentação aqui.
+- Validar sitemap e robots a cada deploy (CI já valida >=100 URLs no sitemap).
+- Gate autoritativo de SEO: PSI em produção (não o Lighthouse local).
+
+### Pendência da Etapa 6 (aguarda dados do cliente)
+
+`aggregateRating` (5.0 / 65) está no `MedicalBusiness` global sem reviews visíveis =
+self-serving (risco). Decisão aprovada: exibir avaliações REAIS do Google num marquee
+premium (CSS, leve) com link para a fonte, legitimando o rating. Bloqueado até o cliente
+fornecer: textos das avaliações + URL pública do perfil Google + nota/contagem reais.
+
 ## Regras de preservação
 
 - **Identidade visual**: tokens CSS, paleta, tipografia — NÃO ALTERAR sem autorização
