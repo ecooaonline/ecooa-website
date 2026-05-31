@@ -17,14 +17,17 @@ async function postForm(form: HTMLFormElement, attempt = 0): Promise<void> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
-    const response = await fetch(form.action, {
+    // O Google Apps Script Web App não envia o header Access-Control-Allow-Origin,
+    // então uma requisição em modo 'cors' é bloqueada pelo navegador na leitura da
+    // resposta. Usamos 'no-cors': o POST é entregue e gravado normalmente, mas a
+    // resposta volta opaca (status 0, não legível). Por isso não checamos response.ok;
+    // o fetch só rejeita em falha de rede real ou timeout (abort), que dispara o retry.
+    await fetch(form.action, {
       method: 'POST',
       body: new FormData(form),
+      mode: 'no-cors',
       signal: controller.signal,
     });
-    if (!response.ok) {
-      throw new Error('HTTP ' + response.status);
-    }
   } catch (err) {
     if (attempt < MAX_RETRIES) {
       await waitFor(RETRY_DELAY_MS * (attempt + 1));
