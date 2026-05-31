@@ -1,0 +1,42 @@
+# Dependabot — atualizações automáticas de dependências.
+# Security-updates já vêm ligados por padrão no repositório; este arquivo
+# adiciona version-updates programados. PRs de patch/minor que passam no CI
+# são auto-mergeados por .github/workflows/dependabot-automerge.yml.
+version: 2
+updates:
+  # Dependências npm (Astro, sitemap, tooling de dev)
+  - package-ecosystem: npm
+    directory: '/'
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    # Agrupa atualizações de baixo risco num único PR para reduzir ruído.
+    groups:
+      dev-dependencies:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+      production-minor-patch:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+    commit-message:
+      prefix: 'build(deps)'
+      prefix-development: 'build(deps-dev)'
+
+  # GitHub Actions usadas nos workflows de CI/CD
+  - package-ecosystem: github-actions
+    directory: '/'
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: 'ci(deps)'

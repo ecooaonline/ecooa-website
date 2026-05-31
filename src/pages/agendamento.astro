@@ -312,7 +312,6 @@ const profMap = professionals.reduce(
           // Verificar honeypot
           if (honeypot && honeypot.value.trim() !== '') {
             e.preventDefault();
-            console.warn('Honeypot triggered');
             return false;
           }
 
