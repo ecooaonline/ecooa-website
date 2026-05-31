@@ -19,13 +19,15 @@ if (!items || items.length === 0) {
     <p class="toc-title">Neste artigo</p>
   </div>
   <ul class="toc-list">
-    {items.map((item) => (
-      <li class={`toc-item level-${item.level}`}>
-        <a href={`#${item.id}`} class="toc-link">
-          {item.text}
-        </a>
-      </li>
-    ))}
+    {
+      items.map((item) => (
+        <li class={`toc-item level-${item.level}`}>
+          <a href={`#${item.id}`} class="toc-link">
+            {item.text}
+          </a>
+        </li>
+      ))
+    }
   </ul>
 </nav>
 

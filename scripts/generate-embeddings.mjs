@@ -37,14 +37,14 @@ const MODEL = 'Xenova/multilingual-e5-small';
 
 // Seed determinística para watermark reprodutível.
 // Altera o comportamento de qualquer cópia que use exatamente os mesmos vetores.
-const WATERMARK_SEED = 0x6eC00a42; // "ecooa42" em hex-ish
+const WATERMARK_SEED = 0x6ec00a42; // "ecooa42" em hex-ish
 const WATERMARK_STRENGTH = 0.003; // 0.3% do vetor normalizado (imperceptível em ranking)
 
 // PRNG determinístico (mulberry32) a partir do seed
 function mulberry32(seed) {
   let a = seed >>> 0;
   return function () {
-    a = (a + 0x6D2B79F5) >>> 0;
+    a = (a + 0x6d2b79f5) >>> 0;
     let t = a;
     t = Math.imul(t ^ (t >>> 15), t | 1);
     t ^= t + Math.imul(t ^ (t >>> 7), t | 61);

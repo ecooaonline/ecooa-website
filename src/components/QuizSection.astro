@@ -6,7 +6,7 @@ interface Props {
 
 import { WA_BASE } from '../data/constants';
 
-const { heading = "O que te trouxe até aqui?", options } = Astro.props;
+const { heading = 'O que te trouxe até aqui?', options } = Astro.props;
 const WA_TEXT_BASE = `${WA_BASE}?text=`;
 
 function slugify(text: string): string {
@@ -23,21 +23,28 @@ function slugify(text: string): string {
   <div style="max-width:620px;margin:0 auto">
     <div class="lbl r" style="margin-bottom:24px;justify-content:center">{heading}</div>
     <div class="quiz-grid">
-      {options.map((opt) => (
-        <a
-          href={`${WA_TEXT_BASE}${encodeURIComponent(opt.waText)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="quiz-card r"
-          data-intent={slugify(opt.title)}
-        >
-          <div>
-            <p class="quiz-title">{opt.title}</p>
-            {opt.subtitle && <p class="quiz-sub">{opt.subtitle}</p>}
-          </div>
-          <span aria-hidden="true" style="font-size:14px;color:var(--color-ink-soft);flex-shrink:0">&rarr;</span>
-        </a>
-      ))}
+      {
+        options.map((opt) => (
+          <a
+            href={`${WA_TEXT_BASE}${encodeURIComponent(opt.waText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="quiz-card r"
+            data-intent={slugify(opt.title)}
+          >
+            <div>
+              <p class="quiz-title">{opt.title}</p>
+              {opt.subtitle && <p class="quiz-sub">{opt.subtitle}</p>}
+            </div>
+            <span
+              aria-hidden="true"
+              style="font-size:14px;color:var(--color-ink-soft);flex-shrink:0"
+            >
+              &rarr;
+            </span>
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

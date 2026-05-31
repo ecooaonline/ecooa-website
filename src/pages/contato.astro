@@ -14,103 +14,225 @@ const WA = WA_DEFAULT;
   description="Entre em contato com a ecooa. WhatsApp, e-mail e Instagram. Estamos prontos para te ouvir, orientar e receber. Moinhos de Vento, Porto Alegre."
   currentPage="contato"
   ogImage="/clinic/faxada-predio.webp"
-  breadcrumbs={[{ name: "Contato", url: "/contato" }]}
+  breadcrumbs={[{ name: 'Contato', url: '/contato' }]}
 >
-
-<!-- Hero -->
-<div class="ph" style="background:var(--color-cream);min-height:42vh">
-  <svg class="wsv u-op-26" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
-  <div class="ph-c">
-    <div class="lbl r">contato</div>
-    <h1 class="h1 r d1 u-mt-18">Fale com a<br><em>ecooa.</em></h1>
-    <p class="body r d2" style="margin-top:16px;max-width:420px">Estamos prontos para te ouvir, orientar e receber. O canal mais ágil é sempre o WhatsApp.</p>
-  </div>
-</div>
-
-<Marquee />
-
-<!-- Canais de contato -->
-<section class="u-bg-warm" aria-label="Canais de contato">
-  <div class="w">
-    <div class="g2">
-      <div>
-        <div class="lbl r u-mb-16">fale conosco</div>
-        <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(26px,3vw,42px)">A conversa<br>começa <em>aqui.</em></h2>
-        <div class="r d2">
-          <div class="ci-ct">
-            <p class="ci-cl">WhatsApp · pacientes e visitantes</p>
-            <p class="ci-cv">(51) 99146-0909</p>
-            <p class="ci-cs">Canal principal · Segunda a Sexta 9h–20h · Sábado a consultar</p>
-            <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" style="display:inline-block">abrir whatsapp</a>
-          </div>
-          <div class="ci-ct">
-            <p class="ci-cl">E-mail · administrativo e parcerias</p>
-            <p class="ci-cv"><span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span></p>
-            <p class="ci-cs">Para parcerias, fornecedores e assuntos administrativos</p>
-            <a href="#" class="bo eml-link" data-u="ecooa.adm" data-d="gmail.com" style="display:inline-block">enviar e-mail</a>
-          </div>
-          <div class="ci-ct">
-            <p class="ci-cl">Instagram</p>
-            <p class="ci-cv">@somos.ecooa</p>
-            <p class="ci-cs">Acompanhe nossa comunidade e conteúdos</p>
-            <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" class="ghost" style="margin-top:8px;display:inline-flex">ver no instagram <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="ci-ct" style="border-bottom:none">
-            <p class="ci-cl">Para profissionais de saúde</p>
-            <p class="ci-cv">Quer atender na ecooa?</p>
-            <p class="ci-cs">Entre em contato pelo WhatsApp e nos fale sobre você e sua prática</p>
-            <a href={WA} target="_blank" rel="noopener noreferrer" class="ghost" style="margin-top:8px;display:inline-flex">falar pelo whatsapp <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-      </div>
-      <div class="r d2"><LocationCard /></div>
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-cream);min-height:42vh">
+    <svg
+      class="wsv u-op-26"
+      viewBox="0 0 1440 400"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="#C4BBB8" stroke-width="1"
+        ><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl r">contato</div>
+      <h1 class="h1 r d1 u-mt-18">Fale com a<br /><em>ecooa.</em></h1>
+      <p class="body r d2" style="margin-top:16px;max-width:420px">
+        Estamos prontos para te ouvir, orientar e receber. O canal mais ágil é sempre o WhatsApp.
+      </p>
     </div>
   </div>
-</section>
 
-<!-- Formulário de contato -->
-<section style="background:var(--color-cream);padding:86px 60px" aria-label="Formulário de contato">
-  <div style="max-width:500px;margin:0 auto">
-    <div class="lbl r" style="margin-bottom:16px;justify-content:center">formulário</div>
-    <h2 class="h2 r d1" style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)">Prefere escrever?<br>Deixe sua <em>mensagem.</em></h2>
-    <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas.</p>
+  <Marquee />
 
-    <form action={FORM_ACTION} method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3 ecooa-form" id="form-contato" data-ok-target="#form-contato-ok" data-success-text="Mensagem enviada. Retornaremos em breve.">
-      <input type="hidden" name="_formType" value="contato" />
-      <input type="hidden" name="_source" value="contato" />
-      <input type="text" name="_honeypot" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <input type="hidden" name="_loadedAt" value="" />
-
-      <div>
-        <label for="contato-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu nome</label>
-        <input type="text" id="contato-name" name="nome" required minlength="2" style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
+  <!-- Canais de contato -->
+  <section class="u-bg-warm" aria-label="Canais de contato">
+    <div class="w">
+      <div class="g2">
+        <div>
+          <div class="lbl r u-mb-16">fale conosco</div>
+          <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(26px,3vw,42px)">
+            A conversa<br />começa <em>aqui.</em>
+          </h2>
+          <div class="r d2">
+            <div class="ci-ct">
+              <p class="ci-cl">WhatsApp · pacientes e visitantes</p>
+              <p class="ci-cv">(51) 99146-0909</p>
+              <p class="ci-cs">Canal principal · Segunda a Sexta 9h–20h · Sábado a consultar</p>
+              <a
+                href={WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bd"
+                style="display:inline-block">abrir whatsapp</a
+              >
+            </div>
+            <div class="ci-ct">
+              <p class="ci-cl">E-mail · administrativo e parcerias</p>
+              <p class="ci-cv"><span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span></p>
+              <p class="ci-cs">Para parcerias, fornecedores e assuntos administrativos</p>
+              <a
+                href="#"
+                class="bo eml-link"
+                data-u="ecooa.adm"
+                data-d="gmail.com"
+                style="display:inline-block">enviar e-mail</a
+              >
+            </div>
+            <div class="ci-ct">
+              <p class="ci-cl">Instagram</p>
+              <p class="ci-cv">@somos.ecooa</p>
+              <p class="ci-cs">Acompanhe nossa comunidade e conteúdos</p>
+              <a
+                href="https://instagram.com/somos.ecooa"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ghost"
+                style="margin-top:8px;display:inline-flex"
+                >ver no instagram <span aria-hidden="true">→</span></a
+              >
+            </div>
+            <div class="ci-ct" style="border-bottom:none">
+              <p class="ci-cl">Para profissionais de saúde</p>
+              <p class="ci-cv">Quer atender na ecooa?</p>
+              <p class="ci-cs">
+                Entre em contato pelo WhatsApp e nos fale sobre você e sua prática
+              </p>
+              <a
+                href={WA}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="ghost"
+                style="margin-top:8px;display:inline-flex"
+                >falar pelo whatsapp <span aria-hidden="true">→</span></a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="r d2"><LocationCard /></div>
       </div>
-      <div>
-        <label for="contato-email" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu e-mail</label>
-        <input type="email" id="contato-email" name="email" required style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none" />
-      </div>
-      <div>
-        <label for="contato-message" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">sua mensagem</label>
-        <textarea id="contato-message" name="mensagem" required minlength="10" rows="4" style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;resize:vertical"></textarea>
-      </div>
+    </div>
+  </section>
 
-      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:8px">
-        <input type="checkbox" id="contato-consent" name="consent" required style="margin-top:4px;cursor:pointer;min-width:16px" />
-        <label for="contato-consent" style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer">
-          Concordo em compartilhar meus dados conforme a <a href="/politica-de-privacidade" style="color:var(--color-brand-text);text-decoration:underline" target="_blank" rel="noopener">política de privacidade</a>
-        </label>
-      </div>
+  <!-- Formulário de contato -->
+  <section
+    style="background:var(--color-cream);padding:86px 60px"
+    aria-label="Formulário de contato"
+  >
+    <div style="max-width:500px;margin:0 auto">
+      <div class="lbl r" style="margin-bottom:16px;justify-content:center">formulário</div>
+      <h2
+        class="h2 r d1"
+        style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)"
+      >
+        Prefere escrever?<br />Deixe sua <em>mensagem.</em>
+      </h2>
+      <p class="body r d2" style="margin-bottom:32px;text-align:center">
+        Responderemos em até 24 horas.
+      </p>
 
-      <button type="submit" class="bd" style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer">enviar mensagem</button>
-      <p id="form-contato-ok" style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px">Mensagem enviada. Retornaremos em breve.</p>
-    </form>
-    <script>
-      import { initFormSubmit } from '../scripts/form-submit';
-      initFormSubmit();
-    </script>
-  </div>
-</section>
+      <form
+        action={FORM_ACTION}
+        method="POST"
+        style="display:flex;flex-direction:column;gap:16px"
+        class="r d3 ecooa-form"
+        id="form-contato"
+        data-ok-target="#form-contato-ok"
+        data-success-text="Mensagem enviada. Retornaremos em breve."
+      >
+        <input type="hidden" name="_formType" value="contato" />
+        <input type="hidden" name="_source" value="contato" />
+        <input
+          type="text"
+          name="_honeypot"
+          style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+        <input type="hidden" name="_loadedAt" value="" />
 
-<CtaSection heading='Pronto para<br><em>começar?</em>' subtext="A primeira conversa é o passo mais importante. A ecooa está aqui para te receber." />
+        <div>
+          <label
+            for="contato-name"
+            style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
+            >seu nome</label
+          >
+          <input
+            type="text"
+            id="contato-name"
+            name="nome"
+            required
+            minlength="2"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+          />
+        </div>
+        <div>
+          <label
+            for="contato-email"
+            style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
+            >seu e-mail</label
+          >
+          <input
+            type="email"
+            id="contato-email"
+            name="email"
+            required
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+          />
+        </div>
+        <div>
+          <label
+            for="contato-message"
+            style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
+            >sua mensagem</label
+          >
+          <textarea
+            id="contato-message"
+            name="mensagem"
+            required
+            minlength="10"
+            rows="4"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;resize:vertical"
+          ></textarea>
+        </div>
 
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-top:8px">
+          <input
+            type="checkbox"
+            id="contato-consent"
+            name="consent"
+            required
+            style="margin-top:4px;cursor:pointer;min-width:16px"
+          />
+          <label
+            for="contato-consent"
+            style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer"
+          >
+            Concordo em compartilhar meus dados conforme a <a
+              href="/politica-de-privacidade"
+              style="color:var(--color-brand-text);text-decoration:underline"
+              target="_blank"
+              rel="noopener">política de privacidade</a
+            >
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="bd"
+          style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer"
+          >enviar mensagem</button
+        >
+        <p
+          id="form-contato-ok"
+          style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px"
+        >
+          Mensagem enviada. Retornaremos em breve.
+        </p>
+      </form>
+      <script>
+        import { initFormSubmit } from '../scripts/form-submit';
+        initFormSubmit();
+      </script>
+    </div>
+  </section>
+
+  <CtaSection
+    heading="Pronto para<br><em>começar?</em>"
+    subtext="A primeira conversa é o passo mais importante. A ecooa está aqui para te receber."
+  />
 </BaseLayout>

@@ -25,15 +25,23 @@ if (tt) {
   });
 
   // Touch support
-  tt.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].pageX - tt.offsetLeft;
-    scrollLeft = tt.scrollLeft;
-  }, { passive: true });
+  tt.addEventListener(
+    'touchstart',
+    (e) => {
+      startX = e.touches[0].pageX - tt.offsetLeft;
+      scrollLeft = tt.scrollLeft;
+    },
+    { passive: true }
+  );
 
-  tt.addEventListener('touchmove', (e) => {
-    const x = e.touches[0].pageX - tt.offsetLeft;
-    tt.scrollLeft = scrollLeft - (x - startX);
-  }, { passive: true });
+  tt.addEventListener(
+    'touchmove',
+    (e) => {
+      const x = e.touches[0].pageX - tt.offsetLeft;
+      tt.scrollLeft = scrollLeft - (x - startX);
+    },
+    { passive: true }
+  );
 
   // Keyboard support for accessibility
   tt.setAttribute('tabindex', '0');

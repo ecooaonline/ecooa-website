@@ -9,7 +9,10 @@ if (window.matchMedia('(pointer: fine)').matches) {
   document.body.appendChild(dot);
   document.body.appendChild(ring);
 
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  let mx = 0,
+    my = 0,
+    rx = 0,
+    ry = 0;
   let looping = false;
 
   function loop() {
@@ -28,12 +31,16 @@ if (window.matchMedia('(pointer: fine)').matches) {
     mx = e.clientX;
     my = e.clientY;
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
-    if (!looping) { looping = true; requestAnimationFrame(loop); }
+    if (!looping) {
+      looping = true;
+      requestAnimationFrame(loop);
+    }
   });
 
   // Zone toggles via event delegation (single listener pair instead of N per zone)
   const HOVER_SELECTOR = 'a, button, .pl-lk, .pl, .pc, .ip, .ec';
-  const DARK_SELECTOR = '.ap-cp, .ap-vis, .hr, .wv, .cf, .footer, [style*="background:var(--color-ink)"]';
+  const DARK_SELECTOR =
+    '.ap-cp, .ap-vis, .hr, .wv, .cf, .footer, [style*="background:var(--color-ink)"]';
 
   document.addEventListener('mouseover', (e) => {
     const target = e.target as Element | null;

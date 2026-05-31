@@ -15,7 +15,7 @@ function generateWaves(n: number, x0: number, y0: number, step: number, w: numbe
     const y = y0 + i * step;
     const c = y - 36;
     const c2 = y + 36;
-    s += `<path d="M${x0},${y} C${w * .2},${c} ${w * .45},${c2} ${w * .6},${y} C${w * .75},${c - 7} ${w * .9},${c2 - 7} ${w + 80},${y - 7}"/>`;
+    s += `<path d="M${x0},${y} C${w * 0.2},${c} ${w * 0.45},${c2} ${w * 0.6},${y} C${w * 0.75},${c - 7} ${w * 0.9},${c2 - 7} ${w + 80},${y - 7}"/>`;
   }
   return s;
 }

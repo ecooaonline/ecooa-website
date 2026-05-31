@@ -1,0 +1,25 @@
+# Build output
+dist/
+.astro/
+node_modules/
+
+# Projeto starter separado (não faz parte do build do site)
+template/
+
+# Conteúdo autoral e docs internos (não são código)
+src/content/
+docs/
+.claude/
+
+# Estáticos / vendored
+public/
+google-apps-script.js
+package-lock.json
+
+# Docs operacionais escritos à mão (raiz)
+/CLAUDE.md
+/ONBOARDING.md
+/README.md
+/README-OPERACIONAL.md
+/PROMPT-APRESENTACAO-IA.md
+/RELATORIO-TECNICO-IMPLEMENTACAO.md

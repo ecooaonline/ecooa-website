@@ -1,5 +1,12 @@
 ---
-import { WA_BASE, ADDRESS_FULL, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP } from '../data/constants';
+import {
+  WA_BASE,
+  ADDRESS_FULL,
+  ADDRESS_NEIGHBORHOOD,
+  ADDRESS_CITY,
+  ADDRESS_STATE,
+  ADDRESS_ZIP,
+} from '../data/constants';
 import NewsletterCapture from './NewsletterCapture.astro';
 import EcooaLogo from './EcooaLogo.astro';
 
@@ -28,7 +35,11 @@ const WA = WA_BASE;
         <li><a href="/profissionais">profissionais</a></li>
         <li><a href="/mentorias">mentorias</a></li>
         <li><a href="/blog">blog</a></li>
-        <li><a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer">@somos.ecooa</a></li>
+        <li>
+          <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer"
+            >@somos.ecooa</a
+          >
+        </li>
         <li><a href="/contato">contato</a></li>
         <li><a href="/politica-de-privacidade">privacidade</a></li>
       </ul>
@@ -38,19 +49,38 @@ const WA = WA_BASE;
       <ul class="fl">
         <li><a href={WA} target="_blank" rel="noopener noreferrer">(51) 99146-0909</a></li>
         <li><a href="/agendamento">agendar avaliação</a></li>
-        <li><a href="https://www.google.com/maps/place/ecooa" target="_blank" rel="noopener noreferrer">avalie no google ★</a></li>
+        <li>
+          <a
+            href="https://www.google.com/maps/place/ecooa"
+            target="_blank"
+            rel="noopener noreferrer">avalie no google ★</a
+          >
+        </li>
       </ul>
-      <p style="font-size:10px;font-weight:300;color:rgba(255,255,255,.48);margin-top:16px;line-height:1.8">Seg–Sex 9h–20h · Sáb a consultar</p>
+      <p
+        style="font-size:10px;font-weight:300;color:rgba(255,255,255,.48);margin-top:16px;line-height:1.8"
+      >
+        Seg–Sex 9h–20h · Sáb a consultar
+      </p>
     </div>
   </div>
   <div style="padding:20px 0 28px;border-bottom:1px solid rgba(255,255,255,.05)">
     <NewsletterCapture variant="footer" />
   </div>
   <div style="padding:16px var(--section-px) 0;text-align:center">
-    <p style="font-size:10px;font-weight:300;color:rgba(255,255,255,.38);max-width:700px;margin:0 auto;line-height:1.9">As informações contidas neste site têm caráter informativo e educacional. Resultados podem variar de acordo com cada paciente. Este conteúdo não substitui a consulta com profissional de saúde qualificado. Responsável técnico: Dr. Gustavo Gehrke, CRM/RS 35822. CNPJ 41.592.276/0001-93.</p>
+    <p
+      style="font-size:10px;font-weight:300;color:rgba(255,255,255,.38);max-width:700px;margin:0 auto;line-height:1.9"
+    >
+      As informações contidas neste site têm caráter informativo e educacional. Resultados podem
+      variar de acordo com cada paciente. Este conteúdo não substitui a consulta com profissional de
+      saúde qualificado. Responsável técnico: Dr. Gustavo Gehrke, CRM/RS 35822. CNPJ
+      41.592.276/0001-93.
+    </p>
   </div>
   <div class="fb">
     <p class="fc">© 2026 ecooa®. Todos os direitos reservados.</p>
-    <p class="fa">{ADDRESS_NEIGHBORHOOD} · {ADDRESS_CITY}, {ADDRESS_STATE}<br>CEP {ADDRESS_ZIP}</p>
+    <p class="fa">
+      {ADDRESS_NEIGHBORHOOD} · {ADDRESS_CITY}, {ADDRESS_STATE}<br />CEP {ADDRESS_ZIP}
+    </p>
   </div>
 </footer>

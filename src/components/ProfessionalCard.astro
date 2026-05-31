@@ -22,63 +22,77 @@ const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
 
 <div
   class={`pc r ${clickable ? 'pc-clickable' : ''}`}
-  {...clickable ? {
-    'data-modal': 'professional',
-    'data-professional-name': name,
-    'data-specialty': role.split('·')[0].trim(),
-    'data-name': name,
-    'data-role': role,
-    'data-photo': photo || '',
-    'data-ig': ig || '',
-    'data-ig-url': igUrl,
-    'data-wa': waLink,
-    'data-desc': description || '',
-    'data-tags': tags ? tags.join('|') : '',
-    'data-slug': slug || '',
-    role: 'button',
-    tabindex: '0',
-    'aria-label': `Ver perfil de ${name}`,
-  } : {}}
+  {...clickable
+    ? {
+        'data-modal': 'professional',
+        'data-professional-name': name,
+        'data-specialty': role.split('·')[0].trim(),
+        'data-name': name,
+        'data-role': role,
+        'data-photo': photo || '',
+        'data-ig': ig || '',
+        'data-ig-url': igUrl,
+        'data-wa': waLink,
+        'data-desc': description || '',
+        'data-tags': tags ? tags.join('|') : '',
+        'data-slug': slug || '',
+        role: 'button',
+        tabindex: '0',
+        'aria-label': `Ver perfil de ${name}`,
+      }
+    : {}}
 >
   <div class="pc-ph">
-    {photo ? (
-      <OptimizedImage
-        src={photo}
-        alt={name}
-        class="pc-img"
-        loading="lazy"
-        decoding="async"
-        width={700}
-        height={1050}
-        sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
-      />
-    ) : (
-      <>
-        <div class="pc-bg" style={`background:${bg}`}></div>
-        <svg class="pc-sl" viewBox="0 0 80 110" width="46" aria-hidden="true">
-          <circle cx="40" cy="30" r="20" fill="#3D3835"/>
-          <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835"/>
-        </svg>
-      </>
-    )}
+    {
+      photo ? (
+        <OptimizedImage
+          src={photo}
+          alt={name}
+          class="pc-img"
+          loading="lazy"
+          decoding="async"
+          width={700}
+          height={1050}
+          sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
+        />
+      ) : (
+        <>
+          <div class="pc-bg" style={`background:${bg}`} />
+          <svg class="pc-sl" viewBox="0 0 80 110" width="46" aria-hidden="true">
+            <circle cx="40" cy="30" r="20" fill="#3D3835" />
+            <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835" />
+          </svg>
+        </>
+      )
+    }
   </div>
   <div class="pc-i">
     <p class="pc-n">{name}</p>
     <p class="pc-r">{role}</p>
-    {ig && !clickable && (
-      <a
-        href={igUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        style="font-size:10px;font-weight:400;color:var(--color-brand-text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:6px;letter-spacing:.03em"
-      >
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="17" cy="7" r=".8" fill="currentColor"/>
-        </svg>
-        {ig}
-      </a>
-    )}
+    {
+      ig && !clickable && (
+        <a
+          href={igUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          style="font-size:10px;font-weight:400;color:var(--color-brand-text);text-decoration:none;display:inline-flex;align-items:center;gap:5px;margin-top:6px;letter-spacing:.03em"
+        >
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect
+              x="2"
+              y="2"
+              width="20"
+              height="20"
+              rx="6"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5" />
+            <circle cx="17" cy="7" r=".8" fill="currentColor" />
+          </svg>
+          {ig}
+        </a>
+      )
+    }
   </div>
 </div>

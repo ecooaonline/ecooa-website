@@ -13,17 +13,19 @@ function escapeXml(s: string): string {
 }
 
 export const GET: APIRoute = async () => {
-  const posts = (await getCollection('blog', ({ data }) => !data.draft))
-    .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  );
 
   const buildDate = new Date().toUTCString();
   const latestDate = posts[0] ? new Date(posts[0].data.date).toUTCString() : buildDate;
 
-  const items = posts.map((post) => {
-    const url = `${SITE}/blog/${post.id}`;
-    const pubDate = new Date(post.data.date).toUTCString();
-    const category = escapeXml(post.data.category);
-    return `    <item>
+  const items = posts
+    .map((post) => {
+      const url = `${SITE}/blog/${post.id}`;
+      const pubDate = new Date(post.data.date).toUTCString();
+      const category = escapeXml(post.data.category);
+      return `    <item>
       <title>${escapeXml(post.data.title)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
@@ -32,7 +34,8 @@ export const GET: APIRoute = async () => {
       <author>contato@somosecooa.com.br (${escapeXml(post.data.author)})</author>
       <category>${category}</category>
     </item>`;
-  }).join('\n');
+    })
+    .join('\n');
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">

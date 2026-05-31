@@ -15,27 +15,39 @@ const WA = WA_DEFAULT;
 ---
 
 <section class={`cf ${image ? 'cf-img' : ''}`} aria-label="Chamada para ação">
-  {image ? (
-    <OptimizedImage
-      src={image}
-      alt={`ecooa, ${ADDRESS_NEIGHBORHOOD}, ${ADDRESS_CITY}`}
-      loading="lazy"
-      decoding="async"
-      width={1000}
-      height={1709}
-      sizes="100vw"
-      class="cf-bg"
-    />
-  ) : (
-    <svg class="wsv" style="opacity:.04" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} y0={80} step={55} /></g>
-    </svg>
-  )}
+  {
+    image ? (
+      <OptimizedImage
+        src={image}
+        alt={`ecooa, ${ADDRESS_NEIGHBORHOOD}, ${ADDRESS_CITY}`}
+        loading="lazy"
+        decoding="async"
+        width={1000}
+        height={1709}
+        sizes="100vw"
+        class="cf-bg"
+      />
+    ) : (
+      <svg
+        class="wsv"
+        style="opacity:.04"
+        viewBox="0 0 1440 500"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
+        <g fill="none" stroke="white" stroke-width="1">
+          <WavePattern count={8} y0={80} step={55} />
+        </g>
+      </svg>
+    )
+  }
   <p class="cf-lbl r">ecooa · Porto Alegre</p>
   <h2 class="cf-h r d1" set:html={heading} />
   <p class="cf-s r d2">{subtext}</p>
   <div class="cf-bt r d3">
-    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw" data-intent="cta-section">falar pelo whatsapp</a>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw" data-intent="cta-section"
+      >falar pelo whatsapp</a
+    >
     <a href="/agendamento" class="bow">agendar avaliação</a>
   </div>
   <p class="cf-rt r d3">respondemos em minutos</p>
@@ -45,8 +57,8 @@ const WA = WA_DEFAULT;
   .cf-rt {
     font-size: 10px;
     font-weight: 400;
-    color: rgba(255,255,255,.45);
-    letter-spacing: .06em;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.06em;
     margin-top: 10px;
     text-align: center;
   }
@@ -61,7 +73,7 @@ const WA = WA_DEFAULT;
     height: 100%;
     object-fit: cover;
     object-position: center 30%;
-    opacity: .13;
+    opacity: 0.13;
     z-index: 0;
   }
 </style>

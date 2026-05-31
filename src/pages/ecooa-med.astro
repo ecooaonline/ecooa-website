@@ -10,78 +10,106 @@ import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const medFaqs = [
-  { q: "Quanto custa uma consulta na ecooa.med?", a: "Os valores variam conforme o profissional e o protocolo. O Protocolo Peso Seguro, por exemplo, tem valor de entrada especial para a consulta de avaliação. Entre em contato pelo WhatsApp para informações atualizadas." },
-  { q: "Preciso de indicação para agendar?", a: "Não. Você pode agendar diretamente pelo WhatsApp ou pelo site, sem necessidade de encaminhamento." },
-  { q: "A ecooa.med atende por plano de saúde?", a: "Nosso atendimento é particular. Trabalhamos com valores acessíveis e condições especiais para acompanhamento contínuo." },
-  { q: "Como funciona o Protocolo Peso Seguro?", a: "Começa com uma consulta de avaliação com valor de entrada especial. Inclui anamnese completa, solicitação de exames laboratoriais para avaliar a segurança no uso de canetas emagrecedoras, e acompanhamento médico recorrente durante todo o tratamento. O objetivo é resultado real com segurança clínica." },
-  { q: "As consultas médicas recebem plano alimentar junto?", a: "Não. A ecooa e o Dr. Gustavo acreditam e respeitam cada área da saúde, e entendem que plano alimentar é prescrito por nutricionista. Contamos com mais de 10 nutricionistas na equipe, com conhecimento especializado e direcionado para cada necessidade." },
+  {
+    q: 'Quanto custa uma consulta na ecooa.med?',
+    a: 'Os valores variam conforme o profissional e o protocolo. O Protocolo Peso Seguro, por exemplo, tem valor de entrada especial para a consulta de avaliação. Entre em contato pelo WhatsApp para informações atualizadas.',
+  },
+  {
+    q: 'Preciso de indicação para agendar?',
+    a: 'Não. Você pode agendar diretamente pelo WhatsApp ou pelo site, sem necessidade de encaminhamento.',
+  },
+  {
+    q: 'A ecooa.med atende por plano de saúde?',
+    a: 'Nosso atendimento é particular. Trabalhamos com valores acessíveis e condições especiais para acompanhamento contínuo.',
+  },
+  {
+    q: 'Como funciona o Protocolo Peso Seguro?',
+    a: 'Começa com uma consulta de avaliação com valor de entrada especial. Inclui anamnese completa, solicitação de exames laboratoriais para avaliar a segurança no uso de canetas emagrecedoras, e acompanhamento médico recorrente durante todo o tratamento. O objetivo é resultado real com segurança clínica.',
+  },
+  {
+    q: 'As consultas médicas recebem plano alimentar junto?',
+    a: 'Não. A ecooa e o Dr. Gustavo acreditam e respeitam cada área da saúde, e entendem que plano alimentar é prescrito por nutricionista. Contamos com mais de 10 nutricionistas na equipe, com conhecimento especializado e direcionado para cada necessidade.',
+  },
 ];
 
 const medFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": medFaqs.map(f => ({
-    "@type": "Question",
-    "name": f.q,
-    "acceptedAnswer": { "@type": "Answer", "text": f.a }
-  }))
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: medFaqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
 };
 
 const medProtocolsSchema = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "MedicalProcedure",
-      "@id": "https://www.somosecooa.com.br/ecooa-med#metodo-gehrke-360",
-      "name": "Método Gehrke 360°",
-      "procedureType": "https://schema.org/DiagnosticProcedure",
-      "howPerformed": "Avaliação metabólica estratificada em três níveis (Reset, Equilíbrio, Performance) com base em biomarcadores, anamnese completa e exames laboratoriais. Cada nível orienta um protocolo individualizado de intervenção.",
-      "description": "Método exclusivo de classificação metabólica que identifica o momento de saúde do paciente e direciona o protocolo adequado: Reset para múltiplas alterações, Equilíbrio para ajustes finos, Performance para otimização avançada.",
-      "url": "https://www.somosecooa.com.br/ecooa-med",
-      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
-      "bodyLocation": "Sistêmico",
-      "preparation": "Jejum conforme painel laboratorial solicitado."
+      '@type': 'MedicalProcedure',
+      '@id': 'https://www.somosecooa.com.br/ecooa-med#metodo-gehrke-360',
+      name: 'Método Gehrke 360°',
+      procedureType: 'https://schema.org/DiagnosticProcedure',
+      howPerformed:
+        'Avaliação metabólica estratificada em três níveis (Reset, Equilíbrio, Performance) com base em biomarcadores, anamnese completa e exames laboratoriais. Cada nível orienta um protocolo individualizado de intervenção.',
+      description:
+        'Método exclusivo de classificação metabólica que identifica o momento de saúde do paciente e direciona o protocolo adequado: Reset para múltiplas alterações, Equilíbrio para ajustes finos, Performance para otimização avançada.',
+      url: 'https://www.somosecooa.com.br/ecooa-med',
+      performer: { '@id': 'https://www.somosecooa.com.br/#organization' },
+      bodyLocation: 'Sistêmico',
+      preparation: 'Jejum conforme painel laboratorial solicitado.',
     },
     {
-      "@type": "MedicalProcedure",
-      "@id": "https://www.somosecooa.com.br/ecooa-med#protocolo-peso-seguro",
-      "name": "Protocolo Peso Seguro",
-      "procedureType": "https://schema.org/TherapeuticProcedure",
-      "howPerformed": "Consulta de avaliação com valor de entrada especial. Análise de exames, histórico e viabilidade clínica para uso supervisionado de agonistas de GLP-1 (semaglutida, tirzepatida) com acompanhamento médico recorrente.",
-      "description": "Emagrecimento clínico com acompanhamento médico contínuo e monitoramento laboratorial. Foco em segurança e resultado sustentável.",
-      "url": "https://www.somosecooa.com.br/ecooa-med",
-      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
-      "followup": "Retornos periódicos para ajuste de dose e monitoramento."
+      '@type': 'MedicalProcedure',
+      '@id': 'https://www.somosecooa.com.br/ecooa-med#protocolo-peso-seguro',
+      name: 'Protocolo Peso Seguro',
+      procedureType: 'https://schema.org/TherapeuticProcedure',
+      howPerformed:
+        'Consulta de avaliação com valor de entrada especial. Análise de exames, histórico e viabilidade clínica para uso supervisionado de agonistas de GLP-1 (semaglutida, tirzepatida) com acompanhamento médico recorrente.',
+      description:
+        'Emagrecimento clínico com acompanhamento médico contínuo e monitoramento laboratorial. Foco em segurança e resultado sustentável.',
+      url: 'https://www.somosecooa.com.br/ecooa-med',
+      performer: { '@id': 'https://www.somosecooa.com.br/#organization' },
+      followup: 'Retornos periódicos para ajuste de dose e monitoramento.',
     },
     {
-      "@type": "MedicalProcedure",
-      "@id": "https://www.somosecooa.com.br/ecooa-med#protocolo-tricometabolico",
-      "name": "Protocolo Tricometabólico",
-      "procedureType": "https://schema.org/DiagnosticProcedure",
-      "howPerformed": "Investigação das causas metabólicas da queda capilar: perfil hormonal, estresse oxidativo, micronutrientes. Quando indicado, inclui mapeamento genético para predisposição hereditária.",
-      "description": "Abordagem clínica que trata a raiz metabólica da queda de cabelo, não apenas o sintoma. Integra endocrinologia, nutrição e tricologia.",
-      "url": "https://www.somosecooa.com.br/ecooa-med",
-      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
-      "bodyLocation": "Couro cabeludo / sistêmico"
+      '@type': 'MedicalProcedure',
+      '@id': 'https://www.somosecooa.com.br/ecooa-med#protocolo-tricometabolico',
+      name: 'Protocolo Tricometabólico',
+      procedureType: 'https://schema.org/DiagnosticProcedure',
+      howPerformed:
+        'Investigação das causas metabólicas da queda capilar: perfil hormonal, estresse oxidativo, micronutrientes. Quando indicado, inclui mapeamento genético para predisposição hereditária.',
+      description:
+        'Abordagem clínica que trata a raiz metabólica da queda de cabelo, não apenas o sintoma. Integra endocrinologia, nutrição e tricologia.',
+      url: 'https://www.somosecooa.com.br/ecooa-med',
+      performer: { '@id': 'https://www.somosecooa.com.br/#organization' },
+      bodyLocation: 'Couro cabeludo / sistêmico',
     },
     {
-      "@type": "MedicalProcedure",
-      "@id": "https://www.somosecooa.com.br/ecooa-med#bioimplantes-metabolicos",
-      "name": "Bioimplantes Metabólicos",
-      "procedureType": "https://schema.org/TherapeuticProcedure",
-      "howPerformed": "Aplicação subcutânea de implantes bioabsorvíveis de liberação estável, individualizada por avaliação clínica e laboratorial prévia.",
-      "description": "Implantes subcutâneos bioabsorvíveis com liberação farmacocinética estável, indicados para reposição hormonal feminina e masculina quando clinicamente apropriados.",
-      "url": "https://www.somosecooa.com.br/ecooa-med",
-      "performer": { "@id": "https://www.somosecooa.com.br/#organization" },
-      "bodyLocation": "Tecido subcutâneo"
-    }
-  ]
+      '@type': 'MedicalProcedure',
+      '@id': 'https://www.somosecooa.com.br/ecooa-med#bioimplantes-metabolicos',
+      name: 'Bioimplantes Metabólicos',
+      procedureType: 'https://schema.org/TherapeuticProcedure',
+      howPerformed:
+        'Aplicação subcutânea de implantes bioabsorvíveis de liberação estável, individualizada por avaliação clínica e laboratorial prévia.',
+      description:
+        'Implantes subcutâneos bioabsorvíveis com liberação farmacocinética estável, indicados para reposição hormonal feminina e masculina quando clinicamente apropriados.',
+      url: 'https://www.somosecooa.com.br/ecooa-med',
+      performer: { '@id': 'https://www.somosecooa.com.br/#organization' },
+      bodyLocation: 'Tecido subcutâneo',
+    },
+  ],
 };
 
 const WA = WA_DEFAULT;
 
-const allMedPosts = await getCollection('blog', ({data}) => !data.draft && data.category === 'medicina');
-const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0, 3);
+const allMedPosts = await getCollection(
+  'blog',
+  ({ data }) => !data.draft && data.category === 'medicina'
+);
+const medPosts = allMedPosts
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
 ---
 
 <BaseLayout
@@ -89,236 +117,526 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
   description="Medicina humanizada em Moinhos de Vento, Porto Alegre. Emagrecimento, saúde capilar, equilíbrio hormonal e longevidade com preços especiais."
   currentPage="ecooa-med"
   ogImage="/clinic/med.webp"
-  breadcrumbs={[{ name: "ecooa.med", url: "/ecooa-med" }]}
+  breadcrumbs={[{ name: 'ecooa.med', url: '/ecooa-med' }]}
 >
-
-<!-- Hero -->
-<div class="ph" style="background:var(--color-ink)">
-  <svg class="wsv u-op-05" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g></svg>
-  <div class="ph-c">
-    <div class="lbl lbl-lt r">ecooa.med</div>
-    <h1 class="h1 h1-w r d1 u-mt-18">Medicina humanizada.<br>Diagnóstico preciso.<br><em>Resultado real.</em></h1>
-    <p class="body body-lt r d2" style="margin-top:16px;max-width:500px">Medicina de precisão que começa pela escuta. Protocolos construídos com base nos seus dados, no seu histórico e, principalmente, nos seus objetivos.</p>
-    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta">falar pelo whatsapp</a>
-    <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
-    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Consultas de 50+ minutos. Vagas limitadas para garantir atendimento completo.</p>
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-ink)">
+    <svg
+      class="wsv u-op-05"
+      viewBox="0 0 1440 500"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="white" stroke-width="1"
+        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl lbl-lt r">ecooa.med</div>
+      <h1 class="h1 h1-w r d1 u-mt-18">
+        Medicina humanizada.<br />Diagnóstico preciso.<br /><em>Resultado real.</em>
+      </h1>
+      <p class="body body-lt r d2" style="margin-top:16px;max-width:500px">
+        Medicina de precisão que começa pela escuta. Protocolos construídos com base nos seus dados,
+        no seu histórico e, principalmente, nos seus objetivos.
+      </p>
+      <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta"
+        >falar pelo whatsapp</a
+      >
+      <p
+        class="r d3"
+        style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em"
+      >
+        respondemos em minutos
+      </p>
+      <p
+        class="r d3"
+        style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px"
+      >
+        Consultas de 50+ minutos. Vagas limitadas para garantir atendimento completo.
+      </p>
+    </div>
   </div>
-</div>
 
-<Marquee />
+  <Marquee />
 
-<script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
-<script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
 
-<QuizSection options={[
-  { title: "peso seguro", subtitle: "emagrecimento assistido", waText: "Olá, gostaria de saber mais sobre o Protocolo Peso Seguro" },
-  { title: "queda capilar", subtitle: "protocolo tricometabólico", waText: "Olá, gostaria de avaliação com o Protocolo Tricometabólico" },
-  { title: "hormônios", subtitle: "bioimplantes metabólicos", waText: "Olá, gostaria de avaliação hormonal e bioimplantes metabólicos" },
-  { title: "performance", subtitle: "esporte e otimização", waText: "Olá, gostaria de avaliação para performance e otimização metabólica" },
-  { title: "check-up", subtitle: "método gehrke 360°", waText: "Olá, gostaria de agendar uma avaliação pelo Método Gehrke 360°" },
-  { title: "não sei", subtitle: "por onde começar", waText: "Olá, tenho algumas queixas de saúde e gostaria de orientação da equipe ecooa" },
-]} />
+  <QuizSection
+    options={[
+      {
+        title: 'peso seguro',
+        subtitle: 'emagrecimento assistido',
+        waText: 'Olá, gostaria de saber mais sobre o Protocolo Peso Seguro',
+      },
+      {
+        title: 'queda capilar',
+        subtitle: 'protocolo tricometabólico',
+        waText: 'Olá, gostaria de avaliação com o Protocolo Tricometabólico',
+      },
+      {
+        title: 'hormônios',
+        subtitle: 'bioimplantes metabólicos',
+        waText: 'Olá, gostaria de avaliação hormonal e bioimplantes metabólicos',
+      },
+      {
+        title: 'performance',
+        subtitle: 'esporte e otimização',
+        waText: 'Olá, gostaria de avaliação para performance e otimização metabólica',
+      },
+      {
+        title: 'check-up',
+        subtitle: 'método gehrke 360°',
+        waText: 'Olá, gostaria de agendar uma avaliação pelo Método Gehrke 360°',
+      },
+      {
+        title: 'não sei',
+        subtitle: 'por onde começar',
+        waText: 'Olá, tenho algumas queixas de saúde e gostaria de orientação da equipe ecooa',
+      },
+    ]}
+  />
 
-<!-- Empatia -->
-<section style="background:var(--color-cream);padding:64px var(--section-px)" aria-label="Entendemos você">
-  <div class="u-narrow">
-    <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">Você já tentou dietas, passou por médicos que mal olharam os seus exames, ouviu que "está tudo normal" mesmo sentindo que algo não vai bem. Cansaço constante, dificuldade para emagrecer, insônia, queda de libido. Você sabe que pode estar melhor.</p>
-    <p class="body r d1" style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400">Na ecooa.med, a gente ouve o que os exames dizem e o que você sente. Porque medicina de verdade começa pela escuta.</p>
-  </div>
-</section>
+  <!-- Empatia -->
+  <section
+    style="background:var(--color-cream);padding:64px var(--section-px)"
+    aria-label="Entendemos você"
+  >
+    <div class="u-narrow">
+      <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">
+        Você já tentou dietas, passou por médicos que mal olharam os seus exames, ouviu que "está
+        tudo normal" mesmo sentindo que algo não vai bem. Cansaço constante, dificuldade para
+        emagrecer, insônia, queda de libido. Você sabe que pode estar melhor.
+      </p>
+      <p
+        class="body r d1"
+        style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400"
+      >
+        Na ecooa.med, a gente ouve o que os exames dizem e o que você sente. Porque medicina de
+        verdade começa pela escuta.
+      </p>
+    </div>
+  </section>
 
-<!-- Foto do espaço -->
-<section style="background:var(--color-cream);padding:0;overflow:hidden" aria-label="Nosso espaço">
-  <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-    <OptimizedImage src="/clinic/med.webp" alt="Consultório médico da ecooa.med em Moinhos de Vento" width={1000} height={667} class="u-cover" />
-  </div>
-</section>
+  <!-- Foto do espaço -->
+  <section
+    style="background:var(--color-cream);padding:0;overflow:hidden"
+    aria-label="Nosso espaço"
+  >
+    <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+      <OptimizedImage
+        src="/clinic/med.webp"
+        alt="Consultório médico da ecooa.med em Moinhos de Vento"
+        width={1000}
+        height={667}
+        class="u-cover"
+      />
+    </div>
+  </section>
 
-<!-- Abordagem -->
-<section class="u-bg-warm" aria-label="Nossa abordagem">
-  <div class="w">
-    <div class="g2 g2c">
-      <div>
-        <div class="lbl r">nossa abordagem</div>
-        <h2 class="h2 r d1 u-mt-15">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
-        <p class="body r d2 u-mt-18">Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a cada atendimento, com escuta total ao paciente e trabalho multiprofissional.</p>
-        <p class="body r d3 u-mt-13">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
-        <div class="lbl r" style="margin-top:24px;margin-bottom:10px">para profissionais de saúde</div>
-        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px">Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.</p>
-        <form action={FORM_ACTION} method="POST" class="b2b-form ecooa-form" style="margin-top:0" id="form-b2b-med" data-ok-target="#form-b2b-med-ok" data-success-text="Recebemos seu interesse. Entraremos em contato em breve.">
-          <input type="hidden" name="_formType" value="b2b-medicina" />
-          <input type="text" name="nome" placeholder="Nome completo" required class="b2b-input b2b-light" aria-label="Nome completo" />
-          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input b2b-light" aria-label="Número de WhatsApp" />
-          <input type="email" name="email" placeholder="E-mail" required class="b2b-input b2b-light" aria-label="E-mail profissional" />
-          <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
-          <p id="form-b2b-med-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-text);margin-top:4px">Recebemos seu interesse. Entraremos em contato em breve.</p>
-        </form>
-        <script>
-          import { initFormSubmit } from '../scripts/form-submit';
-          initFormSubmit();
-        </script>
-      </div>
-      <div class="r d2">
-        <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
-          <div class="lbl u-mb-20">áreas de atuação</div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Metabólica e Endocrinologia</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Nutrologia e Emagrecimento</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Envelhecimento Saudável e Estilo de Vida</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Performance Cognitiva e Física</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Hipertrofia e Composição Corporal</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Hormonologia e Saúde Feminina e Masculina</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Bioimplantes Metabólicos</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina do Esporte e Anabolismo Fisiológico</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Preventiva e Checkup Metabólico</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Testes Genéticos</span></div>
+  <!-- Abordagem -->
+  <section class="u-bg-warm" aria-label="Nossa abordagem">
+    <div class="w">
+      <div class="g2 g2c">
+        <div>
+          <div class="lbl r">nossa abordagem</div>
+          <h2 class="h2 r d1 u-mt-15">
+            Uma rede de<br />especialistas que<br /><em>se entendem.</em>
+          </h2>
+          <p class="body r d2 u-mt-18">
+            Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam
+            nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos,
+            implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para
+            médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a
+            cada atendimento, com escuta total ao paciente e trabalho multiprofissional.
+          </p>
+          <p class="body r d3 u-mt-13">
+            Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em
+            um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto
+            de profissionais para networking de carreira. <a
+              href="/contato"
+              style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline"
+              >Entre em contato</a
+            > ou preencha o formulário abaixo.
+          </p>
+          <div class="lbl r" style="margin-top:24px;margin-bottom:10px">
+            para profissionais de saúde
+          </div>
+          <p
+            style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px"
+          >
+            Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.
+          </p>
+          <form
+            action={FORM_ACTION}
+            method="POST"
+            class="b2b-form ecooa-form"
+            style="margin-top:0"
+            id="form-b2b-med"
+            data-ok-target="#form-b2b-med-ok"
+            data-success-text="Recebemos seu interesse. Entraremos em contato em breve."
+          >
+            <input type="hidden" name="_formType" value="b2b-medicina" />
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome completo"
+              required
+              class="b2b-input b2b-light"
+              aria-label="Nome completo"
+            />
+            <input
+              type="tel"
+              name="whatsapp"
+              placeholder="WhatsApp"
+              required
+              class="b2b-input b2b-light"
+              aria-label="Número de WhatsApp"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              required
+              class="b2b-input b2b-light"
+              aria-label="E-mail profissional"
+            />
+            <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
+            <p
+              id="form-b2b-med-ok"
+              style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-text);margin-top:4px"
+            >
+              Recebemos seu interesse. Entraremos em contato em breve.
+            </p>
+          </form>
+          <script>
+            import { initFormSubmit } from '../scripts/form-submit';
+            initFormSubmit();
+          </script>
+        </div>
+        <div class="r d2">
+          <div
+            style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)"
+          >
+            <div class="lbl u-mb-20">áreas de atuação</div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Medicina Metabólica e Endocrinologia</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Nutrologia e Emagrecimento</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Envelhecimento Saudável e Estilo de Vida</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Performance Cognitiva e Física</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Hipertrofia e Composição Corporal</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Hormonologia e Saúde Feminina e Masculina</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Bioimplantes Metabólicos</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Medicina do Esporte e Anabolismo Fisiológico</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Medicina Preventiva e Checkup Metabólico</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Testes Genéticos</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Método Gehrke 360° -->
-<section style="background:var(--color-ink);padding:86px 60px" aria-label="Método Gehrke 360°">
-  <div class="w">
-    <div class="lbl lbl-lt r u-mb-16">método exclusivo</div>
-    <h2 class="h2 h2-w r d1 u-mb-20">Método Gehrke <em>360°</em></h2>
-    <p class="body body-lt r d2" style="max-width:620px;margin-bottom:48px">Cada paciente chega em um momento diferente. O Método Gehrke 360° classifica seu estado metabólico atual em três níveis, e a partir disso constrói um protocolo sob medida, com a profundidade que cada caso exige.</p>
-    <div class="gehrke-tiers">
-      <div class="gehrke-tier r d1">
-        <div class="gehrke-tier-num">01</div>
-        <h3 class="gehrke-tier-name">Reset</h3>
-        <p class="gehrke-tier-desc">Para quem chega com múltiplas alterações metabólicas. Exames fora do padrão, sintomas acumulados, histórico de tentativas sem resultado. Protocolo intensivo para ajustar hormônios, metabolismo, inflamação e sono. Retornos frequentes até a estabilização completa.</p>
-      </div>
-      <div class="gehrke-tier r d2">
-        <div class="gehrke-tier-num">02</div>
-        <h3 class="gehrke-tier-name">Equilíbrio</h3>
-        <p class="gehrke-tier-desc">Para quem está funcionando, mas sente que pode melhorar. Pequenos ajustes hormonais, nutricionais ou de estilo de vida para pavimentar um envelhecimento saudável. Manutenção ativa com acompanhamento periódico e metas claras.</p>
-      </div>
-      <div class="gehrke-tier r d3">
-        <div class="gehrke-tier-num">03</div>
-        <h3 class="gehrke-tier-name">Performance</h3>
-        <p class="gehrke-tier-desc">Para quem já está equilibrado e quer operar no limite superior. Otimização metabólica avançada, composição corporal de elite, performance cognitiva e física. Protocolos de precisão com biomarcadores, genética e acompanhamento de alta frequência.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Protocolos -->
-<section class="u-bg-cream" aria-label="Protocolos ecooa.med">
-  <div class="w">
-    <div class="lbl r u-mb-16">protocolos ecooa.med</div>
-    <h2 class="h2 r d1 u-mb-44">Programas que<br><em>entregam resultados.</em></h2>
-    <div class="g3">
-      <div class="ec r"><p class="ec-n">01</p><h3 class="ec-t">Protocolo Peso Seguro</h3><p class="ec-d">Emagrecimento com acompanhamento médico contínuo. Consulta de avaliação com valor de entrada para analisar exames, histórico e viabilidade do uso de canetas emagrecedoras (semaglutida, tirzepatida). Acompanhamento recorrente durante todo o tratamento. Resultado real com segurança clínica.</p></div>
-      <div class="ec r"><p class="ec-n">02</p><h3 class="ec-t">Protocolo Tricometabólico</h3><p class="ec-d">Investigação completa das causas da queda capilar: perfil hormonal, metabolismo, estresse oxidativo e nutrientes. Quando indicado, inclui mapeamento genético para identificar predisposição hereditária e personalizar o tratamento. Abordagem que trata a raiz metabólica da queda, não apenas o sintoma.</p></div>
-      <div class="ec r"><p class="ec-n">03</p><h3 class="ec-t">Bioimplantes Metabólicos</h3><p class="ec-d">Implantes subcutâneos bioabsorvíveis de liberação estável. Técnica que garante concentração hormonal constante ao longo do dia, sem as oscilações de métodos tradicionais. Indicado para reposição hormonal feminina e masculina, com protocolos individualizados.</p></div>
-      <div class="ec r"><p class="ec-n">04</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Manejo clínico com bioimplantes de liberação lenta quando indicados, com base em protocolos médicos atuais e acompanhamento contínuo.</p></div>
-      <div class="ec r"><p class="ec-n">05</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">Avaliação completa da saúde hormonal masculina com protocolos individualizados para vitalidade, libido, composição corporal e bem-estar, incluindo terapia com bioimplantes quando aplicável.</p></div>
-      <div class="ec r"><p class="ec-n">06</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.</p></div>
-      <div class="ec r"><p class="ec-n">07</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e estratégias preventivas baseadas em biomarcadores e evidência clínica.</p></div>
-      <div class="ec r"><p class="ec-n">08</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil inflamatório para uma visão real do seu estado de saúde.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- Nosso Espaço -->
-<section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Espaço ecooa.med">
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
-    <div class="u-img-169 r"><OptimizedImage src="/clinic/recepcao.webp" alt="Recepção da ecooa em Moinhos de Vento" width={1000} height={1233} class="u-cover" /></div>
-    <div class="u-img-169 r d1"><OptimizedImage src="/clinic/cafe.webp" alt="Café da ecooa" width={1200} height={799} class="u-cover" /></div>
-  </div>
-</section>
-
-<B2BBanner />
-
-<!-- Perguntas frequentes -->
-<section class="u-bg-warm" aria-label="Perguntas frequentes">
-  <div class="w">
-    <div class="lbl r u-mb-16">perguntas frequentes</div>
-    <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
-    <div class="faq-section">
-      {medFaqs.map((faq) => (
-        <details class="faq-item">
-          <summary class="faq-q">{faq.q}</summary>
-          <p class="faq-a">{faq.a}</p>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- Como funciona -->
-<section class="u-bg-cream" aria-label="Como funciona">
-  <div class="w">
-    <div class="lbl r u-mb-16">sua jornada</div>
-    <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto">
-      <div class="r u-tac">
-        <span class="step-num">1</span>
-        <h3 class="it-t">Agendamento</h3>
-        <p class="it-d">Entre em contato pelo WhatsApp. Respondemos em minutos e encontramos o melhor horário para você.</p>
-      </div>
-      <div class="r d1 u-tac">
-        <span class="step-num">2</span>
-        <h3 class="it-t">Avaliação completa</h3>
-        <p class="it-d">Consulta com tempo real de escuta, análise de exames e entendimento dos seus objetivos.</p>
-      </div>
-      <div class="r d2 u-tac">
-        <span class="step-num">3</span>
-        <h3 class="it-t">Protocolo personalizado</h3>
-        <p class="it-d">Plano construído com base nos seus dados, na sua rotina e no que você quer alcançar.</p>
-      </div>
-      <div class="r d3 u-tac">
-        <span class="step-num">4</span>
-        <h3 class="it-t">Acompanhamento</h3>
-        <p class="it-d">Retornos periódicos para ajustar o protocolo e garantir que os resultados se mantenham.</p>
+  <!-- Método Gehrke 360° -->
+  <section style="background:var(--color-ink);padding:86px 60px" aria-label="Método Gehrke 360°">
+    <div class="w">
+      <div class="lbl lbl-lt r u-mb-16">método exclusivo</div>
+      <h2 class="h2 h2-w r d1 u-mb-20">Método Gehrke <em>360°</em></h2>
+      <p class="body body-lt r d2" style="max-width:620px;margin-bottom:48px">
+        Cada paciente chega em um momento diferente. O Método Gehrke 360° classifica seu estado
+        metabólico atual em três níveis, e a partir disso constrói um protocolo sob medida, com a
+        profundidade que cada caso exige.
+      </p>
+      <div class="gehrke-tiers">
+        <div class="gehrke-tier r d1">
+          <div class="gehrke-tier-num">01</div>
+          <h3 class="gehrke-tier-name">Reset</h3>
+          <p class="gehrke-tier-desc">
+            Para quem chega com múltiplas alterações metabólicas. Exames fora do padrão, sintomas
+            acumulados, histórico de tentativas sem resultado. Protocolo intensivo para ajustar
+            hormônios, metabolismo, inflamação e sono. Retornos frequentes até a estabilização
+            completa.
+          </p>
+        </div>
+        <div class="gehrke-tier r d2">
+          <div class="gehrke-tier-num">02</div>
+          <h3 class="gehrke-tier-name">Equilíbrio</h3>
+          <p class="gehrke-tier-desc">
+            Para quem está funcionando, mas sente que pode melhorar. Pequenos ajustes hormonais,
+            nutricionais ou de estilo de vida para pavimentar um envelhecimento saudável. Manutenção
+            ativa com acompanhamento periódico e metas claras.
+          </p>
+        </div>
+        <div class="gehrke-tier r d3">
+          <div class="gehrke-tier-num">03</div>
+          <h3 class="gehrke-tier-name">Performance</h3>
+          <p class="gehrke-tier-desc">
+            Para quem já está equilibrado e quer operar no limite superior. Otimização metabólica
+            avançada, composição corporal de elite, performance cognitiva e física. Protocolos de
+            precisão com biomarcadores, genética e acompanhamento de alta frequência.
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Depoimentos -->
-<section class="u-bg-cream" aria-label="Depoimentos de pacientes">
-  <div class="w">
-    <div class="lbl r u-mb-16">depoimentos</div>
-    <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
-    <div class="grid-auto-260">
-      <div class="r card-w">
-        <p class="q-serif">"A consulta durou quase uma hora. O médico olhou todos os meus exames anteriores, pediu novos e montou um plano que fez sentido. Em dois meses já senti diferença na disposição."</p>
-        <p class="sm-soft">L. R.</p>
-      </div>
-      <div class="r d1 card-w">
-        <p class="q-serif">"Passei anos ouvindo que meus exames estavam normais, mesmo me sentindo mal. Aqui olharam tudo com profundidade e finalmente encontraram o que precisava ser ajustado."</p>
-        <p class="sm-soft">D. B.</p>
-      </div>
-      <div class="r d2 card-w">
-        <p class="q-serif">"Comecei o acompanhamento para emagrecer e o protocolo foi completamente personalizado. O retorno é rápido e o médico realmente acompanha a evolução."</p>
-        <p class="sm-soft">P. A.</p>
+  <!-- Protocolos -->
+  <section class="u-bg-cream" aria-label="Protocolos ecooa.med">
+    <div class="w">
+      <div class="lbl r u-mb-16">protocolos ecooa.med</div>
+      <h2 class="h2 r d1 u-mb-44">Programas que<br /><em>entregam resultados.</em></h2>
+      <div class="g3">
+        <div class="ec r">
+          <p class="ec-n">01</p><h3 class="ec-t">Protocolo Peso Seguro</h3><p class="ec-d">
+            Emagrecimento com acompanhamento médico contínuo. Consulta de avaliação com valor de
+            entrada para analisar exames, histórico e viabilidade do uso de canetas emagrecedoras
+            (semaglutida, tirzepatida). Acompanhamento recorrente durante todo o tratamento.
+            Resultado real com segurança clínica.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">02</p><h3 class="ec-t">Protocolo Tricometabólico</h3><p class="ec-d">
+            Investigação completa das causas da queda capilar: perfil hormonal, metabolismo,
+            estresse oxidativo e nutrientes. Quando indicado, inclui mapeamento genético para
+            identificar predisposição hereditária e personalizar o tratamento. Abordagem que trata a
+            raiz metabólica da queda, não apenas o sintoma.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">03</p><h3 class="ec-t">Bioimplantes Metabólicos</h3><p class="ec-d">
+            Implantes subcutâneos bioabsorvíveis de liberação estável. Técnica que garante
+            concentração hormonal constante ao longo do dia, sem as oscilações de métodos
+            tradicionais. Indicado para reposição hormonal feminina e masculina, com protocolos
+            individualizados.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">04</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">
+            Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Manejo clínico com
+            bioimplantes de liberação lenta quando indicados, com base em protocolos médicos atuais
+            e acompanhamento contínuo.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">05</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">
+            Avaliação completa da saúde hormonal masculina com protocolos individualizados para
+            vitalidade, libido, composição corporal e bem-estar, incluindo terapia com bioimplantes
+            quando aplicável.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">06</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">
+            Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de
+            anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">07</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">
+            Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e
+            estratégias preventivas baseadas em biomarcadores e evidência clínica.
+          </p>
+        </div>
+        <div class="ec r">
+          <p class="ec-n">08</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">
+            Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil
+            inflamatório para uma visão real do seu estado de saúde.
+          </p>
+        </div>
       </div>
     </div>
-    <p class="r d3" style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em">Depoimentos reais publicados com autorização dos pacientes.</p>
-  </div>
-</section>
+  </section>
 
-<!-- Artigos relacionados -->
-{medPosts.length > 0 && (
-<section class="u-bg-warm" aria-label="Artigos relacionados">
-  <div class="w">
-    <div class="lbl r u-mb-16">do nosso blog</div>
-    <h2 class="h2 r d1 u-mb-44">artigos <em>relacionados</em></h2>
-    <div class="grid-auto-260">
-      {medPosts.map((post, i) => (
-        <a href={`/blog/${post.id}`} class={`r d${i}`} style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease">
-          <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">{post.data.category}</p>
-          <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">{post.data.title}</h3>
-          <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">{post.data.description}</p>
-        </a>
-      ))}
+  <!-- Nosso Espaço -->
+  <section
+    style="background:var(--color-warm);padding:0;overflow:hidden"
+    aria-label="Espaço ecooa.med"
+  >
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
+      <div class="u-img-169 r">
+        <OptimizedImage
+          src="/clinic/recepcao.webp"
+          alt="Recepção da ecooa em Moinhos de Vento"
+          width={1000}
+          height={1233}
+          class="u-cover"
+        />
+      </div>
+      <div class="u-img-169 r d1">
+        <OptimizedImage
+          src="/clinic/cafe.webp"
+          alt="Café da ecooa"
+          width={1200}
+          height={799}
+          class="u-cover"
+        />
+      </div>
     </div>
-  </div>
-</section>
-)}
+  </section>
 
-<CtaSection heading='Comece pela<br><em>avaliação.</em>' subtext="Agende sua primeira consulta e descubra como a medicina humanizada pode mudar sua qualidade de vida." />
+  <B2BBanner />
 
+  <!-- Perguntas frequentes -->
+  <section class="u-bg-warm" aria-label="Perguntas frequentes">
+    <div class="w">
+      <div class="lbl r u-mb-16">perguntas frequentes</div>
+      <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br /><em>ecooa.med.</em></h2>
+      <div class="faq-section">
+        {
+          medFaqs.map((faq) => (
+            <details class="faq-item">
+              <summary class="faq-q">{faq.q}</summary>
+              <p class="faq-a">{faq.a}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="u-bg-cream" aria-label="Como funciona">
+    <div class="w">
+      <div class="lbl r u-mb-16">sua jornada</div>
+      <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto"
+      >
+        <div class="r u-tac">
+          <span class="step-num">1</span>
+          <h3 class="it-t">Agendamento</h3>
+          <p class="it-d">
+            Entre em contato pelo WhatsApp. Respondemos em minutos e encontramos o melhor horário
+            para você.
+          </p>
+        </div>
+        <div class="r d1 u-tac">
+          <span class="step-num">2</span>
+          <h3 class="it-t">Avaliação completa</h3>
+          <p class="it-d">
+            Consulta com tempo real de escuta, análise de exames e entendimento dos seus objetivos.
+          </p>
+        </div>
+        <div class="r d2 u-tac">
+          <span class="step-num">3</span>
+          <h3 class="it-t">Protocolo personalizado</h3>
+          <p class="it-d">
+            Plano construído com base nos seus dados, na sua rotina e no que você quer alcançar.
+          </p>
+        </div>
+        <div class="r d3 u-tac">
+          <span class="step-num">4</span>
+          <h3 class="it-t">Acompanhamento</h3>
+          <p class="it-d">
+            Retornos periódicos para ajustar o protocolo e garantir que os resultados se mantenham.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "A consulta durou quase uma hora. O médico olhou todos os meus exames anteriores, pediu
+            novos e montou um plano que fez sentido. Em dois meses já senti diferença na
+            disposição."
+          </p>
+          <p class="sm-soft">L. R.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "Passei anos ouvindo que meus exames estavam normais, mesmo me sentindo mal. Aqui
+            olharam tudo com profundidade e finalmente encontraram o que precisava ser ajustado."
+          </p>
+          <p class="sm-soft">D. B.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Comecei o acompanhamento para emagrecer e o protocolo foi completamente personalizado.
+            O retorno é rápido e o médico realmente acompanha a evolução."
+          </p>
+          <p class="sm-soft">P. A.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+      >
+        Depoimentos reais publicados com autorização dos pacientes.
+      </p>
+    </div>
+  </section>
+
+  <!-- Artigos relacionados -->
+  {
+    medPosts.length > 0 && (
+      <section class="u-bg-warm" aria-label="Artigos relacionados">
+        <div class="w">
+          <div class="lbl r u-mb-16">do nosso blog</div>
+          <h2 class="h2 r d1 u-mb-44">
+            artigos <em>relacionados</em>
+          </h2>
+          <div class="grid-auto-260">
+            {medPosts.map((post, i) => (
+              <a
+                href={`/blog/${post.id}`}
+                class={`r d${i}`}
+                style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
+              >
+                <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
+                  {post.data.category}
+                </p>
+                <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
+                  {post.data.title}
+                </h3>
+                <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">
+                  {post.data.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaSection
+    heading="Comece pela<br><em>avaliação.</em>"
+    subtext="Agende sua primeira consulta e descubra como a medicina humanizada pode mudar sua qualidade de vida."
+  />
 </BaseLayout>

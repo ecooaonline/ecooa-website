@@ -12,11 +12,11 @@
 // (ex: gustavo-320w.webp) sem quebrar callers.
 
 interface Props {
-  src: string;                       // path WebP em /public (ex: /team/gustavo.webp)
+  src: string; // path WebP em /public (ex: /team/gustavo.webp)
   alt: string;
   width: number;
   height: number;
-  sizes?: string;                    // ex: "(max-width: 768px) 100vw, 50vw"
+  sizes?: string; // ex: "(max-width: 768px) 100vw, 50vw"
   loading?: 'lazy' | 'eager';
   fetchpriority?: 'high' | 'low' | 'auto';
   decoding?: 'async' | 'sync' | 'auto';

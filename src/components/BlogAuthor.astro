@@ -11,36 +11,40 @@ const author = getAuthorByName(name);
 ---
 
 <div class="blog-author">
-  {author ? (
-    <>
-      <div class="ba-content">
-        <p class="ba-label">Escrito por</p>
-        <a href={`/profissionais/${author.slug}`} class="ba-name">
-          {name}
+  {
+    author ? (
+      <>
+        <div class="ba-content">
+          <p class="ba-label">Escrito por</p>
+          <a href={`/profissionais/${author.slug}`} class="ba-name">
+            {name}
+          </a>
+          <p class="ba-role">{author.role}</p>
+        </div>
+        <a href={`/profissionais/${author.slug}`} class="ba-cta">
+          Ver perfil completo →
         </a>
-        <p class="ba-role">{author.role}</p>
-      </div>
-      <a href={`/profissionais/${author.slug}`} class="ba-cta">
-        Ver perfil completo →
-      </a>
-    </>
-  ) : (
-    <>
-      <div class="ba-content">
-        <p class="ba-label">Escrito por</p>
-        <p class="ba-name">{name}</p>
-      </div>
-    </>
-  )}
-  {date && (
-    <p class="ba-date">
-      {new Date(date).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-      })}
-    </p>
-  )}
+      </>
+    ) : (
+      <>
+        <div class="ba-content">
+          <p class="ba-label">Escrito por</p>
+          <p class="ba-name">{name}</p>
+        </div>
+      </>
+    )
+  }
+  {
+    date && (
+      <p class="ba-date">
+        {new Date(date).toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric',
+        })}
+      </p>
+    )
+  }
 </div>
 
 <style>

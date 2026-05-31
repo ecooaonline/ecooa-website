@@ -6,43 +6,74 @@
 .r {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out);
 }
 .r.in {
   opacity: 1;
   transform: none;
 }
-.d1 { transition-delay: .05s; }
-.d2 { transition-delay: .1s; }
-.d3 { transition-delay: .15s; }
-.d4 { transition-delay: .2s; }
+.d1 {
+  transition-delay: 0.05s;
+}
+.d2 {
+  transition-delay: 0.1s;
+}
+.d3 {
+  transition-delay: 0.15s;
+}
+.d4 {
+  transition-delay: 0.2s;
+}
 
 /* Marquee roll */
 @keyframes roll {
-  to { transform: translateX(-50%); }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Scroll bar indicator (GPU-composited with transform) */
 @keyframes sb {
-  0% { transform: translateX(-200%); }
-  50% { transform: translateX(200%); }
-  100% { transform: translateX(200%); }
+  0% {
+    transform: translateX(-200%);
+  }
+  50% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
 }
 
 /* Hero entrance */
 @keyframes up {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .r { opacity: 1; transform: none; }
-  .mq-track { animation: none; }
+  .r {
+    opacity: 1;
+    transform: none;
+  }
+  .mq-track {
+    animation: none;
+  }
 }

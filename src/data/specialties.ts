@@ -12,15 +12,31 @@ export const specialties: Specialty[] = [
     slug: 'metabolismo',
     name: 'Metabolismo',
     unit: 'med',
-    description: 'Diagnóstico metabólico preciso, análise de biomarcadores e protocolos personalizados.',
-    keywords: ['metabolismo', 'taxa metabólica', 'queimador de calorias', 'metabolismo lento', 'síndrome metabólica'],
+    description:
+      'Diagnóstico metabólico preciso, análise de biomarcadores e protocolos personalizados.',
+    keywords: [
+      'metabolismo',
+      'taxa metabólica',
+      'queimador de calorias',
+      'metabolismo lento',
+      'síndrome metabólica',
+    ],
   },
   {
     slug: 'hormonal',
     name: 'Equilíbrio Hormonal',
     unit: 'med',
-    description: 'Reposição hormonal, terapia hormonal, equilíbrio de hormônios femininos e masculinos.',
-    keywords: ['hormônios', 'terapia hormonal', 'reposição hormonal', 'menopausa', 'andropausa', 'cortisol', 'tireoide'],
+    description:
+      'Reposição hormonal, terapia hormonal, equilíbrio de hormônios femininos e masculinos.',
+    keywords: [
+      'hormônios',
+      'terapia hormonal',
+      'reposição hormonal',
+      'menopausa',
+      'andropausa',
+      'cortisol',
+      'tireoide',
+    ],
   },
   {
     slug: 'emagrecimento',
@@ -71,7 +87,14 @@ export const specialties: Specialty[] = [
     name: 'Saúde Capilar',
     unit: 'esthetic',
     description: 'Transplante capilar, tratamento de queda de cabelo e saúde dos cabelos.',
-    keywords: ['cabelo', 'queda de cabelo', 'alopecia', 'transplante capilar', 'calvície', 'capilar'],
+    keywords: [
+      'cabelo',
+      'queda de cabelo',
+      'alopecia',
+      'transplante capilar',
+      'calvície',
+      'capilar',
+    ],
   },
   {
     slug: 'pele',
@@ -136,18 +159,19 @@ export const specialties: Specialty[] = [
 ];
 
 export function getSpecialtiesByUnit(unit: 'med' | 'esthetic' | 'working' | 'mind'): Specialty[] {
-  return specialties.filter(s => s.unit === unit);
+  return specialties.filter((s) => s.unit === unit);
 }
 
 export function getSpecialtyBySlug(slug: string): Specialty | undefined {
-  return specialties.find(s => s.slug === slug);
+  return specialties.find((s) => s.slug === slug);
 }
 
 export function searchSpecialties(query: string): Specialty[] {
   const q = query.toLowerCase();
-  return specialties.filter(s =>
-    s.name.toLowerCase().includes(q) ||
-    s.description.toLowerCase().includes(q) ||
-    s.keywords.some(k => k.toLowerCase().includes(q))
+  return specialties.filter(
+    (s) =>
+      s.name.toLowerCase().includes(q) ||
+      s.description.toLowerCase().includes(q) ||
+      s.keywords.some((k) => k.toLowerCase().includes(q))
   );
 }

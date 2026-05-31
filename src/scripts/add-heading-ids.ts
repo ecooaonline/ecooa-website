@@ -7,7 +7,7 @@ export function addHeadingIds() {
   if (!container) return;
 
   const headings = container.querySelectorAll('h2, h3');
-  headings.forEach(heading => {
+  headings.forEach((heading) => {
     if (!heading.id) {
       heading.id = generateHeadingId(heading.textContent || '');
     }

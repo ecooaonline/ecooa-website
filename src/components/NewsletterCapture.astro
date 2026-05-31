@@ -23,27 +23,39 @@ const sectionStyles: Record<string, string> = {
 };
 
 const labelStyles: Record<string, string> = {
-  inline: 'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px',
-  banner: 'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px',
-  footer: 'font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brand-deep);margin-bottom:10px',
+  inline:
+    'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px',
+  banner:
+    'font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px',
+  footer:
+    'font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brand-deep);margin-bottom:10px',
 };
 
 const subtextStyles: Record<string, string> = {
-  inline: 'font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:22px;max-width:420px;margin-left:auto;margin-right:auto',
-  banner: 'font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px;max-width:420px;margin-left:auto;margin-right:auto',
-  footer: 'font-size:11px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:16px;max-width:340px;margin-left:auto;margin-right:auto',
+  inline:
+    'font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:22px;max-width:420px;margin-left:auto;margin-right:auto',
+  banner:
+    'font-size:13px;font-weight:300;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:22px;max-width:420px;margin-left:auto;margin-right:auto',
+  footer:
+    'font-size:11px;font-weight:300;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:16px;max-width:340px;margin-left:auto;margin-right:auto',
 };
 
 const inputStyles: Record<string, string> = {
-  inline: 'flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
-  banner: 'flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
-  footer: 'flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--color-white);font-family:var(--font-primary);font-size:12px;font-weight:300;outline:none',
+  inline:
+    'flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
+  banner:
+    'flex:1;min-width:200px;padding:12px 16px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--color-white);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none',
+  footer:
+    'flex:1;min-width:180px;padding:10px 14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--color-white);font-family:var(--font-primary);font-size:12px;font-weight:300;outline:none',
 };
 
 const buttonStyles: Record<string, string> = {
-  inline: 'padding:12px 24px;background:var(--color-ink);color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
-  banner: 'padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
-  footer: 'padding:10px 20px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
+  inline:
+    'padding:12px 24px;background:var(--color-ink);color:var(--color-white);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
+  banner:
+    'padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
+  footer:
+    'padding:10px 20px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer',
 };
 ---
 
@@ -59,7 +71,14 @@ const buttonStyles: Record<string, string> = {
   >
     <input type="hidden" name="_formType" value="newsletter" />
     <input type="hidden" name="_source" value={`newsletter-${variant}`} />
-    <input type="text" name="_honeypot" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <input
+      type="text"
+      name="_honeypot"
+      style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
+      tabindex="-1"
+      autocomplete="off"
+      aria-hidden="true"
+    />
     <input type="hidden" name="_loadedAt" value="" />
     <input
       type="email"
@@ -71,7 +90,12 @@ const buttonStyles: Record<string, string> = {
     />
     <button type="submit" style={buttonStyles[variant]}>inscrever-se</button>
   </form>
-  <p class="ecooa-form-ok" style={`display:none;font-size:13px;font-weight:400;margin-top:10px;${variant === 'footer' || variant === 'banner' ? 'color:var(--color-brand-deep)' : 'color:var(--color-brand-text)'}`}>Inscrito com sucesso.</p>
+  <p
+    class="ecooa-form-ok"
+    style={`display:none;font-size:13px;font-weight:400;margin-top:10px;${variant === 'footer' || variant === 'banner' ? 'color:var(--color-brand-deep)' : 'color:var(--color-brand-text)'}`}
+  >
+    Inscrito com sucesso.
+  </p>
 </div>
 <script>
   import { initFormSubmit } from '../scripts/form-submit';

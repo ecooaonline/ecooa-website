@@ -1,90 +1,172 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY, ADDRESS_STATE, ADDRESS_ZIP } from '../data/constants';
+import {
+  ADDRESS_STREET,
+  ADDRESS_FLOOR,
+  ADDRESS_NEIGHBORHOOD,
+  ADDRESS_CITY,
+  ADDRESS_STATE,
+  ADDRESS_ZIP,
+} from '../data/constants';
 ---
 
 <BaseLayout
   title="Política de privacidade"
   description="Política de privacidade da ecooa. Saiba como coletamos, utilizamos e protegemos seus dados pessoais em conformidade com a LGPD."
   currentPage=""
-  breadcrumbs={[{ name: "Política de privacidade", url: "/politica-de-privacidade" }]}
+  breadcrumbs={[{ name: 'Política de privacidade', url: '/politica-de-privacidade' }]}
 >
+  <section style="background:var(--color-cream);padding-top:clamp(120px,14vw,180px)">
+    <div class="w" style="max-width:780px;margin:0 auto">
+      <div class="lbl r">lgpd</div>
+      <h1 class="h1 r d1" style="margin-top:18px;margin-bottom:40px">
+        Política de <em>privacidade.</em>
+      </h1>
 
-<section style="background:var(--color-cream);padding-top:clamp(120px,14vw,180px)">
-  <div class="w" style="max-width:780px;margin:0 auto">
-    <div class="lbl r">lgpd</div>
-    <h1 class="h1 r d1" style="margin-top:18px;margin-bottom:40px">Política de <em>privacidade.</em></h1>
+      <div class="body r d2" style="line-height:2">
+        <p style="font-size:12px;color:var(--color-ink-soft);margin-bottom:32px">
+          Última atualização: abril de 2026
+        </p>
 
-    <div class="body r d2" style="line-height:2">
+        <h2 class="h3 u-mbt-40">1. Controlador dos dados</h2>
+        <p>
+          A ecooa, clínica multidisciplinar de saúde, estética e longevidade, inscrita no CNPJ
+          41.592.276/0001-93, com sede na {ADDRESS_STREET}, {ADDRESS_FLOOR}, {ADDRESS_NEIGHBORHOOD}, {
+            ADDRESS_CITY
+          }, {ADDRESS_STATE}, CEP {ADDRESS_ZIP}, é a controladora dos dados pessoais tratados por
+          meio deste site. Responsável técnico: Dr. Gustavo Gehrke, CRM/RS 35822.
+        </p>
 
-      <p style="font-size:12px;color:var(--color-ink-soft);margin-bottom:32px">Última atualização: abril de 2026</p>
+        <h2 class="h3 u-mbt-40">2. Dados coletados</h2>
+        <p>Coletamos os seguintes dados pessoais:</p>
+        <ul class="blog-ul">
+          <li>
+            <strong>Dados de formulários:</strong> nome, e-mail, telefone e mensagem enviados voluntariamente
+            por meio dos formulários de contato e agendamento. Esses formulários são processados por Google
+            Apps Script e os dados são armazenados em Google Sheets para fins operacionais e atendimento.
+            Você concorda com a transferência desses dados para servidores Google (Google LLC, sediada
+            nos EUA) ao submeter o formulário.
+          </li>
+          <li>
+            <strong>Dados de navegação:</strong> informações anônimas de uso do site coletadas por meio
+            do Google Tag Manager (GTM-TSR4GDMK), carregado somente após interação do usuário (scroll,
+            clique ou toque). Esses dados incluem páginas visitadas, tempo de permanência e tipo de dispositivo.
+          </li>
+          <li>
+            <strong>Dados de newsletter:</strong> e-mail fornecido voluntariamente para recebimento de
+            conteúdos e novidades.
+          </li>
+        </ul>
 
-      <h2 class="h3 u-mbt-40">1. Controlador dos dados</h2>
-      <p>A ecooa, clínica multidisciplinar de saúde, estética e longevidade, inscrita no CNPJ 41.592.276/0001-93, com sede na {ADDRESS_STREET}, {ADDRESS_FLOOR}, {ADDRESS_NEIGHBORHOOD}, {ADDRESS_CITY}, {ADDRESS_STATE}, CEP {ADDRESS_ZIP}, é a controladora dos dados pessoais tratados por meio deste site. Responsável técnico: Dr. Gustavo Gehrke, CRM/RS 35822.</p>
+        <h2 class="h3 u-mbt-40">3. Finalidade do tratamento</h2>
+        <p>Os dados pessoais coletados são utilizados para:</p>
+        <ul class="blog-ul">
+          <li>Responder a solicitações de contato e agendamento.</li>
+          <li>Melhorar a experiência de navegação e o desempenho do site.</li>
+          <li>Enviar comunicações e conteúdos relevantes, quando autorizado.</li>
+          <li>Cumprir obrigações legais e regulatórias.</li>
+        </ul>
 
-      <h2 class="h3 u-mbt-40">2. Dados coletados</h2>
-      <p>Coletamos os seguintes dados pessoais:</p>
-      <ul class="blog-ul">
-        <li><strong>Dados de formulários:</strong> nome, e-mail, telefone e mensagem enviados voluntariamente por meio dos formulários de contato e agendamento. Esses formulários são processados por Google Apps Script e os dados são armazenados em Google Sheets para fins operacionais e atendimento. Você concorda com a transferência desses dados para servidores Google (Google LLC, sediada nos EUA) ao submeter o formulário.</li>
-        <li><strong>Dados de navegação:</strong> informações anônimas de uso do site coletadas por meio do Google Tag Manager (GTM-TSR4GDMK), carregado somente após interação do usuário (scroll, clique ou toque). Esses dados incluem páginas visitadas, tempo de permanência e tipo de dispositivo.</li>
-        <li><strong>Dados de newsletter:</strong> e-mail fornecido voluntariamente para recebimento de conteúdos e novidades.</li>
-      </ul>
+        <h2 class="h3 u-mbt-40">4. Base legal</h2>
+        <p>
+          O tratamento dos seus dados pessoais é realizado com base nas seguintes hipóteses legais
+          previstas na Lei Geral de Proteção de Dados (Lei nº 13.709/2018):
+        </p>
+        <ul class="blog-ul">
+          <li>
+            <strong>Consentimento:</strong> para coleta de cookies e dados de navegação, bem como envio
+            de comunicações.
+          </li>
+          <li>
+            <strong>Execução de contrato:</strong> para viabilizar o agendamento de consultas e a prestação
+            de serviços.
+          </li>
+          <li>
+            <strong>Interesse legítimo:</strong> para melhoria contínua dos nossos serviços e do site.
+          </li>
+        </ul>
 
-      <h2 class="h3 u-mbt-40">3. Finalidade do tratamento</h2>
-      <p>Os dados pessoais coletados são utilizados para:</p>
-      <ul class="blog-ul">
-        <li>Responder a solicitações de contato e agendamento.</li>
-        <li>Melhorar a experiência de navegação e o desempenho do site.</li>
-        <li>Enviar comunicações e conteúdos relevantes, quando autorizado.</li>
-        <li>Cumprir obrigações legais e regulatórias.</li>
-      </ul>
+        <h2 class="h3 u-mbt-40">5. Compartilhamento de dados</h2>
+        <p>
+          Seus dados podem ser compartilhados com os seguintes terceiros, exclusivamente para as
+          finalidades descritas nesta política:
+        </p>
+        <ul class="blog-ul">
+          <li>
+            <strong>Google Apps Script e Google Sheets:</strong> processamento e armazenamento de formulários
+            de contato e agendamento.
+          </li>
+          <li><strong>Google (GTM/Analytics):</strong> análise de dados de navegação.</li>
+        </ul>
+        <p>
+          Não vendemos, alugamos ou compartilhamos seus dados pessoais com terceiros para fins de
+          marketing.
+        </p>
 
-      <h2 class="h3 u-mbt-40">4. Base legal</h2>
-      <p>O tratamento dos seus dados pessoais é realizado com base nas seguintes hipóteses legais previstas na Lei Geral de Proteção de Dados (Lei nº 13.709/2018):</p>
-      <ul class="blog-ul">
-        <li><strong>Consentimento:</strong> para coleta de cookies e dados de navegação, bem como envio de comunicações.</li>
-        <li><strong>Execução de contrato:</strong> para viabilizar o agendamento de consultas e a prestação de serviços.</li>
-        <li><strong>Interesse legítimo:</strong> para melhoria contínua dos nossos serviços e do site.</li>
-      </ul>
+        <h2 class="h3 u-mbt-40">6. Direitos do titular</h2>
+        <p>Em conformidade com a LGPD, você tem direito a:</p>
+        <ul class="blog-ul">
+          <li>Confirmar a existência de tratamento dos seus dados.</li>
+          <li>Acessar seus dados pessoais.</li>
+          <li>Solicitar a correção de dados incompletos, inexatos ou desatualizados.</li>
+          <li>
+            Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos.
+          </li>
+          <li>Solicitar a portabilidade dos dados a outro fornecedor de serviço.</li>
+          <li>Solicitar a eliminação dos dados pessoais tratados com base no consentimento.</li>
+          <li>Revogar o consentimento a qualquer momento.</li>
+        </ul>
 
-      <h2 class="h3 u-mbt-40">5. Compartilhamento de dados</h2>
-      <p>Seus dados podem ser compartilhados com os seguintes terceiros, exclusivamente para as finalidades descritas nesta política:</p>
-      <ul class="blog-ul">
-        <li><strong>Google Apps Script e Google Sheets:</strong> processamento e armazenamento de formulários de contato e agendamento.</li>
-        <li><strong>Google (GTM/Analytics):</strong> análise de dados de navegação.</li>
-      </ul>
-      <p>Não vendemos, alugamos ou compartilhamos seus dados pessoais com terceiros para fins de marketing.</p>
+        <h2 class="h3 u-mbt-40">7. Cookies</h2>
+        <p>
+          Este site utiliza cookies e tecnologias semelhantes para melhorar sua experiência de
+          navegação. O Google Tag Manager é carregado apenas após interação do usuário com a página,
+          como scroll ou clique. Você pode gerenciar as preferências de cookies nas configurações do
+          seu navegador.
+        </p>
 
-      <h2 class="h3 u-mbt-40">6. Direitos do titular</h2>
-      <p>Em conformidade com a LGPD, você tem direito a:</p>
-      <ul class="blog-ul">
-        <li>Confirmar a existência de tratamento dos seus dados.</li>
-        <li>Acessar seus dados pessoais.</li>
-        <li>Solicitar a correção de dados incompletos, inexatos ou desatualizados.</li>
-        <li>Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos.</li>
-        <li>Solicitar a portabilidade dos dados a outro fornecedor de serviço.</li>
-        <li>Solicitar a eliminação dos dados pessoais tratados com base no consentimento.</li>
-        <li>Revogar o consentimento a qualquer momento.</li>
-      </ul>
+        <h2 class="h3 u-mbt-40">8. Segurança dos dados</h2>
+        <p>
+          Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais
+          contra acessos não autorizados, destruição, perda, alteração ou qualquer forma de
+          tratamento inadequado. O site utiliza protocolo HTTPS, Content Security Policy e demais
+          boas práticas de segurança.
+        </p>
 
-      <h2 class="h3 u-mbt-40">7. Cookies</h2>
-      <p>Este site utiliza cookies e tecnologias semelhantes para melhorar sua experiência de navegação. O Google Tag Manager é carregado apenas após interação do usuário com a página, como scroll ou clique. Você pode gerenciar as preferências de cookies nas configurações do seu navegador.</p>
+        <h2 class="h3 u-mbt-40">9. Retenção dos dados</h2>
+        <p>
+          Os dados pessoais são retidos pelo tempo necessário para cumprir as finalidades para as
+          quais foram coletados, respeitando os prazos legais e regulatórios aplicáveis. Dados de
+          formulários (agendamento e contato) são retidos em Google Sheets por no mínimo 3 anos para
+          fins operacionais e histórico de atendimento, podendo ser eliminados após esse período
+          mediante solicitação. Dados de navegação (GTM) são retidos por 26 meses conforme política
+          do Google. Após os prazos especificados, os dados são eliminados de forma segura.
+        </p>
 
-      <h2 class="h3 u-mbt-40">8. Segurança dos dados</h2>
-      <p>Adotamos medidas técnicas e organizacionais adequadas para proteger seus dados pessoais contra acessos não autorizados, destruição, perda, alteração ou qualquer forma de tratamento inadequado. O site utiliza protocolo HTTPS, Content Security Policy e demais boas práticas de segurança.</p>
+        <h2 class="h3 u-mbt-40">10. Encarregado de proteção de dados (DPO)</h2>
+        <p>
+          Para exercer seus direitos ou esclarecer dúvidas sobre o tratamento dos seus dados
+          pessoais, entre em contato com nosso encarregado de proteção de dados:
+        </p>
+        <p class="u-mt-12">
+          <strong>E-mail:</strong>
+          <a
+            href="#"
+            class="eml-link"
+            data-u="ecooa.adm"
+            data-d="gmail.com"
+            style="color:var(--color-brand-text)"
+            ><span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span></a
+          >
+        </p>
 
-      <h2 class="h3 u-mbt-40">9. Retenção dos dados</h2>
-      <p>Os dados pessoais são retidos pelo tempo necessário para cumprir as finalidades para as quais foram coletados, respeitando os prazos legais e regulatórios aplicáveis. Dados de formulários (agendamento e contato) são retidos em Google Sheets por no mínimo 3 anos para fins operacionais e histórico de atendimento, podendo ser eliminados após esse período mediante solicitação. Dados de navegação (GTM) são retidos por 26 meses conforme política do Google. Após os prazos especificados, os dados são eliminados de forma segura.</p>
-
-      <h2 class="h3 u-mbt-40">10. Encarregado de proteção de dados (DPO)</h2>
-      <p>Para exercer seus direitos ou esclarecer dúvidas sobre o tratamento dos seus dados pessoais, entre em contato com nosso encarregado de proteção de dados:</p>
-      <p class="u-mt-12"><strong>E-mail:</strong> <a href="#" class="eml-link" data-u="ecooa.adm" data-d="gmail.com" style="color:var(--color-brand-text)"><span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span></a></p>
-
-      <h2 class="h3 u-mbt-40">11. Alterações nesta política</h2>
-      <p>Esta política pode ser atualizada periodicamente para refletir mudanças em nossas práticas ou em exigências legais. Recomendamos que você revise esta página regularmente. A data da última atualização estará sempre indicada no início do documento.</p>
-
+        <h2 class="h3 u-mbt-40">11. Alterações nesta política</h2>
+        <p>
+          Esta política pode ser atualizada periodicamente para refletir mudanças em nossas práticas
+          ou em exigências legais. Recomendamos que você revise esta página regularmente. A data da
+          última atualização estará sempre indicada no início do documento.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
-
+  </section>
 </BaseLayout>

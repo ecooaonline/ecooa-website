@@ -11,214 +11,330 @@ const WA = WA_DEFAULT;
 
 // Serialize minimal professional data for client-side lookup (slug → name, role).
 // Keeps the match handoff banner self-contained without extra network requests.
-const profMap = professionals.reduce((acc, p) => {
-  acc[p.slug] = { name: p.name, role: p.role };
-  return acc;
-}, {} as Record<string, { name: string; role: string }>);
+const profMap = professionals.reduce(
+  (acc, p) => {
+    acc[p.slug] = { name: p.name, role: p.role };
+    return acc;
+  },
+  {} as Record<string, { name: string; role: string }>
+);
 ---
 
 <BaseLayout
   title="Agendamento"
   description="Agende sua avaliação na ecooa. A forma mais rápida de marcar sua consulta é pelo WhatsApp. Moinhos de Vento, Porto Alegre."
   currentPage="agendamento"
-  breadcrumbs={[{ name: "Agendamento", url: "/agendamento" }]}
+  breadcrumbs={[{ name: 'Agendamento', url: '/agendamento' }]}
 >
-
-<!-- Hero -->
-<div class="ph" style="background:var(--color-cream);min-height:44vh">
-  <svg class="wsv u-op-26" viewBox="0 0 1440 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g></svg>
-  <div class="ph-c">
-    <div class="lbl r">agendamento</div>
-    <h1 class="h1 r d1 u-mt-18">Inicie sua<br><em>jornada de cuidado.</em></h1>
-    <p class="body r d2" style="margin-top:16px;max-width:440px">A forma mais rápida de marcar sua avaliação é pelo WhatsApp. Estamos prontos para te receber.</p>
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-cream);min-height:44vh">
+    <svg
+      class="wsv u-op-26"
+      viewBox="0 0 1440 400"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="#C4BBB8" stroke-width="1"
+        ><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl r">agendamento</div>
+      <h1 class="h1 r d1 u-mt-18">Inicie sua<br /><em>jornada de cuidado.</em></h1>
+      <p class="body r d2" style="margin-top:16px;max-width:440px">
+        A forma mais rápida de marcar sua avaliação é pelo WhatsApp. Estamos prontos para te
+        receber.
+      </p>
+    </div>
   </div>
-</div>
 
-<Marquee />
+  <Marquee />
 
-<!-- Contato -->
-<section class="u-bg-warm" aria-label="Informações de contato">
-  <div class="w">
-    <div class="g2">
-      <div>
-        <div class="lbl r u-mb-16">entre em contato</div>
-        <h2 class="h2 r d1" style="margin-bottom:20px;font-size:clamp(26px,3vw,42px)">Prefira o <em>WhatsApp.</em><br>É mais rápido.</h2>
-        <p class="body r d2 u-mb-32">Nossa equipe responde pelo WhatsApp durante o horário de atendimento. Para agendamentos, dúvidas sobre serviços ou orientações, é o canal mais ágil e direto.</p>
-        <div class="r d3">
-          <a href={WA} target="_blank" rel="noopener noreferrer" class="bd" style="display:inline-flex;align-items:center;gap:11px;margin-bottom:12px">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.486a.5.5 0 00.608.65l5.788-1.517A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.901 0-3.682-.516-5.21-1.415l-.374-.223-3.432.9.913-3.35-.244-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-            (51) 99146-0909
-          </a>
-          <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-bottom:28px">Segunda a Sexta: 9h às 20h · Sábado: a consultar</p>
-          <a href="#" class="bo eml-link" data-u="ecooa.adm" data-d="gmail.com" style="display:inline-flex;align-items:center;gap:9px">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.2"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.2"/></svg>
-            <span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span>
-          </a>
-          <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-top:9px">Para parcerias e assuntos administrativos</p>
+  <!-- Contato -->
+  <section class="u-bg-warm" aria-label="Informações de contato">
+    <div class="w">
+      <div class="g2">
+        <div>
+          <div class="lbl r u-mb-16">entre em contato</div>
+          <h2 class="h2 r d1" style="margin-bottom:20px;font-size:clamp(26px,3vw,42px)">
+            Prefira o <em>WhatsApp.</em><br />É mais rápido.
+          </h2>
+          <p class="body r d2 u-mb-32">
+            Nossa equipe responde pelo WhatsApp durante o horário de atendimento. Para agendamentos,
+            dúvidas sobre serviços ou orientações, é o canal mais ágil e direto.
+          </p>
+          <div class="r d3">
+            <a
+              href={WA}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bd"
+              style="display:inline-flex;align-items:center;gap:11px;margin-bottom:12px"
+            >
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="white" aria-hidden="true"
+                ><path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.532 5.847L.057 23.486a.5.5 0 00.608.65l5.788-1.517A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.901 0-3.682-.516-5.21-1.415l-.374-.223-3.432.9.913-3.35-.244-.386A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"
+                ></path></svg
+              >
+              (51) 99146-0909
+            </a>
+            <p
+              style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-bottom:28px"
+            >
+              Segunda a Sexta: 9h às 20h · Sábado: a consultar
+            </p>
+            <a
+              href="#"
+              class="bo eml-link"
+              data-u="ecooa.adm"
+              data-d="gmail.com"
+              style="display:inline-flex;align-items:center;gap:9px"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                ><path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  stroke="currentColor"
+                  stroke-width="1.2"></path><path
+                  d="M22 6l-10 7L2 6"
+                  stroke="currentColor"
+                  stroke-width="1.2"></path></svg
+              >
+              <span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span>
+            </a>
+            <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-top:9px">
+              Para parcerias e assuntos administrativos
+            </p>
+          </div>
+        </div>
+        <div class="r d2"><LocationCard /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulário de contato -->
+  <section
+    style="background:var(--color-cream);padding:86px 60px"
+    aria-label="Formulário de agendamento"
+  >
+    <div style="max-width:500px;margin:0 auto">
+      <div class="lbl r" style="margin-bottom:16px;justify-content:center">prefere formulário?</div>
+      <h2
+        class="h2 r d1"
+        style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)"
+      >
+        Deixe seus dados.<br />Nós <em>entramos em contato.</em>
+      </h2>
+      <p class="body r d2" style="margin-bottom:32px;text-align:center">
+        Responderemos em até 24 horas no seu WhatsApp.
+      </p>
+
+      <!-- Match handoff banner. Populated client-side when ?profissional= is present. -->
+      <div
+        id="match-handoff"
+        hidden
+        aria-live="polite"
+        style="background:var(--color-cream);border:1px solid var(--color-brand-light);border-left:3px solid var(--color-brand);padding:14px 16px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start"
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+          style="color:var(--color-brand-deep);margin-top:2px;flex-shrink:0"
+          ><path d="M20 6L9 17l-5-5"></path></svg
+        >
+        <div style="flex:1;min-width:0">
+          <p
+            style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-deep);margin:0 0 4px"
+          >
+            recomendação ecooa.match
+          </p>
+          <p style="font-size:14px;font-weight:400;color:var(--color-ink);margin:0;line-height:1.5">
+            <strong id="match-prof-name"></strong><span
+              id="match-prof-role"
+              style="color:var(--color-ink-soft);font-weight:300"></span>
+          </p>
         </div>
       </div>
-      <div class="r d2"><LocationCard /></div>
-    </div>
-  </div>
-</section>
 
-<!-- Formulário de contato -->
-<section style="background:var(--color-cream);padding:86px 60px" aria-label="Formulário de agendamento">
-  <div style="max-width:500px;margin:0 auto">
-    <div class="lbl r" style="margin-bottom:16px;justify-content:center">prefere formulário?</div>
-    <h2 class="h2 r d1" style="margin-bottom:12px;text-align:center;font-size:clamp(26px,3vw,38px)">Deixe seus dados.<br>Nós <em>entramos em contato.</em></h2>
-    <p class="body r d2" style="margin-bottom:32px;text-align:center">Responderemos em até 24 horas no seu WhatsApp.</p>
+      <form
+        action={FORM_ACTION}
+        method="POST"
+        style="display:flex;flex-direction:column;gap:16px"
+        class="r d3 ecooa-form"
+        id="form-agendamento"
+        data-ok-target="#form-agendamento-ok"
+        data-success-text="Recebemos seus dados. Entraremos em contato em até 24h."
+      >
+        <input type="hidden" name="_formType" value="agendamento" />
+        <input type="hidden" name="matchProfessional" id="match-prof" value="" />
+        <input type="hidden" name="matchIntent" id="match-intent" value="" />
 
-    <!-- Match handoff banner. Populated client-side when ?profissional= is present. -->
-    <div id="match-handoff" hidden aria-live="polite" style="background:var(--color-cream);border:1px solid var(--color-brand-light);border-left:3px solid var(--color-brand);padding:14px 16px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="color:var(--color-brand-deep);margin-top:2px;flex-shrink:0"><path d="M20 6L9 17l-5-5"/></svg>
-      <div style="flex:1;min-width:0">
-        <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-deep);margin:0 0 4px">recomendação ecooa.match</p>
-        <p style="font-size:14px;font-weight:400;color:var(--color-ink);margin:0;line-height:1.5"><strong id="match-prof-name"></strong><span id="match-prof-role" style="color:var(--color-ink-soft);font-weight:300"></span></p>
-      </div>
-    </div>
-
-    <form action={FORM_ACTION} method="POST" style="display:flex;flex-direction:column;gap:16px" class="r d3 ecooa-form" id="form-agendamento" data-ok-target="#form-agendamento-ok" data-success-text="Recebemos seus dados. Entraremos em contato em até 24h.">
-      <input type="hidden" name="_formType" value="agendamento" />
-      <input type="hidden" name="matchProfessional" id="match-prof" value="" />
-      <input type="hidden" name="matchIntent" id="match-intent" value="" />
-
-      <!-- Honeypot (invisível) -->
-      <input
-        type="text"
-        name="_honeypot"
-        style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"
-        tabindex="-1"
-        autocomplete="off"
-        aria-hidden="true"
-      />
-      <input type="hidden" name="_loadedAt" value="" />
-
-      <div>
-        <label for="form-name" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">como podemos te chamar?</label>
+        <!-- Honeypot (invisível) -->
         <input
           type="text"
-          id="form-name"
-          name="name"
-          required
-          minlength="3"
-          style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+          name="_honeypot"
+          style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
         />
-      </div>
-      <div>
-        <label for="form-whatsapp" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">seu whatsapp</label>
-        <input
-          type="tel"
-          id="form-whatsapp"
-          name="whatsapp"
-          required
-          placeholder="(51) 99999-9999"
-          pattern="\(\d{2}\)\s?9?\d{4}-?\d{4}|\+55\s\d{2}\s9?\d{4}-?\d{4}"
-          style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
-        />
-      </div>
-      <div>
-        <label for="form-interest" style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block">o que te trouxe aqui?</label>
-        <select
-          id="form-interest"
-          name="interest"
-          required
-          style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;appearance:none"
+        <input type="hidden" name="_loadedAt" value="" />
+
+        <div>
+          <label
+            for="form-name"
+            style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
+            >como podemos te chamar?</label
+          >
+          <input
+            type="text"
+            id="form-name"
+            name="name"
+            required
+            minlength="3"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+          />
+        </div>
+        <div>
+          <label
+            for="form-whatsapp"
+            style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
+            >seu whatsapp</label
+          >
+          <input
+            type="tel"
+            id="form-whatsapp"
+            name="whatsapp"
+            required
+            placeholder="(51) 99999-9999"
+            pattern="\(\d{2}\)\s?9?\d{4}-?\d{4}|\+55\s\d{2}\s9?\d{4}-?\d{4}"
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none"
+          />
+        </div>
+        <div>
+          <label
+            for="form-interest"
+            style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:6px;display:block"
+            >o que te trouxe aqui?</label
+          >
+          <select
+            id="form-interest"
+            name="interest"
+            required
+            style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300;outline:none;appearance:none"
+          >
+            <option value="">selecione</option>
+            <option value="medicina">medicina</option>
+            <option value="estetica">estética</option>
+            <option value="nutricao">nutrição</option>
+            <option value="saude-mental">saúde mental</option>
+            <option value="outro">outro</option>
+          </select>
+        </div>
+
+        <!-- Consentimento LGPD -->
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-top:8px">
+          <input
+            type="checkbox"
+            id="form-consent"
+            name="consent"
+            required
+            style="margin-top:4px;cursor:pointer;min-width:16px"
+          />
+          <label
+            for="form-consent"
+            style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer"
+          >
+            Concordo em compartilhar meus dados conforme a <a
+              href="/politica-de-privacidade"
+              style="color:var(--color-brand-text);text-decoration:underline"
+              target="_blank"
+              rel="noopener">política de privacidade</a
+            >
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          class="bd"
+          id="form-submit-btn"
+          style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer"
         >
-          <option value="">selecione</option>
-          <option value="medicina">medicina</option>
-          <option value="estetica">estética</option>
-          <option value="nutricao">nutrição</option>
-          <option value="saude-mental">saúde mental</option>
-          <option value="outro">outro</option>
-        </select>
-      </div>
+          quero ser atendido
+        </button>
+        <p
+          id="form-agendamento-ok"
+          style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px"
+        >
+          Recebemos seus dados. Entraremos em contato em até 24h.
+        </p>
+      </form>
+      <script define:vars={{ profMap }}>
+        import { initFormSubmit } from '../scripts/form-submit';
 
-      <!-- Consentimento LGPD -->
-      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:8px">
-        <input
-          type="checkbox"
-          id="form-consent"
-          name="consent"
-          required
-          style="margin-top:4px;cursor:pointer;min-width:16px"
-        />
-        <label for="form-consent" style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer">
-          Concordo em compartilhar meus dados conforme a <a href="/politica-de-privacidade" style="color:var(--color-brand-text);text-decoration:underline" target="_blank" rel="noopener">política de privacidade</a>
-        </label>
-      </div>
+        // Anti-spam: honeypot validation
+        const form = document.getElementById('form-agendamento');
+        const button = document.getElementById('form-submit-btn');
+        const honeypot = form.querySelector('[name="_honeypot"]');
 
-      <button
-        type="submit"
-        class="bd"
-        id="form-submit-btn"
-        style="width:100%;text-align:center;margin-top:8px;border:none;cursor:pointer"
-      >
-        quero ser atendido
-      </button>
-      <p id="form-agendamento-ok" style="display:none;text-align:center;font-size:14px;font-weight:400;color:var(--color-brand-text);margin-top:8px">Recebemos seus dados. Entraremos em contato em até 24h.</p>
-    </form>
-    <script define:vars={{ profMap }}>
-      import { initFormSubmit } from '../scripts/form-submit';
+        // Match handoff: pre-fill hidden fields and show recommendation banner
+        // when user arrives from /match with ?profissional=<slug>&intent=<intentId>.
+        try {
+          const params = new URLSearchParams(location.search);
+          const profSlug = (params.get('profissional') || '').trim().slice(0, 80);
+          const intentId = (params.get('intent') || '').trim().slice(0, 80);
 
-      // Anti-spam: honeypot validation
-      const form = document.getElementById('form-agendamento');
-      const button = document.getElementById('form-submit-btn');
-      const honeypot = form.querySelector('[name="_honeypot"]');
+          if (profSlug && /^[a-z0-9-]+$/.test(profSlug) && profMap[profSlug]) {
+            const prof = profMap[profSlug];
+            const profField = document.getElementById('match-prof');
+            const intentField = document.getElementById('match-intent');
+            if (profField) profField.value = profSlug;
+            if (intentField) intentField.value = intentId;
 
-      // Match handoff: pre-fill hidden fields and show recommendation banner
-      // when user arrives from /match with ?profissional=<slug>&intent=<intentId>.
-      try {
-        const params = new URLSearchParams(location.search);
-        const profSlug = (params.get('profissional') || '').trim().slice(0, 80);
-        const intentId = (params.get('intent') || '').trim().slice(0, 80);
+            const banner = document.getElementById('match-handoff');
+            const nameEl = document.getElementById('match-prof-name');
+            const roleEl = document.getElementById('match-prof-role');
+            if (nameEl) nameEl.textContent = prof.name;
+            if (roleEl) roleEl.textContent = ' . ' + prof.role;
+            if (banner) banner.hidden = false;
 
-        if (profSlug && /^[a-z0-9-]+$/.test(profSlug) && profMap[profSlug]) {
-          const prof = profMap[profSlug];
-          const profField = document.getElementById('match-prof');
-          const intentField = document.getElementById('match-intent');
-          if (profField) profField.value = profSlug;
-          if (intentField) intentField.value = intentId;
-
-          const banner = document.getElementById('match-handoff');
-          const nameEl = document.getElementById('match-prof-name');
-          const roleEl = document.getElementById('match-prof-role');
-          if (nameEl) nameEl.textContent = prof.name;
-          if (roleEl) roleEl.textContent = ' . ' + prof.role;
-          if (banner) banner.hidden = false;
-
-          // Pre-select interest based on professional unit if we can infer it
-          // (best-effort only; user can override via the select).
-        }
-      } catch (err) {
-        // Silent fail: match handoff is enhancement, not required for form submission
-      }
-
-      form.addEventListener('submit', (e) => {
-        // Verificar honeypot
-        if (honeypot && honeypot.value.trim() !== '') {
-          e.preventDefault();
-          console.warn('Honeypot triggered');
-          return false;
+            // Pre-select interest based on professional unit if we can infer it
+            // (best-effort only; user can override via the select).
+          }
+        } catch (err) {
+          // Silent fail: match handoff is enhancement, not required for form submission
         }
 
-        // Rate-limit visual: desabilitar botão por 5s
-        button.disabled = true;
-        button.textContent = 'Enviando...';
-        button.style.opacity = '0.5';
+        form.addEventListener('submit', (e) => {
+          // Verificar honeypot
+          if (honeypot && honeypot.value.trim() !== '') {
+            e.preventDefault();
+            console.warn('Honeypot triggered');
+            return false;
+          }
 
-        setTimeout(() => {
-          button.disabled = false;
-          button.textContent = 'quero ser atendido';
-          button.style.opacity = '1';
-        }, 5000);
-      });
+          // Rate-limit visual: desabilitar botão por 5s
+          button.disabled = true;
+          button.textContent = 'Enviando...';
+          button.style.opacity = '0.5';
 
-      initFormSubmit();
-    </script>
-  </div>
-</section>
+          setTimeout(() => {
+            button.disabled = false;
+            button.textContent = 'quero ser atendido';
+            button.style.opacity = '1';
+          }, 5000);
+        });
 
-<CtaSection heading='A primeira conversa<br>é o passo mais <em>importante.</em>' subtext="Estamos prontos para te receber." />
+        initFormSubmit();
+      </script>
+    </div>
+  </section>
 
+  <CtaSection
+    heading="A primeira conversa<br>é o passo mais <em>importante.</em>"
+    subtext="Estamos prontos para te receber."
+  />
 </BaseLayout>
