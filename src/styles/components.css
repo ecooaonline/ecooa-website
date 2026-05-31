@@ -1533,7 +1533,7 @@
 }
 .hgb-stars {
   font-size: 20px;
-  color: #e8b931;
+  color: var(--color-ink-mid);
   letter-spacing: 3px;
   margin-bottom: 6px;
 }
