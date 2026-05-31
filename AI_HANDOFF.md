@@ -129,12 +129,17 @@ Regras para impedir regressão de SEO técnico em qualquer mudança futura:
 - Validar sitemap e robots a cada deploy (CI já valida >=100 URLs no sitemap).
 - Gate autoritativo de SEO: PSI em produção (não o Lighthouse local).
 
-### Pendência da Etapa 6 (aguarda dados do cliente)
+### Avaliações reais (Etapa 6) — resolvido
 
-`aggregateRating` (5.0 / 65) está no `MedicalBusiness` global sem reviews visíveis =
-self-serving (risco). Decisão aprovada: exibir avaliações REAIS do Google num marquee
-premium (CSS, leve) com link para a fonte, legitimando o rating. Bloqueado até o cliente
-fornecer: textos das avaliações + URL pública do perfil Google + nota/contagem reais.
+Substituídas 5 avaliações FABRICADAS (textos/iniciais inventados) na home por avaliações
+REAIS do Google em `src/data/reviews.ts` (36 reviews, 5 estrelas, só iniciais, sem data).
+Componente `ReviewsMarquee.astro`: letreiro CSS puro (zero JS), estrelas em dourado premium
+(#b8975a), `prefers-reduced-motion` para a animação, link para a fonte no Google.
+O `aggregateRating` do schema agora deriva de `reviews.ts` (`ratingValue` 5.0,
+`reviewCount`/`ratingCount` = `REVIEW_COUNT`), nunca mais um número solto.
+
+Regra: nunca adicionar avaliação que não exista no perfil real do Google. Para atualizar,
+editar `src/data/reviews.ts` (o schema e o letreiro se atualizam juntos).
 
 ## Regras de preservação
 

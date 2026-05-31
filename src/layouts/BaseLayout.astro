@@ -13,6 +13,7 @@ import {
   META_PIXEL_ID,
   GTM_ID,
 } from '../data/constants';
+import { REVIEW_RATING, REVIEW_COUNT } from '../data/reviews';
 
 import '../styles/tokens.css';
 import '../styles/base.css';
@@ -214,11 +215,11 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
             ],
             aggregateRating: {
               '@type': 'AggregateRating',
-              ratingValue: '5.0',
+              ratingValue: REVIEW_RATING,
               bestRating: '5',
               worstRating: '1',
-              ratingCount: '65',
-              reviewCount: '65',
+              ratingCount: String(REVIEW_COUNT),
+              reviewCount: String(REVIEW_COUNT),
             },
             areaServed: {
               '@type': 'City',

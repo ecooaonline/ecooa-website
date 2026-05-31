@@ -1511,47 +1511,6 @@
   margin-top: 4px;
 }
 
-/* ── GOOGLE REVIEWS GRID ── */
-.gr-grid {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding-bottom: 4px;
-}
-.gr-grid::-webkit-scrollbar {
-  display: none;
-}
-.gr-card {
-  flex-shrink: 0;
-  width: 280px;
-  background: var(--color-white);
-  border: 1px solid var(--color-stone);
-  padding: 24px 20px;
-}
-.gr-stars {
-  font-size: 12px;
-  color: #e8b931;
-  letter-spacing: 2px;
-  margin-bottom: 12px;
-}
-.gr-quote {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 1.65;
-  color: var(--color-ink-soft);
-  margin-bottom: 14px;
-}
-.gr-author {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-brand-text);
-}
-
 /* ── PROFESSIONAL MODAL ── */
 .pro-modal-overlay {
   position: fixed;
