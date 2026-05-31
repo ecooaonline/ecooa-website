@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import ReviewsMarquee from '../components/ReviewsMarquee.astro';
 import PillarCard from '../components/PillarCard.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_DEFAULT } from '../data/constants';
@@ -179,7 +180,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         class="r d1"
         style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px"
       >
-        <span style="color:#E8B931;font-size:22px;letter-spacing:2px" aria-label="5 estrelas"
+        <span style="color:#b8975a;font-size:22px;letter-spacing:2px" aria-label="5 estrelas"
           >★★★★★</span
         >
         <span style="font-size:28px;font-weight:200;color:var(--color-ink);letter-spacing:-.02em"
@@ -194,47 +195,8 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         >
       </div>
     </div>
-    <div class="gr-grid r d2">
-      <div class="gr-card">
-        <div class="gr-stars" aria-hidden="true">★★★★★</div>
-        <p class="gr-quote">
-          "Fui muito bem recebida desde a recepção. O Dr. Gustavo ouviu tudo com calma e explicou
-          cada detalhe dos meus exames. Saí sabendo exatamente o que fazer."
-        </p>
-        <p class="gr-author">C. M.</p>
-      </div>
-      <div class="gr-card">
-        <div class="gr-stars" aria-hidden="true">★★★★★</div>
-        <p class="gr-quote">
-          "O ambiente é lindo e acolhedor. Fiz acompanhamento nutricional e médico ao mesmo tempo, e
-          os profissionais conversaram entre si sobre o meu caso. Nunca tinha vivido isso."
-        </p>
-        <p class="gr-author">R. S.</p>
-      </div>
-      <div class="gr-card">
-        <div class="gr-stars" aria-hidden="true">★★★★★</div>
-        <p class="gr-quote">
-          "Depois de passar por vários endocrinologistas sem resultado, encontrei na ecooa o cuidado
-          que eu precisava. Em três meses já vi mudanças reais."
-        </p>
-        <p class="gr-author">F. L.</p>
-      </div>
-      <div class="gr-card">
-        <div class="gr-stars" aria-hidden="true">★★★★★</div>
-        <p class="gr-quote">
-          "A nutricionista e o médico trabalham juntos no meu protocolo. Recomendo para quem quer um
-          atendimento que realmente olha para a pessoa como um todo."
-        </p>
-        <p class="gr-author">M. T.</p>
-      </div>
-      <div class="gr-card">
-        <div class="gr-stars" aria-hidden="true">★★★★★</div>
-        <p class="gr-quote">
-          "Comecei pela psicóloga e fui encaminhada para a nutrição. Tudo no mesmo lugar, com
-          profissionais que se conhecem. Faz toda a diferença."
-        </p>
-        <p class="gr-author">A. P.</p>
-      </div>
+    <div class="r d2">
+      <ReviewsMarquee />
     </div>
   </section>
 

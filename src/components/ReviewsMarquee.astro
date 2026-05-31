@@ -1,0 +1,145 @@
+---
+// Letreiro (marquee) de avaliações reais do Google. CSS puro, sem JS.
+// Privacidade: só iniciais. Conformidade: todas reais, com link para a fonte.
+import { reviews, GOOGLE_REVIEWS_URL } from '../data/reviews';
+
+// Duplicamos a lista para o loop contínuo. A segunda cópia é aria-hidden
+// (conteúdo idêntico, só visual) para não duplicar leitura em screen readers.
+const lane = reviews;
+---
+
+<div class="rv-marquee" role="group" aria-label="Avaliações de pacientes no Google">
+  <div class="rv-track">
+    {
+      lane.map((r) => (
+        <figure class="rv-card">
+          <div class="rv-stars" aria-hidden="true">
+            ★★★★★
+          </div>
+          <blockquote class="rv-text">{r.text}</blockquote>
+          <figcaption class="rv-initials">{r.initials}</figcaption>
+        </figure>
+      ))
+    }
+    {
+      lane.map((r) => (
+        <figure class="rv-card" aria-hidden="true">
+          <div class="rv-stars">★★★★★</div>
+          <blockquote class="rv-text">{r.text}</blockquote>
+          <figcaption class="rv-initials">{r.initials}</figcaption>
+        </figure>
+      ))
+    }
+  </div>
+</div>
+
+<div class="rv-cta">
+  <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" class="rv-cta-link">
+    ver todas as avaliações no Google <span aria-hidden="true">→</span>
+  </a>
+</div>
+
+<style>
+  .rv-marquee {
+    overflow: hidden;
+    width: 100%;
+    /* Fade nas bordas para um acabamento premium */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .rv-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: rv-scroll 150s linear infinite;
+    will-change: transform;
+  }
+
+  .rv-marquee:hover .rv-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes rv-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* -50% porque a lista é renderizada duas vezes */
+      transform: translateX(-50%);
+    }
+  }
+
+  .rv-card {
+    flex: 0 0 320px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 24px 26px;
+    background: var(--color-white);
+    border: 1px solid var(--color-stone);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .rv-stars {
+    color: #b8975a; /* dourado premium, não amarelo */
+    font-size: 13px;
+    letter-spacing: 3px;
+  }
+
+  .rv-text {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--color-ink);
+    /* Limita a 5 linhas para uniformizar a altura dos cards */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .rv-initials {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+  }
+
+  .rv-cta {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .rv-cta-link {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-brand-text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-stone);
+    padding-bottom: 2px;
+  }
+
+  .rv-cta-link:hover {
+    color: var(--color-ink);
+  }
+
+  /* Respeita usuários que preferem menos movimento (WCAG 2.3.3 / Etapa 5):
+     para a animação e libera o scroll horizontal manual. */
+  @media (prefers-reduced-motion: reduce) {
+    .rv-track {
+      animation: none;
+      width: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+    }
+    .rv-card {
+      scroll-snap-align: start;
+    }
+  }
+</style>
