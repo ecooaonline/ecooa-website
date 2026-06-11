@@ -227,20 +227,38 @@ const WA = WA_DEFAULT;
         if (section) section.hidden = false;
       }
 
-      // Fire conversion events. Gated on consent via existing gtag/fbq lazy init.
-      // Events bubble up to GTM/Meta Pixel only if user accepted cookies.
-      const conversionId = 'thanks_' + Date.now();
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'conversion', {
-          event_category: 'lead',
-          event_label: formType,
-          transaction_id: conversionId,
-          value: 1,
-          currency: 'BRL',
-        });
-      }
-      if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Lead', { content_name: formType });
+      // Conversão CONFIRMADA pelo servidor: o Google Apps Script só redireciona
+      // para esta página depois de validar e gravar o lead. O token `t` (gerado
+      // no submit) garante disparo único por envio e impede falsos positivos em
+      // visita direta ou refresh. dataLayer.push enfileira mesmo antes de o GTM
+      // carregar (consent gate preservado: o GTM só processa após o aceite).
+      const token = (params.get('t') || '').trim().slice(0, 20);
+      if (token && /^\d+$/.test(token)) {
+        const guardKey = 'ecooa_conv_' + token;
+        if (!sessionStorage.getItem(guardKey)) {
+          sessionStorage.setItem(guardKey, '1');
+          const conversionId = 'thanks_' + token;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: 'form_submit_success',
+            form_type: formType,
+            transaction_id: conversionId,
+            value: 1,
+            currency: 'BRL',
+          });
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'conversion', {
+              event_category: 'lead',
+              event_label: formType,
+              transaction_id: conversionId,
+              value: 1,
+              currency: 'BRL',
+            });
+          }
+          if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Lead', { content_name: formType });
+          }
+        }
       }
     } catch (err) {
       // Silent fail: personalization and analytics are enhancements.

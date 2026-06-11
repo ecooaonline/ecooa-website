@@ -183,6 +183,7 @@ const profMap = professionals.reduce(
           aria-hidden="true"
         />
         <input type="hidden" name="_loadedAt" value="" />
+        <input type="hidden" name="_next" value="" />
 
         <p
           style="font-size:10px;font-weight:400;color:var(--color-ink-soft);margin:0 0 4px;text-align:right"
@@ -289,16 +290,16 @@ const profMap = professionals.reduce(
         >
         </p>
       </form>
-      <script define:vars={{ profMap }}>
+      <!-- Handler central de envio (submit nativo verificável via _next). -->
+      <script>
         import { initFormSubmit } from '../scripts/form-submit';
+        initFormSubmit();
+      </script>
 
-        // Anti-spam: honeypot validation
-        const form = document.getElementById('form-agendamento');
-        const button = document.getElementById('form-submit-btn');
-        const honeypot = form.querySelector('[name="_honeypot"]');
-
-        // Match handoff: pre-fill hidden fields and show recommendation banner
-        // when user arrives from /match with ?profissional=<slug>&intent=<intentId>.
+      <!-- Match handoff: script inline (define:vars exige inline; sem imports aqui). -->
+      <script define:vars={{ profMap }}>
+        // Pre-fill hidden fields and show recommendation banner when the user
+        // arrives from /match with ?profissional=<slug>&intent=<intentId>.
         try {
           const params = new URLSearchParams(location.search);
           const profSlug = (params.get('profissional') || '').trim().slice(0, 80);
@@ -317,34 +318,10 @@ const profMap = professionals.reduce(
             if (nameEl) nameEl.textContent = prof.name;
             if (roleEl) roleEl.textContent = ' . ' + prof.role;
             if (banner) banner.hidden = false;
-
-            // Pre-select interest based on professional unit if we can infer it
-            // (best-effort only; user can override via the select).
           }
         } catch (err) {
           // Silent fail: match handoff is enhancement, not required for form submission
         }
-
-        form.addEventListener('submit', (e) => {
-          // Verificar honeypot
-          if (honeypot && honeypot.value.trim() !== '') {
-            e.preventDefault();
-            return false;
-          }
-
-          // Rate-limit visual: desabilitar botão por 5s
-          button.disabled = true;
-          button.textContent = 'Enviando...';
-          button.style.opacity = '0.5';
-
-          setTimeout(() => {
-            button.disabled = false;
-            button.textContent = 'quero ser atendido';
-            button.style.opacity = '1';
-          }, 5000);
-        });
-
-        initFormSubmit();
       </script>
     </div>
   </section>
