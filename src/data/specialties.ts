@@ -100,7 +100,8 @@ export const specialties: Specialty[] = [
     slug: 'pele',
     name: 'Saúde da Pele',
     unit: 'esthetic',
-    description: 'Tratamentos dermatológicos e cuidados com a pele.',
+    description:
+      'Tratamentos dermatológicos clínicos e estéticos, do diagnóstico ao cuidado contínuo com a pele.',
     keywords: ['pele', 'dermatologia', 'acne', 'melanose', 'manchas'],
   },
 
@@ -123,7 +124,8 @@ export const specialties: Specialty[] = [
     slug: 'nutricao-estetica',
     name: 'Nutrição Estética',
     unit: 'working',
-    description: 'Nutrição para pele, cabelo e estética corporal.',
+    description:
+      'Nutrição direcionada para a saúde da pele, dos cabelos e da estética corporal, integrada ao cuidado clínico.',
     keywords: ['estética', 'pele', 'cabelo', 'aparência'],
   },
   {

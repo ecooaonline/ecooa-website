@@ -12,12 +12,14 @@ interface Props {
 }
 
 import { WA_BASE } from '../data/constants';
+import { registrationByPhoto } from '../data/professionals';
 import OptimizedImage from './OptimizedImage.astro';
 
 const { name, role, bg, ig, photo, description, tags, clickable = false, slug } = Astro.props;
 const waMessage = encodeURIComponent(`Olá, gostaria de agendar com ${name}`);
 const waLink = `${WA_BASE}?text=${waMessage}`;
 const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
+const registration = registrationByPhoto(photo);
 ---
 
 <div
@@ -68,6 +70,7 @@ const igUrl = ig ? `https://instagram.com/${ig.replace('@', '')}` : '';
   </div>
   <div class="pc-i">
     <p class="pc-n">{name}</p>
+    {registration && <p class="pc-reg">{registration}</p>}
     <p class="pc-r">{role}</p>
     {
       ig && !clickable && (

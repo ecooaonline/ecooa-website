@@ -45,6 +45,11 @@ export interface Professional {
   };
 }
 
+// Registros profissionais conforme levantamento institucional (jun/2026).
+// Parte dos números aguarda validação final nos conselhos (CREMERS, CRN-2,
+// CRP-RS, CRBM-5, CREFITO-5, COREN-RS); conferir a planilha interna antes
+// de uso jurídico. Sem registro localizado: Gabrieli Klagenberg, Giancarla
+// Rochemback, Lara Caye, Marvin Marques e Adriana (terapeuta integrativa).
 export const professionals: Professional[] = [
   // ── ecooa.med ──
   {
@@ -53,6 +58,7 @@ export const professionals: Professional[] = [
     role: 'Médico Generalista · Metabolismo · Hormônios · Emagrecimento · Estilo de Vida',
     unit: 'med',
     photo: '/team/gustavo.webp',
+    registration: 'CRM-RS 35.822',
     ig: '@gustavogehrke',
     description:
       'Medicina de alta performance com foco em diagnóstico metabólico preciso, equilíbrio hormonal e emagrecimento saudável. Fundador e diretor executivo da ecooa.',
@@ -74,6 +80,7 @@ export const professionals: Professional[] = [
     role: 'Enfermeira · Tricologista · Soroterapia',
     unit: 'esthetic',
     photo: '/team/danusa.webp',
+    registration: 'COREN-RS 395164',
     ig: '@dradanusapires',
     description:
       'Enfermeira especialista em tricologia e soroterapia. Tratamentos capilares avançados e terapia intravenosa personalizada.',
@@ -87,6 +94,7 @@ export const professionals: Professional[] = [
     role: 'Biomédica · Tricologista',
     unit: 'esthetic',
     photo: '/team/viviane.webp',
+    registration: 'CRBM 2565',
     ig: '@dravivianefagundes',
     description:
       'Biomédica com foco em tricologia avançada. Diagnóstico e tratamento de queda capilar e doenças do couro cabeludo.',
@@ -94,7 +102,7 @@ export const professionals: Professional[] = [
     personalTouch: 'Transforma a ciência capilar em confiança de volta.',
     blogAuthor: {
       name: 'Viviane Fagundes',
-      role: 'Enfermeira Capilar',
+      role: 'Biomédica',
       specialty: 'Teste Genético Capilar',
     },
   },
@@ -104,6 +112,7 @@ export const professionals: Professional[] = [
     role: 'Médica · Tricologista',
     unit: 'esthetic',
     photo: '/team/yale.webp',
+    registration: 'CRM-RS 49.185',
     ig: '@dra.yale',
     description:
       'Médica tricologista com expertise em diagnóstico e tratamento de alopécias e doenças capilares.',
@@ -111,7 +120,7 @@ export const professionals: Professional[] = [
     personalTouch: 'Ouve a história por trás de cada paciente antes de tratar.',
     blogAuthor: {
       name: 'Dra. Yale',
-      role: 'Médica Dermatologista',
+      role: 'Médica Tricologista',
       specialty: 'Saúde Capilar Feminina',
     },
   },
@@ -121,6 +130,7 @@ export const professionals: Professional[] = [
     role: 'Médica · Implante Capilar',
     unit: 'esthetic',
     photo: '/team/larissa.webp',
+    registration: 'CRM-RS 55.504',
     ig: '@larissawiebbelling',
     description:
       'Médica especialista em transplante e implante capilar com técnicas avançadas FUE e Sapphire.',
@@ -139,6 +149,7 @@ export const professionals: Professional[] = [
     role: 'Fisioterapeuta Dermatofuncional',
     unit: 'esthetic',
     photo: '/team/cris.webp',
+    registration: 'CREFITO 287471-F',
     ig: '@dracrisneumann_',
     description:
       'Fisioterapeuta dermatofuncional especializada em tratamentos corporais e faciais com abordagem integrativa.',
@@ -151,6 +162,7 @@ export const professionals: Professional[] = [
     role: 'Biomédica · Tricologia e Gerenciamento de Pele',
     unit: 'esthetic',
     photo: '/team/susan.webp',
+    registration: 'CRBM-5 4182',
     ig: '@dra.susanflach',
     description:
       'Biomédica com atuação em tricologia e gerenciamento de pele. Protocolos avançados de rejuvenescimento.',
@@ -169,6 +181,7 @@ export const professionals: Professional[] = [
     role: 'Osteopata · Adultos, Crianças e Bebês',
     unit: 'esthetic',
     photo: '/team/natalie.webp',
+    registration: 'CREFITO-5 271577-F',
     ig: '@osteonataliequeiroz',
     description:
       'Osteopata com atendimento para adultos, crianças e bebês. Terapia manual para equilíbrio do corpo.',
@@ -187,6 +200,7 @@ export const professionals: Professional[] = [
     role: 'Médica Dermatologista · Estética',
     unit: 'esthetic',
     photo: '/team/vitoria.webp',
+    registration: 'CRM-RS 43.712 · RQE 42.218',
     ig: '@vitoriadermato',
     description:
       'Médica dermatologista com foco em estética e rejuvenescimento facial. Procedimentos de alta precisão.',
@@ -199,6 +213,7 @@ export const professionals: Professional[] = [
     role: 'Médica Dermatologista · Estética',
     unit: 'esthetic',
     photo: '/team/renata.webp',
+    registration: 'CRM-RS 48.838 · RQE 46.857',
     ig: '@renatabohn_dermato',
     description:
       'Dermatologista com atuação em dermatologia clínica e estética. Cuidados avançados com a pele.',
@@ -211,6 +226,7 @@ export const professionals: Professional[] = [
     role: 'Biomédica · Estética · HOF',
     unit: 'esthetic',
     photo: '/team/karine.webp',
+    registration: 'CRBM-5 7474',
     ig: '@karine.belezainteligente',
     description:
       'Biomédica estética com harmonização orofacial. Procedimentos que realçam a beleza natural com inteligência.',
@@ -223,6 +239,7 @@ export const professionals: Professional[] = [
     role: 'Biomédica · Estética · HOF',
     unit: 'esthetic',
     photo: '/team/leticia.webp',
+    registration: 'CRBM-RS 627',
     ig: '@draleticiademelo',
     description:
       'Biomédica especialista em estética facial e harmonização orofacial com técnica refinada.',
@@ -241,6 +258,7 @@ export const professionals: Professional[] = [
     role: 'Biomédica · Estética · HOF',
     unit: 'esthetic',
     photo: '/team/jennifer-adam.webp',
+    registration: 'CRBM-5 8600',
     ig: '@dra.jenniferadam',
     description: 'Biomédica com atuação em estética avançada e harmonização orofacial.',
     tags: ['Biomedicina Estética', 'HOF', 'Estética Avançada'],
@@ -258,6 +276,7 @@ export const professionals: Professional[] = [
     role: 'Odontóloga · Estética · HOF',
     unit: 'esthetic',
     photo: '/team/jamylle.webp',
+    registration: 'CRO-RS 30124',
     ig: '@drajamyllefarias',
     description:
       'Odontóloga com especialização em estética e harmonização orofacial. Resultados naturais e sofisticados.',
@@ -267,7 +286,7 @@ export const professionals: Professional[] = [
   {
     slug: 'adriana',
     name: 'Adriana',
-    role: 'Terapeuta Integrativa · Biorressonância',
+    role: 'Terapeuta Integrativa',
     unit: 'esthetic',
     photo: '/team/ortomolecular.webp',
     description:
@@ -283,6 +302,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista · Veganos e Vegetarianos · Introdução Alimentar · Análise Bioquímica · Emagrecimento',
     unit: 'working',
     photo: '/team/jessica.webp',
+    registration: 'CRN-2 9495',
     ig: '@jessicastein.nutri',
     description:
       'Nutricionista referência em nutrição vegana e vegetariana, com expertise em análise bioquímica e emagrecimento. Sócia e diretora de ensino da ecooa.',
@@ -297,6 +317,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista · Performance Esportiva · Composição Corporal · Veganos e Vegetarianos',
     unit: 'working',
     photo: '/team/maria-luisa.webp',
+    registration: 'CRN-2 12076P',
     ig: '@marialuisabeltran.nutri',
     description:
       'Nutricionista esportiva com foco em performance e composição corporal. Atleta de Crossfit.',
@@ -314,12 +335,17 @@ export const professionals: Professional[] = [
     role: 'Nutricionista · Ortomolecular · Metabolômica · Nutrigenômica',
     unit: 'working',
     photo: '/team/adriano.webp',
+    registration: 'CRN-2 7844D',
     ig: '@adrianolenz',
     description:
       'Nutricionista com abordagem ortomolecular, metabolômica e nutrigenômica. Protocolos personalizados baseados em genética.',
     tags: ['Ortomolecular', 'Metabolômica', 'Nutrigenômica'],
     personalTouch: 'Desvenda o que a genética diz para criar um plano só seu.',
-    blogAuthor: { name: 'Adriano Lenz', role: 'Médico', specialty: 'Medicina Ortomolecular' },
+    blogAuthor: {
+      name: 'Adriano Lenz',
+      role: 'Nutricionista',
+      specialty: 'Nutrição Ortomolecular',
+    },
   },
   {
     slug: 'giancarla-rochemback',
@@ -340,6 +366,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista · Performance Esportiva · Composição Corporal',
     unit: 'working',
     photo: '/team/vitoria-serpa.webp',
+    registration: 'CRN-2 12000P',
     ig: '@vitoriaserpa',
     description:
       'Nutricionista esportiva especializada em composição corporal e performance de alta intensidade.',
@@ -376,6 +403,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista',
     unit: 'working',
     photo: '/team/daniel-forster.webp',
+    registration: 'CRN-2 20541',
     ig: '@daniel.nutricionista',
     description:
       'Nutricionista com abordagem integrada e personalizada para diferentes objetivos de saúde.',
@@ -400,6 +428,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista',
     unit: 'working',
     photo: '/team/camila-cadore.webp',
+    registration: 'CRN-2 8447',
     ig: '@nutricamilacadore',
     description: 'Nutricionista com abordagem humanizada e personalizada para cada fase da vida.',
     tags: ['Nutrição', 'Personalizada'],
@@ -411,6 +440,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista',
     unit: 'working',
     photo: '/team/nasser.webp',
+    registration: 'CRN-2 19914D',
     ig: '@nutri.nasser_',
     description: 'Nutricionista com foco em resultados e acompanhamento contínuo.',
     tags: ['Nutrição', 'Acompanhamento'],
@@ -422,6 +452,7 @@ export const professionals: Professional[] = [
     role: 'Nutricionista',
     unit: 'working',
     photo: '/team/verena.webp',
+    registration: 'CRN-2 19692',
     ig: '@nutriverena',
     description: 'Nutricionista com atendimento integrado ao ecossistema ecooa.',
     tags: ['Nutrição', 'Integrada'],
@@ -435,6 +466,7 @@ export const professionals: Professional[] = [
     role: 'Psicóloga Clínica · TCC',
     unit: 'mind',
     photo: '/team/manuela.webp',
+    registration: 'CRP 07/34596',
     ig: '@manuelavanti.psi',
     description:
       'Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental. Atendimento humanizado e acolhedor.',
@@ -452,6 +484,7 @@ export const professionals: Professional[] = [
     role: 'Psicólogo Esportivo',
     unit: 'mind',
     photo: '/team/augusto.webp',
+    registration: 'CRP 07/28516',
     ig: '@rotinadeatleta_psi',
     description:
       'Psicólogo esportivo especializado em performance mental, foco e motivação para atletas e praticantes.',
@@ -464,6 +497,7 @@ export const professionals: Professional[] = [
     role: 'Psicóloga Clínica · TCC',
     unit: 'mind',
     photo: '/team/francielle.webp',
+    registration: 'CRP 07/29944',
     ig: '@psifrancielleberia',
     description:
       'Psicóloga clínica com foco em TCC. Atendimento para ansiedade, estresse e questões emocionais.',
@@ -478,4 +512,35 @@ export function getProfessionalBySlug(slug: string): Professional | undefined {
 
 export function getProfessionalsByUnit(unit: Professional['unit']): Professional[] {
   return professionals.filter((p) => p.unit === unit);
+}
+
+// Conselho profissional inferido pelo cargo (sigla), usado como fallback
+// quando o número de registro ainda não foi confirmado.
+export function professionalCouncil(role: string): string {
+  const lower = role.toLowerCase();
+  if (/\bmédic[oa]\b|\bmedic[oa]\b/.test(lower)) return 'CRM';
+  if (lower.includes('nutricion')) return 'CRN';
+  if (lower.includes('psicólog') || lower.includes('psicolog')) return 'CRP';
+  if (lower.includes('bioméd') || lower.includes('biomed')) return 'CRBM';
+  if (lower.includes('fisioterapeut') || lower.includes('osteop')) return 'CREFITO';
+  if (lower.includes('enfermei')) return 'COREN';
+  if (lower.includes('odontólog') || lower.includes('odontolog') || lower.includes('dentista'))
+    return 'CRO';
+  return '';
+}
+
+// Registro a exibir: número completo quando disponível (ex.: "CRN-2 9495"),
+// senão apenas a sigla do conselho (ex.: "CRN"). String vazia quando não há
+// conselho aplicável (ex.: terapeuta integrativa).
+export function professionalRegistration(p: Professional): string {
+  return p.registration || professionalCouncil(p.role);
+}
+
+// Busca o registro pelo caminho da foto (chave única entre os profissionais).
+// Permite que componentes com props "hardcoded" (cards) exibam o registro sem
+// duplicar o dado.
+export function registrationByPhoto(photo: string | undefined): string {
+  if (!photo) return '';
+  const prof = professionals.find((p) => p.photo === photo);
+  return prof ? professionalRegistration(prof) : '';
 }

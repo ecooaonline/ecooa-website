@@ -83,7 +83,7 @@ const profMap = professionals.reduce(
               Segunda a Sexta: 9h às 20h · Sábado: a consultar
             </p>
             <a
-              href="#"
+              href="/contato"
               class="bo eml-link"
               data-u="ecooa.adm"
               data-d="gmail.com"
@@ -218,7 +218,8 @@ const profMap = professionals.reduce(
             name="whatsapp"
             required
             placeholder="(51) 99999-9999"
-            pattern="\(\d{2}\)\s?9?\d{4}-?\d{4}|\+55\s\d{2}\s9?\d{4}-?\d{4}"
+            pattern="\+?([\s\(\)\-]*[0-9]){10,13}[\s\(\)\-]*"
+            title="Digite DDD e número com 10 a 13 dígitos, ex: (51) 99999-9999"
             autocomplete="tel"
             style="width:100%;padding:14px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:14px;font-weight:300"
           />

@@ -1,6 +1,6 @@
 ---
 title: "Rejuvenescimento facial em Porto Alegre: procedimentos, expectativas e como escolher"
-description: "Guia completo sobre rejuvenescimento facial: tipos de procedimentos, como é feita a avaliação e como escolher a abordagem certa para o seu caso em Porto Alegre."
+description: "Guia de rejuvenescimento facial: tipos de procedimentos, como é feita a avaliação e como escolher a abordagem certa para o seu caso em Porto Alegre."
 date: "2026-05-28"
 author: "Jennifer Adam"
 category: "estetica"

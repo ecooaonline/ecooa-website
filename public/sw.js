@@ -1,10 +1,11 @@
-const VERSION = 'ecooa-v2';
+const VERSION = 'ecooa-v3';
 const STATIC_CACHE = VERSION + '-static';
 const RUNTIME_CACHE = VERSION + '-runtime';
-const OFFLINE_URL = '/';
+const OFFLINE_URL = '/offline/';
 
 const PRECACHE = [
   OFFLINE_URL,
+  '/',
   '/fonts/arboria-300.woff2',
   '/fonts/arboria-400.woff2',
   '/fonts/arboria-500.woff2',
@@ -67,7 +68,15 @@ function networkFirst(request, cacheName) {
       }
       return res;
     })
-    .catch(() => caches.match(request).then((r) => r || caches.match(OFFLINE_URL)));
+    .catch(() =>
+      // Prefere a cópia do runtime (mais fresca) à do precache estático,
+      // que fica congelada até o próximo bump de VERSION.
+      caches
+        .open(cacheName)
+        .then((c) => c.match(request))
+        .then((r) => r || caches.match(request))
+        .then((r) => r || caches.match(OFFLINE_URL))
+    );
 }
 
 self.addEventListener('fetch', (e) => {

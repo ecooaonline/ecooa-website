@@ -50,7 +50,7 @@ O processo de emagrecimento na ecooa começa com uma consulta médica detalhada,
 
 A partir dessa conversa, são solicitados exames laboratoriais personalizados, que vão além do hemograma e glicemia de rotina. Analisamos marcadores inflamatórios, perfil lipídico detalhado, painel hormonal completo e, quando indicado, testes genéticos que revelam como seu organismo metaboliza diferentes nutrientes.
 
-Com os resultados em mãos, o médico monta um protocolo individualizado e, se necessário, integra o cuidado com nutricionistas, psicólogos e outros profissionais do ecossistema ecooa. Essa abordagem multidisciplinar garante que todos os aspectos da sua saúde sejam contemplados, não apenas o número na balança.
+Com os resultados em mãos, o médico monta um protocolo individualizado e, se necessário, integra o cuidado com nutricionistas, psicólogos e outros profissionais do ecossistema ecooa. Essa abordagem multidisciplinar busca contemplar todos os aspectos da sua saúde, não apenas o número na balança.
 
 ## Perguntas frequentes sobre emagrecimento
 
@@ -64,7 +64,7 @@ Não. Na ecooa, não trabalhamos com dietas extremamente restritivas. O objetivo
 A medicação pode ser indicada em casos específicos, sempre com base em evidências clínicas e nos resultados dos seus exames. Ela é uma ferramenta complementar, nunca o centro do tratamento.
 
 ### Posso integrar com outros profissionais da ecooa?
-Sim. Um dos grandes diferenciais da ecooa é justamente a integração entre especialidades. Seu médico pode trabalhar em conjunto com nutricionistas, psicólogos e outros profissionais para garantir um cuidado completo.
+Sim. Um dos grandes diferenciais da ecooa é justamente a integração entre especialidades. Seu médico pode trabalhar em conjunto com nutricionistas, psicólogos e outros profissionais para oferecer um cuidado completo.
 
 ## Resultados que duram
 

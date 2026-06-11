@@ -1,6 +1,6 @@
 ---
 title: "Harmonização orofacial em Porto Alegre: o que é, como funciona e o que esperar"
-description: "Entenda o que é harmonização orofacial, quais procedimentos existem, como é feita a avaliação e por que a indicação criteriosa é essencial para um resultado natural."
+description: "Entenda o que é harmonização orofacial, os procedimentos, como é feita a avaliação e por que a indicação criteriosa é essencial ao resultado natural."
 date: "2026-05-28"
 author: "Leticia de Melo"
 category: "estetica"

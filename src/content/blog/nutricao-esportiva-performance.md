@@ -25,7 +25,7 @@ A composição e o timing das refeições impactam diretamente:
 
 Cada macronutriente desempenha um papel específico na performance. Os carboidratos são a principal fonte de energia para exercícios de alta intensidade e devem ser priorizados antes e durante treinos mais longos ou intensos. As proteínas são fundamentais para a reparação e construção muscular, e sua distribuição ao longo do dia importa tanto quanto a quantidade total. Já as gorduras boas participam da produção hormonal e da absorção de vitaminas lipossolúveis, sendo essenciais para a saúde geral do atleta.
 
-O timing nutricional, ou seja, o momento em que você consome cada nutriente, pode fazer diferença significativa. Uma refeição rica em carboidratos de fácil digestão 60 a 90 minutos antes do treino garante energia disponível. No pós-treino, a combinação de proteínas e carboidratos favorece a recuperação muscular e a reposição dos estoques de glicogênio.
+O timing nutricional, ou seja, o momento em que você consome cada nutriente, pode fazer diferença significativa. Uma refeição rica em carboidratos de fácil digestão 60 a 90 minutos antes do treino ajuda a manter energia disponível. No pós-treino, a combinação de proteínas e carboidratos favorece a recuperação muscular e a reposição dos estoques de glicogênio.
 
 ### Composição corporal
 

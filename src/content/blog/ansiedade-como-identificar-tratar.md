@@ -1,6 +1,6 @@
 ---
 title: "Ansiedade: como identificar os sintomas e o que esperar do tratamento psicológico"
-description: "A ansiedade é o transtorno mental mais prevalente no mundo. Entenda como ela se manifesta, quando buscar ajuda e como funciona o tratamento com psicologia clínica em Porto Alegre."
+description: "Ansiedade: entenda como ela se manifesta, quando buscar ajuda e como funciona o tratamento com psicologia clínica em Porto Alegre."
 date: "2026-05-28"
 author: "Manuela Vanti"
 category: "saude-mental"

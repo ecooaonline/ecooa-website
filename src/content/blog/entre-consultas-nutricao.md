@@ -74,7 +74,7 @@ Não no dia seguinte. Não na segunda-feira. Na próxima refeição.
 - Retomar o plano na refeição seguinte como se nada tivesse acontecido
 - Anotar o que você aprendeu sobre si mesmo nessa situação
 
-Nenhum plano alimentar funciona com 100% de adesão o tempo todo. Pacientes que obtêm os melhores resultados não são os que nunca erram, mas os que retomam mais rápido.
+Nenhum plano alimentar funciona com 100% de adesão o tempo todo. Pacientes que evoluem de forma mais consistente não são os que nunca erram, mas os que retomam mais rápido.
 
 ## Como acompanhar o progresso sem obsessão
 

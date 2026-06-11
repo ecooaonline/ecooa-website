@@ -136,4 +136,4 @@ Cada uma dessas histórias tem algo em comum: a decisão de manter o acompanhame
 
 O acompanhamento médico contínuo não precisa começar com um plano complexo. Ele começa com a decisão de não deixar a saúde para depois. Se você já é paciente da ecooa, mantenha seus retornos em dia e comunique mudanças na sua rotina, nos seus sintomas ou nos seus objetivos. Se ainda não iniciou esse acompanhamento, o primeiro passo é uma avaliação que servirá como ponto de partida para uma jornada de cuidado real e contínuo.
 
-Os melhores resultados em saúde pertencem a quem se compromete com o processo. E o processo começa agora.
+Resultados consistentes em saúde pertencem a quem se compromete com o processo. E o processo começa agora.
