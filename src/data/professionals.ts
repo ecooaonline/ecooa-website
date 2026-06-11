@@ -127,14 +127,14 @@ export const professionals: Professional[] = [
   {
     slug: 'larissa-wiebbelling',
     name: 'Larissa Wiebbelling',
-    role: 'Médica · Implante Capilar',
+    role: 'Médica · Transplante Capilar',
     unit: 'esthetic',
     photo: '/team/larissa.webp',
     registration: 'CRM-RS 55.504',
     ig: '@larissawiebbelling',
     description:
-      'Médica especialista em transplante e implante capilar com técnicas avançadas FUE e Sapphire.',
-    tags: ['Transplante Capilar', 'Implante', 'FUE', 'Sapphire'],
+      'Médica especialista em transplante capilar com técnicas avançadas FUE e Sapphire.',
+    tags: ['Transplante Capilar', 'FUE', 'Sapphire'],
     personalTouch: 'Devolve autoestima com precisão e delicadeza em cada procedimento.',
     blogAuthor: {
       name: 'Dra. Larissa Wiebbelling',
