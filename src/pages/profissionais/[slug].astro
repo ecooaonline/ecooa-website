@@ -82,7 +82,10 @@ function medicalSpecialty(role: string): string {
 }
 
 const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
-const credential = credentialCategory(p.role);
+// Registro real (CRM/CRN/CRP...) quando disponível; senão, só o conselho
+// inferido pelo cargo. Exibido na seção "sobre" e no schema.
+const councilCategory = credentialCategory(p.role);
+const credential = p.registration || councilCategory;
 
 const relatedIntents = curatedIntents
   .filter((intent) => intent.topSlugs.includes(p.slug) || intent.unit === p.unit)
@@ -130,7 +133,8 @@ const seoDescription = clampSeoDescription(
         ? {
             hasCredential: {
               '@type': 'EducationalOccupationalCredential',
-              credentialCategory: credential,
+              credentialCategory: councilCategory || credential,
+              ...(p.registration ? { identifier: p.registration } : {}),
             },
           }
         : {}),
