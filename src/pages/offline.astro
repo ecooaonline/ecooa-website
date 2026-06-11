@@ -1,27 +1,90 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+// Página offline autossuficiente: zero CSS/JS externos, para renderizar
+// estilizada mesmo quando apenas o HTML precacheado pelo service worker
+// está disponível (o CSS global hasheado em /_astro/ não é precacheável
+// a partir do sw.js estático). As fontes referenciadas estão no PRECACHE.
 ---
 
-<BaseLayout
-  title="Você está offline | ecooa"
-  description="Sem conexão no momento. Páginas já visitadas continuam disponíveis e o site volta ao normal assim que a internet retornar."
-  robots="noindex, nofollow"
->
-  <section class="sec">
-    <div class="w" style="max-width:560px;text-align:center;padding:96px 0 72px">
-      <p class="lbl" style="margin-bottom:14px">sem conexão</p>
-      <h1
-        style="font-family:var(--font-serif);font-size:clamp(28px,4vw,40px);font-weight:300;color:var(--color-ink);letter-spacing:-.02em;margin-bottom:16px"
-      >
-        Você está offline.
-      </h1>
-      <p
-        style="font-size:14px;font-weight:300;color:var(--color-ink-soft);line-height:1.8;margin-bottom:32px"
-      >
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Você está offline | ecooa</title>
+    <style>
+      @font-face {
+        font-family: 'Arboria';
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+        src: url('/fonts/arboria-300.woff2') format('woff2');
+      }
+      @font-face {
+        font-family: 'Arboria';
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+        src: url('/fonts/arboria-500.woff2') format('woff2');
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #faf8f6;
+        color: #1c1917;
+        font-family: 'Arboria', system-ui, sans-serif;
+        font-weight: 300;
+        text-align: center;
+      }
+      main {
+        max-width: 560px;
+        padding: 48px 24px;
+      }
+      .lbl {
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #706662;
+        margin: 0 0 14px;
+      }
+      h1 {
+        font-size: clamp(28px, 5vw, 40px);
+        font-weight: 300;
+        letter-spacing: -0.02em;
+        margin: 0 0 16px;
+      }
+      p {
+        font-size: 14px;
+        color: #6b6360;
+        line-height: 1.8;
+        margin: 0 0 32px;
+      }
+      a {
+        display: inline-block;
+        padding: 14px 36px;
+        border: 1px solid #1c1917;
+        color: #1c1917;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: lowercase;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="lbl">sem conexão</p>
+      <h1>Você está offline.</h1>
+      <p>
         Sua conexão caiu. Páginas que você já visitou podem continuar disponíveis, e o restante
         volta assim que a internet retornar.
       </p>
-      <a href="/" class="bd">tentar novamente</a>
-    </div>
-  </section>
-</BaseLayout>
+      <a href="/">tentar novamente</a>
+    </main>
+  </body>
+</html>

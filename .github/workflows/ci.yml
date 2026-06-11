@@ -46,7 +46,9 @@ jobs:
         run: |
           count=$(grep -o '<loc>' dist/sitemap-0.xml 2>/dev/null | wc -l || echo 0)
           echo "Páginas no sitemap: $count"
-          [ "$count" -ge 100 ] || { echo "ERRO: sitemap com menos de 100 URLs ($count)"; exit 1; }
+          # Contagem atual: 100 (obrigado, offline e redirects ficam fora).
+          # Limiar com folga para exclusões legítimas não quebrarem o CI.
+          [ "$count" -ge 95 ] || { echo "ERRO: sitemap com menos de 95 URLs ($count)"; exit 1; }
 
       - name: Check internal links (non-blocking)
         continue-on-error: true

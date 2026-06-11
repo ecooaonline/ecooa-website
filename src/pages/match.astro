@@ -528,11 +528,31 @@ const pageDescription =
   }
   const rl: RateState = loadRateState();
 
-  function rateLimitCheck(): { ok: boolean; reason?: string; waitUntil?: number } {
+  // Momento em que a janela deslizante de 60s volta a ter capacidade.
+  // Sem isso, o countdown do cooldown termina antes de a janela drenar e a
+  // busca seguinte re-bloqueia escalonando o cooldown (5s → 15s → 45s).
+  function rateWindowFreeAt(now: number): number {
+    const recent = rl.hits.filter((t) => now - t <= RATE_WINDOW_MS);
+    if (recent.length < RATE_MAX_PER_MIN) return now;
+    return recent[recent.length - RATE_MAX_PER_MIN] + RATE_WINDOW_MS;
+  }
+
+  function rateLimitCheck(): {
+    ok: boolean;
+    reason?: string;
+    waitUntil?: number;
+    waitLabel?: string;
+  } {
     const now = Date.now();
     if (now < rl.blockedUntil) {
-      const wait = Math.ceil((rl.blockedUntil - now) / 1000);
-      return { ok: false, reason: `muitas buscas. aguarde ${wait}s.`, waitUntil: rl.blockedUntil };
+      const waitUntil = Math.max(rl.blockedUntil, rateWindowFreeAt(now));
+      const wait = Math.ceil((waitUntil - now) / 1000);
+      return {
+        ok: false,
+        reason: `muitas buscas. aguarde ${wait}s.`,
+        waitUntil,
+        waitLabel: 'muitas buscas.',
+      };
     }
     if (rl.sessionTotal >= SESSION_CAP) {
       return {
@@ -546,11 +566,13 @@ const pageDescription =
       const cooldown = COOLDOWN_STEPS[rl.blockCount];
       rl.blockedUntil = now + cooldown;
       saveRateState(rl);
-      const wait = Math.ceil(cooldown / 1000);
+      const waitUntil = Math.max(rl.blockedUntil, rateWindowFreeAt(now));
+      const wait = Math.ceil((waitUntil - now) / 1000);
       return {
         ok: false,
         reason: `muitas buscas seguidas. aguarde ${wait}s.`,
-        waitUntil: rl.blockedUntil,
+        waitUntil,
+        waitLabel: 'muitas buscas seguidas.',
       };
     }
     rl.hits.push(now);
@@ -659,7 +681,7 @@ const pageDescription =
       rlTimer = undefined;
     }
   }
-  function showRlCountdown(until: number) {
+  function showRlCountdown(until: number, label: string) {
     stopRlCountdown();
     const tick = () => {
       const s = Math.ceil((until - Date.now()) / 1000);
@@ -668,7 +690,7 @@ const pageDescription =
         results.innerHTML = `<div class="match-loading">pronto. pode buscar novamente.</div>`;
         return;
       }
-      results.innerHTML = `<div class="match-loading">muitas buscas seguidas. aguarde ${s}s.</div>`;
+      results.innerHTML = `<div class="match-loading">${label} aguarde ${s}s.</div>`;
     };
     tick();
     rlTimer = setInterval(tick, 1000);
@@ -677,16 +699,20 @@ const pageDescription =
   function handleQuery(query: string) {
     const q = query.trim();
     if (!q) return;
-    stopRlCountdown();
     if (q.length < MIN_QUERY_LEN) {
-      results.innerHTML = `<div class="match-loading">descreva com pelo menos ${MIN_QUERY_LEN} caracteres.</div>`;
+      // Query curta não derruba um countdown ativo: a indicação de espera
+      // é mais útil que repetir a dica de tamanho mínimo.
+      if (rlTimer === undefined) {
+        results.innerHTML = `<div class="match-loading">descreva com pelo menos ${MIN_QUERY_LEN} caracteres.</div>`;
+      }
       return;
     }
+    stopRlCountdown();
 
     const check = rateLimitCheck();
     if (!check.ok) {
       if (check.waitUntil) {
-        showRlCountdown(check.waitUntil);
+        showRlCountdown(check.waitUntil, check.waitLabel || 'muitas buscas.');
       } else {
         results.innerHTML = `<div class="match-loading">${check.reason}</div>`;
       }

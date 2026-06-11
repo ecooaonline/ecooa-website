@@ -9,6 +9,7 @@ import { getCollection, render } from 'astro:content';
 import { professionals } from '../../data/professionals';
 import { getAuthorByName } from '../../data/blog-authors';
 import { generateHeadingId } from '../../scripts/extract-headings';
+import { clampSeoDescription } from '../../data/seo';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog', ({ data }) => !data.draft);
@@ -77,7 +78,7 @@ const shareLinkedIn = `https://www.linkedin.com/sharing/share-offsite/?url=${enc
 
 <BaseLayout
   title={post.data.title}
-  description={post.data.description}
+  description={clampSeoDescription(post.data.description)}
   currentPage="blog"
   ogImage={post.data.image || '/favicon/og-image.jpg'}
   breadcrumbs={[

@@ -68,7 +68,15 @@ function networkFirst(request, cacheName) {
       }
       return res;
     })
-    .catch(() => caches.match(request).then((r) => r || caches.match(OFFLINE_URL)));
+    .catch(() =>
+      // Prefere a cópia do runtime (mais fresca) à do precache estático,
+      // que fica congelada até o próximo bump de VERSION.
+      caches
+        .open(cacheName)
+        .then((c) => c.match(request))
+        .then((r) => r || caches.match(request))
+        .then((r) => r || caches.match(OFFLINE_URL))
+    );
 }
 
 self.addEventListener('fetch', (e) => {

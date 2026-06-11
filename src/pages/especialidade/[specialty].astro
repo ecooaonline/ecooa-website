@@ -8,6 +8,7 @@ import CtaSection from '../../components/CtaSection.astro';
 import { WA_DEFAULT } from '../../data/constants';
 import { specialties } from '../../data/specialties';
 import { professionals } from '../../data/professionals';
+import { clampSeoDescription } from '../../data/seo';
 
 export async function getStaticPaths() {
   return specialties.map((specialty) => ({
@@ -46,7 +47,7 @@ const specialtyUrl = `${SITE_URL}/especialidade/${spec.slug}`;
 
 <BaseLayout
   title={`${spec.name} | ecooa`}
-  description={spec.description}
+  description={clampSeoDescription(spec.description)}
   currentPage=""
   breadcrumbs={[
     { name: 'Especialidades', url: '/especialidades' },

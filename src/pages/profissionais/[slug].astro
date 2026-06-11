@@ -8,6 +8,7 @@ import OptimizedImage from '../../components/OptimizedImage.astro';
 import { professionals } from '../../data/professionals';
 import { curatedIntents } from '../../data/match-intents';
 import { WA_BASE } from '../../data/constants';
+import { clampSeoDescription } from '../../data/seo';
 import { getCollection } from 'astro:content';
 
 export function getStaticPaths() {
@@ -94,16 +95,10 @@ const relatedProfessionals = professionals
 const roleKeywords = p.role.split(' · ').filter(Boolean);
 const seoTitle = `${p.name} - ${roleKeywords[0]} em Porto Alegre | ecooa`;
 
-// Meta description limitada a 160 caracteres (evita truncamento na SERP).
-// Prioridade: descrição + CTA local; se não couber, só a descrição; se ainda
-// exceder, corta em fronteira de palavra.
-const SEO_DESC_MAX = 160;
-const seoCta = ' Agende sua consulta na ecooa, Moinhos de Vento, Porto Alegre.';
-let seoDescription = `${p.description}${seoCta}`;
-if (seoDescription.length > SEO_DESC_MAX) seoDescription = p.description;
-if (seoDescription.length > SEO_DESC_MAX) {
-  seoDescription = seoDescription.slice(0, SEO_DESC_MAX - 1).replace(/\s+\S*$/u, '') + '…';
-}
+const seoDescription = clampSeoDescription(
+  p.description,
+  ' Agende sua consulta na ecooa, Moinhos de Vento, Porto Alegre.'
+);
 ---
 
 <BaseLayout
