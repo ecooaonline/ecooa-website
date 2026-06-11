@@ -286,7 +286,7 @@ export const professionals: Professional[] = [
   {
     slug: 'adriana',
     name: 'Adriana',
-    role: 'Terapeuta Integrativa · Biorressonância',
+    role: 'Terapeuta Integrativa',
     unit: 'esthetic',
     photo: '/team/ortomolecular.webp',
     description:
@@ -512,4 +512,35 @@ export function getProfessionalBySlug(slug: string): Professional | undefined {
 
 export function getProfessionalsByUnit(unit: Professional['unit']): Professional[] {
   return professionals.filter((p) => p.unit === unit);
+}
+
+// Conselho profissional inferido pelo cargo (sigla), usado como fallback
+// quando o número de registro ainda não foi confirmado.
+export function professionalCouncil(role: string): string {
+  const lower = role.toLowerCase();
+  if (/\bmédic[oa]\b|\bmedic[oa]\b/.test(lower)) return 'CRM';
+  if (lower.includes('nutricion')) return 'CRN';
+  if (lower.includes('psicólog') || lower.includes('psicolog')) return 'CRP';
+  if (lower.includes('bioméd') || lower.includes('biomed')) return 'CRBM';
+  if (lower.includes('fisioterapeut') || lower.includes('osteop')) return 'CREFITO';
+  if (lower.includes('enfermei')) return 'COREN';
+  if (lower.includes('odontólog') || lower.includes('odontolog') || lower.includes('dentista'))
+    return 'CRO';
+  return '';
+}
+
+// Registro a exibir: número completo quando disponível (ex.: "CRN-2 9495"),
+// senão apenas a sigla do conselho (ex.: "CRN"). String vazia quando não há
+// conselho aplicável (ex.: terapeuta integrativa).
+export function professionalRegistration(p: Professional): string {
+  return p.registration || professionalCouncil(p.role);
+}
+
+// Busca o registro pelo caminho da foto (chave única entre os profissionais).
+// Permite que componentes com props "hardcoded" (cards) exibam o registro sem
+// duplicar o dado.
+export function registrationByPhoto(photo: string | undefined): string {
+  if (!photo) return '';
+  const prof = professionals.find((p) => p.photo === photo);
+  return prof ? professionalRegistration(prof) : '';
 }

@@ -974,6 +974,13 @@
   color: var(--color-ink);
   margin-bottom: 3px;
 }
+.pc-reg {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-ink);
+  margin-bottom: 5px;
+}
 .pc-r {
   font-size: 10px;
   font-weight: 400;

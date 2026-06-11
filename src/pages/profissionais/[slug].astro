@@ -5,7 +5,7 @@ import Marquee from '../../components/Marquee.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import ProfessionalCard from '../../components/ProfessionalCard.astro';
 import OptimizedImage from '../../components/OptimizedImage.astro';
-import { professionals } from '../../data/professionals';
+import { professionals, professionalCouncil } from '../../data/professionals';
 import { curatedIntents } from '../../data/match-intents';
 import { WA_BASE } from '../../data/constants';
 import { clampSeoDescription } from '../../data/seo';
@@ -60,18 +60,6 @@ function isPhysician(role: string) {
   return /\bMédic[oa]\b/i.test(role);
 }
 
-function credentialCategory(role: string): string {
-  const lower = role.toLowerCase();
-  if (/\bmedic[oa]?\b|\bmédic[oa]\b/.test(lower)) return 'CRM';
-  if (lower.includes('nutricion')) return 'CRN';
-  if (lower.includes('psicólog') || lower.includes('psicolog')) return 'CRP';
-  if (lower.includes('bioméd') || lower.includes('biomed')) return 'CRBM';
-  if (lower.includes('fisioterapeut') || lower.includes('osteop')) return 'CREFITO';
-  if (lower.includes('enfermei')) return 'COREN';
-  if (lower.includes('odontólog') || lower.includes('odontolog')) return 'CRO';
-  return '';
-}
-
 function medicalSpecialty(role: string): string {
   const lower = role.toLowerCase();
   if (lower.includes('dermato') || lower.includes('capilar') || lower.includes('tricolog'))
@@ -84,7 +72,7 @@ function medicalSpecialty(role: string): string {
 const schemaType = isPhysician(p.role) ? 'Physician' : 'Person';
 // Registro real (CRM/CRN/CRP...) quando disponível; senão, só o conselho
 // inferido pelo cargo. Exibido na seção "sobre" e no schema.
-const councilCategory = credentialCategory(p.role);
+const councilCategory = professionalCouncil(p.role);
 const credential = p.registration || councilCategory;
 
 const relatedIntents = curatedIntents
