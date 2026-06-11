@@ -84,6 +84,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
       - name: Lighthouse CI (mobile)
+        if: always()
         continue-on-error: true
         uses: treosh/lighthouse-ci-action@v12
         with:

@@ -13,7 +13,7 @@
         "http://localhost/contato/index.html",
         "http://localhost/agendamento/index.html"
       ],
-      "numberOfRuns": 1,
+      "numberOfRuns": 3,
       "settings": {
         "preset": "desktop",
         "onlyCategories": ["performance", "accessibility", "best-practices", "seo"],
