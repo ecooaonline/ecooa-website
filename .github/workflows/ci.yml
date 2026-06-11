@@ -72,8 +72,9 @@ jobs:
       - name: Build site
         run: npm run build
 
+      # Desktop é gate bloqueante (PERFORMANCE_BUDGET.md): LCP e CLS em "error".
+      # Mobile permanece não-bloqueante até endurecermos os thresholds.
       - name: Lighthouse CI (desktop)
-        continue-on-error: true
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: ./lighthouserc.json

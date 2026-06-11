@@ -528,11 +528,11 @@ const pageDescription =
   }
   const rl: RateState = loadRateState();
 
-  function rateLimitCheck(): { ok: boolean; reason?: string } {
+  function rateLimitCheck(): { ok: boolean; reason?: string; waitUntil?: number } {
     const now = Date.now();
     if (now < rl.blockedUntil) {
       const wait = Math.ceil((rl.blockedUntil - now) / 1000);
-      return { ok: false, reason: `muitas buscas. aguarde ${wait}s.` };
+      return { ok: false, reason: `muitas buscas. aguarde ${wait}s.`, waitUntil: rl.blockedUntil };
     }
     if (rl.sessionTotal >= SESSION_CAP) {
       return {
@@ -547,7 +547,11 @@ const pageDescription =
       rl.blockedUntil = now + cooldown;
       saveRateState(rl);
       const wait = Math.ceil(cooldown / 1000);
-      return { ok: false, reason: `muitas buscas seguidas. aguarde ${wait}s.` };
+      return {
+        ok: false,
+        reason: `muitas buscas seguidas. aguarde ${wait}s.`,
+        waitUntil: rl.blockedUntil,
+      };
     }
     rl.hits.push(now);
     rl.sessionTotal += 1;
@@ -647,9 +651,33 @@ const pageDescription =
     } catch {}
   }
 
+  // Countdown vivo do rate-limit: atualiza o aviso a cada segundo até liberar.
+  let rlTimer: ReturnType<typeof setInterval> | undefined;
+  function stopRlCountdown() {
+    if (rlTimer !== undefined) {
+      clearInterval(rlTimer);
+      rlTimer = undefined;
+    }
+  }
+  function showRlCountdown(until: number) {
+    stopRlCountdown();
+    const tick = () => {
+      const s = Math.ceil((until - Date.now()) / 1000);
+      if (s <= 0) {
+        stopRlCountdown();
+        results.innerHTML = `<div class="match-loading">pronto. pode buscar novamente.</div>`;
+        return;
+      }
+      results.innerHTML = `<div class="match-loading">muitas buscas seguidas. aguarde ${s}s.</div>`;
+    };
+    tick();
+    rlTimer = setInterval(tick, 1000);
+  }
+
   function handleQuery(query: string) {
     const q = query.trim();
     if (!q) return;
+    stopRlCountdown();
     if (q.length < MIN_QUERY_LEN) {
       results.innerHTML = `<div class="match-loading">descreva com pelo menos ${MIN_QUERY_LEN} caracteres.</div>`;
       return;
@@ -657,7 +685,11 @@ const pageDescription =
 
     const check = rateLimitCheck();
     if (!check.ok) {
-      results.innerHTML = `<div class="match-loading">${check.reason}</div>`;
+      if (check.waitUntil) {
+        showRlCountdown(check.waitUntil);
+      } else {
+        results.innerHTML = `<div class="match-loading">${check.reason}</div>`;
+      }
       return;
     }
 

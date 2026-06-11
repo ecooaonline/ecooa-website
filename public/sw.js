@@ -1,10 +1,11 @@
-const VERSION = 'ecooa-v2';
+const VERSION = 'ecooa-v3';
 const STATIC_CACHE = VERSION + '-static';
 const RUNTIME_CACHE = VERSION + '-runtime';
-const OFFLINE_URL = '/';
+const OFFLINE_URL = '/offline/';
 
 const PRECACHE = [
   OFFLINE_URL,
+  '/',
   '/fonts/arboria-300.woff2',
   '/fonts/arboria-400.woff2',
   '/fonts/arboria-500.woff2',

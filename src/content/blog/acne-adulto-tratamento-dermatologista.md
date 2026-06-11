@@ -1,6 +1,6 @@
 ---
 title: "Acne em adultos: causas, tipos e como tratar com dermatologista"
-description: "A acne não é exclusiva da adolescência. Entenda por que ela aparece ou persiste na vida adulta, quais são os tipos, e como funciona o tratamento com dermatologista em Porto Alegre."
+description: "A acne não é exclusiva da adolescência. Entenda por que ela persiste na vida adulta, os tipos e como tratar com dermatologista em Porto Alegre."
 date: "2026-05-28"
 author: "Susan Flach"
 category: "estetica"

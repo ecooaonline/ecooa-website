@@ -94,7 +94,7 @@ export const professionals: Professional[] = [
     personalTouch: 'Transforma a ciência capilar em confiança de volta.',
     blogAuthor: {
       name: 'Viviane Fagundes',
-      role: 'Enfermeira Capilar',
+      role: 'Biomédica',
       specialty: 'Teste Genético Capilar',
     },
   },
@@ -111,7 +111,7 @@ export const professionals: Professional[] = [
     personalTouch: 'Ouve a história por trás de cada paciente antes de tratar.',
     blogAuthor: {
       name: 'Dra. Yale',
-      role: 'Médica Dermatologista',
+      role: 'Médica Tricologista',
       specialty: 'Saúde Capilar Feminina',
     },
   },
@@ -319,7 +319,11 @@ export const professionals: Professional[] = [
       'Nutricionista com abordagem ortomolecular, metabolômica e nutrigenômica. Protocolos personalizados baseados em genética.',
     tags: ['Ortomolecular', 'Metabolômica', 'Nutrigenômica'],
     personalTouch: 'Desvenda o que a genética diz para criar um plano só seu.',
-    blogAuthor: { name: 'Adriano Lenz', role: 'Médico', specialty: 'Medicina Ortomolecular' },
+    blogAuthor: {
+      name: 'Adriano Lenz',
+      role: 'Nutricionista',
+      specialty: 'Nutrição Ortomolecular',
+    },
   },
   {
     slug: 'giancarla-rochemback',

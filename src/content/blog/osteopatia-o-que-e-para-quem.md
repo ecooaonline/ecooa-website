@@ -1,6 +1,6 @@
 ---
 title: "Osteopatia: o que é, para quem é indicada e como funciona na prática"
-description: "Entenda o que é a osteopatia, como funciona a avaliação e o tratamento, para quais condições é indicada e como ela se integra com outras abordagens de saúde."
+description: "Entenda o que é a osteopatia, como funcionam avaliação e tratamento, para quais condições é indicada e como se integra a outras abordagens de saúde."
 date: "2026-05-28"
 author: "Natalie Queiroz"
 category: "medicina"

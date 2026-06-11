@@ -1874,7 +1874,10 @@
   color: rgba(255, 255, 255, 0.6);
 }
 .b2b-input:focus {
-  outline: none;
+  /* WCAG 2.4.7: indicador de foco visível. currentColor segue o texto do
+     input (branco no fundo escuro, ink na variante .b2b-light). */
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
   border-color: rgba(255, 255, 255, 0.5);
 }
 .b2b-input.b2b-light {

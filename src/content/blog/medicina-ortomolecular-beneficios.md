@@ -7,7 +7,7 @@ category: "medicina"
 tags: ["medicina ortomolecular", "terapia ortomolecular", "vitaminas e minerais", "estresse oxidativo", "radicais livres", "porto alegre"]
 image: "/clinic/med.webp"
 lastModified: "2026-04-15"
-highlight: "A medicina ortomolecular séria não é a que promete rejuvenescimento milagroso. É a que identifica desequilíbrios reais e intervém com base em dados."
+highlight: "A medicina ortomolecular séria não é a que promete mais do que a evidência sustenta. É a que identifica desequilíbrios reais e intervém com base em dados."
 ---
 
 ## Entre promessas exageradas e ceticismo infundado, existe a ciência
@@ -58,7 +58,7 @@ Esses sinais não são específicos, mas frequentemente se correlacionam com def
 
 ## Avaliação clínica na ecooa
 
-Adriano Lenz, médico na ecooa em Moinhos de Vento, Porto Alegre, aplica a medicina ortomolecular com rigor clínico e base laboratorial. A avaliação inclui:
+Adriano Lenz, nutricionista na ecooa em Moinhos de Vento, Porto Alegre, aplica a abordagem ortomolecular com rigor clínico e base laboratorial. A avaliação inclui:
 
 - **Painel bioquímico ampliado**: vitaminas (D, B12, B6, ácido fólico, C), minerais (magnésio, zinco, selênio, cobre, ferro), perfil lipídico, glicêmico e hormonal
 - **Marcadores de estresse oxidativo**: quando indicado, avaliação de capacidade antioxidante e dano oxidativo
@@ -82,7 +82,7 @@ A prescrição é sempre individualizada. Dois pacientes com fadiga crônica pod
 
 ## O que diferencia a prática na ecooa
 
-A medicina ortomolecular séria não é a que promete rejuvenescimento milagroso ou cura para tudo. É a que identifica desequilíbrios reais, intervém com base em dados e monitora resultados.
+A medicina ortomolecular séria não é a que promete mais do que a evidência sustenta. É a que identifica desequilíbrios reais, intervém com base em dados e monitora resultados.
 
 Na ecooa, em Moinhos de Vento, a abordagem se diferencia por três princípios: toda intervenção parte de evidência laboratorial, toda prescrição utiliza formas e doses com respaldo científico, e todo paciente é reavaliado para confirmar a eficácia do que foi proposto.
 

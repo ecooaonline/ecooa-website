@@ -17,6 +17,7 @@ export default defineConfig({
       // Exclui do sitemap páginas noindex e as páginas de redirect (slugs antigos).
       filter: (page) =>
         !page.includes('/obrigado') &&
+        !page.includes('/offline') &&
         !page.includes('nutri%C3%A7%C3%A3o') &&
         !page.includes('nutrição'),
     }),

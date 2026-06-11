@@ -130,4 +130,4 @@ Na ecooa, a equipe da Dra. Larissa Wiebbelling mantém canais de comunicação a
 
 O pós-transplante capilar é um exercício de paciência e disciplina. Os primeiros meses podem ser desafiadores, especialmente durante a fase de shock loss, quando parece que nada está acontecendo. Mas cada folículo transplantado está seguindo seu ciclo biológico natural, e os resultados virão.
 
-Os pacientes que seguem os cuidados com consistência e mantêm o acompanhamento com a equipe são os que colhem os melhores resultados. Cuide do processo com a mesma seriedade com que decidiu pelo procedimento, e a transformação será visível e duradoura.
+Os pacientes que seguem os cuidados com consistência e mantêm o acompanhamento com a equipe são os que colhem resultados mais consistentes. Cuide do processo com a mesma seriedade com que decidiu pelo procedimento. A transformação tende a ser visível e duradoura.

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Você está offline | ecooa"
+  description="Sem conexão no momento. Páginas já visitadas continuam disponíveis e o site volta ao normal assim que a internet retornar."
+  robots="noindex, nofollow"
+>
+  <section class="sec">
+    <div class="w" style="max-width:560px;text-align:center;padding:96px 0 72px">
+      <p class="lbl" style="margin-bottom:14px">sem conexão</p>
+      <h1
+        style="font-family:var(--font-serif);font-size:clamp(28px,4vw,40px);font-weight:300;color:var(--color-ink);letter-spacing:-.02em;margin-bottom:16px"
+      >
+        Você está offline.
+      </h1>
+      <p
+        style="font-size:14px;font-weight:300;color:var(--color-ink-soft);line-height:1.8;margin-bottom:32px"
+      >
+        Sua conexão caiu. Páginas que você já visitou podem continuar disponíveis, e o restante
+        volta assim que a internet retornar.
+      </p>
+      <a href="/" class="bd">tentar novamente</a>
+    </div>
+  </section>
+</BaseLayout>
