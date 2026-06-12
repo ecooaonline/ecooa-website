@@ -192,6 +192,11 @@ antes de conversões importáveis · redefinir metas técnicas fora do P00.
 | DEC-07 | PREFIXO_BRANCH=`claude`; uma branch por fase (`claude/pNN-…`); PR em draft; merge é do dono | alinha com automação existente do repo (workflows em claude/**) | prefixo novo (quebraria automação) | sim | IA | 2026-06-11 |
 | DEC-08 | Verba de tráfego pago: zero por enquanto; P14 prepara base sem ativar campanhas | resposta do dono | ativar Ads imediatamente | sim | Gustavo | 2026-06-11 |
 | DEC-09 | Prazo: sem data-limite; esteira avança por autorização fase a fase | resposta do dono | prazo fixo 30/60d | sim | Gustavo | 2026-06-11 |
+| DEC-10 | PAC-01 aprovado: criar `/termos` (rascunho IA + validação jurídica do dono antes de publicar) | lacuna legal leve | não criar | sim | Gustavo | 2026-06-12 |
+| DEC-11 | PAC-02: hub `/faq` REJEITADO; FAQs expandem DENTRO dos pilares | conversão contextual + preserva SEO dos pilares | hub dedicado /faq | sim | Gustavo | 2026-06-12 |
+| DEC-12 | PAC-03 adiado: perfis de Eduarda e Tais aguardam material do dono (foto+bio) | sem dados na fonte | criar placeholders | sim | Gustavo | 2026-06-12 |
+| DEC-13 | PAC-04 aprovado: linkagem das órfãs (hub+17 especialidades) no P12 | 18 páginas sem PageRank interno | manter órfãs | sim | Gustavo | 2026-06-12 |
+| DEC-14 | PAC-05 aprovado: landings de campanha nascem noindex, planejadas no P14 ao ativar verba | medição limpa; não canibalizar orgânico | landings indexáveis | sim | Gustavo | 2026-06-12 |
 
 ## 14. Livro de Fatos Confirmados
 
