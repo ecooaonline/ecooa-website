@@ -197,6 +197,9 @@ antes de conversões importáveis · redefinir metas técnicas fora do P00.
 | DEC-12 | PAC-03 adiado: perfis de Eduarda e Tais aguardam material do dono (foto+bio) | sem dados na fonte | criar placeholders | sim | Gustavo | 2026-06-12 |
 | DEC-13 | PAC-04 aprovado: linkagem das órfãs (hub+17 especialidades) no P12 | 18 páginas sem PageRank interno | manter órfãs | sim | Gustavo | 2026-06-12 |
 | DEC-14 | PAC-05 aprovado: landings de campanha nascem noindex, planejadas no P14 ao ativar verba | medição limpa; não canibalizar orgânico | landings indexáveis | sim | Gustavo | 2026-06-12 |
+| DEC-15 | Plataforma oficial: Cloudflare Workers Static Assets + Workers Builds (capacidades verificadas na doc oficial em 2026-06-12) | única que entrega headers/_redirects/Brotli/preview/rollback com a zona já na CF | GH Pages (veto por capacidade), CF Pages (geração anterior), Vercel, Netlify (INFRASTRUCTURE §2) | sim (custo de migração) | Gustavo (alvo) + IA (produto) | 2026-06-12 |
+| DEC-16 | Integração Vercel será desativada após o cutover estabilizar | um só pipeline de preview/produção | manter duplo preview | sim | Gustavo | 2026-06-12 |
+| DEC-17 | Domínio canônico: https://www.somosecooa.com.br (www); apex redireciona 301 | já é o canônico em produção (CNAME/canonicals/sitemap/OG) | apex como canônico (migraria tudo) | com 301s | Gustavo+IA | 2026-06-12 |
 
 ## 14. Livro de Fatos Confirmados
 

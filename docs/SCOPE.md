@@ -137,7 +137,23 @@ responsável (§6) · critério de reabertura técnica (P15).
 
 Regra (Lei 12): hipótese aberta no prompt validador BLOQUEIA a decisão dependente.
 
-## 9. Pendências de documentação interna
+## 9. Registro de Promessas Cruzadas (inaugurado no P03)
+
+Regras: promessa tem MECANISMO especificado, fase devedora e status; o gate de entrada
+de cada fase verifica as PROM devidas a ela; o P13 audita o registro inteiro.
+
+| PROM | Promessa | Criada em | Devida a | Mecanismo especificado | Status |
+|---|---|---|---|---|---|
+| PROM-01 | Previews não indexáveis | P3 | P7 | `X-Robots-Tag: noindex` por host `*.workers.dev` em `public/_headers` (sintaxe de URL completa); fallback: worker `run_worker_first` por host | aberta |
+| PROM-02 | Analytics não contamina por previews/local | P3 | P14 | gate de host na medição: GTM/Pixel só transmitem em `www.somosecooa.com.br`; flag `?ecooa_debug=1` para teste | aberta |
+| PROM-03 | Gate do Contrato de Páginas no CI | P2/P3 | P8 | check que valida `sitemap-0.xml` == Contrato vigente (100) + utilitárias noindex/fora; falha quebra o CI | aberta |
+| PROM-04 | Plano de cache aplicado | P3 | P7 | `public/_headers`: `/_astro/*` immutable 1 ano; HTML must-revalidate; `sw.js` no-cache; fontes 7d; imagens 1d+SWR (INFRASTRUCTURE §6) | aberta |
+| PROM-05 | Headers de segurança e CSP reais | P3 | P7 | `public/_headers`: CSP (hashes/nonce avaliado), HSTS (decisão preload do dono), frame-ancestors, Permissions-Policy, Referrer-Policy, X-Content-Type-Options; meta tags do BaseLayout substituídas; reteste do funil obrigatório | aberta |
+| PROM-06 | Slugs legados com 301 reais | P3 | P10 | mover `nutrição-*` do meta-refresh (astro.config) para `public/_redirects` 301; remover páginas-redirect do build | aberta |
+| PROM-07 | Leads de preview não contaminam produção | P3 | P4 | gate de host em `form-submit.ts`: fora do canônico, bloquear envio real com aviso + fallback WhatsApp (ou `_source=preview`); risco interino aceito pelo dono (2026-06-12) | aberta |
+| PROM-08 | Match operante em previews CF | P3 | P4 | incluir `*.workers.dev` (preview) na allowlist de attestation do match (`match.astro:497-499`), mantendo safe-mode para domínios estranhos | aberta |
+
+## 10. Pendências de documentação interna
 
 CLAUDE.md:12 ("Formspree") e :29 ("30 profissionais") — correção autorizada para a
 primeira fase com fence sobre arquivos de raiz (P5); verdade registrada no
