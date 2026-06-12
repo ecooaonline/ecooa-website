@@ -34,12 +34,13 @@ verificado no HTML do build (P00 EV3 + reverificação P02).
 
 As mesmas da seção 5, via filtro do `astro.config.mjs` (obrigado, offline, nutrição-*).
 
-## 7. Futuras (condicionadas ao Pacote de Decisões do P02)
+## 7. Futuras (Pacote resolvido em 2026-06-12)
 
-PAC-01 `/termos` (P12) · PAC-03 perfis Eduarda/Tais (automáticos via linha 7 quando os
-dados entrarem na fonte — P4) · PAC-05 landings de campanha (P14; **noindex** por padrão
-ao nascer). Categoria `ecooa`: passa a existir automaticamente quando houver artigo
-(linha 10) — sem ação.
+`/termos` **autorizada** (DEC-10; entra no sitemap ao nascer, P12) · perfis Eduarda/Tais
+**adiados** (DEC-12; automáticos via linha 7 quando os dados entrarem na fonte) ·
+landings de campanha **autorizadas como noindex** (DEC-14; nunca entram no sitemap).
+Categoria `ecooa`: passa a existir automaticamente quando houver artigo (linha 10) —
+sem ação.
 
 ## 8. Pós-meta
 

@@ -139,18 +139,24 @@ necessária.
 ## 11. Contrato de Páginas
 
 ```
-CONTRATO DE PÁGINAS v1 (2026-06-12) — dono: P02; gate futuro: P8
+CONTRATO DE PÁGINAS v2 (2026-06-12) — dono: P02; gate futuro: P8
 Indexáveis e no sitemap: 100
   14 estáticas (linhas 1-6, 8, 11, 13-18) + 30 perfis + 34 artigos
   + 5 categorias + 17 especialidades
 Utilitárias (noindex e/ou fora do sitemap): 6
   /obrigado · /offline · /404 · 3 redirects legados (nutrição-*)
-Futuras já autorizadas: 0
-  (candidatas no Pacote de Decisões: PAC-01 /termos, PAC-03 perfis Eduarda/Tais,
-   PAC-05 landings Ads — autorização PENDENTE)
+Futuras já autorizadas: 1
+  /termos (DEC-10; execução P12; ao nascer vira indexável 101 com linha 24)
+Futuras condicionais autorizadas (fora da contagem de indexáveis):
+  landings de campanha noindex (DEC-14; P14, somente ao ativar verba)
+  perfis Eduarda/Tais (DEC-12: ADIADO até material do dono; usarão linha 7)
 Endpoints não-página: rss.xml, feed.json, llms.txt, sitemap-index/-0.xml
 Regra: página no build sem linha na Matriz = incidente (Lei 15).
 ```
+
+Linha futura autorizada:
+
+| 24 | Termos de uso | `/termos` | legal | **futura (DEC-10)** | sim (P12) | sim | sim | footer | institucional | confiança/contratual | — | contato | rascunho IA + validação jurídica do dono | — | baixo | P1 | P12 | criar no P12 |
 
 ## 12. Riscos
 
@@ -159,11 +165,15 @@ pessoa fora da fonte (linha 16; já rastreado ACHADO-07/P00). BAIXO: categoria
 `longevidade` rasa (1 artigo); categoria `ecooa` vazia (não gera página — comportamento
 correto, registrado).
 
-## 13. Decisões pendentes
+## 13. Decisões do Pacote (resolvidas em 2026-06-12 pelo dono)
 
-Ver **Pacote de Decisões** no relatório do P02 (PAC-01 a PAC-05); aprovados viram DEC-NN
-no [STRATEGY.md](./STRATEGY.md) §13.
+PAC-01 **aprovado** → DEC-10 (/termos, P12) · PAC-02 **rejeitado** → DEC-11 (FAQs
+in-page nos pilares; hub /faq não volta a ser proposto sem fato novo) · PAC-03
+**adiado** → DEC-12 (Eduarda/Tais aguardam material) · PAC-04 **aprovado** → DEC-13
+(linkagem das órfãs, P12) · PAC-05 **aprovado** → DEC-14 (landings noindex, P14).
+Registro canônico: [STRATEGY.md](./STRATEGY.md) §13.
 
 ---
 Histórico: v1 2026-06-12 criada pelo P02 (base: build 103 páginas, sitemap 100, diff
-triplo limpo).
+triplo limpo) · v2 2026-06-12 Pacote de Decisões resolvido pelo dono (Contrato v2;
+linha 24 adicionada; DEC-10 a DEC-14).
