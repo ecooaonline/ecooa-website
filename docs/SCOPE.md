@@ -132,7 +132,8 @@ responsável (§6) · critério de reabertura técnica (P15).
 | HIP-06 | Previews Vercel são noindex por padrão | comportamento da plataforma | conteúdo duplicado indexado | dono (1 verificação) | P10 | aberta |
 | HIP-07 | Valor comercial médio do lead (ticket) | sem dado | impossível calcular ROI/ROAS | dono | P14 | aberta |
 | HIP-08 | Instagram é canal relevante de chegada | bio/link e uso da marca | esforço de social mal dimensionado | GA4+UTM | P14 | aberta |
-| HIP-09 | Funil do formulário pós-CP-01 funciona em produção de ponta a ponta | implementação + código GAS | conversão secundária quebrada sem sinal | dono (teste real) | P2 (gate de entrada) | **aberta — bloqueia fechamento do critério de negócio nº1** |
+| HIP-09 | Funil do formulário pós-CP-01 funciona em produção de ponta a ponta | implementação + código GAS | conversão secundária quebrada sem sinal | dono (teste real) | P2 (gate de entrada) | **aberta — risco interino formalmente ACEITO pelo dono em 2026-06-12 no gate do P02; novo prazo: antes do P4 (que mexe no funil)** |
+| HIP-10 | Termos de busca prováveis por página (keywords da Matriz §5) refletem demanda real | inferência editorial, sem dado de GSC | priorização de conteúdo/SEO desalinhada | GSC/dados de campo | P10/P14 | aberta |
 
 Regra (Lei 12): hipótese aberta no prompt validador BLOQUEIA a decisão dependente.
 

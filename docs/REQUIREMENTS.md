@@ -39,6 +39,11 @@ R-S2. Nenhuma mudança de rota sem 301 e aprovação (P2). R-S3. Schema sempre d
 dados reais (`professionals.ts`, `constants.ts`, frontmatter); proibido schema de fatos
 fora do Livro de Fatos. R-S4. DEC-05 (aggregateRating) executa no P10. R-S5. Meta
 descriptions 50-160 chars (util `clampSeoDescription` aplicado nos templates).
+R-S6. **Gate do Contrato de Páginas (pré-declarado pelo P02; P8 implementa):** o
+pipeline valida que o sitemap contém EXATAMENTE as N indexáveis do Contrato vigente
+([INFORMATION_ARCHITECTURE.md](./INFORMATION_ARCHITECTURE.md) §11 — v1: 100), que as
+utilitárias têm noindex e estão fora do sitemap, e que página nova no build sem linha
+na Matriz quebra o CI (Lei 15).
 
 ## 5. De segurança
 
