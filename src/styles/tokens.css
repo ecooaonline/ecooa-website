@@ -52,6 +52,14 @@
   --transition-base: 0.3s;
   --transition-slow: 0.5s;
 
+  /* Texturas — gravação topográfica (sistema "Topografia").
+     Linhas de contorno em baixa opacidade, aplicadas como camada de fundo
+     com background-blend-mode: soft-light. Percebidas apenas sob luz rasante.
+     light = linhas claras (para superfícies escuras: .bd);
+     ink   = linhas escuras (para superfícies claras: .bw). */
+  --texture-topo-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1' stroke-opacity='.5'%3E%3Cpath d='M-20 150 C60 120 110 100 170 96 C230 92 280 110 340 92'/%3E%3Cpath d='M-20 130 C60 102 115 84 175 80 C235 76 285 92 340 74'/%3E%3Cpath d='M-20 110 C60 84 120 68 180 64 C240 60 290 74 340 56'/%3E%3Cpath d='M-20 90 C60 66 125 52 185 48 C245 44 295 56 340 38'/%3E%3Cpath d='M-20 70 C60 48 130 36 190 32 C250 28 300 38 340 20'/%3E%3Cpath d='M-20 50 C60 30 135 20 195 16 C255 12 305 20 340 2'/%3E%3Cpath d='M-20 30 C60 12 140 4 200 0 C260 -4 310 2 340 -16'/%3E%3C/g%3E%3C/svg%3E");
+  --texture-topo-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Cg fill='none' stroke='%231c1917' stroke-width='1' stroke-opacity='.45'%3E%3Cpath d='M-20 150 C60 120 110 100 170 96 C230 92 280 110 340 92'/%3E%3Cpath d='M-20 130 C60 102 115 84 175 80 C235 76 285 92 340 74'/%3E%3Cpath d='M-20 110 C60 84 120 68 180 64 C240 60 290 74 340 56'/%3E%3Cpath d='M-20 90 C60 66 125 52 185 48 C245 44 295 56 340 38'/%3E%3Cpath d='M-20 70 C60 48 130 36 190 32 C250 28 300 38 340 20'/%3E%3Cpath d='M-20 50 C60 30 135 20 195 16 C255 12 305 20 340 2'/%3E%3Cpath d='M-20 30 C60 12 140 4 200 0 C260 -4 310 2 340 -16'/%3E%3C/g%3E%3C/svg%3E");
+
   /* Border radius */
   --radius-sm: 4px;
   --radius-md: 8px;
