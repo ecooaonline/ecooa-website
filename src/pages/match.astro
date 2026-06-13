@@ -640,7 +640,7 @@ const pageDescription =
         <div class="match-card">
           <picture>
             <source srcset="${avif}" type="image/avif" />
-            <img class="match-card-photo" src="${p.photo}" alt="${p.name}" loading="lazy" decoding="async" width="180" height="240" />
+            <img class="match-card-photo" src="${p.photo}" alt="${p.name}, ${p.role.split('·')[0].trim()}" loading="lazy" decoding="async" width="180" height="240" />
           </picture>
           <div class="match-card-body">
             <div class="match-card-unit">${unitLabel(p.unit)}</div>
