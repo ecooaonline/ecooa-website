@@ -59,6 +59,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fundo ambiente "Topografia" — luz de dunas + linhas de contorno, em CSS/SVG
+   (zero peso de imagem, nítido em qualquer tela). Camada fixa atrás de todo o
+   conteúdo (z-index:-1): aparece pelas seções claras/transparentes, não toca os
+   heroes escuros nem reduz contraste (tons claros sobre warm). Ordem das
+   camadas: o brilho lava as linhas onde há luz, deixando-as visíveis sobretudo
+   na penumbra — o efeito "luz rasante" da referência. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: var(--color-warm);
+  background-image:
+    radial-gradient(118% 86% at 16% 6%, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 46%),
+    var(--texture-topo-dunes),
+    radial-gradient(120% 96% at 86% 94%, rgba(150, 138, 126, 0.12), rgba(150, 138, 126, 0) 52%),
+    linear-gradient(165deg, #fdfbf8 0%, var(--color-warm) 48%, #ece5dc 100%);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 img,
 svg {
   display: block;
