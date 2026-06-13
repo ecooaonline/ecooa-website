@@ -273,38 +273,52 @@
 }
 
 /* ── BUTTONS ── */
+/* Sistema "Topografia" — botões em pílula com gravação topográfica, acabamento
+   fosco e sombra macia em camadas. Forma e tratamento conforme o mockup;
+   recolorido para a paleta ecooa (ink/cream/taupe). Texto fica acima da
+   textura (camada de fundo) — contraste AA preservado. */
 .bd {
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--color-white);
-  /* Topografia: textura gravada na superfície ink (camada de fundo + soft-light)
-     + acabamento fosco (inset hairlines). Sem sombra externa: mantém o botão
-     plano e editorial. Hover preserva a inversão de cor da identidade ecooa. */
   background-color: var(--color-ink);
-  background-image: var(--texture-topo-light);
+  background-image:
+    var(--texture-topo-light),
+    linear-gradient(145deg, #2a2725 0%, var(--color-ink) 48%, var(--color-black) 100%);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 150% 150%;
-  background-blend-mode: soft-light;
-  border: 1px solid var(--color-ink);
-  padding: 13px 34px;
+  background-position: center, center;
+  background-size:
+    150% 150%,
+    100% 100%;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid var(--color-black);
+  border-radius: 999px;
+  padding: 14px 36px;
   cursor: pointer;
   font-family: var(--font-primary);
   text-decoration: none;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.06),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+    0 16px 32px rgba(16, 14, 13, 0.26),
+    0 6px 14px rgba(16, 14, 13, 0.18),
+    0 1px 2px rgba(16, 14, 13, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.32);
   transition:
-    background-color var(--transition-base) var(--ease-out),
-    color var(--transition-base) var(--ease-out),
-    box-shadow var(--transition-base) var(--ease-out);
+    transform var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out),
+    filter var(--transition-base) var(--ease-out);
 }
 .bd:hover {
-  background-color: transparent;
-  color: var(--color-ink);
-  box-shadow: none;
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow:
+    0 22px 42px rgba(16, 14, 13, 0.3),
+    0 8px 18px rgba(16, 14, 13, 0.22),
+    0 1px 2px rgba(16, 14, 13, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.32);
 }
 
 .bo {
@@ -315,18 +329,23 @@
   color: var(--color-ink);
   background: transparent;
   border: 1px solid var(--color-brand);
-  padding: 13px 34px;
+  border-radius: 999px;
+  padding: 14px 36px;
   cursor: pointer;
   font-family: var(--font-primary);
   text-decoration: none;
   transition:
-    background var(--transition-base),
-    color var(--transition-base),
-    border-color var(--transition-base);
+    transform var(--transition-base) var(--ease-out),
+    background var(--transition-base) var(--ease-out),
+    color var(--transition-base) var(--ease-out),
+    border-color var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out);
 }
 .bo:hover {
+  transform: translateY(-2px);
   background: var(--color-brand);
   color: var(--color-white);
+  box-shadow: 0 14px 28px rgba(145, 136, 134, 0.28);
 }
 
 .bw {
@@ -335,30 +354,40 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   color: var(--color-ink);
-  /* Topografia na variante clara: linhas ink gravadas no branco (soft-light). */
-  background-color: var(--color-white);
-  background-image: var(--texture-topo-ink);
+  background-color: var(--color-cream);
+  background-image:
+    var(--texture-topo-ink),
+    linear-gradient(145deg, #ffffff 0%, #f5f1ec 42%, var(--color-stone) 100%);
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 150% 150%;
-  background-blend-mode: soft-light;
-  border: 1px solid var(--color-white);
-  padding: 13px 34px;
+  background-position: center, center;
+  background-size:
+    150% 150%,
+    100% 100%;
+  background-blend-mode: soft-light, normal;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 999px;
+  padding: 14px 36px;
   cursor: pointer;
   font-family: var(--font-primary);
   text-decoration: none;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 -1px 0 rgba(26, 25, 23, 0.06);
+    0 16px 32px rgba(28, 25, 23, 0.14),
+    0 6px 14px rgba(28, 25, 23, 0.09),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 6px rgba(28, 25, 23, 0.06);
   transition:
-    background-color var(--transition-base) var(--ease-out),
-    color var(--transition-base) var(--ease-out),
-    box-shadow var(--transition-base) var(--ease-out);
+    transform var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out),
+    filter var(--transition-base) var(--ease-out);
 }
 .bw:hover {
-  background-color: transparent;
-  color: var(--color-white);
-  box-shadow: none;
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  box-shadow:
+    0 22px 42px rgba(28, 25, 23, 0.16),
+    0 8px 18px rgba(28, 25, 23, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 6px rgba(28, 25, 23, 0.06);
 }
 
 .bow {
@@ -368,17 +397,23 @@
   letter-spacing: 0.1em;
   color: var(--color-white);
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  padding: 13px 34px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  padding: 14px 36px;
   cursor: pointer;
   font-family: var(--font-primary);
   text-decoration: none;
   transition:
-    border-color var(--transition-base),
-    background var(--transition-base);
+    transform var(--transition-base) var(--ease-out),
+    border-color var(--transition-base) var(--ease-out),
+    background var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out);
 }
 .bow:hover {
+  transform: translateY(-2px);
   border-color: var(--color-white);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
 }
 
 .ghost {
@@ -410,7 +445,7 @@
 .bo:active,
 .bw:active,
 .bow:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.992);
 }
 .bd:disabled,
 .bo:disabled,
