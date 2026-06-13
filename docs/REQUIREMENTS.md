@@ -2,12 +2,12 @@
 
 > Produzido pelo P01 (2026-06-11). Documento DONO de: requisitos por dimensão e
 > restrições. Estratégia/funil: ver [STRATEGY.md](./STRATEGY.md). Escopo/hipóteses:
-> ver [SCOPE.md](./SCOPE.md). Metas técnicas: **por referência ao P00, Parte III**
-> ([P00_AUDITORIA.md](./P00_AUDITORIA.md)) — nada é redefinido aqui (Lei 13).
+> ver [SCOPE.md](./SCOPE.md). Metas técnicas: **restadas inline em R-T1**; baseline de
+> CAMPO no P00 ([P00_AUDITORIA.md](./P00_AUDITORIA.md) §9, FATO-18) — nada é redefinido (Lei 13).
 
 ## 1. Técnicos
 
-R-T1. Metas do P00/Parte III valem integralmente (Lighthouse ≥99 CAMPO, CLS 0, LCP
+R-T1. As metas de qualidade do projeto valem integralmente (Lighthouse ≥99 CAMPO, CLS 0, LCP
 mobile <1800ms, JS mínimo, fontes self-hosted, CI bloqueante). Exceções: nenhuma
 aprovada. R-T2. Stack congelada: Astro estático + TypeScript strict + npm; zero
 dependência JS client externa (filosofia preservada). R-T3. Toda mudança passa por

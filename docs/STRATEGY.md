@@ -2,7 +2,7 @@
 
 > Produzido pelo P01 (2026-06-11). Documento DONO de: objetivo, funil, canais, contas,
 > métricas de negócio, Registro de Decisões e Livro de Fatos. Metas técnicas pertencem ao
-> P00 ([docs/P00_AUDITORIA.md](./P00_AUDITORIA.md), Parte III citada na seção 9) — este
+> P00 ([docs/P00_AUDITORIA.md](./P00_AUDITORIA.md), baseline de qualidade nas seções 8-9) — este
 > documento não as redefine (Lei 13). Aprovador único: Gustavo Gehrke.
 
 ## 1. Objetivo principal
@@ -136,7 +136,8 @@ vizinhos a proteger. "Login" é território do dono (fronteira P00 §7).
 
 ## 9. Métricas (quatro camadas)
 
-**Técnicas:** ver **P00, Parte III** ([P00_AUDITORIA.md](./P00_AUDITORIA.md)) — Lighthouse
+**Técnicas:** ver **REQUIREMENTS.md §1 (R-T1)**, que as restata, e o baseline de CAMPO do
+P00 ([P00_AUDITORIA.md](./P00_AUDITORIA.md) §9, FATO-18) — Lighthouse
 ≥99/100 nas 4 categorias em CAMPO, CLS 0, LCP mobile <1800ms etc. Nenhuma exceção
 aprovada até aqui. Este documento não as redefine.
 
@@ -217,7 +218,7 @@ factual de marketing SÓ entram em página/schema se estiverem aqui.
 | FATO-07 | Canal de lead primário = WhatsApp | dono (P00 0.2) | 2026-06-11 | STRATEGY §5 |
 | FATO-08 | Nenhuma conta compartilhada; nenhum incidente anterior | dono (P00 0.2) | 2026-06-11 | STRATEGY §8 |
 | FATO-09 | Aprovador único: Gustavo Gehrke | dono (P00 0.2) | 2026-06-11 | docs (todas as fases) |
-| FATO-10 | Hospedagem alvo: Cloudflare Pages/Workers | dono (P00 0.2) | 2026-06-11 | P3 |
+| FATO-10 | Hospedagem alvo: Cloudflare Workers Static Assets (resolvido na DEC-15; ver INFRASTRUCTURE §1) | dono (P00 0.2) + P03 | 2026-06-12 | P3 |
 | FATO-11 | Conta Google Ads existe | dono | 2026-06-11 | STRATEGY §8 (ID pendente) |
 | FATO-12 | Meta comercial ≈100 leads/mês | dono (P01 0.2) | 2026-06-11 | STRATEGY §9 |
 | FATO-13 | Prazo: sem data-limite | dono (P01 0.2) | 2026-06-11 | DEC-09 |

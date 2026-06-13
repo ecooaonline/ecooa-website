@@ -47,8 +47,9 @@ respondida: **"Você autoriza a migração descrita (cutover do domínio para o 
 
 1. [dono] Worker → Settings → **Domains & Routes → Add → Custom domain** →
    `www.somosecooa.com.br` (a CF substitui o DNS atual automaticamente).
-2. [dono] Zona → Redirect Rules: garantir apex→www 301 (ou validar a regra de
-   `_redirects`). Zona → SSL/TLS: **Always Use HTTPS** ativo; modo **Full (strict)**.
+2. [dono] Zona → Redirect Rules: criar apex→www 301 (mecanismo canônico — o
+   `_redirects` do Worker NÃO faz apex→www, ver INFRASTRUCTURE §4). Zona → SSL/TLS:
+   **Always Use HTTPS** ativo; modo **Full (strict)**.
 3. [IA+dono] Validar produção: home 200, /agendamento 200, formulário→/obrigado,
    headers `content-encoding: br` em HTML, sitemap acessível, sem mixed content.
 4. [dono] Rodar PSI (6 URLs) — baseline pós-migração.

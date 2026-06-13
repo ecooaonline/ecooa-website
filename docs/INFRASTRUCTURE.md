@@ -11,7 +11,7 @@
 sem script. Config: `wrangler.jsonc` na raiz.
 
 Motivo: única candidata que entrega TODAS as capacidades exigidas pela meta
-(P00/Parte III) com a zona DNS **já na Cloudflare** (FATO do dono, 2026-06-12):
+(metas de qualidade do projeto, REQUIREMENTS §1/R-T1) com a zona DNS **já na Cloudflare** (FATO do dono, 2026-06-12):
 headers reais por arquivo `_headers`, `_redirects` nativo, Brotli na borda, cache
 controlável, preview por branch com comentário no PR, rollback por versões, logs e
 observabilidade, edge/Workers disponível para necessidades futuras (proxy de
@@ -39,10 +39,11 @@ X-Robots-Tag automático** (diferente do Pages) → PROM-01 com mecanismo explí
 ## 4. Domínio canônico (DEC-17)
 
 **`https://www.somosecooa.com.br`** (www) — já é o canônico em produção (CNAME,
-canonicals, sitemap, OG). As 6 regras: ✓ um só canônico · ✓ apex redireciona 301
-(regra em `public/_redirects` + opcionalmente Redirect Rule na zona) · ✓ sitemap usa
-canônico · ✓ canonicals usam canônico · ✓ OG usa canônico · Search Console deve refletir
-www (validar com HIP-05, P10).
+canonicals, sitemap, OG). As 6 regras: ✓ um só canônico · ✓ apex redireciona 301 via
+**Redirect Rule na zona Cloudflare** (painel do dono — o `_redirects` do Worker casa por
+pathname no mesmo host e NÃO serve para apex→www; correção da revisão 2026-06-13) ·
+✓ sitemap usa canônico · ✓ canonicals usam canônico · ✓ OG usa canônico · Search Console
+deve refletir www (validar com HIP-05, P10).
 
 ## 5. DNS (zona já na Cloudflare — FATO 2026-06-12)
 
@@ -107,4 +108,4 @@ após smoke test do preview (pergunta literal em [DEPLOYMENT.md](./DEPLOYMENT.md
 
 ## 12. Promessas registradas
 
-PROM-01..08 — registro canônico em [SCOPE.md](./SCOPE.md) §9.
+PROM-01..09 — registro canônico em [SCOPE.md](./SCOPE.md) §9.
