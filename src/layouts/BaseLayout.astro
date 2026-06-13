@@ -357,6 +357,12 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
         },
         { once: true }
       );
+      // Páginas de conversão (/obrigado) forçam a carga imediata, sem esperar
+      // interação, para o evento de conversão drenar de forma confiável.
+      // Respeita o consentimento: só carrega se já aceito.
+      window.addEventListener('ecooa_force_analytics', function () {
+        if (localStorage.getItem('ecooa_cookie_consent') === 'accepted') loadGTM();
+      });
     </script>
 
     <!-- Meta Pixel (interaction-only, consent-gated) -->
@@ -402,6 +408,11 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
         },
         { once: true }
       );
+      // Mesma exceção do GTM: páginas de conversão forçam a carga imediata
+      // (com consentimento) para o evento Lead disparar nesta pageview.
+      window.addEventListener('ecooa_force_analytics', function () {
+        if (localStorage.getItem('ecooa_cookie_consent') === 'accepted') loadMetaPixel();
+      });
     </script>
   </head>
   <body data-wa={WA_DEFAULT}>

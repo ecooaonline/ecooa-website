@@ -1,0 +1,13 @@
+# Redirects de ENTREGA — Cloudflare Workers Static Assets.
+# Capacidade verificada na doc oficial em 2026-06-12 (_redirects nativo, matching
+# por PATHNAME no mesmo host roteado ao Worker).
+#
+# IMPORTANTE (correção da revisão 2026-06-13): a canonicalização apex -> www NÃO
+# vive aqui. O matching do _redirects é por pathname e o apex só chegaria a este
+# Worker se estivesse roteado a ele; o caminho correto e confiável é uma
+# Redirect Rule na zona Cloudflare (painel do dono — ver DEPLOYMENT.md §10).
+# HTTP -> HTTPS idem (Always Use HTTPS na zona).
+#
+# Este arquivo fica reservado para redirects de CONTEÚDO same-host path-based:
+# os slugs legados (nutrição-*) migram do meta-refresh do Astro para 301 reais
+# aqui no P10 (PROM-06). Mantido vazio de regras até lá.

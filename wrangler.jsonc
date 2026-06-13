@@ -1,0 +1,23 @@
+// Configuração Cloudflare Workers (Static Assets) — criada no P03 (2026-06-12).
+// Capacidades verificadas na documentação oficial em 2026-06-12:
+// _headers/_redirects nativos, preview URLs por branch com comentário no PR,
+// not_found_handling, Workers Builds (git). Build command e variáveis de build
+// vivem no painel Workers Builds (território do dono): npm ci && npm run build.
+// Headers de segurança/CSP e plano de cache: P7 (PROM-04/05) — NÃO adicionar aqui.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ecooa-website",
+  "compatibility_date": "2026-06-12",
+  // Worker assets-only: site 100% estático, sem script "main".
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+    "html_handling": "auto-trailing-slash",
+  },
+  // Previews por branch (workers.dev). Estanqueidade de indexação: PROM-01 (P7).
+  "preview_urls": true,
+  // Logs/analytics do Worker para o P13 (observabilidade).
+  "observability": {
+    "enabled": true,
+  },
+}
