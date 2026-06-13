@@ -230,14 +230,29 @@ const WA = WA_DEFAULT;
       // Conversão CONFIRMADA pelo servidor: o Google Apps Script só redireciona
       // para esta página depois de validar e gravar o lead. O token `t` (gerado
       // no submit) garante disparo único por envio e impede falsos positivos em
-      // visita direta ou refresh. dataLayer.push enfileira mesmo antes de o GTM
-      // carregar (consent gate preservado: o GTM só processa após o aceite).
+      // visita direta ou refresh.
+      //
+      // O site usa GTM (não gtag.js): o evento de conversão é um dataLayer.push
+      // que uma tag do GTM mapeia para a conversão do GA4/Ads (trigger
+      // `form_submit_success` — config no container, painel do dono). Como GTM e
+      // Pixel são interaction-only, numa página de "obrigado" o usuário pode não
+      // interagir; por isso disparamos `ecooa_force_analytics` para o BaseLayout
+      // carregar os trackers imediatamente (respeitando o consentimento), de modo
+      // que o evento drene e o Lead do Meta dispare nesta pageview.
       const token = (params.get('t') || '').trim().slice(0, 20);
       if (token && /^\d+$/.test(token)) {
         const guardKey = 'ecooa_conv_' + token;
         if (!sessionStorage.getItem(guardKey)) {
           sessionStorage.setItem(guardKey, '1');
           const conversionId = 'thanks_' + token;
+          const consented = localStorage.getItem('ecooa_cookie_consent') === 'accepted';
+
+          if (consented) {
+            // Carrega GTM + Pixel agora (exceção legítima da página de conversão).
+            window.dispatchEvent(new Event('ecooa_force_analytics'));
+          }
+          // Enfileira a conversão: o GTM drena ao carregar (agora, se houve
+          // consentimento; ou mais tarde, se o aceite vier depois nesta sessão).
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({
             event: 'form_submit_success',
@@ -246,16 +261,8 @@ const WA = WA_DEFAULT;
             value: 1,
             currency: 'BRL',
           });
-          if (typeof window.gtag === 'function') {
-            window.gtag('event', 'conversion', {
-              event_category: 'lead',
-              event_label: formType,
-              transaction_id: conversionId,
-              value: 1,
-              currency: 'BRL',
-            });
-          }
-          if (typeof window.fbq === 'function') {
+          // Meta Lead: window.fbq existe de forma síncrona após o force-load.
+          if (consented && typeof window.fbq === 'function') {
             window.fbq('track', 'Lead', { content_name: formType });
           }
         }
