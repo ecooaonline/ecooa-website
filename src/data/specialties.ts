@@ -159,21 +159,3 @@ export const specialties: Specialty[] = [
     keywords: ['coaching', 'desenvolvimento', 'pessoal', 'profissional', 'objetivo'],
   },
 ];
-
-export function getSpecialtiesByUnit(unit: 'med' | 'esthetic' | 'working' | 'mind'): Specialty[] {
-  return specialties.filter((s) => s.unit === unit);
-}
-
-export function getSpecialtyBySlug(slug: string): Specialty | undefined {
-  return specialties.find((s) => s.slug === slug);
-}
-
-export function searchSpecialties(query: string): Specialty[] {
-  const q = query.toLowerCase();
-  return specialties.filter(
-    (s) =>
-      s.name.toLowerCase().includes(q) ||
-      s.description.toLowerCase().includes(q) ||
-      s.keywords.some((k) => k.toLowerCase().includes(q))
-  );
-}

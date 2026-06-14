@@ -8,9 +8,11 @@ Sempre responder em português brasileiro (pt-BR).
 
 - Astro 6 (site estático)
 - TypeScript
-- GitHub Pages (deploy)
-- Formspree (formulários)
+- GitHub Pages (deploy atual); migração para Cloudflare Workers decidida no P03
+- Google Apps Script (formulários)
 - GTM-TSR4GDMK (analytics, interaction-only)
+
+Fonte da verdade técnica: `docs/AI_HANDOFF.md` (Índice de Documentação).
 
 ## Regras do projeto
 

@@ -74,7 +74,7 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # Desktop é gate bloqueante (PERFORMANCE_BUDGET.md): LCP e CLS em "error".
+      # Desktop é gate bloqueante (docs/PERFORMANCE_BUDGET.md): LCP e CLS em "error".
       # Mobile permanece não-bloqueante até endurecermos os thresholds.
       - name: Lighthouse CI (desktop)
         uses: treosh/lighthouse-ci-action@v12

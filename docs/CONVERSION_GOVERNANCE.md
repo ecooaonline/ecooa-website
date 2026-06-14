@@ -110,9 +110,9 @@ Para cada fluxo crítico:
 
 **PENDENTE — depende do dono (HIP-09 / PROM).** O teste E2E em produção com confirmação
 de chegada do lead ainda não foi executado pelo dono. Itens 1, 3, 4, 5 são verificáveis em
-preview pela IA; o item 2 (chegada real) é território do dono. Registrado no Dossiê de
-Pendências (`SCOPE.md` / `PENDENCIAS_FINAIS.md` no P13). **Regra de ferro**: qualquer
-mudança futura no fluxo re-executa este protocolo.
+preview pela IA; o item 2 (chegada real) é território do dono. Registrado em `SCOPE.md`
+§9 (Registro de Promessas); o Dossiê consolidado `PENDENCIAS_FINAIS.md` será criado no
+P13. **Regra de ferro**: qualquer mudança futura no fluxo re-executa este protocolo.
 
 ## 9. Critérios de sucesso
 

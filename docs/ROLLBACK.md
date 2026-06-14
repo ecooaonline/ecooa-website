@@ -35,6 +35,14 @@
 | Analytics quebrado | GA4 silencioso | rollback; revisar consent/gates | IA | ~1 min | evento de teste | P14 monitora |
 | SEO bloqueado | GSC/queda | restaurar robots/headers; rollback | IA | ~1 min | robots 200, sem noindex indevido | gate do Contrato (P8) |
 
+## Validação após rollback
+
+- [ ] `https://www.somosecooa.com.br` carrega normalmente.
+- [ ] Home, agendamento, contato, blog e match acessíveis.
+- [ ] Formulários funcionam (teste de envio real ou smoke).
+- [ ] Analytics e pixels carregam após consent.
+- [ ] Sem erro 404 nas rotas principais.
+
 ## Registro e prevenção
 
 Todo incidente: registrar data/causa/ação/tempo no PR ou em `docs/` (P13 define o local
