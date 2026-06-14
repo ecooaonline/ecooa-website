@@ -49,7 +49,8 @@ absoluta / termos proibidos.
 | Dados pessoais / LGPD | `DATA_GOVERNANCE.md` | — |
 | Arquitetura técnica | `ARCHITECTURE.md` | README |
 | DX / como rodar | `DEVELOPMENT.md` | README |
-| Performance (budget) | `PERFORMANCE_BUDGET.md` | (P06 refina) |
+| Performance (budget) | `PERFORMANCE_BUDGET.md` | (P06 ratificado) |
+| Segurança / headers / CSP | `SECURITY.md` | (aplicação cutover-gated) |
 | Design system / tokens | `DESIGN_SYSTEM.md` | (P11 refina) |
 | Conteúdo / copy / CRO | `CONTENT_CRO_BUDGET.md` + `TONE_OF_VOICE.md` | (P12 refina) |
 | Release / checklist | `RELEASE_CHECKLIST.md` | — |
@@ -79,7 +80,8 @@ Item de aceite de todas as fases: "espelhos conferidos". O **P13** audita a tabe
 | P04 Conversão/dados/integrações | ✅ substancial; **gate HIP-09 (teste E2E em produção) pendente do dono** |
 | P05 Fundação e DX | ✅ (faxina + reorg de docs + clone limpo) |
 | P06 Performance | ✅ ratificado (campo PSI 100/100/100/100; Rito de Regressão ativo) |
-| P07 Segurança → P15 | ⏳ a executar em loop (P07 destrava no cutover Cloudflare) |
+| P07 Segurança | ✅ substancial (`SECURITY.md` canon: escada de CSP, headers, budget); **aplicação + verificação cutover-gated (dono)** |
+| P08 CI/CD → P15 | ⏳ a executar em loop |
 
 ## 9. Promessas e pendências abertas (dono = `SCOPE.md` §9)
 
