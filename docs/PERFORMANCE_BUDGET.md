@@ -3,6 +3,16 @@
 Orçamento de performance para impedir regressão. Validado pelo Lighthouse CI
 (desktop + mobile) em cada PR.
 
+> **Ratificação P06 (MYTHOS, 2026-06-14).** Meta atingida por evidência de **campo**
+> (PSI produção 100/100/100/100, Lei 4) e confirmada no estado atual: o gate Lighthouse
+> do CI passou verde em todos os merges recentes (P04, faxina P05), inclusive após a
+> remoção de assets órfãos e código morto — zero regressão. Doutrina P06 quando já em
+> 100: **medir, preservar, blindar — não refazer** (otimização cosmética é anti-padrão).
+> **Rito de Regressão ativo**: toda fase que tocar asset/fonte/CSS/JS mede antes×depois
+> nas páginas críticas; o gate do CI o automatiza. **PROM→P8**: promover os gates de
+> mobile de `warn` para `error` (há folga grande: LCP mobile 1,2s vs teto 2500ms).
+> Caminho A (Lighthouse local) disponível: `chromium-browser` presente no ambiente.
+
 ## Baseline oficial (PageSpeed Insights, produção, 2026-05-31)
 
 Medido via API oficial do PSI contra `https://www.somosecooa.com.br` (homepage).
@@ -68,8 +78,9 @@ As imagens de clínica/equipe são **below-the-fold** e corretamente `lazy`.
 
 Portanto o principal lever restante de performance NÃO é código de imagem, e sim a
 **camada de entrega** (Brotli + cache imutável + headers), hoje limitada pelo
-GitHub Pages. Decisão sobre migração (ex: Cloudflare Pages) será tomada após o
-baseline mobile real do Lighthouse CI.
+GitHub Pages. A migração para **Cloudflare Workers Static Assets** já foi decidida no
+P03 (DEC-15, `INFRASTRUCTURE.md`); o plano de cache/headers que destrava esse lever é
+devido ao **P07** (PROM-04/05). Cutover pendente do dono.
 
 ## Como medir
 
