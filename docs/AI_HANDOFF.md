@@ -77,8 +77,9 @@ Item de aceite de todas as fases: "espelhos conferidos". O **P13** audita a tabe
 | P02 Arquitetura de informação | ✅ (Matriz + Contrato=103) |
 | P03 Infraestrutura/deploy | ✅ (Cloudflare decidido; cutover pendente do dono) |
 | P04 Conversão/dados/integrações | ✅ substancial; **gate HIP-09 (teste E2E em produção) pendente do dono** |
-| P05 Fundação e DX | 🟡 em andamento (faxina + docs + clone limpo) |
-| P06 Performance → P15 | ⏳ a executar em loop |
+| P05 Fundação e DX | ✅ (faxina + reorg de docs + clone limpo) |
+| P06 Performance | ✅ ratificado (campo PSI 100/100/100/100; Rito de Regressão ativo) |
+| P07 Segurança → P15 | ⏳ a executar em loop (P07 destrava no cutover Cloudflare) |
 
 ## 9. Promessas e pendências abertas (dono = `SCOPE.md` §9)
 
