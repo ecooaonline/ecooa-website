@@ -26,7 +26,7 @@ externo ao repositório. JavaScript client-side é mínimo e carregado sob deman
 | `src/content/blog/` | Artigos em Markdown; schema em `src/content.config.ts` |
 | `src/data/` | Dados centralizados (ver §4) |
 | `src/scripts/` | JS client-side (ver §5) |
-| `src/styles/` | `base.css`, `components.css`, `responsive.css`, `tokens.css` |
+| `src/styles/` | `base.css`, `components.css`, `layout.css`, `responsive.css`, `animations.css`, `tokens.css` |
 | `public/` | Estáticos: `fonts/`, `clinic/`, `team/`, `favicon/`, `manifest.json`, `robots.txt`, `sw.js` |
 | `scripts/` | `generate-embeddings.mjs` (embeddings do match, build-time/manual) |
 

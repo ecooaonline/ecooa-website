@@ -474,7 +474,7 @@ Configurar no Cloudflare (não é possível via HTML):
 
 ### F6.5 Cloudflare (CDN + Edge Security)
 
-Guia detalhado em `docs/cloudflare-setup.md`. Resumo:
+Resumo:
 
 1. **Adicionar domínio ao Cloudflare** (plano Free)
 2. **DNS**: CNAME para GitHub Pages ou Cloudflare Pages, proxy ativado
