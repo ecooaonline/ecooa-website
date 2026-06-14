@@ -3,6 +3,10 @@ export const WA_DEFAULT = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria 
 export const GOOGLE_MAPS = 'https://www.google.com/maps/place/ecooa';
 export const INSTAGRAM = 'https://instagram.com/somos.ecooa';
 export const PHONE = '(51) 99146-0909';
+// Formato E.164 (schema.org telephone, links tel:). Mesmo número do WhatsApp.
+export const PHONE_E164 = '+5551991460909';
+// Formato internacional legível (ex.: llms.txt). Derivado de PHONE.
+export const PHONE_INTL = `+55 ${PHONE.replace(/[()]/g, '').trim()}`;
 export const EMAIL = 'ecooa.adm@gmail.com';
 
 // Endereço

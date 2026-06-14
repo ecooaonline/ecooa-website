@@ -6,7 +6,7 @@ import Marquee from '../components/Marquee.astro';
 import ReviewsMarquee from '../components/ReviewsMarquee.astro';
 import PillarCard from '../components/PillarCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { WA_DEFAULT, PHONE } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
@@ -837,7 +837,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           name: 'Como agendar uma consulta na ecooa?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Você pode agendar sua avaliação pelo WhatsApp (51) 99146-0909 ou pela página de agendamento do site. Nossa equipe irá orientar você sobre o profissional mais adequado para suas necessidades.',
+            text: `Você pode agendar sua avaliação pelo WhatsApp ${PHONE} ou pela página de agendamento do site. Nossa equipe irá orientar você sobre o profissional mais adequado para suas necessidades.`,
           },
         },
         {

@@ -1,7 +1,13 @@
 import type { APIRoute } from 'astro';
 import { professionals } from '../data/professionals';
 import { getCollection } from 'astro:content';
-import { ADDRESS_STREET, ADDRESS_FLOOR, ADDRESS_CITY, ADDRESS_STATE } from '../data/constants';
+import {
+  ADDRESS_STREET,
+  ADDRESS_FLOOR,
+  ADDRESS_CITY,
+  ADDRESS_STATE,
+  PHONE_INTL,
+} from '../data/constants';
 
 export const GET: APIRoute = async () => {
   const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
@@ -28,7 +34,7 @@ export const GET: APIRoute = async () => {
 
 - Site: https://www.somosecooa.com.br
 - Endereço: ${ADDRESS_STREET}, ${ADDRESS_FLOOR}, ${ADDRESS_CITY}, ${ADDRESS_STATE}
-- WhatsApp: +55 51 99146-0909
+- WhatsApp: ${PHONE_INTL}
 - Horário: Seg-Sex 9h-20h
 - Fundação: 2021
 - Instagram: @somos.ecooa
