@@ -53,6 +53,7 @@ absoluta / termos proibidos.
 | Segurança / headers / CSP | `SECURITY.md` | (aplicação cutover-gated) |
 | CI/CD / gates de qualidade | `CI_CD.md` + `QUALITY_GATES.md` | este handoff §8 |
 | Acessibilidade | `ACCESSIBILITY_CHECKLIST.md` | — |
+| SEO técnico / schema | `SEO_GUIDE.md` | — |
 | Design system / tokens | `DESIGN_SYSTEM.md` | (P11 refina) |
 | Conteúdo / copy / CRO | `CONTENT_CRO_BUDGET.md` + `TONE_OF_VOICE.md` | (P12 refina) |
 | Release / checklist | `RELEASE_CHECKLIST.md` | — |
@@ -85,7 +86,8 @@ Item de aceite de todas as fases: "espelhos conferidos". O **P13** audita a tabe
 | P07 Segurança | ✅ substancial (`SECURITY.md` canon: escada de CSP, headers, budget); **aplicação + verificação cutover-gated (dono)** |
 | P08 CI/CD | ✅ Gate do Contrato + Guardião regulatório bloqueantes (`validate:output`); Tabela de Gates (`QUALITY_GATES.md`) |
 | P09 Acessibilidade | ✅ tabela de contraste (ratios calculados); corrigiu 4 `outline:none` que matavam o foco; roteiro de leitor de tela = pendência do dono |
-| P10 SEO → P15 | ⏳ a executar em loop |
+| P10 SEO técnico | ✅ schema rastreável à fonte única (zero dado inventado); `SEO_GUIDE.md`; flag CFM de aggregateRating → P12; PROM-06 (301) cutover-gated |
+| P11 UX/UI → P15 | ⏳ a executar em loop |
 
 ## 9. Promessas e pendências abertas (dono = `SCOPE.md` §9)
 
