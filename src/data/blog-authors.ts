@@ -24,12 +24,3 @@ export function getAuthorByName(name: string): BlogAuthor | undefined {
   const prof = professionals.find((p) => p.blogAuthor?.name === name);
   return prof?.blogAuthor ? toBlogAuthor(prof) : undefined;
 }
-
-export function getAuthorBySlug(slug: string): BlogAuthor | undefined {
-  const prof = professionals.find((p) => p.slug === slug && p.blogAuthor);
-  return prof?.blogAuthor ? toBlogAuthor(prof) : undefined;
-}
-
-export const blogAuthors: BlogAuthor[] = professionals
-  .filter((p) => p.blogAuthor)
-  .map(toBlogAuthor);
