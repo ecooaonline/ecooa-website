@@ -54,6 +54,7 @@ absoluta / termos proibidos.
 | CI/CD / gates de qualidade | `CI_CD.md` + `QUALITY_GATES.md` | este handoff §8 |
 | Acessibilidade | `ACCESSIBILITY_CHECKLIST.md` | — |
 | SEO técnico / schema | `SEO_GUIDE.md` | — |
+| QA final / dossiê do dono | `QA_FINAL.md` + `PENDENCIAS_FINAIS.md` | este handoff §9 |
 | Design system / tokens | `DESIGN_SYSTEM.md` | (P11 refina) |
 | Conteúdo / copy / CRO | `CONTENT_CRO_BUDGET.md` + `TONE_OF_VOICE.md` | (P12 refina) |
 | Release / checklist | `RELEASE_CHECKLIST.md` | — |
@@ -89,7 +90,9 @@ Item de aceite de todas as fases: "espelhos conferidos". O **P13** audita a tabe
 | P10 SEO técnico | ✅ schema rastreável à fonte única (zero dado inventado); `SEO_GUIDE.md`; flag CFM de aggregateRating → P12; PROM-06 (301) cutover-gated |
 | P11 UX/UI | ✅ ratificado (Lei do Pixel: sem redesign; identidade preservada; `DESIGN_SYSTEM.md` canon vigente). Polimento registrado: anel de foco de maior contraste nos inputs de seção escura |
 | P12 Conteúdo/CRO | ✅ guardião calibrado e documentado (P08/`QUALITY_GATES.md`); voz preservada (sem reescrita de copy); **decisão jurídica CFM (aggregateRating/depoimentos) = pendência do dono** |
-| P13 QA final → P15 | ⏳ a executar em loop |
+| P13 QA final | ✅ Painel da Verdade + scorecard honesto + dossiê do dono (`QA_FINAL.md`, `PENDENCIAS_FINAIS.md`) |
+| P14 Aquisição | ◐ instrumentação no código pronta; ativação = dossiê do dono (PEND-02/05/06) |
+| P15 Manutenção | ◐ rotina definida (`QA_FINAL` §5); SLA pós gates físicos do dono |
 
 ## 9. Promessas e pendências abertas (dono = `SCOPE.md` §9)
 
