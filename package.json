@@ -18,7 +18,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "audit:deps": "npm audit --audit-level=high",
-    "validate": "npm run format:check && npm run check && npm run lint && npm run build",
+    "validate:output": "node scripts/validate-output.mjs",
+    "validate": "npm run format:check && npm run check && npm run lint && npm run build && npm run validate:output",
     "prepare": "husky"
   },
   "lint-staged": {

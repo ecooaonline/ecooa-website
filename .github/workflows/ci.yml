@@ -42,13 +42,11 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Validate sitemap
-        run: |
-          count=$(grep -o '<loc>' dist/sitemap-0.xml 2>/dev/null | wc -l || echo 0)
-          echo "Páginas no sitemap: $count"
-          # Contagem atual: 100 (obrigado, offline e redirects ficam fora).
-          # Limiar com folga para exclusões legítimas não quebrarem o CI.
-          [ "$count" -ge 95 ] || { echo "ERRO: sitemap com menos de 95 URLs ($count)"; exit 1; }
+      - name: Gate do Contrato de Páginas + Guardião regulatório
+        # Bloqueante (Lei do Gate Honesto): valida rotas estratégicas no sitemap,
+        # exclusão de utilitárias noindex, piso anti-perda, e zero termo de promessa
+        # absoluta no output. Script: scripts/validate-output.mjs.
+        run: npm run validate:output
 
       - name: Check internal links (non-blocking)
         continue-on-error: true
