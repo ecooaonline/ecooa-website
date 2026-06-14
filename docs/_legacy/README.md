@@ -16,7 +16,6 @@ fundir o conteúdo único de um arquivo, ele deve ser removido daqui.
 | Arquivo | Era | Superado por |
 |---|---|---|
 | `ARCHITECTURE.md` | GitHub Pages/Vercel | `docs/ARCHITECTURE.md` + `INFRASTRUCTURE.md` |
-| `CI_CD.md` | deploy.yml/Pages | `DEPLOYMENT.md` (canon de CI/CD virá no P08) |
 | `ONBOARDING.md` | Formspree/Pages | `docs/DEVELOPMENT.md` + `CLAUDE.md` |
 | `AI_HANDOFF.md` | modelo "9 etapas" | `docs/AI_HANDOFF.md` (esteira MYTHOS) |
 | `README-OPERACIONAL.md` | Vercel, v1.0 | `docs/DEPLOYMENT.md` + `INFRASTRUCTURE.md` |
