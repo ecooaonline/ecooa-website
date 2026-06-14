@@ -87,17 +87,23 @@ Item de aceite de todas as fases: "espelhos conferidos". O **P13** audita a tabe
 | P08 CI/CD | ✅ Gate do Contrato + Guardião regulatório bloqueantes (`validate:output`); Tabela de Gates (`QUALITY_GATES.md`) |
 | P09 Acessibilidade | ✅ tabela de contraste (ratios calculados); corrigiu 4 `outline:none` que matavam o foco; roteiro de leitor de tela = pendência do dono |
 | P10 SEO técnico | ✅ schema rastreável à fonte única (zero dado inventado); `SEO_GUIDE.md`; flag CFM de aggregateRating → P12; PROM-06 (301) cutover-gated |
-| P11 UX/UI → P15 | ⏳ a executar em loop |
+| P11 UX/UI | ✅ ratificado (Lei do Pixel: sem redesign; identidade preservada; `DESIGN_SYSTEM.md` canon vigente). Polimento registrado: anel de foco de maior contraste nos inputs de seção escura |
+| P12 Conteúdo/CRO | ✅ guardião calibrado e documentado (P08/`QUALITY_GATES.md`); voz preservada (sem reescrita de copy); **decisão jurídica CFM (aggregateRating/depoimentos) = pendência do dono** |
+| P13 QA final → P15 | ⏳ a executar em loop |
 
 ## 9. Promessas e pendências abertas (dono = `SCOPE.md` §9)
 
 - **HIP-09** — teste E2E do formulário em produção com confirmação de chegada do lead
   (gate do P04). **Dono.**
 - **PROM-10** — criar trigger `form_submit_success` no GTM. **Dono (painel).**
-- **PROM-01/04/05** — noindex de preview, cache, CSP/headers → **P07**.
-- **PROM-03** — gate do Contrato de Páginas no CI → **P08**.
-- **PROM-06** — slugs legados 301 reais → **P10**.
+- **Jurídico/CFM** — revisar exibição de `aggregateRating`/depoimentos e claims YMYL
+  (P12 + `CONFORMIDADE-MEDICA-P0` em `_legacy`). **Revisor a definir pelo dono.**
+- **PROM-01/04/05** — noindex de preview, cache, CSP/headers → **P07** (cutover).
+- **PROM-03** — gate do Contrato de Páginas no CI → **P08 ✅ feito**.
+- **PROM-06** — slugs legados 301 reais → **P10** (cutover).
 - **PROM-07/08** — estanqueidade de leads / match em preview CF → após HIP-09 / cutover.
+- **Cutover Cloudflare** — destrava P07 (headers/CSP/cache) e PROM-06. **Dono (painel/DNS).**
+- **Search Console** (P10) e **contas Ads/GTM** (P14) — **Dono (painel).**
 - Pendência: ligar "Allow GitHub Actions to create PRs" (Settings) para o job `open-pr`.
 
 ## 10. Matriz de continuidade (P06–P15)
