@@ -63,7 +63,7 @@ const registration = registrationProp ?? registrationByPhoto(photo);
       photo ? (
         <OptimizedImage
           src={photo}
-          alt={name}
+          alt={`${name}, ${role.split('·')[0].trim()}`}
           class="pc-img"
           loading="lazy"
           decoding="async"

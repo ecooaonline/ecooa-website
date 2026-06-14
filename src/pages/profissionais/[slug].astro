@@ -113,7 +113,11 @@ const seoDescription = clampSeoDescription(
       givenName: firstName,
       jobTitle: roleKeywords[0],
       description: p.description,
-      image: `https://www.somosecooa.com.br${p.photo}`,
+      image: {
+        '@type': 'ImageObject',
+        url: `https://www.somosecooa.com.br${p.photo}`,
+        caption: `${p.name}, ${roleKeywords[0]}`,
+      },
       url: `https://www.somosecooa.com.br/profissionais/${p.slug}`,
       ...(schemaType === 'Physician' ? { medicalSpecialty: medicalSpecialty(p.role) } : {}),
       knowsAbout: p.tags,
@@ -273,7 +277,7 @@ const seoDescription = clampSeoDescription(
           <div style="aspect-ratio:3/4;overflow:hidden">
             <OptimizedImage
               src={p.photo}
-              alt={p.name}
+              alt={`${p.name}, ${roleKeywords[0]}`}
               priority
               decoding="async"
               class="u-cover"
