@@ -5,6 +5,7 @@ import WhatsAppFab from '../components/WhatsAppFab.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import {
   WA_DEFAULT,
+  PHONE_E164,
   ADDRESS_STREET,
   ADDRESS_FLOOR,
   ADDRESS_CITY,
@@ -176,7 +177,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
             description:
               'Clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental.',
             url: 'https://www.somosecooa.com.br',
-            telephone: '+5551991460909',
+            telephone: PHONE_E164,
             image: 'https://www.somosecooa.com.br/favicon/og-image.jpg',
             logo: 'https://www.somosecooa.com.br/favicon/favicon.svg',
             address: {

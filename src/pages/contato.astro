@@ -4,7 +4,7 @@ import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
+import { WA_DEFAULT, FORM_ACTION, PHONE } from '../data/constants';
 
 const WA = WA_DEFAULT;
 ---
@@ -52,7 +52,7 @@ const WA = WA_DEFAULT;
               <p class="ci-cl">
                 WhatsApp · pacientes e visitantes <span class="ci-badge">mais rápido</span>
               </p>
-              <p class="ci-cv">(51) 99146-0909</p>
+              <p class="ci-cv">{PHONE}</p>
               <p class="ci-cs">Canal principal · Segunda a Sexta 9h–20h · Sábado a consultar</p>
               <a
                 href={WA}
@@ -134,7 +134,7 @@ const WA = WA_DEFAULT;
         id="form-contato"
         data-ok-target="#form-contato-ok"
         data-success-text="Mensagem enviada. Retornaremos em breve."
-        data-error-text="Não foi possível enviar. Fale diretamente pelo WhatsApp: (51) 99146-0909"
+        data-error-text={`Não foi possível enviar. Fale diretamente pelo WhatsApp: ${PHONE}`}
       >
         <input type="hidden" name="_formType" value="contato" />
         <input type="hidden" name="_source" value="contato" />
