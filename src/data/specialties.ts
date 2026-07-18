@@ -120,13 +120,6 @@ export const specialties: Specialty[] = [
     keywords: ['psicologia', 'psicólogo', 'terapia', 'emocional', 'mental'],
   },
   {
-    slug: 'psiquiatria',
-    name: 'Psiquiatria',
-    unit: 'mind',
-    description: 'Psiquiatria para tratamento de transtornos mentais.',
-    keywords: ['psiquiatria', 'psiquiatra', 'medicação', 'transtorno', 'ansiedade', 'depressão'],
-  },
-  {
     slug: 'coaching',
     name: 'Coaching',
     unit: 'mind',

@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import ProfessionalCard from '../components/ProfessionalCard.astro';
-import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_BASE } from '../data/constants';
 import { professionals } from '../data/professionals';
@@ -140,8 +139,8 @@ const schemaMembers = professionals.map((p) => {
     <h3 style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em" class="r d1">Saúde mental</h3>
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
       <span class="tag-pill">Psicologia</span>
-      <span class="tag-pill">Psiquiatria</span>
-      <span class="tag-pill">Terapia Holística</span>
+      <span class="tag-pill">TCC</span>
+      <span class="tag-pill">Psicologia Esportiva</span>
     </div>
     <div class="g4 u-mb-64">
       <ProfessionalCard clickable name="Manuela Vanti" role="Psicóloga Clínica · TCC" bg="linear-gradient(145deg,#C8C0BC,#AEA5A2)" ig="@manuelavanti.psi" photo="/team/manuela.webp" description="Psicóloga clínica com abordagem em Terapia Cognitivo-Comportamental. Atendimento humanizado e acolhedor." tags={["Psicologia Clínica", "TCC", "Ansiedade", "Depressão"]} />
@@ -152,7 +151,10 @@ const schemaMembers = professionals.map((p) => {
   </div>
 </section>
 
-<B2BBanner />
+<!-- Link discreto B2B -->
+<section class="u-bg-warm" aria-label="Para profissionais" style="padding:24px var(--section-px)">
+  <p class="r" style="text-align:center;font-size:12px;font-weight:300;color:var(--color-ink-soft)">É profissional de saúde? <a href="/para-profissionais" style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline">Conheça a ecooa para profissionais →</a></p>
+</section>
 
 <CtaSection heading='Conheça nossa<br><em>equipe pessoalmente.</em>' subtext="Agende sua avaliação e descubra qual profissional da ecooa é o ideal para o seu momento." />
 
