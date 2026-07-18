@@ -5,10 +5,13 @@ import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import { WA_BASE, WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
+const WA_NUTRI = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma avaliação com a equipe de nutrição da ecooa')}`;
 
 const allNutriPosts = await getCollection('blog', ({data}) => !data.draft && data.category === 'nutricao');
 const nutriPosts = allNutriPosts.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()).slice(0, 3);
@@ -20,20 +23,11 @@ const workingFaqs = [
   { q: "O que é bioimpedância?", a: "É um exame que analisa a composição corporal: percentual de gordura, massa muscular, hidratação e metabolismo basal. Rápido e indolor." },
 ];
 
-const workingFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": workingFaqs.map(f => ({
-    "@type": "Question",
-    "name": f.q,
-    "acceptedAnswer": { "@type": "Answer", "text": f.a }
-  }))
-};
 ---
 
 <BaseLayout
-  title="Nutrição Clínica e Esportiva | ecooa · Porto Alegre"
-  description="Coworking premium para nutricionistas em Moinhos de Vento, Porto Alegre. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe."
+  title="Nutricionista em Porto Alegre | ecooa · Moinhos de Vento"
+  description="Nutricionista em Moinhos de Vento, Porto Alegre: emagrecimento, nutrição esportiva, comportamental e vegana, integrada ao seu médico. Primeira consulta sem compromisso."
   currentPage="ecooa-working"
   ogImage="/clinic/working.webp"
   breadcrumbs={[{ name: "ecooa.working", url: "/ecooa-working" }]}
@@ -43,18 +37,15 @@ const workingFaqSchema = {
 <div class="ph" style="background:var(--color-brand-mid)">
   <svg class="wsv" style="opacity:.14" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1"><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g></svg>
   <div class="ph-c">
-    <div class="lbl lbl-br r">ecooa.working</div>
-    <h1 style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px" class="r d1">O espaço que<br>a sua carreira<br><em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)">merece.</em></h1>
-    <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px" class="r d2">Coworking premium para nutricionistas em Moinhos de Vento. Infraestrutura, comunidade e o suporte de uma marca que quer que a sua voz ecooe.</p>
-    <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta">quero saber mais</a>
-    <p class="r d3" style="font-size:10px;font-weight:400;color:rgba(255,255,255,.45);margin-top:8px;letter-spacing:.04em">respondemos em minutos</p>
-    <p class="r d3" style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px">Acompanhamento individualizado. Vagas limitadas por nutricionista.</p>
+    <div class="lbl lbl-br r">ecooa.working · nutrição</div>
+    <h1 style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px" class="r d1">Fazer as pazes<br>com a comida.<br><em style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)">E com o espelho.</em></h1>
+    <p style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px" class="r d2">Nutrição clínica, esportiva e comportamental com 12 nutricionistas que dividem o seu caso com o seu médico, dentro da mesma clínica. Sem dieta da moda, sem julgamento, sem fórmula mágica.</p>
+    <a href={WA_NUTRI} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta" data-intent="working-hero">agendar minha avaliação</a>
+    <RiskReversalBadge items={['primeira consulta sem compromisso', 'respondemos em minutos']} light={true} />
   </div>
 </div>
 
 <Marquee />
-
-<script type="application/ld+json" set:html={JSON.stringify(workingFaqSchema)} />
 
 <QuizSection options={[
   { title: "emagrecer", subtitle: "saudável", waText: "Olá, gostaria de agendar consulta de nutrição para emagrecimento" },
@@ -81,7 +72,7 @@ const workingFaqSchema = {
 <!-- Nutrição para pacientes -->
 <section class="u-bg-cream" aria-label="Nutrição para pacientes">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:15px">nutrição para você · pacientes</div>
+    <div class="lbl r" style="margin-bottom:15px">nutrição para você</div>
     <h2 class="h2 r d1 u-mb-14">Nossa equipe de<br>nutrição está<br><em>aqui por você.</em></h2>
     <p class="body r d2" style="margin-bottom:44px;max-width:640px">A ecooa.working abriga nutricionistas especializados em diferentes áreas, integrados ao ecossistema ecooa. Você é atendido por quem melhor responde ao seu caso, com toda a estrutura de uma clínica premium.</p>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)">
@@ -100,70 +91,7 @@ const workingFaqSchema = {
   </div>
 </section>
 
-<!-- Para profissionais -->
-<section style="background:var(--color-ink);padding:86px 60px" aria-label="Para profissionais">
-  <div class="g2 g2c">
-    <div>
-      <div class="lbl lbl-lt r" style="margin-bottom:15px">para profissionais</div>
-      <h2 class="h2 h2-w r d1 u-mb-18">Acreditamos que é<br>possível ter <em>seu próprio<br>negócio.</em></h2>
-      <p class="body body-lt r d2 u-mb-28">A ecooa.working foi criada para tirar do papel o sonho de nutricionistas que querem empreender com qualidade, sem montar uma clínica do zero, com o apoio de uma marca consolidada.</p>
-      <div class="wg r d3" style="border-top-color:rgba(255,255,255,.08);padding-top:28px;margin-top:0">
-        <div><p class="wgl" style="color:var(--color-brand-deep)">Localização</p><p class="wgv" style="color:rgba(255,255,255,.65)">Moinhos de Vento, Porto Alegre</p></div>
-        <div><p class="wgl" style="color:var(--color-brand-deep)">Salas</p><p class="wgv" style="color:rgba(255,255,255,.65)">2 consultórios equipados</p></div>
-        <div><p class="wgl" style="color:var(--color-brand-deep)">Recepção</p><p class="wgv" style="color:rgba(255,255,255,.65)">Coordenadora de relacionamento dedicada</p></div>
-        <div><p class="wgl" style="color:var(--color-brand-deep)">Acesso</p><p class="wgv" style="color:rgba(255,255,255,.65)">Por entrevista com nossa diretora de ensino</p></div>
-        <div><p class="wgl" style="color:var(--color-brand-deep)">Networking</p><p class="wgv" style="color:rgba(255,255,255,.65)">Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa</p></div>
-      </div>
-      <form action={FORM_ACTION} method="POST" class="b2b-form r d4 ecooa-form u-mt-32" id="form-b2b-nutri" data-ok-target="#form-b2b-nutri-ok" data-success-text="Recebemos seu interesse. Entraremos em contato em breve.">
-        <input type="hidden" name="_formType" value="b2b-nutricao" />
-        <input type="text" name="nome" placeholder="Nome" required aria-label="Nome completo" class="b2b-input" />
-        <input type="text" name="area" placeholder="Área de atuação" required aria-label="Área de atuação" class="b2b-input" />
-        <input type="tel" name="whatsapp" placeholder="WhatsApp" required aria-label="Número de WhatsApp" class="b2b-input" />
-        <button type="submit" class="b2b-submit">enviar interesse</button>
-        <p id="form-b2b-nutri-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-deep);margin-top:4px">Recebemos seu interesse. Entraremos em contato em breve.</p>
-      </form>
-      <script>
-        import { initFormSubmit } from '../scripts/form-submit';
-        initFormSubmit();
-      </script>
-    </div>
-    <div class="r d2">
-      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:40px 34px">
-        <p style="font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-brand-deep);margin-bottom:24px">processo seletivo</p>
-        <div class="st st-dk">
-          <div class="sr"><span class="sn">01</span><div><div class="st-t">Contato inicial</div><div class="st-b">Nos fale sobre você e sua prática pelo WhatsApp.</div></div></div>
-          <div class="sr"><span class="sn">02</span><div><div class="st-t">Visita ao espaço</div><div class="st-b">Conheça pessoalmente a estrutura, a equipe e a cultura ecooa.</div></div></div>
-          <div class="sr"><span class="sn">03</span><div><div class="st-t">Alinhamento e contrato</div><div class="st-b">Definimos juntos o melhor modelo de uso e formalizamos a parceria.</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Mais do espaço -->
-<section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Mais do espaço">
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px">
-    <div class="u-img-43 r"><OptimizedImage src="/clinic/recepcao.webp" alt="Recepção da ecooa" width={1000} height={1233} class="u-cover" /></div>
-    <div class="u-img-43 r d1"><OptimizedImage src="/clinic/cafe.webp" alt="Café da ecooa" width={1200} height={799} class="u-cover" /></div>
-    <div class="u-img-43 r d2"><OptimizedImage src="/clinic/reuniao.webp" alt="Sala de reuniões da ecooa" width={1000} height={666} class="u-cover" /></div>
-  </div>
-</section>
-
-<!-- Perguntas frequentes -->
-<section class="u-bg-warm" aria-label="Perguntas frequentes">
-  <div class="w">
-    <div class="lbl r u-mb-16">perguntas frequentes</div>
-    <h2 class="h2 r d1 u-mb-40">Dúvidas sobre<br><em>nutrição.</em></h2>
-    <div class="faq-section">
-      {workingFaqs.map((faq) => (
-        <details class="faq-item">
-          <summary class="faq-q">{faq.q}</summary>
-          <p class="faq-a">{faq.a}</p>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
+<FaqVisivel faqs={workingFaqs} heading='Dúvidas sobre<br><em>nutrição.</em>' />
 
 <!-- Como funciona -->
 <section class="u-bg-cream" aria-label="Como funciona">
@@ -237,6 +165,11 @@ const workingFaqSchema = {
   </div>
 </section>
 )}
+
+<!-- Link discreto B2B -->
+<section class="u-bg-warm" aria-label="Para nutricionistas" style="padding:24px var(--section-px)">
+  <p class="r" style="text-align:center;font-size:12px;font-weight:300;color:var(--color-ink-soft)">É nutricionista? <a href="/para-nutricionistas" style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline">Conheça a ecooa.working para nutricionistas →</a></p>
+</section>
 
 <CtaSection heading='Comece sua transformação<br>pela <em>nutrição.</em>' subtext="Agende sua consulta e descubra como um plano alimentar personalizado pode mudar a sua relação com a saúde." />
 

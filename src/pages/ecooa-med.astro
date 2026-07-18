@@ -4,9 +4,9 @@ import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
 import QuizSection from '../components/QuizSection.astro';
-import B2BBanner from '../components/B2BBanner.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const medFaqs = [
@@ -16,16 +16,6 @@ const medFaqs = [
   { q: "Como funciona o Protocolo Peso Seguro?", a: "Começa com uma consulta de avaliação com valor de entrada especial. Inclui anamnese completa, solicitação de exames laboratoriais para avaliar a segurança no uso de canetas emagrecedoras, e acompanhamento médico recorrente durante todo o tratamento. O objetivo é resultado real com segurança clínica." },
   { q: "As consultas médicas recebem plano alimentar junto?", a: "Não. A ecooa e o Dr. Gustavo acreditam e respeitam cada área da saúde, e entendem que plano alimentar é prescrito por nutricionista. Contamos com mais de 10 nutricionistas na equipe, com conhecimento especializado e direcionado para cada necessidade." },
 ];
-
-const medFaqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": medFaqs.map(f => ({
-    "@type": "Question",
-    "name": f.q,
-    "acceptedAnswer": { "@type": "Answer", "text": f.a }
-  }))
-};
 
 const medProtocolsSchema = {
   "@context": "https://schema.org",
@@ -107,7 +97,6 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 
 <Marquee />
 
-<script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
 <script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
 
 <QuizSection options={[
@@ -141,22 +130,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
       <div>
         <div class="lbl r">nossa abordagem</div>
         <h2 class="h2 r d1 u-mt-15">Uma rede de<br>especialistas que<br><em>se entendem.</em></h2>
-        <p class="body r d2 u-mt-18">Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a cada atendimento, com escuta total ao paciente e trabalho multiprofissional.</p>
-        <p class="body r d3 u-mt-13">Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto de profissionais para networking de carreira. <a href="/contato" style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline">Entre em contato</a> ou preencha o formulário abaixo.</p>
-        <div class="lbl r" style="margin-top:24px;margin-bottom:10px">para profissionais de saúde</div>
-        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px">Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.</p>
-        <form action={FORM_ACTION} method="POST" class="b2b-form ecooa-form" style="margin-top:0" id="form-b2b-med" data-ok-target="#form-b2b-med-ok" data-success-text="Recebemos seu interesse. Entraremos em contato em breve.">
-          <input type="hidden" name="_formType" value="b2b-medicina" />
-          <input type="text" name="nome" placeholder="Nome completo" required class="b2b-input b2b-light" aria-label="Nome completo" />
-          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input b2b-light" aria-label="Número de WhatsApp" />
-          <input type="email" name="email" placeholder="E-mail" required class="b2b-input b2b-light" aria-label="E-mail profissional" />
-          <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
-          <p id="form-b2b-med-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-text);margin-top:4px">Recebemos seu interesse. Entraremos em contato em breve.</p>
-        </form>
-        <script>
-          import { initFormSubmit } from '../scripts/form-submit';
-          initFormSubmit();
-        </script>
+        <p class="body r d2 u-mt-18">Liderada pelo Dr. Gustavo Gehrke, a ecooa.med reúne médicos de metabolismo e hormônios, emagrecimento, testes genéticos, implantes subcutâneos e medicina clínica. Uma equipe que acredita que a medicina deve ser integral, humanizada e ética. Sem pressa a cada atendimento, com escuta total e trabalho multiprofissional em torno do seu caso.</p>
+        <p class="body r d3 u-mt-13">Aqui o seu caso não é dividido em silos. Quando a nutrição, a estética ou a saúde mental podem acelerar o seu resultado, a conexão acontece dentro da própria clínica, sem que você precise repetir sua história.</p>
       </div>
       <div class="r d2">
         <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
@@ -229,23 +204,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
   </div>
 </section>
 
-<B2BBanner />
-
-<!-- Perguntas frequentes -->
-<section class="u-bg-warm" aria-label="Perguntas frequentes">
-  <div class="w">
-    <div class="lbl r u-mb-16">perguntas frequentes</div>
-    <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br><em>ecooa.med.</em></h2>
-    <div class="faq-section">
-      {medFaqs.map((faq) => (
-        <details class="faq-item">
-          <summary class="faq-q">{faq.q}</summary>
-          <p class="faq-a">{faq.a}</p>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
+<FaqVisivel faqs={medFaqs} heading='Dúvidas sobre a<br><em>ecooa.med.</em>' />
 
 <!-- Como funciona -->
 <section class="u-bg-cream" aria-label="Como funciona">

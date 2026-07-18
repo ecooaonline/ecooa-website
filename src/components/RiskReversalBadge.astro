@@ -1,0 +1,14 @@
+---
+interface Props {
+  items: string[];
+  light?: boolean;
+  align?: 'left' | 'center';
+}
+
+const { items, light = false, align = 'center' } = Astro.props;
+const color = light ? 'rgba(255,255,255,.62)' : 'var(--color-brand-text)';
+---
+
+<p style={`font-size:12px;font-weight:400;letter-spacing:.03em;line-height:1.8;margin-top:10px;color:${color};${align === 'center' ? 'text-align:center' : ''}`}>
+  {items.join(' · ')}
+</p>

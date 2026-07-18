@@ -7,6 +7,7 @@ import PillarCard from '../components/PillarCard.astro';
 import ProfessionalCard from '../components/ProfessionalCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import CtaSection from '../components/CtaSection.astro';
+import FaqVisivel from '../components/FaqVisivel.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -15,6 +16,16 @@ const WA = WA_DEFAULT;
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);
+
+const homeFaqs = [
+  { q: "O que é a ecooa?", a: "A ecooa é uma clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Reunimos medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental em um ecossistema integrado de cuidado." },
+  { q: "Quais especialidades a ecooa oferece?", a: "A ecooa oferece medicina de alta performance (emagrecimento, hormônios, longevidade), estética avançada (procedimentos faciais e corporais), transplante capilar, nutrição personalizada (clínica, esportiva e estética) e saúde mental (psicologia)." },
+  { q: "Onde fica a ecooa?", a: "A ecooa fica na Rua Mariante, 180, 9º andar, no bairro Moinhos de Vento, em Porto Alegre, RS. O atendimento é de segunda a sexta, das 9h às 20h." },
+  { q: "Como agendar uma consulta na ecooa?", a: "Você pode agendar sua avaliação pelo WhatsApp (51) 99146-0909 ou pela página de agendamento do site. Nossa equipe irá orientar você sobre o melhor profissional para suas necessidades." },
+  { q: "Quanto custa a primeira consulta?", a: "Os valores variam conforme a especialidade e o profissional. Fale com a gente pelo WhatsApp para receber os valores atualizados e as condições de cada protocolo." },
+  { q: "A ecooa atende convênio?", a: "Nosso atendimento é particular, com emissão de recibo para você solicitar reembolso ao seu plano de saúde, conforme as regras do seu contrato." },
+  { q: "Qual a nota da ecooa no Google?", a: "A ecooa possui nota 5.0 no Google, a nota máxima possível, com avaliações de pacientes reais que destacam o acolhimento, a qualidade do atendimento e os resultados obtidos." },
+];
 ---
 
 <BaseLayout
@@ -292,24 +303,10 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <a href="/quem-somos" class="bow r d1 u-mt-32">conhecer o espaço</a>
     </div>
     <div class="st st-dk r d1">
-      <div class="sr"><span class="sn">01</span><div><div class="st-t">Valor para o profissional</div><div class="st-b">O ambiente sofisticado eleva a percepção do seu trabalho, fortalece sua marca pessoal e atrai pacientes que valorizam excelência.</div></div></div>
+      <div class="sr"><span class="sn">01</span><div><div class="st-t">Acolhimento desde a chegada</div><div class="st-b">Recepção dedicada, café e um ambiente que abraça. A sua experiência de cuidado começa antes da consulta.</div></div></div>
       <div class="sr"><span class="sn">02</span><div><div class="st-t">Conforto para o paciente</div><div class="st-b">Quando o paciente entra num espaço que acolhe, a confiança no tratamento começa antes da primeira palavra. Cada detalhe comunica cuidado.</div></div></div>
       <div class="sr"><span class="sn">03</span><div><div class="st-t">Infraestrutura premium</div><div class="st-b">9 salas equipadas, recepção dedicada e áreas comuns que refletem o padrão ecooa.</div></div></div>
     </div>
-  </div>
-</section>
-
-<!-- B2B Banner contextual -->
-<section class="bb r" aria-label="Para profissionais de saúde">
-  <div class="bb-l">
-    <p>Profissional de saúde?</p>
-    <p>Salas para médicos, nutricionistas, psicólogos e esteticistas em Moinhos de Vento.</p>
-  </div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <a href="/ecooa-med" class="ghost" style="font-size:10px;letter-spacing:.08em">ecooa.med <span aria-hidden="true">→</span></a>
-    <a href="/ecooa-esthetic" class="ghost" style="font-size:10px;letter-spacing:.08em">ecooa.esthetic <span aria-hidden="true">→</span></a>
-    <a href="/ecooa-mind" class="ghost" style="font-size:10px;letter-spacing:.08em">ecooa.mind <span aria-hidden="true">→</span></a>
-    <a href="/ecooa-working" class="ghost" style="font-size:10px;letter-spacing:.08em">ecooa.working <span aria-hidden="true">→</span></a>
   </div>
 </section>
 
@@ -334,7 +331,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <a href="https://www.instagram.com/reel/C7kLv-QOOR5/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Mente e corpo integrados"><div class="ip-bg" style="background:linear-gradient(145deg,#DDD8D5,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">ecooa.mind</span></div><div class="ip-cp">Mente e corpo integrados</div></a>
       </div>
       <div class="ic-l">
-        <a href="https://www.instagram.com/reel/C6E3YoQuDpa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Carreiras que ecooam"><div class="ip-bg" style="background:linear-gradient(145deg,#C8C0BC,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">nutrição</span></div><div class="ip-cp">Carreiras que ecooam</div></a>
+        <a href="https://www.instagram.com/reel/C6E3YoQuDpa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Bastidores da ecooa"><div class="ip-bg" style="background:linear-gradient(145deg,#C8C0BC,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">ecooa</span></div><div class="ip-cp">Bastidores da ecooa</div></a>
         <a href="https://www.instagram.com/somos.ecooa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Post: Nutrição com propósito"><div class="ip-bg" style="background:linear-gradient(145deg,#EDE8E4,#D8D3CF)"></div><div class="ip-ov"><span class="ip-tg">ecooa.working</span></div><div class="ip-cp">Nutrição com propósito</div></a>
       </div>
     </div>
@@ -366,55 +363,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 </section>
 )}
 
-<CtaSection heading='O primeiro passo começa<br>com uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você e construir juntos um cuidado que ecooe." image="/clinic/faxada-predio.webp" />
+<FaqVisivel faqs={homeFaqs} heading='Dúvidas sobre a<br><em>ecooa.</em>' />
 
-<!-- FAQ Schema (SEO) -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "O que é a ecooa?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A ecooa é uma clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Reunimos medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental em um ecossistema integrado de cuidado."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Quais especialidades a ecooa oferece?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A ecooa oferece medicina de alta performance (emagrecimento, hormônios, longevidade), estética avançada (procedimentos faciais e corporais), transplante capilar, nutrição personalizada (clínica, esportiva e estética) e saúde mental (psicologia e psiquiatria)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Onde fica a ecooa?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A ecooa fica na Rua Mariante, 180, 9º andar, no bairro Moinhos de Vento, em Porto Alegre, RS. O atendimento é de segunda a sexta, das 9h às 20h."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Como agendar uma consulta na ecooa?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Você pode agendar sua avaliação pelo WhatsApp (51) 99146-0909 ou pela página de agendamento do site. Nossa equipe irá orientar você sobre o melhor profissional para suas necessidades."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Qual a nota da ecooa no Google?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A ecooa possui nota 5.0 no Google, a nota máxima possível, com avaliações de pacientes reais que destacam o acolhimento, a qualidade do atendimento e os resultados obtidos."
-      }
-    }
-  ]
-})} />
+<CtaSection heading='O primeiro passo começa<br>com uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você e construir juntos um cuidado que ecooe." image="/clinic/faxada-predio.webp" />
 
 <script>
   import '../scripts/carousel';
