@@ -1,0 +1,38 @@
+---
+import TranslateNote from './TranslateNote.astro';
+import { WA_BASE } from '../data/constants';
+
+interface Props {
+  numero: string;
+  nome: string;
+  paraQuem: string;
+  inclui: string;
+  traducao?: string;
+  waText: string;
+  intent: string;
+  ctaLabel?: string;
+  delay?: string;
+}
+
+const { numero, nome, paraQuem, inclui, traducao, waText, intent, ctaLabel = 'quero avaliar meu caso', delay = '' } = Astro.props;
+---
+
+<div class={`ec r ${delay}`} style="display:flex;flex-direction:column">
+  <p class="ec-n">{numero}</p>
+  <h3 class="ec-t">{nome}</h3>
+  <p style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:lowercase;color:var(--color-brand-text);margin:10px 0 3px">para quem é</p>
+  <p class="ec-d">{paraQuem}</p>
+  <p style="font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:lowercase;color:var(--color-brand-text);margin:10px 0 3px">o que inclui</p>
+  <p class="ec-d">{inclui}</p>
+  {traducao && <TranslateNote text={traducao} />}
+  <div style="margin-top:auto;padding-top:18px">
+    <a
+      href={`${WA_BASE}?text=${encodeURIComponent(waText)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="bo"
+      data-intent={intent}
+      style="display:inline-block"
+    >{ctaLabel}</a>
+  </div>
+</div>

@@ -8,6 +8,9 @@ import ProfessionalCard from '../components/ProfessionalCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import CtaSection from '../components/CtaSection.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import MatchBar from '../components/MatchBar.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -37,13 +40,13 @@ const homeFaqs = [
 <section class="hero" aria-label="Apresentação ecooa">
   <div class="hl">
     <div class="hl-lbl lbl">Porto Alegre · Moinhos de Vento</div>
-    <h1 class="hh1">Sua saúde merece mais do que<br><em>respostas genéricas.</em></h1>
-    <p class="hl-sub body">Medicina, nutrição, psicologia e estética trabalhando juntos. Para que você se sinta, de verdade, cuidado.</p>
-    <div class="hl-act">
-      <a href="/agendamento" class="bd">agendar avaliação</a>
+    <h1 class="hh1">Chegue com o que dói.<br><em>Saia com um plano.</em></h1>
+    <p class="hl-sub body">Medicina, nutrição, estética e saúde mental conversando entre si. Aqui você conta sua história uma vez, e um time inteiro cuida do resto.</p>
+    <MatchBar />
+    <div class="hl-act" style="margin-top:18px">
+      <a href="/agendamento" class="ghost">agendar avaliação <span aria-hidden="true">→</span></a>
       <a href={WA} target="_blank" rel="noopener noreferrer" class="ghost" data-intent="homepage-hero">falar pelo whatsapp <span aria-hidden="true">→</span></a>
     </div>
-    <p style="font-size:10px;font-weight:400;color:var(--color-ink-soft);letter-spacing:.04em;margin-top:4px">respondemos em minutos</p>
     <div class="hl-ft"><div class="sl"></div><span class="sl-t">scroll</span></div>
   </div>
   <div class="hr">
@@ -67,46 +70,54 @@ const homeFaqs = [
 
 <Marquee />
 
-<!-- Empatia -->
-<section class="empathy-section" aria-label="Você se identifica?">
-  <div class="empathy-wrap">
-    <div class="empathy-questions">
-      <p class="empathy-q r">Você já saiu de uma consulta sentindo que não foi ouvido?</p>
-      <p class="empathy-q r d1">Já fez exames e ninguém explicou direito o que significam?</p>
-      <p class="empathy-q r d2">Já tentou emagrecer sem entender por que não funciona?</p>
-    </div>
-    <div class="empathy-answer r d3">
-      <p class="empathy-lead">Na ecooa, cada paciente é um caso único.</p>
-      <p class="empathy-body body">Nosso time de 30 especialistas trabalha junto para encontrar respostas reais. Medicina, nutrição, psicologia e estética conectados por um objetivo: cuidar de você de verdade.</p>
-      <a href="/agendamento" class="bd" style="margin-top:24px;display:inline-block">agendar avaliação</a>
-    </div>
-  </div>
-</section>
+<!-- Espelho: dores em primeira pessoa -->
+<EspelhoSection
+  label="você se reconhece?"
+  items={[
+    { text: "cansada de dietas que não funcionam", waText: "Olá, estou cansada de dietas que não funcionam e quero um acompanhamento que funcione de verdade", intent: "home-espelho-dietas" },
+    { text: "meu cabelo está caindo e ninguém leva a sério", waText: "Olá, meu cabelo está caindo e gostaria de uma avaliação séria", intent: "home-espelho-cabelo" },
+    { text: "me olho no espelho e não me reconheço", waText: "Olá, gostaria de uma avaliação estética com resultado natural", intent: "home-espelho-espelho" },
+    { text: "vivo no automático, ansiosa e sem energia", waText: "Olá, estou me sentindo no automático, ansiosa e sem energia, e gostaria de conversar", intent: "home-espelho-ansiedade" },
+    { text: "meus exames dizem que está tudo normal, mas eu não estou", waText: "Olá, meus exames dizem que está tudo normal mas eu não me sinto bem. Gostaria de uma avaliação completa", intent: "home-espelho-exames" },
+    { text: "não sei bem o que sinto, só sei que preciso conversar", waText: "Olá, não sei bem o que estou sentindo, só sei que preciso conversar com alguém da equipe ecooa", intent: "home-espelho-neutra" },
+  ]}
+  closing="Se alguma dessas frases podia ser sua, você chegou ao lugar certo."
+/>
 
-<!-- Persona -->
+<!-- Portas de transformação -->
 <section class="persona-section" aria-label="Como podemos ajudar">
   <div class="w">
-    <div class="lbl r" style="margin-bottom:14px;justify-content:center;text-align:center">como podemos ajudar</div>
-    <h2 class="h2 r d1" style="text-align:center;margin-bottom:48px">O que você precisa<br><em>neste momento?</em></h2>
-    <div class="persona-grid">
+    <div class="lbl r" style="margin-bottom:14px;justify-content:center;text-align:center">portas de transformação</div>
+    <h2 class="h2 r d1" style="text-align:center;margin-bottom:48px">O que você quer<br><em>mudar primeiro?</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px">
       <a href="/ecooa-med" class="persona-card r">
         <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="currentColor" stroke-width="1"/></svg></span>
-        <span class="persona-label">quero cuidar da minha saúde</span>
+        <span class="persona-label">quero emagrecer de vez, com saúde</span>
+        <span style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em">ecooa.med</span>
         <span class="persona-arrow" aria-hidden="true">→</span>
       </a>
       <a href="/ecooa-esthetic" class="persona-card r d1">
-        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1"/></svg></span>
-        <span class="persona-label">quero cuidar da minha estética</span>
-        <span class="persona-arrow" aria-hidden="true">→</span>
-      </a>
-      <a href="/ecooa-mind" class="persona-card r d2">
-        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>
-        <span class="persona-label">quero cuidar da minha mente</span>
-        <span class="persona-arrow" aria-hidden="true">→</span>
-      </a>
-      <a href="/ecooa-working" class="persona-card r d3">
         <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C6 22 2 17 2 11c0-2 1-4 2-5 1 4 4 6 8 6s7-2 8-6c1 1 2 3 2 5 0 6-4 11-10 11z" stroke="currentColor" stroke-width="1"/></svg></span>
-        <span class="persona-label">quero cuidar da minha nutrição</span>
+        <span class="persona-label">quero meu cabelo de volta</span>
+        <span style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em">tricologia e transplante capilar</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/ecooa-esthetic" class="persona-card r d2">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="1"/></svg></span>
+        <span class="persona-label">quero me reconhecer no espelho</span>
+        <span style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em">ecooa.esthetic</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/ecooa-mind" class="persona-card r d3">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>
+        <span class="persona-label">quero sair do modo sobrevivência</span>
+        <span style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em">ecooa.mind</span>
+        <span class="persona-arrow" aria-hidden="true">→</span>
+      </a>
+      <a href="/ecooa-working" class="persona-card r d4">
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="currentColor" stroke-width="1"/></svg></span>
+        <span class="persona-label">quero comer sem culpa</span>
+        <span style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em">ecooa.working</span>
         <span class="persona-arrow" aria-hidden="true">→</span>
       </a>
     </div>
@@ -232,23 +243,22 @@ const homeFaqs = [
     <OptimizedImage src="/clinic/reuniao-edit.webp" alt="Reunião na ecooa, metodologia de cuidado" width={800} height={533} class="u-cover" />
   </div>
   <div class="ap-cp">
-    <div class="lbl lbl-lt r">nossa metodologia</div>
-    <h2 class="h2 h2-w r d1 u-mt-15">Cuidado que<br>começa na <em>escuta</em><br>e nunca termina.</h2>
-    <p class="body body-lt r d2 u-mt-16">Não trabalhamos com protocolos genéricos. Entendemos sua história, analisamos seus dados e construímos com você um caminho feito para os seus objetivos.</p>
+    <div class="lbl lbl-lt r">como sua história muda aqui</div>
+    <h2 class="h2 h2-w r d1 u-mt-15">Você conta uma vez.<br>Um time inteiro<br><em>cuida do resto.</em></h2>
+    <p class="body body-lt r d2 u-mt-16">Não trabalhamos com protocolos genéricos. Sua jornada na ecooa acontece em três atos, sempre no seu ritmo.</p>
     <div class="st st-dk r d3 u-mt-32">
-      <div class="sr"><span class="sn">01</span><div><div class="st-t">Diagnóstico e escuta ativa</div><div class="st-b">Nossa equipe multidisciplinar se conhece e se comunica. Cada especialista sabe o momento certo de envolver os demais, de forma natural e coordenada.</div></div></div>
-      <div class="sr"><span class="sn">02</span><div><div class="st-t">Testes genéticos e biomarcadores</div><div class="st-b">Análise aprofundada dos seus dados para um panorama preciso e real da sua saúde.</div></div></div>
-      <div class="sr"><span class="sn">03</span><div><div class="st-t">Protocolo baseado nos seus objetivos</div><div class="st-b">Nada genérico, nada imposto. Construído com base nas suas informações e no que você quer alcançar.</div></div></div>
-      <div class="sr"><span class="sn">04</span><div><div class="st-t">Acompanhamento humanizado</div><div class="st-b">Contínuo e presente, onde o objetivo principal é sempre você e a sua evolução.</div></div></div>
+      <div class="sr"><span class="sn">01</span><div><div class="st-t">Você conta sua história</div><div class="st-b">Pelo WhatsApp, do seu jeito. Pode ser texto, pode ser áudio. A gente escuta antes de qualquer coisa.</div></div></div>
+      <div class="sr"><span class="sn">02</span><div><div class="st-t">A gente indica o guia certo</div><div class="st-b">O ecooa.match cruza a sua queixa com mais de 30 especialistas e aponta quem melhor responde ao seu caso.</div></div></div>
+      <div class="sr"><span class="sn">03</span><div><div class="st-t">Seu time monta o plano junto</div><div class="st-b">Médico, nutricionista e psicóloga conversam entre si sobre o seu caso. Você não repete sua história a cada consulta.</div></div></div>
     </div>
-    <a href="/ecooa-med" class="bow r d4" style="margin-top:36px">conhecer a metodologia</a>
+    <a href={WA} target="_blank" rel="noopener noreferrer" class="bow r d4" style="margin-top:36px" data-intent="home-jornada">começar pela primeira conversa</a>
   </div>
 </section>
 
 <!-- Números -->
 <section style="background:var(--color-mist);padding:72px var(--section-px)" aria-label="Números da ecooa">
   <div class="nr">
-    <div class="ni r"><p class="nv">9</p><p class="nl">Salas equipadas</p></div>
+    <div class="ni r"><p class="nv">4</p><p class="nl">Áreas que conversam entre si: medicina, nutrição, estética e mente</p></div>
     <div class="ni r d1"><p class="nv">30<sup>+</sup></p><p class="nl">Profissionais no ecossistema</p></div>
     <div class="ni r d2"><p class="nv" style="display:flex;align-items:center;justify-content:center;gap:6px"><span style="color:#E8B931;font-size:clamp(24px,3vw,36px)">★</span> 5.0</p><p class="nl">Nota no Google</p></div>
     <div class="ni r d3"><p class="nv" style="font-size:clamp(22px,3vw,38px)">Desde 2021</p><p class="nl">Transformando vidas em Porto Alegre</p></div>
