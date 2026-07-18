@@ -9,6 +9,8 @@ import ProtocoloCard from '../components/ProtocoloCard.astro';
 import CtaBand from '../components/CtaBand.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
 import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
 import { WA_BASE } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -47,6 +49,8 @@ const workingFaqs = [
 </div>
 
 <Marquee />
+
+<ProvaViva items={['12 nutricionistas, um só prontuário', 'primeira consulta sem compromisso', 'desde 2021']} />
 
 <EspelhoSection
   label="qual dessas frases podia ser sua?"
@@ -120,6 +124,19 @@ const workingFaqs = [
   </div>
 </section>
 
+<!-- Bioimpedância: oferta de entrada -->
+<section class="u-bg-warm" aria-label="Bioimpedância">
+  <div class="w" style="max-width:760px">
+    <div class="r" style="background:var(--color-white);border:1px solid var(--color-stone);border-left:3px solid var(--color-brand);padding:36px 32px">
+      <p style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:10px">comece por aqui</p>
+      <h2 style="font-family:var(--font-serif);font-size:clamp(20px,2.4vw,28px);font-weight:300;color:var(--color-ink);line-height:1.3;margin-bottom:12px">Avaliação de composição corporal<br><em style="font-style:italic">por bioimpedância.</em></h2>
+      <p class="body" style="margin-bottom:6px">Em bom português: uma balança inteligente que separa músculo, gordura e água, para o seu plano partir de dados, não de achismo.</p>
+      <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">Rápida, indolor e com devolutiva explicada. O ponto de partida ideal para qualquer programa.</p>
+      <a href={`${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma avaliação de bioimpedância na ecooa')}`} target="_blank" rel="noopener noreferrer" class="bd" data-intent="working-bioimpedancia" style="display:inline-block">agendar minha bioimpedância</a>
+    </div>
+  </div>
+</section>
+
 <!-- Integração -->
 <section class="u-bg-warm" aria-label="Integração com a medicina">
   <div class="w">
@@ -171,6 +188,12 @@ const workingFaqs = [
     <p class="r d3" style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em">Primeira consulta sem compromisso. Você decide se quer continuar.</p>
   </div>
 </section>
+
+<GuiaSection
+  unit="working"
+  heading='Quem caminha<br>com <em>você.</em>'
+  subtext="Nutricionistas especializadas em diferentes áreas, atendendo com a estrutura de uma clínica premium e dividindo o seu caso com o seu médico."
+/>
 
 <!-- Depoimentos -->
 <section class="u-bg-cream" aria-label="Depoimentos de pacientes">

@@ -11,6 +11,8 @@ import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import MatchBar from '../components/MatchBar.astro';
 import CtaBand from '../components/CtaBand.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import CompareModel from '../components/CompareModel.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -69,6 +71,8 @@ const homeFaqs = [
 </section>
 
 <Marquee />
+
+<ProvaViva />
 
 <!-- Espelho: dores em primeira pessoa -->
 <EspelhoSection
@@ -264,6 +268,14 @@ const homeFaqs = [
     <div class="ni r d3"><p class="nv" style="font-size:clamp(22px,3vw,38px)">Desde 2021</p><p class="nl">Transformando vidas em Porto Alegre</p></div>
   </div>
 </section>
+
+<CompareModel
+  rows={[
+    { apressado: 'Consulta de 10 minutos e uma receita na mão.', ecooa: 'Consulta com tempo de verdade, que só termina quando você entendeu o plano.' },
+    { apressado: '"Seus exames estão normais, próximo."', ecooa: 'Seus exames explicados um a um, em bom português.' },
+    { apressado: 'Cada especialista numa clínica, e você carregando exames de um lado para o outro.', ecooa: 'Seu time no mesmo lugar, dividindo o seu caso entre si.' },
+  ]}
+/>
 
 <!-- Cuidado -->
 <section class="u-bg-warm" aria-label="Para quem busca cuidado">

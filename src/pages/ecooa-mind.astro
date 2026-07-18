@@ -7,6 +7,8 @@ import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
 import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
 import { WA_BASE } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -48,6 +50,8 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
 </div>
 
 <Marquee />
+
+<ProvaViva items={['sessão de acolhimento em até 5 dias úteis', 'presencial ou online', 'sigilo absoluto']} />
 
 <EspelhoSection
   label="você se reconhece?"
@@ -107,6 +111,13 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   </div>
 </section>
 
+<GuiaSection
+  unit="mind"
+  heading='Quem caminha<br>com <em>você.</em>'
+  subtext="Psicólogas e psicólogos que criam um espaço seguro para você ser quem é, integrados ao restante do seu cuidado."
+  max={3}
+/>
+
 <!-- Diferenciais -->
 <section class="u-bg-cream" aria-label="Diferenciais ecooa.mind">
   <div class="w">
@@ -130,18 +141,18 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:800px;margin:0 auto">
       <div class="r u-tac">
         <span class="step-num">1</span>
-        <h3 class="it-t">Primeiro contato</h3>
-        <p class="it-d">Fale pelo WhatsApp no seu ritmo. Nossa equipe acolhe e agenda sua primeira sessão.</p>
+        <h3 class="it-t">Primeira conversa</h3>
+        <p class="it-d">Pelo WhatsApp, no seu ritmo. Pode ser por texto ou por áudio. Nossa equipe acolhe e agenda.</p>
       </div>
       <div class="r d1 u-tac">
         <span class="step-num">2</span>
         <h3 class="it-t">Sessão de acolhimento</h3>
-        <p class="it-d">Um espaço seguro para você ser ouvido. Juntos, definimos os próximos passos do processo terapêutico.</p>
+        <p class="it-d">Em até 5 dias úteis, um espaço seguro para você ser ouvido. Você decide se quer continuar.</p>
       </div>
       <div class="r d2 u-tac">
         <span class="step-num">3</span>
         <h3 class="it-t">Acompanhamento contínuo</h3>
-        <p class="it-d">Sessões regulares no formato presencial ou online, com suporte integrado ao ecossistema ecooa.</p>
+        <p class="it-d">Sessões regulares, presenciais ou online, com objetivos combinados entre vocês. Terapia não é mágica, é caminho.</p>
       </div>
     </div>
     <p class="r d3" style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em">Primeira sessão sem compromisso. Você decide se quer continuar.</p>

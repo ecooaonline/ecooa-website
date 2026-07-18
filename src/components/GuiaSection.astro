@@ -1,0 +1,50 @@
+---
+import GuiaCard from './GuiaCard.astro';
+import { getProfessionalsByUnit, type Professional } from '../data/professionals';
+
+interface Props {
+  unit: Professional['unit'];
+  label?: string;
+  heading?: string;
+  subtext?: string;
+  max?: number;
+}
+
+const {
+  unit,
+  label = 'quem cuida de você',
+  heading = 'Guias,<br>não <em>heróis.</em>',
+  subtext,
+  max = 4,
+} = Astro.props;
+
+const all = getProfessionalsByUnit(unit);
+const shown = all.slice(0, max);
+const remaining = all.length - shown.length;
+---
+
+<section class="u-bg-warm" aria-label="Quem cuida de você">
+  <div class="w">
+    <div class="lbl r u-mb-16">{label}</div>
+    <h2 class="h2 r d1 u-mb-12" set:html={heading} />
+    {subtext && <p class="body r d2" style="max-width:520px;margin-bottom:40px">{subtext}</p>}
+    <div class="g4" style="margin-top:24px">
+      {shown.map((p, i) => (
+        <GuiaCard
+          name={p.name}
+          role={p.role}
+          photo={p.photo}
+          slug={p.slug}
+          personalTouch={p.personalTouch}
+          registration={p.registration}
+          delay={`d${Math.min(i, 3)}`}
+        />
+      ))}
+    </div>
+    <div class="r d3" style="margin-top:28px">
+      <a href="/profissionais" style="font-size:11px;font-weight:500;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none">
+        {remaining > 0 ? `conhecer os outros ${remaining} profissionais →` : 'conhecer todos os profissionais →'}
+      </a>
+    </div>
+  </div>
+</section>

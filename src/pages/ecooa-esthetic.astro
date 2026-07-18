@@ -9,6 +9,8 @@ import TranslateNote from '../components/TranslateNote.astro';
 import CtaBand from '../components/CtaBand.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
 import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
 import { WA_BASE, WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -52,6 +54,8 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
 </div>
 
 <Marquee />
+
+<ProvaViva items={['tricologia clínica e transplante FUE Safira', 'retorno incluído em todos os procedimentos', 'desde 2021']} />
 
 <EspelhoSection
   label="o que te incomoda quando você se olha?"
@@ -127,6 +131,12 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     </div>
   </div>
 </section>
+
+<GuiaSection
+  unit="esthetic"
+  heading='Quem cuida<br>de <em>você.</em>'
+  subtext="Tricologistas, especialistas em transplante capilar e profissionais de estética avançada, com registro e história para mostrar."
+/>
 
 <!-- Filosofia -->
 <section style="background:var(--color-brand);padding:86px 60px;position:relative;overflow:hidden" aria-label="Nossa filosofia">

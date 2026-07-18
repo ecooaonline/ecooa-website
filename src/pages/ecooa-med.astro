@@ -8,6 +8,9 @@ import EspelhoSection from '../components/EspelhoSection.astro';
 import ProtocoloCard from '../components/ProtocoloCard.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
 import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
+import JornadaTimeline from '../components/JornadaTimeline.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -98,6 +101,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 
 <Marquee />
 
+<ProvaViva items={['consultas de 50+ minutos', 'cuidando de Porto Alegre desde 2021', '30+ profissionais que dividem o seu caso']} />
+
 <script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
 
 <EspelhoSection
@@ -157,6 +162,12 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
   </div>
 </section>
 
+<GuiaSection
+  unit="med"
+  heading='Quem vai<br>te <em>guiar.</em>'
+  subtext="Médicos com tempo de verdade para o seu caso, integrados a nutricionistas e psicólogas da casa."
+/>
+
 <!-- Método Gehrke 360° -->
 <section style="background:var(--color-ink);padding:86px 60px" aria-label="Método Gehrke 360°">
   <div class="w">
@@ -182,6 +193,17 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     </div>
   </div>
 </section>
+
+<JornadaTimeline
+  label="o mapa da sua investigação"
+  heading='O que acontece depois<br>da primeira <em>conversa.</em>'
+  steps={[
+    { marker: 'semana 1', title: 'Escuta de 50 minutos', desc: 'Você conta sua história inteira, sem pressa. Saímos da consulta com o pedido de exames desenhado para o seu caso.' },
+    { marker: 'semana 3', title: 'Devolutiva dos exames', desc: 'Cada resultado explicado em bom português: o que está bom, o que merece atenção e por quê.' },
+    { marker: 'mês 1', title: 'Protocolo no seu nível', desc: 'Reset, quando o corpo pede recomeço. Equilíbrio, para constância, sono e disposição. Performance, quando o bom já não basta.' },
+    { marker: 'mês 3', title: 'Reavaliação com dados', desc: 'Exames comparados lado a lado com os anteriores, para você ver a evolução em números, não em impressões.' },
+  ]}
+/>
 
 <!-- Protocolos -->
 <section class="u-bg-cream" aria-label="Protocolos ecooa.med">
