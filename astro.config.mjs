@@ -5,4 +5,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.somosecooa.com.br',
   integrations: [sitemap()],
+  redirects: {
+    '/especialidade/psiquiatria': '/ecooa-mind',
+  },
 });

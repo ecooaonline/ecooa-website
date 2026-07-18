@@ -31,6 +31,16 @@ async function postForm(form: HTMLFormElement, attempt = 0): Promise<void> {
     if (!response.ok) {
       throw new Error('HTTP ' + response.status);
     }
+    // O GAS responde 200 mesmo em falha de validação; o veredito vem no JSON.
+    let result: { success?: boolean; message?: string } | null = null;
+    try {
+      result = await response.clone().json();
+    } catch {
+      // Resposta não-JSON (ex.: redirect HTML): tratar como sucesso.
+    }
+    if (result && result.success === false) {
+      throw new Error(result.message || 'Validação falhou no servidor');
+    }
   } catch (err) {
     if (attempt < MAX_RETRIES) {
       await waitFor(RETRY_DELAY_MS * (attempt + 1));

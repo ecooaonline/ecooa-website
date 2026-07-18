@@ -2,10 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
-import Marquee from '../components/Marquee.astro';
 import { WA_BASE, FORM_ACTION, ADDRESS_NEIGHBORHOOD } from '../data/constants';
+import { medAreas } from '../data/specialties';
 
-const WA = WA_BASE;
 const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de saúde e gostaria de saber mais sobre atender na ecooa')}`;
 ---
 
@@ -27,8 +26,6 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
     <a href={WA_B2B} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta" data-intent="b2b-hero">falar pelo whatsapp</a>
   </div>
 </div>
-
-<Marquee />
 
 <!-- Por que atender aqui -->
 <section class="u-bg-warm" aria-label="Por que atender na ecooa">
@@ -70,9 +67,13 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
           <input type="hidden" name="_formType" value="b2b-medicina" />
           <input type="text" name="_honeypot" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
           <input type="hidden" name="_loadedAt" value="" />
-          <input type="text" name="nome" placeholder="Nome completo" required class="b2b-input b2b-light" aria-label="Nome completo" />
-          <input type="tel" name="whatsapp" placeholder="WhatsApp" required class="b2b-input b2b-light" aria-label="Número de WhatsApp" />
+          <input type="text" name="nome" placeholder="Nome completo" required minlength="2" class="b2b-input b2b-light" aria-label="Nome completo" />
+          <input type="tel" name="whatsapp" placeholder="WhatsApp: (51) 99999-9999" required pattern="[\s()+\-0-9]{10,20}" class="b2b-input b2b-light" aria-label="Número de WhatsApp" />
           <input type="email" name="email" placeholder="E-mail" required class="b2b-input b2b-light" aria-label="E-mail profissional" />
+          <div style="display:flex;align-items:flex-start;gap:10px">
+            <input type="checkbox" id="b2b-med-consent" name="consent" required style="margin-top:4px;cursor:pointer;min-width:16px" />
+            <label for="b2b-med-consent" style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer">Concordo em compartilhar meus dados conforme a <a href="/politica-de-privacidade" style="color:var(--color-brand-text);text-decoration:underline" target="_blank">política de privacidade</a></label>
+          </div>
           <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
           <p id="form-b2b-med-ok" style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-text);margin-top:4px">Recebemos seu interesse. Entraremos em contato em breve.</p>
         </form>
@@ -84,16 +85,9 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
       <div class="r d2">
         <div style="background:var(--color-warm);padding:40px 34px;border:1px solid var(--color-stone)">
           <div class="lbl u-mb-20">áreas de atuação</div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Metabólica e Endocrinologia</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Nutrologia e Emagrecimento</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Envelhecimento Saudável e Estilo de Vida</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Performance Cognitiva e Física</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Hipertrofia e Composição Corporal</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Hormonologia e Saúde Feminina e Masculina</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Bioimplantes Metabólicos</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina do Esporte e Anabolismo Fisiológico</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Preventiva e Checkup Metabólico</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Testes Genéticos</span></div>
+          {medAreas.map((area) => (
+            <div class="lr"><span class="u-dot"></span><span class="body-md">{area}</span></div>
+          ))}
         </div>
         <p class="body r d3" style="margin-top:20px;font-size:13px">É nutricionista? <a href="/para-nutricionistas" style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline">Conheça a ecooa.working para nutricionistas →</a></p>
       </div>

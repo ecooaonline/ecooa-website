@@ -59,7 +59,7 @@ const workingFaqs = [
     { text: "sinto culpa quando como fora do plano", waText: "Olá, gostaria de consulta de nutrição comportamental para melhorar minha relação com a comida", intent: "working-espelho-culpa" },
     { text: "uso caneta emagrecedora e quero fazer isso direito", waText: "Olá, uso caneta emagrecedora (tipo Ozempic ou Mounjaro) e gostaria de suporte nutricional para proteger o resultado", intent: "working-espelho-canetas" },
     { text: "treino, me dedico e não vejo resultado", waText: "Olá, gostaria de avaliação de nutrição esportiva", intent: "working-espelho-esportiva" },
-    { text: "sou vegana e quero segurança de verdade", waText: "Olá, sou vegana e gostaria de acompanhamento nutricional especializado", intent: "working-espelho-vegana" },
+    { text: "sou vegana e quero segurança de verdade", waText: "Olá, sigo alimentação vegana e gostaria de acompanhamento nutricional especializado", intent: "working-espelho-vegana" },
     { text: "quero energia, pele e cabelo saudáveis de dentro pra fora", waText: "Olá, gostaria de avaliação de nutrição estética", intent: "working-espelho-estetica" },
   ]}
   closing="Cada uma dessas frases tem um plano por trás. Feito para a sua vida real."
@@ -102,7 +102,7 @@ const workingFaqs = [
       <ProtocoloCard numero="03" nome="Suporte às Canetas Emagrecedoras" delay="d2"
         paraQuem="Para quem usa ou vai usar canetas como Ozempic, Mounjaro, semaglutida ou tirzepatida e quer fazer isso direito."
         inclui="Nutrição para proteger massa magra e sustentar o resultado, em parceria com o acompanhamento médico, quando há indicação."
-        waText="Olá, uso caneta emagrecedora e gostaria de suporte nutricional para proteger o resultado"
+        waText="Olá, uso caneta emagrecedora (tipo Ozempic ou Mounjaro) e gostaria de suporte nutricional para proteger o resultado"
         intent="working-programa-canetas" />
       <ProtocoloCard numero="04" nome="Performance"
         paraQuem="Para quem treina de verdade e quer composição corporal, energia e recuperação."
@@ -112,7 +112,7 @@ const workingFaqs = [
       <ProtocoloCard numero="05" nome="Nutrição Vegana Segura" delay="d1"
         paraQuem="Para veganos e vegetarianos que querem segurança nutricional de verdade, sem julgamento."
         inclui="Planejamento plant-based com análise bioquímica e ciência aplicada, com nutricionistas referência na área."
-        waText="Olá, sou vegana e gostaria de acompanhamento nutricional especializado"
+        waText="Olá, sigo alimentação vegana e gostaria de acompanhamento nutricional especializado"
         intent="working-programa-vegana" />
       <ProtocoloCard numero="06" nome="Beleza de Dentro pra Fora" delay="d2"
         paraQuem="Para quem quer pele, cabelo e unhas saudáveis a partir do prato."

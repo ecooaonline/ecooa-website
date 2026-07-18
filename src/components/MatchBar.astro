@@ -14,7 +14,8 @@ const {
 
 <div class="r d2" style="margin-top:22px;max-width:480px">
   <p style="font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;color:var(--color-ink-soft);margin-bottom:8px">conte em uma frase o que você está sentindo</p>
-  <form class="match-bar" data-wa={WA_BASE} style="display:flex;gap:8px;flex-wrap:wrap">
+  <!-- Fallback sem JS: GET para /match?q=..., que roda o motor de busca. -->
+  <form class="match-bar" data-wa={WA_BASE} action="/match" method="get" style="display:flex;gap:8px;flex-wrap:wrap">
     <input
       type="text"
       name="q"
@@ -23,7 +24,7 @@ const {
       aria-label="Conte em uma frase o que você está sentindo"
       style="flex:1;min-width:220px;padding:13px 16px;border:1px solid var(--color-stone);background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:13px;font-weight:300;outline:none"
     />
-    <button type="submit" class="bd" style="border:none;cursor:pointer">{buttonLabel}</button>
+    <button type="submit" class="bd" style="border:none;cursor:pointer" data-intent="home-matchbar">{buttonLabel}</button>
   </form>
   <p style="font-size:11px;font-weight:300;color:var(--color-ink-soft);margin-top:8px">respondemos em minutos · ou explore o <a href="/match" style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline">ecooa.match →</a></p>
 </div>
@@ -31,15 +32,26 @@ const {
 <script>
   document.querySelectorAll<HTMLFormElement>('.match-bar').forEach((form) => {
     form.addEventListener('submit', (e) => {
+      const wa = form.dataset.wa;
+      if (!wa) return; // deixa o submit nativo levar para /match?q=
       e.preventDefault();
       const input = form.querySelector<HTMLInputElement>('input[name="q"]');
-      const wa = form.dataset.wa || 'https://wa.me/5551991460909';
       const phrase = (input?.value || '').trim().slice(0, 140);
       const message = phrase
         ? `Olá! O que estou sentindo: ${phrase}. Podem me indicar o especialista certo?`
         : 'Olá, gostaria de uma orientação para encontrar o especialista certo na ecooa';
       window.gtag?.('event', 'match_bar_submit', { event_category: 'conversion', event_label: phrase ? 'com-frase' : 'vazio' });
-      window.open(`${wa}?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+      // Âncora programática: dispara o listener global de wa.me
+      // (whatsapp_click + pixel Contact em analytics-events.ts).
+      const a = document.createElement('a');
+      a.href = `${wa}?text=${encodeURIComponent(message)}`;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.setAttribute('data-intent', 'home-matchbar');
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
     });
   });
 </script>

@@ -20,7 +20,6 @@ const {
 
 const all = getProfessionalsByUnit(unit);
 const shown = all.slice(0, max);
-const remaining = all.length - shown.length;
 ---
 
 <section class="u-bg-warm" aria-label="Quem cuida de você">
@@ -42,9 +41,7 @@ const remaining = all.length - shown.length;
       ))}
     </div>
     <div class="r d3" style="margin-top:28px">
-      <a href="/profissionais" style="font-size:11px;font-weight:500;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none">
-        {remaining > 0 ? `conhecer os outros ${remaining} profissionais →` : 'conhecer todos os profissionais →'}
-      </a>
+      <a href="/profissionais" style="font-size:11px;font-weight:500;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none">conhecer toda a equipe →</a>
     </div>
   </div>
 </section>

@@ -10,8 +10,6 @@ import CtaSection from '../components/CtaSection.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import MatchBar from '../components/MatchBar.astro';
-import CtaBand from '../components/CtaBand.astro';
-import ProvaViva from '../components/ProvaViva.astro';
 import CompareModel from '../components/CompareModel.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
@@ -72,8 +70,6 @@ const homeFaqs = [
 
 <Marquee />
 
-<ProvaViva />
-
 <!-- Espelho: dores em primeira pessoa -->
 <EspelhoSection
   label="você se reconhece?"
@@ -119,7 +115,7 @@ const homeFaqs = [
         <span class="persona-arrow" aria-hidden="true">→</span>
       </a>
       <a href="/ecooa-working" class="persona-card r d4">
-        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z" stroke="currentColor" stroke-width="1"/></svg></span>
+        <span class="persona-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg></span>
         <span class="persona-label">quero comer sem culpa</span>
         <span style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em">ecooa.working</span>
         <span class="persona-arrow" aria-hidden="true">→</span>

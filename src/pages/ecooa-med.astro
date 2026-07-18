@@ -12,6 +12,7 @@ import ProvaViva from '../components/ProvaViva.astro';
 import GuiaSection from '../components/GuiaSection.astro';
 import JornadaTimeline from '../components/JornadaTimeline.astro';
 import { WA_DEFAULT } from '../data/constants';
+import { medAreas } from '../data/specialties';
 import { getCollection } from 'astro:content';
 
 const medFaqs = [
@@ -146,16 +147,9 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
       <div class="r d2">
         <div style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)">
           <div class="lbl u-mb-20">áreas de atuação</div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Metabólica e Endocrinologia</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Nutrologia e Emagrecimento</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Envelhecimento Saudável e Estilo de Vida</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Performance Cognitiva e Física</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Hipertrofia e Composição Corporal</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Hormônios e Saúde Feminina e Masculina</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Bioimplantes Metabólicos</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina do Esporte e Performance</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Medicina Preventiva e Checkup Metabólico</span></div>
-          <div class="lr"><span class="u-dot"></span><span class="body-md">Testes Genéticos</span></div>
+          {medAreas.map((area) => (
+            <div class="lr"><span class="u-dot"></span><span class="body-md">{area}</span></div>
+          ))}
         </div>
       </div>
     </div>
@@ -165,7 +159,7 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
 <GuiaSection
   unit="med"
   heading='Quem vai<br>te <em>guiar.</em>'
-  subtext="Médicos com tempo de verdade para o seu caso, integrados a nutricionistas e psicólogas da casa."
+  subtext="O Dr. Gustavo Gehrke lidera a medicina da casa, com tempo de verdade para o seu caso e integrado às nutricionistas e psicólogas do ecossistema."
 />
 
 <!-- Método Gehrke 360° -->
@@ -339,6 +333,11 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
   </div>
 </section>
 )}
+
+<!-- Link discreto B2B -->
+<section class="u-bg-warm" aria-label="Para médicos" style="padding:24px var(--section-px)">
+  <p class="r" style="text-align:center;font-size:12px;font-weight:300;color:var(--color-ink-soft)">É médico e quer atender na ecooa? <a href="/para-profissionais" style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline">Conheça a ecooa para profissionais →</a></p>
+</section>
 
 <PrimeiroPassoCTA
   heading='Traga seus exames.<br><em>A gente explica o resto.</em>'

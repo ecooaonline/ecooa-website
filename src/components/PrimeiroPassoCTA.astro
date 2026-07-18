@@ -1,5 +1,6 @@
 ---
 import WavePattern from './WavePattern.astro';
+import RiskReversalBadge from './RiskReversalBadge.astro';
 import { WA_BASE } from '../data/constants';
 
 interface Props {
@@ -34,5 +35,7 @@ const link = waText ? `${WA_BASE}?text=${encodeURIComponent(waText)}` : WA_BASE;
     <a href={link} target="_blank" rel="noopener noreferrer" class="bw" data-intent={intent}>{label}</a>
     <a href="/agendamento" class="bow">agendar avaliação</a>
   </div>
-  <p class="r d3" style="font-size:12px;font-weight:400;color:rgba(255,255,255,.62);letter-spacing:.04em;margin-top:12px;text-align:center">{badges.join(' · ')}</p>
+  <div class="r d3">
+    <RiskReversalBadge items={badges} light={true} />
+  </div>
 </section>
