@@ -1,5 +1,7 @@
 # PLANO DE REFORMULAÇÃO B2C · ecooa
 
+> **Status de implementação:** Ondas 1 a 4 implementadas e revisadas (QA multi-agente com 10 achados corrigidos). Pendências operacionais da Onda 0: preço da bioimpedância, confirmação de "respondemos em minutos" e "5 dias úteis" com a recepção, URL real do Google Reviews, re-consentimento de depoimentos, preenchimento de `registration` e `pricing` em professionals.ts, e atualização do container GTM com a nova taxonomia (ver docs/GTM-DATA-INTENTS.md).
+
 Documento único de implementação. Direção base: "sua história muda de capítulo" (Jornada de Transformação ecooa), enriquecida com os melhores elementos de "Ciência traduzida" e "a vida que ecooa", conforme veredito do painel.
 
 ---

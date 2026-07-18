@@ -11,6 +11,7 @@ import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import MatchBar from '../components/MatchBar.astro';
 import CompareModel from '../components/CompareModel.astro';
+import RespiroEditorial from '../components/RespiroEditorial.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -328,34 +329,15 @@ const homeFaqs = [
   </div>
 </section>
 
-<!-- Instagram -->
-<section class="u-bg-warm" aria-label="Instagram ecooa">
-  <div class="w">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px">
-      <div>
-        <div class="lbl r">siga a ecooa</div>
-        <h2 class="h2 r d1 u-mt-13">Acompanhe nossa<br><em>comunidade.</em></h2>
-        <p class="body r d2 u-mt-10">Acompanhe resultados reais, bastidores e nossos profissionais em ação</p>
-      </div>
-      <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:400;color:var(--color-ink-soft);text-decoration:none;border:1px solid var(--color-stone);padding:9px 16px" class="r">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-        @somos.ecooa
-      </a>
-    </div>
-    <div class="ig r">
-      <a href="https://www.instagram.com/p/DJnIaMjsMAP/" target="_blank" rel="noopener noreferrer" class="ip ip-t" aria-label="Post Instagram: Resultados que falam por si"><div class="ip-bg" style="background:linear-gradient(145deg,#D8D3CF,#C4BBB8)"></div><div class="ip-ov"><span class="ip-tg">ecooa.esthetic</span></div><div class="ip-cp">Resultados que falam por si</div></a>
-      <div class="ic-l">
-        <a href="https://www.instagram.com/reel/DJrbUEER3Yc/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Saúde que transforma"><div class="ip-bg" style="background:linear-gradient(145deg,#E2DDD9,#C8C0BC)"></div><div class="ip-ov"><span class="ip-tg">ecooa.med</span></div><div class="ip-cp">Saúde que transforma</div></a>
-        <a href="https://www.instagram.com/reel/C7kLv-QOOR5/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Mente e corpo integrados"><div class="ip-bg" style="background:linear-gradient(145deg,#DDD8D5,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">ecooa.mind</span></div><div class="ip-cp">Mente e corpo integrados</div></a>
-      </div>
-      <div class="ic-l">
-        <a href="https://www.instagram.com/reel/C6E3YoQuDpa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Reel: Bastidores da ecooa"><div class="ip-bg" style="background:linear-gradient(145deg,#C8C0BC,#AEA5A2)"></div><div class="ip-ov"><span class="ip-tg">ecooa</span></div><div class="ip-cp">Bastidores da ecooa</div></a>
-        <a href="https://www.instagram.com/somos.ecooa/" target="_blank" rel="noopener noreferrer" class="ip" aria-label="Post: Nutrição com propósito"><div class="ip-bg" style="background:linear-gradient(145deg,#EDE8E4,#D8D3CF)"></div><div class="ip-ov"><span class="ip-tg">ecooa.working</span></div><div class="ip-cp">Nutrição com propósito</div></a>
-      </div>
-    </div>
-    <div style="margin-top:28px;text-align:center" class="r">
-      <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" class="bo">ver no instagram</a>
-    </div>
+<!-- Instagram (faixa compacta; grid volta quando houver thumbnails reais) -->
+<section class="u-bg-warm" aria-label="Instagram ecooa" style="padding:56px var(--section-px)">
+  <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+    <div class="lbl r" style="justify-content:center">siga a ecooa</div>
+    <p class="body r d1" style="max-width:420px">Bastidores, conteúdos e a comunidade ecooa no dia a dia.</p>
+    <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" class="bo r d2" style="display:inline-flex;align-items:center;gap:8px">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.3"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+      @somos.ecooa
+    </a>
   </div>
 </section>
 
@@ -381,12 +363,10 @@ const homeFaqs = [
 </section>
 )}
 
+<RespiroEditorial quote="Saúde, estética e longevidade que conversam entre si." author="ecooa · desde 2021" />
+
 <FaqVisivel faqs={homeFaqs} heading='Dúvidas sobre a<br><em>ecooa.</em>' />
 
 <CtaSection heading='O primeiro passo começa<br>com uma <em>conversa.</em>' subtext="Estamos prontos para ouvir você e construir juntos um cuidado que ecooe." image="/clinic/faxada-predio.webp" />
-
-<script>
-  import '../scripts/carousel';
-</script>
 
 </BaseLayout>

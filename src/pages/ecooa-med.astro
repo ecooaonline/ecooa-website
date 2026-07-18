@@ -11,6 +11,7 @@ import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
 import ProvaViva from '../components/ProvaViva.astro';
 import GuiaSection from '../components/GuiaSection.astro';
 import JornadaTimeline from '../components/JornadaTimeline.astro';
+import MetodoQuiz from '../components/MetodoQuiz.astro';
 import { WA_DEFAULT } from '../data/constants';
 import { medAreas } from '../data/specialties';
 import { getCollection } from 'astro:content';
@@ -198,6 +199,8 @@ const medPosts = allMedPosts.sort((a, b) => new Date(b.data.date).getTime() - ne
     { marker: 'mês 3', title: 'Reavaliação com dados', desc: 'Exames comparados lado a lado com os anteriores, para você ver a evolução em números, não em impressões.' },
   ]}
 />
+
+<MetodoQuiz />
 
 <!-- Protocolos -->
 <section class="u-bg-cream" aria-label="Protocolos ecooa.med">

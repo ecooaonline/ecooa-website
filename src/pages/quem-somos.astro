@@ -3,16 +3,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
-import ProfessionalCard from '../components/ProfessionalCard.astro';
+import GuiaCard from '../components/GuiaCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RespiroEditorial from '../components/RespiroEditorial.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { getProfessionalBySlug } from '../data/professionals';
 
-const WA = WA_DEFAULT;
+const gustavo = getProfessionalBySlug('gustavo-gehrke');
+const jessica = getProfessionalBySlug('jessica-stein');
 ---
 
 <BaseLayout
   title="Quem Somos"
-  description="História da ecooa, clínica de saúde em Moinhos de Vento, Porto Alegre. Fundada em 2021, um ecossistema de inovação e cuidado genuíno."
+  description="Conheça a ecooa: a clínica de Moinhos de Vento onde médico, nutricionista e psicóloga cuidam de você juntos. Emagrecimento, pele, cabelo e saúde mental em um só lugar."
   currentPage="quem-somos"
   ogImage="/clinic/recepcao.webp"
   breadcrumbs={[{ name: "Quem Somos", url: "/quem-somos" }]}
@@ -30,77 +33,7 @@ const WA = WA_DEFAULT;
 
 <Marquee />
 
-<!-- Propósito -->
-<section class="u-bg-warm" aria-label="Nosso propósito">
-  <div class="w">
-    <div class="g2 g2c">
-      <div>
-        <div class="lbl r">nosso propósito</div>
-        <h2 class="h2 r d1 u-mt-15">Queremos que nossa<br>voz <em>ecooe</em> por<br>onde passa.</h2>
-        <p class="body r d2 u-mt-18">Preenchendo pessoas que buscam um espaço de conexão. Uma voz nossa, sua e de todos que acreditam na inovação, em relações genuínas e num mercado de saúde mais igualitário.</p>
-        <p class="body r d3 u-mt-14">Somos uma clínica multidisciplinar que abraça pessoas que cuidam e são cuidadas. Diferentes serviços com o mesmo propósito.</p>
-      </div>
-      <div class="r d2">
-        <div style="background:var(--color-brand);padding:48px 40px;position:relative;overflow:hidden">
-          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.13" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="white" stroke-width="1.2"><WavePattern count={10} x0={-40} y0={50} step={40} width={440} /></g></svg>
-          <p style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.55;position:relative;z-index:1">"Um lugar onde saúde, ciência e cuidado genuíno se encontram para transformar vidas."</p>
-          <p style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:20px;position:relative;z-index:1">ecooa · manifesto</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Como a ecooa nasceu -->
-<section class="u-bg-warm" aria-label="Como a ecooa nasceu">
-  <div class="w">
-    <div class="g2 g2c">
-      <div>
-        <div class="lbl r">nossa origem</div>
-        <h2 class="h2 r d1 u-mt-15">como a ecooa<br><em>nasceu.</em></h2>
-      </div>
-      <div class="r d2">
-        <p class="body u-mb-16">A ecooa nasceu de uma pergunta simples: por que medicina, nutrição, estética e psicologia não conversam entre si?</p>
-        <p class="body u-mb-16">Em 2021, os sócios fundadores Gustavo Gehrke, médico, Jessica Stein, nutricionista, e Scheila Andrzejewski, médica, decidiram construir um espaço onde os profissionais trabalham juntos, e não em silos. Um lugar em que o paciente não precisa repetir sua história a cada consulta, porque a equipe já se conhece, já se comunica e já cuida de forma integrada.</p>
-        <p class="body u-mb-16">O nome veio dessa ideia: o cuidado que <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--color-brand-accent)">ecoa</em>. Um cuidado que não termina na porta do consultório e que se multiplica entre profissionais, entre áreas e entre pessoas.</p>
-        <p class="body">Hoje, sob a liderança de Gustavo e Jessica, a ecooa é uma clínica multidisciplinar em Moinhos de Vento, com mais de 30 profissionais. O princípio permanece o mesmo: saúde de verdade acontece quando há conexão entre as pessoas.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Liderança -->
-<section style="background:var(--color-cream);padding:86px 60px" aria-label="Liderança">
-  <div class="lbl r u-mb-16">liderança</div>
-  <h2 class="h2 r d1 u-mb-12">Quem faz a ecooa<br><em>existir.</em></h2>
-  <p class="body r d2" style="max-width:480px;margin-bottom:44px">As pessoas por trás do ecossistema. Cada uma com um papel essencial para que o cuidado da ecooa chegue até você.</p>
-  <div class="g4">
-    <ProfessionalCard name="Gustavo Gehrke" role="Sócio · Diretor Executivo · Médico" bg="linear-gradient(145deg,#DDD8D5,#C4BBB8)" ig="@gustavogehrke" photo="/team/gustavo.webp" />
-    <ProfessionalCard name="Jessica Stein" role="Sócia · Diretora de Ensino · Nutricionista · Professora de Pós-Graduação" bg="linear-gradient(145deg,#D8D3CF,#BEB5B2)" ig="@jessicastein.nutri" photo="/team/jessica.webp" />
-    <ProfessionalCard name="Rafaela Teixeira" role="Secretária · Atendimento e Relacionamento" bg="linear-gradient(145deg,#D5D0CC,#BAB2AE)" photo="/team/rafaela.webp" />
-  </div>
-  <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:28px" class="r d3">
-    <a href="/profissionais/gustavo-gehrke" style="font-size:11px;font-weight:500;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none">ver perfil do Gustavo →</a>
-    <a href="/profissionais/jessica-stein" style="font-size:11px;font-weight:500;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none">ver perfil da Jessica →</a>
-  </div>
-</section>
-
-<!-- Carta dos Fundadores -->
-<section class="u-bg-warm" aria-label="Carta dos fundadores">
-  <div class="w">
-    <div class="lbl r u-mb-16">dos fundadores</div>
-    <h2 class="h2 r d1 u-mb-40">uma carta<br>para <em>você.</em></h2>
-    <div class="r d2" style="background:var(--color-cream);padding:clamp(32px,5vw,56px) clamp(28px,5vw,52px);max-width:720px;position:relative;overflow:hidden">
-      <svg style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:.08" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={5} x0={-20} y0={20} step={40} width={240} /></g></svg>
-      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px">Quando começamos a ecooa, prometemos uma coisa: ouvir antes de prescrever.</p>
-      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px">Cada pessoa que entra aqui traz uma história, e é essa história que guia o cuidado. Não acreditamos em protocolos genéricos. Acreditamos em pessoas.</p>
-      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:28px">Nosso compromisso é simples: que você saia daqui sentindo que foi visto, ouvido e cuidado de verdade.</p>
-      <p style="font-size:12px;font-weight:400;letter-spacing:.04em;color:var(--color-brand-text);position:relative;z-index:1">Gustavo e Jessica, sócios da ecooa</p>
-    </div>
-  </div>
-</section>
-
-<!-- No que acreditamos (valores para o paciente) -->
+<!-- No que acreditamos (promessas ao paciente, primeiro) -->
 <section class="u-bg-cream" aria-label="No que acreditamos">
   <div class="w">
     <div class="lbl r u-mb-16">para você</div>
@@ -119,7 +52,7 @@ const WA = WA_DEFAULT;
       <div class="r d2" style="background:var(--color-warm);padding:32px 28px">
         <p class="gc-tag-md">03</p>
         <p style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:var(--color-ink);line-height:1.35;margin-bottom:12px">Seu time conversa entre si</p>
-        <p class="body">Nossos profissionais compartilham informações sobre o seu caso. Médico, nutricionista, psicólogo, profissionais de estética e de reabilitação trabalham juntos, não isolados.</p>
+        <p class="body">Nossos profissionais compartilham informações sobre o seu caso. Médico, nutricionista, psicóloga, profissionais de estética e de reabilitação trabalham juntos, não isolados.</p>
       </div>
       <div class="r d3" style="background:var(--color-warm);padding:32px 28px">
         <p class="gc-tag-md">04</p>
@@ -129,6 +62,53 @@ const WA = WA_DEFAULT;
     </div>
   </div>
 </section>
+
+<!-- Carta dos Fundadores -->
+<section class="u-bg-warm" aria-label="Carta dos fundadores">
+  <div class="w">
+    <div class="lbl r u-mb-16">dos fundadores</div>
+    <h2 class="h2 r d1 u-mb-40">uma carta<br>para <em>você.</em></h2>
+    <div class="r d2" style="background:var(--color-cream);padding:clamp(32px,5vw,56px) clamp(28px,5vw,52px);max-width:720px;position:relative;overflow:hidden">
+      <svg style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:.08" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#C4BBB8" stroke-width="1"><WavePattern count={5} x0={-20} y0={20} step={40} width={240} /></g></svg>
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px">Quando começamos a ecooa, prometemos uma coisa: ouvir antes de prescrever.</p>
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px">Cada pessoa que entra aqui traz uma história, e é essa história que guia o cuidado. Não acreditamos em protocolos genéricos. Acreditamos em pessoas.</p>
+      <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:28px">Nosso compromisso é simples: que você saia daqui sentindo que foi visto, ouvido e cuidado de verdade.</p>
+      <p style="font-size:12px;font-weight:400;letter-spacing:.04em;color:var(--color-brand-text);position:relative;z-index:1">Gustavo e Jessica, sócios da ecooa</p>
+    </div>
+    <CtaBand label="começar pela primeira conversa" waText="Olá, li a carta dos fundadores e gostaria de começar meu cuidado na ecooa" intent="quem-somos-carta" badges={['respondemos em minutos']} />
+  </div>
+</section>
+
+<!-- Como a ecooa nasceu -->
+<section class="u-bg-warm" aria-label="Como a ecooa nasceu">
+  <div class="w">
+    <div class="g2 g2c">
+      <div>
+        <div class="lbl r">nossa origem</div>
+        <h2 class="h2 r d1 u-mt-15">Aqui você não precisa<br>repetir sua história<br><em>a cada consulta.</em></h2>
+      </div>
+      <div class="r d2">
+        <p class="body u-mb-16">A ecooa nasceu de uma pergunta simples: por que medicina, nutrição, estética e psicologia não conversam entre si?</p>
+        <p class="body u-mb-16">Em 2021, os sócios fundadores Gustavo Gehrke, médico, Jessica Stein, nutricionista, e Scheila Andrzejewski, médica, decidiram construir um espaço onde os profissionais trabalham juntos, e não em silos. Um lugar em que o paciente não precisa repetir sua história a cada consulta, porque a equipe já se conhece, já se comunica e já cuida de forma integrada.</p>
+        <p class="body u-mb-16">O nome veio dessa ideia: o cuidado que <em style="font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--color-brand-accent)">ecoa</em>. Um cuidado que não termina na porta do consultório e que se multiplica entre profissionais, entre áreas e entre pessoas.</p>
+        <p class="body">Hoje, sob a liderança de Gustavo e Jessica, a ecooa é uma clínica multidisciplinar em Moinhos de Vento, com mais de 30 profissionais. O princípio permanece o mesmo: saúde de verdade acontece quando há conexão entre as pessoas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Liderança -->
+<section style="background:var(--color-cream);padding:86px 60px" aria-label="Liderança">
+  <div class="lbl r u-mb-16">quem lidera</div>
+  <h2 class="h2 r d1 u-mb-12">Quem faz a ecooa<br><em>existir.</em></h2>
+  <p class="body r d2" style="max-width:480px;margin-bottom:44px">As pessoas por trás do ecossistema, com um mesmo compromisso: que você seja cuidada de verdade.</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:640px">
+    {gustavo && <GuiaCard name={gustavo.name} role="Médico · Fundador" photo={gustavo.photo} slug={gustavo.slug} personalTouch={gustavo.personalTouch} />}
+    {jessica && <GuiaCard name={jessica.name} role="Nutricionista · Fundadora" photo={jessica.photo} slug={jessica.slug} personalTouch={jessica.personalTouch} delay="d1" />}
+  </div>
+</section>
+
+<RespiroEditorial quote="Um lugar onde saúde, ciência e cuidado genuíno se encontram para transformar vidas." author="ecooa · manifesto" />
 
 <!-- Nosso Espaço -->
 <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Nosso espaço">
