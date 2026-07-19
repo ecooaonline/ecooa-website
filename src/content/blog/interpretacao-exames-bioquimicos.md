@@ -4,7 +4,7 @@ description: "Entenda a interpretação de exames bioquímicos além dos valores
 date: "2026-04-01"
 author: "Jessica Stein"
 category: "medicina"
-tags: ["exames bioquimicos", "hemograma interpretacao", "marcadores bioquimicos", "check-up laboratorial", "exames preventivos", "porto alegre"]
+tags: ["exames bioquímicos", "hemograma interpretação", "marcadores bioquímicos", "check-up laboratorial", "exames preventivos", "porto alegre"]
 image: "/clinic/med.webp"
 lastModified: "2026-04-15"
 ---

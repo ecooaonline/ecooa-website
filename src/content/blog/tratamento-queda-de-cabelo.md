@@ -51,7 +51,7 @@ Os fatores de crescimento liberados pelas plaquetas atuam estimulando a vascular
 
 O protocolo habitual envolve sessões mensais nos primeiros três a quatro meses, seguidas de sessões de manutenção a cada três ou seis meses. O PRP é especialmente útil como terapia complementar ao tratamento farmacológico, potencializando a resposta clínica.
 
-Na ecooa, o PRP capilar é realizado com protocolo padronizado e equipamento de centrifugação que garante a concentração adequada de plaquetas para eficácia terapêutica.
+Na ecooa, o PRP capilar é realizado com protocolo padronizado e equipamento de centrifugação que permite obter a concentração de plaquetas indicada para uso terapêutico.
 
 ## Terapia com laser de baixa intensidade
 

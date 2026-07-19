@@ -4,7 +4,7 @@ description: "Cansaço, ganho de peso, insônia e mudanças de humor podem ser s
 date: "2026-03-22"
 author: "Dr. Gustavo Gehrke"
 category: "medicina"
-tags: ["hormônios", "equilibrio hormonal", "tireoide", "testosterona", "menopausa", "porto alegre"]
+tags: ["hormônios", "equilíbrio hormonal", "tireoide", "testosterona", "menopausa", "porto alegre"]
 image: "/clinic/med.webp"
 lastModified: "2026-04-15"
 highlight: "O equilíbrio hormonal é dinâmico. Ele muda com a idade, com o estilo de vida e com fatores ambientais."
