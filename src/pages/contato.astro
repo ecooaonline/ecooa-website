@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroEditorial from '../components/HeroEditorial.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT, FORM_ACTION, PHONE, INSTAGRAM } from '../data/constants';
+import { WA_DEFAULT, FORM_ACTION, PHONE } from '../data/constants';
 
 const WA = WA_DEFAULT;
 ---
@@ -15,72 +16,79 @@ const WA = WA_DEFAULT;
   ogImage="/clinic/faxada-predio.webp"
   breadcrumbs={[{ name: 'Contato', url: '/contato' }]}
 >
-  <HeroEditorial
-    label="contato"
-    title="Fale com a<br /><em>ecooa.</em>"
-    sub="Estamos prontos para te ouvir, orientar e receber. O canal mais ágil é sempre o WhatsApp."
-    ctaHref={WA}
-    ctaLabel="falar pelo whatsapp"
-    ctaIntent="contato-hero"
-    secondaryHref="#form-contato"
-    secondaryLabel="prefere escrever?"
-    image="/clinic/faxada-predio.webp"
-    imageAlt="Fachada do edifício da ecooa na Rua Mariante, Moinhos de Vento"
-    imageCaption="rua mariante, 180 · moinhos de vento"
-  />
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-cream);min-height:42vh">
+    <svg
+      class="wsv u-op-26"
+      viewBox="0 0 1440 400"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="#cac7b8" stroke-width="1"
+        ><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl r">contato</div>
+      <h1 class="h1 r d1 u-mt-18">Fale com a<br /><em>ecooa.</em></h1>
+      <p class="body r d2" style="margin-top:16px;max-width:420px">
+        Estamos prontos para te ouvir, orientar e receber. O canal mais ágil é sempre o WhatsApp.
+      </p>
+    </div>
+  </div>
+
+  <Marquee />
 
   <!-- Canais de contato -->
-  <section
-    style="background:var(--color-warm);padding:96px var(--section-px)"
-    aria-label="Canais de contato"
-  >
-    <div style="max-width:1280px;margin:0 auto">
+  <section class="u-bg-warm" aria-label="Canais de contato">
+    <div class="w">
       <div class="g2">
         <div>
-          <div class="lbl r" style="margin-bottom:14px">fale conosco</div>
-          <h2 class="h2 r d1" style="margin-bottom:40px">
+          <div class="lbl r u-mb-16">fale conosco</div>
+          <h2 class="h2 r d1" style="margin-bottom:28px;font-size:clamp(26px,3vw,42px)">
             A conversa<br />começa <em>aqui.</em>
           </h2>
           <div class="r d2">
-            <div class="ci-ct" style="border-top:1px solid var(--color-stone)">
-              <p class="ci-cl">whatsapp · pacientes e visitantes</p>
+            <div class="ci-ct ci-ct-primary">
+              <p class="ci-cl">
+                WhatsApp · pacientes e visitantes <span class="ci-badge">mais rápido</span>
+              </p>
               <p class="ci-cv">{PHONE}</p>
-              <p class="ci-cs">Canal principal · Segunda a Sexta, 9h às 20h · Sábado a consultar</p>
+              <p class="ci-cs">Canal principal · Segunda a Sexta 9h–20h · Sábado a consultar</p>
               <a
                 href={WA}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="bd"
-                data-intent="contato-canal-whatsapp"
                 style="display:inline-block">abrir whatsapp</a
               >
             </div>
             <div class="ci-ct">
-              <p class="ci-cl">e-mail · administrativo e parcerias</p>
+              <p class="ci-cl">E-mail · administrativo e parcerias</p>
               <p class="ci-cv"><span class="eml" data-u="ecooa.adm" data-d="gmail.com"></span></p>
               <p class="ci-cs">Para parcerias, fornecedores e assuntos administrativos</p>
               <a
                 href="#form-contato"
-                class="ghost eml-link"
+                class="bo eml-link"
                 data-u="ecooa.adm"
                 data-d="gmail.com"
-                style="display:inline-flex">enviar e-mail <span aria-hidden="true">→</span></a
+                style="display:inline-block">enviar e-mail</a
               >
             </div>
             <div class="ci-ct">
-              <p class="ci-cl">instagram</p>
+              <p class="ci-cl">Instagram</p>
               <p class="ci-cv">@somos.ecooa</p>
               <p class="ci-cs">Acompanhe nossa comunidade e conteúdos</p>
               <a
-                href={INSTAGRAM}
+                href="https://instagram.com/somos.ecooa"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="ghost"
-                style="display:inline-flex">ver no instagram <span aria-hidden="true">→</span></a
+                style="margin-top:8px;display:inline-flex"
+                >ver no instagram <span aria-hidden="true">→</span></a
               >
             </div>
-            <div class="ci-ct">
-              <p class="ci-cl">para profissionais de saúde</p>
+            <div class="ci-ct" style="border-bottom:none">
+              <p class="ci-cl">Para profissionais de saúde</p>
               <p class="ci-cv">Quer atender na ecooa?</p>
               <p class="ci-cs">
                 Entre em contato pelo WhatsApp e nos fale sobre você e sua prática
@@ -90,7 +98,8 @@ const WA = WA_DEFAULT;
                 target="_blank"
                 rel="noopener noreferrer"
                 class="ghost"
-                style="display:inline-flex">falar pelo whatsapp <span aria-hidden="true">→</span></a
+                style="margin-top:8px;display:inline-flex"
+                >falar pelo whatsapp <span aria-hidden="true">→</span></a
               >
             </div>
           </div>
@@ -102,7 +111,7 @@ const WA = WA_DEFAULT;
 
   <!-- Formulário de contato -->
   <section
-    style="background:var(--color-cream);padding:96px var(--section-px)"
+    style="background:var(--color-cream);padding:86px 60px"
     aria-label="Formulário de contato"
   >
     <div style="max-width:500px;margin:0 auto">
@@ -113,7 +122,7 @@ const WA = WA_DEFAULT;
       >
         Prefere escrever?<br />Deixe sua <em>mensagem.</em>
       </h2>
-      <p class="body r d2" style="margin-bottom:36px;text-align:center">
+      <p class="body r d2" style="margin-bottom:32px;text-align:center">
         Responderemos em até 24 horas.
       </p>
 

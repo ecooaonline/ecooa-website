@@ -1,15 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import OptimizedImage from '../components/OptimizedImage.astro';
-import HeroEditorial from '../components/HeroEditorial.astro';
-import MaskedWordBand from '../components/MaskedWordBand.astro';
-import EspelhoSection from '../components/EspelhoSection.astro';
-import FaqVisivel from '../components/FaqVisivel.astro';
-import GuiaSection from '../components/GuiaSection.astro';
-import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
-import { WA_BASE } from '../data/constants';
-import { getCollection } from 'astro:content';
-
 const categoryLabels: { [key: string]: string } = {
   medicina: 'Medicina',
   estetica: 'Estética',
@@ -18,6 +7,20 @@ const categoryLabels: { [key: string]: string } = {
   longevidade: 'Longevidade',
   ecooa: 'ecooa',
 };
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
+import { WA_BASE } from '../data/constants';
+import { getCollection } from 'astro:content';
 
 const allMindPosts = await getCollection(
   'blog',
@@ -54,21 +57,6 @@ const mindFaqs = [
   },
 ];
 
-// Áreas de acolhimento consolidadas em lista editorial fina.
-const mindAreas = [
-  'Psicoterapia individual',
-  'Ansiedade e transtornos de humor',
-  'Burnout e estresse crônico',
-  'Saúde mental feminina e hormonal',
-  'Transtornos alimentares',
-  'Suporte psicológico em doenças crônicas',
-  'Psicologia esportiva',
-  'Protocolo Oxford de Emagrecimento',
-  'TDAH em adultos',
-  'Terapia de casal',
-  'Encaminhamento médico integrado, quando indicado',
-];
-
 const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma sessão de acolhimento na ecooa.mind')}`;
 ---
 
@@ -82,22 +70,26 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   <HeroEditorial
     label="ecooa.mind · saúde mental"
     title="Você não precisa<br />dar conta de tudo<br /><em>sozinho.</em>"
+    support="Pedir ajuda não é fraqueza. É o primeiro capítulo."
     sub="Psicologia presencial em Moinhos de Vento ou online, com agendamento ágil da sua sessão de acolhimento. Sem lista de espera, sem julgamento."
     ctaHref={WA_ACOLHIMENTO}
     ctaLabel="agendar sessão de acolhimento"
     ctaIntent="mind-hero"
-    secondaryHref="#como-funciona"
-    secondaryLabel="como funciona"
-    badges={['sigilo absoluto', 'primeira sessão sem compromisso']}
+    badges={['sigilo absoluto', 'primeira sessão sem compromisso', 'respondemos em minutos']}
     image="/clinic/mind.webp"
     imageAlt="Sala de terapia da ecooa.mind, ambiente acolhedor e seguro"
-    imageCaption="sala ecooa.mind · moinhos de vento"
+    imageCaption="sala ecooa.mind"
     vertical="cuidado que ecooa"
   />
 
-  <MaskedWordBand word="mente" image="/clinic/respire.webp" label="psicologia que ecooa" />
+  <Marquee />
 
-  <!-- Entrada por dor -->
+  <ProvaViva
+    items={['acolhimento sem lista de espera', 'presencial ou online', 'sigilo absoluto']}
+  />
+
+  <MaskedWordBand word="mente" image="/clinic/mind.webp" label="cuidado que ecooa" />
+
   <EspelhoSection
     label="você se reconhece?"
     items={[
@@ -139,99 +131,111 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     closing="Pedir ajuda não é fraqueza. É o primeiro capítulo."
   />
 
-  <!-- Abordagem: corpo e mente integrados -->
+  <!-- Empatia -->
   <section
-    style="background:var(--color-warm);padding:104px var(--section-px)"
-    aria-label="Nossa abordagem"
+    style="background:var(--color-cream);padding:64px var(--section-px)"
+    aria-label="Entendemos você"
   >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="g2 g2c">
-        <div>
-          <div class="lbl r">nossa abordagem</div>
-          <h2 class="h2 r d1" style="margin-top:15px">
-            Mente e corpo<br />não se <em>separam.</em>
-          </h2>
-          <p class="body r d2" style="margin-top:18px">
-            A ecooa.mind nasceu da compreensão de que saúde plena é impossível sem saúde mental.
-            Nossa equipe trabalha integrada ao restante do ecossistema ecooa: quando seu médico
-            percebe que o componente emocional influencia seus resultados, a conexão com a
-            ecooa.mind acontece de forma natural. Sem burocracia, sem recomeçar do zero. A equipe já
-            se conhece e você é o centro de tudo.
-          </p>
-          <p class="body r d3" style="margin-top:13px">
-            Do outro lado da porta, uma sala projetada para transmitir acolhimento, privacidade e
-            calma. O ambiente também faz parte do tratamento e precisa ecooar segurança.
-          </p>
-        </div>
-        <figure class="lux-frame r d2" style="margin:0">
-          <OptimizedImage
-            src="/clinic/respire.webp"
-            alt="Sala Respire da ecooa, com jardim vertical e luz natural"
-            width={900}
-            height={1200}
-            class="lux-frame-img"
-          />
-        </figure>
-      </div>
-      <div class="lbl r d3" style="margin-top:56px;margin-bottom:4px">áreas de acolhimento</div>
-      <div
-        class="r d3"
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));column-gap:40px;max-width:900px"
+    <div class="u-narrow">
+      <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">
+        Acordar sem energia mesmo tendo dormido. A ansiedade que aparece sem motivo aparente. A
+        sensação de viver no automático, sem espaço para o que importa. Você já tentou resolver por
+        conta própria, mas o esgotamento persiste.
+      </p>
+      <p
+        class="body r d1"
+        style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400"
       >
-        {
-          mindAreas.map((area) => (
-            <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);border-top:1px solid var(--color-stone);padding:11px 0;line-height:1.5">
-              {area}
-            </p>
-          ))
-        }
-      </div>
+        Pedir ajuda não é fraqueza. Na ecooa.mind, o primeiro passo é ser ouvido sem julgamento, no
+        seu ritmo.
+      </p>
     </div>
   </section>
 
-  <!-- Como funciona: pontuação escura -->
+  <!-- Foto do espaço -->
   <section
-    style="background:var(--color-ink);padding:104px var(--section-px)"
-    aria-label="Como funciona"
-    id="como-funciona"
+    style="background:var(--color-cream);padding:0;overflow:hidden"
+    aria-label="Nosso espaço"
   >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl lbl-lt r" style="margin-bottom:16px">sua jornada</div>
-      <h2 class="h2 h2-w r d1" style="margin-bottom:20px">Como <em>funciona.</em></h2>
-      <p class="body body-lt r d2" style="max-width:560px;margin-bottom:48px">
-        Três passos, no seu ritmo. Terapia não é mágica, é caminho, e ele começa com uma mensagem.
-      </p>
-      <div class="gehrke-tiers">
-        <div class="gehrke-tier r d1">
-          <div class="gehrke-tier-num">01</div>
-          <h3 class="gehrke-tier-name">Primeira conversa</h3>
-          <p class="gehrke-tier-desc">
-            Pelo WhatsApp, no seu ritmo. Pode ser por texto ou por áudio. Nossa equipe acolhe e
-            agenda, sem lista de espera.
+    <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+      <OptimizedImage
+        src="/clinic/mind.webp"
+        alt="Sala de terapia da ecooa.mind, ambiente acolhedor e seguro"
+        width={1200}
+        height={798}
+        class="u-cover"
+      />
+    </div>
+  </section>
+
+  <!-- Abordagem -->
+  <section class="u-bg-warm" aria-label="Nossa abordagem">
+    <div class="w">
+      <div class="g2 g2c">
+        <div>
+          <div class="lbl r">nossa abordagem</div>
+          <h2 class="h2 r d1 u-mt-15">Mente e corpo<br />não se <em>separam.</em></h2>
+          <p class="body r d2 u-mt-18">
+            A ecooa.mind nasceu da compreensão de que saúde plena é impossível sem saúde mental.
+            Nossa equipe trabalha integrada ao restante do ecossistema ecooa: quando seu médico
+            percebe que o componente emocional influencia seus resultados, a conexão com a
+            ecooa.mind acontece de forma natural.
+          </p>
+          <p class="body r d3 u-mt-13">
+            Sem burocracia, sem recomeçar do zero. A equipe já se conhece e você é o centro de tudo.
           </p>
         </div>
-        <div class="gehrke-tier r d2">
-          <div class="gehrke-tier-num">02</div>
-          <h3 class="gehrke-tier-name">Sessão de acolhimento</h3>
-          <p class="gehrke-tier-desc">
-            Agendada sem demora, um espaço seguro para a sua história ser ouvida. Você decide se
-            quer continuar.
-          </p>
-        </div>
-        <div class="gehrke-tier r d3">
-          <div class="gehrke-tier-num">03</div>
-          <h3 class="gehrke-tier-name">Acompanhamento contínuo</h3>
-          <p class="gehrke-tier-desc">
-            Sessões regulares, presenciais ou online, com objetivos combinados entre vocês.
-          </p>
+        <div class="r d2">
+          <div
+            style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)"
+          >
+            <div class="lbl u-mb-20">áreas de atuação</div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Psicoterapia individual</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Encaminhamento médico integrado, quando indicado</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Ansiedade e Transtornos de Humor</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Burnout e Estresse Crônico</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Saúde Mental Feminina e Hormonal</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Transtornos Alimentares</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Suporte Psicológico em Doenças Crônicas</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Psicologia Esportiva</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md"
+                >Protocolo Oxford de Emagrecimento</span
+              >
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">TDAH em adultos</span>
+            </div>
+            <div class="lr">
+              <span class="u-dot"></span><span class="body-md">Terapia de casal</span>
+            </div>
+          </div>
         </div>
       </div>
-      <p
-        class="r d3"
-        style="margin-top:40px;font-size:13px;font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.02em"
-      >
-        Primeira sessão sem compromisso. Você decide se quer continuar.
-      </p>
     </div>
   </section>
 
@@ -242,39 +246,115 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     max={3}
   />
 
-  <!-- Depoimentos -->
-  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+  <!-- Diferenciais -->
+  <section class="u-bg-cream" aria-label="Diferenciais ecooa.mind">
     <div class="w">
-      <div class="lbl r" style="margin-bottom:16px">depoimentos</div>
-      <h2 class="h2 r d1" style="margin-bottom:44px">
-        O que nossos pacientes<br /><em>dizem.</em>
-      </h2>
-      <div class="gr-grid r d2">
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Adiei muito tempo procurar ajuda. Na primeira sessão já senti acolhimento de verdade. O
-            ambiente é calmo e a escuta é genuína."
+      <div class="lbl r u-mb-16">um ambiente seguro</div>
+      <h2 class="h2 r d1 u-mb-40">Por que a <em>ecooa.mind</em><br />é diferente.</h2>
+      <div class="g3">
+        <div class="card-w">
+          <h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">
+            Integrado ao ecossistema
+          </h3><p class="it-d-lg">
+            Seu psicólogo já tem contexto sobre o seu cuidado clínico geral, sem que você precise
+            repetir sua história a cada profissional.
           </p>
-          <p class="gr-author">C. T.</p>
         </div>
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Minha psicóloga e meu médico conversam entre si sobre o meu caso. Isso fez o tratamento
-            render muito mais. Me senti cuidada de forma completa."
+        <div class="card-w">
+          <h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">
+            Ambiente pensado para você
+          </h3><p class="it-d-lg">
+            Nossa sala foi projetada para transmitir acolhimento, privacidade e calma. O ambiente
+            faz parte do tratamento e precisa ecooar segurança.
           </p>
-          <p class="gr-author">A. P.</p>
         </div>
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Cheguei esgotada, quase em burnout. O acompanhamento integrado de psicologia e medicina
-            me devolveu equilíbrio e qualidade de vida."
+        <div class="card-w">
+          <h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">
+            Sem lista de espera
+          </h3><p class="it-d-lg">
+            Agendamento ágil da sua sessão de acolhimento. Sabemos que quem busca ajuda não pode
+            esperar.
           </p>
-          <p class="gr-author">B. N.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FaqVisivel faqs={mindFaqs} heading="Dúvidas sobre a<br><em>ecooa.mind.</em>" />
+
+  <!-- Como funciona -->
+  <section class="u-bg-cream" aria-label="Como funciona" id="como-funciona">
+    <div class="w">
+      <div class="lbl r u-mb-16">sua jornada</div>
+      <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:800px;margin:0 auto"
+      >
+        <div class="r u-tac">
+          <span class="step-num">1</span>
+          <h3 class="it-t">Primeira conversa</h3>
+          <p class="it-d">
+            Pelo WhatsApp, no seu ritmo. Pode ser por texto ou por áudio. Nossa equipe acolhe e
+            agenda.
+          </p>
+        </div>
+        <div class="r d1 u-tac">
+          <span class="step-num">2</span>
+          <h3 class="it-t">Sessão de acolhimento</h3>
+          <p class="it-d">
+            Agendada sem demora, um espaço seguro para a sua história ser ouvida. Você decide se
+            quer continuar.
+          </p>
+        </div>
+        <div class="r d2 u-tac">
+          <span class="step-num">3</span>
+          <h3 class="it-t">Acompanhamento contínuo</h3>
+          <p class="it-d">
+            Sessões regulares, presenciais ou online, com objetivos combinados entre vocês. Terapia
+            não é mágica, é caminho.
+          </p>
         </div>
       </div>
       <p
         class="r d3"
-        style="margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+        style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em"
+      >
+        Primeira sessão sem compromisso. Você decide se quer continuar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "Adiei muito tempo procurar ajuda. Na primeira sessão já senti acolhimento de verdade. O
+            ambiente é calmo e a escuta é genuína."
+          </p>
+          <p class="sm-soft">C.T.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "Minha psicóloga e meu médico conversam entre si sobre o meu caso. Isso fez o tratamento
+            render muito mais. Me senti cuidada de forma completa."
+          </p>
+          <p class="sm-soft">A.P.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Cheguei esgotada, quase em burnout. O acompanhamento integrado de psicologia e medicina
+            me devolveu equilíbrio e qualidade de vida."
+          </p>
+          <p class="sm-soft">B.N.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
       >
         Depoimentos reais publicados com autorização dos pacientes.
       </p>
@@ -284,33 +364,28 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   <!-- Artigos relacionados -->
   {
     mindPosts.length > 0 && (
-      <section
-        style="background:var(--color-warm);padding:88px var(--section-px)"
-        aria-label="Artigos relacionados"
-      >
-        <div style="max-width:1280px;margin:0 auto">
-          <div class="lbl r" style="margin-bottom:36px">
-            do nosso blog
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px">
+      <section class="u-bg-warm" aria-label="Artigos relacionados">
+        <div class="w">
+          <div class="lbl r u-mb-16">do nosso blog</div>
+          <h2 class="h2 r d1 u-mb-44">
+            artigos <em>relacionados</em>
+          </h2>
+          <div class="grid-auto-260">
             {mindPosts.map((post, i) => (
               <a
                 href={`/blog/${post.id}`}
-                class={`r d${Math.min(i, 3)}`}
-                style="display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:30px 28px;background:var(--color-cream);border:1px solid var(--color-stone)"
+                class={`r d${i}`}
+                style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
-                <span style="font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">
+                <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
                   {categoryLabels[post.data.category] || post.data.category}
-                </span>
-                <span style="font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--color-ink);line-height:1.4;margin-bottom:12px">
+                </p>
+                <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}
-                </span>
-                <span
-                  class="ghost"
-                  style="margin-top:auto;font-size:11px;color:var(--color-brand-text)"
-                >
-                  ler artigo <span aria-hidden="true">→</span>
-                </span>
+                </h3>
+                <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">
+                  {post.data.description}
+                </p>
               </a>
             ))}
           </div>
@@ -318,8 +393,6 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       </section>
     )
   }
-
-  <FaqVisivel faqs={mindFaqs} heading="Dúvidas sobre a<br><em>ecooa.mind.</em>" />
 
   <PrimeiroPassoCTA
     heading="O primeiro passo pode ser<br>uma mensagem de <em>uma linha.</em>"

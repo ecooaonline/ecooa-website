@@ -9,15 +9,19 @@ const categoryLabels: { [key: string]: string } = {
 };
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
 import HeroEditorial from '../components/HeroEditorial.astro';
 import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import TranslateNote from '../components/TranslateNote.astro';
+import CtaBand from '../components/CtaBand.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
 import GuiaSection from '../components/GuiaSection.astro';
 import DisclaimerMedico from '../components/DisclaimerMedico.astro';
-import CtaSection from '../components/CtaSection.astro';
 import { WA_BASE, WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
@@ -59,33 +63,6 @@ const estheticFaqs = [
 ];
 
 const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de avaliar um transplante capilar na ecooa')}`;
-
-const procedimentos = [
-  {
-    title: 'tricologia clínica',
-    desc: 'Diagnóstico completo da saúde dos fios e do couro cabeludo, com tratamentos específicos por causa: hormonal, nutricional, inflamatória ou genética. Avaliamos, prescrevemos e acompanhamos.',
-  },
-  {
-    title: 'rejuvenescimento facial',
-    desc: 'Toxina botulínica, preenchimento com ácido hialurônico, bioremodeladores e bioestimuladores de colágeno. Sempre com resultado harmonioso, natural e com muito bom gosto.',
-  },
-  {
-    title: 'prp e soroterapia',
-    desc: 'Plasma rico em plaquetas e ativos específicos via microinjeção ou soroterapia para cabelos, pele e imunidade. Renovação celular com base em evidências clínicas sólidas.',
-  },
-  {
-    title: 'peeling e renovação da pele',
-    desc: 'Peeling químico, enzimático e físico para renovação celular, manchas, textura e luminosidade. Com indicação personalizada e abordagem clínica.',
-  },
-  {
-    title: 'mesoterapia e injetáveis corporais',
-    desc: 'Coquetéis de ativos e bioestimuladores para hidratação profunda, gordura localizada, celulite, firmeza e modelagem corporal, com estímulo à produção natural de colágeno e elastina.',
-  },
-  {
-    title: 'osteopatia',
-    desc: 'Avaliação e tratamento osteopático para adultos, crianças e bebês. Abordagem manual para dores crônicas, restrições posturais e equilíbrio do sistema nervoso, postural e visceral.',
-  },
-];
 ---
 
 <BaseLayout
@@ -103,13 +80,21 @@ const procedimentos = [
     ctaHref={WA}
     ctaLabel="contar o que me incomoda"
     ctaIntent="esthetic-hero"
-    secondaryHref="#transplante-capilar"
-    secondaryLabel="transplante capilar FUE Safira"
     badges={['respondemos em minutos', 'retorno incluído em todos os procedimentos']}
     image="/clinic/esthetic.webp"
     imageAlt="Sala de procedimentos estéticos da ecooa.esthetic"
-    imageCaption="sala esthetic · moinhos de vento"
+    imageCaption="estética que ecooa"
     vertical="pele · rosto · cabelo · corpo"
+  />
+
+  <Marquee />
+
+  <ProvaViva
+    items={[
+      'tricologia clínica e transplante FUE Safira',
+      'retorno incluído em todos os procedimentos',
+      'desde 2021',
+    ]}
   />
 
   <MaskedWordBand word="pele" image="/clinic/esthetic.webp" label="estética que ecooa" />
@@ -153,32 +138,75 @@ const procedimentos = [
     closing="Cada uma dessas frases tem um caminho. A avaliação diz qual é o seu."
   />
 
-  <!-- Transplante capilar: pontuação escura -->
+  <!-- Empatia -->
   <section
-    style="background:var(--color-ink);padding:104px var(--section-px)"
+    style="background:var(--color-cream);padding:64px var(--section-px)"
+    aria-label="Entendemos você"
+  >
+    <div class="u-narrow">
+      <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">
+        Você olha no espelho e algo incomoda. Pode ser a queda de cabelo que ninguém leva a sério,
+        as linhas que apareceram cedo demais, ou a insegurança que nenhum produto cosmético resolve.
+        Você quer cuidar de si, mas com segurança e sem exageros.
+      </p>
+      <p
+        class="body r d1"
+        style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400"
+      >
+        Na ecooa.esthetic, cada procedimento é indicado com base na sua anatomia, na sua expectativa
+        e no que valoriza quem você realmente é.
+      </p>
+      <CtaBand
+        label="contar o que me incomoda"
+        waText="Olá, algo está me incomodando quando me olho no espelho e gostaria de uma avaliação"
+        intent="esthetic-empatia"
+        badges={['sem compromisso', 'respondemos em minutos']}
+      />
+    </div>
+  </section>
+
+  <!-- Foto do espaço -->
+  <section
+    style="background:var(--color-cream);padding:0;overflow:hidden"
+    aria-label="Nosso espaço"
+  >
+    <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+      <OptimizedImage
+        src="/clinic/esthetic.webp"
+        alt="Sala de procedimentos estéticos da ecooa.esthetic"
+        width={1200}
+        height={799}
+        class="u-cover"
+      />
+    </div>
+  </section>
+
+  <!-- Transplante Capilar: destaque -->
+  <section
+    style="background:var(--color-ink);padding:86px 60px"
     aria-label="Transplante capilar"
     id="transplante-capilar"
   >
-    <div style="max-width:1280px;margin:0 auto">
+    <div class="w">
       <div class="g2 g2c">
         <div>
           <div class="lbl lbl-lt r">referência em porto alegre</div>
-          <h2 class="h2 h2-w r d1" style="margin-top:15px">
+          <h2 class="h2 h2-w r d1 u-mt-15">
             Transplante capilar<br />fio a fio, com<br /><em>resultado natural.</em>
           </h2>
-          <p class="body body-lt r d2" style="max-width:480px;margin-top:18px">
+          <p class="body body-lt r d2 u-mt-18">
             Técnica FUE e FUE Safira para restauração capilar, reconstrução de barba e definição de
             sobrancelhas, para homens e mulheres. Cada caso começa com uma avaliação tricológica
             completa: quando o tratamento clínico resolve, a gente diz. Quando o transplante é o
             caminho, você sabe exatamente o que esperar.
           </p>
-          <div class="r d3" style="margin-top:16px;max-width:480px">
+          <div class="r d3 u-mt-16">
             <TranslateNote
               light={true}
               text="FUE Safira é a extração fio a fio com lâminas de safira: incisões menores, mais precisão e cicatrização mais rápida."
             />
           </div>
-          <div class="r d3" style="margin-top:32px">
+          <div class="r d3" style="margin-top:28px">
             <a
               href={WA_TRANSPLANTE}
               target="_blank"
@@ -235,41 +263,84 @@ const procedimentos = [
     </div>
   </section>
 
-  <!-- Procedimentos: lista editorial -->
-  <section
-    style="background:var(--color-warm);padding:96px var(--section-px)"
-    aria-label="Procedimentos"
-    id="procedimentos"
-  >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl r" style="margin-bottom:14px">o que oferecemos</div>
-      <h2 class="h2 r d1" style="margin-bottom:56px">
-        Procedimentos que<br />cuidam e <em>revelam.</em>
-      </h2>
+  <!-- Procedimentos -->
+  <section class="u-bg-warm" aria-label="Procedimentos" id="procedimentos">
+    <div class="w">
+      <div class="lbl r u-mb-16">o que oferecemos</div>
+      <h2 class="h2 r d1 u-mb-44">Procedimentos que<br />cuidam e <em>revelam.</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:44px 40px;max-width:1180px"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
       >
-        {
-          procedimentos.map((p, i) => (
-            <div
-              class={`r d${Math.min(i, 3)}`}
-              style="border-top:1px solid var(--color-brand-mid);padding-top:20px"
-            >
-              <p style="font-size:10px;font-weight:500;letter-spacing:.18em;color:var(--color-brand-text);margin-bottom:10px">
-                {String(i + 1).padStart(2, '0')}
-              </p>
-              <h3 style="font-family:var(--font-serif);font-style:italic;font-size:23px;font-weight:400;color:var(--color-ink);margin-bottom:10px">
-                {p.title}
-              </h3>
-              <p class="it-d-lg">{p.desc}</p>
-            </div>
-          ))
-        }
+        <div class="gc">
+          <p class="gc-tag">01</p><h3 class="it-t">
+            Transplante Capilar, de Barba e Sobrancelha
+          </h3><p class="it-d-lg">
+            Referência em Porto Alegre. Técnica FUE e FUE Safira para restauração capilar,
+            reconstrução de barba e definição de sobrancelhas. Resultado natural e permanente para
+            homens e mulheres.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">02</p><h3 class="it-t">Tricologia Clínica</h3><p class="it-d-lg">
+            Diagnóstico completo da saúde dos fios e do couro cabeludo, com tratamentos específicos
+            por causa: hormonal, nutricional, inflamatória ou genética. Avaliamos, prescrevemos e
+            acompanhamos.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">03</p><h3 class="it-t">Rejuvenescimento Facial</h3><p class="it-d-lg">
+            Toxina botulínica, preenchimento com ácido hialurônico, bioremodeladores e
+            bioestimuladores de colágeno. O objetivo é sempre um resultado harmonioso, natural e com
+            muito bom gosto.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">04</p><h3 class="it-t">PRP Capilar e Facial</h3><p class="it-d-lg">
+            Plasma rico em plaquetas para estimular renovação celular, crescimento capilar e
+            rejuvenescimento facial com base em evidências clínicas sólidas.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">05</p><h3 class="it-t">Soroterapia Capilar e Vitamínica</h3><p
+            class="it-d-lg"
+          >
+            Ativos específicos via microinjeção ou soroterapia para cabelos, pele e imunidade.
+            Rápidos, eficazes e com alta tolerabilidade.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">06</p><h3 class="it-t">Mesoterapia Facial e Corporal</h3><p
+            class="it-d-lg"
+          >
+            Aplicação de coquetéis de ativos para hidratação profunda, gordura localizada, celulite
+            e firmeza. Mínima invasão, excelente resultado.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">07</p><h3 class="it-t">Peeling e Renovação da Pele</h3><p
+            class="it-d-lg"
+          >
+            Peeling químico, enzimático e físico para renovação celular, manchas, textura e
+            luminosidade. Com indicação personalizada e abordagem clínica.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">08</p><h3 class="it-t">Injetáveis Corporais e Bioestimuladores</h3><p
+            class="it-d-lg"
+          >
+            Firmeza, modelagem e rejuvenescimento corporal com estímulo à produção natural de
+            colágeno e elastina.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">09</p><h3 class="it-t">Osteopatia</h3><p class="it-d-lg">
+            Avaliação e tratamento osteopático para adultos, crianças e bebês. Abordagem manual que
+            identifica e corrige restrições musculoesqueléticas, favorecendo o equilíbrio do sistema
+            nervoso, postural e visceral. Indicada para dores crônicas, cólicas, problemas posturais
+            e muito mais.
+          </p>
+        </div>
       </div>
-      <p class="body r d3" style="margin-top:52px;color:var(--color-ink-soft);max-width:520px">
-        Avaliação sincera e retorno incluído em todos os procedimentos. Se algo não for para você, a
-        gente diz.
-      </p>
     </div>
   </section>
 
@@ -281,67 +352,137 @@ const procedimentos = [
 
   <!-- Filosofia -->
   <section
-    style="background:var(--color-cream);padding:104px var(--section-px)"
+    style="background:var(--color-brand-light);padding:86px 60px;position:relative;overflow:hidden"
     aria-label="Nossa filosofia"
   >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="g2 g2c" style="align-items:center;gap:clamp(40px,6vw,96px)">
-        <div>
-          <div class="lbl r" style="margin-bottom:18px">nossa filosofia</div>
-          <h2 class="h2 r d1" style="margin-bottom:20px">
-            "Estética com ciência.<br />Resultados que <em>respeitam quem você é.</em>"
-          </h2>
-          <p class="body r d2" style="max-width:480px">
-            Nossos procedimentos são indicados com base na sua anatomia, na sua expectativa e na sua
-            saúde. Nunca pelo modismo, sempre pelo que valoriza quem você realmente é.
-          </p>
-        </div>
-        <figure class="lux-frame r d2" style="margin:0;max-width:440px;justify-self:end">
-          <OptimizedImage
-            src="/clinic/detalhes.webp"
-            alt="Detalhes do espaço ecooa"
-            width={945}
-            height={792}
-            class="lux-frame-img"
-          />
-        </figure>
+    <svg
+      class="wsv"
+      style="opacity:.13"
+      viewBox="0 0 1440 400"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="#9b9889" stroke-width="1"
+        ><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div style="position:relative;z-index:2;max-width:620px">
+      <div class="lbl r u-mb-18">nossa filosofia</div>
+      <h2 class="h2 r d1" style="margin-bottom:20px">
+        "Estética com ciência.<br />Resultados que <em>respeitam quem você é.</em>"
+      </h2>
+      <p
+        style="font-size:14px;font-weight:300;line-height:1.9;color:var(--color-ink-soft)"
+        class="r d2"
+      >
+        Nossos procedimentos são indicados com base na sua anatomia, expectativa e saúde. Nunca pelo
+        modismo, sempre pelo que valoriza você de verdade.
+      </p>
+    </div>
+  </section>
+
+  <!-- Nosso Espaço -->
+  <section
+    style="background:var(--color-warm);padding:0;overflow:hidden"
+    aria-label="Espaço ecooa.esthetic"
+  >
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px">
+      <div class="u-img-169 r">
+        <OptimizedImage
+          src="/clinic/recepcao.webp"
+          alt="Recepção da ecooa"
+          width={1000}
+          height={1233}
+          class="u-cover"
+        />
+      </div>
+      <div class="u-img-169 r d1">
+        <OptimizedImage
+          src="/clinic/detalhes.webp"
+          alt="Detalhes do espaço ecooa"
+          width={945}
+          height={792}
+          class="u-cover"
+        />
       </div>
     </div>
   </section>
 
-  <!-- Depoimentos -->
-  <section
-    style="background:var(--color-warm);padding:88px var(--section-px)"
-    aria-label="Depoimentos de pacientes"
-  >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl r" style="margin-bottom:36px">depoimentos</div>
-      <div class="gr-grid r d1">
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Fiz o transplante e o resultado ficou tão natural que meus amigos acharam que eu só
-            tinha mudado o corte de cabelo. Exatamente o que eu queria."
+  <FaqVisivel faqs={estheticFaqs} heading="Dúvidas sobre a<br><em>ecooa.esthetic.</em>" />
+
+  <!-- Como funciona -->
+  <section class="u-bg-cream" aria-label="Como funciona">
+    <div class="w">
+      <div class="lbl r u-mb-16">sua jornada</div>
+      <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:960px;margin:0 auto"
+      >
+        <div class="r u-tac">
+          <span class="step-num">1</span>
+          <h3 class="it-t">Agendamento</h3>
+          <p class="it-d">
+            Fale com a gente pelo WhatsApp. Respondemos rápido e marcamos no melhor horário para
+            você.
           </p>
-          <p class="gr-author">E. C.</p>
         </div>
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Tinha medo de ficar com aparência artificial. O resultado foi sutil e bonito. Me senti
-            eu mesma, só que mais descansada e confiante."
+        <div class="r d1 u-tac">
+          <span class="step-num">2</span>
+          <h3 class="it-t">Avaliação personalizada</h3>
+          <p class="it-d">
+            Análise da sua anatomia, expectativas e indicação dos procedimentos mais adequados.
           </p>
-          <p class="gr-author">J. R.</p>
         </div>
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Desde a recepção até o procedimento, tudo impecável. O espaço é lindo e a equipe
-            transmite segurança. Voltei para fazer bioestimulador e amei."
-          </p>
-          <p class="gr-author">T. F.</p>
+        <div class="r d2 u-tac">
+          <span class="step-num">3</span>
+          <h3 class="it-t">Procedimento</h3>
+          <p class="it-d">Realizado com técnica refinada, segurança e foco em resultado natural.</p>
+        </div>
+        <div class="r d3 u-tac">
+          <span class="step-num">4</span>
+          <h3 class="it-t">Acompanhamento</h3>
+          <p class="it-d">Retorno incluído para avaliar o resultado e garantir sua satisfação.</p>
         </div>
       </div>
       <p
-        class="r d2"
-        style="margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+        class="r d3"
+        style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em"
+      >
+        Avaliação sincera e retorno incluído. Se um procedimento não for para você, a gente diz.
+      </p>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "Fiz o transplante e o resultado ficou tão natural que meus amigos acharam que eu só
+            tinha mudado o corte de cabelo. Exatamente o que eu queria."
+          </p>
+          <p class="sm-soft">E. C.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "Tinha medo de ficar com aparência artificial. O resultado foi sutil e bonito. Me senti
+            eu mesma, só que mais descansada e confiante."
+          </p>
+          <p class="sm-soft">J. R.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Desde a recepção até o procedimento, tudo impecável. O espaço é lindo e a equipe
+            transmite segurança. Voltei para fazer bioestimulador e amei."
+          </p>
+          <p class="sm-soft">T. F.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
       >
         Depoimentos reais publicados com autorização dos pacientes.
       </p>
@@ -351,33 +492,28 @@ const procedimentos = [
   <!-- Artigos relacionados -->
   {
     estheticPosts.length > 0 && (
-      <section
-        style="background:var(--color-warm);padding:24px var(--section-px) 88px"
-        aria-label="Artigos relacionados"
-      >
-        <div style="max-width:1280px;margin:0 auto">
-          <div class="lbl r" style="margin-bottom:36px">
-            do nosso blog
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px">
+      <section class="u-bg-warm" aria-label="Artigos relacionados">
+        <div class="w">
+          <div class="lbl r u-mb-16">do nosso blog</div>
+          <h2 class="h2 r d1 u-mb-44">
+            artigos <em>relacionados</em>
+          </h2>
+          <div class="grid-auto-260">
             {estheticPosts.map((post, i) => (
               <a
                 href={`/blog/${post.id}`}
-                class={`r d${Math.min(i, 3)}`}
-                style="display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:30px 28px;background:var(--color-cream);border:1px solid var(--color-stone)"
+                class={`r d${i}`}
+                style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
-                <span style="font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">
+                <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
                   {categoryLabels[post.data.category] || post.data.category}
-                </span>
-                <span style="font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--color-ink);line-height:1.4;margin-bottom:12px">
+                </p>
+                <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}
-                </span>
-                <span
-                  class="ghost"
-                  style="margin-top:auto;font-size:11px;color:var(--color-brand-text)"
-                >
-                  ler artigo <span aria-hidden="true">→</span>
-                </span>
+                </h3>
+                <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">
+                  {post.data.description}
+                </p>
               </a>
             ))}
           </div>
@@ -386,14 +522,20 @@ const procedimentos = [
     )
   }
 
-  <FaqVisivel faqs={estheticFaqs} heading="Dúvidas sobre a<br><em>ecooa.esthetic.</em>" />
-
   <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 8px">
     <DisclaimerMedico />
   </section>
 
-  <CtaSection
+  <PrimeiroPassoCTA
     heading="Seu espelho pode voltar<br>a ser <em>um lugar bom.</em>"
-    subtext="Conte o que te incomoda. A avaliação é sincera: se um procedimento não for para você, a gente diz. Estamos em Moinhos de Vento."
+    subtext="Conte o que te incomoda. A avaliação é sincera: se um procedimento não for para você, a gente diz."
+    waText="Olá, algo está me incomodando quando me olho no espelho e gostaria de uma avaliação"
+    label="contar o que me incomoda"
+    intent="esthetic-primeiro-passo"
+    badges={[
+      'sem compromisso',
+      'retorno incluído em todos os procedimentos',
+      'respondemos em minutos',
+    ]}
   />
 </BaseLayout>

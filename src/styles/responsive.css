@@ -21,7 +21,7 @@
   z-index: 250;
   width: 100vw;
   height: 100vh;
-  background: var(--color-warm);
+  background: rgba(240, 238, 233, 0.99);
   backdrop-filter: blur(20px);
   flex-direction: column;
   align-items: center;
@@ -56,18 +56,6 @@
 .nav-links a {
   font-size: 16px;
   color: var(--color-ink);
-}
-@media (max-width: 1023px) {
-  .ghost {
-    padding-block: 10px;
-  }
-  .nav-only-mobile {
-    display: block;
-  }
-  .nav-only-mobile a {
-    font-size: 13px;
-    color: var(--color-brand-text);
-  }
 }
 .nav-cta {
   display: none;
