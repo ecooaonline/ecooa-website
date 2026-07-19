@@ -307,6 +307,7 @@
    recolorido para a paleta ecooa (ink/cream/taupe). Texto fica acima da
    textura (camada de fundo) — contraste AA preservado. */
 .bd {
+  white-space: nowrap;
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
@@ -351,6 +352,7 @@
 }
 
 .bo {
+  white-space: nowrap;
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
@@ -379,6 +381,7 @@
 }
 
 .bw {
+  white-space: nowrap;
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
@@ -421,6 +424,7 @@
 }
 
 .bow {
+  white-space: nowrap;
   display: inline-block;
   font-size: 11px;
   font-weight: 500;
@@ -1931,7 +1935,7 @@
   margin-bottom: 8px;
 }
 .faq-a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.8;
   color: var(--color-ink-soft);
@@ -1939,6 +1943,22 @@
 .faq-item summary {
   cursor: pointer;
   list-style: none;
+  position: relative;
+  padding-right: 32px;
+}
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 2px;
+  top: 0;
+  font-size: 19px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--color-brand-text);
+  transition: transform var(--transition-base) var(--ease-out);
+}
+.faq-item[open] summary::after {
+  content: '−';
 }
 .faq-item summary::marker {
   display: none;

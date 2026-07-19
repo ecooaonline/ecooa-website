@@ -194,6 +194,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
           </p>
           <div class="r d3 u-mt-16">
             <TranslateNote
+              light={true}
               text="FUE Safira é a extração fio a fio com lâminas de safira: incisões menores, mais precisão e cicatrização mais rápida."
             />
           </div>
@@ -513,8 +514,8 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     )
   }
 
-  <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 0">
-    <div class="w"><DisclaimerMedico /></div>
+  <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 8px">
+    <DisclaimerMedico />
   </section>
 
   <PrimeiroPassoCTA
