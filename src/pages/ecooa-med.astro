@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import ProtocoloCard from '../components/ProtocoloCard.astro';
@@ -160,6 +161,8 @@ const medPosts = allMedPosts
       '30+ profissionais que dividem o seu caso',
     ]}
   />
+
+  <MaskedWordBand word="vida" image="/clinic/med.webp" label="medicina que ecooa" />
 
   <script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
 

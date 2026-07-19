@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import TranslateNote from '../components/TranslateNote.astro';
@@ -121,6 +122,8 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       'desde 2021',
     ]}
   />
+
+  <MaskedWordBand word="pele" image="/clinic/esthetic.webp" label="estética que ecooa" />
 
   <EspelhoSection
     label="o que te incomoda quando você se olha?"

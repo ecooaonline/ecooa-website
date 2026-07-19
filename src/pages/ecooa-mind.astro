@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
@@ -102,6 +103,8 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   <ProvaViva
     items={['acolhimento sem lista de espera', 'presencial ou online', 'sigilo absoluto']}
   />
+
+  <MaskedWordBand word="mente" image="/clinic/mind.webp" label="cuidado que ecooa" />
 
   <EspelhoSection
     label="você se reconhece?"

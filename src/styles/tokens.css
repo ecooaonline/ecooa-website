@@ -3,27 +3,31 @@
    ══════════════════════════════════════════════ */
 
 :root {
-  /* Colors, Brand */
-  --color-brand: #c4bbb8;
-  --color-brand-light: #ddd8d5;
-  --color-brand-mid: #aea5a2;
-  --color-brand-deep: #918886;
-  --color-brand-text: #706662; /* AA ≥ 4.5:1 on warm, cream, and mist backgrounds */
-  --color-brand-accent: #8d8381; /* AA ≥ 3:1 on warm and cream for large text */
+  /* Colors, Brand — Quiet Luxury (Pantone 2026 Cloud Dancer) */
+  --color-brand: #d4c9b0; /* warm stone */
+  --color-brand-light: #e8e0d0; /* champagne */
+  --color-brand-mid: #c4a882; /* aged ivory */
+  --color-brand-deep: #9e7b56; /* smoked caramel */
+  --color-brand-text: #7a5c3e; /* AA >= 5.2:1 sobre cloud, bone e mist */
+  --color-brand-accent: #9e7b56; /* AA >= 3.3:1 para texto grande */
+
+  /* Colors, Gold (estrelas, filetes, detalhes finos) */
+  --color-gold: #c4a882; /* AA 7.9:1 sobre noir */
+  --color-gold-deep: #9e7b56;
 
   /* Colors, Neutral */
   --color-white: #ffffff;
-  --color-warm: #faf8f6;
-  --color-cream: #f3eeea;
-  --color-stone: #e5ddd8;
-  --color-mist: #ede8e4;
+  --color-warm: #f0eee9; /* CLOUD DANCER 11-4201 — cor oficial da marca */
+  --color-cream: #edeae4; /* bone */
+  --color-stone: #dcd6c9; /* warm plaster (bordas) */
+  --color-mist: #e8e3da;
 
-  /* Colors, Ink */
-  --color-ink: #1c1917;
-  --color-ink-mid: #3d3835;
-  --color-ink-soft: #6b6360;
-  --color-ink-ghost: #6e6865; /* WCAG AA ≥ 4.5:1 on all light backgrounds */
-  --color-black: #100e0d;
+  /* Colors, Ink (preto aquecido, mesmas funções) */
+  --color-ink: #1a1613;
+  --color-ink-mid: #35302b;
+  --color-ink-soft: #635b53; /* AA 5.7:1 sobre cloud */
+  --color-ink-ghost: #655d55; /* AA >= 5.3:1 sobre todos os fundos claros */
+  --color-black: #12100d;
 
   /* Typography */
   --font-primary: 'Arboria', system-ui, sans-serif;
@@ -58,7 +62,7 @@
      light = linhas claras (para superfícies escuras: .bd);
      ink   = linhas escuras (para superfícies claras: .bw). */
   --texture-topo-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='1' stroke-opacity='.5'%3E%3Cpath d='M-20 150 C60 120 110 100 170 96 C230 92 280 110 340 92'/%3E%3Cpath d='M-20 130 C60 102 115 84 175 80 C235 76 285 92 340 74'/%3E%3Cpath d='M-20 110 C60 84 120 68 180 64 C240 60 290 74 340 56'/%3E%3Cpath d='M-20 90 C60 66 125 52 185 48 C245 44 295 56 340 38'/%3E%3Cpath d='M-20 70 C60 48 130 36 190 32 C250 28 300 38 340 20'/%3E%3Cpath d='M-20 50 C60 30 135 20 195 16 C255 12 305 20 340 2'/%3E%3Cpath d='M-20 30 C60 12 140 4 200 0 C260 -4 310 2 340 -16'/%3E%3C/g%3E%3C/svg%3E");
-  --texture-topo-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Cg fill='none' stroke='%231c1917' stroke-width='1' stroke-opacity='.45'%3E%3Cpath d='M-20 150 C60 120 110 100 170 96 C230 92 280 110 340 92'/%3E%3Cpath d='M-20 130 C60 102 115 84 175 80 C235 76 285 92 340 74'/%3E%3Cpath d='M-20 110 C60 84 120 68 180 64 C240 60 290 74 340 56'/%3E%3Cpath d='M-20 90 C60 66 125 52 185 48 C245 44 295 56 340 38'/%3E%3Cpath d='M-20 70 C60 48 130 36 190 32 C250 28 300 38 340 20'/%3E%3Cpath d='M-20 50 C60 30 135 20 195 16 C255 12 305 20 340 2'/%3E%3Cpath d='M-20 30 C60 12 140 4 200 0 C260 -4 310 2 340 -16'/%3E%3C/g%3E%3C/svg%3E");
+  --texture-topo-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='180' viewBox='0 0 320 180'%3E%3Cg fill='none' stroke='%231a1613' stroke-width='1' stroke-opacity='.45'%3E%3Cpath d='M-20 150 C60 120 110 100 170 96 C230 92 280 110 340 92'/%3E%3Cpath d='M-20 130 C60 102 115 84 175 80 C235 76 285 92 340 74'/%3E%3Cpath d='M-20 110 C60 84 120 68 180 64 C240 60 290 74 340 56'/%3E%3Cpath d='M-20 90 C60 66 125 52 185 48 C245 44 295 56 340 38'/%3E%3Cpath d='M-20 70 C60 48 130 36 190 32 C250 28 300 38 340 20'/%3E%3Cpath d='M-20 50 C60 30 135 20 195 16 C255 12 305 20 340 2'/%3E%3Cpath d='M-20 30 C60 12 140 4 200 0 C260 -4 310 2 340 -16'/%3E%3C/g%3E%3C/svg%3E");
 
   /* Fundo ambiente "dunas" — linhas de contorno topográficas full-bleed,
      usadas na camada global body::before (baixa opacidade). ~3KB inline. */
@@ -70,9 +74,9 @@
   --radius-full: 50%;
 
   /* Shadows (escala sóbria, alinhada ao tom premium) */
-  --shadow-sm: 0 4px 12px rgba(28, 25, 23, 0.04);
-  --shadow-md: 0 18px 36px rgba(28, 25, 23, 0.06);
-  --shadow-lg: 0 24px 48px rgba(28, 25, 23, 0.1);
+  --shadow-sm: 0 4px 12px rgba(26, 22, 19, 0.04);
+  --shadow-md: 0 18px 36px rgba(26, 22, 19, 0.06);
+  --shadow-lg: 0 24px 48px rgba(26, 22, 19, 0.1);
 
   /* Z-index (escala formal; substitui números mágicos) */
   --z-base: 1;

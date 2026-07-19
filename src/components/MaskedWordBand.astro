@@ -1,0 +1,33 @@
+---
+// Assinatura editorial do rebrand: palavra gigante em serif preenchida com
+// fotografia real da clínica (background-clip: text). CSS puro, zero JS.
+interface Props {
+  word: string;
+  image: string;
+  label?: string;
+}
+
+const { word, image, label } = Astro.props;
+---
+
+<section
+  aria-label={`${word} · ecooa`}
+  style="background:var(--color-warm);padding:64px var(--section-px) 56px;text-align:center;overflow:hidden"
+>
+  {
+    label && (
+      <div class="lbl r" style="justify-content:center;margin-bottom:6px">
+        {label}
+      </div>
+    )
+  }
+  <p class="masked-word r d1" style={`background-image:url('${image}')`} aria-hidden="true">
+    {word}
+  </p>
+  <div
+    class="r d2"
+    style="width:56px;height:1px;background:var(--color-gold);margin:26px auto 0"
+    aria-hidden="true"
+  >
+  </div>
+</section>

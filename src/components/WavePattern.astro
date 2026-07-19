@@ -9,13 +9,16 @@ interface Props {
 
 const { count = 8, x0 = -100, y0 = 80, step = 55, width = 1600 } = Astro.props;
 
+// Ondas refinadas (rebrand 2026): amplitude mais baixa, curvas contínuas sem
+// deslocamento abrupto e traço fino fixo. Leem como linhas de horizonte, não
+// como grafismo pesado.
 function generateWaves(n: number, x0: number, y0: number, step: number, w: number): string {
   let s = '';
   for (let i = 0; i < n; i++) {
     const y = y0 + i * step;
-    const c = y - 36;
-    const c2 = y + 36;
-    s += `<path d="M${x0},${y} C${w * 0.2},${c} ${w * 0.45},${c2} ${w * 0.6},${y} C${w * 0.75},${c - 7} ${w * 0.9},${c2 - 7} ${w + 80},${y - 7}"/>`;
+    const c = y - 22;
+    const c2 = y + 22;
+    s += `<path stroke-width="0.75" d="M${x0},${y} C${w * 0.2},${c} ${w * 0.45},${c2} ${w * 0.62},${y} C${w * 0.78},${c} ${w * 0.92},${c2} ${w + 80},${y}"/>`;
   }
   return s;
 }
