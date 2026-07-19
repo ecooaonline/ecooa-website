@@ -1,13 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import WavePattern from '../components/WavePattern.astro';
-import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
 import ProfessionalCard from '../components/ProfessionalCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_BASE } from '../data/constants';
+import { WA_DEFAULT } from '../data/constants';
 import { professionals } from '../data/professionals';
 
-const WA = WA_BASE;
+const WA = WA_DEFAULT;
 
 const SITE_URL = 'https://www.somosecooa.com.br';
 
@@ -98,35 +97,19 @@ const schemaMembers = professionals.map((p) => {
   ogImage="/clinic/reuniao-edit.webp"
   breadcrumbs={[{ name: 'Profissionais', url: '/profissionais' }]}
 >
-  <!-- Hero -->
-  <div class="ph u-bg-cream">
-    <svg
-      class="wsv u-op-26"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="#cac7b8" stroke-width="1"
-        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl r">corpo clínico</div>
-      <h1 class="h1 r d1 u-mt-18">Especialistas que<br /><em>definem padrões.</em></h1>
-      <p class="body r d2" style="margin-top:16px;max-width:480px">
-        Uma equipe multidisciplinar reunida em torno de um propósito: oferecer o melhor cuidado
-        possível, com humanidade e excelência técnica.
-      </p>
-      <a
-        href="/match"
-        class="bo r d3"
-        style="margin-top:20px;display:inline-flex;align-items:center;gap:8px"
-        data-intent="profissionais-match"
-      >
-        não sabe com quem agendar? use o ecooa.match
-        <span aria-hidden="true">→</span>
-      </a>
-    </div>
-  </div>
+  <HeroEditorial
+    label="corpo clínico"
+    title="Especialistas que<br /><em>definem padrões.</em>"
+    sub="Uma equipe multidisciplinar reunida em torno de um propósito: oferecer o melhor cuidado possível, com humanidade e excelência técnica."
+    ctaHref={WA}
+    ctaLabel="falar pelo whatsapp"
+    ctaIntent="profissionais-hero"
+    secondaryHref="/match"
+    secondaryLabel="não sabe com quem agendar? ecooa.match"
+    image="/clinic/reuniao-edit.webp"
+    imageAlt="Equipe multidisciplinar da ecooa reunida na sala de reuniões"
+    imageCaption="a casa reunida · moinhos de vento"
+  />
 
   <!-- Professionals Structured Data -->
   <script
@@ -140,16 +123,17 @@ const schemaMembers = professionals.map((p) => {
     })}
   />
 
-  <Marquee />
-
-  <!-- Profissionais -->
-  <section class="u-bg-warm" aria-label="Equipe de profissionais">
-    <div class="w">
+  <!-- Corpo clínico -->
+  <section
+    style="background:var(--color-warm);padding:88px var(--section-px) 112px"
+    aria-label="Equipe de profissionais"
+  >
+    <div style="max-width:1280px;margin:0 auto">
       <!-- Sub-navegação por área -->
       <nav
         aria-label="Navegar por área"
         class="r"
-        style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:64px"
+        style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:96px"
       >
         <a href="#medicina" class="tag-pill" style="text-decoration:none">medicina</a>
         <a href="#estetica" class="tag-pill" style="text-decoration:none">estética</a>
@@ -158,21 +142,22 @@ const schemaMembers = professionals.map((p) => {
       </nav>
 
       <!-- Medicina -->
-      <div class="lbl r" style="margin-bottom:9px" id="medicina">ecooa.med</div>
-      <h2
-        style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:32px;letter-spacing:-.02em"
-        class="r d1"
-      >
-        Medicina
-      </h2>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
+      <div class="lbl r" id="medicina" style="margin-bottom:14px;scroll-margin-top:110px">
+        ecooa.med
+      </div>
+      <h2 class="h2 r d1" style="margin-bottom:16px">Medicina</h2>
+      <p class="body r d2" style="max-width:520px;margin-bottom:30px">
+        Longevidade com precisão: metabolismo, hormônios, pele e cabelo investigados com
+        profundidade.
+      </p>
+      <div class="r d2" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px">
         <span class="tag-pill">Medicina Metabólica</span>
         <span class="tag-pill">Dermatologia Clínica</span>
         <span class="tag-pill">Dermatologia Estética</span>
         <span class="tag-pill">Tricologia Médica</span>
         <span class="tag-pill">Transplante Capilar</span>
       </div>
-      <div class="g4" style="margin-bottom:72px">
+      <div class="g4">
         {
           inOrder(MED_ORDER).map((p) => (
             <ProfessionalCard
@@ -190,17 +175,23 @@ const schemaMembers = professionals.map((p) => {
         }
       </div>
 
+      <div class="div" style="margin:96px 0"></div>
+
       <!-- Estética -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r u-mb-18" id="estetica">ecooa.esthetic</div>
-      <h2 class="sr-only">Estética</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
+      <div class="lbl r" id="estetica" style="margin-bottom:14px;scroll-margin-top:110px">
+        ecooa.esthetic
+      </div>
+      <h2 class="h2 r d1" style="margin-bottom:16px">Estética</h2>
+      <p class="body r d2" style="max-width:520px;margin-bottom:30px">
+        Beleza que respeita a sua essência, com técnica e critério.
+      </p>
+      <div class="r d2" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px">
         <span class="tag-pill">Tricologia</span>
         <span class="tag-pill">Biomedicina Estética</span>
         <span class="tag-pill">Harmonização Orofacial</span>
         <span class="tag-pill">Osteopatia</span>
       </div>
-      <div class="g4" style="margin-bottom:72px">
+      <div class="g4">
         {
           inOrder(ESTHETIC_ORDER_A).map((p) => (
             <ProfessionalCard
@@ -248,16 +239,17 @@ const schemaMembers = professionals.map((p) => {
         }
       </div>
 
+      <div class="div" style="margin:96px 0"></div>
+
       <!-- Nutrição -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px" id="nutricao">ecooa.working</div>
-      <h2
-        style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:36px;letter-spacing:-.02em"
-        class="r d1"
-      >
-        Nutrição especializada
-      </h2>
-      <div class="g4" style="margin-bottom:72px">
+      <div class="lbl r" id="nutricao" style="margin-bottom:14px;scroll-margin-top:110px">
+        ecooa.working
+      </div>
+      <h2 class="h2 r d1" style="margin-bottom:16px">Nutrição especializada</h2>
+      <p class="body r d2" style="max-width:520px;margin-bottom:48px">
+        Alimentação que sustenta a sua melhor versão, da consulta clínica à alta performance.
+      </p>
+      <div class="g4">
         {
           inOrder(WORKING_ORDER).map((p) => (
             <ProfessionalCard
@@ -275,21 +267,22 @@ const schemaMembers = professionals.map((p) => {
         }
       </div>
 
+      <div class="div" style="margin:96px 0"></div>
+
       <!-- Saúde Mental -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px" id="saude-mental">ecooa.mind</div>
-      <h2
-        style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em"
-        class="r d1"
-      >
-        Saúde mental
-      </h2>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
+      <div class="lbl r" id="saude-mental" style="margin-bottom:14px;scroll-margin-top:110px">
+        ecooa.mind
+      </div>
+      <h2 class="h2 r d1" style="margin-bottom:16px">Saúde mental</h2>
+      <p class="body r d2" style="max-width:520px;margin-bottom:30px">
+        Clareza mental para uma vida com propósito, com escuta profissional e acolhimento.
+      </p>
+      <div class="r d2" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px">
         <span class="tag-pill">Psicologia</span>
         <span class="tag-pill">TCC</span>
         <span class="tag-pill">Psicologia Esportiva</span>
       </div>
-      <div class="g4 u-mb-64">
+      <div class="g4">
         {
           inOrder(MIND_ORDER).map((p) => (
             <ProfessionalCard
@@ -310,7 +303,10 @@ const schemaMembers = professionals.map((p) => {
   </section>
 
   <!-- Link discreto B2B -->
-  <section class="u-bg-warm" aria-label="Para profissionais" style="padding:24px var(--section-px)">
+  <section
+    style="background:var(--color-warm);padding:0 var(--section-px) 40px"
+    aria-label="Para profissionais"
+  >
     <p
       class="r"
       style="text-align:center;font-size:12px;font-weight:300;color:var(--color-ink-soft)"

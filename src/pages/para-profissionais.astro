@@ -1,11 +1,25 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
-import WavePattern from '../components/WavePattern.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
+import CtaSection from '../components/CtaSection.astro';
 import { WA_BASE, FORM_ACTION, ADDRESS_NEIGHBORHOOD } from '../data/constants';
 import { medAreas } from '../data/specialties';
 
 const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de saúde e gostaria de saber mais sobre atender na ecooa')}`;
+
+// As 9 bandeiras da casa: manifesto intacto, grade 3x3.
+const bandeiras = [
+  'É possível ter o seu próprio negócio',
+  'Acredite e viva o processo',
+  'Trabalho em equipe nos leva mais longe',
+  'Acreditamos em inovação em saúde',
+  'Priorizamos e cultivamos a excelência',
+  'Acreditamos em uma gestão humanizada',
+  'Não aceitamos exploração',
+  'Acreditamos no multidisciplinar',
+  'Competição não define meu lugar',
+];
 ---
 
 <BaseLayout
@@ -15,42 +29,34 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
   ogImage="/clinic/respire.webp"
   breadcrumbs={[{ name: 'Para Profissionais', url: '/para-profissionais' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-ink)">
-    <svg
-      class="wsv u-op-05"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
-        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl lbl-lt r">para profissionais de saúde</div>
-      <h1 class="h1 h1-w r d1 u-mt-18">Atenda na<br /><em>ecooa.</em></h1>
-      <p class="body body-lt r d2" style="margin-top:16px;max-width:520px">
-        Consultórios premium em {ADDRESS_NEIGHBORHOOD} para médicos, nutricionistas, psicólogos e profissionais
-        da estética. Um ecossistema que valoriza sua prática e conecta você a uma rede multidisciplinar.
-      </p>
-      <a
-        href={WA_B2B}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="b2b-hero">falar pelo whatsapp</a
-      >
-    </div>
-  </div>
+  <HeroEditorial
+    label="para profissionais de saúde"
+    title="Atenda na<br /><em>ecooa.</em>"
+    sub={`Consultórios premium em ${ADDRESS_NEIGHBORHOOD} para médicos, nutricionistas, psicólogos e profissionais da estética. Um ecossistema que valoriza a sua prática e conecta você a uma rede multidisciplinar.`}
+    ctaHref={WA_B2B}
+    ctaLabel="falar pelo whatsapp"
+    ctaIntent="b2b-hero"
+    secondaryHref="#interesse"
+    secondaryLabel="enviar interesse"
+    image="/clinic/recepcao.webp"
+    imageAlt="Recepção da ecooa em Moinhos de Vento"
+    imageCaption="recepção · 9º andar · moinhos de vento"
+    vertical="um espaço para quem cuida"
+  />
 
-  <!-- Por que atender aqui -->
-  <section class="u-bg-warm" aria-label="Por que atender na ecooa">
-    <div class="w">
+  <!-- Por que a ecooa + o espaço -->
+  <section
+    style="background:var(--color-warm);padding:104px var(--section-px)"
+    aria-label="Por que atender na ecooa"
+  >
+    <div style="max-width:1280px;margin:0 auto">
       <div class="g2 g2c">
         <div>
           <div class="lbl r">por que a ecooa</div>
-          <h2 class="h2 r d1 u-mt-15">Um espaço que<br />eleva a sua<br /><em>prática.</em></h2>
-          <p class="body r d2 u-mt-18">
+          <h2 class="h2 r d1" style="margin-top:15px">
+            Um espaço que eleva<br />a sua <em>prática.</em>
+          </h2>
+          <p class="body r d2" style="margin-top:18px;max-width:480px">
             A ecooa nasceu para unir profissionais que acreditam que a saúde deve ser integral,
             humanizada e ética. Aqui, você atende em um ambiente sofisticado, com estrutura completa
             e ao lado de uma equipe que compartilha casos, conhecimento e propósito.
@@ -83,60 +89,116 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
           </div>
         </div>
       </div>
+      <div
+        class="r d3"
+        style="margin-top:72px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px"
+      >
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/recepcao.webp"
+            alt="Recepção da ecooa"
+            width={1000}
+            height={1233}
+            class="lux-frame-img"
+          />
+          <figcaption class="lux-caption">recepção dedicada</figcaption>
+        </figure>
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/respire.webp"
+            alt="Sala Respire da ecooa"
+            width={1200}
+            height={799}
+            class="lux-frame-img"
+          />
+          <figcaption class="lux-caption">sala respire</figcaption>
+        </figure>
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/cafe.webp"
+            alt="Café da ecooa"
+            width={1200}
+            height={799}
+            class="lux-frame-img"
+          />
+          <figcaption class="lux-caption">café ecooa</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
-  <!-- Espaço -->
+  <!-- Bandeiras: manifesto em pontuação escura -->
   <section
-    style="background:var(--color-warm);padding:0 4px 4px;overflow:hidden"
-    aria-label="Nosso espaço"
+    style="background:var(--color-ink);padding:104px var(--section-px)"
+    aria-label="Nossas bandeiras"
   >
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px">
-      <div class="u-img-43 r">
-        <OptimizedImage
-          src="/clinic/recepcao.webp"
-          alt="Recepção da ecooa"
-          width={1000}
-          height={1233}
-          class="u-cover"
-        />
-      </div>
-      <div class="u-img-43 r d1">
-        <OptimizedImage
-          src="/clinic/respire.webp"
-          alt="Sala Respire da ecooa"
-          width={1200}
-          height={799}
-          class="u-cover"
-        />
-      </div>
-      <div class="u-img-43 r d2">
-        <OptimizedImage
-          src="/clinic/cafe.webp"
-          alt="Café da ecooa"
-          width={1200}
-          height={799}
-          class="u-cover"
-        />
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="lbl lbl-lt r" style="margin-bottom:16px">o que nos move</div>
+      <h2 class="h2 h2-w r d1" style="margin-bottom:56px">Nossas <em>bandeiras.</em></h2>
+      <div class="band-grid r d2">
+        {
+          bandeiras.map((b, i) => (
+            <div class="band-cell">
+              <p class="band-num">{String(i + 1).padStart(2, '0')}</p>
+              <p class="band-text">{b}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <!-- Áreas -->
-  <section class="u-bg-cream" aria-label="Áreas de atuação">
-    <div class="w">
+  <!-- Processo 1-2-3 -->
+  <section
+    style="background:var(--color-cream);padding:104px var(--section-px)"
+    aria-label="Como funciona"
+  >
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="lbl r" style="justify-content:center;margin-bottom:16px">como funciona</div>
+      <h2 class="h2 r d1 u-tac" style="margin-bottom:56px">
+        Do primeiro contato<br />à <em>parceria.</em>
+      </h2>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:800px;margin:0 auto"
+      >
+        <div class="r u-tac">
+          <span class="step-num">1</span>
+          <h3 class="it-t">Contato inicial</h3>
+          <p class="it-d">Nos fale sobre você e sua prática pelo WhatsApp ou pelo formulário.</p>
+        </div>
+        <div class="r d1 u-tac">
+          <span class="step-num">2</span>
+          <h3 class="it-t">Visita ao espaço</h3>
+          <p class="it-d">Conheça pessoalmente a estrutura, a equipe e a cultura ecooa.</p>
+        </div>
+        <div class="r d2 u-tac">
+          <span class="step-num">3</span>
+          <h3 class="it-t">Alinhamento e contrato</h3>
+          <p class="it-d">Definimos juntos o melhor modelo de uso e formalizamos a parceria.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rede médica + formulário de interesse -->
+  <section
+    id="interesse"
+    style="background:var(--color-warm);padding:104px var(--section-px)"
+    aria-label="Áreas de atuação e formulário de interesse"
+  >
+    <div style="max-width:1280px;margin:0 auto">
       <div class="g2 g2c">
         <div>
           <div class="lbl r">áreas médicas na ecooa.med</div>
-          <h2 class="h2 r d1 u-mt-15">
+          <h2 class="h2 r d1" style="margin-top:15px">
             Uma rede de<br />especialistas que<br /><em>se entendem.</em>
           </h2>
-          <p class="body r d2 u-mt-18">
+          <p class="body r d2" style="margin-top:18px">
             Liderada pelo Dr. Gustavo Gehrke, a ecooa.med une médicos que atuam nas mais diversas
             áreas. Sem pressa a cada atendimento, com escuta total ao paciente e trabalho
             multiprofissional.
           </p>
-          <p class="body r d3 u-mt-13">
+          <p class="body r d3" style="margin-top:13px">
             Você é médico e quer atender na ecooa? Preencha o formulário abaixo ou <a
               href={WA_B2B}
               target="_blank"
@@ -223,7 +285,7 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
         </div>
         <div class="r d2">
           <div
-            style="background:var(--color-warm);padding:40px 34px;border:1px solid var(--color-stone)"
+            style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)"
           >
             <div class="lbl u-mb-20">áreas de atuação</div>
             {
@@ -249,113 +311,48 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou profissional de 
     </div>
   </section>
 
-  <!-- Bandeiras -->
-  <section class="u-bg-warm" aria-label="Nossas bandeiras">
-    <div class="w">
-      <div class="lbl r u-mb-16">o que nos move</div>
-      <h2 class="h2 r d1 u-mb-48">Nossas <em>bandeiras.</em></h2>
-      <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
-      >
-        <div class="r gc-md">
-          <p class="gc-tag">01</p><p class="body-lg">É possível ter o seu próprio negócio</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">02</p><p class="body-lg">Acredite e viva o processo</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">03</p><p class="body-lg">Trabalho em equipe nos leva mais longe</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">04</p><p class="body-lg">Acreditamos em inovação em saúde</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">05</p><p class="body-lg">Priorizamos e cultivamos a excelência</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">06</p><p class="body-lg">Acreditamos em uma gestão humanizada</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">07</p><p class="body-lg">Não aceitamos exploração</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">08</p><p class="body-lg">Acreditamos no multidisciplinar</p>
-        </div>
-        <div class="r gc-md">
-          <p class="gc-tag">09</p><p class="body-lg">Competição não define meu lugar</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Processo -->
-  <section class="u-bg-cream" aria-label="Como funciona">
-    <div class="w">
-      <div class="lbl r u-mb-16">como funciona</div>
-      <h2 class="h2 r d1 u-mb-44">do primeiro contato<br />à <em>parceria.</em></h2>
-      <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:800px;margin:0 auto"
-      >
-        <div class="r u-tac">
-          <span class="step-num">1</span>
-          <h3 class="it-t">Contato inicial</h3>
-          <p class="it-d">Nos fale sobre você e sua prática pelo WhatsApp ou pelo formulário.</p>
-        </div>
-        <div class="r d1 u-tac">
-          <span class="step-num">2</span>
-          <h3 class="it-t">Visita ao espaço</h3>
-          <p class="it-d">Conheça pessoalmente a estrutura, a equipe e a cultura ecooa.</p>
-        </div>
-        <div class="r d2 u-tac">
-          <span class="step-num">3</span>
-          <h3 class="it-t">Alinhamento e contrato</h3>
-          <p class="it-d">Definimos juntos o melhor modelo de uso e formalizamos a parceria.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA final -->
-  <section
-    style="background:var(--color-ink);padding:86px 60px;position:relative;overflow:hidden"
-    aria-label="Convite para profissionais"
-  >
-    <svg
-      class="wsv u-op-05"
-      viewBox="0 0 1440 400"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-    >
-      <g fill="none" stroke="white" stroke-width="1"><WavePattern count={7} y0={80} step={55} /></g>
-    </svg>
-    <div style="position:relative;z-index:2;max-width:700px;margin:0 auto;text-align:center">
-      <div class="lbl lbl-br r" style="justify-content:center;margin-bottom:22px">
-        vamos conversar
-      </div>
-      <h2
-        style="font-size:clamp(30px,3.8vw,54px);font-weight:200;color:white;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px"
-        class="r d1"
-      >
-        Quer atender<br />na <em
-          style="font-family:var(--font-serif);font-style:italic;color:var(--color-brand-light)"
-          >ecooa?</em
-        >
-      </h2>
-      <p
-        style="font-size:15px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.6);max-width:500px;margin:0 auto 36px"
-        class="r d2"
-      >
-        Somos um ecossistema de saúde premium em {ADDRESS_NEIGHBORHOOD}. Se você é profissional de
-        saúde e quer um espaço que eleva sua prática, vamos conversar.
-      </p>
-      <a
-        href={WA_B2B}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3"
-        style="display:inline-block"
-        data-intent="b2b-cta-final">falar pelo whatsapp</a
-      >
-    </div>
-  </section>
+  <CtaSection
+    heading="Quer atender<br>na <em>ecooa?</em>"
+    subtext="Um ecossistema de saúde premium em Moinhos de Vento. Se você é profissional de saúde e quer um espaço que eleva sua prática, vamos conversar."
+    showAgendar={false}
+  />
 </BaseLayout>
+
+<style>
+  /* Bandeiras: grade 3x3 pautada por hairlines sobre ink, texto serif itálico.
+     Nove células, manifesto silencioso: nada de cards, só papel e luz. */
+  .band-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .band-cell {
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 44px 38px;
+  }
+  .band-num {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--color-brand-mid);
+    margin-bottom: 14px;
+  }
+  .band-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(19px, 1.8vw, 24px);
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--color-brand-light);
+  }
+  @media (max-width: 900px) {
+    .band-grid {
+      grid-template-columns: 1fr;
+    }
+    .band-cell {
+      padding: 30px 24px;
+    }
+  }
+</style>

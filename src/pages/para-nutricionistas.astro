@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import CtaSection from '../components/CtaSection.astro';
 import { WA_BASE, FORM_ACTION } from '../data/constants';
 
 const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou nutricionista e gostaria de saber mais sobre a ecooa.working')}`;
@@ -15,11 +16,11 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou nutricionista e 
   ogImage="/clinic/working.webp"
   breadcrumbs={[{ name: 'Para Nutricionistas', url: '/para-nutricionistas' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-ink)">
+  <!-- Hero: pontuação escura -->
+  <section class="ph" style="background:var(--color-ink);min-height:68vh" aria-label="Apresentação">
     <svg
       class="wsv"
-      style="opacity:.14"
+      style="opacity:.12"
       viewBox="0 0 1440 500"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
@@ -27,270 +28,288 @@ const WA_B2B = `${WA_BASE}?text=${encodeURIComponent('Olá, sou nutricionista e 
         ><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g
       ></svg
     >
+    <span class="lux-vertical" aria-hidden="true">moinhos de vento · 9º andar</span>
     <div class="ph-c">
-      <div class="lbl lbl-br r">ecooa.working · para nutricionistas</div>
-      <h1
-        style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px"
-        class="r d1"
-      >
-        O espaço que<br />a sua carreira<br /><em
-          style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)"
-          >merece.</em
-        >
-      </h1>
-      <p
-        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px"
-        class="r d2"
-      >
+      <div class="lbl lbl-lt r">ecooa.working · para nutricionistas</div>
+      <h1 class="h1 h1-w r d1">O espaço que<br />a sua carreira<br /><em>merece.</em></h1>
+      <p class="body body-lt r d2" style="margin-top:20px;max-width:500px">
         Coworking premium para nutricionistas em Moinhos de Vento. Infraestrutura, comunidade e o
         suporte de uma marca que quer que a sua voz ecooe.
       </p>
-      <a
-        href={WA_B2B}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="b2b-nutri-hero">quero saber mais</a
+      <div
+        class="r d3"
+        style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-top:34px"
       >
-      <RiskReversalBadge items={['respondemos em minutos']} light={true} />
-    </div>
-  </div>
-
-  <!-- Foto do espaço -->
-  <section
-    style="background:var(--color-cream);padding:0;overflow:hidden"
-    aria-label="Nosso espaço"
-  >
-    <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
-      <OptimizedImage
-        src="/clinic/working.webp"
-        alt="Espaço de coworking premium da ecooa.working"
-        width={1200}
-        height={799}
-        class="u-cover"
-      />
+        <a
+          href={WA_B2B}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bw"
+          data-intent="b2b-nutri-hero">quero saber mais</a
+        >
+        <a href="#proposta" class="bow">conhecer a proposta</a>
+      </div>
+      <RiskReversalBadge items={['respondemos em minutos']} light={true} align="left" />
     </div>
   </section>
 
   <!-- Proposta -->
-  <section style="background:var(--color-ink);padding:86px 60px" aria-label="Para nutricionistas">
-    <div class="g2 g2c">
-      <div>
-        <div class="lbl lbl-lt r" style="margin-bottom:15px">empreenda com a ecooa</div>
-        <h2 class="h2 h2-w r d1 u-mb-18">
-          Acreditamos que é<br />possível ter <em>seu próprio<br />negócio.</em>
-        </h2>
-        <p class="body body-lt r d2 u-mb-28">
-          A ecooa.working foi criada para tirar do papel o sonho de nutricionistas que querem
-          empreender com qualidade, sem montar uma clínica do zero, com o apoio de uma marca
-          consolidada.
-        </p>
-        <div
-          class="wg r d3"
-          style="border-top-color:rgba(255,255,255,.08);padding-top:28px;margin-top:0"
-        >
-          <div>
-            <p class="wgl" style="color:var(--color-brand-deep)">Localização</p><p
-              class="wgv"
-              style="color:rgba(255,255,255,.65)"
-            >
-              Moinhos de Vento, Porto Alegre
-            </p>
-          </div>
-          <div>
-            <p class="wgl" style="color:var(--color-brand-deep)">Salas</p><p
-              class="wgv"
-              style="color:rgba(255,255,255,.65)"
-            >
-              2 consultórios equipados
-            </p>
-          </div>
-          <div>
-            <p class="wgl" style="color:var(--color-brand-deep)">Recepção</p><p
-              class="wgv"
-              style="color:rgba(255,255,255,.65)"
-            >
-              Coordenadora de relacionamento dedicada
-            </p>
-          </div>
-          <div>
-            <p class="wgl" style="color:var(--color-brand-deep)">Acesso</p><p
-              class="wgv"
-              style="color:rgba(255,255,255,.65)"
-            >
-              Por entrevista com nossa diretora de ensino
-            </p>
-          </div>
-          <div>
-            <p class="wgl" style="color:var(--color-brand-deep)">Networking</p><p
-              class="wgv"
-              style="color:rgba(255,255,255,.65)"
-            >
-              Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa
-            </p>
+  <section
+    id="proposta"
+    style="background:var(--color-warm);padding:104px var(--section-px)"
+    aria-label="Empreenda com a ecooa"
+  >
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="g2 g2c">
+        <div>
+          <div class="lbl r" style="margin-bottom:15px">empreenda com a ecooa</div>
+          <h2 class="h2 r d1" style="margin-bottom:18px">
+            Acreditamos que é<br />possível ter <em>seu<br />próprio negócio.</em>
+          </h2>
+          <p class="body r d2" style="max-width:480px">
+            A ecooa.working foi criada para tirar do papel o sonho de nutricionistas que querem
+            empreender com qualidade, sem montar uma clínica do zero, com o apoio de uma marca
+            consolidada.
+          </p>
+          <div class="wg r d3">
+            <div>
+              <p class="wgl">Localização</p>
+              <p class="wgv">Moinhos de Vento, Porto Alegre</p>
+            </div>
+            <div>
+              <p class="wgl">Salas</p>
+              <p class="wgv">2 consultórios equipados</p>
+            </div>
+            <div>
+              <p class="wgl">Recepção</p>
+              <p class="wgv">Coordenadora de relacionamento dedicada</p>
+            </div>
+            <div>
+              <p class="wgl">Acesso</p>
+              <p class="wgv">Por entrevista com nossa diretora de ensino</p>
+            </div>
+            <div>
+              <p class="wgl">Networking</p>
+              <p class="wgv">
+                Rede integrada de farmácias e profissionais de saúde do ecossistema ecooa
+              </p>
+            </div>
           </div>
         </div>
-        <form
-          action={FORM_ACTION}
-          method="POST"
-          class="b2b-form r d4 ecooa-form u-mt-32"
-          id="form-b2b-nutri"
-          data-ok-target="#form-b2b-nutri-ok"
-          data-success-text="Recebemos seu interesse. Entraremos em contato em breve."
-        >
-          <input type="hidden" name="_formType" value="b2b-nutricao" />
-          <input type="hidden" name="_next" value="" />
-          <input
-            type="text"
-            name="_honeypot"
-            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
-            tabindex="-1"
-            autocomplete="off"
-            aria-hidden="true"
-          />
-          <input type="hidden" name="_loadedAt" value="" />
-          <input
-            type="text"
-            name="nome"
-            placeholder="Nome"
-            required
-            minlength="2"
-            aria-label="Nome completo"
-            class="b2b-input"
-          />
-          <input
-            type="text"
-            name="area"
-            placeholder="Área de atuação"
-            required
-            aria-label="Área de atuação"
-            class="b2b-input"
-          />
-          <input
-            type="tel"
-            name="whatsapp"
-            placeholder="WhatsApp: (51) 99999-9999"
-            required
-            pattern="[\s()+\-0-9]{10,20}"
-            aria-label="Número de WhatsApp"
-            class="b2b-input"
-          />
-          <div style="display:flex;align-items:flex-start;gap:10px">
-            <input
-              type="checkbox"
-              id="b2b-nutri-consent"
-              name="consent"
-              required
-              style="margin-top:4px;cursor:pointer;min-width:16px"
+        <figure class="r d2" style="margin:0;max-width:520px;justify-self:end;width:100%">
+          <div class="lux-frame">
+            <OptimizedImage
+              src="/clinic/working.webp"
+              alt="Espaço de coworking premium da ecooa.working"
+              width={1200}
+              height={799}
+              sizes="(max-width: 900px) 92vw, 44vw"
+              class="lux-frame-img"
+              style="aspect-ratio:4/3"
             />
-            <label
-              for="b2b-nutri-consent"
-              style="font-size:12px;font-weight:300;color:rgba(255,255,255,.6);cursor:pointer"
-              >Concordo em compartilhar meus dados conforme a <a
-                href="/politica-de-privacidade"
-                style="color:var(--color-brand-light);text-decoration:underline"
-                target="_blank">política de privacidade</a
-              ></label
-            >
           </div>
-          <button type="submit" class="b2b-submit">enviar interesse</button>
-          <p
-            id="form-b2b-nutri-ok"
-            style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-deep);margin-top:4px"
-          >
-            Recebemos seu interesse. Entraremos em contato em breve.
-          </p>
-        </form>
-        <script>
-          import { initFormSubmit } from '../scripts/form-submit';
-          initFormSubmit();
-        </script>
+          <figcaption class="lux-caption">ecooa.working · moinhos de vento</figcaption>
+        </figure>
       </div>
-      <div class="r d2">
-        <div
-          style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:40px 34px"
-        >
-          <p
-            style="font-size:9px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--color-brand-deep);margin-bottom:24px"
-          >
-            processo seletivo
-          </p>
-          <div class="st st-dk">
+    </div>
+  </section>
+
+  <!-- Processo seletivo + interesse -->
+  <section
+    style="background:var(--color-cream);padding:96px var(--section-px)"
+    aria-label="Processo seletivo"
+  >
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="g2">
+        <div>
+          <div class="lbl r" style="margin-bottom:15px">processo seletivo</div>
+          <h2 class="h2 r d1" style="margin-bottom:40px">
+            Três passos até<br />a sua <em>sala.</em>
+          </h2>
+          <div class="st r d2">
             <div class="sr">
-              <span class="sn">01</span><div>
-                <div class="st-t">Contato inicial</div><div class="st-b">
-                  Nos fale sobre você e sua prática pelo WhatsApp.
-                </div>
+              <span class="sn">01</span>
+              <div>
+                <div class="st-t">Contato inicial</div>
+                <div class="st-b">Nos fale sobre você e sua prática pelo WhatsApp.</div>
               </div>
             </div>
             <div class="sr">
-              <span class="sn">02</span><div>
-                <div class="st-t">Visita ao espaço</div><div class="st-b">
+              <span class="sn">02</span>
+              <div>
+                <div class="st-t">Visita ao espaço</div>
+                <div class="st-b">
                   Conheça pessoalmente a estrutura, a equipe e a cultura ecooa.
                 </div>
               </div>
             </div>
             <div class="sr">
-              <span class="sn">03</span><div>
-                <div class="st-t">Alinhamento e contrato</div><div class="st-b">
+              <span class="sn">03</span>
+              <div>
+                <div class="st-t">Alinhamento e contrato</div>
+                <div class="st-b">
                   Definimos juntos o melhor modelo de uso e formalizamos a parceria.
                 </div>
               </div>
             </div>
+          </div>
+          <a
+            href={WA_B2B}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="ghost r d3"
+            style="margin-top:28px"
+            data-intent="b2b-nutri-processo"
+            >começar pelo whatsapp <span aria-hidden="true">→</span></a
+          >
+        </div>
+        <div class="r d2" id="interesse">
+          <div
+            style="background:var(--color-white);border:1px solid var(--color-stone);padding:44px 38px"
+          >
+            <div class="lbl" style="margin-bottom:12px">envie seu interesse</div>
+            <p class="body" style="margin-bottom:6px">
+              Deixe seu contato e nossa equipe fala com você.
+            </p>
+            <form
+              action={FORM_ACTION}
+              method="POST"
+              class="b2b-form ecooa-form"
+              id="form-b2b-nutri"
+              data-ok-target="#form-b2b-nutri-ok"
+              data-success-text="Recebemos seu interesse. Entraremos em contato em breve."
+            >
+              <input type="hidden" name="_formType" value="b2b-nutricao" />
+              <input type="hidden" name="_next" value="" />
+              <input
+                type="text"
+                name="_honeypot"
+                style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
+              <input type="hidden" name="_loadedAt" value="" />
+              <input
+                type="text"
+                name="nome"
+                placeholder="Nome"
+                required
+                minlength="2"
+                aria-label="Nome completo"
+                class="b2b-input b2b-light"
+              />
+              <input
+                type="text"
+                name="area"
+                placeholder="Área de atuação"
+                required
+                aria-label="Área de atuação"
+                class="b2b-input b2b-light"
+              />
+              <input
+                type="tel"
+                name="whatsapp"
+                placeholder="WhatsApp: (51) 99999-9999"
+                required
+                pattern="[\s()+\-0-9]{10,20}"
+                aria-label="Número de WhatsApp"
+                class="b2b-input b2b-light"
+              />
+              <div style="display:flex;align-items:flex-start;gap:10px">
+                <input
+                  type="checkbox"
+                  id="b2b-nutri-consent"
+                  name="consent"
+                  required
+                  style="margin-top:4px;cursor:pointer;min-width:16px"
+                />
+                <label
+                  for="b2b-nutri-consent"
+                  style="font-size:12px;font-weight:300;color:var(--color-ink-soft);cursor:pointer"
+                  >Concordo em compartilhar meus dados conforme a <a
+                    href="/politica-de-privacidade"
+                    style="color:var(--color-brand-text);text-decoration:underline"
+                    target="_blank">política de privacidade</a
+                  ></label
+                >
+              </div>
+              <button type="submit" class="bd" style="align-self:flex-start"
+                >enviar interesse</button
+              >
+              <p
+                id="form-b2b-nutri-ok"
+                style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-text);margin-top:4px"
+              >
+                Recebemos seu interesse. Entraremos em contato em breve.
+              </p>
+            </form>
+            <script>
+              import { initFormSubmit } from '../scripts/form-submit';
+              initFormSubmit();
+            </script>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Mais do espaço -->
+  <!-- O espaço -->
   <section
-    style="background:var(--color-warm);padding:0;overflow:hidden"
-    aria-label="Mais do espaço"
+    style="background:var(--color-warm);padding:96px var(--section-px) 88px"
+    aria-label="Nosso espaço"
   >
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px">
-      <div class="u-img-43 r">
-        <OptimizedImage
-          src="/clinic/recepcao.webp"
-          alt="Recepção da ecooa"
-          width={1000}
-          height={1233}
-          class="u-cover"
-        />
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="lbl r" style="margin-bottom:36px">o espaço</div>
+      <div
+        class="r d1"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px"
+      >
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/recepcao.webp"
+            alt="Recepção da ecooa"
+            width={1000}
+            height={1233}
+            sizes="(max-width: 700px) 92vw, 30vw"
+            class="lux-frame-img"
+          />
+        </figure>
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/cafe.webp"
+            alt="Café da ecooa"
+            width={1200}
+            height={799}
+            sizes="(max-width: 700px) 92vw, 30vw"
+            class="lux-frame-img"
+          />
+        </figure>
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/reuniao.webp"
+            alt="Sala de reuniões da ecooa"
+            width={1000}
+            height={666}
+            sizes="(max-width: 700px) 92vw, 30vw"
+            class="lux-frame-img"
+          />
+        </figure>
       </div>
-      <div class="u-img-43 r d1">
-        <OptimizedImage
-          src="/clinic/cafe.webp"
-          alt="Café da ecooa"
-          width={1200}
-          height={799}
-          class="u-cover"
-        />
-      </div>
-      <div class="u-img-43 r d2">
-        <OptimizedImage
-          src="/clinic/reuniao.webp"
-          alt="Sala de reuniões da ecooa"
-          width={1000}
-          height={666}
-          class="u-cover"
-        />
+      <div class="r d2" style="margin-top:48px">
+        <p class="body" style="margin-bottom:10px">
+          Médico, psicólogo ou profissional da estética?
+        </p>
+        <a href="/para-profissionais" class="ghost"
+          >conhecer a ecooa para profissionais <span aria-hidden="true">→</span></a
+        >
       </div>
     </div>
   </section>
 
-  <!-- Outros profissionais -->
-  <section
-    class="u-bg-warm"
-    aria-label="Outros profissionais"
-    style="padding:48px var(--section-px)"
-  >
-    <p class="body r" style="text-align:center;font-size:13px">
-      Médico, psicólogo ou profissional da estética? <a
-        href="/para-profissionais"
-        style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline"
-        >Conheça a ecooa para profissionais →</a
-      >
-    </p>
-  </section>
+  <CtaSection
+    heading="Venha tomar um café<br>no <em>9º andar.</em>"
+    subtext="Uma visita vale mais que qualquer descrição. Conheça a estrutura, a equipe e a cultura ecooa em Moinhos de Vento."
+    showAgendar={false}
+  />
 </BaseLayout>
