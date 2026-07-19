@@ -623,7 +623,12 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
         document.addEventListener('mouseout', (e) => {
           if ((e as MouseEvent).clientY <= 0) show();
         });
-        if ('ontouchstart' in window) setTimeout(show, 45000);
+        // No toque: espera longa e nunca por cima do menu aberto (régua 6 estrelas)
+        if ('ontouchstart' in window)
+          setTimeout(() => {
+            const menu = document.getElementById('nav-menu');
+            if (!menu || !menu.classList.contains('open')) show();
+          }, 90000);
       });
     </script>
   </body>

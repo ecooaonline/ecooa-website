@@ -21,7 +21,11 @@ const { word, image, label } = Astro.props;
       </div>
     )
   }
-  <p class="masked-word r d1" style={`background-image:url('${image}')`} aria-hidden="true">
+  <p
+    class="masked-word r d1"
+    style={`background-image:linear-gradient(rgba(45,42,34,0.28),rgba(45,42,34,0.28)),url('${image}')`}
+    aria-hidden="true"
+  >
     {word}
   </p>
   <div

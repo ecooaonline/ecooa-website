@@ -2,15 +2,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
-import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
 import GuiaCard from '../components/GuiaCard.astro';
-import CtaBand from '../components/CtaBand.astro';
-import RespiroEditorial from '../components/RespiroEditorial.astro';
 import CtaSection from '../components/CtaSection.astro';
+import { WA_BASE, WA_DEFAULT } from '../data/constants';
 import { getProfessionalBySlug } from '../data/professionals';
 
 const gustavo = getProfessionalBySlug('gustavo-gehrke');
 const jessica = getProfessionalBySlug('jessica-stein');
+
+const WA_CARTA = `${WA_BASE}?text=${encodeURIComponent(
+  'Olá, li a carta dos fundadores e gostaria de começar meu cuidado na ecooa'
+)}`;
 ---
 
 <BaseLayout
@@ -20,145 +23,72 @@ const jessica = getProfessionalBySlug('jessica-stein');
   ogImage="/clinic/recepcao.webp"
   breadcrumbs={[{ name: 'Quem Somos', url: '/quem-somos' }]}
 >
-  <!-- Hero -->
-  <div class="ph u-bg-cream">
-    <svg
-      class="wsv u-op-26"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="#cac7b8" stroke-width="1"
-        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl r">nossa história</div>
-      <h1 class="h1 r d1 u-mt-18">
-        Somos a ecooa.<br />Um ecossistema de<br />saúde, <em>inovação</em><br />e cuidado genuíno.
-      </h1>
-      <p class="body r d2" style="margin-top:16px;max-width:500px">
-        Fundada em 2021 em Moinhos de Vento, nascemos com um propósito claro: transformar a forma
-        como a saúde é vivida em Porto Alegre, um lugar onde o cuidado pode ecooar além dos
-        consultórios.
-      </p>
-    </div>
-  </div>
+  <HeroEditorial
+    label="nossa história"
+    title="Somos a ecooa.<br />Saúde, inovação e<br />cuidado <em>genuíno.</em>"
+    sub="Fundada em 2021 em Moinhos de Vento, nascemos com um propósito claro: transformar a forma como a saúde é vivida em Porto Alegre. Um lugar onde o cuidado pode ecooar além dos consultórios."
+    stars={true}
+    ctaHref={WA_DEFAULT}
+    ctaLabel="falar pelo whatsapp"
+    ctaIntent="quem-somos-hero"
+    secondaryHref="/profissionais"
+    secondaryLabel="conhecer a equipe"
+    image="/clinic/recepcao.webp"
+    imageAlt="Recepção da ecooa em Moinhos de Vento"
+    imageCaption="recepção · rua mariante, 180 · 9º andar"
+  />
 
-  <Marquee />
-
-  <!-- No que acreditamos (promessas ao paciente, primeiro) -->
-  <section class="u-bg-cream" aria-label="No que acreditamos">
-    <div class="w">
-      <div class="lbl r u-mb-16">para você</div>
-      <h2 class="h2 r d1 u-mb-48">no que<br /><em>acreditamos.</em></h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-        <div class="r" style="background:var(--color-warm);padding:32px 28px">
-          <p class="gc-tag-md">01</p>
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:var(--color-ink);line-height:1.35;margin-bottom:12px"
-          >
-            Você será ouvido
-          </p>
-          <p class="body">
-            Cada consulta tem tempo real de escuta. Sem pressa, sem interrupção. Porque entender a
-            sua história é o primeiro passo do cuidado.
-          </p>
-        </div>
-        <div class="r d1" style="background:var(--color-warm);padding:32px 28px">
-          <p class="gc-tag-md">02</p>
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:var(--color-ink);line-height:1.35;margin-bottom:12px"
-          >
-            Seus exames serão explicados
-          </p>
-          <p class="body">
-            Nada de entregar resultado sem contexto. Você vai entender o que cada número significa e
-            o que fazer com essa informação.
-          </p>
-        </div>
-        <div class="r d2" style="background:var(--color-warm);padding:32px 28px">
-          <p class="gc-tag-md">03</p>
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:var(--color-ink);line-height:1.35;margin-bottom:12px"
-          >
-            Seu time conversa entre si
-          </p>
-          <p class="body">
-            Nossos profissionais compartilham informações sobre o seu caso. Médico, nutricionista,
-            psicóloga, profissionais de estética e de reabilitação trabalham juntos, não isolados.
-          </p>
-        </div>
-        <div class="r d3" style="background:var(--color-warm);padding:32px 28px">
-          <p class="gc-tag-md">04</p>
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:20px;font-weight:300;color:var(--color-ink);line-height:1.35;margin-bottom:12px"
-          >
-            Sem respostas prontas
-          </p>
-          <p class="body">
-            Cada protocolo é desenhado para a sua realidade. Suas rotinas, seus objetivos, sua vida.
-            Porque copiar e colar não funciona em saúde.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Carta dos Fundadores -->
-  <section class="u-bg-warm" aria-label="Carta dos fundadores">
-    <div class="w" style="padding-bottom:56px">
-      <div style="max-width:720px;margin:0 auto">
-        <div class="lbl r u-mb-16">dos fundadores</div>
-        <h2 class="h2 r d1 u-mb-40">uma carta<br />para <em>você.</em></h2>
-        <div
-          class="r d2"
-          style="background:var(--color-cream);padding:clamp(32px,5vw,56px) clamp(28px,5vw,52px);position:relative;overflow:hidden"
+  <!-- Carta dos fundadores -->
+  <section
+    style="background:var(--color-cream);padding:112px var(--section-px)"
+    aria-label="Carta dos fundadores"
+  >
+    <div style="max-width:720px;margin:0 auto">
+      <div class="lbl r" style="margin-bottom:14px">dos fundadores</div>
+      <h2 class="h2 r d1" style="margin-bottom:44px">uma carta<br />para <em>você.</em></h2>
+      <div
+        class="carta r d2"
+        style="background:#fff;border:1px solid var(--color-stone);padding:clamp(32px,5vw,56px) clamp(28px,5vw,52px);position:relative;overflow:hidden"
+      >
+        <svg
+          style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:.08"
+          viewBox="0 0 200 200"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+          ><g fill="none" stroke="#cac7b8" stroke-width="1"
+            ><WavePattern count={5} x0={-20} y0={20} step={40} width={240} /></g
+          ></svg
         >
-          <svg
-            style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:.08"
-            viewBox="0 0 200 200"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-            ><g fill="none" stroke="#cac7b8" stroke-width="1"
-              ><WavePattern count={5} x0={-20} y0={20} step={40} width={240} /></g
-            ></svg
-          >
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px"
-          >
-            Quando começamos a ecooa, prometemos uma coisa: ouvir antes de prescrever.
-          </p>
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px"
-          >
-            Cada pessoa que entra aqui traz uma história, e é essa história que guia o cuidado. Não
-            acreditamos em protocolos genéricos. Acreditamos em pessoas.
-          </p>
-          <p
-            style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:28px"
-          >
-            Nosso compromisso é simples: que você saia daqui sentindo que foi visto, ouvido e
-            cuidado de verdade.
-          </p>
-          <p
-            style="font-size:12px;font-weight:400;letter-spacing:.04em;color:var(--color-brand-text);position:relative;z-index:1"
-          >
-            Gustavo e Jessica, sócios da ecooa
-          </p>
-        </div>
-        <CtaBand
-          label="começar pela primeira conversa"
-          waText="Olá, li a carta dos fundadores e gostaria de começar meu cuidado na ecooa"
-          intent="quem-somos-carta"
-          badges={['respondemos em minutos']}
-        />
+        <p>Quando começamos a ecooa, prometemos uma coisa: ouvir antes de prescrever.</p>
+        <p>
+          Cada pessoa que entra aqui traz uma história, e é essa história que guia o cuidado. Não
+          acreditamos em protocolos genéricos. Acreditamos em pessoas.
+        </p>
+        <p>
+          Nosso compromisso é simples: que você saia daqui sentindo que foi visto, ouvido e cuidado
+          de verdade.
+        </p>
+        <p class="carta-sig">Gustavo e Jessica, sócios da ecooa</p>
+      </div>
+      <div class="r d3" style="margin-top:30px">
+        <a
+          href={WA_CARTA}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ghost"
+          data-intent="quem-somos-carta"
+          >começar pela primeira conversa <span aria-hidden="true">→</span></a
+        >
       </div>
     </div>
   </section>
 
   <!-- Como a ecooa nasceu -->
-  <section class="u-bg-warm" aria-label="Como a ecooa nasceu">
-    <div class="w">
+  <section
+    style="background:var(--color-warm);padding:112px var(--section-px)"
+    aria-label="Como a ecooa nasceu"
+  >
+    <div style="max-width:1280px;margin:0 auto">
       <div class="g2 g2c">
         <div>
           <div class="lbl r">nossa origem</div>
@@ -193,114 +123,95 @@ const jessica = getProfessionalBySlug('jessica-stein');
     </div>
   </section>
 
-  <!-- Liderança -->
-  <section style="background:var(--color-cream);padding:86px 60px" aria-label="Liderança">
-    <div class="lbl r u-mb-16">quem lidera</div>
-    <h2 class="h2 r d1 u-mb-12">Quem faz a ecooa<br /><em>existir.</em></h2>
-    <p class="body r d2" style="max-width:480px;margin-bottom:44px">
-      As pessoas por trás do ecossistema, com um mesmo compromisso: que você seja cuidada de
-      verdade.
-    </p>
-    <div
-      style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:860px;margin:0 auto"
-    >
-      {
-        gustavo && (
-          <GuiaCard
-            name={gustavo.name}
-            role="Médico · Fundador"
-            photo={gustavo.photo}
-            slug={gustavo.slug}
-            personalTouch={gustavo.personalTouch}
+  <!-- Nosso espaço: pontuação escura -->
+  <section
+    style="background:var(--color-ink);padding:112px var(--section-px)"
+    aria-label="Nosso espaço"
+  >
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="lbl lbl-lt r" style="margin-bottom:14px">nosso espaço</div>
+      <h2 class="h2 h2-w r d1" style="margin-bottom:18px">
+        Projetado para<br /><em>acolher.</em>
+      </h2>
+      <p class="body body-lt r d2" style="max-width:520px;margin-bottom:48px">
+        Cada detalhe do 9º andar foi pensado para transmitir conforto, sofisticação e cuidado. Rua
+        Mariante, 180, Moinhos de Vento, Porto Alegre.
+      </p>
+      <div
+        class="r d2"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px"
+      >
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/detalhes.webp"
+            alt="Detalhes do espaço da ecooa"
+            width={945}
+            height={792}
+            class="lux-frame-img"
           />
-        )
-      }
-      {
-        jessica && (
-          <GuiaCard
-            name={jessica.name}
-            role="Nutricionista · Fundadora"
-            photo={jessica.photo}
-            slug={jessica.slug}
-            personalTouch={jessica.personalTouch}
-            delay="d1"
+        </figure>
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/mind.webp"
+            alt="Sala ecooa.mind"
+            width={1200}
+            height={798}
+            class="lux-frame-img"
           />
-        )
-      }
+        </figure>
+        <figure class="lux-frame" style="margin:0">
+          <OptimizedImage
+            src="/clinic/cafe.webp"
+            alt="Espaço de mentorias da ecooa"
+            width={1000}
+            height={1233}
+            class="lux-frame-img"
+          />
+        </figure>
+      </div>
     </div>
   </section>
 
-  <RespiroEditorial
-    quote="Um lugar onde saúde, ciência e cuidado genuíno se encontram para transformar vidas."
-    author="ecooa · manifesto"
-  />
-
-  <!-- Nosso Espaço (colagem editorial) -->
-  <section class="u-bg-warm" aria-label="Nosso espaço">
-    <div class="w">
-      <div class="g2 g2c">
-        <div>
-          <div class="lbl r u-mb-16">nosso espaço</div>
-          <h2 class="h2 r d1 u-mb-12">Projetado para<br /><em>acolher.</em></h2>
-          <p class="body r d2" style="max-width:440px;margin-bottom:28px">
-            Cada detalhe do nosso espaço foi pensado para transmitir conforto, sofisticação e
-            cuidado. Conheça a ecooa em Moinhos de Vento, Porto Alegre.
-          </p>
-          <div
-            class="r d3"
-            style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:420px"
-          >
-            <div class="lux-frame" style="padding:8px">
-              <OptimizedImage
-                src="/clinic/detalhes.webp"
-                alt="Detalhes do espaço ecooa"
-                width={945}
-                height={792}
-                class="u-cover"
-                style="aspect-ratio:1/1"
-              />
-            </div>
-            <div class="lux-frame" style="padding:8px">
-              <OptimizedImage
-                src="/clinic/working.webp"
-                alt="Espaço ecooa.working"
-                width={1200}
-                height={799}
-                class="u-cover"
-                style="aspect-ratio:1/1"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="lux-collage r d2">
-          <div class="lux-frame c-a">
-            <OptimizedImage
-              src="/clinic/recepcao.webp"
-              alt="Recepção da ecooa"
-              width={1000}
-              height={1233}
-              class="u-cover"
+  <!-- Liderança -->
+  <section
+    style="background:var(--color-cream);padding:112px var(--section-px)"
+    aria-label="Liderança"
+  >
+    <div style="max-width:1280px;margin:0 auto">
+      <div class="lbl r" style="margin-bottom:14px">quem lidera</div>
+      <h2 class="h2 r d1" style="margin-bottom:12px">Quem faz a ecooa<br /><em>existir.</em></h2>
+      <p class="body r d2" style="max-width:480px;margin-bottom:44px">
+        As pessoas por trás do ecossistema, com um mesmo compromisso: que você seja cuidada de
+        verdade.
+      </p>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:860px"
+      >
+        {
+          gustavo && (
+            <GuiaCard
+              name={gustavo.name}
+              role="Médico · Fundador"
+              photo={gustavo.photo}
+              slug={gustavo.slug}
+              registration={gustavo.registration}
+              personalTouch={gustavo.personalTouch}
             />
-          </div>
-          <div class="lux-frame c-b">
-            <OptimizedImage
-              src="/clinic/mind.webp"
-              alt="Sala ecooa.mind"
-              width={1200}
-              height={798}
-              class="u-cover"
+          )
+        }
+        {
+          jessica && (
+            <GuiaCard
+              name={jessica.name}
+              role="Nutricionista · Fundadora"
+              photo={jessica.photo}
+              slug={jessica.slug}
+              registration={jessica.registration}
+              personalTouch={jessica.personalTouch}
+              delay="d1"
             />
-          </div>
-          <div class="lux-frame c-c">
-            <OptimizedImage
-              src="/clinic/mentorias.webp"
-              alt="Espaço de mentorias ecooa.cademy"
-              width={1000}
-              height={1233}
-              class="u-cover"
-            />
-          </div>
-        </div>
+          )
+        }
       </div>
     </div>
   </section>
@@ -310,3 +221,26 @@ const jessica = getProfessionalBySlug('jessica-stein');
     subtext="A primeira conversa é o passo mais importante. Estamos prontos para te receber."
   />
 </BaseLayout>
+
+<style>
+  .carta p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 300;
+    color: var(--color-ink);
+    line-height: 1.75;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 18px;
+  }
+  .carta .carta-sig {
+    font-family: var(--font-primary);
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--color-brand-text);
+    margin: 28px 0 0;
+  }
+</style>
