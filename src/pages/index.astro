@@ -3,10 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
-import ReviewsMarquee from '../components/ReviewsMarquee.astro';
 import PillarCard from '../components/PillarCard.astro';
 import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT, PHONE } from '../data/constants';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import MatchBar from '../components/MatchBar.astro';
+import CompareModel from '../components/CompareModel.astro';
+import RespiroEditorial from '../components/RespiroEditorial.astro';
+import { WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
@@ -14,6 +18,37 @@ const WA = WA_DEFAULT;
 const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);
+
+const homeFaqs = [
+  {
+    q: 'O que é a ecooa?',
+    a: 'A ecooa é uma clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Reunimos medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental em um ecossistema integrado de cuidado.',
+  },
+  {
+    q: 'Quais especialidades a ecooa oferece?',
+    a: 'A ecooa oferece medicina de alta performance (emagrecimento, hormônios, longevidade), estética avançada (procedimentos faciais e corporais), transplante capilar, nutrição personalizada (clínica, esportiva e estética) e saúde mental (psicologia).',
+  },
+  {
+    q: 'Onde fica a ecooa?',
+    a: 'A ecooa fica na Rua Mariante, 180, 9º andar, no bairro Moinhos de Vento, em Porto Alegre, RS. O atendimento é de segunda a sexta, das 9h às 20h.',
+  },
+  {
+    q: 'Como agendar uma consulta na ecooa?',
+    a: 'Você pode agendar sua avaliação pelo WhatsApp (51) 99146-0909 ou pela página de agendamento do site. Nossa equipe irá orientar você sobre o melhor profissional para suas necessidades.',
+  },
+  {
+    q: 'Quanto custa a primeira consulta?',
+    a: 'Os valores variam conforme a especialidade e o profissional. Fale com a gente pelo WhatsApp para receber os valores atualizados e as condições de cada protocolo.',
+  },
+  {
+    q: 'A ecooa atende convênio?',
+    a: 'Nosso atendimento é particular, com emissão de recibo para você solicitar reembolso ao seu plano de saúde, conforme as regras do seu contrato.',
+  },
+  {
+    q: 'Qual a nota da ecooa no Google?',
+    a: 'A ecooa possui nota 5.0 no Google, a nota máxima possível, com avaliações de pacientes reais que destacam o acolhimento, a qualidade do atendimento e os resultados obtidos.',
+  },
+];
 ---
 
 <BaseLayout
@@ -24,15 +59,14 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
   <section class="hero" aria-label="Apresentação ecooa">
     <div class="hl">
       <div class="hl-lbl lbl">Porto Alegre · Moinhos de Vento</div>
-      <h1 class="hh1">
-        Cuidado de saúde, estética e longevidade,<br /><em>integrado e humano.</em>
-      </h1>
+      <h1 class="hh1">Chegue com o que dói.<br /><em>Saia com um plano.</em></h1>
       <p class="hl-sub body">
-        Em Moinhos de Vento, uma equipe que escuta antes de prescrever e trabalha junta pelo seu
-        resultado.
+        Medicina, nutrição, estética e saúde mental conversando entre si. Aqui você conta sua
+        história uma vez, e um time inteiro cuida do resto.
       </p>
-      <div class="hl-act">
-        <a href="/agendamento" class="bd">agendar avaliação</a>
+      <MatchBar />
+      <div class="hl-act" style="margin-top:18px">
+        <a href="/agendamento" class="ghost">agendar avaliação <span aria-hidden="true">→</span></a>
         <a
           href={WA}
           target="_blank"
@@ -41,11 +75,6 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
           data-intent="homepage-hero">falar pelo whatsapp <span aria-hidden="true">→</span></a
         >
       </div>
-      <p
-        style="font-size:10px;font-weight:400;color:var(--color-ink-soft);letter-spacing:.04em;margin-top:4px"
-      >
-        respondemos em minutos
-      </p>
       <div class="hl-ft"><div class="sl"></div><span class="sl-t">scroll</span></div>
     </div>
     <div class="hr">
@@ -87,37 +116,58 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
 
   <Marquee />
 
-  <!-- Empatia -->
-  <section class="empathy-section" aria-label="Você se identifica?">
-    <div class="empathy-wrap">
-      <div class="empathy-questions">
-        <p class="empathy-q r">Você já saiu de uma consulta sentindo que não foi ouvido?</p>
-        <p class="empathy-q r d1">Já fez exames e ninguém explicou direito o que significam?</p>
-        <p class="empathy-q r d2">Já tentou emagrecer sem entender por que não funciona?</p>
-      </div>
-      <div class="empathy-answer r d3">
-        <p class="empathy-lead">Na ecooa, cada paciente é um caso único.</p>
-        <p class="empathy-body body">
-          Nosso time de 30 especialistas trabalha junto para encontrar respostas reais. Medicina,
-          nutrição, psicologia e estética conectados por um objetivo: cuidar de você de verdade.
-        </p>
-        <a href="/agendamento" class="bd" style="margin-top:24px;display:inline-block"
-          >agendar avaliação</a
-        >
-      </div>
-    </div>
-  </section>
+  <!-- Espelho: dores em primeira pessoa -->
+  <EspelhoSection
+    label="você se reconhece?"
+    items={[
+      {
+        text: 'cansada de dietas que não funcionam',
+        waText:
+          'Olá, estou cansada de dietas que não funcionam e quero um acompanhamento que funcione de verdade',
+        intent: 'home-espelho-dietas',
+      },
+      {
+        text: 'meu cabelo está caindo e ninguém leva a sério',
+        waText: 'Olá, meu cabelo está caindo e gostaria de uma avaliação séria',
+        intent: 'home-espelho-cabelo',
+      },
+      {
+        text: 'me olho no espelho e não me reconheço',
+        waText: 'Olá, gostaria de uma avaliação estética com resultado natural',
+        intent: 'home-espelho-espelho',
+      },
+      {
+        text: 'vivo no automático, ansiosa e sem energia',
+        waText:
+          'Olá, estou me sentindo no automático, ansiosa e sem energia, e gostaria de conversar',
+        intent: 'home-espelho-ansiedade',
+      },
+      {
+        text: 'meus exames dizem que está tudo normal, mas eu não estou',
+        waText:
+          'Olá, meus exames dizem que está tudo normal mas eu não me sinto bem. Gostaria de uma avaliação completa',
+        intent: 'home-espelho-exames',
+      },
+      {
+        text: 'não sei bem o que sinto, só sei que preciso conversar',
+        waText:
+          'Olá, não sei bem o que estou sentindo, só sei que preciso conversar com alguém da equipe ecooa',
+        intent: 'home-espelho-neutra',
+      },
+    ]}
+    closing="Se alguma dessas frases podia ser sua, você chegou ao lugar certo."
+  />
 
-  <!-- Persona -->
+  <!-- Portas de transformação -->
   <section class="persona-section" aria-label="Como podemos ajudar">
     <div class="w">
       <div class="lbl r" style="margin-bottom:14px;justify-content:center;text-align:center">
-        como podemos ajudar
+        portas de transformação
       </div>
       <h2 class="h2 r d1" style="text-align:center;margin-bottom:48px">
-        O que você precisa<br /><em>neste momento?</em>
+        O que você quer<br /><em>mudar primeiro?</em>
       </h2>
-      <div class="persona-grid">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:20px">
         <a href="/ecooa-med" class="persona-card r">
           <span class="persona-icon"
             ><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"
@@ -127,10 +177,30 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                 stroke-width="1"></path></svg
             ></span
           >
-          <span class="persona-label">quero cuidar da minha saúde</span>
+          <span class="persona-label">quero emagrecer de vez, com saúde</span>
+          <span
+            style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em"
+            >ecooa.med</span
+          >
           <span class="persona-arrow" aria-hidden="true">→</span>
         </a>
         <a href="/ecooa-esthetic" class="persona-card r d1">
+          <span class="persona-icon"
+            ><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+              ><path
+                d="M12 22C6 22 2 17 2 11c0-2 1-4 2-5 1 4 4 6 8 6s7-2 8-6c1 1 2 3 2 5 0 6-4 11-10 11z"
+                stroke="currentColor"
+                stroke-width="1"></path></svg
+            ></span
+          >
+          <span class="persona-label">quero meu cabelo de volta</span>
+          <span
+            style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em"
+            >tricologia e transplante capilar</span
+          >
+          <span class="persona-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/ecooa-esthetic" class="persona-card r d2">
           <span class="persona-icon"
             ><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"
               ><path
@@ -139,10 +209,14 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                 stroke-width="1"></path></svg
             ></span
           >
-          <span class="persona-label">quero cuidar da minha estética</span>
+          <span class="persona-label">quero me reconhecer no espelho</span>
+          <span
+            style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em"
+            >ecooa.esthetic</span
+          >
           <span class="persona-arrow" aria-hidden="true">→</span>
         </a>
-        <a href="/ecooa-mind" class="persona-card r d2">
+        <a href="/ecooa-mind" class="persona-card r d3">
           <span class="persona-icon"
             ><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"
               ><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1"></circle><path
@@ -152,19 +226,28 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
                 stroke-linecap="round"></path></svg
             ></span
           >
-          <span class="persona-label">quero cuidar da minha mente</span>
+          <span class="persona-label">quero sair do modo sobrevivência</span>
+          <span
+            style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em"
+            >ecooa.mind</span
+          >
           <span class="persona-arrow" aria-hidden="true">→</span>
         </a>
-        <a href="/ecooa-working" class="persona-card r d3">
+        <a href="/ecooa-working" class="persona-card r d4">
           <span class="persona-icon"
             ><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true"
-              ><path
-                d="M12 22C6 22 2 17 2 11c0-2 1-4 2-5 1 4 4 6 8 6s7-2 8-6c1 1 2 3 2 5 0 6-4 11-10 11z"
+              ><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1"></circle><path
+                d="M9 12l2 2 4-4"
                 stroke="currentColor"
-                stroke-width="1"></path></svg
+                stroke-width="1"
+                stroke-linecap="round"></path></svg
             ></span
           >
-          <span class="persona-label">quero cuidar da minha nutrição</span>
+          <span class="persona-label">quero comer sem culpa</span>
+          <span
+            style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);letter-spacing:.04em"
+            >ecooa.working</span
+          >
           <span class="persona-arrow" aria-hidden="true">→</span>
         </a>
       </div>
@@ -182,15 +265,14 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         class="r d1"
         style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px"
       >
-        <span
-          style="color:var(--color-ink-mid);font-size:22px;letter-spacing:2px"
-          aria-label="5 estrelas">★★★★★</span
+        <span style="color:#E8B931;font-size:22px;letter-spacing:2px" aria-label="5 estrelas"
+          >★★★★★</span
         >
         <span style="font-size:28px;font-weight:200;color:var(--color-ink);letter-spacing:-.02em"
           >5.0</span
         >
         <a
-          href="https://www.google.com/maps/place/ecooa"
+          href="https://g.page/r/CR6HT7KGWT_3EAI"
           target="_blank"
           rel="noopener noreferrer"
           style="font-size:12px;font-weight:300;color:var(--color-ink-soft);text-decoration:none;border-bottom:1px solid var(--color-stone)"
@@ -198,8 +280,47 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         >
       </div>
     </div>
-    <div class="r d2">
-      <ReviewsMarquee />
+    <div class="gr-grid r d2">
+      <div class="gr-card">
+        <div class="gr-stars" aria-hidden="true">★★★★★</div>
+        <p class="gr-quote">
+          "Fui muito bem recebida desde a recepção. O Dr. Gustavo ouviu tudo com calma e explicou
+          cada detalhe dos meus exames. Saí sabendo exatamente o que fazer."
+        </p>
+        <p class="gr-author">C. M.</p>
+      </div>
+      <div class="gr-card">
+        <div class="gr-stars" aria-hidden="true">★★★★★</div>
+        <p class="gr-quote">
+          "O ambiente é lindo e acolhedor. Fiz acompanhamento nutricional e médico ao mesmo tempo, e
+          os profissionais conversaram entre si sobre o meu caso. Nunca tinha vivido isso."
+        </p>
+        <p class="gr-author">R. S.</p>
+      </div>
+      <div class="gr-card">
+        <div class="gr-stars" aria-hidden="true">★★★★★</div>
+        <p class="gr-quote">
+          "Depois de passar por vários endocrinologistas sem resultado, encontrei na ecooa o cuidado
+          que eu precisava. Em três meses já vi mudanças reais."
+        </p>
+        <p class="gr-author">F. L.</p>
+      </div>
+      <div class="gr-card">
+        <div class="gr-stars" aria-hidden="true">★★★★★</div>
+        <p class="gr-quote">
+          "A nutricionista e o médico trabalham juntos no meu protocolo. Recomendo para quem quer um
+          atendimento que realmente olha para a pessoa como um todo."
+        </p>
+        <p class="gr-author">M. T.</p>
+      </div>
+      <div class="gr-card">
+        <div class="gr-stars" aria-hidden="true">★★★★★</div>
+        <p class="gr-quote">
+          "Comecei pela psicóloga e fui encaminhada para a nutrição. Tudo no mesmo lugar, com
+          profissionais que se conhecem. Faz toda a diferença."
+        </p>
+        <p class="gr-author">A. P.</p>
+      </div>
     </div>
   </section>
 
@@ -379,7 +500,7 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
         <PillarCard
           number="05"
           name="Saúde Mental"
-          description="Psicologia e psiquiatria para quem entende que saúde plena começa pela mente."
+          description="Psicologia para quem entende que saúde plena começa pela mente."
           label="ecooa.mind"
           href="/ecooa-mind"
         />
@@ -399,47 +520,48 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       />
     </div>
     <div class="ap-cp">
-      <div class="lbl lbl-lt r">nossa metodologia</div>
+      <div class="lbl lbl-lt r">como sua história muda aqui</div>
       <h2 class="h2 h2-w r d1 u-mt-15">
-        Cuidado que<br />começa na <em>escuta</em><br />e nunca termina.
+        Você conta uma vez.<br />Um time inteiro<br /><em>cuida do resto.</em>
       </h2>
       <p class="body body-lt r d2 u-mt-16">
-        Não trabalhamos com protocolos genéricos. Entendemos sua história, analisamos seus dados e
-        construímos com você um caminho feito para os seus objetivos.
+        Não trabalhamos com protocolos genéricos. Sua jornada na ecooa acontece em três atos, sempre
+        no seu ritmo.
       </p>
       <div class="st st-dk r d3 u-mt-32">
         <div class="sr">
           <span class="sn">01</span><div>
-            <div class="st-t">Diagnóstico e escuta ativa</div><div class="st-b">
-              Nossa equipe multidisciplinar se conhece e se comunica. Cada especialista sabe o
-              momento certo de envolver os demais, de forma natural e coordenada.
+            <div class="st-t">Você conta sua história</div><div class="st-b">
+              Pelo WhatsApp, do seu jeito. Pode ser texto, pode ser áudio. A gente escuta antes de
+              qualquer coisa.
             </div>
           </div>
         </div>
         <div class="sr">
           <span class="sn">02</span><div>
-            <div class="st-t">Testes genéticos e biomarcadores</div><div class="st-b">
-              Análise aprofundada dos seus dados para um panorama preciso e real da sua saúde.
+            <div class="st-t">A gente indica o guia certo</div><div class="st-b">
+              O ecooa.match cruza a sua queixa com mais de 30 especialistas e aponta quem melhor
+              responde ao seu caso.
             </div>
           </div>
         </div>
         <div class="sr">
           <span class="sn">03</span><div>
-            <div class="st-t">Protocolo baseado nos seus objetivos</div><div class="st-b">
-              Nada genérico, nada imposto. Construído com base nas suas informações e no que você
-              quer alcançar.
-            </div>
-          </div>
-        </div>
-        <div class="sr">
-          <span class="sn">04</span><div>
-            <div class="st-t">Acompanhamento humanizado</div><div class="st-b">
-              Contínuo e presente, onde o objetivo principal é sempre você e a sua evolução.
+            <div class="st-t">Seu time monta o plano junto</div><div class="st-b">
+              Médico, nutricionista e psicóloga conversam entre si sobre o seu caso. Você não repete
+              sua história a cada consulta.
             </div>
           </div>
         </div>
       </div>
-      <a href="/ecooa-med" class="bow r d4" style="margin-top:36px">conhecer a metodologia</a>
+      <a
+        href={WA}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bow r d4"
+        style="margin-top:36px"
+        data-intent="home-jornada">começar pela primeira conversa</a
+      >
     </div>
   </section>
 
@@ -449,13 +571,17 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     aria-label="Números da ecooa"
   >
     <div class="nr">
-      <div class="ni r"><p class="nv">9</p><p class="nl">Salas equipadas</p></div>
+      <div class="ni r">
+        <p class="nv">4</p><p class="nl">
+          Áreas que conversam entre si: medicina, nutrição, estética e mente
+        </p>
+      </div>
       <div class="ni r d1">
         <p class="nv">30<sup>+</sup></p><p class="nl">Profissionais no ecossistema</p>
       </div>
       <div class="ni r d2">
         <p class="nv" style="display:flex;align-items:center;justify-content:center;gap:6px">
-          <span style="color:var(--color-ink-mid);font-size:clamp(24px,3vw,36px)">★</span> 5.0
+          <span style="color:#E8B931;font-size:clamp(24px,3vw,36px)">★</span> 5.0
         </p><p class="nl">Nota no Google</p>
       </div>
       <div class="ni r d3">
@@ -465,6 +591,24 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       </div>
     </div>
   </section>
+
+  <CompareModel
+    rows={[
+      {
+        apressado: 'Consulta de 10 minutos e uma receita na mão.',
+        ecooa: 'Consulta com tempo de verdade, que só termina quando você entendeu o plano.',
+      },
+      {
+        apressado: '"Seus exames estão normais, próximo."',
+        ecooa: 'Seus exames explicados um a um, em bom português.',
+      },
+      {
+        apressado:
+          'Cada especialista numa clínica, e você carregando exames de um lado para o outro.',
+        ecooa: 'Seu time no mesmo lugar, dividindo o seu caso entre si.',
+      },
+    ]}
+  />
 
   <!-- Cuidado -->
   <section class="u-bg-warm" aria-label="Para quem busca cuidado">
@@ -593,9 +737,9 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
       <div class="st st-dk r d1">
         <div class="sr">
           <span class="sn">01</span><div>
-            <div class="st-t">Valor para o profissional</div><div class="st-b">
-              O ambiente sofisticado eleva a percepção do seu trabalho, fortalece sua marca pessoal
-              e atrai pacientes que valorizam excelência.
+            <div class="st-t">Acolhimento desde a chegada</div><div class="st-b">
+              Recepção dedicada, café e um ambiente que abraça. A sua experiência de cuidado começa
+              antes da consulta.
             </div>
           </div>
         </div>
@@ -618,139 +762,27 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     </div>
   </section>
 
-  <!-- B2B Banner contextual -->
-  <section class="bb r" aria-label="Para profissionais de saúde">
-    <div class="bb-l">
-      <p>Profissional de saúde?</p>
-      <p>Salas para médicos, nutricionistas, psicólogos e esteticistas em Moinhos de Vento.</p>
-    </div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap">
-      <a href="/ecooa-med" class="ghost" style="font-size:10px;letter-spacing:.08em"
-        >ecooa.med <span aria-hidden="true">→</span></a
+  <!-- Instagram (faixa compacta; grid volta quando houver thumbnails reais) -->
+  <section class="u-bg-warm" aria-label="Instagram ecooa" style="padding:56px var(--section-px)">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center">
+      <div class="lbl r" style="justify-content:center">siga a ecooa</div>
+      <p class="body r d1" style="max-width:420px">
+        Bastidores, conteúdos e a comunidade ecooa no dia a dia.
+      </p>
+      <a
+        href="https://instagram.com/somos.ecooa"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bo r d2"
+        style="display:inline-flex;align-items:center;gap:8px"
       >
-      <a href="/ecooa-esthetic" class="ghost" style="font-size:10px;letter-spacing:.08em"
-        >ecooa.esthetic <span aria-hidden="true">→</span></a
-      >
-      <a href="/ecooa-mind" class="ghost" style="font-size:10px;letter-spacing:.08em"
-        >ecooa.mind <span aria-hidden="true">→</span></a
-      >
-      <a href="/ecooa-working" class="ghost" style="font-size:10px;letter-spacing:.08em"
-        >ecooa.working <span aria-hidden="true">→</span></a
-      >
-    </div>
-  </section>
-
-  <!-- Instagram -->
-  <section class="u-bg-warm" aria-label="Instagram ecooa">
-    <div class="w">
-      <div
-        style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px"
-      >
-        <div>
-          <div class="lbl r">siga a ecooa</div>
-          <h2 class="h2 r d1 u-mt-13">Acompanhe nossa<br /><em>comunidade.</em></h2>
-          <p class="body r d2 u-mt-10">
-            Acompanhe resultados reais, bastidores e nossos profissionais em ação
-          </p>
-        </div>
-        <a
-          href="https://instagram.com/somos.ecooa"
-          target="_blank"
-          rel="noopener noreferrer"
-          style="display:flex;align-items:center;gap:8px;font-size:12px;font-weight:400;color:var(--color-ink-soft);text-decoration:none;border:1px solid var(--color-stone);padding:9px 16px"
-          class="r"
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+          ><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.3"
+          ></rect><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.3"
+          ></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"></circle></svg
         >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
-            ><rect
-              x="2"
-              y="2"
-              width="20"
-              height="20"
-              rx="6"
-              stroke="currentColor"
-              stroke-width="1.3"></rect><circle
-              cx="12"
-              cy="12"
-              r="4.5"
-              stroke="currentColor"
-              stroke-width="1.3"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor"
-            ></circle></svg
-          >
-          @somos.ecooa
-        </a>
-      </div>
-      <div class="ig r">
-        <a
-          href="https://www.instagram.com/p/DJnIaMjsMAP/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="ip ip-t"
-          aria-label="Post Instagram: Resultados que falam por si"
-          ><div class="ip-bg" style="background:linear-gradient(145deg,#D8D3CF,#C4BBB8)"></div><div
-            class="ip-ov"
-          >
-            <span class="ip-tg">ecooa.esthetic</span>
-          </div><div class="ip-cp">Resultados que falam por si</div></a
-        >
-        <div class="ic-l">
-          <a
-            href="https://www.instagram.com/reel/DJrbUEER3Yc/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ip"
-            aria-label="Reel: Saúde que transforma"
-            ><div class="ip-bg" style="background:linear-gradient(145deg,#E2DDD9,#C8C0BC)">
-            </div><div class="ip-ov"><span class="ip-tg">ecooa.med</span></div><div class="ip-cp">
-              Saúde que transforma
-            </div></a
-          >
-          <a
-            href="https://www.instagram.com/reel/C7kLv-QOOR5/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ip"
-            aria-label="Reel: Mente e corpo integrados"
-            ><div class="ip-bg" style="background:linear-gradient(145deg,#DDD8D5,#AEA5A2)">
-            </div><div class="ip-ov"><span class="ip-tg">ecooa.mind</span></div><div class="ip-cp">
-              Mente e corpo integrados
-            </div></a
-          >
-        </div>
-        <div class="ic-l">
-          <a
-            href="https://www.instagram.com/reel/C6E3YoQuDpa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ip"
-            aria-label="Reel: Carreiras que ecooam"
-            ><div class="ip-bg" style="background:linear-gradient(145deg,#C8C0BC,#AEA5A2)">
-            </div><div class="ip-ov"><span class="ip-tg">nutrição</span></div><div class="ip-cp">
-              Carreiras que ecooam
-            </div></a
-          >
-          <a
-            href="https://www.instagram.com/somos.ecooa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ip"
-            aria-label="Post: Nutrição com propósito"
-            ><div class="ip-bg" style="background:linear-gradient(145deg,#EDE8E4,#D8D3CF)">
-            </div><div class="ip-ov"><span class="ip-tg">ecooa.working</span></div><div
-              class="ip-cp"
-            >
-              Nutrição com propósito
-            </div></a
-          >
-        </div>
-      </div>
-      <div style="margin-top:28px;text-align:center" class="r">
-        <a
-          href="https://instagram.com/somos.ecooa"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bo">ver no instagram</a
-        >
-      </div>
+        @somos.ecooa
+      </a>
     </div>
   </section>
 
@@ -795,64 +827,16 @@ const recentPosts = (await getCollection('blog', ({ data }) => !data.draft))
     )
   }
 
+  <RespiroEditorial
+    quote="Saúde, estética e longevidade que conversam entre si."
+    author="ecooa · desde 2021"
+  />
+
+  <FaqVisivel faqs={homeFaqs} heading="Dúvidas sobre a<br><em>ecooa.</em>" />
+
   <CtaSection
     heading="O primeiro passo começa<br>com uma <em>conversa.</em>"
     subtext="Estamos prontos para ouvir você e construir juntos um cuidado que ecooe."
     image="/clinic/faxada-predio.webp"
   />
-
-  <!-- FAQ Schema (SEO) -->
-  <script
-    type="application/ld+json"
-    set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'O que é a ecooa?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'A ecooa é uma clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre. Reunimos medicina de alta performance, estética avançada, nutrição, transplante capilar e saúde mental em um ecossistema integrado de cuidado.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Quais especialidades a ecooa oferece?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'A ecooa oferece medicina de alta performance (emagrecimento, hormônios, longevidade), estética avançada (procedimentos faciais e corporais), transplante capilar, nutrição personalizada (clínica, esportiva e estética) e saúde mental (psicologia e psiquiatria).',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Onde fica a ecooa?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'A ecooa fica na Rua Mariante, 180, 9º andar, no bairro Moinhos de Vento, em Porto Alegre, RS. O atendimento é de segunda a sexta, das 9h às 20h.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Como agendar uma consulta na ecooa?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `Você pode agendar sua avaliação pelo WhatsApp ${PHONE} ou pela página de agendamento do site. Nossa equipe irá orientar você sobre o profissional mais adequado para suas necessidades.`,
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Qual a nota da ecooa no Google?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'A ecooa possui nota 5.0 no Google, a nota máxima possível, com avaliações de pacientes reais que destacam o acolhimento, a qualidade do atendimento e os resultados obtidos.',
-          },
-        },
-      ],
-    })}
-  />
-
-  <script>
-    import '../scripts/carousel';
-  </script>
 </BaseLayout>

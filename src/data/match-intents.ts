@@ -151,17 +151,9 @@ export const curatedIntents: CuratedIntent[] = [
     id: 'corporal',
     label: 'Estética corporal',
     query:
-      'Estética corporal, gordura localizada, flacidez, drenagem linfática, celulite, dermatofuncional',
+      'Estética corporal, gordura localizada, flacidez, celulite, mesoterapia, injetáveis corporais',
     unit: 'esthetic',
-    topSlugs: ['cris-neumann'],
-  },
-  {
-    id: 'pos-operatorio',
-    label: 'Pós-operatório',
-    query:
-      'Pós-operatório estético, drenagem pós cirurgia plástica, recuperação cirúrgica, lipoescultura',
-    unit: 'esthetic',
-    topSlugs: ['cris-neumann'],
+    topSlugs: [],
   },
 
   // ── ecooa.esthetic - outros ──

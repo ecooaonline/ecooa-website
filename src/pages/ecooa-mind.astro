@@ -3,13 +3,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
-import QuizSection from '../components/QuizSection.astro';
-import B2BBanner from '../components/B2BBanner.astro';
-import CtaSection from '../components/CtaSection.astro';
-import { WA_DEFAULT } from '../data/constants';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
+import { WA_BASE } from '../data/constants';
 import { getCollection } from 'astro:content';
-
-const WA = WA_DEFAULT;
 
 const allMindPosts = await getCollection(
   'blog',
@@ -21,12 +22,12 @@ const mindPosts = allMindPosts
 
 const mindFaqs = [
   {
-    q: 'Como funciona a primeira sessão de terapia?',
-    a: 'A primeira sessão é um espaço de acolhimento e escuta. Você conta o que está sentindo e, juntos, definimos os próximos passos do processo terapêutico.',
+    q: 'Como funciona a sessão de acolhimento?',
+    a: 'A primeira sessão é um espaço de acolhimento e escuta. Você conta o que está sentindo, no seu ritmo, e juntos definimos os próximos passos. Você decide se quer continuar.',
   },
   {
     q: 'Qual a diferença entre psicólogo e psiquiatra?',
-    a: 'O psicólogo trabalha com psicoterapia (conversa estruturada). O psiquiatra é médico e pode prescrever medicamentos. Na ecooa.mind, ambos atuam de forma integrada.',
+    a: 'O psicólogo trabalha com psicoterapia (conversa estruturada). O psiquiatra é médico e pode prescrever medicamentos. Na ecooa, quando há indicação de avaliação médica, o encaminhamento acontece de forma integrada, com o seu histórico junto.',
   },
   {
     q: 'Preciso de medicação para começar terapia?',
@@ -36,22 +37,22 @@ const mindFaqs = [
     q: 'Vocês atendem online?',
     a: 'Sim. Oferecemos atendimento presencial em Moinhos de Vento e online, conforme a preferência e indicação clínica.',
   },
+  {
+    q: 'O que eu falo fica em sigilo?',
+    a: 'Sim, sigilo absoluto. O que você compartilha em sessão é protegido pelo código de ética profissional. Informações só circulam entre profissionais da equipe com o seu consentimento, quando isso ajuda o seu cuidado.',
+  },
+  {
+    q: 'Posso trocar de profissional?',
+    a: 'Pode, sem constrangimento. O vínculo com o terapeuta é parte do tratamento, e encontrar a pessoa certa faz diferença. É só avisar a recepção.',
+  },
 ];
 
-const mindFaqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: mindFaqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
-};
+const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma sessão de acolhimento na ecooa.mind')}`;
 ---
 
 <BaseLayout
-  title="Psicologia e Psiquiatria | ecooa.mind · Porto Alegre"
-  description="Saúde mental integrada ao cuidado completo. Psicologia e psiquiatria em Moinhos de Vento, Porto Alegre. Ambiente acolhedor, seguro e sem julgamento."
+  title="Psicologia em Porto Alegre | ecooa.mind · Moinhos de Vento"
+  description="Psicologia presencial em Moinhos de Vento, Porto Alegre, ou online. Sessão de acolhimento com agendamento ágil, sem lista de espera e sem julgamento."
   currentPage="ecooa-mind"
   ogImage="/clinic/mind.webp"
   breadcrumbs={[{ name: 'ecooa.mind', url: '/ecooa-mind' }]}
@@ -68,59 +69,79 @@ const mindFaqSchema = {
       ></svg
     >
     <div class="ph-c">
-      <div class="lbl lbl-lt r">ecooa.mind</div>
+      <div class="lbl lbl-lt r">ecooa.mind · saúde mental</div>
       <h1 class="h1 h1-w r d1 u-mt-18">
-        Saúde mental<br />integrada ao<br /><em>cuidado completo.</em>
+        Você não precisa<br />dar conta de tudo<br /><em>sozinho.</em>
       </h1>
-      <p class="body body-lt r d2" style="margin-top:16px;max-width:480px">
-        Psicologia e psiquiatria em um ambiente acolhedor, seguro e sem julgamento. Porque saúde
-        plena começa pela mente.
-      </p>
-      <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta"
-        >falar pelo whatsapp</a
-      >
       <p
-        class="r d3"
-        style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em"
+        style="font-family:var(--font-serif);font-style:italic;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);margin-top:14px"
+        class="r d2"
       >
-        respondemos em minutos
+        Pedir ajuda não é fraqueza. É o primeiro capítulo.
       </p>
-      <p
-        class="r d3"
-        style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px"
+      <p class="body body-lt r d2" style="margin-top:10px;max-width:500px">
+        Psicologia presencial em Moinhos de Vento ou online, com agendamento ágil da sua sessão de
+        acolhimento. Sem lista de espera, sem julgamento.
+      </p>
+      <a
+        href={WA_ACOLHIMENTO}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bw r d3 u-cta"
+        data-intent="mind-hero">agendar sessão de acolhimento</a
       >
-        Primeira sessão em poucos dias. Agendamento ágil.
-      </p>
+      <RiskReversalBadge
+        items={['sigilo absoluto', 'primeira sessão sem compromisso', 'respondemos em minutos']}
+        light={true}
+      />
     </div>
   </div>
 
   <Marquee />
 
-  <script type="application/ld+json" set:html={JSON.stringify(mindFaqSchema)} />
+  <ProvaViva
+    items={['acolhimento sem lista de espera', 'presencial ou online', 'sigilo absoluto']}
+  />
 
-  <QuizSection
-    options={[
+  <EspelhoSection
+    label="você se reconhece?"
+    items={[
       {
-        title: 'ansiedade',
-        subtitle: '',
-        waText: 'Olá, gostaria de agendar uma consulta para ansiedade',
+        text: 'acordo cansada mesmo tendo dormido',
+        waText:
+          'Olá, ando acordando cansada mesmo dormindo e gostaria de agendar uma sessão de acolhimento',
+        intent: 'mind-espelho-cansaco',
       },
       {
-        title: 'esgotamento',
-        subtitle: '',
-        waText: 'Olá, estou com sinais de esgotamento e gostaria de avaliação',
+        text: 'a ansiedade chega sem avisar',
+        waText: 'Olá, gostaria de agendar uma sessão de acolhimento para ansiedade',
+        intent: 'mind-espelho-ansiedade',
       },
       {
-        title: 'começar',
-        subtitle: 'terapia',
-        waText: 'Olá, gostaria de agendar minha primeira sessão de terapia',
+        text: 'estou no automático faz tempo',
+        waText:
+          'Olá, sinto que estou no automático faz tempo e gostaria de conversar com a equipe ecooa.mind',
+        intent: 'mind-espelho-automatico',
       },
       {
-        title: 'preciso de',
-        subtitle: 'ajuda',
+        text: 'trabalho, entrego, sorrio, e por dentro estou no limite',
+        waText:
+          'Olá, estou com sinais de esgotamento e gostaria de agendar uma sessão de acolhimento',
+        intent: 'mind-espelho-esgotamento',
+      },
+      {
+        text: 'como por ansiedade e depois me culpo',
+        waText:
+          'Olá, como por ansiedade e depois me sinto culpada. Gostaria de conversar com a equipe ecooa.mind',
+        intent: 'mind-espelho-compulsao',
+      },
+      {
+        text: 'não sei nomear o que sinto, só sei que preciso conversar',
         waText: 'Olá, sinto que preciso de ajuda e gostaria de conversar com a equipe ecooa.mind',
+        intent: 'mind-espelho-neutra',
       },
     ]}
+    closing="Pedir ajuda não é fraqueza. É o primeiro capítulo."
   />
 
   <!-- Empatia -->
@@ -130,9 +151,9 @@ const mindFaqSchema = {
   >
     <div class="u-narrow">
       <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">
-        Você acorda cansado mesmo tendo dormido. A ansiedade aparece sem motivo aparente. Sente que
-        está no automático, sem energia para o que importa. Já tentou resolver sozinho, mas a
-        sensação de esgotamento persiste.
+        Acordar sem energia mesmo tendo dormido. A ansiedade que aparece sem motivo aparente. A
+        sensação de viver no automático, sem espaço para o que importa. Você já tentou resolver por
+        conta própria, mas o esgotamento persiste.
       </p>
       <p
         class="body r d1"
@@ -186,7 +207,9 @@ const mindFaqSchema = {
               <span class="u-dot"></span><span class="body-md">Psicoterapia individual</span>
             </div>
             <div class="lr">
-              <span class="u-dot"></span><span class="body-md">Psiquiatria clínica</span>
+              <span class="u-dot"></span><span class="body-md"
+                >Encaminhamento médico integrado, quando indicado</span
+              >
             </div>
             <div class="lr">
               <span class="u-dot"></span><span class="body-md"
@@ -229,6 +252,13 @@ const mindFaqSchema = {
     </div>
   </section>
 
+  <GuiaSection
+    unit="mind"
+    heading="Quem caminha<br>com <em>você.</em>"
+    subtext="Psicólogas e psicólogos que criam um espaço seguro para você ser quem é, integrados ao restante do seu cuidado."
+    max={3}
+  />
+
   <!-- Diferenciais -->
   <section class="u-bg-cream" aria-label="Diferenciais ecooa.mind">
     <div class="w">
@@ -239,8 +269,8 @@ const mindFaqSchema = {
           <h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">
             Integrado ao ecossistema
           </h3><p class="it-d-lg">
-            O psicólogo ou psiquiatra já tem contexto sobre o seu cuidado clínico geral, sem que
-            você precise repetir sua história a cada profissional.
+            Seu psicólogo já tem contexto sobre o seu cuidado clínico geral, sem que você precise
+            repetir sua história a cada profissional.
           </p>
         </div>
         <div class="card-w">
@@ -253,35 +283,17 @@ const mindFaqSchema = {
         </div>
         <div class="card-w">
           <h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">
-            Agendamento ágil
+            Sem lista de espera
           </h3><p class="it-d-lg">
-            Atendimento organizado para que você seja recebido em poucos dias. Sabemos que quem
-            busca ajuda não pode esperar.
+            Agendamento ágil da sua sessão de acolhimento. Sabemos que quem busca ajuda não pode
+            esperar.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <B2BBanner />
-
-  <!-- Perguntas frequentes -->
-  <section class="u-bg-warm" aria-label="Perguntas frequentes">
-    <div class="w">
-      <div class="lbl r u-mb-16">perguntas frequentes</div>
-      <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br /><em>ecooa.mind.</em></h2>
-      <div class="faq-section">
-        {
-          mindFaqs.map((faq) => (
-            <details class="faq-item">
-              <summary class="faq-q">{faq.q}</summary>
-              <p class="faq-a">{faq.a}</p>
-            </details>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <FaqVisivel faqs={mindFaqs} heading="Dúvidas sobre a<br><em>ecooa.mind.</em>" />
 
   <!-- Como funciona -->
   <section class="u-bg-cream" aria-label="Como funciona">
@@ -293,25 +305,26 @@ const mindFaqSchema = {
       >
         <div class="r u-tac">
           <span class="step-num">1</span>
-          <h3 class="it-t">Primeiro contato</h3>
+          <h3 class="it-t">Primeira conversa</h3>
           <p class="it-d">
-            Fale pelo WhatsApp no seu ritmo. Nossa equipe acolhe e agenda sua primeira sessão.
+            Pelo WhatsApp, no seu ritmo. Pode ser por texto ou por áudio. Nossa equipe acolhe e
+            agenda.
           </p>
         </div>
         <div class="r d1 u-tac">
           <span class="step-num">2</span>
           <h3 class="it-t">Sessão de acolhimento</h3>
           <p class="it-d">
-            Um espaço seguro para você ser ouvido. Juntos, definimos os próximos passos do processo
-            terapêutico.
+            Agendada sem demora, um espaço seguro para a sua história ser ouvida. Você decide se
+            quer continuar.
           </p>
         </div>
         <div class="r d2 u-tac">
           <span class="step-num">3</span>
           <h3 class="it-t">Acompanhamento contínuo</h3>
           <p class="it-d">
-            Sessões regulares no formato presencial ou online, com suporte integrado ao ecossistema
-            ecooa.
+            Sessões regulares, presenciais ou online, com objetivos combinados entre vocês. Terapia
+            não é mágica, é caminho.
           </p>
         </div>
       </div>
@@ -320,6 +333,43 @@ const mindFaqSchema = {
         style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em"
       >
         Primeira sessão sem compromisso. Você decide se quer continuar.
+      </p>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "Adiei muito tempo procurar ajuda. Na primeira sessão já senti acolhimento de verdade. O
+            ambiente é calmo e a escuta é genuína."
+          </p>
+          <p class="sm-soft">C.T.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "Minha psicóloga e meu médico conversam entre si sobre o meu caso. Isso fez o tratamento
+            render muito mais. Me senti cuidada de forma completa."
+          </p>
+          <p class="sm-soft">A.P.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Cheguei esgotada, quase em burnout. O acompanhamento integrado de psicologia e medicina
+            me devolveu equilíbrio e qualidade de vida."
+          </p>
+          <p class="sm-soft">B.N.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+      >
+        Depoimentos reais publicados com autorização dos pacientes.
       </p>
     </div>
   </section>
@@ -357,8 +407,12 @@ const mindFaqSchema = {
     )
   }
 
-  <CtaSection
-    heading="O cuidado começa<br>quando você <em>pede ajuda.</em>"
-    subtext="Agende sua consulta em um ambiente seguro, acolhedor e sem julgamento."
+  <PrimeiroPassoCTA
+    heading="O primeiro passo pode ser<br>uma mensagem de <em>uma linha.</em>"
+    subtext="A gente cuida do resto. Um ambiente seguro, acolhedor e sem julgamento."
+    waText="Olá, gostaria de agendar uma sessão de acolhimento na ecooa.mind"
+    label="agendar sessão de acolhimento"
+    intent="mind-primeiro-passo"
+    badges={['sem lista de espera', 'sigilo absoluto', 'você decide se continua']}
   />
 </BaseLayout>

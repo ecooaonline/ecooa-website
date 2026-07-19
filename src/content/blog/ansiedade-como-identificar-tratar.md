@@ -114,7 +114,7 @@ O trabalho não é apenas o que acontece no consultório. A TCC é uma terapia a
 
 O tratamento psicológico e o farmacológico não são excludentes. Em casos de ansiedade moderada a grave, ou quando a ansiedade interfere de forma muito intensa no funcionamento, a combinação de psicoterapia com medicação pode ser mais eficaz do que cada abordagem isolada.
 
-A indicação e o acompanhamento da medicação são feitos por psiquiatra. Na ecooa.mind, em Porto Alegre, a colaboração entre psicólogos e psiquiatras faz parte do modelo de cuidado.
+A indicação e o acompanhamento da medicação são feitos por psiquiatra. Na ecooa.mind, em Porto Alegre, quando há indicação de avaliação médica, o encaminhamento acontece de forma integrada, com o seu histórico junto.
 
 ## O que acontece na primeira consulta
 

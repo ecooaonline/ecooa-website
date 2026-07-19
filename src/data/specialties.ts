@@ -6,6 +6,21 @@ export interface Specialty {
   keywords: string[]; // Para busca e matching
 }
 
+// Áreas médicas da ecooa.med. Fonte única para a página do paciente
+// (/ecooa-med) e a de recrutamento (/para-profissionais), evitando deriva.
+export const medAreas: string[] = [
+  'Medicina Metabólica e Endocrinologia',
+  'Nutrologia e Emagrecimento',
+  'Envelhecimento Saudável e Estilo de Vida',
+  'Performance Cognitiva e Física',
+  'Hipertrofia e Composição Corporal',
+  'Hormônios e Saúde Feminina e Masculina',
+  'Bioimplantes Metabólicos',
+  'Medicina do Esporte e Performance',
+  'Medicina Preventiva e Checkup Metabólico',
+  'Testes Genéticos',
+];
+
 export const specialties: Specialty[] = [
   // ── ecooa.med ──
   {
@@ -143,13 +158,6 @@ export const specialties: Specialty[] = [
     unit: 'mind',
     description: 'Psicologia clínica para bem-estar emocional e saúde mental.',
     keywords: ['psicologia', 'psicólogo', 'terapia', 'emocional', 'mental'],
-  },
-  {
-    slug: 'psiquiatria',
-    name: 'Psiquiatria',
-    unit: 'mind',
-    description: 'Psiquiatria para tratamento de transtornos mentais.',
-    keywords: ['psiquiatria', 'psiquiatra', 'medicação', 'transtorno', 'ansiedade', 'depressão'],
   },
   {
     slug: 'coaching',

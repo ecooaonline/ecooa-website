@@ -1,0 +1,194 @@
+---
+import { WA_BASE } from '../data/constants';
+
+// Mini-quiz do Método Gehrke 360°: 5 perguntas, resultado por maioria
+// (a = Reset, b = Equilíbrio, c = Performance). Orientativo, não diagnóstico.
+
+const questions = [
+  {
+    q: 'Como está sua energia ao longo do dia?',
+    options: [
+      { level: 'a', text: 'Vivo cansada, mesmo dormindo' },
+      { level: 'b', text: 'Oscila: dias bons e dias arrastados' },
+      { level: 'c', text: 'Boa, mas sei que dá para mais' },
+    ],
+  },
+  {
+    q: 'E o seu sono?',
+    options: [
+      { level: 'a', text: 'Durmo mal quase toda noite' },
+      { level: 'b', text: 'Razoável, mas acordo sem descansar às vezes' },
+      { level: 'c', text: 'Durmo bem na maioria das noites' },
+    ],
+  },
+  {
+    q: 'Peso e metabolismo?',
+    options: [
+      { level: 'a', text: 'Não consigo emagrecer mesmo tentando' },
+      { level: 'b', text: 'Mantenho, mas com muito esforço' },
+      { level: 'c', text: 'Estável. Quero otimizar composição corporal' },
+    ],
+  },
+  {
+    q: 'Seus últimos exames?',
+    options: [
+      { level: 'a', text: 'Vários fora do padrão, ou faz tempo que não faço' },
+      { level: 'b', text: 'Pequenos ajustes apontados' },
+      { level: 'c', text: 'Tudo certo, quero ir além do básico' },
+    ],
+  },
+  {
+    q: 'Qual é o seu objetivo principal agora?',
+    options: [
+      { level: 'a', text: 'Recuperar meu corpo e minha disposição' },
+      { level: 'b', text: 'Constância: sono, energia e equilíbrio' },
+      { level: 'c', text: 'Alta performance física e mental' },
+    ],
+  },
+];
+
+const results = {
+  a: {
+    name: 'Reset',
+    desc: 'Quando o corpo pede recomeço. Protocolo intensivo para ajustar hormônios, metabolismo, inflamação e sono, com retornos frequentes até a estabilização.',
+  },
+  b: {
+    name: 'Equilíbrio',
+    desc: 'Para quem funciona, mas sente que pode melhorar. Ajustes finos de hormônios, nutrição e estilo de vida, com manutenção ativa e metas claras.',
+  },
+  c: {
+    name: 'Performance',
+    desc: 'Para quem já está equilibrado e quer operar no limite superior. Otimização avançada com biomarcadores, genética e acompanhamento de alta frequência.',
+  },
+};
+---
+
+<section
+  style="background:var(--color-cream);padding:86px var(--section-px)"
+  aria-label="Descobrir meu nível"
+>
+  <div style="max-width:640px;margin:0 auto">
+    <div class="lbl r" style="justify-content:center;margin-bottom:14px">descobrir meu nível</div>
+    <h2
+      class="h2 r d1"
+      style="text-align:center;margin-bottom:10px;font-size:clamp(24px,2.8vw,36px)"
+    >
+      Em qual nível do Método<br />Gehrke 360° você <em>está?</em>
+    </h2>
+    <p class="body r d2" style="text-align:center;margin-bottom:32px">
+      5 perguntas rápidas. O resultado é orientativo e não substitui a avaliação médica.
+    </p>
+
+    <form id="metodo-quiz" class="r d3" data-wa={WA_BASE}>
+      {
+        questions.map((question, qi) => (
+          <fieldset style="border:1px solid var(--color-stone);background:var(--color-warm);padding:20px 22px;margin-bottom:14px">
+            <legend style="font-size:13px;font-weight:400;color:var(--color-ink);padding:0 8px">
+              {qi + 1}. {question.q}
+            </legend>
+            {question.options.map((opt) => (
+              <label style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;cursor:pointer">
+                <input
+                  type="radio"
+                  name={`q${qi}`}
+                  value={opt.level}
+                  required
+                  style="margin-top:3px;cursor:pointer"
+                />
+                <span style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.6">
+                  {opt.text}
+                </span>
+              </label>
+            ))}
+          </fieldset>
+        ))
+      }
+      <button
+        type="submit"
+        class="bd"
+        style="width:100%;text-align:center;border:none;cursor:pointer"
+        data-intent="med-quiz-submit">ver meu nível</button
+      >
+    </form>
+
+    <div
+      id="metodo-quiz-result"
+      hidden
+      aria-live="polite"
+      style="margin-top:24px;background:var(--color-white);border:1px solid var(--color-stone);border-left:3px solid var(--color-brand);padding:28px 26px"
+    >
+      <p
+        style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:8px"
+      >
+        seu nível indicado
+      </p>
+      <p
+        id="metodo-quiz-nome"
+        style="font-family:var(--font-serif);font-style:italic;font-size:clamp(22px,2.6vw,30px);font-weight:300;color:var(--color-ink);margin-bottom:10px"
+      >
+      </p>
+      <p id="metodo-quiz-desc" class="body" style="margin-bottom:18px"></p>
+      <a
+        id="metodo-quiz-cta"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bd"
+        style="display:inline-block"
+        data-intent="med-quiz-resultado">quero avaliar meu nível com a equipe</a
+      >
+      <p style="font-size:11px;font-weight:300;color:var(--color-ink-ghost);margin-top:12px">
+        Resultado orientativo. A classificação real é feita em consulta, com seus exames.
+      </p>
+    </div>
+
+    <p
+      class="r d3"
+      style="text-align:center;margin-top:18px;font-size:12px;font-weight:300;color:var(--color-ink-soft)"
+    >
+      Prefere pular o teste? <a
+        href={`${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma avaliação pelo Método Gehrke 360°')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline"
+        >Fale direto com a equipe →</a
+      >
+    </p>
+  </div>
+</section>
+
+<script define:vars={{ results }}>
+  const form = document.getElementById('metodo-quiz');
+  const resultBox = document.getElementById('metodo-quiz-result');
+  if (form && resultBox) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const counts = { a: 0, b: 0, c: 0 };
+      new FormData(form).forEach((value) => {
+        if (value === 'a' || value === 'b' || value === 'c') counts[value] += 1;
+      });
+      const level =
+        counts.a >= counts.b && counts.a >= counts.c ? 'a' : counts.b >= counts.c ? 'b' : 'c';
+      const result = results[level];
+
+      const nome = document.getElementById('metodo-quiz-nome');
+      const desc = document.getElementById('metodo-quiz-desc');
+      const cta = document.getElementById('metodo-quiz-cta');
+      if (nome) nome.textContent = result.name;
+      if (desc) desc.textContent = result.desc;
+      if (cta) {
+        const wa = form.dataset.wa || '';
+        const msg = `Olá, fiz o teste do Método Gehrke 360° e meu nível indicado foi ${result.name}. Gostaria de agendar uma avaliação`;
+        cta.href = `${wa}?text=${encodeURIComponent(msg)}`;
+      }
+      resultBox.hidden = false;
+      resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      window.gtag?.('event', 'metodo_quiz_result', {
+        event_category: 'engagement',
+        event_label: result.name,
+      });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'metodo_quiz_result', nivel: result.name });
+    });
+  }
+</script>

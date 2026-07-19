@@ -1,0 +1,63 @@
+---
+import { WA_BASE } from '../data/constants';
+
+interface EspelhoItem {
+  text: string;
+  waText: string;
+  intent: string;
+}
+
+interface Props {
+  label?: string;
+  heading?: string;
+  items: EspelhoItem[];
+  closing?: string;
+}
+
+const { label = 'você se reconhece?', heading, items, closing } = Astro.props;
+---
+
+<section style="background:var(--color-cream);padding:64px var(--section-px)" aria-label={label}>
+  <div style="max-width:680px;margin:0 auto">
+    <div class="lbl r" style="margin-bottom:10px;justify-content:center">{label}</div>
+    {
+      heading && (
+        <h2
+          class="h2 r d1"
+          style="text-align:center;margin-bottom:8px;font-size:clamp(24px,2.8vw,36px)"
+          set:html={heading}
+        />
+      )
+    }
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:26px">
+      {
+        items.map((item, i) => (
+          <a
+            href={`${WA_BASE}?text=${encodeURIComponent(item.waText)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={`quiz-card r d${Math.min(i, 3)}`}
+            data-intent={item.intent}
+          >
+            <span style="font-family:var(--font-serif);font-style:italic;font-size:clamp(15px,1.8vw,17px);font-weight:300;color:var(--color-ink);line-height:1.55">
+              "{item.text}"
+            </span>
+            <span
+              aria-hidden="true"
+              style="font-size:14px;color:var(--color-brand-text);flex-shrink:0"
+            >
+              →
+            </span>
+          </a>
+        ))
+      }
+    </div>
+    {
+      closing && (
+        <p class="body r d3" style="text-align:center;margin-top:26px;color:var(--color-ink-soft)">
+          {closing}
+        </p>
+      )
+    }
+  </div>
+</section>

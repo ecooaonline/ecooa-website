@@ -1,0 +1,72 @@
+---
+interface Row {
+  apressado: string;
+  ecooa: string;
+}
+
+interface Props {
+  label?: string;
+  heading?: string;
+  rows: Row[];
+}
+
+const {
+  label = 'a diferença',
+  heading = 'O cuidado apressado<br>e o cuidado <em>ecooa.</em>',
+  rows,
+} = Astro.props;
+---
+
+<section class="u-bg-cream" aria-label="Comparativo de modelos de cuidado">
+  <div class="w">
+    <div class="lbl r u-mb-16">{label}</div>
+    <h2 class="h2 r d1 u-mb-44" set:html={heading} />
+    <div class="r d2" style="max-width:760px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-stone)">
+        <div
+          style="padding:14px 20px;border-bottom:1px solid var(--color-stone);border-right:1px solid var(--color-stone);background:var(--color-warm)"
+        >
+          <p
+            style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-ink-ghost)"
+          >
+            o cuidado apressado
+          </p>
+        </div>
+        <div
+          style="padding:14px 20px;border-bottom:1px solid var(--color-stone);background:var(--color-warm)"
+        >
+          <p
+            style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text)"
+          >
+            o cuidado ecooa
+          </p>
+        </div>
+        {
+          rows.map((row, i) => (
+            <>
+              <div
+                style={`padding:16px 20px;border-right:1px solid var(--color-stone);${i < rows.length - 1 ? 'border-bottom:1px solid var(--color-stone);' : ''}`}
+              >
+                <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7">
+                  {row.apressado}
+                </p>
+              </div>
+              <div
+                style={`padding:16px 20px;${i < rows.length - 1 ? 'border-bottom:1px solid var(--color-stone);' : ''}`}
+              >
+                <p style="font-size:13px;font-weight:400;color:var(--color-ink);line-height:1.7">
+                  {row.ecooa}
+                </p>
+              </div>
+            </>
+          ))
+        }
+      </div>
+      <p
+        style="font-size:10px;font-weight:300;color:var(--color-ink-ghost);margin-top:12px;letter-spacing:.02em"
+      >
+        Comparação entre modelos de atendimento, não entre instituições.
+      </p>
+    </div>
+  </div>
+</section>

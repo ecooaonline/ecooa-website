@@ -157,8 +157,7 @@ function observeFCP(): void {
 // TTFB: Time To First Byte from navigation timing.
 function observeTTFB(): void {
   const nav = performance.getEntriesByType('navigation')[0] as
-    | PerformanceNavigationTiming
-    | undefined;
+    PerformanceNavigationTiming | undefined;
   if (!nav) return;
   const ttfb = nav.responseStart - nav.requestStart;
   if (ttfb > 0) report('TTFB', ttfb, rate(ttfb, 800, 1800));

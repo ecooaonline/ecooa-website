@@ -1,0 +1,49 @@
+---
+import WavePattern from './WavePattern.astro';
+import RiskReversalBadge from './RiskReversalBadge.astro';
+import { WA_BASE } from '../data/constants';
+
+interface Props {
+  heading: string;
+  subtext?: string;
+  waText?: string;
+  label?: string;
+  badges?: string[];
+  intent?: string;
+}
+
+const {
+  heading,
+  subtext,
+  waText,
+  label = 'começar pela primeira conversa',
+  badges = ['respondemos em minutos', 'seg a sex, 9h às 20h'],
+  intent = 'primeiro-passo',
+} = Astro.props;
+
+const link = waText ? `${WA_BASE}?text=${encodeURIComponent(waText)}` : WA_BASE;
+---
+
+<section class="cf" aria-label="Chamada para ação">
+  <svg
+    class="wsv"
+    style="opacity:.04"
+    viewBox="0 0 1440 500"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <g fill="none" stroke="white" stroke-width="1"><WavePattern count={8} y0={80} step={55} /></g>
+  </svg>
+  <p class="cf-lbl r">ecooa · Porto Alegre</p>
+  <h2 class="cf-h r d1" set:html={heading} />
+  {subtext && <p class="cf-s r d2">{subtext}</p>}
+  <div class="cf-bt r d3">
+    <a href={link} target="_blank" rel="noopener noreferrer" class="bw" data-intent={intent}
+      >{label}</a
+    >
+    <a href="/agendamento" class="bow">agendar avaliação</a>
+  </div>
+  <div class="r d3">
+    <RiskReversalBadge items={badges} light={true} />
+  </div>
+</section>

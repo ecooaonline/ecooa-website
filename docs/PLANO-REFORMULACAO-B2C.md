@@ -1,12 +1,15 @@
 # PLANO DE REFORMULAÇÃO B2C · ecooa
 
+> **Status de implementação:** Ondas 1 a 4 implementadas e revisadas (QA multi-agente com 10 achados corrigidos). Google Reviews com URL real (g.page). 25 registros profissionais publicados (validados pelo gestor em 2026-07). Decisões do gestor: "respondemos em minutos" confirmado e mantido; "5 dias úteis" suavizado para "sem lista de espera / agendamento ágil"; bioimpedância publicada sem preço (consultar no WhatsApp). Cris Neumann removida do site (saiu da ecooa, redirect ativo). Eduarda Schoenmeier e Tais de la Rosa adicionadas.
+> **Pendências operacionais:** fotos de Eduarda e Tais (cards com silhueta até lá); CRN de Gabrieli, Giancarla, Lara e Marvin (sem registro exibido até obter); re-consentimento de depoimentos; `pricing` em professionals.ts; atualização do container GTM com a nova taxonomia (ver docs/GTM-DATA-INTENTS.md); redeploy do google-apps-script.js no GAS (nomes de profissionais atualizados).
+
 Documento único de implementação. Direção base: "sua história muda de capítulo" (Jornada de Transformação ecooa), enriquecida com os melhores elementos de "Ciência traduzida" e "a vida que ecooa", conforme veredito do painel.
 
 ---
 
 ## 1. Visão e conceito central
 
-Cada página do site deixa de ser um catálogo da clínica e vira a narrativa da travessia do paciente em cinco atos: o espelho (a dor nomeada em primeira pessoa, clicável), a encruzilhada (ecooa.match indicando o caminho), o guia (o profissional real, com rosto e registro), o mapa (protocolos produtizados com etapas e prazos honestos) e o primeiro passo (uma mensagem de WhatsApp que já sai escrita com a dor da pessoa). A frase de dor é o próprio botão de conversão: atacamos a maior fricção da persona (mulher 30-55, A/B, Porto Alegre), que não é preço nem distância, é o custo emocional de iniciar a conversa. Sobre essa espinha narrativa, aplicamos a disciplina de "Ciência traduzida" (todo termo técnico ganha tradução "em bom português", todo número é verificável, preço ancorado onde possível) e o calor de "a vida que ecooa" (marquee de desejos, respiros editoriais em Playfair itálico). Todo o conteúdo B2B sai do fluxo do paciente e migra para /para-profissionais, com link discreto no footer.
+Cada página do site deixa de ser um catálogo da clínica e vira a narrativa da travessia do paciente em cinco atos: o espelho (a dor nomeada em primeira pessoa, clicável), a encruzilhada (ecooa.match indicando o caminho), o guia (o profissional real, com rosto e registro), o mapa (protocolos produtizados com etapas e prazos honestos) e o primeiro passo (uma mensagem de WhatsApp que já sai escrita com a dor da pessoa). A frase de dor é o próprio botão de conversão: atacamos a maior fricção da persona (mulher 30-70, A/B, Porto Alegre), que não é preço nem distância, é o custo emocional de iniciar a conversa. Sobre essa espinha narrativa, aplicamos a disciplina de "Ciência traduzida" (todo termo técnico ganha tradução "em bom português", todo número é verificável, preço ancorado onde possível) e o calor de "a vida que ecooa" (marquee de desejos, respiros editoriais em Playfair itálico). Todo o conteúdo B2B sai do fluxo do paciente e migra para /para-profissionais, com link discreto no footer.
 
 Síntese da promessa, que orienta toda a copy: **"Chegue com o que dói. Saia com um plano."**
 
@@ -33,7 +36,7 @@ Regras práticas, válidas para todas as páginas:
 
 ### 3.1 Home (src/pages/index.astro)
 
-**Objetivo:** converter o visitante frio em conversa de WhatsApp qualificada por dor, ou encaminhá-lo para a landing da sua dor. **Persona:** mulher 30-55, A/B, Porto Alegre, frustrada com consultas apressadas, pesquisando por sintoma ou por indicação.
+**Objetivo:** converter o visitante frio em conversa de WhatsApp qualificada por dor, ou encaminhá-lo para a landing da sua dor. **Persona:** mulher 30-70, A/B, Porto Alegre, frustrada com consultas apressadas, pesquisando por sintoma ou por indicação.
 
 **Hero (copy pronta):**
 - Headline: **"Chegue com o que dói. Saia com um plano."**
@@ -98,7 +101,7 @@ Regras práticas, válidas para todas as páginas:
 
 ### 3.3 Estética (src/pages/ecooa-esthetic.astro)
 
-**Objetivo:** converter dores de autoestima (cabelo, rosto, pele, corpo) em avaliação, sustentando "referência em Porto Alegre" com rostos e credenciais reais. **Persona:** mulher 30-55 incomodada com o espelho, com medo de resultado artificial; homem 30-50 considerando transplante capilar.
+**Objetivo:** converter dores de autoestima (cabelo, rosto, pele, corpo) em avaliação, sustentando "referência em Porto Alegre" com rostos e credenciais reais. **Persona:** mulher 30-70 incomodada com o espelho, com medo de resultado artificial; homem 30-50 considerando transplante capilar.
 
 **Hero (copy pronta, fundo brand mantido):**
 - Headline: **"Voltar a se reconhecer no espelho. Sem virar outra pessoa."**
@@ -127,7 +130,7 @@ Regras práticas, válidas para todas as páginas:
 
 ### 3.4 Saúde mental (src/pages/ecooa-mind.astro)
 
-**Objetivo:** reduzir ao mínimo o custo emocional de pedir ajuda e converter em sessão de acolhimento. **Persona:** adulto 28-50 com ansiedade, esgotamento ou compulsão, adiando a terapia, sensível a julgamento e a burocracia. Regra de ouro desta página: empatia antes de qualquer aspiração ou argumento.
+**Objetivo:** reduzir ao mínimo o custo emocional de pedir ajuda e converter em sessão de acolhimento. **Persona:** adulto 30-70 com ansiedade, esgotamento ou compulsão, adiando a terapia, sensível a julgamento e a burocracia. Regra de ouro desta página: empatia antes de qualquer aspiração ou argumento.
 
 **Hero (copy pronta):**
 - Headline: **"Você não precisa dar conta de tudo sozinho."**
@@ -156,7 +159,7 @@ Regras práticas, válidas para todas as páginas:
 
 ### 3.5 Nutrição (src/pages/ecooa-working.astro)
 
-**Objetivo:** consertar a primeira impressão (hoje o hero fala com nutricionistas) e converter por objetivo, com a bioimpedância como produto isca. **Persona:** mulher 28-50 cansada de dietas, com culpa alimentar, ou usuária de caneta emagrecedora buscando suporte sério; atletas amadores.
+**Objetivo:** consertar a primeira impressão (hoje o hero fala com nutricionistas) e converter por objetivo, com a bioimpedância como produto isca. **Persona:** mulher 30-70 cansada de dietas, com culpa alimentar, ou usuária de caneta emagrecedora buscando suporte sério; atletas amadores.
 
 **Hero (copy pronta):**
 - Headline: **"Fazer as pazes com a comida. E com o espelho."**

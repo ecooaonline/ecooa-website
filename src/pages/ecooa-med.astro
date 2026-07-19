@@ -3,11 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
-import QuizSection from '../components/QuizSection.astro';
-import B2BBanner from '../components/B2BBanner.astro';
-import CtaSection from '../components/CtaSection.astro';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import ProtocoloCard from '../components/ProtocoloCard.astro';
+import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
+import JornadaTimeline from '../components/JornadaTimeline.astro';
+import MetodoQuiz from '../components/MetodoQuiz.astro';
 import DisclaimerMedico from '../components/DisclaimerMedico.astro';
-import { WA_DEFAULT, FORM_ACTION } from '../data/constants';
+import { WA_DEFAULT } from '../data/constants';
+import { medAreas } from '../data/specialties';
 import { getCollection } from 'astro:content';
 
 const medFaqs = [
@@ -32,16 +39,6 @@ const medFaqs = [
     a: 'Não. A ecooa e o Dr. Gustavo acreditam e respeitam cada área da saúde, e entendem que plano alimentar é prescrito por nutricionista. Contamos com mais de 10 nutricionistas na equipe, com conhecimento especializado e direcionado para cada necessidade.',
   },
 ];
-
-const medFaqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: medFaqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
-};
 
 const medProtocolsSchema = {
   '@context': 'https://schema.org',
@@ -132,70 +129,77 @@ const medPosts = allMedPosts
       ></svg
     >
     <div class="ph-c">
-      <div class="lbl lbl-lt r">ecooa.med</div>
+      <div class="lbl lbl-lt r">ecooa.med · medicina</div>
       <h1 class="h1 h1-w r d1 u-mt-18">
-        Medicina humanizada.<br />Diagnóstico preciso.<br /><em>Resultado real.</em>
+        Você sente que algo<br />não está bem. Mesmo com<br /><em>exames "normais".</em>
       </h1>
-      <p class="body body-lt r d2" style="margin-top:16px;max-width:500px">
-        Medicina de precisão que começa pela escuta. Protocolos construídos com base nos seus dados,
-        no seu histórico e, principalmente, nos seus objetivos.
+      <p class="body body-lt r d2" style="margin-top:16px;max-width:520px">
+        Consultas de 50 minutos, investigação metabólica e hormonal profunda e um plano com começo,
+        meio e acompanhamento. É o Método Gehrke 360°.
       </p>
-      <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta"
-        >falar pelo whatsapp</a
+      <a
+        href={WA}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bw r d3 u-cta"
+        data-intent="med-hero">quero avaliar meu caso</a
       >
-      <p
-        class="r d3"
-        style="font-size:10px;font-weight:400;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:.04em"
-      >
-        respondemos em minutos
-      </p>
-      <p
-        class="r d3"
-        style="font-size:11px;font-weight:300;color:rgba(255,255,255,.3);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px"
-      >
-        Consultas de 50+ minutos. Agenda planejada para um atendimento completo.
-      </p>
+      <RiskReversalBadge
+        items={['respondemos em minutos', 'consultas de 50+ minutos']}
+        light={true}
+      />
     </div>
   </div>
 
   <Marquee />
 
-  <script type="application/ld+json" set:html={JSON.stringify(medFaqSchema)} />
+  <ProvaViva
+    items={[
+      'consultas de 50+ minutos',
+      'cuidando de Porto Alegre desde 2021',
+      '30+ profissionais que dividem o seu caso',
+    ]}
+  />
+
   <script type="application/ld+json" set:html={JSON.stringify(medProtocolsSchema)} />
 
-  <QuizSection
-    options={[
+  <EspelhoSection
+    label="qual dessas frases podia ser sua?"
+    items={[
       {
-        title: 'peso seguro',
-        subtitle: 'emagrecimento assistido',
-        waText: 'Olá, gostaria de saber mais sobre o Protocolo Peso Seguro',
+        text: 'faço tudo certo e a balança não sai do lugar',
+        waText:
+          'Olá, faço tudo certo e não consigo emagrecer. Gostaria de saber mais sobre o Protocolo Peso Seguro',
+        intent: 'med-espelho-balanca',
       },
       {
-        title: 'queda capilar',
-        subtitle: 'protocolo tricometabólico',
-        waText: 'Olá, gostaria de avaliação com o Protocolo Tricometabólico',
+        text: 'meu cabelo fica no travesseiro toda manhã',
+        waText:
+          'Olá, meu cabelo está caindo muito e gostaria de avaliação com o Protocolo Tricometabólico',
+        intent: 'med-espelho-cabelo',
       },
       {
-        title: 'hormônios',
-        subtitle: 'bioimplantes metabólicos',
-        waText: 'Olá, gostaria de avaliação hormonal e bioimplantes metabólicos',
+        text: 'vivo cansada e nenhum exame explica',
+        waText: 'Olá, vivo cansada e nenhum exame explica. Gostaria de uma investigação completa',
+        intent: 'med-espelho-cansaco',
       },
       {
-        title: 'performance',
-        subtitle: 'esporte e otimização',
-        waText: 'Olá, gostaria de avaliação para performance e otimização metabólica',
+        text: 'minha libido sumiu e ninguém pergunta sobre isso',
+        waText: 'Olá, gostaria de uma avaliação hormonal completa',
+        intent: 'med-espelho-libido',
       },
       {
-        title: 'check-up',
-        subtitle: 'método gehrke 360°',
-        waText: 'Olá, gostaria de agendar uma avaliação pelo Método Gehrke 360°',
+        text: 'entrei na menopausa e não me reconheço',
+        waText: 'Olá, estou na menopausa e gostaria de uma avaliação de saúde hormonal feminina',
+        intent: 'med-espelho-menopausa',
       },
       {
-        title: 'não sei',
-        subtitle: 'por onde começar',
+        text: 'não sei o que tenho, só sei que não estou bem',
         waText: 'Olá, tenho algumas queixas de saúde e gostaria de orientação da equipe ecooa',
+        intent: 'med-espelho-neutra',
       },
     ]}
+    closing="Cada uma dessas frases tem uma investigação por trás. A gente começa por ela."
   />
 
   <!-- Empatia -->
@@ -245,138 +249,43 @@ const medPosts = allMedPosts
             Uma rede de<br />especialistas que<br /><em>se entendem.</em>
           </h2>
           <p class="body r d2 u-mt-18">
-            Liderada por Gustavo Gehrke, a ecooa.med tem o objetivo de unir profissionais que atuam
-            nas mais diversas áreas, como metabolismo e hormônios, emagrecimento, testes genéticos,
-            implantes subcutâneos, medicina clínica e especialidades médicas. Nasce uma rede para
-            médicos que acreditam que a medicina deve ser integral, humanizada e ética. Sem pressa a
-            cada atendimento, com escuta total ao paciente e trabalho multiprofissional.
+            Liderada pelo Dr. Gustavo Gehrke, a ecooa.med reúne médicos de metabolismo e hormônios,
+            emagrecimento, testes genéticos, implantes subcutâneos e medicina clínica. Uma equipe
+            que acredita que a medicina deve ser integral, humanizada e ética. Sem pressa a cada
+            atendimento, com escuta total e trabalho multiprofissional em torno do seu caso.
           </p>
           <p class="body r d3 u-mt-13">
-            Disponibilizamos nossos consultórios médicos para profissionais que desejam atender em
-            um espaço premium no Moinhos de Vento, com um ambiente acolhedor, sofisticado e repleto
-            de profissionais para networking de carreira. <a
-              href="/contato"
-              style="color:var(--color-brand-text);cursor:pointer;text-underline-offset:3px;text-decoration:underline"
-              >Entre em contato</a
-            > ou preencha o formulário abaixo.
+            Aqui o seu caso não é dividido em silos. Quando a nutrição, a estética ou a saúde mental
+            podem acelerar o seu resultado, a conexão acontece dentro da própria clínica, sem que
+            você precise repetir sua história.
           </p>
-          <div class="lbl r" style="margin-top:24px;margin-bottom:10px">
-            para profissionais de saúde
-          </div>
-          <p
-            style="font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px"
-          >
-            Você é médico e quer atender na ecooa? Preencha seus dados que entraremos em contato.
-          </p>
-          <form
-            action={FORM_ACTION}
-            method="POST"
-            class="b2b-form ecooa-form"
-            style="margin-top:0"
-            id="form-b2b-med"
-            data-ok-target="#form-b2b-med-ok"
-            data-success-text="Recebemos seu interesse. Entraremos em contato em breve."
-          >
-            <input type="hidden" name="_formType" value="b2b-medicina" />
-            <input type="hidden" name="_loadedAt" value="" />
-            <input type="hidden" name="_next" value="" />
-            <input
-              type="text"
-              name="_honeypot"
-              style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
-            <input
-              type="text"
-              name="nome"
-              placeholder="Nome completo"
-              required
-              class="b2b-input b2b-light"
-              aria-label="Nome completo"
-            />
-            <input
-              type="tel"
-              name="whatsapp"
-              placeholder="WhatsApp"
-              required
-              class="b2b-input b2b-light"
-              aria-label="Número de WhatsApp"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              required
-              class="b2b-input b2b-light"
-              aria-label="E-mail profissional"
-            />
-            <button type="submit" class="bd" style="align-self:flex-start">enviar interesse</button>
-            <p
-              id="form-b2b-med-ok"
-              style="display:none;font-size:13px;font-weight:400;color:var(--color-brand-text);margin-top:4px"
-            >
-              Recebemos seu interesse. Entraremos em contato em breve.
-            </p>
-          </form>
-          <script>
-            import { initFormSubmit } from '../scripts/form-submit';
-            initFormSubmit();
-          </script>
         </div>
         <div class="r d2">
           <div
             style="background:var(--color-cream);padding:40px 34px;border:1px solid var(--color-stone)"
           >
             <div class="lbl u-mb-20">áreas de atuação</div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md"
-                >Medicina Metabólica e Endocrinologia</span
-              >
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md">Nutrologia e Emagrecimento</span>
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md"
-                >Envelhecimento Saudável e Estilo de Vida</span
-              >
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md">Performance Cognitiva e Física</span>
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md"
-                >Hipertrofia e Composição Corporal</span
-              >
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md"
-                >Hormonologia e Saúde Feminina e Masculina</span
-              >
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md">Bioimplantes Metabólicos</span>
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md"
-                >Medicina do Esporte e Anabolismo Fisiológico</span
-              >
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md"
-                >Medicina Preventiva e Checkup Metabólico</span
-              >
-            </div>
-            <div class="lr">
-              <span class="u-dot"></span><span class="body-md">Testes Genéticos</span>
-            </div>
+            {
+              medAreas.map((area) => (
+                <div class="lr">
+                  <>
+                    <span class="u-dot" />
+                    <span class="body-md">{area}</span>
+                  </>
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <GuiaSection
+    unit="med"
+    heading="Quem vai<br>te <em>guiar.</em>"
+    subtext="O Dr. Gustavo Gehrke lidera a medicina da casa, com tempo de verdade para o seu caso e integrado às nutricionistas e psicólogas do ecossistema."
+  />
 
   <!-- Método Gehrke 360° -->
   <section style="background:var(--color-ink);padding:86px 60px" aria-label="Método Gehrke 360°">
@@ -421,68 +330,113 @@ const medPosts = allMedPosts
     </div>
   </section>
 
+  <JornadaTimeline
+    label="o mapa da sua investigação"
+    heading="O que acontece depois<br>da primeira <em>conversa.</em>"
+    steps={[
+      {
+        marker: 'semana 1',
+        title: 'Escuta de 50 minutos',
+        desc: 'Você conta sua história inteira, sem pressa. Saímos da consulta com o pedido de exames desenhado para o seu caso.',
+      },
+      {
+        marker: 'semana 3',
+        title: 'Devolutiva dos exames',
+        desc: 'Cada resultado explicado em bom português: o que está bom, o que merece atenção e por quê.',
+      },
+      {
+        marker: 'mês 1',
+        title: 'Protocolo no seu nível',
+        desc: 'Reset, quando o corpo pede recomeço. Equilíbrio, para constância, sono e disposição. Performance, quando o bom já não basta.',
+      },
+      {
+        marker: 'mês 3',
+        title: 'Reavaliação com dados',
+        desc: 'Exames comparados lado a lado com os anteriores, para você ver a evolução em números, não em impressões.',
+      },
+    ]}
+  />
+
+  <MetodoQuiz />
+
   <!-- Protocolos -->
   <section class="u-bg-cream" aria-label="Protocolos ecooa.med">
     <div class="w">
       <div class="lbl r u-mb-16">protocolos ecooa.med</div>
-      <h2 class="h2 r d1 u-mb-44">Programas que<br /><em>entregam resultados.</em></h2>
+      <h2 class="h2 r d1 u-mb-44">Um mapa para<br /><em>cada caso.</em></h2>
       <div class="g3">
-        <div class="ec r">
-          <p class="ec-n">01</p><h3 class="ec-t">Protocolo Peso Seguro</h3><p class="ec-d">
-            Emagrecimento com acompanhamento médico contínuo. Consulta de avaliação com valor de
-            entrada para analisar exames, histórico e viabilidade do uso de canetas emagrecedoras
-            (semaglutida, tirzepatida). Acompanhamento recorrente durante todo o tratamento.
-            Resultado real com segurança clínica.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">02</p><h3 class="ec-t">Protocolo Tricometabólico</h3><p class="ec-d">
-            Investigação completa das causas da queda capilar: perfil hormonal, metabolismo,
-            estresse oxidativo e nutrientes. Quando indicado, inclui mapeamento genético para
-            identificar predisposição hereditária e personalizar o tratamento. Abordagem que trata a
-            raiz metabólica da queda, não apenas o sintoma.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">03</p><h3 class="ec-t">Bioimplantes Metabólicos</h3><p class="ec-d">
-            Implantes subcutâneos bioabsorvíveis de liberação estável. Técnica que proporciona
-            concentração hormonal mais constante ao longo do dia, com menos oscilações que métodos
-            tradicionais. Indicado para reposição hormonal feminina e masculina, com protocolos
-            individualizados.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">04</p><h3 class="ec-t">Saúde Hormonal Feminina</h3><p class="ec-d">
-            Equilíbrio hormonal ao longo de todas as fases da vida da mulher. Manejo clínico com
-            bioimplantes de liberação lenta quando indicados, com base em protocolos médicos atuais
-            e acompanhamento contínuo.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">05</p><h3 class="ec-t">Saúde Hormonal Masculina</h3><p class="ec-d">
-            Avaliação completa da saúde hormonal masculina com protocolos individualizados para
-            vitalidade, libido, composição corporal e bem-estar, incluindo terapia com bioimplantes
-            quando aplicável.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">06</p><h3 class="ec-t">Performance e Esporte</h3><p class="ec-d">
-            Para quem treina e quer extrair o máximo do corpo com inteligência. Protocolos de
-            anabolismo fisiológico, NADH, aminoácidos, recuperação e composição corporal.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">07</p><h3 class="ec-t">Longevidade e Vitalidade</h3><p class="ec-d">
-            Ciência aplicada ao envelhecimento saudável: peptídeos bioativos, micronutrientes e
-            estratégias preventivas baseadas em biomarcadores e evidência clínica.
-          </p>
-        </div>
-        <div class="ec r">
-          <p class="ec-n">08</p><h3 class="ec-t">Medicina Metabólica e Checkup</h3><p class="ec-d">
-            Avaliação abrangente do metabolismo, saúde cardiovascular, função tireoidiana e perfil
-            inflamatório para uma visão real do seu estado de saúde.
-          </p>
-        </div>
+        <ProtocoloCard
+          numero="01"
+          nome="Protocolo Peso Seguro"
+          paraQuem="Para quem já tentou de tudo e quer emagrecer com segurança e acompanhamento de verdade."
+          inclui="Avaliação metabólica completa, canetas emagrecedoras (como Ozempic, Mounjaro, semaglutida e tirzepatida) quando indicadas, e nutrição integrada ao acompanhamento médico."
+          traducao="primeiro os exames dizem se é seguro para você; depois o acompanhamento contínuo protege o resultado."
+          waText="Olá, gostaria de saber mais sobre o Protocolo Peso Seguro"
+          intent="med-protocolo-peso-seguro"
+        />
+        <ProtocoloCard
+          numero="02"
+          nome="Protocolo Tricometabólico"
+          delay="d1"
+          paraQuem="Para queda de cabelo que ninguém leva a sério, tratada de dentro para fora."
+          inclui="Investigação de perfil hormonal, metabolismo, estresse oxidativo e nutrientes. Quando indicado, mapeamento genético para personalizar o tratamento."
+          traducao="a queda é tratada na causa, não só no sintoma."
+          waText="Olá, gostaria de avaliação com o Protocolo Tricometabólico"
+          intent="med-protocolo-tricometabolico"
+        />
+        <ProtocoloCard
+          numero="03"
+          nome="Bioimplantes Metabólicos"
+          delay="d2"
+          paraQuem="Para reposição hormonal feminina e masculina, quando clinicamente indicada."
+          inclui="Implantes subcutâneos bioabsorvíveis de liberação estável, com avaliação clínica e laboratorial prévia e protocolos individualizados."
+          traducao="hormônios liberados aos poucos, sem a montanha-russa das doses diárias."
+          waText="Olá, gostaria de avaliação hormonal e bioimplantes metabólicos"
+          intent="med-protocolo-bioimplantes"
+        />
+        <ProtocoloCard
+          numero="04"
+          nome="Saúde Hormonal Feminina"
+          paraQuem="Para a menopausa e os ciclos que viraram inimigos, em todas as fases da vida da mulher."
+          inclui="Avaliação hormonal completa, manejo clínico com bioimplantes de liberação lenta quando indicados, e acompanhamento contínuo."
+          waText="Olá, gostaria de uma avaliação de saúde hormonal feminina"
+          intent="med-protocolo-hormonal-feminina"
+        />
+        <ProtocoloCard
+          numero="05"
+          nome="Saúde Hormonal Masculina"
+          delay="d1"
+          paraQuem="Para energia, força e libido em baixa."
+          inclui="Avaliação completa da saúde hormonal masculina, protocolos individualizados para vitalidade e composição corporal, incluindo bioimplantes quando aplicável."
+          waText="Olá, gostaria de uma avaliação de saúde hormonal masculina"
+          intent="med-protocolo-hormonal-masculina"
+        />
+        <ProtocoloCard
+          numero="06"
+          nome="Performance e Esporte"
+          delay="d2"
+          paraQuem="Para quem treina de verdade e quer extrair o máximo do corpo com inteligência."
+          inclui="Protocolos seguros e monitorados de força, recuperação e composição corporal, com exames e acompanhamento de alta frequência."
+          waText="Olá, gostaria de avaliação para performance e otimização metabólica"
+          intent="med-protocolo-performance"
+        />
+        <ProtocoloCard
+          numero="07"
+          nome="Longevidade e Vitalidade"
+          paraQuem="Para quem quer envelhecer com energia, autonomia e lucidez."
+          inclui="Ciência aplicada ao envelhecimento saudável: micronutrientes, estratégias preventivas e acompanhamento baseado em exames e evidência clínica."
+          waText="Olá, gostaria de um acompanhamento de longevidade e vitalidade"
+          intent="med-protocolo-longevidade"
+        />
+        <ProtocoloCard
+          numero="08"
+          nome="Check-up 360"
+          delay="d1"
+          paraQuem="Para quem quer um retrato completo do próprio corpo hoje."
+          inclui="Avaliação abrangente do metabolismo, saúde cardiovascular, função da tireoide e perfil inflamatório, com cada exame explicado um a um."
+          waText="Olá, gostaria de agendar uma avaliação pelo Método Gehrke 360°"
+          intent="med-protocolo-checkup"
+        />
       </div>
     </div>
   </section>
@@ -514,26 +468,6 @@ const medPosts = allMedPosts
     </div>
   </section>
 
-  <B2BBanner />
-
-  <!-- Perguntas frequentes -->
-  <section class="u-bg-warm" aria-label="Perguntas frequentes">
-    <div class="w">
-      <div class="lbl r u-mb-16">perguntas frequentes</div>
-      <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br /><em>ecooa.med.</em></h2>
-      <div class="faq-section">
-        {
-          medFaqs.map((faq) => (
-            <details class="faq-item">
-              <summary class="faq-q">{faq.q}</summary>
-              <p class="faq-a">{faq.a}</p>
-            </details>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
   <!-- Como funciona -->
   <section class="u-bg-cream" aria-label="Como funciona">
     <div class="w">
@@ -555,6 +489,7 @@ const medPosts = allMedPosts
           <h3 class="it-t">Avaliação completa</h3>
           <p class="it-d">
             Consulta com tempo real de escuta, análise de exames e entendimento dos seus objetivos.
+            Traga seus exames antigos, mesmo os que ouviram que estavam normais.
           </p>
         </div>
         <div class="r d2 u-tac">
@@ -568,10 +503,50 @@ const medPosts = allMedPosts
           <span class="step-num">4</span>
           <h3 class="it-t">Acompanhamento</h3>
           <p class="it-d">
-            Retornos periódicos para ajustar o protocolo e ajudar a manter os resultados.
+            Retornos periódicos para ajustar o protocolo e garantir que os resultados se mantenham.
           </p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <FaqVisivel faqs={medFaqs} heading="Dúvidas sobre a<br><em>ecooa.med.</em>" />
+
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "A consulta durou quase uma hora. O médico olhou todos os meus exames anteriores, pediu
+            novos e montou um plano que fez sentido. Em dois meses já senti diferença na
+            disposição."
+          </p>
+          <p class="sm-soft">L. R.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "Passei anos ouvindo que meus exames estavam normais, mesmo me sentindo mal. Aqui
+            olharam tudo com profundidade e finalmente encontraram o que precisava ser ajustado."
+          </p>
+          <p class="sm-soft">D. B.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Comecei o acompanhamento para emagrecer e o protocolo foi completamente personalizado.
+            O retorno é rápido e o médico realmente acompanha a evolução."
+          </p>
+          <p class="sm-soft">P. A.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+      >
+        Depoimentos reais publicados com autorização dos pacientes.
+      </p>
     </div>
   </section>
 
@@ -608,10 +583,30 @@ const medPosts = allMedPosts
     )
   }
 
-  <div class="w"><DisclaimerMedico /></div>
+  <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 0">
+    <div class="w"><DisclaimerMedico /></div>
+  </section>
 
-  <CtaSection
-    heading="Comece pela<br><em>avaliação.</em>"
-    subtext="Agende sua primeira consulta e descubra como a medicina humanizada pode mudar sua qualidade de vida."
+  <!-- Link discreto B2B -->
+  <section class="u-bg-warm" aria-label="Para médicos" style="padding:24px var(--section-px)">
+    <p
+      class="r"
+      style="text-align:center;font-size:12px;font-weight:300;color:var(--color-ink-soft)"
+    >
+      É médico e quer atender na ecooa? <a
+        href="/para-profissionais"
+        style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline"
+        >Conheça a ecooa para profissionais →</a
+      >
+    </p>
+  </section>
+
+  <PrimeiroPassoCTA
+    heading="Traga seus exames.<br><em>A gente explica o resto.</em>"
+    subtext="Agende sua avaliação e descubra o que os seus exames dizem sobre você, explicado em bom português."
+    waText="Olá, quero agendar uma avaliação na ecooa.med. Tenho exames antigos para levar."
+    label="quero avaliar meu caso"
+    intent="med-primeiro-passo"
+    badges={['respondemos em minutos', 'consultas de 50+ minutos', 'seg a sex, 9h às 20h']}
   />
 </BaseLayout>

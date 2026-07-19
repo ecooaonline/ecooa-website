@@ -1,0 +1,69 @@
+---
+interface Step {
+  marker: string;
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  label?: string;
+  heading?: string;
+  steps: Step[];
+  disclaimer?: string;
+  dark?: boolean;
+}
+
+const {
+  label = 'sua jornada',
+  heading,
+  steps,
+  disclaimer = 'Prazos aproximados, com base no que pacientes costumam relatar. Cada organismo responde no seu tempo.',
+  dark = false,
+} = Astro.props;
+---
+
+<section
+  style={`background:${dark ? 'var(--color-ink)' : 'var(--color-cream)'};padding:86px var(--section-px)`}
+  aria-label={label}
+>
+  <div class="w" style="padding:0">
+    <div class={`lbl r u-mb-16 ${dark ? 'lbl-lt' : ''}`}>{label}</div>
+    {heading && <h2 class={`h2 r d1 u-mb-44 ${dark ? 'h2-w' : ''}`} set:html={heading} />}
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px">
+      {
+        steps.map((step, i) => (
+          <div
+            class={`r d${Math.min(i, 3)}`}
+            style={`border-top:2px solid ${dark ? 'var(--color-brand-deep)' : 'var(--color-brand)'};padding-top:18px`}
+          >
+            <p
+              style={`font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:${dark ? 'var(--color-brand-deep)' : 'var(--color-brand-text)'};margin-bottom:8px`}
+            >
+              {step.marker}
+            </p>
+            <h3
+              style={`font-size:15px;font-weight:400;color:${dark ? 'white' : 'var(--color-ink)'};margin-bottom:8px;line-height:1.4`}
+            >
+              {step.title}
+            </h3>
+            <p
+              style={`font-size:12px;font-weight:300;line-height:1.8;color:${dark ? 'rgba(255,255,255,.55)' : 'var(--color-ink-soft)'}`}
+            >
+              {step.desc}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+    {
+      disclaimer && (
+        <p
+          class="r d3"
+          style={`font-size:11px;font-weight:300;color:${dark ? 'rgba(255,255,255,.4)' : 'var(--color-ink-ghost)'};margin-top:32px;letter-spacing:.02em`}
+        >
+          {disclaimer}
+        </p>
+      )
+    }
+  </div>
+</section>

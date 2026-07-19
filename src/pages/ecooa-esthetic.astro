@@ -3,11 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
-import QuizSection from '../components/QuizSection.astro';
-import B2BBanner from '../components/B2BBanner.astro';
-import CtaSection from '../components/CtaSection.astro';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import TranslateNote from '../components/TranslateNote.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
 import DisclaimerMedico from '../components/DisclaimerMedico.astro';
-import { WA_DEFAULT } from '../data/constants';
+import { WA_BASE, WA_DEFAULT } from '../data/constants';
 import { getCollection } from 'astro:content';
 
 const WA = WA_DEFAULT;
@@ -22,8 +27,16 @@ const estheticPosts = allEstheticPosts
 
 const estheticFaqs = [
   {
+    q: 'Vou ficar com cara de feito?',
+    a: 'Não é o nosso estilo. Nosso critério é você se reconhecer no espelho. Cada procedimento é indicado com base na sua anatomia e na sua expectativa. E se algo não for seguro ou não for para você, a gente diz não.',
+  },
+  {
     q: 'O transplante capilar dói?',
     a: 'O procedimento é realizado com anestesia local e sedação leve. O desconforto é mínimo durante e após o procedimento.',
+  },
+  {
+    q: 'Quando o resultado do transplante capilar aparece?',
+    a: 'O resultado é progressivo. Nos primeiros meses os fios transplantados passam por uma fase de adaptação, e o crescimento visível costuma aparecer a partir do sexto mês. Cada organismo responde no seu tempo, e o acompanhamento continua durante toda a evolução.',
   },
   {
     q: 'Quanto tempo dura o resultado do botox?',
@@ -35,24 +48,16 @@ const estheticFaqs = [
   },
   {
     q: 'Qual a diferença entre bioestimulador e preenchimento?',
-    a: 'O preenchimento repõe volume imediato. O bioestimulador estimula a produção natural de colágeno, com resultado progressivo e mais duradouro.',
+    a: 'O preenchimento repõe volume imediato. O bioestimulador estimula a produção natural de colágeno, com resultado progressivo e mais duradouro. Em bom português: colágeno estimulado aos poucos, para você parecer você, com a aparência mais descansada.',
   },
 ];
 
-const estheticFaqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: estheticFaqs.map((f) => ({
-    '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
-  })),
-};
+const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de avaliar um transplante capilar na ecooa')}`;
 ---
 
 <BaseLayout
   title="Estética Avançada e Transplante Capilar | ecooa · Porto Alegre"
-  description="Estética avançada em Moinhos de Vento, Porto Alegre. Procedimentos que respeitam a beleza natural, com técnica refinada e muito bom gosto."
+  description="Estética avançada e transplante capilar FUE Safira em Moinhos de Vento, Porto Alegre. Cabelo, rosto, pele e corpo com resultado natural e avaliação sincera."
   currentPage="ecooa-esthetic"
   ogImage="/clinic/esthetic.webp"
   breadcrumbs={[{ name: 'ecooa.esthetic', url: '/ecooa-esthetic' }]}
@@ -70,68 +75,90 @@ const estheticFaqSchema = {
       ></svg
     >
     <div class="ph-c">
-      <div class="lbl lbl-br r">ecooa.esthetic</div>
+      <div class="lbl lbl-br r">ecooa.esthetic · estética</div>
       <h1
         style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px"
         class="r d1"
       >
-        Estética avançada.<br />Sem exageros,<br /><em
+        Voltar a se reconhecer<br />no espelho. Sem virar<br /><em
           style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.82)"
-          >com muito bom gosto.</em
+          >outra pessoa.</em
         >
       </h1>
       <p
-        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.82);max-width:500px"
+        style="font-family:var(--font-serif);font-style:italic;font-size:15px;font-weight:300;color:rgba(255,255,255,.7);margin-bottom:12px"
         class="r d2"
       >
-        Procedimentos de última geração que respeitam e revelam a sua beleza natural. Com olhar
-        clínico apurado, técnica refinada e a estética como extensão da saúde.
-      </p>
-      <a href={WA} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta"
-        >falar pelo whatsapp</a
-      >
-      <p
-        class="r d3"
-        style="font-size:10px;font-weight:400;color:rgba(255,255,255,.65);margin-top:8px;letter-spacing:.04em"
-      >
-        respondemos em minutos
+        Ninguém vai perceber o que você fez. Todos vão notar como você está.
       </p>
       <p
-        class="r d3"
-        style="font-size:11px;font-weight:300;color:rgba(255,255,255,.55);margin-top:14px;letter-spacing:.02em;text-align:center;max-width:400px"
+        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.82);max-width:520px"
+        class="r d2"
       >
-        Avaliação personalizada e planejamento dedicado, com foco em resultado natural e seguro.
+        Cabelo, rosto, pele e corpo com tricologia clínica e referência em transplante capilar FUE
+        Safira em Porto Alegre. Resultado natural, decidido junto com você.
       </p>
+      <a
+        href={WA}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bw r d3 u-cta"
+        data-intent="esthetic-hero">contar o que me incomoda</a
+      >
+      <RiskReversalBadge
+        items={['respondemos em minutos', 'retorno incluído em todos os procedimentos']}
+        light={true}
+      />
     </div>
   </div>
 
   <Marquee />
 
-  <script type="application/ld+json" set:html={JSON.stringify(estheticFaqSchema)} />
+  <ProvaViva
+    items={[
+      'tricologia clínica e transplante FUE Safira',
+      'retorno incluído em todos os procedimentos',
+      'desde 2021',
+    ]}
+  />
 
-  <QuizSection
-    options={[
+  <EspelhoSection
+    label="o que te incomoda quando você se olha?"
+    items={[
       {
-        title: 'meu cabelo',
-        subtitle: 'está caindo',
-        waText: 'Olá, gostaria de avaliação para queda de cabelo',
+        text: 'meu cabelo está caindo e já tentei de tudo',
+        waText: 'Olá, meu cabelo está caindo e gostaria de uma avaliação tricológica',
+        intent: 'esthetic-espelho-cabelo',
       },
       {
-        title: 'rejuvenescer',
-        subtitle: 'com naturalidade',
-        waText: 'Olá, gostaria de avaliação para rejuvenescimento facial',
+        text: 'quero avaliar um transplante capilar',
+        waText: 'Olá, gostaria de avaliar um transplante capilar na ecooa',
+        intent: 'esthetic-espelho-transplante',
       },
       {
-        title: 'transplante',
-        subtitle: 'capilar',
-        waText: 'Olá, gostaria de avaliação para transplante capilar',
+        text: 'as linhas chegaram antes do que eu esperava',
+        waText: 'Olá, gostaria de avaliação para rejuvenescimento facial com resultado natural',
+        intent: 'esthetic-espelho-rosto',
       },
       {
-        title: 'quero uma',
-        subtitle: 'avaliação',
-        waText: 'Olá, gostaria de uma avaliação estética personalizada',
+        text: 'manchas e acne que nenhum creme resolve',
+        waText:
+          'Olá, tenho manchas e acne que nenhum creme resolve e gostaria de uma avaliação de pele',
+        intent: 'esthetic-espelho-pele',
+      },
+      {
+        text: 'gordura localizada e flacidez que treino não muda',
+        waText: 'Olá, gostaria de avaliação para gordura localizada e flacidez',
+        intent: 'esthetic-espelho-corpo',
+      },
+      {
+        text: 'não sei o que preciso, só quero uma avaliação sincera',
+        waText:
+          'Olá, gostaria de uma avaliação estética sincera para entender o que faz sentido para mim',
+        intent: 'esthetic-espelho-neutra',
       },
     ]}
+    closing="Cada uma dessas frases tem um caminho. A avaliação diz qual é o seu."
   />
 
   <!-- Empatia -->
@@ -152,6 +179,12 @@ const estheticFaqSchema = {
         Na ecooa.esthetic, cada procedimento é indicado com base na sua anatomia, na sua expectativa
         e no que valoriza quem você realmente é.
       </p>
+      <CtaBand
+        label="contar o que me incomoda"
+        waText="Olá, algo está me incomodando quando me olho no espelho e gostaria de uma avaliação"
+        intent="esthetic-empatia"
+        badges={['sem compromisso', 'respondemos em minutos']}
+      />
     </div>
   </section>
 
@@ -171,6 +204,83 @@ const estheticFaqSchema = {
     </div>
   </section>
 
+  <!-- Transplante Capilar: destaque -->
+  <section style="background:var(--color-ink);padding:86px 60px" aria-label="Transplante capilar">
+    <div class="w">
+      <div class="g2 g2c">
+        <div>
+          <div class="lbl lbl-lt r">referência em porto alegre</div>
+          <h2 class="h2 h2-w r d1 u-mt-15">
+            Transplante capilar<br />fio a fio, com<br /><em>resultado natural.</em>
+          </h2>
+          <p class="body body-lt r d2 u-mt-18">
+            Técnica FUE e FUE Safira para restauração capilar, reconstrução de barba e definição de
+            sobrancelhas, para homens e mulheres. Cada caso começa com uma avaliação tricológica
+            completa: quando o tratamento clínico resolve, a gente diz. Quando o transplante é o
+            caminho, você sabe exatamente o que esperar.
+          </p>
+          <div class="r d3 u-mt-16">
+            <TranslateNote
+              text="FUE Safira é a extração fio a fio com lâminas de safira: incisões menores, mais precisão e cicatrização mais rápida."
+            />
+          </div>
+          <div class="r d3" style="margin-top:28px">
+            <a
+              href={WA_TRANSPLANTE}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="bw"
+              data-intent="esthetic-transplante-destaque"
+              style="display:inline-block">avaliar meu caso de transplante</a
+            >
+            <RiskReversalBadge
+              items={[
+                'avaliação sincera: se não for para você, a gente diz',
+                'acompanhamento incluído em toda a evolução',
+              ]}
+              light={true}
+              align="left"
+            />
+          </div>
+        </div>
+        <div class="st st-dk r d2">
+          <div class="sr">
+            <span class="sn">01</span><div>
+              <div class="st-t">Avaliação tricológica</div><div class="st-b">
+                Diagnóstico completo dos fios e do couro cabeludo para entender a causa da queda:
+                hormonal, nutricional, inflamatória ou genética.
+              </div>
+            </div>
+          </div>
+          <div class="sr">
+            <span class="sn">02</span><div>
+              <div class="st-t">Tratamento da causa</div><div class="st-b">
+                Quando indicado, tratamento clínico antes de qualquer cirurgia: protocolo
+                tricometabólico, PRP e soroterapia capilar, integrados à medicina da casa.
+              </div>
+            </div>
+          </div>
+          <div class="sr">
+            <span class="sn">03</span><div>
+              <div class="st-t">Transplante FUE Safira</div><div class="st-b">
+                Procedimento fio a fio com anestesia local, desenho natural da linha capilar e
+                planejamento feito junto com você.
+              </div>
+            </div>
+          </div>
+          <div class="sr">
+            <span class="sn">04</span><div>
+              <div class="st-t">Acompanhamento da evolução</div><div class="st-b">
+                Retornos ao longo dos meses. O crescimento visível costuma aparecer a partir do
+                sexto mês, e cada organismo responde no seu tempo.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Procedimentos -->
   <section class="u-bg-warm" aria-label="Procedimentos">
     <div class="w">
@@ -180,26 +290,26 @@ const estheticFaqSchema = {
         style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
       >
         <div class="gc">
-          <p class="gc-tag">01</p><h3 class="it-t">Rejuvenescimento Facial</h3><p class="it-d-lg">
-            Toxina botulínica, preenchimento com ácido hialurônico, bioremodeladores e
-            bioestimuladores de colágeno. O objetivo é sempre um resultado harmonioso, natural e com
-            muito bom gosto.
-          </p>
-        </div>
-        <div class="gc">
-          <p class="gc-tag">02</p><h3 class="it-t">
+          <p class="gc-tag">01</p><h3 class="it-t">
             Transplante Capilar, de Barba e Sobrancelha
           </h3><p class="it-d-lg">
             Referência em Porto Alegre. Técnica FUE e FUE Safira para restauração capilar,
-            reconstrução de barba e definição de sobrancelhas. Resultado natural e duradouro para
+            reconstrução de barba e definição de sobrancelhas. Resultado natural e permanente para
             homens e mulheres.
           </p>
         </div>
         <div class="gc">
-          <p class="gc-tag">03</p><h3 class="it-t">Tricologia Clínica</h3><p class="it-d-lg">
+          <p class="gc-tag">02</p><h3 class="it-t">Tricologia Clínica</h3><p class="it-d-lg">
             Diagnóstico completo da saúde dos fios e do couro cabeludo, com tratamentos específicos
             por causa: hormonal, nutricional, inflamatória ou genética. Avaliamos, prescrevemos e
             acompanhamos.
+          </p>
+        </div>
+        <div class="gc">
+          <p class="gc-tag">03</p><h3 class="it-t">Rejuvenescimento Facial</h3><p class="it-d-lg">
+            Toxina botulínica, preenchimento com ácido hialurônico, bioremodeladores e
+            bioestimuladores de colágeno. O objetivo é sempre um resultado harmonioso, natural e com
+            muito bom gosto.
           </p>
         </div>
         <div class="gc">
@@ -248,15 +358,15 @@ const estheticFaqSchema = {
             e muito mais.
           </p>
         </div>
-        <div class="gc">
-          <p class="gc-tag">10</p><h3 class="it-t">Fisioterapia Estética</h3><p class="it-d-lg">
-            Drenagem linfática, modelagem corporal, radiofrequência e eletroestimulação com
-            profissional especializado em estética clínica.
-          </p>
-        </div>
       </div>
     </div>
   </section>
+
+  <GuiaSection
+    unit="esthetic"
+    heading="Quem cuida<br>de <em>você.</em>"
+    subtext="Tricologistas, especialistas em transplante capilar e profissionais de estética avançada, com história e técnica para mostrar."
+  />
 
   <!-- Filosofia -->
   <section
@@ -321,25 +431,7 @@ const estheticFaqSchema = {
     </div>
   </section>
 
-  <B2BBanner />
-
-  <!-- Perguntas frequentes -->
-  <section class="u-bg-warm" aria-label="Perguntas frequentes">
-    <div class="w">
-      <div class="lbl r u-mb-16">perguntas frequentes</div>
-      <h2 class="h2 r d1 u-mb-40">Dúvidas sobre a<br /><em>ecooa.esthetic.</em></h2>
-      <div class="faq-section">
-        {
-          estheticFaqs.map((faq) => (
-            <details class="faq-item">
-              <summary class="faq-q">{faq.q}</summary>
-              <p class="faq-a">{faq.a}</p>
-            </details>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+  <FaqVisivel faqs={estheticFaqs} heading="Dúvidas sobre a<br><em>ecooa.esthetic.</em>" />
 
   <!-- Como funciona -->
   <section class="u-bg-cream" aria-label="Como funciona">
@@ -372,16 +464,51 @@ const estheticFaqSchema = {
         <div class="r d3 u-tac">
           <span class="step-num">4</span>
           <h3 class="it-t">Acompanhamento</h3>
-          <p class="it-d">
-            Retorno incluído para acompanhar a evolução e ajustar o plano quando necessário.
-          </p>
+          <p class="it-d">Retorno incluído para avaliar o resultado e garantir sua satisfação.</p>
         </div>
       </div>
       <p
         class="r d3"
         style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em"
       >
-        Planejamento dedicado. Cada procedimento é pensado para o resultado que você espera.
+        Avaliação sincera e retorno incluído. Se um procedimento não for para você, a gente diz.
+      </p>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "Fiz o transplante e o resultado ficou tão natural que meus amigos acharam que eu só
+            tinha mudado o corte de cabelo. Exatamente o que eu queria."
+          </p>
+          <p class="sm-soft">E. C.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "Tinha medo de ficar com aparência artificial. O resultado foi sutil e bonito. Me senti
+            eu mesma, só que mais descansada e confiante."
+          </p>
+          <p class="sm-soft">J. R.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Desde a recepção até o procedimento, tudo impecável. O espaço é lindo e a equipe
+            transmite segurança. Voltei para fazer bioestimulador e amei."
+          </p>
+          <p class="sm-soft">T. F.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+      >
+        Depoimentos reais publicados com autorização dos pacientes.
       </p>
     </div>
   </section>
@@ -419,10 +546,20 @@ const estheticFaqSchema = {
     )
   }
 
-  <div class="w"><DisclaimerMedico /></div>
+  <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 0">
+    <div class="w"><DisclaimerMedico /></div>
+  </section>
 
-  <CtaSection
-    heading="Agende sua<br><em>avaliação estética.</em>"
-    subtext="Nossa equipe analisa suas queixas e indica os procedimentos mais adequados para o seu caso."
+  <PrimeiroPassoCTA
+    heading="Seu espelho pode voltar<br>a ser <em>um lugar bom.</em>"
+    subtext="Conte o que te incomoda. A avaliação é sincera: se um procedimento não for para você, a gente diz."
+    waText="Olá, algo está me incomodando quando me olho no espelho e gostaria de uma avaliação"
+    label="contar o que me incomoda"
+    intent="esthetic-primeiro-passo"
+    badges={[
+      'sem compromisso',
+      'retorno incluído em todos os procedimentos',
+      'respondemos em minutos',
+    ]}
   />
 </BaseLayout>

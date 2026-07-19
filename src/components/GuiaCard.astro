@@ -1,0 +1,69 @@
+---
+import OptimizedImage from './OptimizedImage.astro';
+
+interface Props {
+  name: string;
+  role: string;
+  photo: string;
+  slug: string;
+  personalTouch?: string;
+  registration?: string;
+  delay?: string;
+}
+
+const { name, role, photo, slug, personalTouch, registration, delay = '' } = Astro.props;
+---
+
+<a
+  href={`/profissionais/${slug}`}
+  class={`pc r ${delay}`}
+  style="text-decoration:none;display:block"
+  aria-label={`Ver perfil de ${name}`}
+>
+  <div class="pc-ph">
+    {
+      photo ? (
+        <OptimizedImage
+          src={photo}
+          alt={name}
+          class="pc-img"
+          loading="lazy"
+          decoding="async"
+          width={700}
+          height={1050}
+          sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
+        />
+      ) : (
+        <>
+          <div class="pc-bg" style="background:linear-gradient(145deg,#DDD8D5,#C4BBB8)" />
+          <svg class="pc-sl" viewBox="0 0 80 110" width="46" aria-hidden="true">
+            <circle cx="40" cy="30" r="20" fill="#3D3835" />
+            <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835" />
+          </svg>
+        </>
+      )
+    }
+  </div>
+  <div class="pc-i">
+    <p class="pc-n">{name}</p>
+    <p class="pc-r">{role}</p>
+    {
+      registration && (
+        <p style="font-size:10px;font-weight:400;color:var(--color-ink-ghost);margin-top:2px;letter-spacing:.03em">
+          {registration}
+        </p>
+      )
+    }
+    {
+      personalTouch && (
+        <p style="font-family:var(--font-serif);font-style:italic;font-size:12px;font-weight:300;color:var(--color-ink-soft);line-height:1.6;margin-top:8px">
+          "{personalTouch}"
+        </p>
+      )
+    }
+    <span
+      style="display:inline-block;font-size:10px;font-weight:500;color:var(--color-brand-text);letter-spacing:.04em;margin-top:8px"
+      >ver perfil completo →</span
+    >
+  </div>
+</a>

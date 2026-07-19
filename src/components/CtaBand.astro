@@ -1,0 +1,27 @@
+---
+import RiskReversalBadge from './RiskReversalBadge.astro';
+import { WA_BASE } from '../data/constants';
+
+interface Props {
+  label: string;
+  waText?: string;
+  href?: string;
+  intent?: string;
+  badges?: string[];
+}
+
+const { label, waText, href, intent = 'cta-band', badges } = Astro.props;
+const link = href ?? (waText ? `${WA_BASE}?text=${encodeURIComponent(waText)}` : WA_BASE);
+const isExternal = !href;
+---
+
+<div class="r" style="text-align:center;padding:12px 24px 8px">
+  <a
+    href={link}
+    class="bd"
+    data-intent={intent}
+    style="display:inline-block"
+    {...isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>{label}</a
+  >
+  {badges && badges.length > 0 && <RiskReversalBadge items={badges} />}
+</div>

@@ -1,0 +1,30 @@
+---
+interface Props {
+  quote: string;
+  author?: string;
+}
+
+const { quote, author } = Astro.props;
+---
+
+<section
+  aria-label="Citação"
+  style="background:var(--color-warm);padding:72px var(--section-px);text-align:center"
+>
+  <p
+    class="r"
+    style="font-family:var(--font-serif);font-style:italic;font-size:clamp(20px,2.6vw,30px);font-weight:300;color:var(--color-ink);line-height:1.5;max-width:640px;margin:0 auto;letter-spacing:-.01em"
+  >
+    "{quote}"
+  </p>
+  {
+    author && (
+      <p
+        class="r d1"
+        style="font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brand-text);margin-top:18px"
+      >
+        {author}
+      </p>
+    )
+  }
+</section>

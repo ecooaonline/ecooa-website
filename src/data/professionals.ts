@@ -144,19 +144,6 @@ export const professionals: Professional[] = [
     },
   },
   {
-    slug: 'cris-neumann',
-    name: 'Cris Neumann',
-    role: 'Fisioterapeuta Dermatofuncional',
-    unit: 'esthetic',
-    photo: '/team/cris.webp',
-    registration: 'CREFITO 287471-F',
-    ig: '@dracrisneumann_',
-    description:
-      'Fisioterapeuta dermatofuncional especializada em tratamentos corporais e faciais com abordagem integrativa.',
-    tags: ['Fisioterapia', 'Dermatofuncional', 'Corporal', 'Facial'],
-    personalTouch: 'Cuida do corpo como um todo, nunca só do sintoma.',
-  },
-  {
     slug: 'susan-flach',
     name: 'Susan Flach',
     role: 'Biomédica · Tricologia e Gerenciamento de Pele',
