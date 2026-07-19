@@ -57,6 +57,15 @@
   font-size: 16px;
   color: var(--color-ink);
 }
+@media (max-width: 1023px) {
+  .nav-only-mobile {
+    display: block;
+  }
+  .nav-only-mobile a {
+    font-size: 13px;
+    color: var(--color-brand-text);
+  }
+}
 .nav-cta {
   display: none;
 }

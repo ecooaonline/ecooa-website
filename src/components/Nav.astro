@@ -7,51 +7,21 @@ interface Props {
 
 const { currentPage = '' } = Astro.props;
 
-interface NavLink {
-  href: string;
-  label: string;
-  children?: { href: string; label: string }[];
-}
-
-const links: NavLink[] = [
-  { href: '/quem-somos', label: 'quem somos' },
-  {
-    href: '/ecooa-med',
-    label: 'medicina',
-    children: [
-      { href: '/ecooa-med#metodo-gehrke', label: 'método gehrke 360°' },
-      { href: '/ecooa-med#protocolos', label: 'protocolos' },
-      { href: '/ecooa-med#descobrir-meu-nivel', label: 'descobrir meu nível' },
-    ],
-  },
-  {
-    href: '/ecooa-esthetic',
-    label: 'estética',
-    children: [
-      { href: '/ecooa-esthetic#transplante-capilar', label: 'transplante capilar' },
-      { href: '/ecooa-esthetic#procedimentos', label: 'procedimentos' },
-    ],
-  },
-  {
-    href: '/ecooa-mind',
-    label: 'saúde mental',
-    children: [
-      { href: '/ecooa-mind#como-funciona', label: 'como funciona' },
-      { href: '/match', label: 'encontrar minha psicóloga' },
-    ],
-  },
-  {
-    href: '/ecooa-working',
-    label: 'nutrição',
-    children: [
-      { href: '/ecooa-working#programas', label: 'programas' },
-      { href: '/ecooa-working#bioimpedancia', label: 'bioimpedância' },
-    ],
-  },
-  { href: '/profissionais', label: 'profissionais' },
+// Navegação da referência: as seis casas da marca, lowercase, com respiro.
+const links = [
+  { href: '/ecooa-med', label: 'med' },
+  { href: '/ecooa-esthetic', label: 'esthetic' },
+  { href: '/ecooa-working', label: 'working' },
+  { href: '/ecooa-mind', label: 'mind' },
+  { href: '/mentorias', label: 'cademy' },
   { href: '/match', label: 'match' },
+];
+
+// Institucional: vive no rodapé; no menu, apenas em telas pequenas.
+const secondary = [
+  { href: '/quem-somos', label: 'quem somos' },
+  { href: '/profissionais', label: 'profissionais' },
   { href: '/blog', label: 'blog' },
-  { href: '/mentorias', label: 'mentorias' },
   { href: '/contato', label: 'contato' },
 ];
 ---
@@ -99,30 +69,33 @@ const links: NavLink[] = [
     <ul class="nav-links" id="nav-menu" role="list">
       {
         links.map((link) => (
-          <li class={link.children ? 'has-sub' : undefined}>
+          <li>
             <a
               href={link.href}
               aria-current={currentPage === link.href.slice(1) ? 'page' : undefined}
             >
               {link.label}
             </a>
-            {link.children && (
-              <ul class="nav-sub" role="list">
-                {link.children.map((child) => (
-                  <li>
-                    <a href={child.href}>{child.label}</a>
-                  </li>
-                ))}
-              </ul>
-            )}
+          </li>
+        ))
+      }
+      {
+        secondary.map((link) => (
+          <li class="nav-only-mobile">
+            <a
+              href={link.href}
+              aria-current={currentPage === link.href.slice(1) ? 'page' : undefined}
+            >
+              {link.label}
+            </a>
           </li>
         ))
       }
       <li class="nav-cta-mobile-wrapper">
-        <a href="/agendamento" class="nav-cta-mobile">agendar avaliação com nossa equipe</a>
+        <a href="/agendamento" class="nav-cta-mobile">comece pelo plano</a>
       </li>
     </ul>
 
-    <a href="/agendamento" class="nav-cta">agendar avaliação com nossa equipe</a>
+    <a href="/agendamento" class="nav-cta">comece pelo plano</a>
   </nav>
 </header>
