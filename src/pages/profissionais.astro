@@ -145,9 +145,20 @@ const schemaMembers = professionals.map((p) => {
   <!-- Profissionais -->
   <section class="u-bg-warm" aria-label="Equipe de profissionais">
     <div class="w">
+      <!-- Sub-navegação por área -->
+      <nav
+        aria-label="Navegar por área"
+        class="r"
+        style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:64px"
+      >
+        <a href="#medicina" class="tag-pill" style="text-decoration:none">medicina</a>
+        <a href="#estetica" class="tag-pill" style="text-decoration:none">estética</a>
+        <a href="#nutricao" class="tag-pill" style="text-decoration:none">nutrição</a>
+        <a href="#saude-mental" class="tag-pill" style="text-decoration:none">saúde mental</a>
+      </nav>
+
       <!-- Medicina -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px">ecooa.med</div>
+      <div class="lbl r" style="margin-bottom:9px" id="medicina">ecooa.med</div>
       <h2
         style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:32px;letter-spacing:-.02em"
         class="r d1"
@@ -181,7 +192,7 @@ const schemaMembers = professionals.map((p) => {
 
       <!-- Estética -->
       <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r u-mb-18">ecooa.esthetic</div>
+      <div class="lbl r u-mb-18" id="estetica">ecooa.esthetic</div>
       <h2 class="sr-only">Estética</h2>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
         <span class="tag-pill">Tricologia</span>
@@ -239,7 +250,7 @@ const schemaMembers = professionals.map((p) => {
 
       <!-- Nutrição -->
       <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px">ecooa.working</div>
+      <div class="lbl r" style="margin-bottom:9px" id="nutricao">ecooa.working</div>
       <h2
         style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:36px;letter-spacing:-.02em"
         class="r d1"
@@ -266,7 +277,7 @@ const schemaMembers = professionals.map((p) => {
 
       <!-- Saúde Mental -->
       <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px">ecooa.mind</div>
+      <div class="lbl r" style="margin-bottom:9px" id="saude-mental">ecooa.mind</div>
       <h2
         style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em"
         class="r d1"

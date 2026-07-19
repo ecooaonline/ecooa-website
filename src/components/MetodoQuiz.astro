@@ -80,37 +80,44 @@ const results = {
       5 perguntas rápidas. O resultado é orientativo e não substitui a avaliação médica.
     </p>
 
-    <form id="metodo-quiz" class="r d3" data-wa={WA_BASE}>
-      {
-        questions.map((question, qi) => (
-          <fieldset style="border:1px solid var(--color-stone);background:var(--color-warm);padding:20px 22px;margin-bottom:14px">
-            <legend style="font-size:13px;font-weight:400;color:var(--color-ink);padding:0 8px">
-              {qi + 1}. {question.q}
-            </legend>
-            {question.options.map((opt) => (
-              <label style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;cursor:pointer">
-                <input
-                  type="radio"
-                  name={`q${qi}`}
-                  value={opt.level}
-                  required
-                  style="margin-top:3px;cursor:pointer"
-                />
-                <span style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.6">
-                  {opt.text}
-                </span>
-              </label>
-            ))}
-          </fieldset>
-        ))
-      }
-      <button
-        type="submit"
-        class="bd"
-        style="width:100%;text-align:center;border:none;cursor:pointer"
-        data-intent="med-quiz-submit">ver meu nível</button
+    <details class="r d3" id="metodo-quiz-details" style="text-align:center">
+      <summary
+        class="bo"
+        style="display:inline-block;list-style:none;cursor:pointer;margin-bottom:24px"
+        >responder as 5 perguntas</summary
       >
-    </form>
+      <form id="metodo-quiz" data-wa={WA_BASE} style="text-align:left">
+        {
+          questions.map((question, qi) => (
+            <fieldset style="border:1px solid var(--color-stone);background:var(--color-warm);padding:20px 22px;margin-bottom:14px">
+              <legend style="font-size:13px;font-weight:400;color:var(--color-ink);padding:0 8px">
+                {qi + 1}. {question.q}
+              </legend>
+              {question.options.map((opt) => (
+                <label style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;cursor:pointer">
+                  <input
+                    type="radio"
+                    name={`q${qi}`}
+                    value={opt.level}
+                    required
+                    style="margin-top:3px;cursor:pointer"
+                  />
+                  <span style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.6">
+                    {opt.text}
+                  </span>
+                </label>
+              ))}
+            </fieldset>
+          ))
+        }
+        <button
+          type="submit"
+          class="bd"
+          style="width:100%;text-align:center;border:none;cursor:pointer"
+          data-intent="med-quiz-submit">ver meu nível</button
+        >
+      </form>
+    </details>
 
     <div
       id="metodo-quiz-result"

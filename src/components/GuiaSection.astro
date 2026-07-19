@@ -1,5 +1,6 @@
 ---
 import GuiaCard from './GuiaCard.astro';
+import OptimizedImage from './OptimizedImage.astro';
 import { getProfessionalsByUnit, type Professional } from '../data/professionals';
 
 interface Props {
@@ -33,21 +34,59 @@ const shown = all.slice(0, max);
         </p>
       )
     }
-    <div class="g4" style="margin-top:24px">
-      {
-        shown.map((p, i) => (
-          <GuiaCard
-            name={p.name}
-            role={p.role}
-            photo={p.photo}
-            slug={p.slug}
-            personalTouch={p.personalTouch}
-            registration={p.registration}
-            delay={`d${Math.min(i, 3)}`}
-          />
-        ))
-      }
-    </div>
+    {
+      shown.length === 1 ? (
+        <div
+          class="g2 g2c r d1"
+          style="margin-top:24px;background:var(--color-white);border:1px solid var(--color-stone);padding:clamp(28px,4vw,56px);gap:clamp(28px,4vw,64px)"
+        >
+          <div class="lux-frame" style="max-width:380px">
+            <OptimizedImage
+              src={shown[0].photo}
+              alt={`${shown[0].name}, ${shown[0].role}`}
+              width={760}
+              height={1000}
+              class="lux-frame-img"
+            />
+          </div>
+          <div>
+            {shown[0].personalTouch && (
+              <p style="font-family:var(--font-serif);font-style:italic;font-size:clamp(19px,2vw,26px);font-weight:300;color:var(--color-ink);line-height:1.5;margin-bottom:22px">
+                "{shown[0].personalTouch}"
+              </p>
+            )}
+            <p style="font-size:16px;font-weight:500;color:var(--color-ink);margin-bottom:4px">
+              {shown[0].name}
+            </p>
+            <p style="font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:4px">
+              {shown[0].role}
+            </p>
+            {shown[0].registration && (
+              <p style="font-size:11px;font-weight:300;color:var(--color-ink-soft);margin-bottom:18px">
+                {shown[0].registration}
+              </p>
+            )}
+            <a href={`/profissionais/${shown[0].slug}`} class="ghost" style="display:inline-flex">
+              ver perfil completo <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      ) : (
+        <div class="g4" style="margin-top:24px">
+          {shown.map((p, i) => (
+            <GuiaCard
+              name={p.name}
+              role={p.role}
+              photo={p.photo}
+              slug={p.slug}
+              personalTouch={p.personalTouch}
+              registration={p.registration}
+              delay={`d${Math.min(i, 3)}`}
+            />
+          ))}
+        </div>
+      )
+    }
     <div class="r d3" style="margin-top:28px">
       <a
         href="/profissionais"
