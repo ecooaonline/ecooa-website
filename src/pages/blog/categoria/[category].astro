@@ -174,6 +174,15 @@ const categoryDescription = categoryDescriptions[category] || '';
           <input type="hidden" name="_formType" value="newsletter" />
           <input type="hidden" name="_source" value={`blog-categoria-${category}`} />
           <input
+            type="text"
+            name="_honeypot"
+            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <input type="hidden" name="_loadedAt" value="" />
+          <input
             type="email"
             name="email"
             required
@@ -184,7 +193,7 @@ const categoryDescription = categoryDescriptions[category] || '';
           <button
             type="submit"
             style="padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer"
-            >aceito</button
+            >inscrever-se</button
           >
         </form>
         <p
