@@ -44,8 +44,7 @@ export const curatedIntents: CuratedIntent[] = [
   { id: 'sorriso', label: 'Sorriso e estética dental', query: 'Estética dental, sorriso harmônico, lente de contato, clareamento, design do sorriso', unit: 'esthetic', topSlugs: ['jamylle-farias'] },
 
   // ── ecooa.esthetic - corpo ──
-  { id: 'corporal', label: 'Estética corporal', query: 'Estética corporal, gordura localizada, flacidez, drenagem linfática, celulite, dermatofuncional', unit: 'esthetic', topSlugs: ['cris-neumann'] },
-  { id: 'pos-operatorio', label: 'Pós-operatório', query: 'Pós-operatório estético, drenagem pós cirurgia plástica, recuperação cirúrgica, lipoescultura', unit: 'esthetic', topSlugs: ['cris-neumann'] },
+  { id: 'corporal', label: 'Estética corporal', query: 'Estética corporal, gordura localizada, flacidez, celulite, mesoterapia, injetáveis corporais', unit: 'esthetic', topSlugs: ['eduarda-schoenmeier'] },
 
   // ── ecooa.esthetic - outros ──
   { id: 'soroterapia', label: 'Soroterapia', query: 'Soroterapia, terapia intravenosa, vitaminas injetáveis, energia imunidade', unit: 'esthetic', topSlugs: ['danusa-pires'] },

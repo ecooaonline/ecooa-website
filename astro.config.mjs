@@ -7,5 +7,6 @@ export default defineConfig({
   integrations: [sitemap()],
   redirects: {
     '/especialidade/psiquiatria': '/ecooa-mind',
+    '/profissionais/cris-neumann': '/profissionais',
   },
 });

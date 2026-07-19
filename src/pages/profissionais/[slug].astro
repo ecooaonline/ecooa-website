@@ -95,7 +95,7 @@ const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. A
   title={seoTitle}
   description={seoDescription}
   currentPage="profissionais"
-  ogImage={p.photo}
+  ogImage={p.photo || '/favicon/og-image.jpg'}
   breadcrumbs={[{ name: "Profissionais", url: "/profissionais" }, { name: p.name, url: `/profissionais/${p.slug}` }]}
 >
 
@@ -199,18 +199,27 @@ const seoDescription = `${p.description} Especialidades: ${p.tags.join(', ')}. A
         <a href={unitPages[p.unit]} style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-decoration:none" class="r d3">ver todos de {unitLabels[p.unit]} →</a>
       </div>
       <div class="r d2">
-        <div style="aspect-ratio:3/4;overflow:hidden">
-          <OptimizedImage
-            src={p.photo}
-            alt={p.name}
-            loading="eager"
-            decoding="async"
-            class="u-cover"
-            width={480}
-            height={640}
-            fetchpriority="high"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
+        <div style="aspect-ratio:3/4;overflow:hidden;position:relative">
+          {p.photo ? (
+            <OptimizedImage
+              src={p.photo}
+              alt={p.name}
+              loading="eager"
+              decoding="async"
+              class="u-cover"
+              width={480}
+              height={640}
+              fetchpriority="high"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          ) : (
+            <div style="position:absolute;inset:0;background:linear-gradient(145deg,#DDD8D5,#C4BBB8);display:flex;align-items:flex-end;justify-content:center">
+              <svg viewBox="0 0 80 110" width="120" aria-hidden="true">
+                <circle cx="40" cy="30" r="20" fill="#3D3835" opacity=".5"/>
+                <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835" opacity=".5"/>
+              </svg>
+            </div>
+          )}
         </div>
       </div>
     </div>

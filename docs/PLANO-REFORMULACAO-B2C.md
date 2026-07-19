@@ -1,7 +1,7 @@
 # PLANO DE REFORMULAÇÃO B2C · ecooa
 
-> **Status de implementação:** Ondas 1 a 4 implementadas e revisadas (QA multi-agente com 10 achados corrigidos). Google Reviews com URL real (g.page) e 16 registros profissionais publicados (status "visível na bio" da lista consolidada).
-> **Pendências operacionais da Onda 0:** preço da bioimpedância; confirmação de "respondemos em minutos" e "5 dias úteis" com a recepção; re-consentimento de depoimentos; validação nos conselhos dos registros marcados "validar" (Yale, Augusto, Camila, Maria Luísa, Vitória Serpa, Cris, Natálie, Danusa, Adriano) e obtenção de CRN de Gabrieli, Giancarla, Lara e Marvin; `pricing` em professionals.ts; atualização do container GTM com a nova taxonomia (ver docs/GTM-DATA-INTENTS.md).
+> **Status de implementação:** Ondas 1 a 4 implementadas e revisadas (QA multi-agente com 10 achados corrigidos). Google Reviews com URL real (g.page). 25 registros profissionais publicados (validados pelo gestor em 2026-07). Decisões do gestor: "respondemos em minutos" confirmado e mantido; "5 dias úteis" suavizado para "sem lista de espera / agendamento ágil"; bioimpedância publicada sem preço (consultar no WhatsApp). Cris Neumann removida do site (saiu da ecooa, redirect ativo). Eduarda Schoenmeier e Tais de la Rosa adicionadas.
+> **Pendências operacionais:** fotos de Eduarda e Tais (cards com silhueta até lá); CRN de Gabrieli, Giancarla, Lara e Marvin (sem registro exibido até obter); re-consentimento de depoimentos; `pricing` em professionals.ts; atualização do container GTM com a nova taxonomia (ver docs/GTM-DATA-INTENTS.md); redeploy do google-apps-script.js no GAS (nomes de profissionais atualizados).
 
 Documento único de implementação. Direção base: "sua história muda de capítulo" (Jornada de Transformação ecooa), enriquecida com os melhores elementos de "Ciência traduzida" e "a vida que ecooa", conforme veredito do painel.
 

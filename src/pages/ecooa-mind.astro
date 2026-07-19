@@ -30,7 +30,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
 
 <BaseLayout
   title="Psicologia em Porto Alegre | ecooa.mind · Moinhos de Vento"
-  description="Psicologia presencial em Moinhos de Vento, Porto Alegre, ou online. Sessão de acolhimento em até 5 dias úteis, sem lista de espera e sem julgamento."
+  description="Psicologia presencial em Moinhos de Vento, Porto Alegre, ou online. Sessão de acolhimento com agendamento ágil, sem lista de espera e sem julgamento."
   currentPage="ecooa-mind"
   ogImage="/clinic/mind.webp"
   breadcrumbs={[{ name: "ecooa.mind", url: "/ecooa-mind" }]}
@@ -43,7 +43,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     <div class="lbl lbl-lt r">ecooa.mind · saúde mental</div>
     <h1 class="h1 h1-w r d1 u-mt-18">Você não precisa<br>dar conta de tudo<br><em>sozinho.</em></h1>
     <p style="font-family:var(--font-serif);font-style:italic;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);margin-top:14px" class="r d2">Pedir ajuda não é fraqueza. É o primeiro capítulo.</p>
-    <p class="body body-lt r d2" style="margin-top:10px;max-width:500px">Psicologia presencial em Moinhos de Vento ou online, com sessão de acolhimento em até 5 dias úteis. Sem lista de espera, sem julgamento.</p>
+    <p class="body body-lt r d2" style="margin-top:10px;max-width:500px">Psicologia presencial em Moinhos de Vento ou online, com agendamento ágil da sua sessão de acolhimento. Sem lista de espera, sem julgamento.</p>
     <a href={WA_ACOLHIMENTO} target="_blank" rel="noopener noreferrer" class="bw r d3 u-cta" data-intent="mind-hero">agendar sessão de acolhimento</a>
     <RiskReversalBadge items={['sigilo absoluto', 'primeira sessão sem compromisso', 'respondemos em minutos']} light={true} />
   </div>
@@ -51,7 +51,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
 
 <Marquee />
 
-<ProvaViva items={['sessão de acolhimento em até 5 dias úteis', 'presencial ou online', 'sigilo absoluto']} />
+<ProvaViva items={['acolhimento sem lista de espera', 'presencial ou online', 'sigilo absoluto']} />
 
 <EspelhoSection
   label="você se reconhece?"
@@ -126,7 +126,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     <div class="g3">
       <div class="card-w"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Integrado ao ecossistema</h3><p class="it-d-lg">Seu psicólogo já tem contexto sobre o seu cuidado clínico geral, sem que você precise repetir sua história a cada profissional.</p></div>
       <div class="card-w"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Ambiente pensado para você</h3><p class="it-d-lg">Nossa sala foi projetada para transmitir acolhimento, privacidade e calma. O ambiente faz parte do tratamento e precisa ecooar segurança.</p></div>
-      <div class="card-w"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Sem lista de espera</h3><p class="it-d-lg">Sessão de acolhimento em até 5 dias úteis. Sabemos que quem busca ajuda não pode esperar.</p></div>
+      <div class="card-w"><h3 style="font-size:16px;font-weight:400;color:var(--color-ink);margin-bottom:8px">Sem lista de espera</h3><p class="it-d-lg">Agendamento ágil da sua sessão de acolhimento. Sabemos que quem busca ajuda não pode esperar.</p></div>
     </div>
   </div>
 </section>
@@ -147,7 +147,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       <div class="r d1 u-tac">
         <span class="step-num">2</span>
         <h3 class="it-t">Sessão de acolhimento</h3>
-        <p class="it-d">Em até 5 dias úteis, um espaço seguro para a sua história ser ouvida. Você decide se quer continuar.</p>
+        <p class="it-d">Agendada sem demora, um espaço seguro para a sua história ser ouvida. Você decide se quer continuar.</p>
       </div>
       <div class="r d2 u-tac">
         <span class="step-num">3</span>
@@ -207,7 +207,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   waText="Olá, gostaria de agendar uma sessão de acolhimento na ecooa.mind"
   label="agendar sessão de acolhimento"
   intent="mind-primeiro-passo"
-  badges={['em até 5 dias úteis', 'sigilo absoluto', 'você decide se continua']}
+  badges={['sem lista de espera', 'sigilo absoluto', 'você decide se continua']}
 />
 
 </BaseLayout>

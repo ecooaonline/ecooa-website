@@ -16,16 +16,26 @@ const { name, role, photo, slug, personalTouch, registration, delay = '' } = Ast
 
 <a href={`/profissionais/${slug}`} class={`pc r ${delay}`} style="text-decoration:none;display:block" aria-label={`Ver perfil de ${name}`}>
   <div class="pc-ph">
-    <OptimizedImage
-      src={photo}
-      alt={name}
-      class="pc-img"
-      loading="lazy"
-      decoding="async"
-      width={700}
-      height={1050}
-      sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
-    />
+    {photo ? (
+      <OptimizedImage
+        src={photo}
+        alt={name}
+        class="pc-img"
+        loading="lazy"
+        decoding="async"
+        width={700}
+        height={1050}
+        sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 25vw"
+      />
+    ) : (
+      <>
+        <div class="pc-bg" style="background:linear-gradient(145deg,#DDD8D5,#C4BBB8)"></div>
+        <svg class="pc-sl" viewBox="0 0 80 110" width="46" aria-hidden="true">
+          <circle cx="40" cy="30" r="20" fill="#3D3835"/>
+          <path d="M5 110Q5 70 40 70Q75 70 75 110" fill="#3D3835"/>
+        </svg>
+      </>
+    )}
   </div>
   <div class="pc-i">
     <p class="pc-n">{name}</p>
