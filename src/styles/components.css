@@ -2283,7 +2283,7 @@
   border: 1px solid var(--color-stone);
   box-shadow: var(--shadow-lg);
 }
-.lux-frame :global(img),
+.lux-frame img,
 .lux-frame-img {
   display: block;
   width: 100%;
@@ -2339,7 +2339,7 @@
   top: 14%;
   z-index: 1;
 }
-.lux-collage .c-b :global(img) {
+.lux-collage .c-b img {
   aspect-ratio: 1 / 1;
 }
 .lux-collage .c-c {
@@ -2348,7 +2348,7 @@
   bottom: 0;
   z-index: 3;
 }
-.lux-collage .c-c :global(img) {
+.lux-collage .c-c img {
   aspect-ratio: 4 / 5;
 }
 
