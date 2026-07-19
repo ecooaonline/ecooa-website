@@ -1,14 +1,16 @@
 ---
 interface Props {
   text: string;
+  light?: boolean;
 }
 
-const { text } = Astro.props;
+const { text, light = false } = Astro.props;
+
+const style = light
+  ? 'font-size:12px;font-weight:300;color:rgba(255,255,255,.75);line-height:1.7;border-left:2px solid rgba(255,255,255,.3);padding-left:12px;margin-top:10px'
+  : 'font-size:12px;font-weight:300;color:var(--color-brand-text);line-height:1.7;border-left:2px solid var(--color-brand);padding-left:12px;margin-top:10px';
 ---
 
-<p
-  style="font-size:12px;font-weight:300;color:var(--color-brand-text);line-height:1.7;border-left:2px solid var(--color-brand);padding-left:12px;margin-top:10px"
->
-  <em style="font-family:var(--font-serif);font-style:italic">em bom português:</em>
-  {text}
+<p style={style}>
+  <em style="font-family:var(--font-serif);font-style:italic">em bom português:&nbsp;</em>{text}
 </p>

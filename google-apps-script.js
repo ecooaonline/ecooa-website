@@ -345,6 +345,11 @@ function sendNotification(formType, data, timestamp) {
     const cleanPhone = String(data.whatsapp).replace(/\D/g, '');
     const waPhone = cleanPhone.indexOf('55') === 0 ? cleanPhone : '55' + cleanPhone;
     body += '<a href="https://wa.me/' + encodeURIComponent(waPhone) + '" style="display:inline-block;margin-top:12px;padding:10px 20px;background:#25D366;color:white;text-decoration:none;border-radius:6px;font-size:14px">Responder pelo WhatsApp</a>';
+    // Pedido de avaliação pós-atendimento (para todos, sem gating).
+    // A recepção clica após o atendimento acontecer: abre o WhatsApp do
+    // paciente com a mensagem e o link de avaliação prontos.
+    const reviewMsg = 'Olá! Obrigado por escolher a ecooa. Se puder, sua avaliação nos ajuda muito: https://g.page/r/CR6HT7KGWT_3EAI/review';
+    body += '<br><a href="https://wa.me/' + encodeURIComponent(waPhone) + '?text=' + encodeURIComponent(reviewMsg) + '" style="display:inline-block;margin-top:8px;padding:8px 16px;background:transparent;color:#7a8a7f;text-decoration:none;border:1px solid #7a8a7f;border-radius:6px;font-size:12px">Enviar pedido de avaliação (após o atendimento)</a>';
   }
 
   body += '</div></div>';

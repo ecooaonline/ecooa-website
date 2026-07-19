@@ -57,7 +57,7 @@ const categoryDescription = categoryDescriptions[category] || '';
       viewBox="0 0 1440 500"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
-      ><g fill="none" stroke="#C4BBB8" stroke-width="1"
+      ><g fill="none" stroke="#cac7b8" stroke-width="1"
         ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
       ></svg
     >
@@ -75,14 +75,14 @@ const categoryDescription = categoryDescriptions[category] || '';
     <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" class="r">
       <a
         href="/blog"
-        style="font-size:11px;font-weight:400;color:var(--color-ink-soft);text-decoration:underline"
+        style="font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;background:var(--color-stone);color:var(--color-ink-soft);text-decoration:none"
         >todas as categorias</a
       >
       {
         ['medicina', 'estetica', 'nutricao', 'saude-mental', 'longevidade'].map((cat) => (
           <a
             href={`/blog/categoria/${cat}`}
-            style={`font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;${cat === category ? 'background:var(--color-brand);color:white' : 'background:var(--color-stone);color:var(--color-ink-soft)'};;text-decoration:none;transition:all .2s ease`}
+            style={`font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;${cat === category ? 'background:var(--color-ink);color:white' : 'background:var(--color-stone);color:var(--color-ink-soft)'};;text-decoration:none;transition:all .2s ease`}
           >
             {categoryLabels[cat]}
           </a>
@@ -114,7 +114,7 @@ const categoryDescription = categoryDescriptions[category] || '';
               >
                 <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
                   <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">
-                    {post.data.category}
+                    {categoryLabels[post.data.category] || post.data.category}
                   </span>
                   <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">
                     {new Date(post.data.date).toLocaleDateString('pt-BR', {
@@ -162,7 +162,7 @@ const categoryDescription = categoryDescriptions[category] || '';
         <p
           style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px"
         >
-          Novidades, ofertas e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.
+          Novidades e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.
         </p>
         <form
           action={FORM_ACTION}
@@ -174,6 +174,15 @@ const categoryDescription = categoryDescriptions[category] || '';
           <input type="hidden" name="_formType" value="newsletter" />
           <input type="hidden" name="_source" value={`blog-categoria-${category}`} />
           <input
+            type="text"
+            name="_honeypot"
+            style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+          />
+          <input type="hidden" name="_loadedAt" value="" />
+          <input
             type="email"
             name="email"
             required
@@ -184,7 +193,7 @@ const categoryDescription = categoryDescriptions[category] || '';
           <button
             type="submit"
             style="padding:12px 24px;background:var(--color-white);color:var(--color-ink);font-family:var(--font-primary);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:lowercase;border:none;cursor:pointer"
-            >aceito</button
+            >inscrever-se</button
           >
         </form>
         <p

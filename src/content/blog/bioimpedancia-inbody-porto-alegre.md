@@ -4,7 +4,7 @@ description: "Descubra como a bioimpedância InBody analisa massa magra, gordura
 date: "2026-04-01"
 author: "Giancarla"
 category: "medicina"
-tags: ["bioimpedancia InBody", "exame bioimpedancia", "composição corporal", "massa magra massa gorda", "InBody exame", "avaliação corporal"]
+tags: ["bioimpedância InBody", "exame bioimpedância", "composição corporal", "massa magra massa gorda", "InBody exame", "avaliação corporal"]
 image: "/clinic/med.webp"
 lastModified: "2026-04-15"
 ---

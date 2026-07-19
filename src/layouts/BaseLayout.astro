@@ -13,6 +13,7 @@ import {
   ADDRESS_ZIP,
   META_PIXEL_ID,
   GTM_ID,
+  GOOGLE_REVIEWS,
 } from '../data/constants';
 import { REVIEW_RATING, REVIEW_COUNT } from '../data/reviews';
 
@@ -193,7 +194,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
               latitude: -30.0277,
               longitude: -51.2007,
             },
-            hasMap: 'https://www.google.com/maps/place/ecooa',
+            hasMap: GOOGLE_REVIEWS,
             openingHoursSpecification: [
               {
                 '@type': 'OpeningHoursSpecification',
@@ -202,10 +203,7 @@ const fullTitle = currentPage ? `${title} | ecooa` : title;
                 closes: '20:00',
               },
             ],
-            sameAs: [
-              'https://instagram.com/somos.ecooa',
-              'https://www.google.com/maps/place/ecooa',
-            ],
+            sameAs: ['https://instagram.com/somos.ecooa', GOOGLE_REVIEWS],
             priceRange: '$$$',
             medicalSpecialty: ['Dermatology', 'Nutrition', 'Psychology', 'Aesthetic Medicine'],
             aggregateRating: {

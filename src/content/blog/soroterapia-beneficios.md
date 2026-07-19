@@ -99,7 +99,7 @@ A frequência das sessões varia conforme o protocolo: pode ser semanal em fases
 
 ## O diferencial da soroterapia na ecooa
 
-O que diferencia a soroterapia na ecooa de ofertas genéricas disponíveis em Porto Alegre é a base clínica que sustenta cada protocolo. Não se trata de um menu de soros onde o paciente escolhe o que quer. É uma intervenção médica que parte de dados objetivos e que se integra ao plano terapêutico global do paciente.
+O que diferencia a soroterapia na ecooa de opções genéricas disponíveis em Porto Alegre é a base clínica que sustenta cada protocolo. Não se trata de um menu de soros onde o paciente escolhe o que quer. É uma intervenção médica que parte de dados objetivos e que se integra ao plano terapêutico global do paciente.
 
 Quando a soroterapia é indicada como suporte ao tratamento capilar, ela conversa com a equipe de tricologia. Quando o objetivo é suporte metabólico, ela se articula com a avaliação nutricional. Essa integração é o que transforma um procedimento simples em uma ferramenta clínica de valor real.
 

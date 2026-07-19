@@ -1,0 +1,96 @@
+---
+// Hero editorial Quiet Luxury: composição assimétrica sobre Cloud Dancer com
+// fotografia emoldurada como peça de galeria, display serif gigante, filete de
+// ouro e microtipo vertical. Um hero, todas as páginas: a assinatura da casa.
+import OptimizedImage from './OptimizedImage.astro';
+import RiskReversalBadge from './RiskReversalBadge.astro';
+import { GOOGLE_REVIEWS } from '../data/constants';
+
+interface Props {
+  label: string;
+  title: string; // HTML permitido (<br>, <em>)
+  support?: string;
+  sub: string;
+  ctaHref: string;
+  ctaLabel: string;
+  ctaIntent?: string;
+  ctaExternal?: boolean;
+  secondaryHref?: string;
+  secondaryLabel?: string;
+  badges?: string[];
+  stars?: boolean;
+  image: string;
+  imageAlt: string;
+  imageCaption?: string;
+  vertical?: string;
+}
+
+const {
+  label,
+  title,
+  support,
+  sub,
+  ctaHref,
+  ctaLabel,
+  ctaIntent,
+  ctaExternal = true,
+  secondaryHref,
+  secondaryLabel,
+  badges,
+  stars = false,
+  image,
+  imageAlt,
+  imageCaption,
+  vertical = 'porto alegre · desde 2021',
+} = Astro.props;
+---
+
+<section class="lux-hero" aria-label="Apresentação">
+  <span class="lux-vertical" aria-hidden="true">{vertical}</span>
+  <div class="lux-hero-grid">
+    <div class="lux-hero-copy">
+      <div class="lbl lbl-rule r">{label}</div>
+      <h1 class="lux-title r d1" set:html={title} />
+      {support && <p class="lux-support r d2">{support}</p>}
+      <p class="lux-sub r d2">{sub}</p>
+      <div class="lux-actions r d3">
+        <a
+          href={ctaHref}
+          class="bd"
+          data-intent={ctaIntent}
+          {...ctaExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {}}>{ctaLabel}</a
+        >
+        {
+          secondaryHref && (
+            <a href={secondaryHref} class="ghost">
+              {secondaryLabel} <span aria-hidden="true">→</span>
+            </a>
+          )
+        }
+      </div>
+      {badges && <RiskReversalBadge items={badges} align="left" />}
+      <slot />
+      {
+        stars && (
+          <a href={GOOGLE_REVIEWS} target="_blank" rel="noopener noreferrer" class="lux-stars r d4">
+            <span aria-hidden="true">★★★★★</span> 5.0 no Google
+          </a>
+        )
+      }
+    </div>
+    <figure class="lux-hero-art r d2">
+      <div class="lux-frame">
+        <OptimizedImage
+          src={image}
+          alt={imageAlt}
+          width={900}
+          height={1200}
+          priority={true}
+          sizes="(max-width: 900px) 92vw, 44vw"
+          class="lux-frame-img"
+        />
+      </div>
+      {imageCaption && <figcaption class="lux-caption">{imageCaption}</figcaption>}
+    </figure>
+  </div>
+</section>

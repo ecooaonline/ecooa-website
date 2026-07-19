@@ -4,7 +4,7 @@ description: "Entenda o que é longevidade saudável, como a medicina preventiva
 date: "2026-04-01"
 author: "Dr. Gustavo Gehrke"
 category: "longevidade"
-tags: ["longevidade", "medicina preventiva", "envelhecimento saudavel", "check-up", "biomarcadores"]
+tags: ["longevidade", "medicina preventiva", "envelhecimento saudável", "check-up", "biomarcadores"]
 image: "/clinic/med.webp"
 lastModified: "2026-04-15"
 ---
@@ -32,11 +32,11 @@ O envelhecimento biológico não segue um roteiro igual para todos. Diversos fat
 - **Encurtamento dos telômeros**: os telômeros protegem as extremidades dos cromossomos. Seu encurtamento progressivo está diretamente ligado ao envelhecimento celular
 - **Disfunção mitocondrial**: as mitocôndrias são as usinas de energia das células. Com o tempo, perdem eficiência, o que compromete a produção de energia e aumenta a produção de resíduos tóxicos
 - **Desequilíbrio hormonal**: a queda progressiva de hormônios como testosterona, estradiol, DHEA e hormônio do crescimento impacta composição corporal, disposição, sono e cognição
-- **Resistência insulínica**: mesmo antes do diabetes se manifestar, a resistência a insulina já compromete o metabolismo energético e favorece o acúmulo de gordura visceral
+- **Resistência insulínica**: mesmo antes do diabetes se manifestar, a resistência à insulina já compromete o metabolismo energético e favorece o acúmulo de gordura visceral
 
 Esses processos não são inevitáveis na velocidade em que costumam ocorrer. Grande parte do envelhecimento precoce é modulável com intervenções corretas e no momento certo.
 
-## Sinais de que seu corpo esta envelhecendo mais rapido do que deveria
+## Sinais de que seu corpo está envelhecendo mais rápido do que deveria
 
 Muitos pacientes chegam ao consultório sem um diagnóstico específico, mas com queixas que refletem um envelhecimento acelerado. Os sinais mais comuns incluem:
 

@@ -1,8 +1,18 @@
 ---
+const categoryLabels: { [key: string]: string } = {
+  medicina: 'Medicina',
+  estetica: 'Estética',
+  nutricao: 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  longevidade: 'Longevidade',
+  ecooa: 'ecooa',
+};
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import ProtocoloCard from '../components/ProtocoloCard.astro';
@@ -51,50 +61,19 @@ const workingFaqs = [
   ogImage="/clinic/working.webp"
   breadcrumbs={[{ name: 'ecooa.working', url: '/ecooa-working' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-brand-mid)">
-    <svg
-      class="wsv"
-      style="opacity:.14"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
-        ><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl lbl-br r">ecooa.working · nutrição</div>
-      <h1
-        style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px"
-        class="r d1"
-      >
-        Fazer as pazes<br />com a comida.<br /><em
-          style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.58)"
-          >E com o espelho.</em
-        >
-      </h1>
-      <p
-        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.58);max-width:500px"
-        class="r d2"
-      >
-        Nutrição clínica, esportiva e comportamental com 12 nutricionistas que dividem o seu caso
-        com o seu médico, dentro da mesma clínica. Sem dieta da moda, sem julgamento, sem fórmula
-        mágica.
-      </p>
-      <a
-        href={WA_NUTRI}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="working-hero">agendar minha avaliação</a
-      >
-      <RiskReversalBadge
-        items={['primeira consulta sem compromisso', 'respondemos em minutos']}
-        light={true}
-      />
-    </div>
-  </div>
+  <HeroEditorial
+    label="ecooa.working · nutrição"
+    title="Fazer as pazes<br />com a comida.<br /><em>E com o espelho.</em>"
+    sub="Nutrição clínica, esportiva e comportamental com 12 nutricionistas que dividem o seu caso com o seu médico, dentro da mesma clínica. Sem dieta da moda, sem julgamento, sem fórmula mágica."
+    ctaHref={WA_NUTRI}
+    ctaLabel="agendar minha avaliação"
+    ctaIntent="working-hero"
+    badges={['primeira consulta sem compromisso', 'respondemos em minutos']}
+    image="/clinic/working.webp"
+    imageAlt="Espaço da ecooa.working em Moinhos de Vento"
+    imageCaption="nutrição que ecooa"
+    vertical="corpo · energia · equilíbrio"
+  />
 
   <Marquee />
 
@@ -105,6 +84,8 @@ const workingFaqs = [
       'desde 2021',
     ]}
   />
+
+  <MaskedWordBand word="corpo" image="/clinic/working.webp" label="nutrição que ecooa" />
 
   <EspelhoSection
     label="qual dessas frases podia ser sua?"
@@ -124,7 +105,7 @@ const workingFaqs = [
       {
         text: 'uso caneta emagrecedora e quero fazer isso direito',
         waText:
-          'Olá, uso caneta emagrecedora (tipo Ozempic ou Mounjaro) e gostaria de suporte nutricional para proteger o resultado',
+          'Olá, uso caneta emagrecedora e gostaria de suporte nutricional para proteger o resultado',
         intent: 'working-espelho-canetas',
       },
       {
@@ -191,7 +172,7 @@ const workingFaqs = [
   </section>
 
   <!-- Nutrição para pacientes -->
-  <section class="u-bg-cream" aria-label="Nutrição para pacientes">
+  <section class="u-bg-cream" aria-label="Nutrição para pacientes" id="programas">
     <div class="w">
       <div class="lbl r" style="margin-bottom:15px">programas de nutrição</div>
       <h2 class="h2 r d1 u-mb-14">Um programa com nome<br />para cada <em>objetivo.</em></h2>
@@ -223,9 +204,9 @@ const workingFaqs = [
           numero="03"
           nome="Suporte às Canetas Emagrecedoras"
           delay="d2"
-          paraQuem="Para quem usa ou vai usar canetas como Ozempic, Mounjaro, semaglutida ou tirzepatida e quer fazer isso direito."
+          paraQuem="Para quem usa ou vai usar canetas emagrecedoras (análogos de GLP-1, como semaglutida e tirzepatida) e quer fazer isso direito."
           inclui="Nutrição para proteger massa magra e sustentar o resultado, em parceria com o acompanhamento médico, quando há indicação."
-          waText="Olá, uso caneta emagrecedora (tipo Ozempic ou Mounjaro) e gostaria de suporte nutricional para proteger o resultado"
+          waText="Olá, uso caneta emagrecedora e gostaria de suporte nutricional para proteger o resultado"
           intent="working-programa-canetas"
         />
         <ProtocoloCard
@@ -265,9 +246,9 @@ const workingFaqs = [
     </div>
   </section>
 
-  <!-- Bioimpedância: oferta de entrada -->
-  <section class="u-bg-warm" aria-label="Bioimpedância">
-    <div class="w" style="max-width:760px">
+  <!-- Bioimpedância: porta de entrada -->
+  <section class="u-bg-warm" aria-label="Bioimpedância" id="bioimpedancia">
+    <div class="w" style="max-width:760px;margin:0 auto">
       <div
         class="r"
         style="background:var(--color-white);border:1px solid var(--color-stone);border-left:3px solid var(--color-brand);padding:36px 32px"
@@ -336,7 +317,7 @@ const workingFaqs = [
       <div class="lbl r u-mb-16">sua jornada</div>
       <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:960px;margin:0 auto"
       >
         <div class="r u-tac">
           <span class="step-num">1</span>
@@ -436,7 +417,7 @@ const workingFaqs = [
                 style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
                 <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
-                  {post.data.category}
+                  {categoryLabels[post.data.category] || post.data.category}
                 </p>
                 <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}

@@ -1,8 +1,18 @@
 ---
+const categoryLabels: { [key: string]: string } = {
+  medicina: 'Medicina',
+  estetica: 'Estética',
+  nutricao: 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  longevidade: 'Longevidade',
+  ecooa: 'ecooa',
+};
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import TranslateNote from '../components/TranslateNote.astro';
@@ -62,55 +72,20 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   ogImage="/clinic/esthetic.webp"
   breadcrumbs={[{ name: 'ecooa.esthetic', url: '/ecooa-esthetic' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-brand)">
-    <svg
-      class="wsv"
-      style="opacity:.15"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
-        ><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl lbl-br r">ecooa.esthetic · estética</div>
-      <h1
-        style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px"
-        class="r d1"
-      >
-        Voltar a se reconhecer<br />no espelho. Sem virar<br /><em
-          style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.82)"
-          >outra pessoa.</em
-        >
-      </h1>
-      <p
-        style="font-family:var(--font-serif);font-style:italic;font-size:15px;font-weight:300;color:rgba(255,255,255,.7);margin-bottom:12px"
-        class="r d2"
-      >
-        Ninguém vai perceber o que você fez. Todos vão notar como você está.
-      </p>
-      <p
-        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.82);max-width:520px"
-        class="r d2"
-      >
-        Cabelo, rosto, pele e corpo com tricologia clínica e referência em transplante capilar FUE
-        Safira em Porto Alegre. Resultado natural, decidido junto com você.
-      </p>
-      <a
-        href={WA}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="esthetic-hero">contar o que me incomoda</a
-      >
-      <RiskReversalBadge
-        items={['respondemos em minutos', 'retorno incluído em todos os procedimentos']}
-        light={true}
-      />
-    </div>
-  </div>
+  <HeroEditorial
+    label="ecooa.esthetic · estética"
+    title="Voltar a se reconhecer<br />no espelho.<br />Sem virar <em>outra pessoa.</em>"
+    support="Ninguém vai perceber o que você fez. Todos vão notar como você está."
+    sub="Cabelo, rosto, pele e corpo com tricologia clínica e referência em transplante capilar FUE Safira em Porto Alegre. Resultado natural, decidido junto com você."
+    ctaHref={WA}
+    ctaLabel="contar o que me incomoda"
+    ctaIntent="esthetic-hero"
+    badges={['respondemos em minutos', 'retorno incluído em todos os procedimentos']}
+    image="/clinic/esthetic.webp"
+    imageAlt="Sala de procedimentos estéticos da ecooa.esthetic"
+    imageCaption="estética que ecooa"
+    vertical="pele · rosto · cabelo · corpo"
+  />
 
   <Marquee />
 
@@ -121,6 +96,8 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       'desde 2021',
     ]}
   />
+
+  <MaskedWordBand word="pele" image="/clinic/esthetic.webp" label="estética que ecooa" />
 
   <EspelhoSection
     label="o que te incomoda quando você se olha?"
@@ -205,7 +182,11 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   </section>
 
   <!-- Transplante Capilar: destaque -->
-  <section style="background:var(--color-ink);padding:86px 60px" aria-label="Transplante capilar">
+  <section
+    style="background:var(--color-ink);padding:86px 60px"
+    aria-label="Transplante capilar"
+    id="transplante-capilar"
+  >
     <div class="w">
       <div class="g2 g2c">
         <div>
@@ -221,6 +202,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
           </p>
           <div class="r d3 u-mt-16">
             <TranslateNote
+              light={true}
               text="FUE Safira é a extração fio a fio com lâminas de safira: incisões menores, mais precisão e cicatrização mais rápida."
             />
           </div>
@@ -282,12 +264,12 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   </section>
 
   <!-- Procedimentos -->
-  <section class="u-bg-warm" aria-label="Procedimentos">
+  <section class="u-bg-warm" aria-label="Procedimentos" id="procedimentos">
     <div class="w">
       <div class="lbl r u-mb-16">o que oferecemos</div>
       <h2 class="h2 r d1 u-mb-44">Procedimentos que<br />cuidam e <em>revelam.</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
       >
         <div class="gc">
           <p class="gc-tag">01</p><h3 class="it-t">
@@ -370,7 +352,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
 
   <!-- Filosofia -->
   <section
-    style="background:var(--color-brand);padding:86px 60px;position:relative;overflow:hidden"
+    style="background:var(--color-brand-light);padding:86px 60px;position:relative;overflow:hidden"
     aria-label="Nossa filosofia"
   >
     <svg
@@ -379,23 +361,17 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       viewBox="0 0 1440 400"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
+      ><g fill="none" stroke="#9b9889" stroke-width="1"
         ><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g
       ></svg
     >
-    <div style="position:relative;z-index:2;max-width:580px">
-      <div class="lbl lbl-br r u-mb-18">nossa filosofia</div>
-      <h2
-        style="font-size:clamp(28px,3.6vw,52px);font-weight:200;color:white;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px"
-        class="r d1"
-      >
-        "Estética com ciência.<br />Resultados que <em
-          style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.55)"
-          >respeitam quem você é.</em
-        >"
+    <div style="position:relative;z-index:2;max-width:620px">
+      <div class="lbl r u-mb-18">nossa filosofia</div>
+      <h2 class="h2 r d1" style="margin-bottom:20px">
+        "Estética com ciência.<br />Resultados que <em>respeitam quem você é.</em>"
       </h2>
       <p
-        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.54)"
+        style="font-size:14px;font-weight:300;line-height:1.9;color:var(--color-ink-soft)"
         class="r d2"
       >
         Nossos procedimentos são indicados com base na sua anatomia, expectativa e saúde. Nunca pelo
@@ -439,7 +415,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       <div class="lbl r u-mb-16">sua jornada</div>
       <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:960px;margin:0 auto"
       >
         <div class="r u-tac">
           <span class="step-num">1</span>
@@ -530,7 +506,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
                 style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
                 <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
-                  {post.data.category}
+                  {categoryLabels[post.data.category] || post.data.category}
                 </p>
                 <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}
@@ -546,8 +522,8 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
     )
   }
 
-  <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 0">
-    <div class="w"><DisclaimerMedico /></div>
+  <section class="u-bg-warm" aria-label="Aviso médico" style="padding:32px var(--section-px) 8px">
+    <DisclaimerMedico />
   </section>
 
   <PrimeiroPassoCTA

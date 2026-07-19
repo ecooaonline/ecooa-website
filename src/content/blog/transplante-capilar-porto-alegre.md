@@ -61,7 +61,7 @@ As lâminas de safira permitem:
 - **Melhor definição do ângulo e direção**: a precisão da lâmina de safira facilita o posicionamento dos folículos no ângulo natural de crescimento, essencial para um resultado estético convincente
 - **Menos edema e crostas no pós-operatório**: o menor trauma tissular se traduz em recuperação mais confortável
 
-Na ecooa, a técnica Sapphire é a mais utilizada por oferecer o melhor equilíbrio entre precisão, resultado natural e conforto na recuperação.
+Na ecooa, a técnica Sapphire é a mais utilizada por oferecer um excelente equilíbrio entre precisão, resultado natural e conforto na recuperação.
 
 ## Como funciona o procedimento passo a passo
 
@@ -144,7 +144,7 @@ Agende sua consulta e tire suas dúvidas com nossa equipe.
 
 ## O transplante capilar dói?
 
-O procedimento é realizado com anestesia local, o que elimina a dor durante a cirurgia. O momento da aplicação da anestesia pode causar desconforto leve, mas é breve. No pós-operatório, a maioria dos pacientes relata mais incômodo do que dor propriamente dita, e o desconforto é controlado com medicação prescrita.
+O procedimento é realizado com anestesia local, o que bloqueia a dor durante a cirurgia. O momento da aplicação da anestesia pode causar desconforto leve, mas é breve. No pós-operatório, a maioria dos pacientes relata mais incômodo do que dor propriamente dita, e o desconforto é controlado com medicação prescrita.
 
 ## Em quanto tempo o resultado do transplante aparece?
 

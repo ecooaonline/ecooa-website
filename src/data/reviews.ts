@@ -17,10 +17,6 @@ export const reviews: Review[] = [
     text: 'Clínica maravilhosa! Ótima recepção, profissionais competentes e focados no bem estar do paciente.',
   },
   {
-    initials: 'L. S.',
-    text: 'Melhor clínica de Porto Alegre, ambiente aconchegante e um atendimento impecável!',
-  },
-  {
     initials: 'T. B.',
     text: 'Muito agradável e acolhedor, fui muito bem recepcionada e recebi um ótimo atendimento! Super indico!',
   },
@@ -45,10 +41,6 @@ export const reviews: Review[] = [
     text: 'A ecooa tem meu coração! Profissionais maravilhosos além de ser uma clínica linda.',
   },
   {
-    initials: 'S. B.',
-    text: 'Melhor clínica e equipe do mundo! Amo toda vez que vou na ecooa.',
-  },
-  {
     initials: 'C. L.',
     text: 'A clínica ecooa está linda! Desde a recepção já senti a ótima energia do local. Consulto com a psicóloga Manuela e me sinto melhor a cada dia. Parabéns a toda a equipe!',
   },
@@ -67,10 +59,6 @@ export const reviews: Review[] = [
   {
     initials: 'N. B.',
     text: 'Lugar lindo, agradável, profissionais competentes.',
-  },
-  {
-    initials: 'P. A.',
-    text: 'Melhor clínica! Atendimento impecável! Só profissionais excelentes. Recomendo demais!',
   },
   {
     initials: 'R. L.',
@@ -117,20 +105,12 @@ export const reviews: Review[] = [
     text: 'Excelente clínica com ótimos profissionais e atendimento. Ambiente lindo e aconchegante.',
   },
   {
-    initials: 'I. L.',
-    text: 'Melhor clínica de Porto Alegre! Atualizada e com profissionais muito competentes.',
-  },
-  {
     initials: 'E. H.',
     text: 'Clínica linda! Ótimo atendimento. Parabéns em especial à nutricionista Renata Moura.',
   },
   {
     initials: 'M. C.',
     text: 'Maravilhosos. A clínica é linda e o atendimento é vip. A localização é perfeita.',
-  },
-  {
-    initials: 'G. P.',
-    text: 'Clínica com profissionais incríveis, que ofertam todo suporte e cuidado ao paciente.',
   },
   {
     initials: 'F. B.',
@@ -143,10 +123,6 @@ export const reviews: Review[] = [
   {
     initials: 'B. Z.',
     text: 'Clínica linda, aconchegante, com profissionais qualificados que prezam pela saúde e bem estar! Parabéns.',
-  },
-  {
-    initials: 'T. M.',
-    text: 'Maravilhoso o atendimento da clínica! Profissionais muito competentes e atenciosos. Estou tendo resultados maravilhosos!',
   },
   {
     initials: 'F. L.',

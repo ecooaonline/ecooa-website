@@ -1,8 +1,18 @@
 ---
+const categoryLabels: { [key: string]: string } = {
+  medicina: 'Medicina',
+  estetica: 'Estética',
+  nutricao: 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  longevidade: 'Longevidade',
+  ecooa: 'ecooa',
+};
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
 import RiskReversalBadge from '../components/RiskReversalBadge.astro';
@@ -57,51 +67,28 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   ogImage="/clinic/mind.webp"
   breadcrumbs={[{ name: 'ecooa.mind', url: '/ecooa-mind' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-ink)">
-    <svg
-      class="wsv u-op-05"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
-        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl lbl-lt r">ecooa.mind · saúde mental</div>
-      <h1 class="h1 h1-w r d1 u-mt-18">
-        Você não precisa<br />dar conta de tudo<br /><em>sozinho.</em>
-      </h1>
-      <p
-        style="font-family:var(--font-serif);font-style:italic;font-size:15px;font-weight:300;color:rgba(255,255,255,.55);margin-top:14px"
-        class="r d2"
-      >
-        Pedir ajuda não é fraqueza. É o primeiro capítulo.
-      </p>
-      <p class="body body-lt r d2" style="margin-top:10px;max-width:500px">
-        Psicologia presencial em Moinhos de Vento ou online, com agendamento ágil da sua sessão de
-        acolhimento. Sem lista de espera, sem julgamento.
-      </p>
-      <a
-        href={WA_ACOLHIMENTO}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="mind-hero">agendar sessão de acolhimento</a
-      >
-      <RiskReversalBadge
-        items={['sigilo absoluto', 'primeira sessão sem compromisso', 'respondemos em minutos']}
-        light={true}
-      />
-    </div>
-  </div>
+  <HeroEditorial
+    label="ecooa.mind · saúde mental"
+    title="Você não precisa<br />dar conta de tudo<br /><em>sozinho.</em>"
+    support="Pedir ajuda não é fraqueza. É o primeiro capítulo."
+    sub="Psicologia presencial em Moinhos de Vento ou online, com agendamento ágil da sua sessão de acolhimento. Sem lista de espera, sem julgamento."
+    ctaHref={WA_ACOLHIMENTO}
+    ctaLabel="agendar sessão de acolhimento"
+    ctaIntent="mind-hero"
+    badges={['sigilo absoluto', 'primeira sessão sem compromisso', 'respondemos em minutos']}
+    image="/clinic/mind.webp"
+    imageAlt="Sala de terapia da ecooa.mind, ambiente acolhedor e seguro"
+    imageCaption="sala ecooa.mind"
+    vertical="cuidado que ecooa"
+  />
 
   <Marquee />
 
   <ProvaViva
     items={['acolhimento sem lista de espera', 'presencial ou online', 'sigilo absoluto']}
   />
+
+  <MaskedWordBand word="mente" image="/clinic/mind.webp" label="cuidado que ecooa" />
 
   <EspelhoSection
     label="você se reconhece?"
@@ -296,12 +283,12 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   <FaqVisivel faqs={mindFaqs} heading="Dúvidas sobre a<br><em>ecooa.mind.</em>" />
 
   <!-- Como funciona -->
-  <section class="u-bg-cream" aria-label="Como funciona">
+  <section class="u-bg-cream" aria-label="Como funciona" id="como-funciona">
     <div class="w">
       <div class="lbl r u-mb-16">sua jornada</div>
       <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:800px;margin:0 auto"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:800px;margin:0 auto"
       >
         <div class="r u-tac">
           <span class="step-num">1</span>
@@ -391,7 +378,7 @@ const WA_ACOLHIMENTO = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
                 style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
                 <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
-                  {post.data.category}
+                  {categoryLabels[post.data.category] || post.data.category}
                 </p>
                 <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}

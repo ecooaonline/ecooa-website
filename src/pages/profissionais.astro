@@ -46,7 +46,7 @@ const WORKING_ORDER = [
   'verena-cattani',
 ];
 const MIND_ORDER = ['manuela-vanti', 'augusto-kauer', 'francielle-beria'];
-const CARD_BG = 'linear-gradient(145deg,#DDD8D5,#C4BBB8)';
+const CARD_BG = 'linear-gradient(145deg,#E8E0D0,#D4C9B0)';
 
 function inOrder(slugs: string[]) {
   return slugs
@@ -105,7 +105,7 @@ const schemaMembers = professionals.map((p) => {
       viewBox="0 0 1440 500"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
-      ><g fill="none" stroke="#C4BBB8" stroke-width="1"
+      ><g fill="none" stroke="#cac7b8" stroke-width="1"
         ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
       ></svg
     >
@@ -145,9 +145,20 @@ const schemaMembers = professionals.map((p) => {
   <!-- Profissionais -->
   <section class="u-bg-warm" aria-label="Equipe de profissionais">
     <div class="w">
+      <!-- Sub-navegação por área -->
+      <nav
+        aria-label="Navegar por área"
+        class="r"
+        style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:64px"
+      >
+        <a href="#medicina" class="tag-pill" style="text-decoration:none">medicina</a>
+        <a href="#estetica" class="tag-pill" style="text-decoration:none">estética</a>
+        <a href="#nutricao" class="tag-pill" style="text-decoration:none">nutrição</a>
+        <a href="#saude-mental" class="tag-pill" style="text-decoration:none">saúde mental</a>
+      </nav>
+
       <!-- Medicina -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px">ecooa.med</div>
+      <div class="lbl r" style="margin-bottom:9px" id="medicina">ecooa.med</div>
       <h2
         style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:32px;letter-spacing:-.02em"
         class="r d1"
@@ -181,13 +192,12 @@ const schemaMembers = professionals.map((p) => {
 
       <!-- Estética -->
       <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r u-mb-18">ecooa.esthetic</div>
+      <div class="lbl r u-mb-18" id="estetica">ecooa.esthetic</div>
       <h2 class="sr-only">Estética</h2>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
         <span class="tag-pill">Tricologia</span>
         <span class="tag-pill">Biomedicina Estética</span>
         <span class="tag-pill">Harmonização Orofacial</span>
-        <span class="tag-pill">Fisioterapia Dermatofuncional</span>
         <span class="tag-pill">Osteopatia</span>
       </div>
       <div class="g4" style="margin-bottom:72px">
@@ -208,12 +218,14 @@ const schemaMembers = professionals.map((p) => {
         }
         <ProfessionalCard
           name="Eduarda Schoenmeier"
+          photo="/team/placeholder.webp"
           role="Biomédica Esteta · Harmonização Facial e Corporal"
           bg={CARD_BG}
           registration="CRBM 7243"
         />
         <ProfessionalCard
           name="Tais de la Rosa"
+          photo="/team/placeholder.webp"
           role="Farmacêutica · Skin Expert"
           bg={CARD_BG}
           registration="CRF-RS 588527"
@@ -238,7 +250,7 @@ const schemaMembers = professionals.map((p) => {
 
       <!-- Nutrição -->
       <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px">ecooa.working</div>
+      <div class="lbl r" style="margin-bottom:9px" id="nutricao">ecooa.working</div>
       <h2
         style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:36px;letter-spacing:-.02em"
         class="r d1"
@@ -265,7 +277,7 @@ const schemaMembers = professionals.map((p) => {
 
       <!-- Saúde Mental -->
       <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px">ecooa.mind</div>
+      <div class="lbl r" style="margin-bottom:9px" id="saude-mental">ecooa.mind</div>
       <h2
         style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em"
         class="r d1"

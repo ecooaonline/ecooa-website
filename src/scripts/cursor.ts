@@ -6,6 +6,8 @@ if (window.matchMedia('(pointer: fine)').matches) {
   dot.className = 'cursor-dot';
   const ring = document.createElement('div');
   ring.className = 'cursor-ring';
+  dot.style.opacity = '0';
+  ring.style.opacity = '0';
   document.body.appendChild(dot);
   document.body.appendChild(ring);
 
@@ -30,6 +32,12 @@ if (window.matchMedia('(pointer: fine)').matches) {
   document.addEventListener('mousemove', (e) => {
     mx = e.clientX;
     my = e.clientY;
+    if (dot.style.opacity === '0') {
+      rx = mx;
+      ry = my;
+      dot.style.opacity = '';
+      ring.style.opacity = '';
+    }
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
     if (!looping) {
       looping = true;
@@ -39,8 +47,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
   // Zone toggles via event delegation (single listener pair instead of N per zone)
   const HOVER_SELECTOR = 'a, button, .pl-lk, .pl, .pc, .ip, .ec';
-  const DARK_SELECTOR =
-    '.ap-cp, .ap-vis, .hr, .wv, .cf, .footer, [style*="background:var(--color-ink)"]';
+  const DARK_SELECTOR = '.ap-cp, .cf, .footer, [style*="background:var(--color-ink)"]';
 
   document.addEventListener('mouseover', (e) => {
     const target = e.target as Element | null;

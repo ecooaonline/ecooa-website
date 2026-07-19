@@ -4,7 +4,7 @@ description: "Nutrição para CrossFit: como otimizar desempenho, prevenir lesõ
 date: "2026-04-01"
 author: "Maria Luisa Beltran"
 category: "nutricao"
-tags: ["crossfit nutrição", "crossfit saúde", "crossfit suplementação", "crossfit lesoes prevenção", "WOD nutrição", "porto alegre"]
+tags: ["crossfit nutrição", "crossfit saúde", "crossfit suplementação", "crossfit lesões prevenção", "WOD nutrição", "porto alegre"]
 image: "/clinic/med.webp"
 lastModified: "2026-04-15"
 ---
