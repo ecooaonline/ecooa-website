@@ -3,24 +3,28 @@
    ══════════════════════════════════════════════ */
 
 :root {
-  /* Colors, Brand — Quiet Luxury (Pantone 2026 Cloud Dancer) */
-  --color-brand: #d4c9b0; /* warm stone */
-  --color-brand-light: #e8e0d0; /* champagne */
-  --color-brand-mid: #c4a882; /* aged ivory */
-  --color-brand-deep: #9e7b56; /* smoked caramel */
-  --color-brand-text: #7a5c3e; /* AA >= 5.2:1 sobre cloud, bone e mist */
-  --color-brand-accent: #9e7b56; /* AA >= 3.3:1 para texto grande */
+  /* Colors, Brand — Cloud Dancer Etéreo (Pantone 2026 · airy, elegant, minimal, pure)
+     Escada prata-pérola: a cor quase não existe; a luz faz o trabalho. */
+  --color-brand: #d6d3cc; /* pérola */
+  --color-brand-light: #e9e7e1; /* névoa */
+  --color-brand-mid: #c2beb6; /* prata clara */
+  --color-brand-deep: #8c8880; /* prata-grafite · AA 3:1 texto grande */
+  --color-brand-text: #67635c; /* AA >= 5.1:1 sobre todos os fundos claros */
+  --color-brand-accent: #8c8880;
 
-  /* Colors, Gold (estrelas, filetes, detalhes finos) */
-  --color-gold: #c4a882; /* AA 7.9:1 sobre noir */
+  /* Colors, Gold — microdose apenas (estrelas e um filete raro) */
+  --color-gold: #c4a882;
   --color-gold-deep: #9e7b56;
 
-  /* Colors, Neutral */
+  /* Prata metálica (gradiente dos displays) */
+  --metal-silver: linear-gradient(118deg, #8f8b84 0%, #605c56 38%, #a09c94 70%, #6b6760 100%);
+
+  /* Colors, Neutral — camadas de branco */
   --color-white: #ffffff;
-  --color-warm: #f0eee9; /* CLOUD DANCER 11-4201 — cor oficial da marca */
-  --color-cream: #edeae4; /* bone */
-  --color-stone: #dcd6c9; /* warm plaster (bordas) */
-  --color-mist: #e8e3da;
+  --color-warm: #f0eee9; /* CLOUD DANCER 11-4201 — base oficial */
+  --color-cream: #f7f5f1; /* camada mais clara (alabastro) */
+  --color-stone: #e3e0d9; /* bordas, mais fria e discreta */
+  --color-mist: #faf9f6; /* quase branco */
 
   /* Colors, Ink (preto aquecido, mesmas funções) */
   --color-ink: #1a1613;

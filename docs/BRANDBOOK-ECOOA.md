@@ -1,7 +1,7 @@
 # BRANDBOOK ecooa · 2026
 
 > Documento oficial da marca. Governa site, Instagram, impressos, sinalização, apresentações e qualquer superfície onde a ecooa aparece. Substitui todas as referências visuais anteriores.
-> Direção: "Quiet Luxury sobre Cloud Dancer". Aprovada pelo sócio-fundador em 2026-07-19.
+> Direção: "Cloud Dancer Etéreo" (revisão 2 do Quiet Luxury, calibrada pelas referências do moodboard oficial: airy, elegant, minimal, pure). Aprovada pelo sócio-fundador em 2026-07-19.
 
 ---
 
@@ -37,27 +37,31 @@ Regra de voz B2C: nos textos para paciente, a dor e a área vêm antes da submar
 5. As ondas como grafismo da marca (na forma refinada da seção 7).
 6. Labels de navegação em lowercase.
 
-## 4. COR · Sistema "Quiet Luxury" (Pantone 2026)
+## 4. COR · Sistema "Cloud Dancer Etéreo" (Pantone 2026)
 
-A cor oficial de fundo da marca é **Cloud Dancer, Pantone 11-4201, `#F0EEE9`** — o branco quente que a Pantone elegeu cor do ano 2026. Branco e preto mantêm as funções históricas da marca; o bege-greige foi substituído pela escada champagne-caramelo (paleta "Quiet Luxury" derivada do Cloud Dancer).
+A cor oficial de fundo da marca é **Cloud Dancer, Pantone 11-4201, `#F0EEE9`** — o branco quente que a Pantone elegeu cor do ano 2026. Branco e preto mantêm as funções históricas da marca; o bege-greige foi substituído pela escada prata-pérola etérea: a cor quase não existe, a luz faz o trabalho (airy, elegant, minimal, pure).
 
 ### Fundos (claros)
 | Papel | Hex | Uso |
 |---|---|---|
 | **Cloud Dancer** | `#F0EEE9` | Fundo oficial dominante (site, papelaria, feed) |
-| Bone | `#EDEAE4` | Fundo alternado de seções |
-| Mist | `#E8E3DA` | Superfícies suaves |
-| Plaster | `#DCD6C9` | Bordas e divisores |
+| Alabastro | `#F7F5F1` | Fundo alternado de seções |
+| Mist | `#FAF9F6` | Superfícies quase brancas (marquee) |
+| Stone | `#E3E0D9` | Bordas e divisores |
 | Branco puro | `#FFFFFF` | Cards elevados e formulários |
 
-### Escada champagne (a família da marca)
+### Escada prata-pérola (a família da marca)
 | Papel | Hex | Uso |
 |---|---|---|
-| Champagne | `#E8E0D0` | Superfícies de destaque suave |
-| Warm Stone | `#D4C9B0` | Cor de marca decorativa (painéis, chips) |
-| **Aged Ivory (ouro)** | `#C4A882` | Estrelas, filetes, detalhes finos · 7.9:1 sobre noir |
-| Smoked Caramel | `#9E7B56` | Profundidade, acentos grandes · 3.3:1 sobre Cloud |
-| Caramel Text | `#7A5C3E` | Texto-acento · AA 5.2:1 sobre todos os fundos claros |
+| Névoa | `#E9E7E1` | Superfícies de destaque suave |
+| Pérola | `#D6D3CC` | Cor de marca decorativa (painéis, chips) |
+| Prata clara | `#C2BEB6` | Filetes de label, separadores |
+| Prata-grafite | `#8C8880` | Acentos grandes · 3:1 |
+| Prata-texto | `#67635C` | Texto-acento · AA 5.1:1 sobre todos os fundos claros |
+
+**Prata metálica (assinatura dos displays):** os itálicos dos títulos usam gradiente metálico `linear-gradient(118deg, #B9B5AD, #7E7A73 42%, #D8D5CF 78%, #96928A)` via background-clip, o efeito do moodboard Cloud Dancer.
+
+**Ouro em microdose:** `#C4A882` existe apenas nas estrelas do 5.0 e em um filete raro e cerimonial. Nunca como cor dominante: no mundo etéreo, o dourado é a tampa do frasco, não o frasco.
 
 ### Tinta (preto aquecido, mesmas funções do preto)
 | Papel | Hex |
@@ -85,9 +89,10 @@ Aplicação no site via `MaskedWordBand` (CSS puro). Em peças estáticas (posts
 
 ## 7. GRAFISMOS
 
-- **Ondas:** refinadas em 2026: amplitude baixa, curvas contínuas, traço 0.75px, cor `#CDBDA0` sobre claros e branco a 5-15% sobre escuros. Leem como linhas de horizonte, nunca como gráfico pesado.
-- **Topografia:** as texturas de relevo (botões e fundo ambiente) permanecem, recalibradas para o fio champagne.
-- **Filete de ouro:** linha de 1px em Aged Ivory como divisor cerimonial (56px de largura, centrada) sob títulos e palavras mascaradas.
+- **Ondas:** refinadas em 2026: amplitude baixa, curvas contínuas, traço 0.75px, cor prata `#C2BEB6` sobre claros e branco a 5-15% sobre escuros. Leem como linhas de horizonte, nunca como gráfico pesado.
+- **Topografia:** as texturas de relevo (botões e fundo ambiente) permanecem, recalibradas para o fio prata.
+- **Filete cerimonial:** linha de 1px, prata clara nos labels; ouro apenas sob as palavras mascaradas (a microdose).
+- **Ondulação d'água:** anéis concêntricos quase invisíveis atrás das molduras de hero, o motivo Cloud Dancer.
 
 ## 8. FOTOGRAFIA
 

@@ -17,7 +17,7 @@
   content: '';
   width: 30px;
   height: 1px;
-  background: var(--color-gold);
+  background: var(--color-brand-mid);
   margin-right: 12px;
   flex-shrink: 0;
 }
@@ -73,7 +73,10 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  color: var(--color-brand-accent);
+  background: var(--metal-silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .h1-w,
 .h2-w {
@@ -594,8 +597,10 @@
 
 /* ── MARQUEE ── */
 .mq {
-  background: var(--color-ink);
-  padding: 12px 0;
+  background: var(--color-mist);
+  border-top: 1px solid var(--color-stone);
+  border-bottom: 1px solid var(--color-stone);
+  padding: 14px 0;
   overflow: hidden;
 }
 .mq-track {
@@ -612,7 +617,7 @@
   font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-brand-mid);
+  color: var(--color-brand-text);
   padding: 0 36px;
   display: flex;
   align-items: center;
@@ -2209,7 +2214,10 @@
 .lux-title em {
   font-style: italic;
   font-weight: 400;
-  color: var(--color-brand-deep);
+  background: var(--metal-silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .lux-support {
   font-family: var(--font-serif);
@@ -2342,4 +2350,27 @@
   .lux-vertical {
     display: none;
   }
+}
+
+/* Ondulação d'água (Cloud Dancer): anéis concêntricos quase invisíveis */
+.lux-hero::after {
+  content: '';
+  position: absolute;
+  right: -12%;
+  bottom: -18%;
+  width: 58vw;
+  height: 58vw;
+  max-width: 860px;
+  max-height: 860px;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0 46px,
+    rgba(140, 136, 128, 0.1) 46px 47px
+  );
+  pointer-events: none;
+}
+.lux-hero-grid {
+  position: relative;
+  z-index: 1;
 }
