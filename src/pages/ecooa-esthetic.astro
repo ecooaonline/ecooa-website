@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
 import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
@@ -63,55 +64,20 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
   ogImage="/clinic/esthetic.webp"
   breadcrumbs={[{ name: 'ecooa.esthetic', url: '/ecooa-esthetic' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-brand)">
-    <svg
-      class="wsv"
-      style="opacity:.15"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
-        ><WavePattern count={9} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl lbl-br r">ecooa.esthetic · estética</div>
-      <h1
-        style="font-size:clamp(38px,4.4vw,68px);font-weight:200;color:white;line-height:1.06;letter-spacing:-.025em;margin-top:18px;margin-bottom:16px"
-        class="r d1"
-      >
-        Voltar a se reconhecer<br />no espelho. Sem virar<br /><em
-          style="font-family:var(--font-serif);font-style:italic;color:rgba(255,255,255,.82)"
-          >outra pessoa.</em
-        >
-      </h1>
-      <p
-        style="font-family:var(--font-serif);font-style:italic;font-size:15px;font-weight:300;color:rgba(255,255,255,.7);margin-bottom:12px"
-        class="r d2"
-      >
-        Ninguém vai perceber o que você fez. Todos vão notar como você está.
-      </p>
-      <p
-        style="font-size:14px;font-weight:300;line-height:1.9;color:rgba(255,255,255,.82);max-width:520px"
-        class="r d2"
-      >
-        Cabelo, rosto, pele e corpo com tricologia clínica e referência em transplante capilar FUE
-        Safira em Porto Alegre. Resultado natural, decidido junto com você.
-      </p>
-      <a
-        href={WA}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="esthetic-hero">contar o que me incomoda</a
-      >
-      <RiskReversalBadge
-        items={['respondemos em minutos', 'retorno incluído em todos os procedimentos']}
-        light={true}
-      />
-    </div>
-  </div>
+  <HeroEditorial
+    label="ecooa.esthetic · estética"
+    title="Voltar a se reconhecer<br />no espelho. Sem virar<br /><em>outra pessoa.</em>"
+    support="Ninguém vai perceber o que você fez. Todos vão notar como você está."
+    sub="Cabelo, rosto, pele e corpo com tricologia clínica e referência em transplante capilar FUE Safira em Porto Alegre. Resultado natural, decidido junto com você."
+    ctaHref={WA}
+    ctaLabel="contar o que me incomoda"
+    ctaIntent="esthetic-hero"
+    badges={['respondemos em minutos', 'retorno incluído em todos os procedimentos']}
+    image="/clinic/esthetic.webp"
+    imageAlt="Sala de procedimentos estéticos da ecooa.esthetic"
+    imageCaption="estética que ecooa"
+    vertical="pele · rosto · cabelo · corpo"
+  />
 
   <Marquee />
 

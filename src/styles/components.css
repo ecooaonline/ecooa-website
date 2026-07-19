@@ -15,6 +15,18 @@
 }
 .lbl::before {
   content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--color-gold);
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+.lbl-rule::before {
+  /* já coberto pelo .lbl global */
+}
+
+.lbl::before {
+  content: '';
   width: 18px;
   height: 1px;
   background: var(--color-stone);
@@ -41,18 +53,26 @@
   line-height: 1.06;
 }
 .h1 {
-  font-size: clamp(42px, 6vw, 92px);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(40px, 5.6vw, 84px);
+  letter-spacing: -0.02em;
+  line-height: 1.04;
   color: var(--color-ink);
 }
 .h2 {
-  font-size: clamp(32px, 3.8vw, 60px);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(30px, 3.6vw, 56px);
+  letter-spacing: -0.015em;
+  line-height: 1.08;
   color: var(--color-ink);
 }
 .h1 em,
 .h2 em {
   font-family: var(--font-serif);
   font-style: italic;
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-brand-accent);
 }
 .h1-w,
@@ -2144,4 +2164,182 @@
 .nav-sub a:focus-visible {
   color: var(--color-brand-text);
   background: var(--color-warm);
+}
+
+/* ══════════════════════════════════════════════
+   QUIET LUXURY — linguagem editorial 2026
+   ══════════════════════════════════════════════ */
+
+/* Label com filete de ouro */
+.lbl-rule::before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--color-gold);
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+/* Hero editorial */
+.lux-hero {
+  position: relative;
+  background: var(--color-warm);
+  padding: clamp(120px, 15vh, 170px) var(--section-px) clamp(56px, 8vh, 96px);
+  overflow: hidden;
+}
+.lux-hero-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+.lux-title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(42px, 5.6vw, 88px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--color-ink);
+  margin: 22px 0 0;
+  text-wrap: balance;
+}
+.lux-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-brand-deep);
+}
+.lux-support {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 400;
+  color: var(--color-brand-text);
+  margin: 18px 0 0;
+}
+.lux-sub {
+  font-size: 14.5px;
+  font-weight: 300;
+  line-height: 1.9;
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+  margin: 18px 0 0;
+}
+.lux-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.lux-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 26px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+.lux-stars span {
+  color: var(--color-gold);
+  font-size: 12px;
+  letter-spacing: 2.5px;
+}
+
+/* Moldura de galeria (o pôster pendurado) */
+.lux-frame {
+  background: var(--color-white);
+  padding: clamp(10px, 1.2vw, 16px);
+  border: 1px solid var(--color-stone);
+  box-shadow: var(--shadow-lg);
+}
+.lux-frame :global(img),
+.lux-frame-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+.lux-hero-art {
+  position: relative;
+  margin: 0;
+  max-width: 480px;
+  justify-self: end;
+}
+.lux-caption {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: lowercase;
+  color: var(--color-brand-text);
+}
+.lux-vertical {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: lowercase;
+  color: var(--color-brand-mid);
+}
+
+/* Colagem editorial */
+.lux-collage {
+  position: relative;
+  min-height: clamp(420px, 52vw, 640px);
+}
+.lux-collage .lux-frame {
+  position: absolute;
+}
+.lux-collage .c-a {
+  width: 56%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+.lux-collage .c-b {
+  width: 44%;
+  right: 4%;
+  top: 14%;
+  z-index: 1;
+}
+.lux-collage .c-b :global(img) {
+  aspect-ratio: 1 / 1;
+}
+.lux-collage .c-c {
+  width: 38%;
+  right: 14%;
+  bottom: 0;
+  z-index: 3;
+}
+.lux-collage .c-c :global(img) {
+  aspect-ratio: 4 / 5;
+}
+
+@media (max-width: 900px) {
+  .lux-hero {
+    padding-top: 108px;
+  }
+  .lux-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .lux-hero-art {
+    max-width: 420px;
+    justify-self: center;
+    width: 100%;
+  }
+  .lux-vertical {
+    display: none;
+  }
 }

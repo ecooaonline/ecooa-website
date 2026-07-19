@@ -40,11 +40,11 @@
   --space-lg: 36px;
   --space-xl: 60px;
   --space-2xl: 86px;
-  --space-3xl: 108px;
+  --space-3xl: 128px;
 
   /* Section Padding (overridden via media queries) */
   --section-px: 60px;
-  --section-py: 108px;
+  --section-py: 128px;
   --section-py-sm: 76px;
 
   /* Easing */

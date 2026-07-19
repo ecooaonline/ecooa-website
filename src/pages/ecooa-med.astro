@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
 import MaskedWordBand from '../components/MaskedWordBand.astro';
 import FaqVisivel from '../components/FaqVisivel.astro';
 import EspelhoSection from '../components/EspelhoSection.astro';
@@ -118,39 +119,19 @@ const medPosts = allMedPosts
   ogImage="/clinic/med.webp"
   breadcrumbs={[{ name: 'ecooa.med', url: '/ecooa-med' }]}
 >
-  <!-- Hero -->
-  <div class="ph" style="background:var(--color-ink)">
-    <svg
-      class="wsv u-op-05"
-      viewBox="0 0 1440 500"
-      preserveAspectRatio="xMidYMid slice"
-      aria-hidden="true"
-      ><g fill="none" stroke="white" stroke-width="1"
-        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
-      ></svg
-    >
-    <div class="ph-c">
-      <div class="lbl lbl-lt r">ecooa.med · medicina</div>
-      <h1 class="h1 h1-w r d1 u-mt-18">
-        Você sente que algo<br />não está bem. Mesmo com<br /><em>exames "normais".</em>
-      </h1>
-      <p class="body body-lt r d2" style="margin-top:16px;max-width:520px">
-        Consultas de 50 minutos, investigação metabólica e hormonal profunda e um plano com começo,
-        meio e acompanhamento. É o Método Gehrke 360°.
-      </p>
-      <a
-        href={WA}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="bw r d3 u-cta"
-        data-intent="med-hero">quero avaliar meu caso</a
-      >
-      <RiskReversalBadge
-        items={['respondemos em minutos', 'consultas de 50+ minutos']}
-        light={true}
-      />
-    </div>
-  </div>
+  <HeroEditorial
+    label="ecooa.med · medicina"
+    title='Você sente que algo<br />não está bem. Mesmo com<br /><em>exames "normais".</em>'
+    sub="Consultas de 50 minutos, investigação metabólica e hormonal profunda e um plano com começo, meio e acompanhamento. É o Método Gehrke 360°."
+    ctaHref={WA}
+    ctaLabel="quero avaliar meu caso"
+    ctaIntent="med-hero"
+    badges={['respondemos em minutos', 'consultas de 50+ minutos']}
+    image="/clinic/med.webp"
+    imageAlt="Consultório médico da ecooa.med em Moinhos de Vento"
+    imageCaption="consultório ecooa.med"
+    vertical="medicina que ecooa"
+  />
 
   <Marquee />
 
