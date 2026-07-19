@@ -21,7 +21,7 @@
   z-index: 250;
   width: 100vw;
   height: 100vh;
-  background: rgba(240, 238, 233, 0.99);
+  background: var(--color-warm);
   backdrop-filter: blur(20px);
   flex-direction: column;
   align-items: center;
@@ -58,6 +58,9 @@
   color: var(--color-ink);
 }
 @media (max-width: 1023px) {
+  .ghost {
+    padding-block: 10px;
+  }
   .nav-only-mobile {
     display: block;
   }

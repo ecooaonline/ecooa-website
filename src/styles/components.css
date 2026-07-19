@@ -519,6 +519,8 @@
   transition: opacity 0.25s;
   display: flex;
   align-items: center;
+  padding: 12px;
+  margin: -12px;
 }
 .nav-ig:hover {
   opacity: 1;
@@ -531,12 +533,16 @@
 .nav-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
-  width: 24px;
+  width: 48px;
+  height: 48px;
+  box-sizing: border-box;
   cursor: pointer;
   background: none;
   border: none;
-  padding: 4px 0;
+  padding: 12px;
+  margin: -12px -12px -12px 0;
 }
 .nav-toggle span {
   display: block;

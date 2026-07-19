@@ -43,3 +43,9 @@ Direção: editorial de luxo silencioso sobre Cloud Dancer. Papel nobre, luz nat
 ## O que eliminar
 
 `Marquee` (faixa rolante) em todas as páginas. Grades densas de 8+ cartões iguais (consolidar em listas editoriais). Repetição de CTAs idênticos. Chips/pills coloridos. Qualquer resíduo de layout SaaS.
+
+## Decisões registradas (banca 2026-07-19)
+
+- Hero escuro em /para-nutricionistas: decisão deliberada da família B2B-nutri (pontuação escura na abertura); /para-profissionais segue o padrão claro. Reavaliar quando houver ensaio fotográfico próprio.
+- Token `--color-gold` mantém o nome por compatibilidade, mas o valor é grafite-oliva (#86836F). Nunca reverter para dourado.
+- Acervo fotográfico limitado (3-4 fotos repetidas entre páginas) é o próximo teto de qualidade: aguarda ensaio do cliente.

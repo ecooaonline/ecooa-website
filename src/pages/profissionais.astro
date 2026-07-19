@@ -157,7 +157,7 @@ const schemaMembers = professionals.map((p) => {
         <span class="tag-pill">Tricologia Médica</span>
         <span class="tag-pill">Transplante Capilar</span>
       </div>
-      <div class="g4">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:18px">
         {
           inOrder(MED_ORDER).map((p) => (
             <ProfessionalCard
