@@ -5,32 +5,32 @@
 :root {
   /* Colors, Brand — Cloud Dancer Etéreo (Pantone 2026 · airy, elegant, minimal, pure)
      Escada prata-pérola: a cor quase não existe; a luz faz o trabalho. */
-  --color-brand: #d6d3cc; /* pérola */
-  --color-brand-light: #e9e7e1; /* névoa */
-  --color-brand-mid: #c2beb6; /* prata clara */
-  --color-brand-deep: #8c8880; /* prata-grafite · AA 3:1 texto grande */
-  --color-brand-text: #67635c; /* AA >= 5.1:1 sobre todos os fundos claros */
-  --color-brand-accent: #8c8880;
+  --color-brand: #d9d6c9; /* marfim-pérola */
+  --color-brand-light: #eae8dd; /* névoa de papel */
+  --color-brand-mid: #b9b6a6; /* prata-oliva clara */
+  --color-brand-deep: #8b887a; /* grafite-oliva · AA 3:1 texto grande */
+  --color-brand-text: #6b695c; /* grafite-oliva do cartão · AA >= 4.7:1 */
+  --color-brand-accent: #8b887a;
 
-  /* Colors, Gold — microdose apenas (estrelas e um filete raro) */
-  --color-gold: #c4a882;
-  --color-gold-deep: #9e7b56;
+  /* Acento único — grafite-oliva (estrelas e filetes; monocromia Cloud Dancer) */
+  --color-gold: #86836f;
+  --color-gold-deep: #6b695c;
 
   /* Prata metálica (gradiente dos displays) */
-  --metal-silver: linear-gradient(118deg, #8f8b84 0%, #605c56 38%, #a09c94 70%, #6b6760 100%);
+  --metal-silver: linear-gradient(118deg, #83816f 0%, #5d5b4e 38%, #99968a 70%, #6b6a5c 100%);
 
   /* Colors, Neutral — camadas de branco */
   --color-white: #ffffff;
   --color-warm: #f0eee9; /* CLOUD DANCER 11-4201 — base oficial */
-  --color-cream: #f7f5f1; /* camada mais clara (alabastro) */
-  --color-stone: #e3e0d9; /* bordas, mais fria e discreta */
-  --color-mist: #faf9f6; /* quase branco */
+  --color-cream: #f7f5ef; /* papel claro */
+  --color-stone: #e4e1d6; /* hairlines marfim */
+  --color-mist: #fbfaf6; /* quase branco */
 
   /* Colors, Ink (preto aquecido, mesmas funções) */
   --color-ink: #1a1613;
   --color-ink-mid: #35302b;
-  --color-ink-soft: #635b53; /* AA 5.7:1 sobre cloud */
-  --color-ink-ghost: #655d55; /* AA >= 5.3:1 sobre todos os fundos claros */
+  --color-ink-soft: #605e51; /* AA 5.6:1 sobre cloud */
+  --color-ink-ghost: #636150; /* AA >= 5.2:1 sobre fundos claros */
   --color-black: #12100d;
 
   /* Typography */
