@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import LocationCard from '../components/LocationCard.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import {
+  ADDRESS_STREET,
+  ADDRESS_FLOOR,
+  ADDRESS_NEIGHBORHOOD,
+  ADDRESS_CITY,
+  ADDRESS_ZIP,
+  GOOGLE_MAPS,
+} from '../data/constants';
+
+const localFaqs = [
+  {
+    q: 'Onde fica a ecooa em Moinhos de Vento?',
+    a: `A ecooa fica na ${ADDRESS_STREET}, ${ADDRESS_FLOOR}, no bairro Moinhos de Vento, em Porto Alegre, CEP ${ADDRESS_ZIP}. O atendimento é de segunda a sexta, das 9h às 20h.`,
+  },
+  {
+    q: 'Quais especialidades atendem na unidade de Moinhos de Vento?',
+    a: 'Medicina (metabolismo, hormônios, emagrecimento e longevidade), estética avançada com transplante capilar FUE Safira, nutrição clínica, esportiva e comportamental, e psicologia. Mais de 30 profissionais no mesmo endereço, dividindo os casos entre si.',
+  },
+  {
+    q: 'Como agendar na ecooa Moinhos de Vento?',
+    a: 'Pelo WhatsApp (51) 99146-0909, que é o canal mais rápido, ou pela página de agendamento do site. Respondemos em minutos no horário comercial.',
+  },
+  {
+    q: 'A ecooa atende regiões próximas a Moinhos de Vento?',
+    a: 'Sim. Recebemos pacientes de toda Porto Alegre e região metropolitana. O bairro Moinhos de Vento é de fácil acesso a partir do Centro, Bom Fim, Rio Branco, Auxiliadora e Mont Serrat.',
+  },
+];
+---
+
+<BaseLayout
+  title="Clínica em Moinhos de Vento, Porto Alegre"
+  description="A ecooa é uma clínica de saúde, estética e nutrição em Moinhos de Vento, Porto Alegre. Rua Mariante, 180. Medicina, transplante capilar, nutrição e psicologia num só endereço."
+  currentPage=""
+  ogImage="/clinic/faxada-predio.webp"
+  breadcrumbs={[{ name: 'Clínica em Moinhos de Vento', url: '/clinica-moinhos-de-vento' }]}
+>
+  <!-- Hero -->
+  <div class="ph u-bg-cream">
+    <svg
+      class="wsv u-op-26"
+      viewBox="0 0 1440 500"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="#C4BBB8" stroke-width="1"
+        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl r">porto alegre · moinhos de vento</div>
+      <h1 class="h1 r d1 u-mt-18">
+        Sua clínica de saúde<br />e estética em<br /><em>Moinhos de Vento.</em>
+      </h1>
+      <p class="body r d2" style="margin-top:16px;max-width:500px">
+        Medicina, nutrição, estética com transplante capilar e psicologia no mesmo endereço, na {
+          ADDRESS_STREET
+        }. Um time inteiro cuidando do seu caso, no coração de {ADDRESS_CITY}.
+      </p>
+    </div>
+  </div>
+
+  <Marquee />
+
+  <ProvaViva />
+
+  <!-- Localização -->
+  <section class="u-bg-warm" aria-label="Como chegar">
+    <div class="w">
+      <div class="g2 g2c">
+        <div>
+          <div class="lbl r">como chegar</div>
+          <h2 class="h2 r d1 u-mt-15">No coração do<br /><em>Moinhos.</em></h2>
+          <p class="body r d2 u-mt-18">
+            Estamos na {ADDRESS_STREET}, {ADDRESS_FLOOR}, no bairro {ADDRESS_NEIGHBORHOOD}. A poucos
+            minutos do Parcão e da Rua Padre Chagas, com fácil acesso a partir do Centro Histórico,
+            Bom Fim, Rio Branco, Auxiliadora e Mont Serrat.
+          </p>
+          <p class="body r d3 u-mt-13">
+            <a
+              href={GOOGLE_MAPS}
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline"
+              >Abrir a rota no Google Maps →</a
+            >
+          </p>
+        </div>
+        <div class="r d2"><LocationCard /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O que atende aqui -->
+  <section class="u-bg-cream" aria-label="O que você encontra na unidade">
+    <div class="w">
+      <div class="lbl r u-mb-16">num só endereço</div>
+      <h2 class="h2 r d1 u-mb-44">O que você encontra<br />na <em>ecooa.</em></h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px">
+        <a href="/ecooa-med" class="persona-card r">
+          <span class="persona-label">medicina: metabolismo, hormônios e emagrecimento</span>
+          <span class="persona-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/ecooa-esthetic" class="persona-card r d1">
+          <span class="persona-label">estética e transplante capilar FUE Safira</span>
+          <span class="persona-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/ecooa-working" class="persona-card r d2">
+          <span class="persona-label">nutrição clínica, esportiva e comportamental</span>
+          <span class="persona-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="/ecooa-mind" class="persona-card r d3">
+          <span class="persona-label">psicologia, presencial ou online</span>
+          <span class="persona-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Espaço -->
+  <section style="background:var(--color-warm);padding:0;overflow:hidden" aria-label="Nosso espaço">
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:4px">
+      <div class="u-img-43 r">
+        <OptimizedImage
+          src="/clinic/faxada-predio.webp"
+          alt="Fachada do prédio da ecooa na Rua Mariante, Moinhos de Vento"
+          width={1000}
+          height={1709}
+          class="u-cover"
+        />
+      </div>
+      <div class="u-img-43 r d1">
+        <OptimizedImage
+          src="/clinic/recepcao.webp"
+          alt="Recepção da ecooa em Moinhos de Vento"
+          width={1000}
+          height={1233}
+          class="u-cover"
+        />
+      </div>
+      <div class="u-img-43 r d2">
+        <OptimizedImage
+          src="/clinic/respire.webp"
+          alt="Sala Respire da clínica ecooa"
+          width={1200}
+          height={799}
+          class="u-cover"
+        />
+      </div>
+    </div>
+  </section>
+
+  <FaqVisivel faqs={localFaqs} heading="Dúvidas sobre a<br><em>unidade.</em>" />
+
+  <PrimeiroPassoCTA
+    heading="A poucos minutos<br>de <em>você.</em>"
+    subtext="Venha conhecer a ecooa em Moinhos de Vento. A primeira conversa começa no WhatsApp."
+    waText="Olá, gostaria de agendar uma avaliação na ecooa de Moinhos de Vento"
+    label="começar pela primeira conversa"
+    intent="local-primeiro-passo"
+  />
+</BaseLayout>
