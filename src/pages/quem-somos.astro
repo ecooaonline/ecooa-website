@@ -106,51 +106,53 @@ const jessica = getProfessionalBySlug('jessica-stein');
 
   <!-- Carta dos Fundadores -->
   <section class="u-bg-warm" aria-label="Carta dos fundadores">
-    <div class="w">
-      <div class="lbl r u-mb-16">dos fundadores</div>
-      <h2 class="h2 r d1 u-mb-40">uma carta<br />para <em>você.</em></h2>
-      <div
-        class="r d2"
-        style="background:var(--color-cream);padding:clamp(32px,5vw,56px) clamp(28px,5vw,52px);max-width:720px;position:relative;overflow:hidden"
-      >
-        <svg
-          style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:.08"
-          viewBox="0 0 200 200"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
-          ><g fill="none" stroke="#C9C5BC" stroke-width="1"
-            ><WavePattern count={5} x0={-20} y0={20} step={40} width={240} /></g
-          ></svg
+    <div class="w" style="padding-bottom:56px">
+      <div style="max-width:720px;margin:0 auto">
+        <div class="lbl r u-mb-16">dos fundadores</div>
+        <h2 class="h2 r d1 u-mb-40">uma carta<br />para <em>você.</em></h2>
+        <div
+          class="r d2"
+          style="background:var(--color-cream);padding:clamp(32px,5vw,56px) clamp(28px,5vw,52px);position:relative;overflow:hidden"
         >
-        <p
-          style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px"
-        >
-          Quando começamos a ecooa, prometemos uma coisa: ouvir antes de prescrever.
-        </p>
-        <p
-          style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px"
-        >
-          Cada pessoa que entra aqui traz uma história, e é essa história que guia o cuidado. Não
-          acreditamos em protocolos genéricos. Acreditamos em pessoas.
-        </p>
-        <p
-          style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:28px"
-        >
-          Nosso compromisso é simples: que você saia daqui sentindo que foi visto, ouvido e cuidado
-          de verdade.
-        </p>
-        <p
-          style="font-size:12px;font-weight:400;letter-spacing:.04em;color:var(--color-brand-text);position:relative;z-index:1"
-        >
-          Gustavo e Jessica, sócios da ecooa
-        </p>
+          <svg
+            style="position:absolute;top:0;right:0;width:200px;height:200px;opacity:.08"
+            viewBox="0 0 200 200"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+            ><g fill="none" stroke="#C9C5BC" stroke-width="1"
+              ><WavePattern count={5} x0={-20} y0={20} step={40} width={240} /></g
+            ></svg
+          >
+          <p
+            style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px"
+          >
+            Quando começamos a ecooa, prometemos uma coisa: ouvir antes de prescrever.
+          </p>
+          <p
+            style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:18px"
+          >
+            Cada pessoa que entra aqui traz uma história, e é essa história que guia o cuidado. Não
+            acreditamos em protocolos genéricos. Acreditamos em pessoas.
+          </p>
+          <p
+            style="font-family:var(--font-serif);font-style:italic;font-size:clamp(16px,1.8vw,20px);font-weight:300;color:var(--color-ink);line-height:1.75;position:relative;z-index:1;margin-bottom:28px"
+          >
+            Nosso compromisso é simples: que você saia daqui sentindo que foi visto, ouvido e
+            cuidado de verdade.
+          </p>
+          <p
+            style="font-size:12px;font-weight:400;letter-spacing:.04em;color:var(--color-brand-text);position:relative;z-index:1"
+          >
+            Gustavo e Jessica, sócios da ecooa
+          </p>
+        </div>
+        <CtaBand
+          label="começar pela primeira conversa"
+          waText="Olá, li a carta dos fundadores e gostaria de começar meu cuidado na ecooa"
+          intent="quem-somos-carta"
+          badges={['respondemos em minutos']}
+        />
       </div>
-      <CtaBand
-        label="começar pela primeira conversa"
-        waText="Olá, li a carta dos fundadores e gostaria de começar meu cuidado na ecooa"
-        intent="quem-somos-carta"
-        badges={['respondemos em minutos']}
-      />
     </div>
   </section>
 
@@ -200,7 +202,7 @@ const jessica = getProfessionalBySlug('jessica-stein');
       verdade.
     </p>
     <div
-      style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:640px"
+      style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:860px;margin:0 auto"
     >
       {
         gustavo && (

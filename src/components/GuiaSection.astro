@@ -72,7 +72,7 @@ const shown = all.slice(0, max);
           </div>
         </div>
       ) : (
-        <div class="g4" style="margin-top:24px">
+        <div class={shown.length === 3 ? 'g3' : 'g4'} style="margin-top:24px">
           {shown.map((p, i) => (
             <GuiaCard
               name={p.name}
