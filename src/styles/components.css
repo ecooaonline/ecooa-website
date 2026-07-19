@@ -2099,3 +2099,49 @@
   background-clip: text;
   color: transparent;
 }
+
+/* ── NAV SUBMENUS (rebrand 2026) ── */
+.has-sub {
+  position: relative;
+}
+.nav-sub {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 224px;
+  padding: 12px 0;
+  background: var(--color-white);
+  border: 1px solid var(--color-stone);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--transition-fast) ease,
+    transform var(--transition-fast) ease,
+    visibility var(--transition-fast);
+}
+.has-sub:hover .nav-sub,
+.has-sub:focus-within .nav-sub {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.nav-sub li {
+  list-style: none;
+}
+.nav-sub a {
+  display: block;
+  padding: 9px 20px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  color: var(--color-ink-soft);
+  white-space: nowrap;
+}
+.nav-sub a:hover,
+.nav-sub a:focus-visible {
+  color: var(--color-brand-text);
+  background: var(--color-warm);
+}

@@ -7,12 +7,47 @@ interface Props {
 
 const { currentPage = '' } = Astro.props;
 
-const links = [
+interface NavLink {
+  href: string;
+  label: string;
+  children?: { href: string; label: string }[];
+}
+
+const links: NavLink[] = [
   { href: '/quem-somos', label: 'quem somos' },
-  { href: '/ecooa-med', label: 'medicina' },
-  { href: '/ecooa-esthetic', label: 'estética' },
-  { href: '/ecooa-mind', label: 'saúde mental' },
-  { href: '/ecooa-working', label: 'nutrição' },
+  {
+    href: '/ecooa-med',
+    label: 'medicina',
+    children: [
+      { href: '/ecooa-med#metodo-gehrke', label: 'método gehrke 360°' },
+      { href: '/ecooa-med#protocolos', label: 'protocolos' },
+      { href: '/ecooa-med#descobrir-meu-nivel', label: 'descobrir meu nível' },
+    ],
+  },
+  {
+    href: '/ecooa-esthetic',
+    label: 'estética',
+    children: [
+      { href: '/ecooa-esthetic#transplante-capilar', label: 'transplante capilar' },
+      { href: '/ecooa-esthetic#procedimentos', label: 'procedimentos' },
+    ],
+  },
+  {
+    href: '/ecooa-mind',
+    label: 'saúde mental',
+    children: [
+      { href: '/ecooa-mind#como-funciona', label: 'como funciona' },
+      { href: '/match', label: 'encontrar minha psicóloga' },
+    ],
+  },
+  {
+    href: '/ecooa-working',
+    label: 'nutrição',
+    children: [
+      { href: '/ecooa-working#programas', label: 'programas' },
+      { href: '/ecooa-working#bioimpedancia', label: 'bioimpedância' },
+    ],
+  },
   { href: '/profissionais', label: 'profissionais' },
   { href: '/match', label: 'match' },
   { href: '/blog', label: 'blog' },
@@ -64,13 +99,22 @@ const links = [
     <ul class="nav-links" id="nav-menu" role="list">
       {
         links.map((link) => (
-          <li>
+          <li class={link.children ? 'has-sub' : undefined}>
             <a
               href={link.href}
               aria-current={currentPage === link.href.slice(1) ? 'page' : undefined}
             >
               {link.label}
             </a>
+            {link.children && (
+              <ul class="nav-sub" role="list">
+                {link.children.map((child) => (
+                  <li>
+                    <a href={child.href}>{child.label}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))
       }
