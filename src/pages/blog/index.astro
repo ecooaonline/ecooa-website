@@ -10,6 +10,15 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 
+const categoryLabels: { [key: string]: string } = {
+  medicina: 'Medicina',
+  estetica: 'Estética',
+  nutricao: 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  longevidade: 'Longevidade',
+  ecooa: 'ecooa',
+};
+
 const categories = [
   { slug: 'medicina', label: 'Medicina' },
   { slug: 'estetica', label: 'Estética' },
@@ -53,7 +62,7 @@ const categories = [
     <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" class="r">
       <a
         href="/blog"
-        style="font-size:11px;font-weight:400;color:var(--color-ink-soft);text-decoration:underline"
+        style="text-decoration:none;display:inline-block;padding:8px 14px;border-radius:20px;background:var(--color-ink);color:white;font-size:11px;font-weight:500"
         >todas</a
       >
       {
@@ -70,22 +79,60 @@ const categories = [
     </div>
   </section>
 
+  <!-- Destaque -->
+  {
+    posts.length > 0 && (
+      <section
+        style="background:var(--color-warm);padding:56px var(--section-px) 8px"
+        aria-label="Artigo em destaque"
+      >
+        <div style="max-width:1240px;margin:0 auto">
+          <a
+            href={`/blog/${posts[0].id}`}
+            class="r"
+            style="display:block;text-decoration:none;color:inherit;background:var(--color-mist);border:1px solid var(--color-stone);padding:clamp(32px,5vw,72px)"
+          >
+            <div style="display:flex;gap:14px;margin-bottom:18px;align-items:center;flex-wrap:wrap">
+              <span style="font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brand-text);border:1px solid var(--color-stone);padding:5px 12px;border-radius:20px">
+                em destaque
+              </span>
+              <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">
+                {categoryLabels[posts[0].data.category] || posts[0].data.category}
+              </span>
+            </div>
+            <h2 style="font-family:var(--font-serif);font-size:clamp(28px,3.8vw,52px);font-weight:500;color:var(--color-ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;max-width:900px">
+              {posts[0].data.title}
+            </h2>
+            <p style="font-size:15px;font-weight:300;color:var(--color-ink-soft);line-height:1.8;max-width:640px;margin-bottom:18px">
+              {posts[0].data.description}
+            </p>
+            <span style="font-size:11px;font-weight:500;color:var(--color-ink);letter-spacing:.06em">
+              ler artigo →
+            </span>
+          </a>
+        </div>
+      </section>
+    )
+  }
+
   <!-- Posts -->
   <section
     style="background:var(--color-warm);padding:48px var(--section-px) 72px"
     aria-label="Artigos"
   >
-    <div style="max-width:900px;margin:0 auto">
+    <div
+      style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--color-stone);border:1px solid var(--color-stone)"
+    >
       {
-        posts.map((post, i) => (
+        posts.slice(1).map((post) => (
           <a
             href={`/blog/${post.id}`}
-            style={`display:block;text-decoration:none;color:inherit;padding:36px 0;${i > 0 ? 'border-top:1px solid var(--color-stone)' : ''}`}
+            style="display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:32px 28px;background:var(--color-warm)"
             class="r"
           >
-            <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+            <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
               <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">
-                {post.data.category}
+                {categoryLabels[post.data.category] || post.data.category}
               </span>
               <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">
                 {new Date(post.data.date).toLocaleDateString('pt-BR', {
@@ -95,13 +142,13 @@ const categories = [
                 })}
               </span>
             </div>
-            <h2 style="font-family:var(--font-serif);font-size:clamp(20px,3vw,28px);font-weight:300;color:var(--color-ink);line-height:1.3;letter-spacing:-.02em;margin-bottom:8px">
+            <h2 style="font-family:var(--font-serif);font-size:19px;font-weight:400;color:var(--color-ink);line-height:1.35;letter-spacing:-.01em;margin-bottom:10px">
               {post.data.title}
             </h2>
-            <p style="font-size:14px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:10px">
+            <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">
               {post.data.description}
             </p>
-            <span style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em">
+            <span style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;margin-top:auto">
               ler artigo →
             </span>
           </a>

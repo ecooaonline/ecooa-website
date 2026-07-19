@@ -6,11 +6,12 @@ interface Props {
   heading: string;
   subtext: string;
   image?: string;
+  showAgendar?: boolean;
 }
 
 import { WA_DEFAULT, ADDRESS_NEIGHBORHOOD, ADDRESS_CITY } from '../data/constants';
 
-const { heading, subtext, image } = Astro.props;
+const { heading, subtext, image, showAgendar = true } = Astro.props;
 const WA = WA_DEFAULT;
 ---
 
@@ -48,7 +49,13 @@ const WA = WA_DEFAULT;
     <a href={WA} target="_blank" rel="noopener noreferrer" class="bw" data-intent="cta-section"
       >falar pelo whatsapp</a
     >
-    <a href="/agendamento" class="bow">agendar avaliação</a>
+    {
+      showAgendar && (
+        <a href="/agendamento" class="bow">
+          agendar avaliação
+        </a>
+      )
+    }
   </div>
   <p class="cf-rt r d3">respondemos em minutos</p>
 </section>

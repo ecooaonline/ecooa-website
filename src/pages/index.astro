@@ -1,4 +1,12 @@
 ---
+const categoryLabels: { [key: string]: string } = {
+  medicina: 'Medicina',
+  estetica: 'Estética',
+  nutricao: 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  longevidade: 'Longevidade',
+  ecooa: 'ecooa',
+};
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
@@ -763,7 +771,7 @@ const homeFaqs = [
                 style="display:block;background:var(--color-warm);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
                 <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
-                  {post.data.category}
+                  {categoryLabels[post.data.category] || post.data.category}
                 </p>
                 <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}

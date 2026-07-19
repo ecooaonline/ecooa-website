@@ -279,3 +279,9 @@ ol {
     scroll-behavior: auto !important;
   }
 }
+
+/* Controles nativos alinhados à paleta (radios, checkboxes) */
+input[type='checkbox'],
+input[type='radio'] {
+  accent-color: var(--color-ink);
+}

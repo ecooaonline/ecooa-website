@@ -1768,15 +1768,19 @@
 }
 
 /* ── WHATSAPP FAB ── */
+html.cookie-open .waf-wrap {
+  bottom: 96px;
+}
 .waf {
   width: 52px;
   height: 52px;
-  background: #25d366;
+  background: var(--color-ink);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.32);
+  box-shadow: 0 6px 22px rgba(28, 25, 23, 0.35);
   transition:
     transform var(--transition-base) var(--ease-out),
     box-shadow var(--transition-base);
@@ -1785,7 +1789,7 @@
 }
 .waf:hover {
   transform: scale(1.1);
-  box-shadow: 0 8px 26px rgba(37, 211, 102, 0.44);
+  box-shadow: 0 10px 28px rgba(28, 25, 23, 0.45);
 }
 
 /* ── CURSOR (desktop only) ── */
@@ -2154,6 +2158,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-stroke: 1px rgba(28, 25, 23, 0.12);
   }
 }
 

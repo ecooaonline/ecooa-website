@@ -6,6 +6,8 @@ if (window.matchMedia('(pointer: fine)').matches) {
   dot.className = 'cursor-dot';
   const ring = document.createElement('div');
   ring.className = 'cursor-ring';
+  dot.style.opacity = '0';
+  ring.style.opacity = '0';
   document.body.appendChild(dot);
   document.body.appendChild(ring);
 
@@ -30,6 +32,12 @@ if (window.matchMedia('(pointer: fine)').matches) {
   document.addEventListener('mousemove', (e) => {
     mx = e.clientX;
     my = e.clientY;
+    if (dot.style.opacity === '0') {
+      rx = mx;
+      ry = my;
+      dot.style.opacity = '';
+      ring.style.opacity = '';
+    }
     dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
     if (!looping) {
       looping = true;

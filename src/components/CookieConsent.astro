@@ -47,12 +47,14 @@
     var banner = document.getElementById('cookie-consent');
     if (!banner) return;
     banner.style.display = 'block';
+    document.documentElement.classList.add('cookie-open');
     var bannerEl = banner;
     var acceptBtn = document.getElementById('cookie-accept');
     if (acceptBtn) {
       acceptBtn.addEventListener('click', function () {
         localStorage.setItem(key, 'accepted');
         bannerEl.style.display = 'none';
+        document.documentElement.classList.remove('cookie-open');
         window.dispatchEvent(new CustomEvent('ecooa_consent_accepted'));
       });
     }
@@ -61,6 +63,7 @@
       rejectBtn.addEventListener('click', function () {
         localStorage.setItem(key, 'rejected');
         bannerEl.style.display = 'none';
+        document.documentElement.classList.remove('cookie-open');
         var trackingCookies = ['_ga', '_gid', '_gat', '_fbp', '_fbc', '_gcl_au'];
         var domains = [location.hostname, '.' + location.hostname];
         trackingCookies.forEach(function (name) {

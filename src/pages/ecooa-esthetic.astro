@@ -1,4 +1,12 @@
 ---
+const categoryLabels: { [key: string]: string } = {
+  medicina: 'Medicina',
+  estetica: 'Estética',
+  nutricao: 'Nutrição',
+  'saude-mental': 'Saúde Mental',
+  longevidade: 'Longevidade',
+  ecooa: 'ecooa',
+};
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OptimizedImage from '../components/OptimizedImage.astro';
 import WavePattern from '../components/WavePattern.astro';
@@ -66,7 +74,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
 >
   <HeroEditorial
     label="ecooa.esthetic · estética"
-    title="Voltar a se reconhecer<br />no espelho. Sem virar<br /><em>outra pessoa.</em>"
+    title="Voltar a se reconhecer<br />no espelho.<br />Sem virar <em>outra pessoa.</em>"
     support="Ninguém vai perceber o que você fez. Todos vão notar como você está."
     sub="Cabelo, rosto, pele e corpo com tricologia clínica e referência em transplante capilar FUE Safira em Porto Alegre. Resultado natural, decidido junto com você."
     ctaHref={WA}
@@ -261,7 +269,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       <div class="lbl r u-mb-16">o que oferecemos</div>
       <h2 class="h2 r d1 u-mb-44">Procedimentos que<br />cuidam e <em>revelam.</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));border-top:1px solid var(--color-stone);border-left:1px solid var(--color-stone)"
       >
         <div class="gc">
           <p class="gc-tag">01</p><h3 class="it-t">
@@ -407,7 +415,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
       <div class="lbl r u-mb-16">sua jornada</div>
       <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
       <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;max-width:960px;margin:0 auto"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:960px;margin:0 auto"
       >
         <div class="r u-tac">
           <span class="step-num">1</span>
@@ -498,7 +506,7 @@ const WA_TRANSPLANTE = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de 
                 style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
                 <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
-                  {post.data.category}
+                  {categoryLabels[post.data.category] || post.data.category}
                 </p>
                 <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}
