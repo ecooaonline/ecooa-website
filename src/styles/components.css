@@ -73,10 +73,16 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-weight: 400;
-  background: var(--metal-silver);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-brand-deep);
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .h1 em,
+  .h2 em {
+    background: var(--metal-silver);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 .h1-w,
 .h2-w {
@@ -366,7 +372,8 @@
 }
 .bo:hover {
   transform: translateY(-2px);
-  background: var(--color-brand);
+  background: var(--color-ink);
+  border-color: var(--color-ink);
   color: var(--color-white);
   box-shadow: 0 14px 28px rgba(145, 136, 134, 0.28);
 }
@@ -2103,7 +2110,7 @@
 .bw:focus-visible,
 .bow:focus-visible,
 .ghost:focus-visible {
-  outline: 2px solid var(--color-brand);
+  outline: 2px solid var(--color-brand-text);
   outline-offset: 3px;
 }
 
@@ -2120,9 +2127,14 @@
   text-transform: lowercase;
   background-size: cover;
   background-position: center 30%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-brand-light);
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .masked-word {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 
 /* ── NAV SUBMENUS (rebrand 2026) ── */
@@ -2214,10 +2226,15 @@
 .lux-title em {
   font-style: italic;
   font-weight: 400;
-  background: var(--metal-silver);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--color-brand-deep);
+}
+@supports (-webkit-background-clip: text) or (background-clip: text) {
+  .lux-title em {
+    background: var(--metal-silver);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }
 .lux-support {
   font-family: var(--font-serif);

@@ -82,7 +82,7 @@ const categoryDescription = categoryDescriptions[category] || '';
         ['medicina', 'estetica', 'nutricao', 'saude-mental', 'longevidade'].map((cat) => (
           <a
             href={`/blog/categoria/${cat}`}
-            style={`font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;${cat === category ? 'background:var(--color-brand);color:white' : 'background:var(--color-stone);color:var(--color-ink-soft)'};;text-decoration:none;transition:all .2s ease`}
+            style={`font-size:11px;font-weight:500;padding:6px 12px;border-radius:20px;${cat === category ? 'background:var(--color-ink);color:white' : 'background:var(--color-stone);color:var(--color-ink-soft)'};;text-decoration:none;transition:all .2s ease`}
           >
             {categoryLabels[cat]}
           </a>

@@ -39,8 +39,7 @@ if (window.matchMedia('(pointer: fine)').matches) {
 
   // Zone toggles via event delegation (single listener pair instead of N per zone)
   const HOVER_SELECTOR = 'a, button, .pl-lk, .pl, .pc, .ip, .ec';
-  const DARK_SELECTOR =
-    '.ap-cp, .ap-vis, .hr, .wv, .cf, .footer, [style*="background:var(--color-ink)"]';
+  const DARK_SELECTOR = '.ap-cp, .cf, .footer, [style*="background:var(--color-ink)"]';
 
   document.addEventListener('mouseover', (e) => {
     const target = e.target as Element | null;
