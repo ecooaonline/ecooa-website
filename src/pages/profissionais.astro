@@ -2,81 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WavePattern from '../components/WavePattern.astro';
 import Marquee from '../components/Marquee.astro';
-import ProfessionalCard from '../components/ProfessionalCard.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_BASE } from '../data/constants';
-import { professionals } from '../data/professionals';
+import { professionals as canonical } from '../data/professionals';
+import { professionals, categories, pillarHref } from '../data/professionals-editorial';
 
 const WA = WA_BASE;
-
 const SITE_URL = 'https://www.somosecooa.com.br';
 
-// Ordem editorial dos cards por seção (definida pela gestão da clínica).
-// Para reordenar, mude apenas estas listas; os dados dos cards (nome, cargo,
-// registro, foto, tags) vêm de professionals.ts.
-const MED_ORDER = [
-  'gustavo-gehrke',
-  'yale-jeronimo',
-  'larissa-wiebbelling',
-  'vitoria-machado',
-  'renata-bohn',
-];
-const ESTHETIC_ORDER_A = [
-  'danusa-pires',
-  'viviane-fagundes',
-  'natalie-queiroz',
-  'leticia-de-melo',
-  'susan-flach',
-  'jennifer-adam',
-];
-// Eduarda e Tais (cards sem foto, aguardando material) entram entre A e B.
-const ESTHETIC_ORDER_B = ['karine-ellwanger', 'jamylle-farias', 'adriana'];
-const WORKING_ORDER = [
-  'jessica-stein',
-  'maria-luisa-beltran',
-  'adriano-lenz',
-  'giancarla-rochemback',
-  'vitoria-serpa',
-  'lara-caye',
-  'daniel-forster',
-  'camila-cadore',
-  'marvin-marques',
-  'gabrieli-klagenberg',
-  'nasser-salem',
-  'verena-cattani',
-];
-const MIND_ORDER = ['manuela-vanti', 'augusto-kauer', 'francielle-beria'];
-const CARD_BG = 'linear-gradient(145deg,#E8E0D0,#D4C9B0)';
-
-function inOrder(slugs: string[]) {
-  return slugs
-    .map((slug) => professionals.find((p) => p.slug === slug))
-    .filter((p): p is (typeof professionals)[number] => Boolean(p));
-}
-
+/* ── Dados estruturados (SEO): seguem a base canônica em professionals.ts ── */
 function isPhysician(role: string) {
   return /\bMédic[oa]\b/i.test(role);
 }
 
-function medicalSpecialty(role: string): string | null {
+function medicalSpecialty(role: string): string {
   const lower = role.toLowerCase();
   if (lower.includes('dermato') || lower.includes('capilar') || lower.includes('tricolog'))
     return 'Dermatology';
   if (lower.includes('psiquiatr')) return 'Psychiatric';
   if (lower.includes('cardiolog')) return 'Cardiovascular';
   if (lower.includes('endocrin')) return 'Endocrine';
-  if (
-    lower.includes('ortomolecular') ||
-    lower.includes('metabol') ||
-    lower.includes('hormôn') ||
-    lower.includes('longevidade') ||
-    lower.includes('emagrecimento')
-  )
-    return 'PrimaryCare';
   return 'PrimaryCare';
 }
 
-const schemaMembers = professionals.map((p) => {
+const schemaMembers = canonical.map((p) => {
   const base = {
     name: p.name,
     description: p.description,
@@ -89,6 +39,24 @@ const schemaMembers = professionals.map((p) => {
   }
   return { '@type': 'Person', ...base, jobTitle: p.role.split('·')[0].trim() };
 });
+
+/* ── Ilha de dados consumida pelo modal (sem framework, zero dependência) ── */
+const modalData = professionals.map((p) => ({
+  id: p.id,
+  name: p.name,
+  category: p.category,
+  role: p.role,
+  register: p.register,
+  area: p.area,
+  pillar: p.pillar,
+  pillarHref: pillarHref[p.pillar],
+  image: p.image,
+  subtitle: p.subtitle,
+  approach: p.approach,
+  ecooa: p.ecooa,
+  education: p.education,
+  tags: p.tags,
+}));
 ---
 
 <BaseLayout
@@ -142,368 +110,732 @@ const schemaMembers = professionals.map((p) => {
 
   <Marquee />
 
-  <!-- Profissionais -->
-  <section class="u-bg-warm" aria-label="Equipe de profissionais">
-    <div class="w">
-      <!-- Sub-navegação por área -->
-      <nav
-        aria-label="Navegar por área"
-        class="r"
-        style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:64px"
-      >
-        <a href="#medicina" class="tag-pill" style="text-decoration:none">medicina</a>
-        <a href="#estetica" class="tag-pill" style="text-decoration:none">estética</a>
-        <a href="#nutricao" class="tag-pill" style="text-decoration:none">nutrição</a>
-        <a href="#saude-mental" class="tag-pill" style="text-decoration:none">saúde mental</a>
+  <!-- Listagem editorial -->
+  <section class="pe" aria-label="Equipe de profissionais" id="equipe">
+    <div class="pe-wrap">
+      <!-- Filtros por categoria -->
+      <nav class="pe-filters" aria-label="Filtrar por área">
+        {
+          categories.map((cat, i) => (
+            <button
+              type="button"
+              class="pe-filter"
+              data-filter={cat}
+              aria-pressed={i === 0 ? 'true' : 'false'}
+            >
+              {cat}
+            </button>
+          ))
+        }
       </nav>
 
-      <!-- Medicina -->
-      <div class="lbl r" style="margin-bottom:9px" id="medicina">ecooa.med</div>
-      <h2
-        style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:32px;letter-spacing:-.02em"
-        class="r d1"
-      >
-        Medicina
-      </h2>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
-        <span class="tag-pill">Medicina Metabólica</span>
-        <span class="tag-pill">Dermatologia Clínica</span>
-        <span class="tag-pill">Dermatologia Estética</span>
-        <span class="tag-pill">Tricologia Médica</span>
-        <span class="tag-pill">Transplante Capilar</span>
-      </div>
-      <div class="g4" style="margin-bottom:72px">
+      <p class="pe-count" id="pe-count" aria-live="polite">
+        {professionals.length} profissionais
+      </p>
+
+      <!-- Linhas. A ordem é a do array em professionals-editorial.ts -->
+      <div class="pe-list" id="pe-list">
         {
-          inOrder(MED_ORDER).map((p) => (
-            <ProfessionalCard
-              clickable
-              slug={p.slug}
-              name={p.name}
-              role={p.role}
-              bg={CARD_BG}
-              ig={p.ig}
-              photo={p.photo}
-              description={p.description}
-              tags={p.tags}
-            />
+          professionals.map((p, i) => (
+            <article
+              class={`pe-row r${i % 2 === 1 ? ' is-reversed' : ''}`}
+              data-category={p.category}
+              data-id={p.id}
+            >
+              <div class="pe-photo">
+                <OptimizedImage
+                  src={p.image}
+                  alt={`Retrato de ${p.name}`}
+                  width={760}
+                  height={950}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  sizes="(max-width: 860px) 92vw, 44vw"
+                  class="pe-photo-img"
+                />
+              </div>
+
+              <div class="pe-info">
+                <span class="pe-rule" aria-hidden="true" />
+                <h2 class="pe-name">{p.name}</h2>
+                <p class="pe-role">{p.role}</p>
+                {p.register && <p class="pe-register">{p.register}</p>}
+                <p class="pe-label">área</p>
+                <p class="pe-area">{p.area}</p>
+                <span class="pe-open">
+                  <span class="pe-open-line" aria-hidden="true" />
+                  ver perfil
+                </span>
+              </div>
+
+              <button
+                type="button"
+                class="pe-open-btn"
+                data-open={p.id}
+                aria-label={`Abrir perfil de ${p.name}`}
+                aria-haspopup="dialog"
+              />
+            </article>
           ))
         }
       </div>
 
-      <!-- Estética -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r u-mb-18" id="estetica">ecooa.esthetic</div>
-      <h2 class="sr-only">Estética</h2>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
-        <span class="tag-pill">Tricologia</span>
-        <span class="tag-pill">Biomedicina Estética</span>
-        <span class="tag-pill">Harmonização Orofacial</span>
-        <span class="tag-pill">Osteopatia</span>
-      </div>
-      <div class="g4" style="margin-bottom:72px">
-        {
-          inOrder(ESTHETIC_ORDER_A).map((p) => (
-            <ProfessionalCard
-              clickable
-              slug={p.slug}
-              name={p.name}
-              role={p.role}
-              bg={CARD_BG}
-              ig={p.ig}
-              photo={p.photo}
-              description={p.description}
-              tags={p.tags}
-            />
-          ))
-        }
-        <ProfessionalCard
-          name="Eduarda Schoenmeier"
-          photo="/team/placeholder.webp"
-          role="Biomédica Esteta · Harmonização Facial e Corporal"
-          bg={CARD_BG}
-          registration="CRBM 7243"
-        />
-        <ProfessionalCard
-          name="Tais de la Rosa"
-          photo="/team/placeholder.webp"
-          role="Farmacêutica · Skin Expert"
-          bg={CARD_BG}
-          registration="CRF-RS 588527"
-        />
-
-        {
-          inOrder(ESTHETIC_ORDER_B).map((p) => (
-            <ProfessionalCard
-              clickable
-              slug={p.slug}
-              name={p.name}
-              role={p.role}
-              bg={CARD_BG}
-              ig={p.ig}
-              photo={p.photo}
-              description={p.description}
-              tags={p.tags}
-            />
-          ))
-        }
-      </div>
-
-      <!-- Nutrição -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px" id="nutricao">ecooa.working</div>
-      <h2
-        style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:36px;letter-spacing:-.02em"
-        class="r d1"
-      >
-        Nutrição especializada
-      </h2>
-      <div class="g4" style="margin-bottom:72px">
-        {
-          inOrder(WORKING_ORDER).map((p) => (
-            <ProfessionalCard
-              clickable
-              slug={p.slug}
-              name={p.name}
-              role={p.role}
-              bg={CARD_BG}
-              ig={p.ig}
-              photo={p.photo}
-              description={p.description}
-              tags={p.tags}
-            />
-          ))
-        }
-      </div>
-
-      <!-- Saúde Mental -->
-      <div class="div" style="margin:0 0 64px"></div>
-      <div class="lbl r" style="margin-bottom:9px" id="saude-mental">ecooa.mind</div>
-      <h2
-        style="font-size:22px;font-weight:300;color:var(--color-ink);margin-bottom:18px;letter-spacing:-.02em"
-        class="r d1"
-      >
-        Saúde mental
-      </h2>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px" class="r">
-        <span class="tag-pill">Psicologia</span>
-        <span class="tag-pill">TCC</span>
-        <span class="tag-pill">Psicologia Esportiva</span>
-      </div>
-      <div class="g4 u-mb-64">
-        {
-          inOrder(MIND_ORDER).map((p) => (
-            <ProfessionalCard
-              clickable
-              slug={p.slug}
-              name={p.name}
-              role={p.role}
-              bg={CARD_BG}
-              ig={p.ig}
-              photo={p.photo}
-              description={p.description}
-              tags={p.tags}
-            />
-          ))
-        }
-      </div>
+      <p class="pe-empty" id="pe-empty" hidden>
+        Nenhum profissional nesta área por enquanto. Fale com a equipe pelo WhatsApp e a gente
+        orienta você.
+      </p>
     </div>
   </section>
 
   <!-- Link discreto B2B -->
   <section class="u-bg-warm" aria-label="Para profissionais" style="padding:24px var(--section-px)">
-    <p
-      class="r"
-      style="text-align:center;font-size:12px;font-weight:300;color:var(--color-ink-soft)"
-    >
+    <p class="body r" style="text-align:center;font-size:13px">
       É profissional de saúde? <a
         href="/para-profissionais"
         style="color:var(--color-brand-text);text-underline-offset:3px;text-decoration:underline"
-        >Conheça a ecooa para profissionais →</a
+        >conheça a ecooa para profissionais →</a
       >
     </p>
   </section>
 
   <CtaSection
     heading="Conheça nossa<br><em>equipe pessoalmente.</em>"
-    subtext="Agende sua avaliação e descubra qual profissional da ecooa é o ideal para o seu momento."
+    subtext="Agende sua avaliação e descubra o cuidado multidisciplinar da ecooa."
   />
 
-  <!-- Modal overlay -->
-  <div
-    class="pro-modal-overlay"
-    id="pro-modal-overlay"
-    aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="pm-name"
-  >
-    <div class="pro-modal" id="pro-modal">
-      <button class="pro-modal-close" id="pro-modal-close" aria-label="Fechar">✕</button>
-      <img
-        class="pro-modal-photo"
-        id="pm-photo"
-        src=""
-        alt=""
-        loading="lazy"
-        decoding="async"
-        width="480"
-        height="640"
-      />
-      <div class="pro-modal-info">
-        <p class="pro-modal-name" id="pm-name"></p>
-        <p class="pro-modal-role" id="pm-role"></p>
-        <p class="pro-modal-desc" id="pm-desc"></p>
-        <div class="pro-modal-tags" id="pm-tags"></div>
-        <div class="pro-modal-actions">
-          <a id="pm-wa" href="#" target="_blank" rel="noopener noreferrer" class="bd"
-            >agendar avaliação</a
+  <!-- Modal: mini landing page do profissional -->
+  <div class="pm-overlay" id="pm-overlay" hidden data-wa={WA}>
+    <div
+      class="pm-panel"
+      id="pm-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pm-name"
+      tabindex="-1"
+    >
+      <button type="button" class="pm-close" id="pm-close" aria-label="Fechar perfil">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+          <path
+            d="M3 3l10 10M13 3L3 13"
+            stroke="currentColor"
+            stroke-width="1.3"
+            stroke-linecap="round"></path>
+        </svg>
+      </button>
+
+      <div class="pm-media">
+        <img id="pm-photo" src="" alt="" width="760" height="950" decoding="async" />
+      </div>
+
+      <div class="pm-body">
+        <p class="pm-pillar" id="pm-pillar"></p>
+        <h2 class="pm-name" id="pm-name"></h2>
+        <p class="pm-subtitle" id="pm-subtitle"></p>
+
+        <dl class="pm-facts" id="pm-facts"></dl>
+
+        <div class="pm-block">
+          <p class="pm-block-label">como conduz o cuidado</p>
+          <p class="pm-approach" id="pm-approach"></p>
+        </div>
+
+        <div class="pm-block" id="pm-tags-block">
+          <p class="pm-block-label">territórios de atenção</p>
+          <div class="pm-tags" id="pm-tags"></div>
+        </div>
+
+        <div class="pm-actions">
+          <a id="pm-wa" class="bd" href="#" target="_blank" rel="noopener noreferrer"
+            >agendar conversa</a
           >
-          <a
-            id="pm-ig"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ghost"
-            style="justify-content:center"
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"
-              ><rect
-                x="2"
-                y="2"
-                width="20"
-                height="20"
-                rx="6"
-                stroke="currentColor"
-                stroke-width="1.5"></rect><circle
-                cx="12"
-                cy="12"
-                r="4"
-                stroke="currentColor"
-                stroke-width="1.5"></circle><circle cx="17" cy="7" r=".8" fill="currentColor"
-              ></circle></svg
-            >
-            <span id="pm-ig-label"></span>
-          </a>
-          <a id="pm-profile" href="#" class="ghost" style="justify-content:center;font-size:11px"
-            >ver perfil completo →</a
-          >
+          <a id="pm-pillar-link" class="bo" href="#">ver área ecooa</a>
         </div>
       </div>
     </div>
   </div>
 
+  <script type="application/json" id="pe-data" is:inline set:html={JSON.stringify(modalData)} />
+
   <script>
-    const overlay = document.getElementById('pro-modal-overlay')!;
-    const modal = document.getElementById('pro-modal')!;
-    const closeBtn = document.getElementById('pro-modal-close')!;
-    const pmPhoto = document.getElementById('pm-photo') as HTMLImageElement;
-    const pmName = document.getElementById('pm-name')!;
-    const pmRole = document.getElementById('pm-role')!;
-    const pmDesc = document.getElementById('pm-desc')!;
-    const pmTags = document.getElementById('pm-tags')!;
-    const pmWa = document.getElementById('pm-wa') as HTMLAnchorElement;
-    const pmIg = document.getElementById('pm-ig') as HTMLAnchorElement;
-    const pmIgLabel = document.getElementById('pm-ig-label')!;
-    const pmProfile = document.getElementById('pm-profile') as HTMLAnchorElement;
+    type Pro = {
+      id: string;
+      name: string;
+      category: string;
+      role: string;
+      register: string;
+      area: string;
+      pillar: string;
+      pillarHref: string;
+      image: string;
+      subtitle: string;
+      approach: string;
+      ecooa: string;
+      education: string;
+      tags: string[];
+    };
 
-    function openModal(card: HTMLElement) {
-      const name = card.dataset.name || '';
-      const role = card.dataset.role || '';
-      const photo = card.dataset.photo || '';
-      const ig = card.dataset.ig || '';
-      const igUrl = card.dataset.igUrl || '';
-      const wa = card.dataset.wa || '';
-      const desc = card.dataset.desc || '';
-      const tags = card.dataset.tags ? card.dataset.tags.split('|') : [];
+    const dataEl = document.getElementById('pe-data');
+    const list = document.getElementById('pe-list');
+    const overlay = document.getElementById('pm-overlay');
+    const panel = document.getElementById('pm-panel');
 
-      pmPhoto.src = photo;
-      pmPhoto.alt = name;
-      pmName.textContent = name;
-      pmRole.textContent = role;
-      pmDesc.textContent = desc;
-      pmTags.textContent = '';
-      tags.forEach((t) => {
-        const span = document.createElement('span');
-        span.className = 'pro-modal-tag';
-        span.textContent = t;
-        pmTags.appendChild(span);
-      });
-      pmWa.href = wa;
-      pmWa.setAttribute('data-professional-name', name);
-      if (igUrl) {
-        pmIg.href = igUrl;
-        pmIgLabel.textContent = ig;
-        pmIg.style.display = '';
-      } else {
-        pmIg.style.display = 'none';
+    if (dataEl && list && overlay && panel) {
+      const people: Pro[] = JSON.parse(dataEl.textContent || '[]');
+      const byId = new Map(people.map((p) => [p.id, p]));
+      const rows = Array.from(list.querySelectorAll<HTMLElement>('.pe-row'));
+      const filters = Array.from(document.querySelectorAll<HTMLButtonElement>('.pe-filter'));
+      const countEl = document.getElementById('pe-count');
+      const emptyEl = document.getElementById('pe-empty');
+
+      /* ── Filtro: esconde o que não bate e recalcula a alternância
+            considerando apenas as linhas visíveis ── */
+      function applyFilter(category: string) {
+        let visible = 0;
+        rows.forEach((row) => {
+          const match = category === 'todos' || row.dataset.category === category;
+          row.hidden = !match;
+          if (match) {
+            row.classList.toggle('is-reversed', visible % 2 === 1);
+            visible++;
+          }
+        });
+        filters.forEach((b) =>
+          b.setAttribute('aria-pressed', String(b.dataset.filter === category))
+        );
+        if (countEl) {
+          countEl.textContent = visible === 1 ? '1 profissional' : `${visible} profissionais`;
+        }
+        if (emptyEl) emptyEl.hidden = visible > 0;
       }
-      const slug = card.dataset.slug || '';
-      if (slug) {
-        pmProfile.href = `/profissionais/${slug}`;
-        pmProfile.style.display = '';
-      } else {
-        pmProfile.style.display = 'none';
+
+      filters.forEach((btn) => {
+        btn.addEventListener('click', () => applyFilter(btn.dataset.filter || 'todos'));
+      });
+
+      /* ── Modal ── */
+      const waBase = overlay.dataset.wa || '';
+      const photo = document.getElementById('pm-photo') as HTMLImageElement | null;
+      const facts = document.getElementById('pm-facts');
+      const tagsBox = document.getElementById('pm-tags');
+      const tagsBlock = document.getElementById('pm-tags-block');
+      const waLink = document.getElementById('pm-wa') as HTMLAnchorElement | null;
+      const pillarLink = document.getElementById('pm-pillar-link') as HTMLAnchorElement | null;
+      const closeBtn = document.getElementById('pm-close');
+      let lastTrigger: HTMLElement | null = null;
+
+      function setText(id: string, value: string) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = value;
       }
 
-      overlay.classList.add('active');
-      overlay.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
+      function openModal(id: string, trigger: HTMLElement) {
+        const p = byId.get(id);
+        if (!p || !overlay || !panel) return;
+        lastTrigger = trigger;
 
-    let lastOpenerCard: HTMLElement | null = null;
+        if (photo) {
+          photo.src = p.image;
+          photo.alt = `Retrato de ${p.name}`;
+        }
+        setText('pm-pillar', p.pillar);
+        setText('pm-name', p.name);
+        setText('pm-subtitle', p.subtitle);
+        setText('pm-approach', p.approach);
 
-    function closeModal() {
-      overlay.classList.remove('active');
-      overlay.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      lastOpenerCard?.focus?.();
-      lastOpenerCard = null;
-    }
+        // Blocos de dados: só aparecem os que existem
+        if (facts) {
+          const items: Array<[string, string]> = [];
+          if (p.education) items.push(['formação', p.education]);
+          if (p.register) items.push(['registro', p.register]);
+          items.push(['área', p.area]);
+          if (p.ecooa) items.push(['experiência ecooa', p.ecooa]);
+          facts.innerHTML = '';
+          items.forEach(([label, value]) => {
+            const wrap = document.createElement('div');
+            wrap.className = 'pm-fact';
+            const dt = document.createElement('dt');
+            dt.textContent = label;
+            const dd = document.createElement('dd');
+            dd.textContent = value;
+            wrap.append(dt, dd);
+            facts.appendChild(wrap);
+          });
+        }
 
-    // Click on card
-    document.querySelectorAll('[data-modal="professional"]').forEach((card) => {
-      card.addEventListener('click', () => {
-        lastOpenerCard = card as HTMLElement;
-        openModal(card as HTMLElement);
+        if (tagsBox && tagsBlock) {
+          tagsBox.innerHTML = '';
+          p.tags.forEach((tag) => {
+            const chip = document.createElement('span');
+            chip.className = 'pm-chip';
+            chip.textContent = tag;
+            tagsBox.appendChild(chip);
+          });
+          tagsBlock.hidden = p.tags.length === 0;
+        }
+
+        if (waLink) {
+          const msg = `Olá, gostaria de agendar uma conversa com ${p.name} na ecooa.`;
+          waLink.href = `${waBase}?text=${encodeURIComponent(msg)}`;
+          waLink.setAttribute('data-intent', `profissional-wa-${p.id}`);
+        }
+        if (pillarLink) {
+          pillarLink.href = p.pillarHref;
+          pillarLink.textContent = `ver ${p.pillar}`;
+        }
+
+        overlay.hidden = false;
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => {
+          overlay.classList.add('is-open');
+          panel.focus();
+        });
+      }
+
+      function closeModal() {
+        if (!overlay || overlay.hidden) return;
+        overlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+        window.setTimeout(() => {
+          overlay.hidden = true;
+        }, 200);
+        if (lastTrigger) {
+          lastTrigger.focus();
+          lastTrigger = null;
+        }
+      }
+
+      list.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest<HTMLElement>('.pe-open-btn');
+        if (btn && btn.dataset.open) openModal(btn.dataset.open, btn);
       });
-      card.addEventListener('keydown', (e) => {
-        if ((e as KeyboardEvent).key === 'Enter' || (e as KeyboardEvent).key === ' ') {
-          e.preventDefault();
-          lastOpenerCard = card as HTMLElement;
-          openModal(card as HTMLElement);
+
+      closeBtn?.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+        // Mantém o foco dentro do painel enquanto aberto
+        if (e.key === 'Tab' && !overlay.hidden && panel) {
+          const focusables = panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+          if (!focusables.length) return;
+          const first = focusables[0];
+          const last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
         }
       });
-    });
-
-    // Close
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (!overlay.classList.contains('active')) return;
-      if (e.key === 'Escape') {
-        closeModal();
-        return;
-      }
-      if (e.key === 'Tab') {
-        const focusable = Array.from(
-          modal.querySelectorAll<HTMLElement>(
-            'button:not([disabled]),a[href],input:not([disabled]),[tabindex]:not([tabindex="-1"])'
-          )
-        ).filter((el) => el.offsetParent !== null);
-        if (focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    });
+    }
   </script>
+
+  <style>
+    /* ══════════════════════════════════════════
+       Listagem editorial do corpo clínico
+       Paleta local, não altera os tokens globais
+       ══════════════════════════════════════════ */
+    .pe {
+      --pe-bg: #f0eee9;
+      --pe-surface: #fdfdfc;
+      --pe-surface-alt: #faf9f7;
+      --pe-text: #2b2926;
+      --pe-text-soft: #46443f;
+      --pe-rule-color: #86836f;
+      background: var(--pe-bg);
+      padding: clamp(56px, 7vw, 96px) var(--section-px) clamp(64px, 8vw, 112px);
+    }
+    .pe-wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Filtros */
+    .pe-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .pe-filter {
+      font-family: var(--font-primary);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--pe-text-soft);
+      background: var(--pe-surface);
+      border: 1px solid rgba(134, 131, 111, 0.28);
+      border-radius: 999px;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+    }
+    .pe-filter:hover {
+      border-color: var(--pe-rule-color);
+    }
+    .pe-filter[aria-pressed='true'] {
+      background: var(--pe-text);
+      border-color: var(--pe-text);
+      color: var(--pe-surface);
+    }
+    .pe-filter:focus-visible {
+      outline: 2px solid var(--pe-rule-color);
+      outline-offset: 3px;
+    }
+    .pe-count {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--pe-text-soft);
+      opacity: 0.75;
+      margin-bottom: 8px;
+    }
+    .pe-empty {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--pe-text-soft);
+      max-width: 460px;
+      padding: 48px 0;
+    }
+
+    /* Linha do profissional */
+    .pe-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      align-items: center;
+      gap: clamp(28px, 5vw, 88px);
+      padding: clamp(36px, 4.4vw, 68px) 0;
+      border-top: 1px solid rgba(134, 131, 111, 0.24);
+    }
+    .pe-row:last-child {
+      border-bottom: 1px solid rgba(134, 131, 111, 0.24);
+    }
+    .pe-row.is-reversed .pe-photo {
+      grid-column: 2;
+      grid-row: 1;
+    }
+    .pe-row.is-reversed .pe-info {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .pe-photo {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      background: var(--pe-surface-alt);
+    }
+    .pe-photo :global(.pe-photo-img) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pe-row:hover .pe-photo :global(.pe-photo-img) {
+      transform: scale(1.035);
+    }
+
+    .pe-info {
+      min-width: 0;
+    }
+    .pe-rule {
+      display: block;
+      width: 44px;
+      height: 1px;
+      background: var(--pe-rule-color);
+      opacity: 0.55;
+      margin-bottom: 22px;
+    }
+    .pe-name {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(27px, 3.3vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--pe-text);
+      margin-bottom: 14px;
+    }
+    .pe-role {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--pe-text-soft);
+      margin-bottom: 2px;
+    }
+    .pe-register {
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--pe-text-soft);
+      opacity: 0.72;
+    }
+    .pe-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: lowercase;
+      color: var(--pe-rule-color);
+      margin: 26px 0 4px;
+    }
+    .pe-area {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(16px, 1.5vw, 20px);
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--pe-text);
+    }
+    .pe-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 28px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      color: var(--pe-text-soft);
+    }
+    .pe-open-line {
+      display: block;
+      width: 26px;
+      height: 1px;
+      background: var(--pe-rule-color);
+      transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pe-row:hover .pe-open-line {
+      width: 52px;
+    }
+
+    /* Botão que cobre a linha inteira, sem quebrar a semântica do texto */
+    .pe-open-btn {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .pe-open-btn:focus-visible {
+      outline: 2px solid var(--pe-rule-color);
+      outline-offset: -6px;
+    }
+
+    @media (max-width: 860px) {
+      .pe-row,
+      .pe-row.is-reversed {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .pe-row.is-reversed .pe-photo,
+      .pe-row.is-reversed .pe-info {
+        grid-column: 1;
+        grid-row: auto;
+      }
+      .pe-photo {
+        aspect-ratio: 4 / 5;
+        max-width: 420px;
+      }
+      .pe-rule {
+        margin-bottom: 16px;
+      }
+    }
+
+    /* ══════════════════════════════════════════
+       Modal: mini landing page do profissional
+       ══════════════════════════════════════════ */
+    .pm-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(16px, 4vw, 48px);
+      background: rgba(43, 41, 38, 0.52);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+    .pm-overlay.is-open {
+      opacity: 1;
+    }
+    .pm-overlay[hidden] {
+      display: none;
+    }
+
+    .pm-panel {
+      position: relative;
+      width: min(1080px, 100%);
+      max-height: min(88vh, 900px);
+      overflow-y: auto;
+      background: #fdfdfc;
+      display: grid;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      transform: translateY(12px);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pm-overlay.is-open .pm-panel {
+      transform: translateY(0);
+    }
+    .pm-panel:focus {
+      outline: none;
+    }
+
+    .pm-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 3;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fdfdfc;
+      border: 1px solid rgba(134, 131, 111, 0.3);
+      color: #2b2926;
+      cursor: pointer;
+      transition:
+        background 0.25s ease,
+        color 0.25s ease;
+    }
+    .pm-close:hover {
+      background: #2b2926;
+      color: #fdfdfc;
+    }
+    .pm-close:focus-visible {
+      outline: 2px solid #86836f;
+      outline-offset: 3px;
+    }
+
+    .pm-media {
+      background: #faf9f7;
+      overflow: hidden;
+    }
+    .pm-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pm-body {
+      padding: clamp(32px, 4vw, 56px) clamp(28px, 3.6vw, 56px);
+    }
+    .pm-pillar {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: #86836f;
+      margin-bottom: 12px;
+    }
+    .pm-name {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: #2b2926;
+      margin-bottom: 12px;
+    }
+    .pm-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: #46443f;
+      max-width: 46ch;
+    }
+
+    .pm-facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px 28px;
+      margin: 32px 0;
+      padding: 26px 0;
+      border-top: 1px solid rgba(134, 131, 111, 0.24);
+      border-bottom: 1px solid rgba(134, 131, 111, 0.24);
+    }
+    .pm-facts :global(.pm-fact) {
+      min-width: 0;
+    }
+    .pm-facts :global(dt) {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: #86836f;
+      margin-bottom: 5px;
+    }
+    .pm-facts :global(dd) {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.6;
+      color: #2b2926;
+      margin: 0;
+    }
+
+    .pm-block + .pm-block {
+      margin-top: 28px;
+    }
+    .pm-block-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: #86836f;
+      margin-bottom: 10px;
+    }
+    .pm-approach {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #46443f;
+      max-width: 58ch;
+    }
+    .pm-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pm-tags :global(.pm-chip) {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #46443f;
+      background: #faf9f7;
+      border: 1px solid rgba(134, 131, 111, 0.28);
+      border-radius: 999px;
+      padding: 7px 15px;
+    }
+    .pm-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    @media (max-width: 860px) {
+      .pm-panel {
+        grid-template-columns: 1fr;
+        max-height: 92vh;
+      }
+      .pm-media {
+        aspect-ratio: 4 / 5;
+        max-height: 46vh;
+      }
+      .pm-media img {
+        min-height: 0;
+      }
+    }
+  </style>
 </BaseLayout>
