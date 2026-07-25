@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroEditorial from '../components/HeroEditorial.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
 import LocationCard from '../components/LocationCard.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { WA_DEFAULT, FORM_ACTION, PHONE } from '../data/constants';
@@ -25,38 +26,41 @@ const profMap = professionals.reduce(
   currentPage="agendamento"
   breadcrumbs={[{ name: 'Agendamento', url: '/agendamento' }]}
 >
-  <HeroEditorial
-    label="agendamento"
-    title="Comece pelo<br /><em>plano.</em>"
-    sub="Você conta o que sente, a equipe indica o caminho. A forma mais rápida de marcar sua avaliação é pelo WhatsApp."
-    stars={true}
-    ctaHref={WA}
-    ctaLabel="falar pelo whatsapp"
-    ctaIntent="agendamento-hero"
-    secondaryHref="#formulario"
-    secondaryLabel="prefiro deixar meus dados"
-    image="/clinic/recepcao.webp"
-    imageAlt="Recepção da ecooa em Moinhos de Vento"
-    imageCaption="recepção · moinhos de vento"
-  />
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-cream);min-height:44vh">
+    <svg
+      class="wsv u-op-26"
+      viewBox="0 0 1440 400"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="#cac7b8" stroke-width="1"
+        ><WavePattern count={7} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl r">agendamento</div>
+      <h1 class="h1 r d1 u-mt-18">Inicie sua<br /><em>jornada de cuidado.</em></h1>
+      <p class="body r d2" style="margin-top:16px;max-width:440px">
+        A forma mais rápida de marcar sua avaliação é pelo WhatsApp. Estamos prontos para te
+        receber.
+      </p>
+    </div>
+  </div>
 
-  <!-- WhatsApp como canal principal + onde estamos -->
-  <section
-    style="background:var(--color-warm);padding:96px var(--section-px)"
-    aria-label="Informações de contato"
-  >
-    <div style="max-width:1280px;margin:0 auto">
-      <div
-        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:56px;align-items:start"
-      >
+  <Marquee />
+
+  <!-- Contato -->
+  <section class="u-bg-warm" aria-label="Informações de contato">
+    <div class="w">
+      <div class="g2">
         <div>
-          <div class="lbl r" style="margin-bottom:16px">canal principal</div>
+          <div class="lbl r u-mb-16">entre em contato</div>
           <h2 class="h2 r d1" style="margin-bottom:20px;font-size:clamp(26px,3vw,42px)">
             Prefira o <em>WhatsApp.</em><br />É mais rápido.
           </h2>
-          <p class="body r d2" style="max-width:440px;margin-bottom:36px">
-            Nossa equipe responde durante o horário de atendimento e orienta você sobre o melhor
-            profissional para o seu caso.
+          <p class="body r d2 u-mb-32">
+            Nossa equipe responde pelo WhatsApp durante o horário de atendimento. Para agendamentos,
+            dúvidas sobre serviços ou orientações, é o canal mais ágil e direto.
           </p>
           <div class="r d3">
             <a
@@ -64,7 +68,6 @@ const profMap = professionals.reduce(
               target="_blank"
               rel="noopener noreferrer"
               class="bd"
-              data-intent="agendamento-contato"
               style="display:inline-flex;align-items:center;gap:11px;margin-bottom:12px"
             >
               <svg width="17" height="17" viewBox="0 0 24 24" fill="white" aria-hidden="true"
@@ -107,10 +110,9 @@ const profMap = professionals.reduce(
     </div>
   </section>
 
-  <!-- Formulário de agendamento -->
+  <!-- Formulário de contato -->
   <section
-    id="formulario"
-    style="background:var(--color-cream);padding:112px var(--section-px);scroll-margin-top:80px"
+    style="background:var(--color-cream);padding:86px 60px"
     aria-label="Formulário de agendamento"
   >
     <div style="max-width:500px;margin:0 auto">
@@ -121,7 +123,7 @@ const profMap = professionals.reduce(
       >
         Deixe seus dados.<br />Nós <em>entramos em contato.</em>
       </h2>
-      <p class="body r d2" style="margin-bottom:36px;text-align:center">
+      <p class="body r d2" style="margin-bottom:32px;text-align:center">
         Responderemos em até 24 horas no seu WhatsApp.
       </p>
 
@@ -130,7 +132,7 @@ const profMap = professionals.reduce(
         id="match-handoff"
         hidden
         aria-live="polite"
-        style="background:var(--color-warm);border:1px solid var(--color-stone);border-left:2px solid var(--color-gold);padding:14px 16px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start"
+        style="background:var(--color-cream);border:1px solid var(--color-brand-light);border-left:3px solid var(--color-brand);padding:14px 16px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start"
       >
         <svg
           width="16"
@@ -327,6 +329,6 @@ const profMap = professionals.reduce(
   <CtaSection
     showAgendar={false}
     heading="A primeira conversa<br>é o passo mais <em>importante.</em>"
-    subtext="Estamos prontos para te receber em Moinhos de Vento."
+    subtext="Estamos prontos para te receber."
   />
 </BaseLayout>

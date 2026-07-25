@@ -7,12 +7,10 @@ import RiskReversalBadge from './RiskReversalBadge.astro';
 import { GOOGLE_REVIEWS } from '../data/constants';
 
 interface Props {
-  label?: string;
+  label: string;
   title: string; // HTML permitido (<br>, <em>)
   support?: string;
-  sub?: string;
-  signature?: boolean; // "o cuidado que ecooa."
-
+  sub: string;
   ctaHref: string;
   ctaLabel: string;
   ctaIntent?: string;
@@ -32,7 +30,6 @@ const {
   title,
   support,
   sub,
-  signature = false,
   ctaHref,
   ctaLabel,
   ctaIntent,
@@ -52,17 +49,10 @@ const {
   <span class="lux-vertical" aria-hidden="true">{vertical}</span>
   <div class="lux-hero-grid">
     <div class="lux-hero-copy">
-      {label && <div class="lbl lbl-rule r">{label}</div>}
+      <div class="lbl lbl-rule r">{label}</div>
       <h1 class="lux-title r d1" set:html={title} />
-      {
-        signature && (
-          <p class="sig-line r d2" style="margin-top:22px">
-            o cuidado que <span class="sig-mark">ecooa</span>.
-          </p>
-        )
-      }
       {support && <p class="lux-support r d2">{support}</p>}
-      {sub && <p class="lux-sub r d2">{sub}</p>}
+      <p class="lux-sub r d2">{sub}</p>
       <div class="lux-actions r d3">
         <a
           href={ctaHref}
@@ -82,17 +72,8 @@ const {
       <slot />
       {
         stars && (
-          <a
-            href={GOOGLE_REVIEWS}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="stars-quiet r d4"
-            style="margin-top:24px"
-          >
-            <span class="st-glyphs" aria-hidden="true">
-              ★ ★ ★ ★ ★
-            </span>{' '}
-            5.0 no Google
+          <a href={GOOGLE_REVIEWS} target="_blank" rel="noopener noreferrer" class="lux-stars r d4">
+            <span aria-hidden="true">★★★★★</span> 5.0 no Google
           </a>
         )
       }

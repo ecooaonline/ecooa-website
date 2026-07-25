@@ -1,14 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroEditorial from '../components/HeroEditorial.astro';
-import MaskedWordBand from '../components/MaskedWordBand.astro';
-import EspelhoSection from '../components/EspelhoSection.astro';
-import GuiaSection from '../components/GuiaSection.astro';
-import FaqVisivel from '../components/FaqVisivel.astro';
-import CtaSection from '../components/CtaSection.astro';
-import { WA_BASE } from '../data/constants';
-import { getCollection } from 'astro:content';
-
 const categoryLabels: { [key: string]: string } = {
   medicina: 'Medicina',
   estetica: 'Estética',
@@ -17,10 +7,24 @@ const categoryLabels: { [key: string]: string } = {
   longevidade: 'Longevidade',
   ecooa: 'ecooa',
 };
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
+import HeroEditorial from '../components/HeroEditorial.astro';
+import MaskedWordBand from '../components/MaskedWordBand.astro';
+import FaqVisivel from '../components/FaqVisivel.astro';
+import EspelhoSection from '../components/EspelhoSection.astro';
+import ProtocoloCard from '../components/ProtocoloCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RiskReversalBadge from '../components/RiskReversalBadge.astro';
+import PrimeiroPassoCTA from '../components/PrimeiroPassoCTA.astro';
+import ProvaViva from '../components/ProvaViva.astro';
+import GuiaSection from '../components/GuiaSection.astro';
+import { WA_BASE } from '../data/constants';
+import { getCollection } from 'astro:content';
 
-const wa = (text: string) => `${WA_BASE}?text=${encodeURIComponent(text)}`;
-
-const WA_NUTRI = wa('Olá, gostaria de agendar uma avaliação com a equipe de nutrição da ecooa');
+const WA_NUTRI = `${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma avaliação com a equipe de nutrição da ecooa')}`;
 
 const allNutriPosts = await getCollection(
   'blog',
@@ -29,52 +33,6 @@ const allNutriPosts = await getCollection(
 const nutriPosts = allNutriPosts
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
   .slice(0, 3);
-
-const programas = [
-  {
-    numero: '01',
-    nome: 'Paz com a Comida',
-    desc: 'Para quem come por ansiedade e sente culpa fora do plano. Nutrição comportamental, com trabalho sobre gatilhos e hábitos e, quando faz sentido, integração com a psicologia da casa.',
-    waText: 'Olá, gostaria de saber mais sobre o programa Paz com a Comida',
-    intent: 'working-programa-paz',
-  },
-  {
-    numero: '02',
-    nome: 'Emagrecimento 360',
-    desc: 'Para quem já tentou de tudo e quer emagrecer com método, dados e acompanhamento. Nutricionista e médico dividindo o mesmo caso, bioimpedância periódica e plano ancorado no Método Gehrke 360°.',
-    waText: 'Olá, gostaria de saber mais sobre o programa Emagrecimento 360',
-    intent: 'working-programa-emagrecimento',
-  },
-  {
-    numero: '03',
-    nome: 'Suporte às Canetas Emagrecedoras',
-    desc: 'Para quem usa ou vai usar canetas emagrecedoras (análogos de GLP-1) e quer fazer isso direito. Nutrição para proteger massa magra e sustentar o resultado, em parceria com o acompanhamento médico, quando há indicação.',
-    waText:
-      'Olá, uso caneta emagrecedora e gostaria de suporte nutricional para proteger o resultado',
-    intent: 'working-programa-canetas',
-  },
-  {
-    numero: '04',
-    nome: 'Performance',
-    desc: 'Para quem treina de verdade e quer composição corporal, energia e recuperação. Nutrição esportiva com periodização alimentar e suplementação baseada em exames.',
-    waText: 'Olá, gostaria de avaliação de nutrição esportiva',
-    intent: 'working-programa-performance',
-  },
-  {
-    numero: '05',
-    nome: 'Nutrição Vegana Segura',
-    desc: 'Para veganos e vegetarianos que querem segurança nutricional de verdade, sem julgamento. Planejamento plant-based com análise bioquímica e nutricionistas referência na área.',
-    waText: 'Olá, sigo alimentação vegana e gostaria de acompanhamento nutricional especializado',
-    intent: 'working-programa-vegana',
-  },
-  {
-    numero: '06',
-    nome: 'Beleza de Dentro pra Fora',
-    desc: 'Para quem quer pele, cabelo e unhas saudáveis a partir do prato. Nutrição estética integrada aos tratamentos da casa, com avaliação de exames e plano individualizado.',
-    waText: 'Olá, gostaria de avaliação de nutrição estética',
-    intent: 'working-programa-beleza',
-  },
-];
 
 const workingFaqs = [
   {
@@ -110,13 +68,21 @@ const workingFaqs = [
     ctaHref={WA_NUTRI}
     ctaLabel="agendar minha avaliação"
     ctaIntent="working-hero"
-    secondaryHref="#programas"
-    secondaryLabel="conhecer os programas"
     badges={['primeira consulta sem compromisso', 'respondemos em minutos']}
     image="/clinic/working.webp"
     imageAlt="Espaço da ecooa.working em Moinhos de Vento"
-    imageCaption="ecooa.working · moinhos de vento"
+    imageCaption="nutrição que ecooa"
     vertical="corpo · energia · equilíbrio"
+  />
+
+  <Marquee />
+
+  <ProvaViva
+    items={[
+      '12 nutricionistas, um só prontuário',
+      'primeira consulta sem compromisso',
+      'desde 2021',
+    ]}
   />
 
   <MaskedWordBand word="corpo" image="/clinic/working.webp" label="nutrição que ecooa" />
@@ -162,50 +128,117 @@ const workingFaqs = [
     closing="Cada uma dessas frases tem um plano por trás. Feito para a sua vida real."
   />
 
-  <!-- Programas de nutrição -->
+  <!-- Empatia -->
   <section
-    style="background:var(--color-warm);padding:96px var(--section-px)"
-    aria-label="Programas de nutrição"
-    id="programas"
+    style="background:var(--color-cream);padding:64px var(--section-px)"
+    aria-label="Entendemos você"
   >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl r" style="margin-bottom:14px">programas de nutrição</div>
-      <h2 class="h2 r d1" style="margin-bottom:18px">
-        Um programa com nome<br />para cada <em>objetivo.</em>
-      </h2>
-      <p class="body r d2" style="max-width:560px;margin-bottom:56px">
-        12 nutricionistas especializadas, um só prontuário. Você é atendida por quem melhor responde
-        ao seu caso, e o plano é dividido com o seu médico dentro da mesma clínica.
+    <div class="u-narrow">
+      <p class="body r" style="color:var(--color-ink-soft);line-height:1.9;font-size:14px">
+        Você já tentou dieta da moda, cortou grupos alimentares inteiros, fez jejuns sem orientação.
+        Perdeu peso, voltou a ganhar. Sente culpa quando come algo fora do plano. Sabe que precisa
+        de ajuda profissional, mas não sabe por onde começar.
       </p>
-      <div style="max-width:1100px">
-        {
-          programas.map((p, i) => (
-            <article class={`prog-row r d${Math.min(i % 3, 2)}`}>
-              <div>
-                <p class="prog-num">{p.numero}</p>
-                <h3 class="prog-nome">{p.nome}</h3>
-              </div>
-              <div>
-                <p class="body" style="max-width:640px;margin-bottom:14px">
-                  {p.desc}
-                </p>
-                <a
-                  href={wa(p.waText)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="ghost"
-                  data-intent={p.intent}
-                >
-                  conversar sobre este programa <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </article>
-          ))
-        }
+      <p
+        class="body r d1"
+        style="color:var(--color-ink);line-height:1.9;font-size:14px;margin-top:14px;font-weight:400"
+      >
+        Na ecooa, nutrição é ciência e escuta. Em bom português: a gente mede antes de mudar, e
+        escuta antes de medir. Sem julgamento, sem fórmula mágica.
+      </p>
+      <CtaBand
+        label="quero começar diferente"
+        waText="Olá, quero começar um acompanhamento nutricional diferente do que já tentei"
+        intent="working-empatia"
+        badges={['primeira consulta sem compromisso']}
+      />
+    </div>
+  </section>
+
+  <!-- Foto do espaço -->
+  <section
+    style="background:var(--color-cream);padding:0;overflow:hidden"
+    aria-label="Nosso espaço"
+  >
+    <div style="position:relative;width:100%;aspect-ratio:16/6;overflow:hidden">
+      <OptimizedImage
+        src="/clinic/working.webp"
+        alt="Espaço de coworking premium da ecooa.working"
+        width={1200}
+        height={799}
+        class="u-cover"
+      />
+    </div>
+  </section>
+
+  <!-- Nutrição para pacientes -->
+  <section class="u-bg-cream" aria-label="Nutrição para pacientes" id="programas">
+    <div class="w">
+      <div class="lbl r" style="margin-bottom:15px">programas de nutrição</div>
+      <h2 class="h2 r d1 u-mb-14">Um programa com nome<br />para cada <em>objetivo.</em></h2>
+      <p class="body r d2" style="margin-bottom:44px;max-width:640px">
+        12 nutricionistas especializadas em diferentes áreas, integradas ao ecossistema ecooa. Você
+        é atendida por quem melhor responde ao seu caso, com toda a estrutura de uma clínica
+        premium.
+      </p>
+      <div class="g3">
+        <ProtocoloCard
+          numero="01"
+          nome="Paz com a Comida"
+          paraQuem="Para quem come por ansiedade, sente culpa fora do plano e quer mudar a relação com a comida antes de mudar o prato."
+          inclui="Nutrição comportamental, com trabalho sobre gatilhos e hábitos e, quando faz sentido, integração com a psicologia da casa."
+          waText="Olá, gostaria de saber mais sobre o programa Paz com a Comida"
+          intent="working-programa-paz"
+        />
+        <ProtocoloCard
+          numero="02"
+          nome="Emagrecimento 360"
+          delay="d1"
+          paraQuem="Para quem já tentou de tudo e quer emagrecer com método, dados e acompanhamento."
+          inclui="Nutricionista e médico dividindo o mesmo caso, bioimpedância periódica e plano que cabe na sua rotina, ancorado no Método Gehrke 360°."
+          traducao="bioimpedância é uma balança inteligente que separa músculo, gordura e água, para o plano partir de dados e não de achismo."
+          waText="Olá, gostaria de saber mais sobre o programa Emagrecimento 360"
+          intent="working-programa-emagrecimento"
+        />
+        <ProtocoloCard
+          numero="03"
+          nome="Suporte às Canetas Emagrecedoras"
+          delay="d2"
+          paraQuem="Para quem usa ou vai usar canetas emagrecedoras (análogos de GLP-1, como semaglutida e tirzepatida) e quer fazer isso direito."
+          inclui="Nutrição para proteger massa magra e sustentar o resultado, em parceria com o acompanhamento médico, quando há indicação."
+          waText="Olá, uso caneta emagrecedora e gostaria de suporte nutricional para proteger o resultado"
+          intent="working-programa-canetas"
+        />
+        <ProtocoloCard
+          numero="04"
+          nome="Performance"
+          paraQuem="Para quem treina de verdade e quer composição corporal, energia e recuperação."
+          inclui="Nutrição esportiva com avaliação de composição corporal, periodização alimentar e suplementação baseada em exames."
+          waText="Olá, gostaria de avaliação de nutrição esportiva"
+          intent="working-programa-performance"
+        />
+        <ProtocoloCard
+          numero="05"
+          nome="Nutrição Vegana Segura"
+          delay="d1"
+          paraQuem="Para veganos e vegetarianos que querem segurança nutricional de verdade, sem julgamento."
+          inclui="Planejamento plant-based com análise bioquímica e ciência aplicada, com nutricionistas referência na área."
+          waText="Olá, sigo alimentação vegana e gostaria de acompanhamento nutricional especializado"
+          intent="working-programa-vegana"
+        />
+        <ProtocoloCard
+          numero="06"
+          nome="Beleza de Dentro pra Fora"
+          delay="d2"
+          paraQuem="Para quem quer pele, cabelo e unhas saudáveis a partir do prato."
+          inclui="Nutrição estética integrada aos tratamentos da casa, com avaliação de exames e plano individualizado."
+          waText="Olá, gostaria de avaliação de nutrição estética"
+          intent="working-programa-beleza"
+        />
       </div>
       <p
-        class="r d2"
-        style="margin-top:32px;font-size:13px;font-weight:300;color:var(--color-ink-soft);max-width:640px"
+        class="body r d2"
+        style="margin-top:28px;font-size:13px;color:var(--color-ink-soft);max-width:640px"
       >
         Também por aqui: análise de exames e testes genéticos, prescrição de suplementos,
         bioimpedância e soroterapia nutricional sob supervisão médica.
@@ -213,85 +246,113 @@ const workingFaqs = [
     </div>
   </section>
 
-  <!-- Bioimpedância: porta de entrada (pontuação escura) -->
-  <section
-    style="background:var(--color-ink);padding:96px var(--section-px)"
-    aria-label="Bioimpedância"
-    id="bioimpedancia"
-  >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl lbl-lt r" style="margin-bottom:14px">comece por aqui</div>
-      <h2 class="h2 h2-w r d1" style="margin-bottom:18px">
-        A gente mede antes de mudar.<br /><em>E escuta antes de medir.</em>
-      </h2>
-      <p class="body body-lt r d2" style="max-width:540px;margin-bottom:14px">
-        Avaliação de composição corporal por bioimpedância. Em bom português: uma balança
-        inteligente que separa músculo, gordura e água, para o seu plano partir de dados, não de
-        achismo.
-      </p>
-      <p class="body body-lt r d2" style="max-width:540px;margin-bottom:36px">
-        Rápida, indolor e com devolutiva explicada. O ponto de partida ideal para qualquer programa.
-      </p>
-      <div class="r d3">
+  <!-- Bioimpedância: porta de entrada -->
+  <section class="u-bg-warm" aria-label="Bioimpedância" id="bioimpedancia">
+    <div class="w" style="max-width:760px;margin:0 auto">
+      <div
+        class="r"
+        style="background:var(--color-white);border:1px solid var(--color-stone);border-left:3px solid var(--color-brand);padding:36px 32px"
+      >
+        <p
+          style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:10px"
+        >
+          comece por aqui
+        </p>
+        <h2
+          style="font-family:var(--font-serif);font-size:clamp(20px,2.4vw,28px);font-weight:300;color:var(--color-ink);line-height:1.3;margin-bottom:12px"
+        >
+          Avaliação de composição corporal<br /><em style="font-style:italic">por bioimpedância.</em
+          >
+        </h2>
+        <p class="body" style="margin-bottom:6px">
+          Em bom português: uma balança inteligente que separa músculo, gordura e água, para o seu
+          plano partir de dados, não de achismo.
+        </p>
+        <p style="font-size:12px;font-weight:300;color:var(--color-ink-soft);margin-bottom:20px">
+          Rápida, indolor e com devolutiva explicada. O ponto de partida ideal para qualquer
+          programa.
+        </p>
         <a
-          href={wa('Olá, gostaria de agendar uma avaliação de bioimpedância na ecooa')}
+          href={`${WA_BASE}?text=${encodeURIComponent('Olá, gostaria de agendar uma avaliação de bioimpedância na ecooa')}`}
           target="_blank"
           rel="noopener noreferrer"
-          class="bw"
-          data-intent="working-bioimpedancia">agendar minha bioimpedância</a
+          class="bd"
+          data-intent="working-bioimpedancia"
+          style="display:inline-block">agendar minha bioimpedância</a
         >
       </div>
-      <p
-        class="r d3"
-        style="margin-top:16px;font-size:11px;font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.03em"
-      >
-        Primeira consulta sem compromisso. Você decide se quer continuar.
-      </p>
     </div>
   </section>
 
-  <!-- Integração nutri + médico, com prova social discreta -->
-  <section
-    style="background:var(--color-cream);padding:96px var(--section-px)"
-    aria-label="Integração com a medicina"
-  >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl r" style="margin-bottom:14px">o diferencial da casa</div>
-      <h2 class="h2 r d1" style="margin-bottom:18px">
-        Sua nutri e seu médico<br />conversam <em>entre si.</em>
-      </h2>
-      <p class="body r d2" style="max-width:520px;margin-bottom:48px">
-        Aqui a nutricionista e o médico dividem exames, protocolo e evolução do mesmo caso. Você não
-        carrega exames de um lado para o outro: sua história anda junta.
-      </p>
-      <div class="gr-grid r d2">
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Achava que nutrição era só dieta restritiva. O plano que recebi respeita minha rotina e
-            os resultados vieram de forma natural."
+  <!-- Integração -->
+  <section class="u-bg-warm" aria-label="Integração com a medicina">
+    <div class="w">
+      <div class="g2 g2c">
+        <div>
+          <div class="lbl r">o diferencial da casa</div>
+          <h2 class="h2 r d1 u-mt-15">Sua nutri e seu médico<br />conversam <em>entre si.</em></h2>
+          <p class="body r d2 u-mt-18">
+            Aqui a nutricionista e o médico dividem exames, protocolo e evolução do mesmo caso. Você
+            não carrega exames de um lado para o outro: sua história anda junta.
           </p>
-          <p class="gr-author">G. V.</p>
         </div>
-        <div class="gr-card">
-          <p class="gr-quote">
-            "A nutricionista e o endocrinologista trabalham juntos aqui dentro. Isso mudou tudo no
-            meu processo de emagrecimento."
-          </p>
-          <p class="gr-author">L. D.</p>
+        <div class="r d2">
+          <div class="card-w">
+            <p class="q-serif">
+              "A nutricionista e o endocrinologista trabalham juntos aqui dentro. Isso mudou tudo no
+              meu processo de emagrecimento."
+            </p>
+            <p class="sm-soft">L.D. · depoimento publicado com autorização</p>
+          </div>
         </div>
-        <div class="gr-card">
-          <p class="gr-quote">
-            "Sou vegana e sempre foi difícil achar profissional que levasse minha escolha a sério.
-            Aqui encontrei nutrição com ciência e sem julgamento."
+      </div>
+    </div>
+  </section>
+
+  <FaqVisivel faqs={workingFaqs} heading="Dúvidas sobre<br><em>nutrição.</em>" />
+
+  <!-- Como funciona -->
+  <section class="u-bg-cream" aria-label="Como funciona">
+    <div class="w">
+      <div class="lbl r u-mb-16">sua jornada</div>
+      <h2 class="h2 r d1 u-mb-44">como <em>funciona</em></h2>
+      <div
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:960px;margin:0 auto"
+      >
+        <div class="r u-tac">
+          <span class="step-num">1</span>
+          <h3 class="it-t">Agendamento</h3>
+          <p class="it-d">
+            Entre em contato pelo WhatsApp e marque sua consulta de nutrição no melhor horário.
           </p>
-          <p class="gr-author">I. C.</p>
+        </div>
+        <div class="r d1 u-tac">
+          <span class="step-num">2</span>
+          <h3 class="it-t">Avaliação nutricional</h3>
+          <p class="it-d">
+            Anamnese completa, bioimpedância e análise da sua rotina alimentar e objetivos.
+          </p>
+        </div>
+        <div class="r d2 u-tac">
+          <span class="step-num">3</span>
+          <h3 class="it-t">Plano alimentar</h3>
+          <p class="it-d">
+            Planejamento individualizado, adaptado à sua vida real, sem fórmulas genéricas.
+          </p>
+        </div>
+        <div class="r d3 u-tac">
+          <span class="step-num">4</span>
+          <h3 class="it-t">Acompanhamento</h3>
+          <p class="it-d">
+            Retornos regulares para ajustar o plano e acompanhar sua evolução de perto.
+          </p>
         </div>
       </div>
       <p
         class="r d3"
-        style="margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+        style="text-align:center;margin-top:36px;font-size:13px;font-weight:400;color:var(--color-brand-text);letter-spacing:.02em"
       >
-        Depoimentos reais publicados com autorização dos pacientes.
+        Primeira consulta sem compromisso. Você decide se quer continuar.
       </p>
     </div>
   </section>
@@ -302,36 +363,68 @@ const workingFaqs = [
     subtext="Nutricionistas especializadas em diferentes áreas, atendendo com a estrutura de uma clínica premium e dividindo o seu caso com o seu médico."
   />
 
+  <!-- Depoimentos -->
+  <section class="u-bg-cream" aria-label="Depoimentos de pacientes">
+    <div class="w">
+      <div class="lbl r u-mb-16">depoimentos</div>
+      <h2 class="h2 r d1 u-mb-44">o que nossos pacientes <em>dizem</em></h2>
+      <div class="grid-auto-260">
+        <div class="r card-w">
+          <p class="q-serif">
+            "Achava que nutrição era só dieta restritiva. O plano que recebi respeita minha rotina e
+            os resultados vieram de forma natural."
+          </p>
+          <p class="sm-soft">G.V.</p>
+        </div>
+        <div class="r d1 card-w">
+          <p class="q-serif">
+            "A nutricionista e o endocrinologista trabalham juntos aqui dentro. Isso mudou tudo no
+            meu processo de emagrecimento."
+          </p>
+          <p class="sm-soft">L.D.</p>
+        </div>
+        <div class="r d2 card-w">
+          <p class="q-serif">
+            "Sou vegana e sempre foi difícil achar profissional que levasse minha escolha a sério.
+            Aqui encontrei nutrição com ciência e sem julgamento."
+          </p>
+          <p class="sm-soft">I.C.</p>
+        </div>
+      </div>
+      <p
+        class="r d3"
+        style="text-align:center;margin-top:24px;font-size:11px;font-weight:300;color:var(--color-ink-soft);letter-spacing:.02em"
+      >
+        Depoimentos reais publicados com autorização dos pacientes.
+      </p>
+    </div>
+  </section>
+
   <!-- Artigos relacionados -->
   {
     nutriPosts.length > 0 && (
-      <section
-        style="background:var(--color-cream);padding:88px var(--section-px)"
-        aria-label="Artigos relacionados"
-      >
-        <div style="max-width:1280px;margin:0 auto">
-          <div class="lbl r" style="margin-bottom:36px">
-            do nosso blog
-          </div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px">
+      <section class="u-bg-warm" aria-label="Artigos relacionados">
+        <div class="w">
+          <div class="lbl r u-mb-16">do nosso blog</div>
+          <h2 class="h2 r d1 u-mb-44">
+            artigos <em>relacionados</em>
+          </h2>
+          <div class="grid-auto-260">
             {nutriPosts.map((post, i) => (
               <a
                 href={`/blog/${post.id}`}
-                class={`r d${Math.min(i, 3)}`}
-                style="display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:30px 28px;background:var(--color-white);border:1px solid var(--color-stone)"
+                class={`r d${i}`}
+                style="display:block;background:var(--color-cream);border:1px solid var(--color-stone);padding:28px 24px;text-decoration:none;transition:border-color .2s ease"
               >
-                <span style="font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text);margin-bottom:12px">
+                <p style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;text-transform:lowercase;margin-bottom:10px">
                   {categoryLabels[post.data.category] || post.data.category}
-                </span>
-                <span style="font-family:var(--font-serif);font-size:18px;font-weight:400;color:var(--color-ink);line-height:1.4;margin-bottom:12px">
+                </p>
+                <h3 style="font-size:15px;font-weight:400;color:var(--color-ink);line-height:1.5;margin-bottom:8px">
                   {post.data.title}
-                </span>
-                <span
-                  class="ghost"
-                  style="margin-top:auto;font-size:11px;color:var(--color-brand-text)"
-                >
-                  ler artigo <span aria-hidden="true">→</span>
-                </span>
+                </h3>
+                <p style="font-size:12px;font-weight:300;line-height:1.7;color:var(--color-ink-soft)">
+                  {post.data.description}
+                </p>
               </a>
             ))}
           </div>
@@ -340,12 +433,11 @@ const workingFaqs = [
     )
   }
 
-  <FaqVisivel faqs={workingFaqs} heading="Dúvidas sobre<br><em>nutrição.</em>" />
-
   <!-- Link discreto B2B -->
   <section
-    style="background:var(--color-warm);padding:0 var(--section-px) 48px"
+    class="u-bg-warm"
     aria-label="Para nutricionistas"
+    style="padding:24px var(--section-px)"
   >
     <p
       class="r"
@@ -359,39 +451,12 @@ const workingFaqs = [
     </p>
   </section>
 
-  <CtaSection
+  <PrimeiroPassoCTA
     heading="A sua próxima relação com a comida<br>começa <em>numa conversa.</em>"
     subtext="Agende sua avaliação e descubra como um plano feito para a sua vida real muda a sua relação com a saúde."
+    waText="Olá, gostaria de agendar uma avaliação com a equipe de nutrição da ecooa"
+    label="agendar minha avaliação"
+    intent="working-primeiro-passo"
+    badges={['primeira consulta sem compromisso', 'respondemos em minutos']}
   />
 </BaseLayout>
-
-<style>
-  .prog-row {
-    display: grid;
-    grid-template-columns: 240px 1fr;
-    gap: 16px 56px;
-    border-top: 1px solid var(--color-stone);
-    padding: 32px 0;
-  }
-  .prog-num {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    color: var(--color-brand-text);
-    margin-bottom: 10px;
-  }
-  .prog-nome {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 23px;
-    font-weight: 400;
-    color: var(--color-ink);
-    line-height: 1.3;
-  }
-  @media (max-width: 720px) {
-    .prog-row {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-  }
-</style>

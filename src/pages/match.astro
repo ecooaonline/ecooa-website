@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroEditorial from '../components/HeroEditorial.astro';
+import WavePattern from '../components/WavePattern.astro';
+import Marquee from '../components/Marquee.astro';
 import CtaSection from '../components/CtaSection.astro';
 import { curatedIntents } from '../data/match-intents';
 
@@ -54,85 +55,46 @@ const pageDescription =
     })}
   />
 
-  <HeroEditorial
-    label="ecooa.match"
-    title="Encontre o profissional<br /><em>certo</em> para você."
-    sub="Descreva em poucas palavras o que você está buscando. A triagem sugere os 3 especialistas mais adequados entre os 30 profissionais da casa, em segundos, sem cadastro."
-    ctaHref="#triagem"
-    ctaLabel="começar a triagem"
-    ctaIntent="match-hero"
-    ctaExternal={false}
-    secondaryHref="/profissionais"
-    secondaryLabel="ver todos os profissionais"
-    image="/clinic/recepcao.webp"
-    imageAlt="Recepção da ecooa em Moinhos de Vento, Porto Alegre"
-    imageCaption="recepção · moinhos de vento"
-  />
-
-  <!-- Triagem inteligente -->
-  <section
-    id="triagem"
-    style="background:var(--color-cream);padding:96px var(--section-px)"
-    aria-label="Triagem inteligente"
-  >
-    <div class="match-wrap">
-      <div class="lbl r" style="margin-bottom:14px">triagem inteligente</div>
-      <h2 class="h2 r d1" style="margin-bottom:32px">O que você <em>precisa?</em></h2>
-
-      <form id="match-form" class="match-form r d2" autocomplete="off">
-        <label for="match-input" class="sr-only">Descreva o que você busca</label>
-        <textarea
-          id="match-input"
-          name="query"
-          rows="2"
-          maxlength="240"
-          placeholder="Ex: quero emagrecer, meu cabelo está caindo, tenho ansiedade..."
-          required
-          aria-describedby="match-help"></textarea>
-        <div class="match-form-row">
-          <p id="match-help" class="match-help">máx. 240 caracteres</p>
-          <button type="submit" class="bd" id="match-submit">encontrar profissional</button>
-        </div>
-      </form>
-
-      <div class="match-chips r d3" aria-label="Acessos rápidos">
-        <p class="match-chips-label">ou escolha um tema:</p>
-        <div class="match-chips-list">
-          {
-            quickChips.map((intent) => (
-              <button
-                type="button"
-                class="tag-pill match-chip"
-                data-intent-id={intent!.id}
-                data-intent-query={intent!.query}
-              >
-                {intent!.label}
-              </button>
-            ))
-          }
-        </div>
-      </div>
-
-      <div id="match-results" class="match-results" aria-live="polite"></div>
-
-      <div class="match-empty" id="match-empty">
-        <p>Conte o que você busca e sugerimos quem pode te atender.</p>
-      </div>
+  <!-- Hero -->
+  <div class="ph" style="background:var(--color-ink);min-height:52vh">
+    <svg
+      class="wsv u-op-05"
+      viewBox="0 0 1440 500"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+      ><g fill="none" stroke="white" stroke-width="1"
+        ><WavePattern count={8} x0={-100} y0={80} step={55} width={1600} /></g
+      ></svg
+    >
+    <div class="ph-c">
+      <div class="lbl lbl-lt r">ecooa.match</div>
+      <h1 class="h1 h1-w r d1 u-mt-10">Encontre o profissional<br /><em>certo para você.</em></h1>
+      <p class="body body-lt r d2" style="margin-top:16px;max-width:560px">
+        Descreva em poucas palavras o que você está buscando. Nossa triagem inteligente sugere os 3
+        especialistas mais adequados entre os 30 profissionais da ecooa.
+      </p>
+      <p
+        class="r d3"
+        style="margin-top:14px;font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.05em;max-width:560px"
+      >
+        Tudo roda no seu navegador. Nenhuma palavra sua sai do seu dispositivo.
+      </p>
     </div>
-  </section>
+  </div>
+
+  <Marquee />
 
   <!-- Como funciona -->
-  <section
-    style="background:var(--color-warm);padding:96px var(--section-px)"
-    aria-label="Como funciona"
-  >
-    <div style="max-width:1280px;margin:0 auto">
-      <div class="lbl r" style="margin-bottom:14px">como funciona</div>
-      <h2 class="h2 r d1" style="margin-bottom:56px">Triagem <em>rápida e privada.</em></h2>
+  <section class="u-bg-cream" aria-label="Como funciona">
+    <div class="w">
+      <div class="lbl r u-mb-16">como funciona</div>
+      <h2 class="h2 r d1 u-mb-32" style="font-size:clamp(24px,2.8vw,38px)">
+        Triagem <em>rápida e privada.</em>
+      </h2>
       <div class="match-how">
         <div class="match-how-step r d1">
           <div class="match-how-num">01</div>
-          <h3>descreva</h3>
+          <h3>Descreva</h3>
           <p>
             Escreva em linguagem natural o que você está sentindo ou buscando. Sintomas, objetivos,
             dúvidas: o que quiser.
@@ -140,15 +102,15 @@ const pageDescription =
         </div>
         <div class="match-how-step r d2">
           <div class="match-how-num">02</div>
-          <h3>analisamos</h3>
+          <h3>Analisamos</h3>
           <p>
-            A engine cruza sua descrição com as especialidades dos 30 profissionais. Sinônimos,
+            Nossa engine cruza sua descrição com as especialidades dos 30 profissionais. Sinônimos,
             contexto clínico e curadoria médica são considerados.
           </p>
         </div>
         <div class="match-how-step r d3">
           <div class="match-how-num">03</div>
-          <h3>conecte</h3>
+          <h3>Conecte</h3>
           <p>
             Você recebe os 3 profissionais mais compatíveis. Escolha com quem tem mais afinidade e
             agende a consulta direto pelo WhatsApp.
@@ -170,8 +132,74 @@ const pageDescription =
         </svg>
         <p>
           Sua busca não é enviada para nenhum servidor. Toda a triagem acontece localmente no seu
-          navegador. Nenhuma palavra sua sai do seu dispositivo.
+          navegador.
         </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Match interface -->
+  <section class="u-bg-warm" aria-label="Triagem inteligente">
+    <div class="w">
+      <div class="match-wrap">
+        <div class="lbl r u-mb-16">triagem inteligente</div>
+        <h2 class="h2 r d1 u-mb-24" style="font-size:clamp(24px,2.8vw,38px)">
+          O que você <em>precisa?</em>
+        </h2>
+
+        <form id="match-form" class="match-form r d2" autocomplete="off">
+          <label for="match-input" class="sr-only">Descreva o que você busca</label>
+          <textarea
+            id="match-input"
+            name="query"
+            rows="2"
+            maxlength="240"
+            placeholder="Ex: quero emagrecer, meu cabelo está caindo, tenho ansiedade..."
+            required
+            aria-describedby="match-help"></textarea>
+          <div class="match-form-row">
+            <p id="match-help" class="match-help">máx. 240 caracteres</p>
+            <button type="submit" class="bd" id="match-submit">encontrar profissional</button>
+          </div>
+        </form>
+
+        <div class="match-chips r d3" aria-label="Acessos rápidos">
+          <p class="match-chips-label">ou escolha um tema:</p>
+          <div class="match-chips-list">
+            {
+              quickChips.map((intent) => (
+                <button
+                  type="button"
+                  class="tag-pill match-chip"
+                  data-intent-id={intent!.id}
+                  data-intent-query={intent!.query}
+                >
+                  {intent!.label}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div id="match-results" class="match-results" aria-live="polite"></div>
+
+        <div class="match-empty" id="match-empty">
+          <svg
+            width="36"
+            height="36"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+          </svg>
+          <p>Conte o que você busca e sugerimos quem pode te atender.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -188,7 +216,7 @@ const pageDescription =
     margin: 0 auto;
   }
   .match-form {
-    background: var(--color-warm);
+    background: var(--color-cream);
     border: 1px solid var(--color-stone);
     padding: 20px;
     transition: border-color 0.2s;
@@ -247,7 +275,6 @@ const pageDescription =
     border: 1px solid var(--color-stone);
     background: transparent;
     font-family: inherit;
-    text-transform: lowercase;
     transition: all 0.15s;
   }
   .match-chip:hover {
@@ -259,15 +286,16 @@ const pageDescription =
     margin-top: 36px;
     padding: 40px 20px;
     text-align: center;
-    border-top: 1px solid var(--color-stone);
-    border-bottom: 1px solid var(--color-stone);
+    color: var(--color-ink-ghost);
+    border: 1px dashed var(--color-stone);
+  }
+  .match-empty svg {
+    margin-bottom: 12px;
+    opacity: 0.5;
   }
   .match-empty p {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--color-ink-soft);
+    font-size: 14px;
+    font-weight: 300;
     margin: 0;
   }
   .match-empty.is-hidden {
@@ -284,7 +312,7 @@ const pageDescription =
     gap: 18px;
     align-items: center;
     padding: 16px;
-    background: var(--color-warm);
+    background: var(--color-cream);
     border: 1px solid var(--color-stone);
     text-decoration: none;
     color: inherit;
@@ -334,7 +362,7 @@ const pageDescription =
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--color-brand-deep);
-    border: 1px solid var(--color-stone);
+    border: 1px solid var(--color-brand-deep);
     padding: 3px 8px;
   }
   .match-card-actions {
@@ -370,50 +398,50 @@ const pageDescription =
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--color-brand-deep);
-    border: 1px solid var(--color-stone);
+    background: rgba(88, 73, 64, 0.07);
     padding: 5px 10px;
     margin-bottom: 14px;
   }
   .match-how {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 36px;
-    max-width: 1100px;
-    margin-bottom: 48px;
+    gap: 28px;
+    margin-bottom: 36px;
   }
   .match-how-step {
-    padding-top: 20px;
-    border-top: 1px solid var(--color-brand-mid);
+    padding-top: 16px;
+    border-top: 1px solid var(--color-stone);
   }
   .match-how-num {
-    font-size: 10px;
-    font-weight: 500;
+    font-family: var(--font-serif);
+    font-size: 11px;
+    font-weight: 400;
     color: var(--color-brand-text);
-    letter-spacing: 0.18em;
+    letter-spacing: 0.12em;
     margin-bottom: 10px;
   }
   .match-how-step h3 {
     font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 22px;
+    font-weight: 300;
     color: var(--color-ink);
-    margin: 0 0 10px;
+    margin: 0 0 8px;
   }
   .match-how-step p {
     font-size: 13px;
     font-weight: 300;
     color: var(--color-ink-soft);
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
   }
   .match-privacy {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    padding: 18px 20px;
-    border-left: 1px solid var(--color-gold);
-    max-width: 560px;
+    gap: 10px;
+    padding: 16px 18px;
+    background: var(--color-warm);
+    border-left: 2px solid var(--color-brand-deep);
+    max-width: 620px;
   }
   .match-privacy svg {
     color: var(--color-brand-deep);
@@ -424,13 +452,13 @@ const pageDescription =
     font-size: 12px;
     font-weight: 400;
     color: var(--color-ink-soft);
-    line-height: 1.7;
+    line-height: 1.6;
     margin: 0;
   }
   @media (max-width: 720px) {
     .match-how {
       grid-template-columns: 1fr;
-      gap: 24px;
+      gap: 18px;
     }
     .match-card {
       grid-template-columns: 64px 1fr;

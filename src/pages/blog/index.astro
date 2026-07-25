@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Marquee from '../../components/Marquee.astro';
 import WavePattern from '../../components/WavePattern.astro';
 import CtaSection from '../../components/CtaSection.astro';
 import { getCollection } from 'astro:content';
@@ -33,7 +34,7 @@ const categories = [
   currentPage="blog"
   breadcrumbs={[{ name: 'Blog', url: '/blog' }]}
 >
-  <!-- Hero editorial -->
+  <!-- Hero -->
   <div class="ph u-bg-cream">
     <svg
       class="wsv u-op-26"
@@ -54,16 +55,23 @@ const categories = [
     </div>
   </div>
 
-  <!-- Categorias -->
-  <section
-    style="background:var(--color-warm);padding:44px var(--section-px) 0"
-    aria-label="Categorias do blog"
-  >
-    <div class="blog-chips r" style="max-width:1240px;margin:0 auto">
-      <a href="/blog" class="tag-pill chip-active">todas</a>
+  <Marquee />
+
+  <!-- Categories -->
+  <section style="background:var(--color-warm);padding:32px var(--section-px) 0">
+    <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center" class="r">
+      <a
+        href="/blog"
+        style="text-decoration:none;display:inline-block;padding:8px 14px;border-radius:20px;background:var(--color-ink);color:white;font-size:11px;font-weight:500"
+        >todas</a
+      >
       {
         categories.map((cat) => (
-          <a href={`/blog/categoria/${cat.slug}`} class="tag-pill">
+          <a
+            href={`/blog/categoria/${cat.slug}`}
+            class="tag-pill"
+            style="text-decoration:none;display:inline-block;padding:8px 14px;border-radius:20px;background:var(--color-stone);color:var(--color-ink-soft);font-size:11px;font-weight:500;transition:all .2s ease;border:none;cursor:pointer"
+          >
             {cat.label}
           </a>
         ))
@@ -71,33 +79,35 @@ const categories = [
     </div>
   </section>
 
-  <!-- Destaque editorial -->
+  <!-- Destaque -->
   {
     posts.length > 0 && (
       <section
-        style="background:var(--color-warm);padding:48px var(--section-px) 8px"
+        style="background:var(--color-warm);padding:56px var(--section-px) 8px"
         aria-label="Artigo em destaque"
       >
         <div style="max-width:1240px;margin:0 auto">
           <a
             href={`/blog/${posts[0].id}`}
-            class="r feat-card"
-            style="display:block;text-decoration:none;color:inherit;background:var(--color-mist);border:1px solid var(--color-stone);padding:clamp(36px,6vw,88px)"
+            class="r"
+            style="display:block;text-decoration:none;color:inherit;background:var(--color-mist);border:1px solid var(--color-stone);padding:clamp(32px,5vw,72px)"
           >
-            <div style="display:flex;gap:14px;margin-bottom:22px;align-items:center;flex-wrap:wrap">
-              <span class="tag-pill">em destaque</span>
-              <span style="font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text)">
+            <div style="display:flex;gap:14px;margin-bottom:18px;align-items:center;flex-wrap:wrap">
+              <span style="font-size:9px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--color-brand-text);border:1px solid var(--color-stone);padding:5px 12px;border-radius:20px">
+                em destaque
+              </span>
+              <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">
                 {categoryLabels[posts[0].data.category] || posts[0].data.category}
               </span>
             </div>
-            <h2 style="font-family:var(--font-serif);font-size:clamp(30px,4.2vw,56px);font-weight:500;color:var(--color-ink);line-height:1.08;letter-spacing:-.02em;margin-bottom:18px;max-width:900px">
+            <h2 style="font-family:var(--font-serif);font-size:clamp(28px,3.8vw,52px);font-weight:500;color:var(--color-ink);line-height:1.1;letter-spacing:-.02em;margin-bottom:16px;max-width:900px">
               {posts[0].data.title}
             </h2>
-            <p class="body" style="max-width:620px;margin-bottom:24px">
+            <p style="font-size:15px;font-weight:300;color:var(--color-ink-soft);line-height:1.8;max-width:640px;margin-bottom:18px">
               {posts[0].data.description}
             </p>
-            <span class="ghost" style="font-size:11px">
-              ler artigo <span aria-hidden="true">→</span>
+            <span style="font-size:11px;font-weight:500;color:var(--color-ink);letter-spacing:.06em">
+              ler artigo →
             </span>
           </a>
         </div>
@@ -105,23 +115,23 @@ const categories = [
     )
   }
 
-  <!-- Grade de artigos -->
+  <!-- Posts -->
   <section
-    style="background:var(--color-warm);padding:48px var(--section-px) 88px"
+    style="background:var(--color-warm);padding:48px var(--section-px) 72px"
     aria-label="Artigos"
   >
     <div
-      style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--color-stone);border:1px solid var(--color-stone)"
+      style="max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;background:var(--color-stone);border:1px solid var(--color-stone)"
     >
       {
         posts.slice(1).map((post, i, arr) => (
           <a
             href={`/blog/${post.id}`}
-            class="r post-cell"
-            style={`display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:34px 30px;background:var(--color-cream)${i === arr.length - 1 ? ';grid-column:1/-1' : ''}`}
+            style={`display:flex;flex-direction:column;text-decoration:none;color:inherit;padding:32px 28px;background:var(--color-warm)${i === arr.length - 1 ? ';grid-column:1/-1' : ''}`}
+            class="r"
           >
-            <div style="display:flex;gap:10px;margin-bottom:14px;align-items:baseline;flex-wrap:wrap">
-              <span style="font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-text)">
+            <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+              <span style="font-size:9px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-brand-text)">
                 {categoryLabels[post.data.category] || post.data.category}
               </span>
               <span style="font-size:9px;font-weight:300;color:var(--color-ink-soft)">
@@ -135,14 +145,11 @@ const categories = [
             <h2 style="font-family:var(--font-serif);font-size:19px;font-weight:400;color:var(--color-ink);line-height:1.35;letter-spacing:-.01em;margin-bottom:10px">
               {post.data.title}
             </h2>
-            <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">
+            <p style="font-size:13px;font-weight:300;color:var(--color-ink-soft);line-height:1.7;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">
               {post.data.description}
             </p>
-            <span
-              class="ghost"
-              style="margin-top:auto;font-size:11px;color:var(--color-brand-text)"
-            >
-              ler artigo <span aria-hidden="true">→</span>
+            <span style="font-size:11px;font-weight:400;color:var(--color-brand-text);letter-spacing:.04em;margin-top:auto">
+              ler artigo →
             </span>
           </a>
         ))
@@ -150,21 +157,22 @@ const categories = [
     </div>
   </section>
 
-  <!-- Newsletter: pontuação escura -->
-  <section style="background:var(--color-warm);padding:0 var(--section-px) 96px">
+  <!-- Newsletter -->
+  <section style="background:var(--color-warm);padding:0 var(--section-px) 48px">
     <div style="max-width:900px;margin:0 auto">
-      <div
-        style="padding:clamp(40px,6vw,64px) 36px;background:var(--color-ink);text-align:center"
-        class="r"
-      >
-        <p class="lbl lbl-lt" style="justify-content:center;margin-bottom:16px">semana em saúde</p>
+      <div style="padding:36px;background:var(--color-ink);text-align:center" class="r">
         <p
-          style="font-family:var(--font-serif);font-size:clamp(22px,3vw,28px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:10px"
+          style="font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-light);margin-bottom:12px"
+        >
+          semana em saúde
+        </p>
+        <p
+          style="font-family:var(--font-serif);font-size:clamp(20px,3vw,24px);font-weight:300;color:var(--color-white);line-height:1.3;margin-bottom:8px"
         >
           A ecooa te atualizando<br />sobre o <em>mundo da saúde.</em>
         </p>
         <p
-          style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:26px"
+          style="font-size:13px;font-weight:300;color:var(--color-brand-mid);line-height:1.7;margin-bottom:22px"
         >
           Novidades e conteúdo exclusivo em primeira mão. Sem spam, a cada 15 dias.
         </p>
@@ -219,41 +227,3 @@ const categories = [
     subtext="Agende sua avaliação e converse com nossos especialistas."
   />
 </BaseLayout>
-
-<style>
-  .blog-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  .blog-chips .tag-pill {
-    text-decoration: none;
-    background: transparent;
-    transition:
-      background 0.25s ease,
-      color 0.25s ease,
-      border-color 0.25s ease;
-  }
-  .blog-chips .tag-pill:hover {
-    background: var(--color-ink);
-    color: var(--color-white);
-    border-color: var(--color-ink);
-  }
-  .blog-chips .chip-active {
-    background: var(--color-ink);
-    color: var(--color-white);
-    border-color: var(--color-ink);
-  }
-  .feat-card {
-    transition: background 0.3s ease;
-  }
-  .feat-card:hover {
-    background: var(--color-cream);
-  }
-  .post-cell {
-    transition: background 0.3s ease;
-  }
-  .post-cell:hover {
-    background: var(--color-mist);
-  }
-</style>
