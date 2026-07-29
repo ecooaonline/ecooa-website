@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://www.somosecooa.com.br/qual-profissional-procurar">
+<link rel="icon" type="image/svg+xml" href="assets/logo/ecooa-mark.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ecooa">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://www.somosecooa.com.br/qual-profissional-procurar">
+<meta property="og:title" content="ecooa.match · busca por IA para encontrar o profissional certo em Porto Alegre">
+<meta property="og:description" content="Descreva o que você procura ou responda algumas perguntas curtas. O ecooa.match organiza a sua necessidade e aponta os profissionais da ecooa que atendem cada caminho. Orienta a escolha e não substitui uma consulta.">
+<meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>ecooa.match · busca por IA para encontrar o profissional certo em Porto Alegre</title>
+<meta name="description" content="Descreva o que você procura ou responda algumas perguntas curtas. O ecooa.match organiza a sua necessidade e aponta os profissionais da ecooa que atendem cada caminho. Orienta a escolha e não substitui uma consulta.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
+    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#83817B;
+    --grafite:#63615C; --tinta:#46443F; --escuro:#2B2926;
+    --muted:#66645E; --legenda:#5C5A55; --sobre-escuro:rgba(240,238,233,.92);
+    --rule:rgba(70,68,63,.16); --rule-forte:rgba(70,68,63,.3);
+    --foto:saturate(.9) contrast(1.02);
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Baskerville,Georgia,serif;
+    --sans:"Helvetica Neue","Avenir Next","Segoe UI",Arial,sans-serif;
+    --relevo:8px 8px 20px rgba(150,147,140,.22), -8px -8px 20px rgba(255,255,255,.95);
+    --relevo-carta:7px 7px 16px rgba(150,147,140,.2), -7px -7px 16px rgba(255,255,255,.95);
+    --relevo-botao:5px 5px 12px rgba(150,147,140,.32), -5px -5px 12px rgba(255,255,255,.98);
+    --afundado:inset 3px 3px 7px rgba(150,147,140,.3), inset -3px -3px 7px rgba(255,255,255,.95);
+  }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-wrap:break-word; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  button { font:inherit; color:inherit; }
+  ::selection { background:#DEDCD6; color:#46443F; }
+  :focus-visible { outline:2px solid #63615C; outline-offset:3px; }
+  @keyframes ec-sobe { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+</style>
+<script src="dados-ecooa.js"></script>
+</helmet>
+
+<div style="background:var(--fundo); color:var(--muted); min-height:100vh; overflow-x:hidden;">
+  <dc-import name="Sobrancelha" ativo="busca" hint-size="100%,76px"></dc-import>
+
+  <section style="padding:clamp(112px,14vh,168px) clamp(20px,3.2vw,56px) clamp(28px,4vw,52px); background:var(--fundo) url('assets/ressonancia/03-resposta.png') center / cover no-repeat; background-blend-mode:multiply;">
+    <div style="max-width:1180px; margin:0 auto;">
+      <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>ecooa.match</div>
+      <h1 style="margin:26px 0 0; max-width:17ch; font-family:var(--serif); font-weight:400; font-size:clamp(36px,5.4vw,80px); line-height:.98; letter-spacing:-.026em; color:var(--tinta); text-wrap:pretty;">Busca por IA para encontrar o profissional certo.</h1>
+      <p style="margin:26px 0 0; max-width:58ch; font-size:17px; line-height:1.68;">Escolha como prefere começar. Nos dois caminhos você recebe uma leitura do que entendemos, os caminhos possíveis e quem atende cada um deles.</p>
+    </div>
+  </section>
+
+  <!-- ESCOLHA DO CAMINHO -->
+  <sc-if value="{{ ehEscolha }}" hint-placeholder-val="{{ true }}">
+    <section style="padding:0 clamp(20px,3.2vw,56px) clamp(72px,9vw,130px); background:var(--fundo);">
+      <div style="max-width:1180px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(14px,1.6vw,22px);">
+        <button type="button" onClick="{{ vaiTexto }}" style="text-align:left; border:0; cursor:pointer; background:var(--elevado); padding:clamp(28px,3vw,46px); box-shadow:var(--relevo); display:flex; flex-direction:column; justify-content:space-between; gap:30px; min-height:280px;">
+          <span style="display:block;">
+            <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">com as suas palavras</span>
+            <span style="display:block; margin-top:20px; max-width:18ch; font-family:var(--serif); font-size:clamp(24px,2.4vw,34px); line-height:1.1; color:var(--tinta);">Escreva o que você procura.</span>
+            <span style="display:block; margin-top:16px; max-width:38ch; font-size:15px; line-height:1.64; color:var(--muted);">Uma frase basta. Por exemplo: procuro médico para implante hormonal, ou meu cabelo está caindo muito.</span>
+          </span>
+          <span style="display:inline-flex; align-items:center; gap:10px; font-size:11.5px; letter-spacing:.16em; color:var(--grafite);">escrever <span aria-hidden="true">→</span></span>
+        </button>
+        <button type="button" onClick="{{ vaiPerguntas }}" style="text-align:left; border:0; cursor:pointer; background:var(--elevado); padding:clamp(28px,3vw,46px); box-shadow:var(--relevo); display:flex; flex-direction:column; justify-content:space-between; gap:30px; min-height:280px;">
+          <span style="display:block;">
+            <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">passo a passo</span>
+            <span style="display:block; margin-top:20px; max-width:18ch; font-family:var(--serif); font-size:clamp(24px,2.4vw,34px); line-height:1.1; color:var(--tinta);">Responda cinco perguntas curtas.</span>
+            <span style="display:block; margin-top:16px; max-width:38ch; font-size:15px; line-height:1.64; color:var(--muted);">Com a opção de dizer que ainda não sabe em todas elas. Leva menos de um minuto.</span>
+          </span>
+          <span style="display:inline-flex; align-items:center; gap:10px; font-size:11.5px; letter-spacing:.16em; color:var(--grafite);">começar <span aria-hidden="true">→</span></span>
+        </button>
+      </div>
+      <p style="margin:26px auto 0; max-width:70ch; font-size:13px; line-height:1.66; color:var(--legenda);">O ecooa.match orienta a escolha do profissional e não faz diagnóstico, não indica tratamento e não substitui uma consulta. Em caso de urgência, procure atendimento médico imediato.</p>
+    </section>
+  </sc-if>
+
+  <!-- CAMPO LIVRE -->
+  <sc-if value="{{ ehTexto }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:0 clamp(20px,3.2vw,56px) clamp(72px,9vw,130px); background:var(--fundo);">
+      <div style="max-width:1180px; margin:0 auto;">
+        <div style="background:var(--elevado); padding:clamp(28px,4vw,64px); box-shadow:var(--relevo); animation:ec-sobe .3s cubic-bezier(.16,1,.3,1) both;">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">com as suas palavras</span>
+            <button type="button" onClick="{{ recomecar }}" style="background:none; border:0; cursor:pointer; padding:0; font-size:12px; letter-spacing:.08em; color:var(--legenda);"><span aria-hidden="true">←</span> voltar</button>
+          </div>
+          <h2 style="margin:26px 0 0; max-width:22ch; font-family:var(--serif); font-weight:400; font-size:clamp(25px,3vw,42px); line-height:1.1; color:var(--tinta);">O que você procura?</h2>
+          <p style="margin:14px 0 0; max-width:56ch; font-size:15px; line-height:1.64;">Escreva com naturalidade. Não precisa saber o nome do procedimento nem da especialidade.</p>
+          <form onSubmit="{{ enviarTexto }}" style="margin-top:28px;">
+            <label for="ec-queixa" style="display:block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--legenda);">sua frase</label>
+            <textarea id="ec-queixa" rows="3" value="{{ textoAtual }}" onChange="{{ mudaTexto }}" placeholder="procuro médico para implante hormonal" style="margin-top:12px; width:100%; padding:18px 20px; border:0; background:var(--fundo); color:var(--tinta); font-family:var(--sans); font-size:16px; line-height:1.6; box-shadow:var(--afundado); resize:vertical;"></textarea>
+            <div style="margin-top:20px; display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between;">
+              <span style="font-size:12.5px; line-height:1.6; color:var(--legenda);">Sua frase não é armazenada. Ela só orienta a sugestão desta tela.</span>
+              <button type="submit" style="flex:0 0 auto; min-height:52px; padding:0 32px; border:0; border-radius:999px; cursor:pointer; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">ver sugestão</button>
+            </div>
+          </form>
+          <div style="margin-top:32px; padding-top:26px; border-top:1px solid var(--rule);">
+            <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">exemplos</span>
+            <div style="margin-top:16px; display:flex; flex-wrap:wrap; gap:9px;">
+              <sc-for list="{{ exemplos }}" as="ex" hint-placeholder-count="5">
+                <button type="button" onClick="{{ ex.usar }}" style="border:0; border-radius:999px; cursor:pointer; min-height:42px; padding:0 20px; font-size:13px; background:var(--fundo); color:var(--grafite); box-shadow:var(--relevo-botao);">{{ ex.texto }}</button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- PERGUNTAS -->
+  <sc-if value="{{ ehPerguntas }}" hint-placeholder-val="{{ false }}">
+    <section style="padding:0 clamp(20px,3.2vw,56px) clamp(72px,9vw,130px); background:var(--fundo);">
+      <div style="max-width:1180px; margin:0 auto;">
+        <div style="background:var(--elevado); padding:clamp(28px,4vw,64px); box-shadow:var(--relevo);">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+            <span style="font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">pergunta {{ numero }} de {{ total }}</span>
+            <button type="button" onClick="{{ voltar }}" style="background:none; border:0; cursor:pointer; padding:0; font-size:12px; letter-spacing:.08em; color:var(--legenda);"><span aria-hidden="true">←</span> {{ rotuloVoltar }}</button>
+          </div>
+          <div style="margin-top:14px; height:3px; background:var(--nevoa); box-shadow:var(--afundado);"><span style="display:block; width:{{ progresso }}; height:3px; background:var(--grafite-claro);"></span></div>
+
+          <h2 style="margin:32px 0 0; max-width:22ch; font-family:var(--serif); font-weight:400; font-size:clamp(25px,3vw,42px); line-height:1.1; color:var(--tinta);">{{ pergunta }}</h2>
+          <p style="margin:14px 0 0; max-width:56ch; font-size:15px; line-height:1.64;">{{ ajuda }}</p>
+
+          <div style="margin-top:32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px;">
+            <sc-for list="{{ opcoes }}" as="o" hint-placeholder-count="5">
+              <button type="button" onClick="{{ o.escolher }}" style="text-align:left; border:0; cursor:pointer; background:{{ o.bg }}; color:var(--tinta); padding:20px 24px; font-size:15.5px; line-height:1.5; box-shadow:{{ o.sombra }};">
+                {{ o.rotulo }}
+                <sc-if value="{{ o.nota }}" hint-placeholder-val="{{ false }}">
+                  <span style="display:block; margin-top:7px; font-size:13px; line-height:1.5; color:var(--muted);">{{ o.nota }}</span>
+                </sc-if>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <p style="margin:26px auto 0; max-width:70ch; font-size:13px; line-height:1.66; color:var(--legenda);">O ecooa.match orienta a escolha do profissional e não faz diagnóstico, não indica tratamento e não substitui uma consulta. Em caso de urgência, procure atendimento médico imediato.</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- RESULTADO -->
+  <sc-if value="{{ concluido }}" hint-placeholder-val="{{ false }}">
+    <div style="animation:ec-sobe .32s cubic-bezier(.16,1,.3,1) both;">
+      <section style="padding:0 clamp(20px,3.2vw,56px) clamp(48px,6vw,88px); background:var(--fundo);">
+        <div style="max-width:1180px; margin:0 auto;">
+          <div style="background:var(--elevado); padding:clamp(28px,4vw,64px); box-shadow:var(--relevo);">
+            <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">o que entendemos</span>
+            <p style="margin:22px 0 0; max-width:40ch; font-family:var(--serif); font-size:clamp(24px,2.8vw,38px); line-height:1.16; color:var(--tinta);">{{ leitura }}</p>
+
+            <sc-if value="{{ temFrase }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:26px; padding:20px 24px; background:var(--fundo); box-shadow:var(--afundado);">
+                <span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">você escreveu</span>
+                <span style="display:block; margin-top:10px; font-family:var(--serif); font-size:clamp(17px,1.6vw,21px); line-height:1.4; color:var(--tinta);">{{ frase }}</span>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ temRespostas }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px;">
+                <sc-for list="{{ respostas }}" as="r" hint-placeholder-count="4">
+                  <div style="padding:18px 20px; background:var(--fundo); box-shadow:var(--relevo-carta);">
+                    <span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">{{ r.campo }}</span>
+                    <span style="display:block; margin-top:8px; font-size:14.5px; line-height:1.5; color:var(--tinta);">{{ r.valor }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <p style="margin:30px 0 0; max-width:64ch; font-size:15.5px; line-height:1.7;">{{ porque }}</p>
+            <div style="margin-top:32px; display:flex; flex-wrap:wrap; gap:14px;">
+              <a href="{{ waResultado }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; min-height:52px; padding:0 32px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">falar com a ecooa sobre isso</a>
+              <button type="button" onClick="{{ recomecar }}" style="display:inline-flex; align-items:center; min-height:52px; padding:0 32px; border:0; border-radius:999px; cursor:pointer; background:var(--fundo); color:var(--grafite); font-size:11.5px; letter-spacing:.16em; box-shadow:var(--relevo-botao);">fazer outra busca</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <sc-if value="{{ temSugeridos }}" hint-placeholder-val="{{ true }}">
+        <section style="background:var(--nuvem);">
+          <div style="padding:clamp(48px,6vw,96px) clamp(20px,3.2vw,56px) clamp(30px,4vw,48px); max-width:1600px; margin:0 auto;">
+            <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>caminho sugerido</div>
+            <h2 style="margin:22px 0 0; max-width:20ch; font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.4vw,48px); line-height:1.04; color:var(--tinta);">{{ tituloCaminho }}</h2>
+            <p style="margin:18px 0 0; max-width:60ch; font-size:16px; line-height:1.68;">{{ descricaoCaminho }}</p>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1px; background:var(--nuvem); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
+            <sc-for list="{{ sugeridos }}" as="p" hint-placeholder-count="4">
+              <a href="profissionais.html" style="background:var(--nuvem); display:block; box-shadow:0 0 0 1px var(--stone);">
+                <span style="display:block; position:relative; overflow:hidden; background:var(--nevoa); aspect-ratio:2/3;">
+                  <img src="{{ p.foto }}" alt="{{ p.alt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
+                </span>
+                <span style="display:block; padding:22px 24px 28px;">
+                  <span style="display:block; font-family:var(--serif); font-size:21px; line-height:1.14; color:var(--tinta);">{{ p.nome }}</span>
+                  <span style="display:block; margin-top:8px; font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--legenda);">{{ p.classe }}</span>
+                  <span style="display:block; margin-top:10px; font-size:13px; color:var(--muted);">{{ p.registro }}</span>
+                </span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="padding:clamp(30px,4vw,52px) clamp(20px,3.2vw,56px) clamp(56px,7vw,100px); max-width:1600px; margin:0 auto;">
+            <p style="margin:0; max-width:72ch; font-size:13px; line-height:1.68; color:var(--legenda);">Esta sugestão organiza a sua resposta e não é um diagnóstico. A definição do profissional e da conduta depende de avaliação individual. Se preferir, fale com a recepção e alguém da ecooa conduz a escolha com você.</p>
+          </div>
+        </section>
+      </sc-if>
+
+      <sc-if value="{{ semEntendimento }}" hint-placeholder-val="{{ false }}">
+        <section style="padding:clamp(48px,6vw,92px) clamp(20px,3.2vw,56px) clamp(64px,8vw,110px); background:var(--nuvem);">
+          <div style="max-width:1180px; margin:0 auto; display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between;">
+            <div style="flex:1 1 368px; min-width:0;">
+              <h2 style="margin:0; max-width:22ch; font-family:var(--serif); font-weight:400; font-size:clamp(26px,3vw,40px); line-height:1.06; color:var(--tinta);">Não consegui entender a sua frase com segurança.</h2>
+              <p style="margin:16px 0 0; max-width:56ch; font-size:15.5px; line-height:1.68;">Prefiro dizer isso a te mandar para o lugar errado. As cinco perguntas costumam resolver, e a recepção resolve na hora.</p>
+            </div>
+            <div style="flex:0 0 auto; display:flex; flex-wrap:wrap; gap:14px;">
+              <button type="button" onClick="{{ vaiPerguntas }}" style="display:inline-flex; align-items:center; min-height:52px; padding:0 32px; border:0; border-radius:999px; cursor:pointer; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">responder as perguntas</button>
+              <a href="{{ waResultado }}" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; min-height:52px; padding:0 32px; border-radius:999px; background:var(--nuvem); color:var(--grafite); font-size:11.5px; letter-spacing:.16em; box-shadow:var(--relevo-botao);">falar com a recepção</a>
+            </div>
+          </div>
+        </section>
+      </sc-if>
+    </div>
+  </sc-if>
+
+  <dc-import name="Rodape" hint-size="100%,760px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const D = () => (typeof window !== 'undefined' && window.ECOOA) || { profissionais: [], especialidades: [] };
+
+function reg(p) {
+  if (p.estado === 'confirmado') return p.registro;
+  if (p.estado === 'a-confirmar') return p.registro + ' · a confirmar';
+  return 'registro a adicionar';
+}
+
+const PERGUNTAS = [
+  { campo:'motivo', titulo:'O que te trouxe até aqui hoje?', ajuda:'Escolha o que mais se aproxima. Nada aqui é definitivo, e você pode mudar depois.',
+    opcoes:[
+      { v:'saude', r:'Uma queixa de saúde que não se resolve', nota:'cansaço, peso, hormônios, exames alterados' },
+      { v:'imagem', r:'Cuidar da pele, do corpo ou do rosto', nota:'dermatologia, harmonização, estética corporal' },
+      { v:'cabelo', r:'Queda de cabelo ou saúde capilar', nota:'tricologia e transplante capilar' },
+      { v:'alimentacao', r:'Alimentação, peso e performance', nota:'nutrição clínica, esportiva e comportamental' },
+      { v:'mente', r:'Saúde mental e emocional', nota:'psicologia clínica, do esporte e neuropsicologia' },
+      { v:'nao-sei', r:'Ainda não sei dizer', nota:'tudo bem, seguimos assim mesmo' },
+    ] },
+  { campo:'tempo', titulo:'Há quanto tempo isso está acontecendo?', ajuda:'O tempo ajuda a entender a urgência e o tipo de investigação.',
+    opcoes:[
+      { v:'recente', r:'Começou há poucas semanas' },
+      { v:'meses', r:'Alguns meses' },
+      { v:'anos', r:'Anos, e já tentei caminhos diferentes' },
+      { v:'preventivo', r:'Não é um problema, quero prevenir' },
+      { v:'nao-sei', r:'Não sei precisar' },
+    ] },
+  { campo:'historico', titulo:'Você já buscou ajuda para isso antes?', ajuda:'Saber o que já foi tentado evita repetir o que não funcionou.',
+    opcoes:[
+      { v:'nunca', r:'É a primeira vez que procuro' },
+      { v:'sem-resposta', r:'Já procurei e não tive resposta clara' },
+      { v:'em-acompanhamento', r:'Estou em acompanhamento e quero uma segunda opinião' },
+      { v:'parei', r:'Comecei algo e não consegui manter' },
+      { v:'nao-sei', r:'Prefiro não responder agora' },
+    ] },
+  { campo:'preferencia', titulo:'Como você prefere ser atendido?', ajuda:'Alguns profissionais atendem nos dois formatos, outros apenas presencialmente.',
+    opcoes:[
+      { v:'presencial', r:'Presencial, em Moinhos de Vento' },
+      { v:'online', r:'Online, de onde eu estiver' },
+      { v:'tanto-faz', r:'Tanto faz, quero o profissional certo' },
+      { v:'nao-sei', r:'Ainda não decidi' },
+    ] },
+  { campo:'ritmo', titulo:'O que você espera de um primeiro encontro?', ajuda:'Isso ajuda a escolher quem conduz do jeito que faz sentido para você.',
+    opcoes:[
+      { v:'entender', r:'Entender o que está acontecendo comigo' },
+      { v:'plano', r:'Sair com um plano prático para começar' },
+      { v:'segunda-opiniao', r:'Revisar o que já me disseram' },
+      { v:'escuta', r:'Ser ouvido sem pressa' },
+      { v:'nao-sei', r:'Não sei, quero ser orientado' },
+    ] },
+];
+
+const CAMINHOS = {
+  medicina: { titulo:'Medicina integrada é o ponto de partida.', desc:'Uma investigação clínica com tempo costuma organizar o que parece disperso. A partir dela, o cuidado pode se estender a nutrição, saúde mental ou outras áreas, quando fizer sentido.', leitura:'Você procura entender uma queixa de saúde que ainda não teve resposta clara.' },
+  'estetica-facial': { titulo:'Estética e dermatologia, com indicação honesta.', desc:'A avaliação vem antes do procedimento. Em muitos casos, a rotina de cuidado resolve mais do que uma intervenção isolada.', leitura:'Você quer cuidar da pele e do rosto com critério.' },
+  'estetica-corporal': { titulo:'Estética corporal, planejada em etapas.', desc:'Quando o objetivo envolve composição corporal, o cuidado caminha junto com nutrição e, quando indicado, com movimento.', leitura:'Você busca cuidado com o corpo, com plano e acompanhamento.' },
+  tricologia: { titulo:'Tricologia, para investigar antes de tratar.', desc:'Nem toda queda tem a mesma causa. A investigação define se o caminho é clínico, se envolve procedimento, ou se o transplante capilar tem indicação.', leitura:'Você quer investigar a queda de cabelo antes de tratar.' },
+  'transplante-capilar': { titulo:'Transplante capilar, com critério de indicação.', desc:'Existem critérios clínicos, e há casos em que o tratamento adequado é outro. A avaliação define isso antes de qualquer agendamento cirúrgico.', leitura:'Você considera transplante capilar e quer saber se tem indicação.' },
+  nutricao: { titulo:'Nutrição, ajustada à sua rotina real.', desc:'Doze profissionais com focos diferentes. A escolha considera o seu objetivo, o seu histórico e o que você consegue sustentar.', leitura:'Você busca alimentação e performance ajustadas à sua rotina.' },
+  'saude-mental': { titulo:'Saúde mental, com escuta sem pressa.', desc:'A primeira conversa serve para entender a demanda e combinar como o processo vai funcionar, sem pacote fechado.', leitura:'Você procura um espaço de escuta e cuidado com a saúde mental.' },
+  'saude-integrativa': { titulo:'Cuidado integrativo, junto do acompanhamento clínico.', desc:'É um cuidado complementar, que existe em diálogo com o que já acompanha você, e nunca no lugar dele.', leitura:'Você busca um cuidado complementar ao que já faz.' },
+};
+
+// Casamento por palavra-chave. Frases fora deste vocabulário caem na tela de "não entendi".
+const CHAVES = [
+  ['medicina', ['hormonio','hormônio','hormonal','hormonios','hormônios','reposicao hormonal','reposição hormonal','implante hormonal','menopausa','climaterio','climatério','testosterona','tireoide','tireóide','metabolismo','metabolico','metabólico','emagrecer','emagrecimento','perder peso','obesidade','longevidade','envelhecimento','check up','checkup','exame','exames','cansaco','cansaço','disposicao','disposição','energia','libido','insonia','insônia','colesterol','diabetes','glicemia','vitamina','medico','médico','clinico','clínico','performance']],
+  ['estetica-facial', ['pele','acne','espinha','mancha','manchas','melasma','ruga','rugas','botox','toxina','preenchimento','acido hialuronico','ácido hialurônico','harmonizacao','harmonização','hof','rosto','facial','face','dermatologista','dermatologia','rejuvenescimento','flacidez facial','olheira','olheiras','skincare','poro','poros']],
+  ['estetica-corporal', ['corpo','corporal','celulite','gordura localizada','contorno corporal','flacidez corporal','bumbum','gluteo','glúteo','abdomen','abdômen','medidas']],
+  ['tricologia', ['cabelo','cabelos','queda de cabelo','queda capilar','calvicie','calvície','alopecia','careca','couro cabeludo','capilar','tricologia','tricologista','caspa','dermatite seborreica','fio','fios','rarefacao','rarefação','entradas']],
+  ['transplante-capilar', ['transplante','transplante capilar','implante capilar','enxerto capilar','fue','cirurgia capilar']],
+  ['nutricao', ['nutricao','nutrição','nutricionista','dieta','alimentacao','alimentação','comer','cardapio','cardápio','hipertrofia','massa muscular','ganhar massa','intestino','intestinal','vegetariano','vegetariana','vegano','comportamental','compulsao','compulsão','esportiva','suplemento','suplementacao','suplementação','endometriose','ortomolecular']],
+  ['saude-mental', ['ansiedade','ansioso','ansiosa','depressao','depressão','terapia','psicologo','psicólogo','psicologa','psicóloga','psicologia','mente','emocional','estresse','stress','burnout','luto','panico','pânico','autoestima','sono','neuropsicologia','tdah','esgotamento']],
+  ['saude-integrativa', ['osteopatia','osteopata','dor nas costas','coluna','integrativa','integrativo','biorressonancia','biorressonância','funcional','holistico','holístico','fisioterapia','fisioterapeuta','postura','enxaqueca']],
+];
+
+const ROTULOS = { motivo:'o que te trouxe', tempo:'há quanto tempo', historico:'histórico', preferencia:'atendimento', ritmo:'expectativa' };
+const POR_MOTIVO = { saude:'medicina', imagem:'estetica-facial', cabelo:'tricologia', alimentacao:'nutricao', mente:'saude-mental', 'nao-sei':'medicina' };
+
+const EXEMPLOS = [
+  'procuro médico para implante hormonal',
+  'meu cabelo está caindo muito',
+  'quero emagrecer com acompanhamento',
+  'preciso de terapia para ansiedade',
+  'quero cuidar da pele do rosto',
+];
+
+function normaliza(t) {
+  return (' ' + String(t).toLowerCase() + ' ')
+    .replace(/[.,;:!?()"']/g, ' ')
+    .replace(/\s+/g, ' ');
+}
+
+function interpreta(frase) {
+  const t = normaliza(frase);
+  if (t.trim().length < 3) return null;
+  let melhor = null, melhorPeso = 0;
+  CHAVES.forEach(function (par) {
+    const esp = par[0], termos = par[1];
+    let peso = 0;
+    termos.forEach(function (k) {
+      if (t.indexOf(' ' + k) >= 0 || t.indexOf(k + ' ') >= 0) peso += k.length;
+    });
+    if (peso > melhorPeso) { melhorPeso = peso; melhor = esp; }
+  });
+  return melhorPeso >= 4 ? melhor : null;
+}
+
+class Component extends DCLogic {
+  state = { modo: null, passo: 0, respostas: {}, texto: '', esp: null, frase: '', falhou: false };
+
+  responde(campo, valor, rotulo) {
+    const r = Object.assign({}, this.state.respostas);
+    r[campo] = { valor: valor, rotulo: rotulo };
+    this.setState({ respostas: r, passo: this.state.passo + 1 });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  buscaTexto(frase) {
+    const esp = interpreta(frase);
+    this.setState({ modo: 'resultado', esp: esp, frase: frase, falhou: !esp, respostas: {} });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const dados = D();
+    const total = PERGUNTAS.length;
+    const porPerguntas = s.modo === 'perguntas';
+    const concluido = s.modo === 'resultado' || (porPerguntas && s.passo >= total);
+
+    const base = {
+      ehEscolha: s.modo === null,
+      ehTexto: s.modo === 'texto',
+      ehPerguntas: porPerguntas && s.passo < total,
+      concluido: concluido,
+      vaiTexto: () => { this.setState({ modo: 'texto', falhou: false }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      vaiPerguntas: () => { this.setState({ modo: 'perguntas', passo: 0, respostas: {}, falhou: false }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      recomecar: () => { this.setState({ modo: null, passo: 0, respostas: {}, texto: '', esp: null, frase: '', falhou: false }); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      textoAtual: s.texto,
+      mudaTexto: (e) => this.setState({ texto: e.target.value }),
+      enviarTexto: (e) => { e.preventDefault(); this.buscaTexto(s.texto); },
+      exemplos: EXEMPLOS.map((t) => ({ texto: t, usar: () => { this.setState({ texto: t }); this.buscaTexto(t); } })),
+    };
+
+    if (base.ehTexto || base.ehEscolha) return base;
+
+    if (base.ehPerguntas) {
+      const q = PERGUNTAS[s.passo];
+      const atual = s.respostas[q.campo];
+      return Object.assign(base, {
+        numero: String(s.passo + 1),
+        total: String(total),
+        progresso: Math.round(((s.passo + 1) / total) * 100) + '%',
+        pergunta: q.titulo,
+        ajuda: q.ajuda,
+        rotuloVoltar: s.passo > 0 ? 'voltar' : 'trocar de caminho',
+        voltar: () => {
+          if (s.passo > 0) this.setState({ passo: s.passo - 1 });
+          else this.setState({ modo: null });
+        },
+        opcoes: q.opcoes.map((o) => {
+          const marcada = atual && atual.valor === o.v;
+          return {
+            rotulo: o.r,
+            nota: o.nota || '',
+            bg: marcada ? '#E9E7E2' : '#F0EEE9',
+            sombra: marcada
+              ? 'inset 3px 3px 7px rgba(150,147,140,.3), inset -3px -3px 7px rgba(255,255,255,.95)'
+              : '7px 7px 16px rgba(150,147,140,.2), -7px -7px 16px rgba(255,255,255,.95)',
+            escolher: () => this.responde(q.campo, o.v, o.r),
+          };
+        }),
+      });
+    }
+
+    // resultado, vindo de qualquer um dos dois caminhos
+    const veioDeTexto = !!s.frase;
+    const motivo = (s.respostas.motivo && s.respostas.motivo.valor) || null;
+    const esp = veioDeTexto ? s.esp : POR_MOTIVO[motivo || 'nao-sei'];
+    const caminho = esp ? CAMINHOS[esp] : null;
+    const online = s.respostas.preferencia && s.respostas.preferencia.valor === 'online';
+
+    let sugeridos = [];
+    if (esp) {
+      let pool = dados.profissionais.filter((p) => (p.esp || []).indexOf(esp) >= 0);
+      if (online) {
+        const remotos = pool.filter((p) => (p.atendimento || '').indexOf('online') >= 0);
+        if (remotos.length) pool = remotos;
+      }
+      sugeridos = pool.slice(0, 4).map((p) => ({
+        nome: p.nome, classe: p.classe, registro: reg(p),
+        foto: p.foto, alt: 'Retrato de ' + p.nome,
+      }));
+    }
+
+    const respostas = Object.keys(ROTULOS).filter((k) => s.respostas[k]).map((k) => ({ campo: ROTULOS[k], valor: s.respostas[k].rotulo }));
+    const resumo = veioDeTexto
+      ? 'Escrevi no site: ' + s.frase
+      : respostas.map((r) => r.campo + ': ' + r.valor).join('. ');
+
+    return Object.assign(base, {
+      leitura: caminho ? caminho.leitura : 'Recebi a sua mensagem, mas prefiro não adivinhar o caminho.',
+      temFrase: veioDeTexto,
+      frase: s.frase,
+      temRespostas: respostas.length > 0,
+      respostas: respostas,
+      porque: caminho
+        ? caminho.desc + ' Abaixo estão profissionais da ecooa que atuam nessa área. A escolha final é sua, e a recepção ajuda se você preferir conversar antes.'
+        : 'Sem entender bem o que você precisa, qualquer indicação seria um chute. Prefiro te oferecer as perguntas guiadas ou uma conversa direta com a recepção.',
+      tituloCaminho: caminho ? caminho.titulo : '',
+      descricaoCaminho: online ? 'Priorizamos quem atende também no formato online, como você pediu.' : 'Estes profissionais atuam na área indicada pelas suas respostas.',
+      temSugeridos: sugeridos.length > 0,
+      semEntendimento: !caminho,
+      sugeridos: sugeridos,
+      waResultado: 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá, usei o ecooa.match no site. ' + resumo + '. Gostaria de orientação sobre o próximo passo.'),
+    });
+  }
+}
+</script>
+</body>
+</html>
