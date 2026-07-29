@@ -59,8 +59,8 @@
         <nav aria-label="Navegação do rodapé" style="display:grid; gap:13px; align-content:start; justify-items:{{ alinhaLinks }};">
           <a href="./" style="font-size:14px;">início</a>
           <a href="sobre.html" style="font-size:14px;">sobre</a>
-          <a href="especialidades.html" style="font-size:14px;">especialidades</a>
-          <a href="profissionais.html" style="font-size:14px;">profissionais</a>
+          <button type="button" data-menu="especialidades" aria-expanded="false" style="font-size:14px;">especialidades</button>
+          <button type="button" data-menu="profissionais" aria-expanded="false" style="font-size:14px;">profissionais</button>
           <a href="qual-profissional-procurar.html" style="font-size:14px;">busca por IA</a>
           <a href="blog.html" style="font-size:14px;">editorial</a>
           <a href="mentorias.html" style="font-size:14px;">mentorias</a>
@@ -138,6 +138,48 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+
+<script>
+/* Submenus do cabecalho. JavaScript comum, sem eval, compativel com a politica
+   de seguranca do dominio. Abre no clique, fecha no clique fora, no Escape e ao
+   abrir outro. Mantem aria-expanded sincronizado. */
+(function () {
+  var gatilhos = Array.prototype.slice.call(document.querySelectorAll('[data-menu]'));
+  var painies = Array.prototype.slice.call(document.querySelectorAll('[data-painel]'));
+  if (!gatilhos.length) return;
+
+  function fecharTodos(exceto) {
+    painies.forEach(function (p) {
+      if (p.getAttribute('data-painel') !== exceto) p.hidden = true;
+    });
+    gatilhos.forEach(function (g) {
+      if (g.getAttribute('data-menu') !== exceto) g.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  gatilhos.forEach(function (gatilho) {
+    var nome = gatilho.getAttribute('data-menu');
+    var painel = document.querySelector('[data-painel="' + nome + '"]');
+    if (!painel) return;
+    gatilho.addEventListener('click', function (e) {
+      e.preventDefault();
+      var aberto = gatilho.getAttribute('aria-expanded') === 'true';
+      fecharTodos(aberto ? null : nome);
+      gatilho.setAttribute('aria-expanded', aberto ? 'false' : 'true');
+      painel.hidden = aberto;
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    var dentro = e.target.closest && e.target.closest('[data-painel], [data-menu]');
+    if (!dentro) fecharTodos(null);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') fecharTodos(null);
+  });
+})();
 </script>
 </body>
 </html>
