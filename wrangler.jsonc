@@ -8,9 +8,9 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ecooa-website",
   "compatibility_date": "2026-06-12",
-  // Worker assets-only: site 100% estático, sem script "main".
+  // Worker assets-only: site 3.0 estático servido direto de deploy/, sem build.
   "assets": {
-    "directory": "./dist",
+    "directory": "./deploy",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash",
   },

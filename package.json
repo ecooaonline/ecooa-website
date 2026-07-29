@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/build-site.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -20,7 +20,8 @@
     "audit:deps": "npm audit --audit-level=high",
     "validate:output": "node scripts/validate-output.mjs",
     "validate": "npm run format:check && npm run check && npm run lint && npm run build && npm run validate:output",
-    "prepare": "husky"
+    "prepare": "husky",
+    "build:astro": "astro build"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
