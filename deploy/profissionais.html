@@ -134,7 +134,102 @@
   a { color:inherit; text-decoration:none; }
   button { font:inherit; color:inherit; }
   :focus-visible { outline:2px solid #C6C4BF; outline-offset:3px; }
-</style></head>
+</style>
+<style>
+/* Mosaico de profissionais: hover no desktop, legenda sempre visivel no toque. */
+@media (min-width: 1024px) {
+  [data-perfil]:hover [data-veu],
+  [data-perfil]:focus-visible [data-veu] { opacity: 1 !important; }
+  [data-perfil]:hover [data-legenda],
+  [data-perfil]:focus-visible [data-legenda] {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+/* Sem hover em tela de toque: sem isto a secao vira 31 rostos anonimos. */
+@media (max-width: 1023px) {
+  [data-perfil] [data-veu] { opacity: 1 !important; transition: none !important; }
+  [data-perfil] [data-legenda] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+[data-perfil]:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+
+/* Modal de perfil */
+.pf-ov {
+  position: fixed; inset: 0; z-index: 120;
+  background: rgba(43, 41, 38, .5); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(12px, 3vw, 52px);
+  opacity: 0; transition: opacity .3s cubic-bezier(.16, 1, .3, 1);
+}
+.pf-ov[hidden] { display: none; }
+.pf-ov.aberto { opacity: 1; }
+.pf-pn {
+  position: relative; width: 100%; max-width: 1080px; max-height: 92vh;
+  overflow-y: auto; background: #fdfdfc;
+  box-shadow: rgba(43, 41, 38, .34) 0 40px 90px;
+  display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  transform: translateY(16px); transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+.pf-ov.aberto .pf-pn { transform: translateY(0); }
+.pf-pn:focus { outline: none; }
+.pf-x {
+  position: absolute; top: 22px; right: 22px; z-index: 3;
+  width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer;
+  background: #f0eee9; color: #2b2926; font-size: 19px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: rgba(43, 41, 38, .16) 0 6px 18px;
+}
+.pf-x:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+.pf-foto { position: relative; min-height: 340px; background: #e9e7e2; }
+.pf-foto img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+.pf-vazia {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: #e9e7e2; color: #5c5a55;
+  font-family: var(--serif, Georgia, serif); font-size: 88px;
+  box-shadow: inset 0 0 40px rgba(43, 41, 38, .12);
+}
+.pf-corpo { padding: clamp(30px, 4vw, 58px) clamp(24px, 3.4vw, 56px); }
+.pf-marca {
+  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #86836f;
+}
+.pf-nome {
+  margin: 12px 0 0; font-family: var(--serif, Georgia, serif); font-weight: 400;
+  font-size: clamp(29px, 3.3vw, 45px); line-height: 1.06; letter-spacing: -.015em; color: #2b2926;
+}
+.pf-bio { margin: 20px 0 0; max-width: 46ch; font-size: 15.5px; line-height: 1.68; color: #46443f; }
+.pf-blocos {
+  margin-top: 30px; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px;
+  border-top: 1px solid rgba(134, 131, 111, .24); padding-top: 22px;
+}
+.pf-bloco dt {
+  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #86836f;
+  margin-bottom: 5px;
+}
+.pf-bloco dd { margin: 0; font-size: 14px; line-height: 1.6; color: #2b2926; }
+.pf-rot {
+  margin: 30px 0 0; font-size: 9.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: #86836f;
+}
+.pf-conduta { margin: 14px 0 0; max-width: 48ch; font-size: 15px; line-height: 1.68; color: #46443f; }
+.pf-cta {
+  margin-top: 32px; display: inline-flex; align-items: center; min-height: 52px;
+  padding: 0 32px; border-radius: 999px; background: #2b2926; color: #f0eee9;
+  font-size: 11.5px; letter-spacing: .14em; text-decoration: none;
+}
+@media (max-width: 860px) {
+  .pf-pn { grid-template-columns: 1fr; max-height: 92vh; }
+  .pf-foto { aspect-ratio: 4 / 5; min-height: 0; max-height: 44vh; }
+}
+</style>
+</head>
 <body>
 <div id="dc-root"><div class="sc-host" data-sc-name="profissionais"><div data-dc-tpl="6" style="background: var(--nuvem); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
@@ -315,7 +410,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gustavo Gehrke" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gustavo Gehrke" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="gustavo-gehrke">
             
               <img data-dc-tpl="26" src="assets/retratos/gustavo-gehrke pb.webp" alt="Retrato de Gustavo Gehrke" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -361,7 +456,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Larissa Wiebbelling" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Larissa Wiebbelling" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="larissa-wiebbelling">
             
               <img data-dc-tpl="26" src="assets/retratos/larissa pb.webp" alt="Retrato de Larissa Wiebbelling" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -373,7 +468,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Yale Jerônimo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Yale Jerônimo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="yale-jeronimo">
             
               <img data-dc-tpl="26" src="assets/retratos/yale pb.webp" alt="Retrato de Yale Jerônimo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -419,7 +514,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Müller T. Machado" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Müller T. Machado" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="vitoria-machado">
             
               <img data-dc-tpl="26" src="assets/retratos/vitoria-machado pb.webp" alt="Retrato de Vitória Müller T. Machado" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -431,7 +526,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Renata Bohn Engel" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Renata Bohn Engel" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="renata-bohn-engel">
             
               <img data-dc-tpl="26" src="assets/retratos/renata pb.webp" alt="Retrato de Renata Bohn Engel" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -477,7 +572,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jessica Stein" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jessica Stein" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jessica-stein">
             
               <img data-dc-tpl="26" src="assets/retratos/jessica .webp" alt="Retrato de Jessica Stein" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -489,7 +584,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriano Flesch Lenz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriano Flesch Lenz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="adriano-lenz">
             
               <img data-dc-tpl="26" src="assets/retratos/Adriano pb.webp" alt="Retrato de Adriano Flesch Lenz" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -535,7 +630,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Giancarla Rochemback" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Giancarla Rochemback" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="giancarla-rochemback">
             
               <img data-dc-tpl="26" src="assets/retratos/giancarla fp.webp" alt="Retrato de Giancarla Rochemback" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -547,7 +642,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Maria Luísa Serrano Beltran Borges" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Maria Luísa Serrano Beltran Borges" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="maria-luisa-borges">
             
               <img data-dc-tpl="26" src="assets/retratos/maria-luisa pb.webp" alt="Retrato de Maria Luísa Serrano Beltran Borges" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -593,7 +688,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Daniel Forster" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Daniel Forster" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="daniel-forster">
             
               <img data-dc-tpl="26" src="assets/retratos/daniel pb.webp" alt="Retrato de Daniel Forster" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -605,7 +700,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Serpa da Silva" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Serpa da Silva" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="vitoria-serpa">
             
               <img data-dc-tpl="26" src="assets/retratos/vitoria-serpa pb.webp" alt="Retrato de Vitória Serpa da Silva" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -651,7 +746,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Nasser Salem" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Nasser Salem" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="nasser-salem">
             
               <img data-dc-tpl="26" src="assets/retratos/nasser pb.webp" alt="Retrato de Nasser Salem" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -663,7 +758,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Marvin Marques" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Marvin Marques" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="marvin-marques">
             
               <img data-dc-tpl="26" src="assets/retratos/marvin.webp" alt="Retrato de Marvin Marques" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -709,7 +804,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gabrieli Klagenberg Avila" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gabrieli Klagenberg Avila" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="gabrieli-avila">
             
               <img data-dc-tpl="26" src="assets/retratos/gabrielli fp.webp" alt="Retrato de Gabrieli Klagenberg Avila" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -721,7 +816,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Camila Cadore" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Camila Cadore" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="camila-cadore">
             
               <img data-dc-tpl="26" src="assets/retratos/camila fp.webp" alt="Retrato de Camila Cadore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -767,7 +862,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Verena Cattani" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Verena Cattani" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="verena-cattani">
             
               <img data-dc-tpl="26" src="assets/retratos/verena pb.webp" alt="Retrato de Verena Cattani" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -779,7 +874,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Lara Caye" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Lara Caye" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="lara-caye">
             
               <img data-dc-tpl="26" src="assets/retratos/lara-caye pb.webp" alt="Retrato de Lara Caye" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -825,7 +920,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Danusa Pires" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Danusa Pires" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="danusa-pires">
             
               <img data-dc-tpl="26" src="assets/retratos/danusa fp.webp" alt="Retrato de Danusa Pires" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -837,7 +932,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Viviane Fagundes" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Viviane Fagundes" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="viviane-fagundes">
             
               <img data-dc-tpl="26" src="assets/retratos/viviane pb.webp" alt="Retrato de Viviane Fagundes" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -883,7 +978,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Natálie Queiroz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Natálie Queiroz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="natalie-queiroz">
             
               <img data-dc-tpl="26" src="assets/retratos/natalie pb.webp" alt="Retrato de Natálie Queiroz" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -895,7 +990,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Susan Flach" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Susan Flach" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="susan-flach">
             
               <img data-dc-tpl="26" src="assets/retratos/susan pb.webp" alt="Retrato de Susan Flach" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -941,7 +1036,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Letícia Melo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Letícia Melo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="leticia-melo">
             
               <img data-dc-tpl="26" src="assets/retratos/leticia.webp" alt="Retrato de Letícia Melo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -953,7 +1048,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Eduarda Schoenmeier" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Eduarda Schoenmeier" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="eduarda-schoenmeier">
             
               <img data-dc-tpl="26" src="assets/retratos/eduarda pb.webp" alt="Retrato de Eduarda Schoenmeier" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -999,7 +1094,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Tais de la Rosa" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Tais de la Rosa" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="tais-de-la-rosa">
             
               <img data-dc-tpl="26" src="assets/retratos/Tais pb.webp" alt="Retrato de Tais de la Rosa" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1011,7 +1106,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Karine Ellwanger" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Karine Ellwanger" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="karine-ellwanger">
             
               <img data-dc-tpl="26" src="assets/retratos/karine fp.webp" alt="Retrato de Karine Ellwanger" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1057,7 +1152,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jennifer Adam" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jennifer Adam" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jennifer-adam">
             
               <img data-dc-tpl="26" src="assets/retratos/jennifer fp.webp" alt="Retrato de Jennifer Adam" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1069,7 +1164,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jamylle Farias" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jamylle Farias" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jamylle-farias">
             
               <img data-dc-tpl="26" src="assets/retratos/jamylle pb.webp" alt="Retrato de Jamylle Farias" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1115,7 +1210,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriana" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriana" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="adriana">
             
               <img data-dc-tpl="26" src="assets/retratos/adriana pb.webp" alt="Retrato de Adriana" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1127,7 +1222,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Manuela Sinigaglia Vanti" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Manuela Sinigaglia Vanti" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="manuela-vanti">
             
               <img data-dc-tpl="26" src="assets/retratos/manuela pb.webp" alt="Retrato de Manuela Sinigaglia Vanti" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1173,7 +1268,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Augusto Kauer da Silveira" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Augusto Kauer da Silveira" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="augusto-kauer">
             
               <img data-dc-tpl="26" src="assets/retratos/augusto pb.webp" alt="Retrato de Augusto Kauer da Silveira" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1185,7 +1280,7 @@
     
       <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
         
-          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Francielle Machado Beria" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;">
+          <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Francielle Machado Beria" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="francielle-beria">
             
               <img data-dc-tpl="26" src="assets/retratos/francielly fp.webp" alt="Retrato de Francielle Machado Beria" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
@@ -1443,6 +1538,124 @@ class Component extends DCLogic {
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') fecharTodos(null);
+  });
+})();
+</script>
+
+<div class="pf-ov" id="pf-ov" hidden>
+  <div class="pf-pn" id="pf-pn" role="dialog" aria-modal="true" aria-labelledby="pf-nome" tabindex="-1">
+    <button type="button" class="pf-x" id="pf-x" aria-label="Fechar perfil">&times;</button>
+    <div class="pf-foto" id="pf-foto"></div>
+    <div class="pf-corpo">
+      <p class="pf-marca" id="pf-marca"></p>
+      <h2 class="pf-nome" id="pf-nome"></h2>
+      <p class="pf-bio" id="pf-bio"></p>
+      <dl class="pf-blocos" id="pf-blocos"></dl>
+      <p class="pf-rot">como conduz o cuidado</p>
+      <p class="pf-conduta" id="pf-conduta"></p>
+      <a class="pf-cta" id="pf-cta" href="#" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Modal de perfil do profissional. Dados de window.ECOOA.profissionais.
+   Regra obrigatoria do registro: o texto exibido depende do campo estado.
+   Publicidade em saude, a ressalva nunca e omitida. */
+(function () {
+  var ov = document.getElementById('pf-ov');
+  var pn = document.getElementById('pf-pn');
+  if (!ov || !pn || !window.ECOOA || !window.ECOOA.profissionais) return;
+
+  var porSlug = {};
+  window.ECOOA.profissionais.forEach(function (p) { porSlug[p.slug] = p; });
+  var origem = null;
+
+  function textoRegistro(p) {
+    if (p.estado === 'confirmado') return p.registro;
+    if (p.estado === 'a-confirmar') return p.registro + ' \u00b7 a confirmar';
+    return 'registro a adicionar';
+  }
+
+  function bloco(rotulo, valor) {
+    if (!valor) return '';
+    var d = document.createElement('div');
+    d.className = 'pf-bloco';
+    var dt = document.createElement('dt');
+    dt.textContent = rotulo;
+    var dd = document.createElement('dd');
+    dd.textContent = valor;
+    d.appendChild(dt); d.appendChild(dd);
+    return d;
+  }
+
+  function abrir(slug, gatilho) {
+    var p = porSlug[slug];
+    if (!p) return;
+    origem = gatilho;
+
+    var foto = document.getElementById('pf-foto');
+    foto.innerHTML = '';
+    if (p.foto) {
+      var img = document.createElement('img');
+      img.src = p.foto;
+      img.alt = 'Retrato de ' + p.nome;
+      foto.appendChild(img);
+    } else {
+      var vazia = document.createElement('span');
+      vazia.className = 'pf-vazia';
+      vazia.textContent = (p.nome || '?').charAt(0);
+      foto.appendChild(vazia);
+    }
+
+    document.getElementById('pf-marca').textContent = p.marca || '';
+    document.getElementById('pf-nome').textContent = p.nome || '';
+    document.getElementById('pf-bio').textContent = p.bio || '';
+    document.getElementById('pf-conduta').textContent = p.conduta || '';
+
+    var blocos = document.getElementById('pf-blocos');
+    blocos.innerHTML = '';
+    [['formação', p.classe], ['registro', textoRegistro(p)], ['área', p.area], ['atendimento', p.atendimento]]
+      .forEach(function (par) {
+        var b = bloco(par[0], par[1]);
+        if (b) blocos.appendChild(b);
+      });
+
+    var cta = document.getElementById('pf-cta');
+    cta.textContent = 'agendar com ' + (p.primeiro || p.nome);
+    cta.href =
+      'https://wa.me/5551991460909?text=' +
+      encodeURIComponent('Olá, gostaria de agendar com ' + p.nome + ' na ecooa.');
+
+    ov.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(function () { ov.classList.add('aberto'); pn.focus(); });
+  }
+
+  function fechar() {
+    if (ov.hidden) return;
+    ov.classList.remove('aberto');
+    document.documentElement.style.overflow = '';
+    window.setTimeout(function () { ov.hidden = true; }, 300);
+    if (origem) { origem.focus(); origem = null; }
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-perfil]');
+    if (btn) { abrir(btn.getAttribute('data-perfil'), btn); return; }
+    if (e.target === ov) fechar();
+  });
+
+  document.getElementById('pf-x').addEventListener('click', fechar);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { fechar(); return; }
+    if (e.key !== 'Tab' || ov.hidden) return;
+    var focaveis = pn.querySelectorAll('a[href], button:not([disabled])');
+    if (!focaveis.length) return;
+    var primeiro = focaveis[0], ultimo = focaveis[focaveis.length - 1];
+    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
   });
 })();
 </script>

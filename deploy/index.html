@@ -137,7 +137,102 @@
   a { color:inherit; text-decoration:none; }
   button { font:inherit; color:inherit; }
   :focus-visible { outline:2px solid #C6C4BF; outline-offset:3px; }
-</style></head>
+</style>
+<style>
+/* Mosaico de profissionais: hover no desktop, legenda sempre visivel no toque. */
+@media (min-width: 1024px) {
+  [data-perfil]:hover [data-veu],
+  [data-perfil]:focus-visible [data-veu] { opacity: 1 !important; }
+  [data-perfil]:hover [data-legenda],
+  [data-perfil]:focus-visible [data-legenda] {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+/* Sem hover em tela de toque: sem isto a secao vira 31 rostos anonimos. */
+@media (max-width: 1023px) {
+  [data-perfil] [data-veu] { opacity: 1 !important; transition: none !important; }
+  [data-perfil] [data-legenda] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+[data-perfil]:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+
+/* Modal de perfil */
+.pf-ov {
+  position: fixed; inset: 0; z-index: 120;
+  background: rgba(43, 41, 38, .5); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(12px, 3vw, 52px);
+  opacity: 0; transition: opacity .3s cubic-bezier(.16, 1, .3, 1);
+}
+.pf-ov[hidden] { display: none; }
+.pf-ov.aberto { opacity: 1; }
+.pf-pn {
+  position: relative; width: 100%; max-width: 1080px; max-height: 92vh;
+  overflow-y: auto; background: #fdfdfc;
+  box-shadow: rgba(43, 41, 38, .34) 0 40px 90px;
+  display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+  transform: translateY(16px); transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+}
+.pf-ov.aberto .pf-pn { transform: translateY(0); }
+.pf-pn:focus { outline: none; }
+.pf-x {
+  position: absolute; top: 22px; right: 22px; z-index: 3;
+  width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer;
+  background: #f0eee9; color: #2b2926; font-size: 19px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: rgba(43, 41, 38, .16) 0 6px 18px;
+}
+.pf-x:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+.pf-foto { position: relative; min-height: 340px; background: #e9e7e2; }
+.pf-foto img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+.pf-vazia {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: #e9e7e2; color: #5c5a55;
+  font-family: var(--serif, Georgia, serif); font-size: 88px;
+  box-shadow: inset 0 0 40px rgba(43, 41, 38, .12);
+}
+.pf-corpo { padding: clamp(30px, 4vw, 58px) clamp(24px, 3.4vw, 56px); }
+.pf-marca {
+  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #86836f;
+}
+.pf-nome {
+  margin: 12px 0 0; font-family: var(--serif, Georgia, serif); font-weight: 400;
+  font-size: clamp(29px, 3.3vw, 45px); line-height: 1.06; letter-spacing: -.015em; color: #2b2926;
+}
+.pf-bio { margin: 20px 0 0; max-width: 46ch; font-size: 15.5px; line-height: 1.68; color: #46443f; }
+.pf-blocos {
+  margin-top: 30px; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px;
+  border-top: 1px solid rgba(134, 131, 111, .24); padding-top: 22px;
+}
+.pf-bloco dt {
+  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #86836f;
+  margin-bottom: 5px;
+}
+.pf-bloco dd { margin: 0; font-size: 14px; line-height: 1.6; color: #2b2926; }
+.pf-rot {
+  margin: 30px 0 0; font-size: 9.5px; letter-spacing: .16em;
+  text-transform: uppercase; color: #86836f;
+}
+.pf-conduta { margin: 14px 0 0; max-width: 48ch; font-size: 15px; line-height: 1.68; color: #46443f; }
+.pf-cta {
+  margin-top: 32px; display: inline-flex; align-items: center; min-height: 52px;
+  padding: 0 32px; border-radius: 999px; background: #2b2926; color: #f0eee9;
+  font-size: 11.5px; letter-spacing: .14em; text-decoration: none;
+}
+@media (max-width: 860px) {
+  .pf-pn { grid-template-columns: 1fr; max-height: 92vh; }
+  .pf-foto { aspect-ratio: 4 / 5; min-height: 0; max-height: 44vh; }
+}
+</style>
+</head>
 <body>
 <div id="dc-root"><div class="sc-host" data-sc-name="index"><div data-dc-tpl="6" style="background: var(--fundo); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
@@ -441,280 +536,280 @@
     <div data-dc-tpl="80" style="padding: 0px clamp(20px, 3.2vw, 56px); max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="81" style="display: grid; grid-template-columns: repeat(8, minmax(0px, 1fr)); gap: clamp(4px, 0.5vw, 9px);">
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Jessica Stein, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Jessica Stein" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="jessica-stein">
             <img data-dc-tpl="84" src="assets/retratos/jessica .webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Jessica</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Gustavo Gehrke, Médico" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Gustavo Gehrke" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="gustavo-gehrke">
             <img data-dc-tpl="84" src="assets/retratos/gustavo-gehrke pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Gustavo</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Médico</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Danusa Pires, Enfermeira" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Danusa Pires" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="danusa-pires">
             <img data-dc-tpl="84" src="assets/retratos/danusa fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Danusa</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Enfermeira</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Viviane Fagundes, Biomédica" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Viviane Fagundes" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="viviane-fagundes">
             <img data-dc-tpl="84" src="assets/retratos/viviane pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Viviane</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Biomédica</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Natálie Queiroz, Osteopata e fisioterapeuta" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Natálie Queiroz" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="natalie-queiroz">
             <img data-dc-tpl="84" src="assets/retratos/natalie pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Natálie</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Osteopata e fisioterapeuta</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Larissa Wiebbelling, Médica" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Larissa Wiebbelling" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="larissa-wiebbelling">
             <img data-dc-tpl="84" src="assets/retratos/larissa pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Larissa</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Médica</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Tais de la Rosa, Farmacêutica" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Tais de la Rosa" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="tais-de-la-rosa">
             <img data-dc-tpl="84" src="assets/retratos/Tais pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Tais</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Farmacêutica</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Adriano Flesch Lenz, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Adriano Flesch Lenz" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="adriano-lenz">
             <img data-dc-tpl="84" src="assets/retratos/Adriano pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Adriano</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Giancarla Rochemback, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Giancarla Rochemback" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="giancarla-rochemback">
             <img data-dc-tpl="84" src="assets/retratos/giancarla fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Giancarla</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Maria Luísa Serrano Beltran Borges, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Maria Luísa Serrano Beltran Borges" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="maria-luisa-borges">
             <img data-dc-tpl="84" src="assets/retratos/maria-luisa pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Maria Luísa</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Augusto Kauer da Silveira, Psicólogo" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Augusto Kauer da Silveira" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="augusto-kauer">
             <img data-dc-tpl="84" src="assets/retratos/augusto pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Augusto</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Psicólogo</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Yale Jerônimo, Médica" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Yale Jerônimo" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="yale-jeronimo">
             <img data-dc-tpl="84" src="assets/retratos/yale pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Yale</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Médica</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Eduarda Schoenmeier, Biomédica esteta" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Eduarda Schoenmeier" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="eduarda-schoenmeier">
             <img data-dc-tpl="84" src="assets/retratos/eduarda pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Eduarda</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Biomédica esteta</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Renata Bohn Engel, Médica dermatologista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Renata Bohn Engel" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="renata-bohn-engel">
             <img data-dc-tpl="84" src="assets/retratos/renata pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Renata</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Médica dermatologista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Karine Ellwanger, Biomédica esteta" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Karine Ellwanger" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="karine-ellwanger">
             <img data-dc-tpl="84" src="assets/retratos/karine fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Karine</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Biomédica esteta</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Daniel Forster, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Daniel Forster" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="daniel-forster">
             <img data-dc-tpl="84" src="assets/retratos/daniel pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Daniel</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Manuela Sinigaglia Vanti, Psicóloga" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Manuela Sinigaglia Vanti" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="manuela-vanti">
             <img data-dc-tpl="84" src="assets/retratos/manuela pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Manuela</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Psicóloga</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Nasser Salem, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Nasser Salem" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="nasser-salem">
             <img data-dc-tpl="84" src="assets/retratos/nasser pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Nasser</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Vitória Müller T. Machado, Médica dermatologista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Vitória Müller T. Machado" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="vitoria-machado">
             <img data-dc-tpl="84" src="assets/retratos/vitoria-machado pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Vitória</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Médica dermatologista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Susan Flach, Biomédica" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Susan Flach" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="susan-flach">
             <img data-dc-tpl="84" src="assets/retratos/susan pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Susan</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Biomédica</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Camila Cadore, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Camila Cadore" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="camila-cadore">
             <img data-dc-tpl="84" src="assets/retratos/camila fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Camila</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Jamylle Farias, Cirurgiã-dentista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Jamylle Farias" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="jamylle-farias">
             <img data-dc-tpl="84" src="assets/retratos/jamylle pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Jamylle</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Cirurgiã-dentista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Francielle Machado Beria, Psicóloga" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Francielle Machado Beria" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="francielle-beria">
             <img data-dc-tpl="84" src="assets/retratos/francielly fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Francielle</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Psicóloga</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Letícia Melo, Biomédica" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Letícia Melo" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="leticia-melo">
             <img data-dc-tpl="84" src="assets/retratos/leticia.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Letícia</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Biomédica</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Marvin Marques, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Marvin Marques" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="marvin-marques">
             <img data-dc-tpl="84" src="assets/retratos/marvin.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Marvin</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Gabrieli Klagenberg Avila, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Gabrieli Klagenberg Avila" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="gabrieli-avila">
             <img data-dc-tpl="84" src="assets/retratos/gabrielli fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Gabrieli</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Vitória Serpa da Silva, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Vitória Serpa da Silva" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="vitoria-serpa">
             <img data-dc-tpl="84" src="assets/retratos/vitoria-serpa pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Vitória</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Lara Caye, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Lara Caye" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="lara-caye">
             <img data-dc-tpl="84" src="assets/retratos/lara-caye pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Lara</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Verena Cattani, Nutricionista" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Verena Cattani" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="verena-cattani">
             <img data-dc-tpl="84" src="assets/retratos/verena pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Verena</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Nutricionista</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Adriana, Terapeuta integrativa" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Adriana" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="adriana">
             <img data-dc-tpl="84" src="assets/retratos/adriana pb.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Adriana</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Terapeuta integrativa</span></span>
             </span>
           </button>
         
-          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Jennifer Adam, Biomédica esteta" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);">
+          <button data-dc-tpl="83" type="button" aria-label="Ver o perfil de Jennifer Adam" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; padding: 0px; border: 0px; cursor: pointer; overflow: hidden; background: var(--nevoa);" data-perfil="jennifer-adam">
             <img data-dc-tpl="84" src="assets/retratos/jennifer fp.webp" alt="" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
-            <span data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
-            <span data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
+            <span data-veu data-dc-tpl="85" style="position: absolute; inset: 0px; background: linear-gradient(to top, rgba(43, 41, 38, 0.82) 0%, rgba(43, 41, 38, 0.34) 42%, rgba(43, 41, 38, 0) 76%); opacity: 0; transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);"></span>
+            <span data-legenda data-dc-tpl="86" style="position: absolute; left: 0px; right: 0px; bottom: 0px; padding: 12px 12px 14px; text-align: left; opacity: 0; transform: translateY(8px); transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);">
               <span data-dc-tpl="87" style="display: block; font-family: var(--serif); font-size: clamp(15px, 1.35vw, 21px); line-height: 1.08; color: rgb(255, 255, 255);"><span class="sc-interp">Jennifer</span></span>
               <span data-dc-tpl="88" style="display: block; margin-top: 5px; font-size: 9.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255, 255, 255, 0.86);"><span class="sc-interp">Biomédica esteta</span></span>
             </span>
@@ -1131,6 +1226,124 @@ class Component extends DCLogic {
 
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') fecharTodos(null);
+  });
+})();
+</script>
+
+<div class="pf-ov" id="pf-ov" hidden>
+  <div class="pf-pn" id="pf-pn" role="dialog" aria-modal="true" aria-labelledby="pf-nome" tabindex="-1">
+    <button type="button" class="pf-x" id="pf-x" aria-label="Fechar perfil">&times;</button>
+    <div class="pf-foto" id="pf-foto"></div>
+    <div class="pf-corpo">
+      <p class="pf-marca" id="pf-marca"></p>
+      <h2 class="pf-nome" id="pf-nome"></h2>
+      <p class="pf-bio" id="pf-bio"></p>
+      <dl class="pf-blocos" id="pf-blocos"></dl>
+      <p class="pf-rot">como conduz o cuidado</p>
+      <p class="pf-conduta" id="pf-conduta"></p>
+      <a class="pf-cta" id="pf-cta" href="#" target="_blank" rel="noopener noreferrer"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Modal de perfil do profissional. Dados de window.ECOOA.profissionais.
+   Regra obrigatoria do registro: o texto exibido depende do campo estado.
+   Publicidade em saude, a ressalva nunca e omitida. */
+(function () {
+  var ov = document.getElementById('pf-ov');
+  var pn = document.getElementById('pf-pn');
+  if (!ov || !pn || !window.ECOOA || !window.ECOOA.profissionais) return;
+
+  var porSlug = {};
+  window.ECOOA.profissionais.forEach(function (p) { porSlug[p.slug] = p; });
+  var origem = null;
+
+  function textoRegistro(p) {
+    if (p.estado === 'confirmado') return p.registro;
+    if (p.estado === 'a-confirmar') return p.registro + ' \u00b7 a confirmar';
+    return 'registro a adicionar';
+  }
+
+  function bloco(rotulo, valor) {
+    if (!valor) return '';
+    var d = document.createElement('div');
+    d.className = 'pf-bloco';
+    var dt = document.createElement('dt');
+    dt.textContent = rotulo;
+    var dd = document.createElement('dd');
+    dd.textContent = valor;
+    d.appendChild(dt); d.appendChild(dd);
+    return d;
+  }
+
+  function abrir(slug, gatilho) {
+    var p = porSlug[slug];
+    if (!p) return;
+    origem = gatilho;
+
+    var foto = document.getElementById('pf-foto');
+    foto.innerHTML = '';
+    if (p.foto) {
+      var img = document.createElement('img');
+      img.src = p.foto;
+      img.alt = 'Retrato de ' + p.nome;
+      foto.appendChild(img);
+    } else {
+      var vazia = document.createElement('span');
+      vazia.className = 'pf-vazia';
+      vazia.textContent = (p.nome || '?').charAt(0);
+      foto.appendChild(vazia);
+    }
+
+    document.getElementById('pf-marca').textContent = p.marca || '';
+    document.getElementById('pf-nome').textContent = p.nome || '';
+    document.getElementById('pf-bio').textContent = p.bio || '';
+    document.getElementById('pf-conduta').textContent = p.conduta || '';
+
+    var blocos = document.getElementById('pf-blocos');
+    blocos.innerHTML = '';
+    [['formação', p.classe], ['registro', textoRegistro(p)], ['área', p.area], ['atendimento', p.atendimento]]
+      .forEach(function (par) {
+        var b = bloco(par[0], par[1]);
+        if (b) blocos.appendChild(b);
+      });
+
+    var cta = document.getElementById('pf-cta');
+    cta.textContent = 'agendar com ' + (p.primeiro || p.nome);
+    cta.href =
+      'https://wa.me/5551991460909?text=' +
+      encodeURIComponent('Olá, gostaria de agendar com ' + p.nome + ' na ecooa.');
+
+    ov.hidden = false;
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(function () { ov.classList.add('aberto'); pn.focus(); });
+  }
+
+  function fechar() {
+    if (ov.hidden) return;
+    ov.classList.remove('aberto');
+    document.documentElement.style.overflow = '';
+    window.setTimeout(function () { ov.hidden = true; }, 300);
+    if (origem) { origem.focus(); origem = null; }
+  }
+
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('[data-perfil]');
+    if (btn) { abrir(btn.getAttribute('data-perfil'), btn); return; }
+    if (e.target === ov) fechar();
+  });
+
+  document.getElementById('pf-x').addEventListener('click', fechar);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { fechar(); return; }
+    if (e.key !== 'Tab' || ov.hidden) return;
+    var focaveis = pn.querySelectorAll('a[href], button:not([disabled])');
+    if (!focaveis.length) return;
+    var primeiro = focaveis[0], ultimo = focaveis[focaveis.length - 1];
+    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
   });
 })();
 </script>
