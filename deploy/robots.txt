@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# /politicas fica fora do robots de proposito: ela e linkada do rodape de todas as
+# paginas e traz o proprio meta noindex. Bloquear o rastreio impediria o Google de
+# ler esse noindex, e a URL poderia aparecer listada sem titulo nem descricao.
+
+Disallow: /404
+Disallow: /404.html
+Disallow: /Sobrancelha.dc.html
+Disallow: /Rodape.dc.html
+
+Sitemap: https://www.somosecooa.com.br/sitemap.xml

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
+    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#83817B;
+    --grafite:#63615C; --tinta:#46443F; --escuro:#2B2926;
+    --muted:#66645E; --legenda:#5C5A55; --sobre-escuro:rgba(240,238,233,.92);
+    --rule:rgba(70,68,63,.16); --rule-forte:rgba(70,68,63,.3);
+    --foto:saturate(.9) contrast(1.02);
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Baskerville,Georgia,serif;
+    --sans:"Helvetica Neue","Avenir Next","Segoe UI",Arial,sans-serif;
+    --relevo:8px 8px 20px rgba(150,147,140,.22), -8px -8px 20px rgba(255,255,255,.95);
+    --relevo-carta:7px 7px 16px rgba(150,147,140,.2), -7px -7px 16px rgba(255,255,255,.95);
+    --relevo-botao:5px 5px 12px rgba(150,147,140,.32), -5px -5px 12px rgba(255,255,255,.98);
+    --afundado:inset 3px 3px 7px rgba(150,147,140,.3), inset -3px -3px 7px rgba(255,255,255,.95);
+  }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-wrap:break-word; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  button { font:inherit; color:inherit; }
+  ::selection { background:#DEDCD6; color:#46443F; }
+  :focus-visible { outline:2px solid #63615C; outline-offset:3px; }
+  @keyframes ec-sobe { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+  @keyframes ec-fade { from { opacity:0; } to { opacity:1; } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    * { animation-duration:.001ms !important; transition-duration:.001ms !important; }
+  }
+</style>
+</helmet>
+
+<header style="position:fixed; top:0; left:0; right:0; z-index:80; font-family:var(--sans);">
+  <div style="background:rgba(240,238,233,.66); backdrop-filter:blur(24px) saturate(1.5); -webkit-backdrop-filter:blur(24px) saturate(1.5); border-bottom:1px solid var(--rule);">
+    <div style="max-width:1600px; margin:0 auto; padding:0 clamp(20px,3.2vw,56px); height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="./" aria-label="ecooa, ir para o início" style="flex:0 0 auto; display:block;"><img src="assets/logo/ecooa-wordmark.svg" alt="ecooa" style="width:98px; opacity:.9;"></a>
+
+      <sc-if value="{{ desktop }}" hint-placeholder-val="{{ true }}">
+        <nav aria-label="Navegação principal" style="display:flex; align-items:center; gap:clamp(13px,1.8vw,30px);">
+          <a href="sobre.html" style="font-size:13.5px; color:{{ corSobre }}; padding:8px 0; border-bottom:1px solid {{ filSobre }};">sobre</a>
+          <button type="button" onClick="{{ abrirEsp }}" aria-expanded="{{ espAberto }}" style="background:none; border:0; cursor:pointer; font-size:13.5px; color:{{ corEsp }}; padding:8px 0; display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid {{ filEsp }};">especialidades <span aria-hidden="true" style="font-size:8px; opacity:.5;">▼</span></button>
+          <button type="button" onClick="{{ abrirProf }}" aria-expanded="{{ profAberto }}" style="background:none; border:0; cursor:pointer; font-size:13.5px; color:{{ corProf }}; padding:8px 0; display:inline-flex; align-items:center; gap:6px; border-bottom:1px solid {{ filProf }};">profissionais <span aria-hidden="true" style="font-size:8px; opacity:.5;">▼</span></button>
+          <a href="qual-profissional-procurar.html" style="font-size:13.5px; color:{{ corBusca }}; padding:8px 0; border-bottom:1px solid {{ filBusca }};">busca por IA</a>
+          <a href="blog.html" style="font-size:13.5px; color:{{ corEd }}; padding:8px 0; border-bottom:1px solid {{ filEd }};">editorial</a>
+          <a href="localizacao.html" style="font-size:13.5px; color:{{ corLoc }}; padding:8px 0; border-bottom:1px solid {{ filLoc }};">localização</a>
+          <button type="button" onClick="{{ abrirMais }}" aria-expanded="{{ maisAberto }}" style="background:none; border:0; cursor:pointer; font-size:13.5px; color:var(--grafite); padding:8px 0; display:inline-flex; align-items:center; gap:6px;">mais <span aria-hidden="true" style="font-size:8px; opacity:.5;">▼</span></button>
+        </nav>
+        <div style="flex:0 0 auto; display:flex; align-items:center; gap:14px;">
+          <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ecooa" style="width:40px; height:40px; border-radius:999px; background:var(--fundo); display:inline-flex; align-items:center; justify-content:center; color:var(--grafite); box-shadow:var(--relevo-botao);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1"></circle></svg>
+          </a>
+          <a href="https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20ecooa" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; min-height:44px; padding:0 26px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">agendar</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ecooa" style="width:40px; height:40px; border-radius:999px; background:var(--fundo); display:inline-flex; align-items:center; justify-content:center; color:var(--grafite); box-shadow:var(--relevo-botao);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1"></circle></svg>
+          </a>
+          <button type="button" onClick="{{ abrirMobile }}" aria-expanded="{{ menuMobile }}" style="background:var(--fundo); border:0; border-radius:999px; cursor:pointer; min-height:44px; padding:0 22px; font-size:11.5px; letter-spacing:.16em; color:var(--grafite); box-shadow:var(--relevo-botao);">menu</button>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <sc-if value="{{ espAberto }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--nuvem); border-bottom:1px solid var(--rule); box-shadow:0 26px 60px rgba(70,68,63,.14); animation:ec-sobe .3s cubic-bezier(.16,1,.3,1) both;">
+      <div style="max-width:1600px; margin:0 auto; padding:46px clamp(20px,3.2vw,56px) 50px; display:flex; flex-wrap:wrap; gap:56px;">
+        <div style="flex:1 1 280px; max-width:340px;">
+          <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>especialidades</div>
+          <p style="margin:16px 0 20px; font-family:var(--serif); font-size:27px; line-height:1.14; color:var(--tinta);">Entre por onde a sua necessidade fala mais alto.</p>
+          <a href="especialidades.html" style="font-size:13px; color:var(--grafite); border-bottom:1px solid var(--rule-forte); padding-bottom:3px;">ver todas as especialidades</a>
+        </div>
+        <div style="flex:2 1 640px; display:grid; grid-template-columns:repeat(auto-fit,minmax(216px,1fr)); gap:1px; background:var(--stone);">
+          <sc-for list="{{ especialidades }}" as="e" hint-placeholder-count="8">
+            <a href="{{ e.href }}" style="background:var(--nuvem); padding:18px 20px; display:block;">
+              <span style="display:block; font-size:15px; color:var(--tinta);">{{ e.nome }}</span>
+              <span style="display:block; margin-top:5px; font-size:11px; letter-spacing:.05em; color:var(--legenda);">{{ e.marca }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ profAberto }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--nuvem); border-bottom:1px solid var(--rule); box-shadow:0 26px 60px rgba(70,68,63,.14); animation:ec-sobe .3s cubic-bezier(.16,1,.3,1) both;">
+      <div style="max-width:1600px; margin:0 auto; padding:46px clamp(20px,3.2vw,56px) 50px; display:flex; flex-wrap:wrap; gap:56px;">
+        <div style="flex:1 1 280px; max-width:340px;">
+          <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>profissionais</div>
+          <p style="margin:16px 0 20px; font-family:var(--serif); font-size:27px; line-height:1.14; color:var(--tinta);">Procure por pessoa, quando você já sabe quem quer ver.</p>
+          <a href="profissionais.html" style="font-size:13px; color:var(--grafite); border-bottom:1px solid var(--rule-forte); padding-bottom:3px;">ver todos os profissionais</a>
+        </div>
+        <div style="flex:2 1 640px; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1px; background:var(--stone);">
+          <sc-for list="{{ classes }}" as="c" hint-placeholder-count="10">
+            <a href="{{ c.href }}" style="background:var(--nuvem); padding:18px 20px; display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+              <span style="font-size:15px; color:var(--tinta);">{{ c.nome }}</span>
+              <span style="font-size:11px; color:var(--legenda);">{{ c.n }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ maisAberto }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--nuvem); border-bottom:1px solid var(--rule); box-shadow:0 26px 60px rgba(70,68,63,.14); animation:ec-sobe .3s cubic-bezier(.16,1,.3,1) both;">
+      <div style="max-width:1600px; margin:0 auto; padding:38px clamp(20px,3.2vw,56px) 42px; display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--stone);">
+        <a href="mentorias.html" style="background:var(--nuvem); padding:20px 22px; display:block;"><span style="display:block; font-family:var(--serif); font-size:20px; color:var(--tinta);">mentorias</span><span style="display:block; margin-top:4px; font-size:11.5px; color:var(--legenda);">ecooa.cademy · formação para profissionais</span></a>
+        <a href="sublocacao.html" style="background:var(--nuvem); padding:20px 22px; display:block;"><span style="display:block; font-family:var(--serif); font-size:20px; color:var(--tinta);">sublocação</span><span style="display:block; margin-top:4px; font-size:11.5px; color:var(--legenda);">salas para profissionais autônomos</span></a>
+        <a href="localizacao.html" style="background:var(--nuvem); padding:20px 22px; display:block;"><span style="display:block; font-family:var(--serif); font-size:20px; color:var(--tinta);">contato</span><span style="display:block; margin-top:4px; font-size:11.5px; color:var(--legenda);">endereço, horários e como chegar</span></a>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ menuMobile }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--nuvem); border-bottom:1px solid var(--rule); box-shadow:0 26px 60px rgba(70,68,63,.14); max-height:calc(100vh - 76px); overflow-y:auto;">
+      <div style="padding:26px clamp(20px,5vw,32px) 30px; display:grid; gap:1px; background:var(--stone);">
+        <a href="sobre.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">sobre</a>
+        <a href="especialidades.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">especialidades</a>
+        <a href="profissionais.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">profissionais</a>
+        <a href="qual-profissional-procurar.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">busca por IA</a>
+        <a href="blog.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">editorial</a>
+        <a href="localizacao.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">localização</a>
+        <a href="mentorias.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">mentorias</a>
+        <a href="sublocacao.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">sublocação</a>
+      </div>
+      <div style="padding:0 clamp(20px,5vw,32px) 30px;">
+        <a href="https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20ecooa" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; min-height:54px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em;">agendar</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:140},&quot;ativo&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;&quot;,&quot;options&quot;:[&quot;&quot;,&quot;sobre&quot;,&quot;especialidades&quot;,&quot;profissionais&quot;,&quot;busca&quot;,&quot;editorial&quot;,&quot;localizacao&quot;],&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { menu: null, largura: 1400 };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ largura: window.innerWidth });
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+    this.onKey = (e) => { if (e.key === 'Escape') this.setState({ menu: null }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+  }
+  alterna(nome) { this.setState((s) => ({ menu: s.menu === nome ? null : nome })); }
+
+  renderVals() {
+    const s = this.state;
+    const ativo = this.props.ativo || '';
+    const desktop = s.largura >= 1080;
+    const cor = (k) => (ativo === k ? '#46443F' : '#63615C');
+    const fil = (k) => (ativo === k ? '#63615C' : 'transparent');
+    return {
+      desktop,
+      mobile: !desktop,
+      espAberto: desktop && s.menu === 'esp',
+      profAberto: desktop && s.menu === 'prof',
+      maisAberto: desktop && s.menu === 'mais',
+      menuMobile: !desktop && s.menu === 'mob',
+      abrirEsp: () => this.alterna('esp'),
+      abrirProf: () => this.alterna('prof'),
+      abrirMais: () => this.alterna('mais'),
+      abrirMobile: () => this.alterna('mob'),
+      corSobre: cor('sobre'), filSobre: fil('sobre'),
+      corEsp: cor('especialidades'), filEsp: fil('especialidades'),
+      corProf: cor('profissionais'), filProf: fil('profissionais'),
+      corBusca: cor('busca'), filBusca: fil('busca'),
+      corEd: cor('editorial'), filEd: fil('editorial'),
+      corLoc: cor('localizacao'), filLoc: fil('localizacao'),
+      especialidades: [
+        { nome: 'medicina', marca: 'ecooa.med', href: 'especialidades.html#medicina' },
+        { nome: 'estética facial', marca: 'ecooa.esthetic', href: 'especialidades.html#estetica-facial' },
+        { nome: 'estética corporal', marca: 'ecooa.esthetic', href: 'especialidades.html#estetica-corporal' },
+        { nome: 'tricologia', marca: 'ecooa.esthetic', href: 'especialidades.html#tricologia' },
+        { nome: 'transplante capilar', marca: 'ecooa.esthetic', href: 'especialidades.html#transplante-capilar' },
+        { nome: 'nutrição', marca: 'ecooa.working', href: 'especialidades.html#nutricao' },
+        { nome: 'saúde mental', marca: 'ecooa.mind', href: 'especialidades.html#saude-mental' },
+        { nome: 'saúde integrativa', marca: 'ecooa.med', href: 'especialidades.html#saude-integrativa' },
+      ],
+      classes: [
+        { nome: 'todos', n: '31', href: 'profissionais.html' },
+        { nome: 'medicina', n: '5', href: 'profissionais.html#medicina' },
+        { nome: 'nutrição', n: '12', href: 'profissionais.html#nutricao' },
+        { nome: 'estética', n: '9', href: 'profissionais.html#estetica' },
+        { nome: 'fisioterapia', n: '1', href: 'profissionais.html#fisioterapia' },
+        { nome: 'saúde mental', n: '3', href: 'profissionais.html#saude-mental' },
+        { nome: 'terapia integrativa', n: '1', href: 'profissionais.html#terapia-integrativa' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

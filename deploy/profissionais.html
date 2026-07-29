@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://www.somosecooa.com.br/profissionais">
+<link rel="icon" type="image/svg+xml" href="assets/logo/ecooa-mark.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ecooa">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://www.somosecooa.com.br/profissionais">
+<meta property="og:title" content="Profissionais · ecooa · 31 especialistas em Moinhos de Vento, Porto Alegre">
+<meta property="og:description" content="Conheça os 31 profissionais autônomos que atuam na ecooa: medicina, nutrição, biomedicina, psicologia, fisioterapia, odontologia, enfermagem, farmácia e terapia integrativa.">
+<meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Profissionais · ecooa · 31 especialistas em Moinhos de Vento, Porto Alegre</title>
+<meta name="description" content="Conheça os 31 profissionais autônomos que atuam na ecooa: medicina, nutrição, biomedicina, psicologia, fisioterapia, odontologia, enfermagem, farmácia e terapia integrativa.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  :root {
+    --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
+    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#83817B;
+    --grafite:#63615C; --tinta:#46443F; --escuro:#2B2926;
+    --muted:#66645E; --legenda:#5C5A55; --sobre-escuro:rgba(240,238,233,.92);
+    --rule:rgba(70,68,63,.16); --rule-forte:rgba(70,68,63,.3);
+    --foto:saturate(.9) contrast(1.02);
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Baskerville,Georgia,serif;
+    --sans:"Helvetica Neue","Avenir Next","Segoe UI",Arial,sans-serif;
+    --relevo:8px 8px 20px rgba(150,147,140,.22), -8px -8px 20px rgba(255,255,255,.95);
+    --relevo-carta:7px 7px 16px rgba(150,147,140,.2), -7px -7px 16px rgba(255,255,255,.95);
+    --relevo-botao:5px 5px 12px rgba(150,147,140,.32), -5px -5px 12px rgba(255,255,255,.98);
+    --afundado:inset 3px 3px 7px rgba(150,147,140,.3), inset -3px -3px 7px rgba(255,255,255,.95);
+  }
+  html { scroll-behavior:smooth; }
+  body { margin:0; font-family:var(--sans); -webkit-font-smoothing:antialiased; overflow-wrap:break-word; }
+  img { display:block; max-width:100%; }
+  a { color:inherit; text-decoration:none; }
+  button { font:inherit; color:inherit; }
+  ::selection { background:#DEDCD6; color:#46443F; }
+  :focus-visible { outline:2px solid #63615C; outline-offset:3px; }
+  @keyframes ec-sobe { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+  @keyframes ec-fade { from { opacity:0; } to { opacity:1; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { animation-duration:.001ms !important; transition-duration:.001ms !important; } }
+</style>
+<script src="dados-ecooa.js"></script>
+</helmet>
+
+<div style="background:var(--nuvem); color:var(--muted); min-height:100vh; overflow-x:hidden;">
+  <dc-import name="Sobrancelha" ativo="profissionais" hint-size="100%,76px"></dc-import>
+
+  <!-- cabeçalho editorial -->
+  <section style="padding:clamp(122px,15vh,190px) clamp(20px,3.2vw,56px) clamp(40px,5vw,72px); background:var(--nuvem) url('assets/ressonancia/06-trama.png') center bottom / cover no-repeat; background-blend-mode:multiply;">
+    <div style="max-width:1600px; margin:0 auto;">
+      <span style="display:block; width:74px; height:1px; background:var(--aluminio);"></span>
+      <h1 style="margin:34px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(38px,9vw,132px); line-height:.9; letter-spacing:-.03em; color:var(--tinta);">profissionais</h1>
+      <p style="margin:20px 0 0; font-size:13px; letter-spacing:.14em; color:var(--legenda);">cuidado integrado, preciso e humano</p>
+      <p style="margin:34px 0 0; max-width:62ch; font-size:17px; line-height:1.68;">São 31 profissionais autônomos, de nove classes diferentes, que escolheram atuar sob o mesmo padrão. Cada um responde tecnicamente pelo próprio trabalho, e todos compartilham o critério que organiza a indicação dentro da ecooa.</p>
+    </div>
+  </section>
+
+  <!-- filtro por classe -->
+  <div style="position:sticky; top:76px; z-index:40; background:rgba(250,249,247,.86); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);">
+    <div style="max-width:1600px; margin:0 auto; padding:16px clamp(20px,3.2vw,56px); display:flex; flex-wrap:wrap; gap:9px; align-items:center;">
+      <span style="margin-right:8px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">filtrar</span>
+      <sc-for list="{{ filtros }}" as="f" hint-placeholder-count="10">
+        <button type="button" onClick="{{ f.aplicar }}" aria-pressed="{{ f.ativo }}" style="border:0; border-radius:999px; cursor:pointer; min-height:40px; padding:0 20px; font-size:12.5px; letter-spacing:.03em; background:{{ f.bg }}; color:{{ f.cor }}; box-shadow:{{ f.sombra }};">{{ f.nome }} <span style="opacity:.6; font-size:11px;">{{ f.n }}</span></button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- xadrez -->
+  <div style="display:grid; grid-template-columns:{{ colunas }}; background:var(--stone); gap:1px; border-bottom:1px solid var(--stone);">
+    <sc-for list="{{ grade }}" as="c" hint-placeholder-count="8">
+      <div style="position:relative; background:var(--nuvem); min-height:clamp(300px,36vw,520px);">
+        <sc-if value="{{ c.ehFoto }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ c.abrir }}" aria-label="{{ c.rotulo }}" style="position:absolute; inset:0; width:100%; height:100%; padding:0; border:0; background:var(--nevoa); cursor:pointer; overflow:hidden; display:block;">
+            <sc-if value="{{ c.foto }}" hint-placeholder-val="{{ false }}">
+              <img src="{{ c.foto }}" alt="{{ c.alt }}" style="width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
+            </sc-if>
+            <sc-if value="{{ c.semFoto }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; background:var(--nevoa); box-shadow:var(--afundado);">
+                <span style="font-family:var(--serif); font-size:clamp(56px,7vw,96px); line-height:1; color:var(--legenda);">{{ c.inicial }}</span>
+                <span style="font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">retrato a caminho</span>
+              </span>
+            </sc-if>
+          </button>
+        </sc-if>
+        <sc-if value="{{ c.ehTexto }}" hint-placeholder-val="{{ false }}">
+          <div style="height:100%; display:flex; align-items:center; padding:clamp(28px,3.4vw,60px);">
+            <div>
+              <span style="display:block; width:34px; height:1px; background:var(--aluminio);"></span>
+              <h2 style="margin:22px 0 0; max-width:15ch; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.4vw,38px); line-height:1.06; color:var(--tinta);">{{ c.nome }}</h2>
+              <p style="margin:20px 0 0; font-size:14.5px; line-height:1.7; color:var(--muted);">{{ c.classe }}<br>{{ c.registro }}</p>
+              <p style="margin:22px 0 0; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">área</p>
+              <p style="margin:8px 0 0; max-width:22ch; font-family:var(--serif); font-size:clamp(17px,1.5vw,22px); line-height:1.2; color:var(--tinta);">{{ c.area }}</p>
+              <span style="display:block; margin-top:22px; width:60px; height:1px; background:var(--stone);"></span>
+              <button type="button" onClick="{{ c.abrir }}" style="margin-top:24px; background:var(--nuvem); border:0; border-radius:999px; cursor:pointer; min-height:44px; padding:0 24px; font-size:11px; letter-spacing:.16em; color:var(--grafite); box-shadow:var(--relevo-botao);">ver perfil</button>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- nota de registro -->
+  <section style="padding:clamp(48px,6vw,80px) clamp(20px,3.2vw,56px); background:var(--fundo);">
+    <div style="max-width:1600px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(24px,4vw,64px);">
+      <div style="flex:1 1 368px; max-width:56ch;">
+        <h2 style="margin:0; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">sobre os registros</h2>
+        <p style="margin:14px 0 0; font-size:14.5px; line-height:1.7;">Cada profissional responde tecnicamente pelo próprio trabalho e pelo próprio registro de classe. Onde consta <strong style="color:var(--tinta); font-weight:500;">a confirmar</strong>, o número existe mas ainda está em validação junto ao conselho. Onde consta <strong style="color:var(--tinta); font-weight:500;">a adicionar</strong>, o registro ainda não foi informado. Nenhum registro é publicado como confirmado sem verificação.</p>
+      </div>
+      <div style="flex:1 1 368px; max-width:52ch;">
+        <h2 style="margin:0; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">não sabe quem procurar</h2>
+        <p style="margin:14px 0 0; font-size:14.5px; line-height:1.7;">O ecooa.match faz algumas perguntas curtas e organiza a sua necessidade antes de sugerir um caminho. Orienta a escolha e não substitui uma consulta.</p>
+        <a href="qual-profissional-procurar.html" style="margin-top:22px; display:inline-flex; align-items:center; min-height:48px; padding:0 28px; border-radius:999px; background:var(--fundo); color:var(--grafite); font-size:11.5px; letter-spacing:.16em; box-shadow:var(--relevo-botao);">usar o ecooa.match</a>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="Rodape" hint-size="100%,760px"></dc-import>
+
+  <!-- modal -->
+  <sc-if value="{{ perfilAberto }}" hint-placeholder-val="{{ false }}">
+    <div role="dialog" aria-modal="true" aria-label="Perfil do profissional" style="position:fixed; inset:0; z-index:120; background:rgba(43,41,38,.5); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; padding:clamp(12px,3vw,52px); animation:ec-fade .22s ease both;">
+      <div style="position:absolute; inset:0;" onClick="{{ fecharPerfil }}"></div>
+      <div style="position:relative; width:100%; max-width:1080px; max-height:92vh; overflow-y:auto; background:var(--elevado); box-shadow:0 40px 90px rgba(43,41,38,.34); animation:ec-sobe .3s cubic-bezier(.16,1,.3,1) both;">
+        <button type="button" onClick="{{ fecharPerfil }}" aria-label="Fechar perfil" style="position:absolute; top:22px; right:22px; z-index:3; width:44px; height:44px; border-radius:999px; border:0; cursor:pointer; background:var(--fundo); color:var(--grafite); box-shadow:var(--relevo-botao); font-size:17px; line-height:1;">×</button>
+        <div style="display:flex; flex-wrap:wrap;">
+          <div style="flex:1 1 368px; min-width:0; min-height:clamp(230px,38vh,560px); position:relative; overflow:hidden; background:var(--nevoa);">
+            <sc-for list="{{ pfList }}" as="pf" hint-placeholder-count="1">
+              <sc-if value="{{ pf.foto }}" hint-placeholder-val="{{ false }}">
+                <img src="{{ pf.foto }}" alt="{{ pf.alt }}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
+              </sc-if>
+            </sc-for>
+            <sc-if value="{{ pfSemFoto }}" hint-placeholder-val="{{ false }}">
+              <span style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:110px; color:var(--legenda);">{{ pfInicial }}</span>
+            </sc-if>
+          </div>
+          <div style="flex:1.15 1 368px; min-width:0; padding:clamp(30px,3.4vw,58px);">
+            <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">{{ perfil.marca }}</span>
+            <h2 style="margin:14px 0 0; max-width:14ch; font-family:var(--serif); font-weight:400; font-size:clamp(29px,3.1vw,48px); line-height:1.02; letter-spacing:-.018em; color:var(--tinta);">{{ perfil.nome }}</h2>
+            <p style="margin:20px 0 0; max-width:46ch; font-size:15.5px; line-height:1.68; color:var(--muted);">{{ perfil.bio }}</p>
+            <div style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px;">
+              <div style="padding:18px 20px; background:var(--fundo); box-shadow:var(--relevo-carta);"><span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">formação</span><span style="display:block; margin-top:8px; font-size:14.5px; color:var(--tinta);">{{ perfil.classe }}</span></div>
+              <div style="padding:18px 20px; background:var(--fundo); box-shadow:var(--relevo-carta);"><span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">registro</span><span style="display:block; margin-top:8px; font-size:14.5px; color:var(--tinta);">{{ perfil.registro }}</span></div>
+              <div style="padding:18px 20px; background:var(--fundo); box-shadow:var(--relevo-carta);"><span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">área</span><span style="display:block; margin-top:8px; font-size:14.5px; color:var(--tinta);">{{ perfil.area }}</span></div>
+              <div style="padding:18px 20px; background:var(--fundo); box-shadow:var(--relevo-carta);"><span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">atendimento</span><span style="display:block; margin-top:8px; font-size:14.5px; color:var(--tinta);">{{ perfil.atendimento }}</span></div>
+            </div>
+            <div style="margin-top:32px; padding-top:26px; border-top:1px solid var(--rule);">
+              <h3 style="margin:0; font-family:var(--serif); font-weight:400; font-size:24px; line-height:1.1; color:var(--tinta);">como conduz o cuidado</h3>
+              <p style="margin:14px 0 0; max-width:48ch; font-size:15px; line-height:1.68; color:var(--muted);">{{ perfil.conduta }}</p>
+            </div>
+            <a href="{{ perfil.wa }}" target="_blank" rel="noopener noreferrer" style="margin-top:32px; display:inline-flex; align-items:center; min-height:52px; padding:0 32px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">{{ perfil.cta }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
+const D = () => (typeof window !== 'undefined' && window.ECOOA) || { profissionais: [], grupos: [] };
+
+function textoRegistro(p) {
+  if (p.estado === 'confirmado') return p.registro;
+  if (p.estado === 'a-confirmar') return p.registro + ' · a confirmar';
+  return 'registro a adicionar';
+}
+
+class Component extends DCLogic {
+  state = { grupo: 'todos', largura: 1400, perfil: null, pronto: false };
+
+  componentDidMount() {
+    this.onResize = () => this.setState({ largura: window.innerWidth });
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+    this.onKey = (e) => { if (e.key === 'Escape') this.setState({ perfil: null }); };
+    window.addEventListener('keydown', this.onKey);
+    // a sobrancelha existe nesta propria pagina, entao trocar de grupo so muda o hash
+    const aplicaHash = () => {
+      const h = (window.location.hash || '').replace('#', '');
+      const grupos = D().grupos.map((g) => g.slug);
+      this.setState({ pronto: true, perfil: null, grupo: grupos.indexOf(h) >= 0 ? h : 'todos' });
+    };
+    aplicaHash();
+    this.onHash = aplicaHash;
+    window.addEventListener('hashchange', this.onHash);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    window.removeEventListener('hashchange', this.onHash);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const dados = D();
+    const todos = dados.profissionais;
+    const lista = s.grupo === 'todos' ? todos : todos.filter((p) => p.grupo === s.grupo);
+    const duasColunas = s.largura >= 860;
+
+    const filtros = [{ slug: 'todos', nome: 'todos' }].concat(dados.grupos).map((g) => {
+      const ativo = s.grupo === g.slug;
+      const n = g.slug === 'todos' ? todos.length : todos.filter((p) => p.grupo === g.slug).length;
+      return {
+        nome: g.nome, n: String(n), ativo,
+        bg: ativo ? '#63615C' : '#FAF9F7',
+        cor: ativo ? '#F0EEE9' : '#63615C',
+        sombra: ativo ? 'inset 2px 2px 6px rgba(60,58,54,.5)' : '5px 5px 12px rgba(150,147,140,.32), -5px -5px 12px rgba(255,255,255,.98)',
+        aplicar: () => {
+          const alvo = g.slug === 'todos' ? window.location.pathname : '#' + g.slug;
+          if (window.history && window.history.replaceState) window.history.replaceState(null, '', alvo);
+          this.setState({ grupo: g.slug });
+        },
+      };
+    });
+
+    const grade = [];
+    lista.forEach((p, i) => {
+      const abrir = () => this.setState({ perfil: p.slug });
+      const foto = {
+        ehFoto: true, ehTexto: false, abrir,
+        foto: p.foto || '', semFoto: !p.foto, inicial: p.nome.charAt(0),
+        alt: 'Retrato de ' + p.nome, rotulo: 'Ver o perfil de ' + p.nome,
+      };
+      const texto = {
+        ehFoto: false, ehTexto: true, abrir,
+        nome: p.nome, classe: p.classe, registro: textoRegistro(p), area: p.area,
+      };
+      if (duasColunas && i % 2 === 1) grade.push(texto, foto);
+      else grade.push(foto, texto);
+    });
+
+    const p = todos.filter((x) => x.slug === s.perfil)[0] || null;
+
+    return {
+      filtros,
+      colunas: duasColunas ? '1fr 1fr' : '1fr',
+      grade,
+      perfilAberto: !!p,
+      fecharPerfil: () => this.setState({ perfil: null }),
+      pfList: p && p.foto ? [{ foto: p.foto, alt: 'Retrato de ' + p.nome }] : [],
+      pfSemFoto: !!(p && !p.foto),
+      pfInicial: p ? p.nome.charAt(0) : '',
+      perfil: p
+        ? {
+            nome: p.nome, primeiro: p.primeiro, classe: p.classe, marca: p.marca,
+            cta: 'agendar com ' + p.primeiro,
+            registro: textoRegistro(p), area: p.area, bio: p.bio, conduta: p.conduta,
+            atendimento: p.atendimento, foto: p.foto || '', semFoto: !p.foto,
+            inicial: p.nome.charAt(0), alt: 'Retrato de ' + p.nome,
+            wa: 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá, gostaria de agendar uma avaliação com ' + p.nome + ' na ecooa'),
+          }
+        : {},
+    };
+  }
+}
+</script>
+</body>
+</html>
