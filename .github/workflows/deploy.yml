@@ -19,15 +19,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
-        with:
-          node-version-file: .nvmrc
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+      # O site 3.0 é estático e não precisa de build: a pasta deploy/ é
+      # publicada como está. O projeto Astro segue no repositório, mas
+      # não é mais o que vai ao ar.
+      - name: Conferir arquivos essenciais da publicação
+        run: |
+          test -f deploy/index.html
+          test -f deploy/support.js
+          test -f deploy/dados-ecooa.js
+          test -f deploy/CNAME   # segura o domínio www.somosecooa.com.br
+          ! grep -rq "unpkg.com" deploy/support.js  # nada de CDN externo
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: dist/
+          path: deploy/
 
   deploy:
     needs: build
