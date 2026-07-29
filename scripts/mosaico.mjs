@@ -104,6 +104,8 @@ const CSS = `
   text-transform: uppercase; color: #86836f;
 }
 .pf-conduta { margin: 14px 0 0; max-width: 48ch; font-size: 15px; line-height: 1.68; color: #46443f; }
+.pf-conduta p { margin: 0; }
+.pf-conduta p + p { margin-top: 13px; }
 .pf-cta {
   margin-top: 32px; display: inline-flex; align-items: center; min-height: 52px;
   padding: 0 32px; border-radius: 999px; background: #2b2926; color: #f0eee9;
@@ -127,7 +129,7 @@ const MODAL = `
       <p class="pf-bio" id="pf-bio"></p>
       <dl class="pf-blocos" id="pf-blocos"></dl>
       <p class="pf-rot">como conduz o cuidado</p>
-      <p class="pf-conduta" id="pf-conduta"></p>
+      <div class="pf-conduta" id="pf-conduta"></div>
       <a class="pf-cta" id="pf-cta" href="#" target="_blank" rel="noopener noreferrer"></a>
     </div>
   </div>
@@ -188,7 +190,17 @@ const JS = `
     document.getElementById('pf-marca').textContent = p.marca || '';
     document.getElementById('pf-nome').textContent = p.nome || '';
     document.getElementById('pf-bio').textContent = p.bio || '';
-    document.getElementById('pf-conduta').textContent = p.conduta || '';
+    // A conduta guarda os paragrafos separados por linha em branco.
+    // textContent por paragrafo, nunca innerHTML: o dado nunca vira marcacao.
+    var cond = document.getElementById('pf-conduta');
+    cond.innerHTML = '';
+    String(p.conduta || '').split(/\\n\\s*\\n/).forEach(function (trecho) {
+      var t = trecho.trim();
+      if (!t) return;
+      var par = document.createElement('p');
+      par.textContent = t;
+      cond.appendChild(par);
+    });
 
     var blocos = document.getElementById('pf-blocos');
     blocos.innerHTML = '';
