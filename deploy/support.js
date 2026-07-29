@@ -1,3 +1,29 @@
+// Limpeza do site anterior: desregistra o service worker legado e apaga os
+// caches dele. Sem isso, o navegador de quem ja visitou o site antigo continua
+// servindo respostas velhas e aplicando a politica de seguranca antiga, que
+// bloqueia eval e impede a sobrancelha e o rodape de renderizar.
+(function () {
+  try {
+    if (!('serviceWorker' in navigator)) return;
+    navigator.serviceWorker.getRegistrations().then(function (regs) {
+      if (!regs || !regs.length) return;
+      var tinhaControle = !!navigator.serviceWorker.controller;
+      Promise.all(regs.map(function (r) { return r.unregister(); }))
+        .then(function () {
+          return typeof caches !== 'undefined'
+            ? caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches.delete(k); })); })
+            : null;
+        })
+        .then(function () {
+          if (tinhaControle && !sessionStorage.getItem('ec_sw_limpo')) {
+            sessionStorage.setItem('ec_sw_limpo', '1');
+            location.reload();
+          }
+        })
+        .catch(function () {});
+    }).catch(function () {});
+  } catch (e) {}
+})();
 // GENERATED from dc-runtime/src/*.ts — do not edit. Rebuild with `cd dc-runtime && bun run build`.
 "use strict";
 (() => {
