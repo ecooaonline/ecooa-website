@@ -1,5 +1,95 @@
 <!doctype html>
-<html lang="pt-BR"><head><style>
+<html data-mob-pronto="" lang="pt-BR"><head><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><style>
     .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
       border:1px solid color-mix(in srgb,currentColor 50%,transparent);
       border-radius:2px;box-sizing:border-box;overflow:hidden}
@@ -58,7 +148,7 @@
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="noindex, follow">
-<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <title data-dc-tpl="1">Políticas · privacidade, cookies e termos de uso · ecooa</title><meta name="description" content="Política de privacidade, uso de cookies e termos de uso do site da ecooa, clínica em Moinhos de Vento, Porto Alegre." data-dc-tpl="2"><meta name="robots" content="noindex, follow" data-dc-tpl="3"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="4"><style data-dc-tpl="5">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
@@ -128,30 +218,125 @@
   a { color:inherit; text-decoration:none; }
   button { font:inherit; color:inherit; }
   :focus-visible { outline:2px solid #C6C4BF; outline-offset:3px; }
-</style></head>
+</style><style>
+/* Responsividade do desenho original, que a pre-renderizacao congelou no
+   estado de 1440px. Os limites sao os mesmos que estavam no JavaScript.
+   Os estilos da pagina vem inline, por isso o !important: sem ele a regra
+   inline vence. Cada regra vive dentro de uma media query, entao o desktop
+   segue exatamente como estava. */
+
+/* cabecalho: abaixo de 1080 o autor troca a barra inteira pelo botao menu */
+@media (max-width: 1079px) {
+  [data-nav-desktop], [data-acoes-desktop] { display: none !important; }
+  [data-mob-acoes] { display: flex !important; }
+}
+@media (min-width: 1080px) {
+  [data-mob-acoes], [data-mob-painel] { display: none !important; }
+}
+[data-mob-painel][hidden] { display: none !important; }
+#mob-btn:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+[data-mob-painel] a:focus-visible { outline: 2px solid #86836f; outline-offset: -2px; }
+
+/* mosaico de profissionais: 8 / 6 / 4 / 3 nos limites 1100 / 760 / 480 */
+@media (max-width: 1099px) { [data-mosaico] { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; } }
+@media (max-width: 759px)  { [data-mosaico] { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; } }
+@media (max-width: 479px)  { [data-mosaico] { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; } }
+
+/* Legenda do mosaico: no toque ela fica sempre visivel, entao precisa caber no
+   azulejo em vez de transbordar por cima do rosto. Sao dois filhos diretos, o
+   primeiro e o nome, o segundo e a classe profissional. */
+@media (max-width: 1023px) {
+  [data-perfil] [data-legenda] { padding: 9px 8px 10px !important; }
+  [data-perfil] [data-legenda] > span:first-child {
+    font-size: 13px !important; line-height: 1.12 !important;
+  }
+  [data-perfil] [data-legenda] > span:nth-child(2) {
+    font-size: 9px !important; letter-spacing: .04em !important; line-height: 1.3 !important;
+  }
+}
+@media (max-width: 479px) {
+  [data-perfil] [data-legenda] { padding: 7px 6px 8px !important; }
+  [data-perfil] [data-legenda] > span:first-child { font-size: 12px !important; }
+  /* a classe profissional nao cabe em azulejo de 3 colunas: fica so o nome */
+  [data-perfil] [data-legenda] > span:nth-child(2) { display: none !important; }
+}
+
+/* instrucao de hover nao existe no dedo */
+[data-toque] { display: none; }
+@media (max-width: 1023px) {
+  [data-ponteiro] { display: none; }
+  [data-toque] { display: inline; }
+}
+
+/* secao do espaco: 4 colunas viram 2 abaixo de 900 */
+@media (max-width: 899px) { [data-espaco] { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+
+/* sobre e profissionais: duas colunas empilham em 860 */
+@media (max-width: 859px) {
+  [data-duas-colunas] { grid-template-columns: 1fr !important; }
+  /* empilhado, o retrato vem antes do texto, como no desenho original */
+  [data-ordem-texto] { order: 2 !important; }
+  [data-ordem-foto] { order: 1 !important; }
+}
+
+/* rodape: contato e links centralizam abaixo de 760 */
+@media (max-width: 759px) {
+  [data-rodape-links] { justify-items: center !important; }
+  [data-rodape-contato] { text-align: center !important; }
+}
+
+/* Alvos de toque e legibilidade. Marcados na segunda passada, medindo a
+   pagina ja responsiva em 402px, e nao chutando no desktop.
+   O dedo tem cerca de 9mm: link de 16px de altura erra. */
+@media (max-width: 859px) {
+  [data-alvo-curto] { padding-top: 8px !important; padding-bottom: 8px !important; }
+  [data-alvo-curto][data-inline] { display: inline-block !important; }
+  /* rotulos abaixo de 11px ficam ilegiveis no celular, e a leitora da ecooa
+     tem de 30 a 70 anos. 11px e o piso, o desenho nao muda de aparencia. */
+  [data-miudo] { font-size: 11px !important; }
+}
+
+/* modal de perfil: no celular a foto entra no fluxo. Fora do fluxo ela
+   deixava a primeira linha do grid com 0px de altura e vazava por cima do
+   texto, escondendo nome, marca e o bloco de formacao. */
+@media (max-width: 860px) {
+  .pf-foto { aspect-ratio: auto !important; min-height: 0 !important; max-height: none !important; }
+  .pf-foto img {
+    position: static !important; width: 100% !important; height: 46vh !important;
+    object-fit: cover; object-position: center top;
+  }
+  .pf-vazia { position: static !important; height: 46vh !important; }
+}
+</style>
+</head>
 <body>
 <div id="dc-root"><div class="sc-host" data-sc-name="politicas"><div data-dc-tpl="6" style="background: var(--fundo); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
   <div data-dc-tpl="3" style="background: rgba(240, 238, 233, 0.66); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid var(--rule);">
     <div data-dc-tpl="4" style="max-width: 1600px; margin: 0px auto; padding: 0px clamp(20px, 3.2vw, 56px); height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
-      <a data-dc-tpl="5" href="./" aria-label="ecooa, ir para o início" style="flex: 0 0 auto; display: block;"><img data-dc-tpl="6" src="assets/logo/ecooa-wordmark.svg" alt="ecooa" style="width: 98px; opacity: 0.9;"></a>
+      <a data-dc-tpl="5" href="./" aria-label="ecooa, ir para o início" style="flex: 0 0 auto; display: block;" data-alvo-curto=""><img data-dc-tpl="6" src="assets/logo/ecooa-wordmark.svg" alt="ecooa" style="width: 98px; opacity: 0.9;"></a>
 
       
-        <nav data-dc-tpl="8" aria-label="Navegação principal" style="display: flex; align-items: center; gap: clamp(13px, 1.8vw, 30px);">
+        <nav data-dc-tpl="8" aria-label="Navegação principal" style="display: flex; align-items: center; gap: clamp(13px, 1.8vw, 30px);" data-nav-desktop="">
           <a data-dc-tpl="9" href="sobre.html" style="font-size: 13.5px; color: rgb(99, 97, 92); padding: 8px 0px; border-bottom: 1px solid transparent;">sobre</a>
           <button type="button" data-menu="especialidades" aria-expanded="false" data-dc-tpl="10" style="background: none; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: transparent; border-left-color: initial; border-image: initial; cursor: pointer; font-size: 13.5px; color: rgb(99, 97, 92); padding: 8px 0px; display: inline-flex; align-items: center; gap: 6px;">especialidades <span data-dc-tpl="11" aria-hidden="true" style="font-size: 8px; opacity: 0.5;">▼</span></button>
           <button type="button" data-menu="profissionais" aria-expanded="false" data-dc-tpl="12" style="background: none; border-width: 0px 0px 1px; border-top-style: initial; border-right-style: initial; border-bottom-style: solid; border-left-style: initial; border-top-color: initial; border-right-color: initial; border-bottom-color: transparent; border-left-color: initial; border-image: initial; cursor: pointer; font-size: 13.5px; color: rgb(99, 97, 92); padding: 8px 0px; display: inline-flex; align-items: center; gap: 6px;">profissionais <span data-dc-tpl="13" aria-hidden="true" style="font-size: 8px; opacity: 0.5;">▼</span></button>
           <a data-dc-tpl="14" href="qual-profissional-procurar.html" style="font-size: 13.5px; color: rgb(99, 97, 92); padding: 8px 0px; border-bottom: 1px solid transparent;">busca por IA</a>
           <a data-dc-tpl="15" href="blog.html" style="font-size: 13.5px; color: rgb(99, 97, 92); padding: 8px 0px; border-bottom: 1px solid transparent;">editorial</a>
           <a data-dc-tpl="16" href="localizacao.html" style="font-size: 13.5px; color: rgb(99, 97, 92); padding: 8px 0px; border-bottom: 1px solid transparent;">localização</a>
-          <button type="button" data-menu="mais" aria-expanded="false" data-dc-tpl="17" type="button" aria-expanded="false" style="background: none; border: 0px; cursor: pointer; font-size: 13.5px; color: var(--grafite); padding: 8px 0px; display: inline-flex; align-items: center; gap: 6px;">mais <span data-dc-tpl="18" aria-hidden="true" style="font-size: 8px; opacity: 0.5;">▼</span></button>
+          <button type="button" data-menu="mais" aria-expanded="false" data-dc-tpl="17" style="background: none; border: 0px; cursor: pointer; font-size: 13.5px; color: var(--grafite); padding: 8px 0px; display: inline-flex; align-items: center; gap: 6px;">mais <span data-dc-tpl="18" aria-hidden="true" style="font-size: 8px; opacity: 0.5;">▼</span></button>
         </nav>
-        <div data-dc-tpl="19" style="flex: 0 0 auto; display: flex; align-items: center; gap: 14px;">
+        <div data-dc-tpl="19" style="flex: 0 0 auto; display: flex; align-items: center; gap: 14px;" data-acoes-desktop="">
           <a data-dc-tpl="20" href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ecooa" style="width: 40px; height: 40px; border-radius: 999px; background: var(--fundo); display: inline-flex; align-items: center; justify-content: center; color: var(--grafite); box-shadow: var(--relevo-botao);">
             <svg data-dc-tpl="21" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect data-dc-tpl="22" x="3" y="3" width="18" height="18" rx="5"></rect><circle data-dc-tpl="23" cx="12" cy="12" r="4"></circle><circle data-dc-tpl="24" cx="17.4" cy="6.6" r="1"></circle></svg>
           </a>
           <a data-dc-tpl="25" href="https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20ecooa" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0px 26px; border-radius: 999px; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;">agendar</a>
-        </div>
+        </div><div data-mob-acoes="" style="display:none; align-items:center; gap:10px;">
+  <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ecooa" style="width:40px; height:40px; border-radius:999px; background:var(--fundo); display:inline-flex; align-items:center; justify-content:center; color:var(--grafite); box-shadow:var(--relevo-botao);">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.4" cy="6.6" r="1"></circle></svg>
+  </a>
+  <button type="button" id="mob-btn" aria-expanded="false" aria-controls="mob-painel" style="background:var(--fundo); border:0; border-radius:999px; cursor:pointer; min-height:44px; padding:0 22px; font-size:11.5px; letter-spacing:.16em; color:var(--grafite); box-shadow:var(--relevo-botao);">menu</button>
+</div>
       
 
       
@@ -164,7 +349,7 @@
 
   
 
-  <div data-painel="especialidades" hidden data-dc-tpl="35" style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
+  <div data-painel="especialidades" hidden="" data-dc-tpl="35" style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
       <div data-dc-tpl="36" style="max-width: 1600px; margin: 0px auto; padding: 46px clamp(20px, 3.2vw, 56px) 50px; display: flex; flex-wrap: wrap; gap: 56px;">
         <div data-dc-tpl="37" style="flex: 1 1 280px; max-width: 340px;">
           <div data-dc-tpl="38" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="39" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>especialidades</div>
@@ -216,7 +401,7 @@
         </div>
       </div>
     </div>
-<div data-painel="profissionais" hidden data-dc-tpl="48" style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
+<div data-painel="profissionais" hidden="" data-dc-tpl="48" style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
       <div data-dc-tpl="49" style="max-width: 1600px; margin: 0px auto; padding: 46px clamp(20px, 3.2vw, 56px) 50px; display: flex; flex-wrap: wrap; gap: 56px;">
         <div data-dc-tpl="50" style="flex: 1 1 280px; max-width: 340px;">
           <div data-dc-tpl="51" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="52" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>profissionais</div>
@@ -263,14 +448,28 @@
         </div>
       </div>
     </div>
-<div data-painel="mais" hidden data-dc-tpl="61" style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
+<div data-painel="mais" hidden="" data-dc-tpl="61" style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
       <div data-dc-tpl="62" style="max-width: 1600px; margin: 0px auto; padding: 38px clamp(20px, 3.2vw, 56px) 42px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--stone);">
         <a data-dc-tpl="63" href="mentorias.html" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span data-dc-tpl="64" style="display: block; font-family: var(--serif); font-size: 20px; color: var(--tinta);">mentorias</span><span data-dc-tpl="65" style="display: block; margin-top: 4px; font-size: 11.5px; color: var(--legenda);">ecooa.cademy · formação para profissionais</span></a>
         <a data-dc-tpl="66" href="sublocacao.html" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span data-dc-tpl="67" style="display: block; font-family: var(--serif); font-size: 20px; color: var(--tinta);">sublocação</span><span data-dc-tpl="68" style="display: block; margin-top: 4px; font-size: 11.5px; color: var(--legenda);">salas para profissionais autônomos</span></a>
         <a data-dc-tpl="69" href="localizacao.html" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span data-dc-tpl="70" style="display: block; font-family: var(--serif); font-size: 20px; color: var(--tinta);">contato</span><span data-dc-tpl="71" style="display: block; margin-top: 4px; font-size: 11.5px; color: var(--legenda);">endereço, horários e como chegar</span></a>
       </div>
     </div>
-</header></div>
+<div data-mob-painel="" id="mob-painel" hidden="" style="background:var(--nuvem); border-bottom:1px solid var(--rule); box-shadow:0 26px 60px rgba(70,68,63,.14); max-height:calc(100vh - 76px); overflow-y:auto;">
+  <div style="padding:26px clamp(20px,5vw,32px) 30px; display:grid; gap:1px; background:var(--stone);">
+    <a href="sobre.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">sobre</a>
+    <a href="especialidades.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">especialidades</a>
+    <a href="profissionais.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">profissionais</a>
+    <a href="qual-profissional-procurar.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">busca por IA</a>
+    <a href="blog.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">editorial</a>
+    <a href="localizacao.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">localização</a>
+    <a href="mentorias.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">mentorias</a>
+    <a href="sublocacao.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">sublocação</a>
+  </div>
+  <div style="padding:0 clamp(20px,5vw,32px) 30px;">
+    <a href="https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20ecooa" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; min-height:54px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em;">agendar</a>
+  </div>
+</div></header></div>
 
   <section data-dc-tpl="8" style="padding: clamp(122px, 15vh, 180px) clamp(20px, 3.2vw, 56px) clamp(36px, 4vw, 64px); background: var(--fundo);">
     <div data-dc-tpl="9" style="max-width: 820px; margin: 0px auto;">
@@ -523,7 +722,7 @@
         
       </div>
 
-      <p data-dc-tpl="45" style="margin: clamp(48px, 5vw, 80px) 0px 0px; padding-top: 26px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.7; color: var(--legenda);">Dúvidas sobre dados pessoais podem ser enviadas para <a data-dc-tpl="46" href="mailto:ecooa.adm@gmail.com" style="color: var(--grafite); border-bottom: 1px solid var(--rule-forte);">ecooa.adm@gmail.com</a>. Última revisão editorial: julho de 2026.</p>
+      <p data-dc-tpl="45" style="margin: clamp(48px, 5vw, 80px) 0px 0px; padding-top: 26px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.7; color: var(--legenda);">Dúvidas sobre dados pessoais podem ser enviadas para <a data-dc-tpl="46" href="mailto:ecooa.adm@gmail.com" style="color: var(--grafite); border-bottom: 1px solid var(--rule-forte);" data-alvo-curto="" data-inline="">ecooa.adm@gmail.com</a>. Última revisão editorial: julho de 2026.</p>
     </div>
   </section>
 
@@ -550,16 +749,16 @@
   <footer data-dc-tpl="16" style="background: var(--grafite); color: var(--sobre-escuro); padding: clamp(56px, 7vw, 92px) clamp(20px, 3.2vw, 56px) 34px;">
     <div data-dc-tpl="17" style="max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="18" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(40px, 5vw, 70px); align-items: start;">
-        <nav data-dc-tpl="19" aria-label="Navegação do rodapé" style="display: grid; gap: 13px; align-content: start; justify-items: start;">
-          <a data-dc-tpl="20" href="./" style="font-size: 14px;">início</a>
-          <a data-dc-tpl="21" href="sobre.html" style="font-size: 14px;">sobre</a>
-          <a data-dc-tpl="22" href="especialidades.html" style="font-size: 14px;">especialidades</a>
-          <a data-dc-tpl="23" href="profissionais.html" style="font-size: 14px;">profissionais</a>
-          <a data-dc-tpl="24" href="qual-profissional-procurar.html" style="font-size: 14px;">busca por IA</a>
-          <a data-dc-tpl="25" href="blog.html" style="font-size: 14px;">editorial</a>
-          <a data-dc-tpl="26" href="mentorias.html" style="font-size: 14px;">mentorias</a>
-          <a data-dc-tpl="27" href="sublocacao.html" style="font-size: 14px;">sublocação</a>
-          <a data-dc-tpl="28" href="localizacao.html" style="font-size: 14px;">localização</a>
+        <nav data-dc-tpl="19" aria-label="Navegação do rodapé" style="display: grid; gap: 13px; align-content: start; justify-items: start;" data-rodape-links="">
+          <a data-dc-tpl="20" href="./" style="font-size: 14px;" data-alvo-curto="">início</a>
+          <a data-dc-tpl="21" href="sobre.html" style="font-size: 14px;" data-alvo-curto="">sobre</a>
+          <a data-dc-tpl="22" href="especialidades.html" style="font-size: 14px;" data-alvo-curto="">especialidades</a>
+          <a data-dc-tpl="23" href="profissionais.html" style="font-size: 14px;" data-alvo-curto="">profissionais</a>
+          <a data-dc-tpl="24" href="qual-profissional-procurar.html" style="font-size: 14px;" data-alvo-curto="">busca por IA</a>
+          <a data-dc-tpl="25" href="blog.html" style="font-size: 14px;" data-alvo-curto="">editorial</a>
+          <a data-dc-tpl="26" href="mentorias.html" style="font-size: 14px;" data-alvo-curto="">mentorias</a>
+          <a data-dc-tpl="27" href="sublocacao.html" style="font-size: 14px;" data-alvo-curto="">sublocação</a>
+          <a data-dc-tpl="28" href="localizacao.html" style="font-size: 14px;" data-alvo-curto="">localização</a>
         </nav>
 
         <div data-dc-tpl="29" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; text-align: center;">
@@ -568,14 +767,14 @@
           <span data-dc-tpl="32" style="font-family: var(--serif); font-size: 19px; line-height: 1.3; color: var(--fundo);">o cuidado que ecooa</span>
         </div>
 
-        <div data-dc-tpl="33" style="text-align: right;">
+        <div data-dc-tpl="33" style="text-align: right;" data-rodape-contato="">
           <div data-dc-tpl="34" style="font-size: 10px; font-weight: 600; letter-spacing: 0.17em; text-transform: uppercase; color: var(--nevoa);">ecooa · moinhos de vento · porto alegre</div>
           <p data-dc-tpl="35" style="margin: 16px 0px 0px; font-size: 14px; line-height: 1.74;">Rua Mariante, 180 · 9º andar<br data-dc-tpl="36">Porto Alegre, RS · 90430-180<br data-dc-tpl="37">Segunda a sexta, 8h às 20h</p>
           <p data-dc-tpl="38" style="margin: 16px 0px 0px; font-size: 14px; line-height: 1.74;">
-            <a data-dc-tpl="39" href="https://wa.me/5551991460909" target="_blank" rel="noopener noreferrer">(51) 99146-0909</a><br data-dc-tpl="40">
-            <a data-dc-tpl="41" href="mailto:ecooa.adm@gmail.com">ecooa.adm@gmail.com</a>
+            <a data-dc-tpl="39" href="https://wa.me/5551991460909" target="_blank" rel="noopener noreferrer" data-alvo-curto="" data-inline="">(51) 99146-0909</a><br data-dc-tpl="40">
+            <a data-dc-tpl="41" href="mailto:ecooa.adm@gmail.com" data-alvo-curto="" data-inline="">ecooa.adm@gmail.com</a>
           </p>
-          <a data-dc-tpl="42" href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" style="margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--nevoa);">
+          <a data-dc-tpl="42" href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" style="margin-top: 16px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--nevoa);" data-alvo-curto="">
             <svg data-dc-tpl="43" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect data-dc-tpl="44" x="3" y="3" width="18" height="18" rx="5"></rect><circle data-dc-tpl="45" cx="12" cy="12" r="4"></circle><circle data-dc-tpl="46" cx="17.4" cy="6.6" r="1"></circle></svg>
             @somos.ecooa
           </a>
@@ -588,7 +787,7 @@
 
       <div data-dc-tpl="49" style="margin-top: 34px; padding-top: 24px; border-top: 1px solid rgba(240, 238, 233, 0.2); text-align: center;">
         <div data-dc-tpl="50" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;">
-          <a data-dc-tpl="51" href="politicas.html#privacidade">privacidade</a><span data-dc-tpl="52" aria-hidden="true" style="opacity: 0.5;">·</span><a data-dc-tpl="53" href="politicas.html#cookies">cookies</a><span data-dc-tpl="54" aria-hidden="true" style="opacity: 0.5;">·</span><a data-dc-tpl="55" href="politicas.html#termos">termos</a><span data-dc-tpl="56" aria-hidden="true" style="opacity: 0.5;">·</span><a data-dc-tpl="57" href="sublocacao.html">sublocação</a>
+          <a data-dc-tpl="51" href="politicas.html#privacidade" data-alvo-curto="" data-miudo="">privacidade</a><span data-dc-tpl="52" aria-hidden="true" style="opacity: 0.5;">·</span><a data-dc-tpl="53" href="politicas.html#cookies" data-alvo-curto="" data-miudo="">cookies</a><span data-dc-tpl="54" aria-hidden="true" style="opacity: 0.5;">·</span><a data-dc-tpl="55" href="politicas.html#termos" data-alvo-curto="" data-miudo="">termos</a><span data-dc-tpl="56" aria-hidden="true" style="opacity: 0.5;">·</span><a data-dc-tpl="57" href="sublocacao.html" data-alvo-curto="" data-miudo="">sublocação</a>
         </div>
         <p data-dc-tpl="58" style="margin: 18px 0px 0px; font-size: 11.5px; letter-spacing: 0.08em;">© 2026 ecooa · Rua Mariante, 180 · Porto Alegre, RS</p>
         <p data-dc-tpl="59" style="margin: 8px 0px 0px; font-size: 11.5px; letter-spacing: 0.06em;">Desenvolvido por GJORA Intelligence · Todos os direitos reservados.</p>
@@ -694,6 +893,40 @@ class Component extends DCLogic {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') fecharTodos(null);
   });
+})();
+</script>
+<script>
+/* Menu do celular. JavaScript comum, sem eval, para respeitar a politica de
+   seguranca do dominio. O painel e o mesmo que o template original abria. */
+(function () {
+  var btn = document.getElementById('mob-btn');
+  var painel = document.getElementById('mob-painel');
+  if (!btn || !painel) return;
+
+  function fechar() {
+    painel.hidden = true;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.textContent = 'menu';
+  }
+  function abrir() {
+    painel.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+    btn.textContent = 'fechar';
+  }
+
+  btn.addEventListener('click', function () {
+    if (painel.hidden) abrir(); else fechar();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !painel.hidden) { fechar(); btn.focus(); }
+  });
+
+  /* voltar ao desktop com o painel aberto deixaria estado preso */
+  var largo = window.matchMedia('(min-width: 1080px)');
+  var aoTrocar = function (e) { if (e.matches) fechar(); };
+  if (largo.addEventListener) largo.addEventListener('change', aoTrocar);
+  else if (largo.addListener) largo.addListener(aoTrocar);
 })();
 </script>
 </body></html>
