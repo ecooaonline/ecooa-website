@@ -1,5 +1,50 @@
 <!doctype html>
-<html data-mob-pronto="" lang="pt-BR"><head><style>
+<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><style>
     .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
       border:1px solid color-mix(in srgb,currentColor 50%,transparent);
       border-radius:2px;box-sizing:border-box;overflow:hidden}
@@ -147,7 +192,7 @@
 <meta property="og:description" content="Leituras que ajudam a decidir: textos sobre medicina, tricologia, nutrição, estética e saúde mental, escritos a partir da prática clínica da ecooa em Porto Alegre.">
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <title data-dc-tpl="1">Editorial ecooa · textos sobre saúde, estética, nutrição e longevidade</title><meta name="description" content="Leituras que ajudam a decidir: textos sobre medicina, tricologia, nutrição, estética e saúde mental, escritos a partir da prática clínica da ecooa em Porto Alegre." data-dc-tpl="2"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="3"><style data-dc-tpl="4">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
@@ -311,6 +356,15 @@
     object-fit: cover; object-position: center top;
   }
   .pf-vazia { position: static !important; height: 46vh !important; }
+}
+</style>
+<style>
+/* elementos escondidos pelo filtro saem do grid, nao ficam invisiveis ocupando espaco */
+[data-item-grupo][hidden], [data-item-idpar][hidden], [data-filtro-vazio][hidden] { display: none !important; }
+[data-filtro] { transition: background .18s ease, color .18s ease; }
+[data-filtro-vazio] {
+  grid-column: 1 / -1; padding: clamp(30px, 4vw, 56px);
+  background: #FAF9F7; color: #66645E; font-size: 15px; line-height: 1.6;
 }
 </style>
 </head>
@@ -491,27 +545,27 @@
       <div data-dc-tpl="16" style="padding: 0px clamp(20px, 3.2vw, 56px) 24px; max-width: 1600px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: 9px; align-items: center;">
         <span data-dc-tpl="17" style="margin-right: 8px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);" data-miudo="">assunto</span>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="true" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(99, 97, 92); color: rgb(240, 238, 233); box-shadow: rgba(60, 58, 54, 0.5) 2px 2px 6px inset;"><span class="sc-interp">todos</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="true" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(99, 97, 92); color: rgb(240, 238, 233); box-shadow: rgba(60, 58, 54, 0.5) 2px 2px 6px inset;" data-filtro="todos"><span class="sc-interp">todos</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">medicina</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="medicina"><span class="sc-interp">medicina</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">nutrição</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="nutrição"><span class="sc-interp">nutrição</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">tricologia</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="tricologia"><span class="sc-interp">tricologia</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">longevidade</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="longevidade"><span class="sc-interp">longevidade</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">saúde mental</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="saúde mental"><span class="sc-interp">saúde mental</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">estética</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="estética"><span class="sc-interp">estética</span></button>
         
-          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">integrativa</span></button>
+          <button data-dc-tpl="19" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; background: rgb(240, 238, 233); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="integrativa"><span class="sc-interp">integrativa</span></button>
         
       </div>
 
       <div data-dc-tpl="20" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--stone); border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone);">
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="medicina">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">medicina</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Implante hormonal subcutâneo: o que é e quando tem indicação</span></span>
@@ -523,7 +577,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="nutrição">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">nutrição</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Canetas emagrecedoras: o que a nutrição precisa sustentar</span></span>
@@ -535,7 +589,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="tricologia">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">tricologia</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Queda de cabelo: o que investigar antes de tratar</span></span>
@@ -547,7 +601,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="medicina">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">medicina</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Menopausa e terapia hormonal: o que se sabe hoje</span></span>
@@ -559,7 +613,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="longevidade">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">longevidade</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Longevidade saudável começa nos marcadores certos</span></span>
@@ -571,7 +625,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="medicina">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">medicina</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Equilíbrio hormonal: como identificar que algo mudou</span></span>
@@ -583,7 +637,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="saúde mental">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">saúde mental</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Saúde mental e emagrecimento andam juntos</span></span>
@@ -595,7 +649,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="nutrição">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">nutrição</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Nutrição esportiva: o que muda quando o treino é sério</span></span>
@@ -607,7 +661,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="tricologia">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">tricologia</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Transplante capilar: quem tem indicação e quem não tem</span></span>
@@ -619,7 +673,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="estética">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">estética</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Rejuvenescimento facial sem perder a expressão</span></span>
@@ -631,7 +685,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="integrativa">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">integrativa</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Osteopatia: o que é e para quem faz sentido</span></span>
@@ -643,7 +697,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="medicina">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">medicina</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Seu exame não é um diagnóstico</span></span>
@@ -655,7 +709,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="saúde mental">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">saúde mental</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Ansiedade: quando deixa de ser só um dia difícil</span></span>
@@ -667,7 +721,7 @@
             </span>
           </button>
         
-          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+          <button data-dc-tpl="22" type="button" style="text-align: left; border: 0px; cursor: pointer; background: var(--nuvem); padding: clamp(30px, 3vw, 46px) clamp(24px, 2.4vw, 38px); min-height: 260px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;" data-item-grupo="tricologia">
             <span data-dc-tpl="23" style="display: block;">
               <span data-dc-tpl="24" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);"><span class="sc-interp" data-miudo="">tricologia</span></span>
               <span data-dc-tpl="25" style="display: block; margin-top: 18px; max-width: 26ch; font-family: var(--serif); font-size: clamp(22px, 2.1vw, 30px); line-height: 1.14; color: var(--tinta);"><span class="sc-interp">Queda de cabelo em mulheres tem particularidades</span></span>
@@ -701,7 +755,7 @@
           <input data-dc-tpl="13" id="ec-news" type="email" required="" placeholder="nome@email.com" style="margin-top: 10px; width: 100%; min-height: 52px; padding: 0px 20px; border: 0px; background: var(--fundo); color: var(--tinta); font-family: var(--sans); font-size: 15px; box-shadow: var(--afundado);">
         </div>
         <button data-dc-tpl="14" type="submit" style="flex: 0 0 auto; min-height: 52px; padding: 0px 30px; border: 0px; border-radius: 999px; cursor: pointer; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;"><span class="sc-interp">assinar</span></button>
-        <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
+        <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp" data-news-aviso="">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
       </form>
     </div>
   </section>
@@ -966,6 +1020,106 @@ class Component extends DCLogic {
   var aoTrocar = function (e) { if (e.matches) fechar(); };
   if (largo.addEventListener) largo.addEventListener('change', aoTrocar);
   else if (largo.addListener) largo.addListener(aoTrocar);
+})();
+</script>
+<script>
+/* Rodape: inscricao no editorial. Portado de Rodape.dc.html:128.
+   Sem isto o submit recarrega a pagina e o e-mail digitado se perde. */
+(function () {
+  var campo = document.getElementById('ec-news');
+  if (!campo) return;
+  var form = campo.closest('form');
+  if (!form) return;
+  var botao = form.querySelector('button[type=submit]');
+  var aviso = document.querySelector('[data-news-aviso]');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var valor = campo.value ? campo.value.trim() : '';
+    if (!valor) { campo.focus(); return; }
+    var corpo = 'Gostaria de assinar o editorial da ecooa.\n\nE-mail para inscricao: ' + valor;
+    window.location.href =
+      'mailto:ecooa.adm@gmail.com?subject=' + encodeURIComponent('Inscricao no editorial ecooa') +
+      '&body=' + encodeURIComponent(corpo);
+    if (botao) botao.textContent = 'e-mail aberto';
+    if (aviso) {
+      aviso.textContent =
+        'Abrimos um e-mail ja preenchido para voce enviar. A inscricao vale quando ele chegar.';
+    }
+  });
+})();
+</script>
+<script>
+/* Filtros por grupo. Portado de profissionais.html:216 e blog.html:264.
+   Mostra e esconde as fichas ja presentes na pagina, sem recarregar nada.
+   Em duas colunas a alternancia texto/retrato e recalculada sobre a lista
+   visivel, senao as fichas ficam desalinhadas ao filtrar. */
+(function () {
+  var botoes = [].slice.call(document.querySelectorAll('[data-filtro]'));
+  var itens = [].slice.call(document.querySelectorAll('[data-item-grupo]'));
+  if (!botoes.length || !itens.length) return;
+
+  var ATIVO = { bg: '#63615C', cor: '#F0EEE9' };
+  var INATIVO = { bg: '#FAF9F7', cor: '#63615C' };
+
+  function alterna(grupo) {
+    botoes.forEach(function (b) {
+      var on = b.getAttribute('data-filtro') === grupo;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.style.background = on ? ATIVO.bg : INATIVO.bg;
+      b.style.color = on ? ATIVO.cor : INATIVO.cor;
+    });
+
+    var visiveis = 0;
+    itens.forEach(function (el) {
+      var grupos = (el.getAttribute('data-item-grupo') || '').split('|');
+      var mostra = grupo === 'todos' || grupos.indexOf(grupo) >= 0;
+      el.hidden = !mostra;
+      /* o par de fichas do desktop vive em dois nos irmaos */
+      var irmao = el.getAttribute('data-item-par');
+      if (irmao) {
+        var outro = document.querySelector('[data-item-idpar="' + irmao + '"]');
+        if (outro) outro.hidden = !mostra;
+      }
+      if (mostra) visiveis++;
+    });
+
+    /* alternancia recalculada sobre o que ficou visivel */
+    var pares = [].slice.call(document.querySelectorAll('[data-item-grupo]')).filter(function (e) {
+      return !e.hidden;
+    });
+    pares.forEach(function (el, i) {
+      var irmao = el.getAttribute('data-item-par');
+      if (!irmao) return;
+      var outro = document.querySelector('[data-item-idpar="' + irmao + '"]');
+      if (!outro) return;
+      /* linha par: retrato primeiro. linha impar: texto primeiro. */
+      var fotoAntes = i % 2 === 0;
+      var foto = el.querySelector('img') ? el : outro;
+      var texto = foto === el ? outro : el;
+      foto.style.order = fotoAntes ? '1' : '2';
+      texto.style.order = fotoAntes ? '2' : '1';
+    });
+
+    var contador = document.querySelector('[data-filtro-contador]');
+    if (contador) contador.textContent = String(visiveis);
+    var vazio = document.querySelector('[data-filtro-vazio]');
+    if (vazio) vazio.hidden = visiveis > 0;
+  }
+
+  botoes.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = b.getAttribute('data-filtro');
+      alterna(g);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', g === 'todos' ? window.location.pathname : '#' + g);
+      }
+    });
+  });
+
+  /* estado inicial pelo hash, como no original */
+  var h = (window.location.hash || '').replace('#', '');
+  if (h && botoes.some(function (b) { return b.getAttribute('data-filtro') === h; })) alterna(h);
 })();
 </script>
 </body></html>

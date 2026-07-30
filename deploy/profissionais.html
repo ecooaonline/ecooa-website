@@ -1,5 +1,50 @@
 <!doctype html>
-<html data-mob-pronto="" lang="pt-BR"><head><style>
+<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><style>
     .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
       border:1px solid color-mix(in srgb,currentColor 50%,transparent);
       border-radius:2px;box-sizing:border-box;overflow:hidden}
@@ -147,7 +192,7 @@
 <meta property="og:description" content="Conheça os 31 profissionais autônomos que atuam na ecooa: medicina, nutrição, biomedicina, psicologia, fisioterapia, odontologia, enfermagem, farmácia e terapia integrativa.">
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <title data-dc-tpl="1">Profissionais · ecooa · 31 especialistas em Moinhos de Vento, Porto Alegre</title><meta name="description" content="Conheça os 31 profissionais autônomos que atuam na ecooa: medicina, nutrição, biomedicina, psicologia, fisioterapia, odontologia, enfermagem, farmácia e terapia integrativa." data-dc-tpl="2"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="3"><style data-dc-tpl="4">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
@@ -411,6 +456,15 @@
   .pf-vazia { position: static !important; height: 46vh !important; }
 }
 </style>
+<style>
+/* elementos escondidos pelo filtro saem do grid, nao ficam invisiveis ocupando espaco */
+[data-item-grupo][hidden], [data-item-idpar][hidden], [data-filtro-vazio][hidden] { display: none !important; }
+[data-filtro] { transition: background .18s ease, color .18s ease; }
+[data-filtro-vazio] {
+  grid-column: 1 / -1; padding: clamp(30px, 4vw, 56px);
+  background: #FAF9F7; color: #66645E; font-size: 15px; line-height: 1.6;
+}
+</style>
 </head>
 <body>
 <div id="dc-root"><div class="sc-host" data-sc-name="profissionais"><div data-dc-tpl="6" style="background: var(--nuvem); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
@@ -589,19 +643,19 @@
     <div data-dc-tpl="15" style="max-width: 1600px; margin: 0px auto; padding: 16px clamp(20px, 3.2vw, 56px); display: flex; flex-wrap: wrap; gap: 9px; align-items: center;">
       <span data-dc-tpl="16" style="margin-right: 8px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);" data-miudo="">filtrar</span>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="true" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(99, 97, 92); color: rgb(240, 238, 233); box-shadow: rgba(60, 58, 54, 0.5) 2px 2px 6px inset;"><span class="sc-interp">todos</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">31</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="true" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(99, 97, 92); color: rgb(240, 238, 233); box-shadow: rgba(60, 58, 54, 0.5) 2px 2px 6px inset;" data-filtro="todos"><span class="sc-interp">todos</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">31</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">medicina</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">5</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="medicina"><span class="sc-interp">medicina</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">5</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">nutrição</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">12</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="nutricao"><span class="sc-interp">nutrição</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">12</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">estética</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">9</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="estetica"><span class="sc-interp">estética</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">9</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">fisioterapia</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">1</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="fisioterapia"><span class="sc-interp">fisioterapia</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">1</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">saúde mental</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">3</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="saude-mental"><span class="sc-interp">saúde mental</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">3</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;"><span class="sc-interp">terapia integrativa</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">1</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="terapia-integrativa"><span class="sc-interp">terapia integrativa</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">1</span></span></button>
       
     </div>
   </div>
@@ -609,7 +663,7 @@
   
   <div data-dc-tpl="20" style="display: grid; grid-template-columns: 1fr 1fr; background: var(--stone); gap: 1px; border-bottom: 1px solid var(--stone);" data-duas-colunas="">
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="medicina" data-item-par="par-0">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gustavo Gehrke" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="gustavo-gehrke">
             
@@ -621,7 +675,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-0">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -638,7 +692,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="medicina" data-item-par="par-1">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -655,7 +709,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-1">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Larissa Wiebbelling" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="larissa-wiebbelling">
             
@@ -667,7 +721,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="medicina" data-item-par="par-2">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Yale Jerônimo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="yale-jeronimo">
             
@@ -679,7 +733,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-2">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -696,7 +750,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="medicina" data-item-par="par-3">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -713,7 +767,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-3">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Müller T. Machado" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="vitoria-machado">
             
@@ -725,7 +779,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="medicina" data-item-par="par-4">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Renata Bohn Engel" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="renata-bohn-engel">
             
@@ -737,7 +791,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-4">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -754,7 +808,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="nutricao" data-item-par="par-5">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -771,7 +825,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-5">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jessica Stein" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jessica-stein">
             
@@ -783,7 +837,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="nutricao" data-item-par="par-6">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriano Flesch Lenz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="adriano-lenz">
             
@@ -795,7 +849,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-6">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -812,7 +866,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="nutricao" data-item-par="par-7">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -829,7 +883,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-7">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Giancarla Rochemback" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="giancarla-rochemback">
             
@@ -841,7 +895,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="nutricao" data-item-par="par-8">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Maria Luísa Serrano Beltran Borges" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="maria-luisa-borges">
             
@@ -853,7 +907,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-8">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -870,7 +924,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="nutricao" data-item-par="par-9">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -887,7 +941,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-9">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Daniel Forster" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="daniel-forster">
             
@@ -899,7 +953,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="nutricao" data-item-par="par-10">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Serpa da Silva" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="vitoria-serpa">
             
@@ -911,7 +965,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-10">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -928,7 +982,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="nutricao" data-item-par="par-11">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -945,7 +999,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-11">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Nasser Salem" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="nasser-salem">
             
@@ -957,7 +1011,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="nutricao" data-item-par="par-12">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Marvin Marques" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="marvin-marques">
             
@@ -969,7 +1023,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-12">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -986,7 +1040,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="nutricao" data-item-par="par-13">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1003,7 +1057,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-13">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gabrieli Klagenberg Avila" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="gabrieli-avila">
             
@@ -1015,7 +1069,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="nutricao" data-item-par="par-14">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Camila Cadore" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="camila-cadore">
             
@@ -1027,7 +1081,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-14">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1044,7 +1098,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="nutricao" data-item-par="par-15">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1061,7 +1115,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-15">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Verena Cattani" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="verena-cattani">
             
@@ -1073,7 +1127,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="nutricao" data-item-par="par-16">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Lara Caye" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="lara-caye">
             
@@ -1085,7 +1139,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-16">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1102,7 +1156,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="estetica" data-item-par="par-17">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1119,7 +1173,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-17">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Danusa Pires" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="danusa-pires">
             
@@ -1131,7 +1185,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="estetica" data-item-par="par-18">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Viviane Fagundes" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="viviane-fagundes">
             
@@ -1143,7 +1197,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-18">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1160,7 +1214,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="fisioterapia" data-item-par="par-19">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1177,7 +1231,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-19">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Natálie Queiroz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="natalie-queiroz">
             
@@ -1189,7 +1243,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="estetica" data-item-par="par-20">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Susan Flach" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="susan-flach">
             
@@ -1201,7 +1255,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-20">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1218,7 +1272,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="estetica" data-item-par="par-21">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1235,7 +1289,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-21">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Letícia Melo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="leticia-melo">
             
@@ -1247,7 +1301,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="estetica" data-item-par="par-22">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Eduarda Schoenmeier" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="eduarda-schoenmeier">
             
@@ -1259,7 +1313,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-22">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1276,7 +1330,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="estetica" data-item-par="par-23">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1293,7 +1347,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-23">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Tais de la Rosa" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="tais-de-la-rosa">
             
@@ -1305,7 +1359,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="estetica" data-item-par="par-24">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Karine Ellwanger" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="karine-ellwanger">
             
@@ -1317,7 +1371,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-24">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1334,7 +1388,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="estetica" data-item-par="par-25">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1351,7 +1405,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-25">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jennifer Adam" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jennifer-adam">
             
@@ -1363,7 +1417,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="estetica" data-item-par="par-26">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jamylle Farias" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jamylle-farias">
             
@@ -1375,7 +1429,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-26">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1392,7 +1446,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="terapia-integrativa" data-item-par="par-27">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1409,7 +1463,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-27">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriana" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="adriana">
             
@@ -1421,7 +1475,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="saude-mental" data-item-par="par-28">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Manuela Sinigaglia Vanti" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="manuela-vanti">
             
@@ -1433,7 +1487,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-28">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1450,7 +1504,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-texto="" data-item-grupo="saude-mental" data-item-par="par-29">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1467,7 +1521,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-ordem-foto="" data-item-idpar="par-29">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Augusto Kauer da Silveira" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="augusto-kauer">
             
@@ -1479,7 +1533,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-grupo="saude-mental" data-item-par="par-30">
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Francielle Machado Beria" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="francielle-beria">
             
@@ -1491,7 +1545,7 @@
         
       </div>
     
-      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);">
+      <div data-dc-tpl="22" style="position: relative; background: var(--nuvem); min-height: clamp(300px, 36vw, 520px);" data-item-idpar="par-30">
         
         
           <div data-dc-tpl="32" style="height: 100%; display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
@@ -1540,7 +1594,7 @@
           <input data-dc-tpl="13" id="ec-news" type="email" required="" placeholder="nome@email.com" style="margin-top: 10px; width: 100%; min-height: 52px; padding: 0px 20px; border: 0px; background: var(--fundo); color: var(--tinta); font-family: var(--sans); font-size: 15px; box-shadow: var(--afundado);">
         </div>
         <button data-dc-tpl="14" type="submit" style="flex: 0 0 auto; min-height: 52px; padding: 0px 30px; border: 0px; border-radius: 999px; cursor: pointer; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;"><span class="sc-interp">assinar</span></button>
-        <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
+        <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp" data-news-aviso="">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
       </form>
     </div>
   </section>
@@ -1902,6 +1956,106 @@ class Component extends DCLogic {
   var aoTrocar = function (e) { if (e.matches) fechar(); };
   if (largo.addEventListener) largo.addEventListener('change', aoTrocar);
   else if (largo.addListener) largo.addListener(aoTrocar);
+})();
+</script>
+<script>
+/* Rodape: inscricao no editorial. Portado de Rodape.dc.html:128.
+   Sem isto o submit recarrega a pagina e o e-mail digitado se perde. */
+(function () {
+  var campo = document.getElementById('ec-news');
+  if (!campo) return;
+  var form = campo.closest('form');
+  if (!form) return;
+  var botao = form.querySelector('button[type=submit]');
+  var aviso = document.querySelector('[data-news-aviso]');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var valor = campo.value ? campo.value.trim() : '';
+    if (!valor) { campo.focus(); return; }
+    var corpo = 'Gostaria de assinar o editorial da ecooa.\n\nE-mail para inscricao: ' + valor;
+    window.location.href =
+      'mailto:ecooa.adm@gmail.com?subject=' + encodeURIComponent('Inscricao no editorial ecooa') +
+      '&body=' + encodeURIComponent(corpo);
+    if (botao) botao.textContent = 'e-mail aberto';
+    if (aviso) {
+      aviso.textContent =
+        'Abrimos um e-mail ja preenchido para voce enviar. A inscricao vale quando ele chegar.';
+    }
+  });
+})();
+</script>
+<script>
+/* Filtros por grupo. Portado de profissionais.html:216 e blog.html:264.
+   Mostra e esconde as fichas ja presentes na pagina, sem recarregar nada.
+   Em duas colunas a alternancia texto/retrato e recalculada sobre a lista
+   visivel, senao as fichas ficam desalinhadas ao filtrar. */
+(function () {
+  var botoes = [].slice.call(document.querySelectorAll('[data-filtro]'));
+  var itens = [].slice.call(document.querySelectorAll('[data-item-grupo]'));
+  if (!botoes.length || !itens.length) return;
+
+  var ATIVO = { bg: '#63615C', cor: '#F0EEE9' };
+  var INATIVO = { bg: '#FAF9F7', cor: '#63615C' };
+
+  function alterna(grupo) {
+    botoes.forEach(function (b) {
+      var on = b.getAttribute('data-filtro') === grupo;
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.style.background = on ? ATIVO.bg : INATIVO.bg;
+      b.style.color = on ? ATIVO.cor : INATIVO.cor;
+    });
+
+    var visiveis = 0;
+    itens.forEach(function (el) {
+      var grupos = (el.getAttribute('data-item-grupo') || '').split('|');
+      var mostra = grupo === 'todos' || grupos.indexOf(grupo) >= 0;
+      el.hidden = !mostra;
+      /* o par de fichas do desktop vive em dois nos irmaos */
+      var irmao = el.getAttribute('data-item-par');
+      if (irmao) {
+        var outro = document.querySelector('[data-item-idpar="' + irmao + '"]');
+        if (outro) outro.hidden = !mostra;
+      }
+      if (mostra) visiveis++;
+    });
+
+    /* alternancia recalculada sobre o que ficou visivel */
+    var pares = [].slice.call(document.querySelectorAll('[data-item-grupo]')).filter(function (e) {
+      return !e.hidden;
+    });
+    pares.forEach(function (el, i) {
+      var irmao = el.getAttribute('data-item-par');
+      if (!irmao) return;
+      var outro = document.querySelector('[data-item-idpar="' + irmao + '"]');
+      if (!outro) return;
+      /* linha par: retrato primeiro. linha impar: texto primeiro. */
+      var fotoAntes = i % 2 === 0;
+      var foto = el.querySelector('img') ? el : outro;
+      var texto = foto === el ? outro : el;
+      foto.style.order = fotoAntes ? '1' : '2';
+      texto.style.order = fotoAntes ? '2' : '1';
+    });
+
+    var contador = document.querySelector('[data-filtro-contador]');
+    if (contador) contador.textContent = String(visiveis);
+    var vazio = document.querySelector('[data-filtro-vazio]');
+    if (vazio) vazio.hidden = visiveis > 0;
+  }
+
+  botoes.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var g = b.getAttribute('data-filtro');
+      alterna(g);
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', g === 'todos' ? window.location.pathname : '#' + g);
+      }
+    });
+  });
+
+  /* estado inicial pelo hash, como no original */
+  var h = (window.location.hash || '').replace('#', '');
+  if (h && botoes.some(function (b) { return b.getAttribute('data-filtro') === h; })) alterna(h);
 })();
 </script>
 </body></html>

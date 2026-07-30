@@ -1,5 +1,50 @@
 <!doctype html>
-<html data-mob-pronto="" lang="pt-BR"><head><style>
+<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head><style>
+    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
+      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
+      border-radius:2px;box-sizing:border-box;overflow:hidden}
+    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
+    html.sc-dc-streaming .sc-placeholder,
+    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
+      background:color-mix(in srgb,currentColor 5%,transparent);
+      border-color:transparent}
+    html.sc-dc-streaming .sc-placeholder::before,
+    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
+      position:absolute;inset:0;pointer-events:none;
+      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
+      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
+    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
+    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
+      background:color-mix(in srgb,currentColor 8%,transparent)}
+    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
+      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
+    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
+      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
+      border-radius:2px;box-sizing:border-box;color:transparent;
+      user-select:none}
+    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
+      color:color-mix(in srgb,currentColor 50%,transparent);
+      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
+      padding:0 3px}
+    .sc-host.sc-has-error{position:relative}
+    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
+      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
+      border-radius:4px;white-space:pre-wrap;pointer-events:none}
+    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
+       in sync until dc-runtime regains a build step. */
+    @media print {
+      @page { margin: 0.5cm; }
+      figure, table { break-inside: avoid; }
+      #dc-root, #dc-root > .sc-host { height: auto; }
+      *, *::before, *::after {
+        print-color-adjust: exact; -webkit-print-color-adjust: exact;
+        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+        animation-delay: -99s !important; animation-duration: .001s !important;
+        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+        animation-play-state: running !important; transition-duration: 0s !important;
+      }
+    }
+  </style><style>
     .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
       border:1px solid color-mix(in srgb,currentColor 50%,transparent);
       border-radius:2px;box-sizing:border-box;overflow:hidden}
@@ -147,7 +192,7 @@
 <meta property="og:description" content="ecooa.cademy: mentorias e cursos para profissionais de saúde, construídos a partir da prática real de consultório, sob direção de ensino de Jessica Stein.">
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
+<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <title data-dc-tpl="1">Mentorias e cursos · ecooa.cademy · formação para profissionais de saúde</title><meta name="description" content="ecooa.cademy: mentorias e cursos para profissionais de saúde, construídos a partir da prática real de consultório, sob direção de ensino de Jessica Stein." data-dc-tpl="2"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="3"><style data-dc-tpl="4">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
@@ -310,6 +355,15 @@
     object-fit: cover; object-position: center top;
   }
   .pf-vazia { position: static !important; height: 46vh !important; }
+}
+</style>
+<style>
+/* elementos escondidos pelo filtro saem do grid, nao ficam invisiveis ocupando espaco */
+[data-item-grupo][hidden], [data-item-idpar][hidden], [data-filtro-vazio][hidden] { display: none !important; }
+[data-filtro] { transition: background .18s ease, color .18s ease; }
+[data-filtro-vazio] {
+  grid-column: 1 / -1; padding: clamp(30px, 4vw, 56px);
+  background: #FAF9F7; color: #66645E; font-size: 15px; line-height: 1.6;
 }
 </style>
 </head>
@@ -677,7 +731,7 @@
             <textarea data-dc-tpl="111" id="ec-msg" rows="4" style="margin-top: 10px; width: 100%; padding: 16px 20px; border: 0px; background: var(--fundo); color: var(--tinta); font-family: var(--sans); font-size: 15px; line-height: 1.6; box-shadow: var(--afundado); resize: vertical;"></textarea>
           </div>
           <div data-dc-tpl="112" style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between;">
-            <p data-dc-tpl="113" style="margin: 0px; max-width: 52ch; font-size: 12.5px; line-height: 1.6; color: var(--legenda);"><span class="sc-interp">O envio abre uma conversa no WhatsApp com o que você escreveu. Nenhuma inscrição é confirmada por aqui.</span></p>
+            <p data-dc-tpl="113" style="margin: 0px; max-width: 52ch; font-size: 12.5px; line-height: 1.6; color: var(--legenda);"><span class="sc-interp" data-lead-aviso="">O envio abre uma conversa no WhatsApp com o que você escreveu. Nenhuma inscrição é confirmada por aqui.</span></p>
             <button data-dc-tpl="114" type="submit" style="flex: 0 0 auto; min-height: 52px; padding: 0px 32px; border: 0px; border-radius: 999px; cursor: pointer; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;"><span class="sc-interp">enviar pelo whatsapp</span></button>
           </div>
         </form>
@@ -700,7 +754,7 @@
           <input data-dc-tpl="13" id="ec-news" type="email" required="" placeholder="nome@email.com" style="margin-top: 10px; width: 100%; min-height: 52px; padding: 0px 20px; border: 0px; background: var(--fundo); color: var(--tinta); font-family: var(--sans); font-size: 15px; box-shadow: var(--afundado);">
         </div>
         <button data-dc-tpl="14" type="submit" style="flex: 0 0 auto; min-height: 52px; padding: 0px 30px; border: 0px; border-radius: 999px; cursor: pointer; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;"><span class="sc-interp">assinar</span></button>
-        <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
+        <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp" data-news-aviso="">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
       </form>
     </div>
   </section>
@@ -875,6 +929,79 @@ class Component extends DCLogic {
   var aoTrocar = function (e) { if (e.matches) fechar(); };
   if (largo.addEventListener) largo.addEventListener('change', aoTrocar);
   else if (largo.addListener) largo.addListener(aoTrocar);
+})();
+</script>
+<script>
+/* Rodape: inscricao no editorial. Portado de Rodape.dc.html:128.
+   Sem isto o submit recarrega a pagina e o e-mail digitado se perde. */
+(function () {
+  var campo = document.getElementById('ec-news');
+  if (!campo) return;
+  var form = campo.closest('form');
+  if (!form) return;
+  var botao = form.querySelector('button[type=submit]');
+  var aviso = document.querySelector('[data-news-aviso]');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var valor = campo.value ? campo.value.trim() : '';
+    if (!valor) { campo.focus(); return; }
+    var corpo = 'Gostaria de assinar o editorial da ecooa.\n\nE-mail para inscricao: ' + valor;
+    window.location.href =
+      'mailto:ecooa.adm@gmail.com?subject=' + encodeURIComponent('Inscricao no editorial ecooa') +
+      '&body=' + encodeURIComponent(corpo);
+    if (botao) botao.textContent = 'e-mail aberto';
+    if (aviso) {
+      aviso.textContent =
+        'Abrimos um e-mail ja preenchido para voce enviar. A inscricao vale quando ele chegar.';
+    }
+  });
+})();
+</script>
+<script>
+/* Formulario de interesse. Portado do template original: monta o texto e abre
+   a conversa no WhatsApp com tudo preenchido. Sem isto o submit recarregava a
+   pagina e os cinco campos se perdiam sem abrir nada. */
+(function () {
+  var primeiro = document.getElementById('ec-nome');
+  if (!primeiro) return;
+  var form = primeiro.closest('form');
+  if (!form) return;
+  var botao = form.querySelector('button[type=submit]');
+  var aviso = document.querySelector('[data-lead-aviso]');
+  var CAMPOS = [['ec-nome', 'Nome'], ['ec-mail', 'E-mail'], ['ec-classe', 'Formacao'], ['ec-prog', 'Interesse'], ['ec-msg', 'O que busco']];
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) {
+      var c = document.getElementById(id);
+      var t = c && c.value ? c.value.trim() : '';
+      return t || 'nao informado';
+    };
+    var texto = 'Ola, tenho interesse na ecooa.cademy.';
+    for (var i = 0; i < CAMPOS.length; i++) {
+      texto += (i === 0 ? '\n\n' : '\n') + CAMPOS[i][1] + ': ' + v(CAMPOS[i][0]);
+    }
+    /* Ancora em vez de window.open: com 'noopener' o window.open retorna null
+       por especificacao, o que torna impossivel distinguir sucesso de bloqueio.
+       Um clique em ancora dentro do gesto do usuario nao e bloqueado e ja
+       carrega o noopener. */
+    var a = document.createElement('a');
+    a.href = 'https://wa.me/5551991460909?text=' + encodeURIComponent(texto);
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    /* remover a ancora no mesmo tick cancela a navegacao no Chromium.
+       Comprovado em navegador: com removeChild sincrono, nada abre. */
+    window.setTimeout(function () {
+      if (a.parentNode) a.parentNode.removeChild(a);
+    }, 0);
+
+    if (botao) botao.textContent = 'conversa aberta';
+    if (aviso) aviso.textContent = 'Abrimos a conversa no WhatsApp com o seu texto ja preenchido. Basta enviar.';
+  });
 })();
 </script>
 </body></html>
