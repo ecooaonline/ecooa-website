@@ -12,7 +12,12 @@ Sempre responder em português brasileiro (pt-BR).
 - Google Apps Script (formulários)
 - GTM-TSR4GDMK (analytics, interaction-only)
 
-Fonte da verdade técnica: `docs/AI_HANDOFF.md` (Índice de Documentação).
+Fonte da verdade técnica: **`docs/ESTADO-REAL.md`**.
+
+Atenção: o repositório tem dois projetos. O publicado é o site 3.0 estático, em
+`deploy/`, gerado por `node scripts/gerar-site.mjs`. O projeto Astro em `src/`
+não está no ar. Os 41 documentos antigos de `docs/` descrevem o Astro e nenhum
+menciona `deploy/`; `docs/AI_HANDOFF.md` traz um aviso no topo sobre isso.
 
 ## Regras do projeto
 

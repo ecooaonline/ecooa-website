@@ -1,5 +1,18 @@
 # AI_HANDOFF — espelho-mestre do ecooa-website
 
+> **AVISO DE 2026-07-30, LEIA ANTES DE USAR ESTE DOCUMENTO.**
+>
+> Este espelho descreve o **projeto Astro**, que **não está publicado**. O site
+> no ar em www.somosecooa.com.br é o **site 3.0 estático**, gerado da pasta
+> `deploy/`. Nenhum dos 41 documentos de `docs/` menciona essa pasta.
+>
+> Antes de agir sobre este repositório, leia **`docs/ESTADO-REAL.md`**, que é o
+> documento dono da verdade sobre o que está publicado. Em conflito, vale ele.
+>
+> Especificamente, o que segue abaixo está **desatualizado** para o site no ar:
+> a contagem de páginas, a fonte única de contato, o caminho da conversão e as
+> fontes tipográficas.
+
 > Fase: P05 (MYTHOS). Data: 2026-06-14. Ponto de entrada para humanos e IA.
 > Este é um **espelho**: resume; em conflito, vale o **doc dono** (ver Índice §6).
 
