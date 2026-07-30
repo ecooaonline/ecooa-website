@@ -89,7 +89,12 @@ for (const nome of fs.readdirSync(DEPLOY).filter((f) => f.endsWith('.html'))) {
   }
 
   /* 1. fora os tres scripts do runtime */
-  for (const alvo of ['support.js', 'react-18.3.1.min.js', 'react-dom-18.3.1.min.js', 'babel-standalone']) {
+  for (const alvo of [
+    'support.js',
+    'react-18.3.1.min.js',
+    'react-dom-18.3.1.min.js',
+    'babel-standalone',
+  ]) {
     const re = new RegExp(
       `\\s*<script[^>]*src="[^"]*${alvo.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>\\s*</script>`,
       'g'

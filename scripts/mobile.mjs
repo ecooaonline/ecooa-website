@@ -182,11 +182,11 @@ const JS = `<script>
 </script>`;
 
 /* ── servidor local sobre deploy/ ── */
-const servidor = require('child_process').spawn(
-  'python3',
-  ['-m', 'http.server', String(PORTA)],
-  { cwd: DEPLOY, detached: true, stdio: 'ignore' }
-);
+const servidor = require('child_process').spawn('python3', ['-m', 'http.server', String(PORTA)], {
+  cwd: DEPLOY,
+  detached: true,
+  stdio: 'ignore',
+});
 await new Promise((r) => setTimeout(r, 2200));
 
 const relatorio = [];

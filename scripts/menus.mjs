@@ -83,9 +83,7 @@ for (const nome of paginas) {
   const fimHeader = html.indexOf('</header>');
   if (fimHeader > 0) {
     const blocos = Object.entries(painies)
-      .map(([chave, markup]) =>
-        markup.replace(/^<(\w+)/, `<$1 data-painel="${chave}" hidden`)
-      )
+      .map(([chave, markup]) => markup.replace(/^<(\w+)/, `<$1 data-painel="${chave}" hidden`))
       .join('\n');
     html = html.slice(0, fimHeader) + blocos + '\n' + html.slice(fimHeader);
   }

@@ -19,3 +19,11 @@ package-lock.json
 # Docs operacionais escritos à mão (raiz)
 /CLAUDE.md
 /README.md
+
+# Site 3.0: HTML pre-renderizado e templates do autor.
+# NUNCA formatar. deploy/ e saida de build (gerada por scripts/gerar-site.mjs) e
+# src-site-3/ sao os templates originais, com placeholders {{ }} que o Prettier
+# reescreve e quebra. Formatar aqui destroi o site.
+deploy/
+src-site-3/
+dist-astro/

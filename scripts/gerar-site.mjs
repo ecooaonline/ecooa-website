@@ -24,9 +24,17 @@ const TMP = '/tmp/gerar-site';
 const PORTA = 4390;
 
 const PAGINAS = [
-  'index.html', 'sobre.html', 'especialidades.html', 'profissionais.html',
-  'qual-profissional-procurar.html', 'blog.html', 'localizacao.html',
-  'mentorias.html', 'sublocacao.html', 'politicas.html', '404.html',
+  'index.html',
+  'sobre.html',
+  'especialidades.html',
+  'profissionais.html',
+  'qual-profissional-procurar.html',
+  'blog.html',
+  'localizacao.html',
+  'mentorias.html',
+  'sublocacao.html',
+  'politicas.html',
+  '404.html',
 ];
 
 /* 1. pasta temporária: originais com template + runtime + dados atuais */
@@ -41,11 +49,11 @@ for (const f of ['support.js', 'dados-ecooa.js']) {
 fs.cpSync(path.join(DEPLOY, 'assets'), path.join(TMP, 'assets'), { recursive: true });
 
 /* 2. servidor local e pré-renderização */
-const servidor = require('child_process').spawn(
-  'python3',
-  ['-m', 'http.server', String(PORTA)],
-  { cwd: TMP, detached: true, stdio: 'ignore' }
-);
+const servidor = require('child_process').spawn('python3', ['-m', 'http.server', String(PORTA)], {
+  cwd: TMP,
+  detached: true,
+  stdio: 'ignore',
+});
 await new Promise((r) => setTimeout(r, 2500));
 
 try {
@@ -76,7 +84,14 @@ try {
 
 /* 3. religa o comportamento */
 console.log('');
-for (const etapa of ['nav-links.mjs', 'menus.mjs', 'mosaico.mjs', 'mobile.mjs', 'conversao.mjs', 'limpeza.mjs']) {
+for (const etapa of [
+  'nav-links.mjs',
+  'menus.mjs',
+  'mosaico.mjs',
+  'mobile.mjs',
+  'conversao.mjs',
+  'limpeza.mjs',
+]) {
   const saida = execFileSync('node', [path.join(RAIZ, 'scripts', etapa)], {
     encoding: 'utf8',
   });

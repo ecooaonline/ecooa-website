@@ -199,11 +199,11 @@ const CSS = `<style>
 </style>`;
 
 /* ── servidor local ── */
-const servidor = require('child_process').spawn(
-  'python3',
-  ['-m', 'http.server', String(PORTA)],
-  { cwd: DEPLOY, detached: true, stdio: 'ignore' }
-);
+const servidor = require('child_process').spawn('python3', ['-m', 'http.server', String(PORTA)], {
+  cwd: DEPLOY,
+  detached: true,
+  stdio: 'ignore',
+});
 await new Promise((r) => setTimeout(r, 2200));
 
 const relatorio = [];
@@ -245,7 +245,9 @@ try {
         const pai = form && form.parentElement;
         const aviso = pai
           ? [...pai.querySelectorAll('p, span')].find(
-              (x) => x.children.length === 0 && x.textContent.trim().length > 30 &&
+              (x) =>
+                x.children.length === 0 &&
+                x.textContent.trim().length > 30 &&
                 /whatsapp|resposta|conversa|contato/i.test(x.textContent)
             )
           : null;
@@ -259,17 +261,25 @@ try {
       if (botoes.length >= 3 && dados.grupos) {
         // mapa "nome exibido" -> slug
         const mapa = { todos: 'todos' };
-        (dados.grupos || []).forEach((g) => { mapa[g.nome] = g.slug; });
+        (dados.grupos || []).forEach((g) => {
+          mapa[g.nome] = g.slug;
+        });
         let marcados = 0;
         botoes.forEach((b) => {
-          const rot = b.textContent.trim().split(/\s+/).slice(0, -1).join(' ') || b.textContent.trim();
+          const rot =
+            b.textContent.trim().split(/\s+/).slice(0, -1).join(' ') || b.textContent.trim();
           const slug = mapa[rot] !== undefined ? mapa[rot] : mapa[b.textContent.trim()];
-          if (slug !== undefined) { b.setAttribute('data-filtro', slug); marcados++; }
+          if (slug !== undefined) {
+            b.setAttribute('data-filtro', slug);
+            marcados++;
+          }
         });
 
         // itens: cada retrato tem data-perfil; o par de texto e o irmao
         const porSlug = {};
-        (dados.profissionais || []).forEach((x) => { porSlug[x.slug] = x; });
+        (dados.profissionais || []).forEach((x) => {
+          porSlug[x.slug] = x;
+        });
         const grade = document.querySelector('[data-duas-colunas]');
         if (grade && marcados) {
           const filhos = [...grade.children];
@@ -294,16 +304,29 @@ try {
 
       /* 4. filtros do blog: cada ficha e um botao com a area no comeco do texto */
       const filtrosBlog = [...document.querySelectorAll('button[aria-pressed]')];
-      if (filtrosBlog.length >= 3 && (window.ECOOA || {}).artigos && !document.querySelector('[data-duas-colunas]')) {
+      if (
+        filtrosBlog.length >= 3 &&
+        (window.ECOOA || {}).artigos &&
+        !document.querySelector('[data-duas-colunas]')
+      ) {
         const areas = [...new Set(window.ECOOA.artigos.map((a) => a.area))];
         let marcados = 0;
         filtrosBlog.forEach((b) => {
           const rot = b.textContent.trim();
-          if (rot === 'todos') { b.setAttribute('data-filtro', 'todos'); marcados++; return; }
-          if (areas.indexOf(rot) >= 0) { b.setAttribute('data-filtro', rot); marcados++; }
+          if (rot === 'todos') {
+            b.setAttribute('data-filtro', 'todos');
+            marcados++;
+            return;
+          }
+          if (areas.indexOf(rot) >= 0) {
+            b.setAttribute('data-filtro', rot);
+            marcados++;
+          }
         });
         const porTitulo = {};
-        window.ECOOA.artigos.forEach((a) => { porTitulo[a.titulo] = a; });
+        window.ECOOA.artigos.forEach((a) => {
+          porTitulo[a.titulo] = a;
+        });
         let n = 0;
         [...document.querySelectorAll('button')].forEach((bt) => {
           const t = bt.textContent.replace(/\s+/g, ' ').trim();
@@ -323,18 +346,36 @@ try {
     if (feito.some((f) => f === 'newsletter')) pedacos.push(JS_NEWS);
     if (nome === 'mentorias.html') {
       pedacos.push(
-        jsLead('ec', 'Ola, tenho interesse na ecooa.cademy.',
-          [['nome', 'Nome'], ['mail', 'E-mail'], ['classe', 'Formacao'], ['prog', 'Interesse'], ['msg', 'O que busco']],
+        jsLead(
+          'ec',
+          'Ola, tenho interesse na ecooa.cademy.',
+          [
+            ['nome', 'Nome'],
+            ['mail', 'E-mail'],
+            ['classe', 'Formacao'],
+            ['prog', 'Interesse'],
+            ['msg', 'O que busco'],
+          ],
           'conversa aberta',
-          'Abrimos a conversa no WhatsApp com o seu texto ja preenchido. Basta enviar.')
+          'Abrimos a conversa no WhatsApp com o seu texto ja preenchido. Basta enviar.'
+        )
       );
     }
     if (nome === 'sublocacao.html') {
       pedacos.push(
-        jsLead('sb', 'Ola, tenho interesse na sublocacao de sala na ecooa.',
-          [['nome', 'Nome'], ['mail', 'E-mail'], ['classe', 'Formacao e registro'], ['uso', 'Uso pretendido'], ['msg', 'Como trabalho hoje']],
+        jsLead(
+          'sb',
+          'Ola, tenho interesse na sublocacao de sala na ecooa.',
+          [
+            ['nome', 'Nome'],
+            ['mail', 'E-mail'],
+            ['classe', 'Formacao e registro'],
+            ['uso', 'Uso pretendido'],
+            ['msg', 'Como trabalho hoje'],
+          ],
           'conversa aberta',
-          'Abrimos a conversa no WhatsApp com o seu texto ja preenchido. Basta enviar.')
+          'Abrimos a conversa no WhatsApp com o seu texto ja preenchido. Basta enviar.'
+        )
       );
     }
     if (feito.some((f) => f.startsWith('filtro'))) pedacos.push(JS_FILTROS);
