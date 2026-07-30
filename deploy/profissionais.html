@@ -1,185 +1,5 @@
 <!doctype html>
-<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head><style>
-    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
-      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
-      border-radius:2px;box-sizing:border-box;overflow:hidden}
-    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
-    html.sc-dc-streaming .sc-placeholder,
-    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
-      background:color-mix(in srgb,currentColor 5%,transparent);
-      border-color:transparent}
-    html.sc-dc-streaming .sc-placeholder::before,
-    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
-      position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
-      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
-    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
-    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
-      background:color-mix(in srgb,currentColor 8%,transparent)}
-    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
-      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
-    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
-      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
-      border-radius:2px;box-sizing:border-box;color:transparent;
-      user-select:none}
-    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
-      color:color-mix(in srgb,currentColor 50%,transparent);
-      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
-      padding:0 3px}
-    .sc-host.sc-has-error{position:relative}
-    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
-      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
-      border-radius:4px;white-space:pre-wrap;pointer-events:none}
-    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
-       in sync until dc-runtime regains a build step. */
-    @media print {
-      @page { margin: 0.5cm; }
-      figure, table { break-inside: avoid; }
-      #dc-root, #dc-root > .sc-host { height: auto; }
-      *, *::before, *::after {
-        print-color-adjust: exact; -webkit-print-color-adjust: exact;
-        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
-        animation-delay: -99s !important; animation-duration: .001s !important;
-        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
-        animation-play-state: running !important; transition-duration: 0s !important;
-      }
-    }
-  </style><style>
-    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
-      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
-      border-radius:2px;box-sizing:border-box;overflow:hidden}
-    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
-    html.sc-dc-streaming .sc-placeholder,
-    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
-      background:color-mix(in srgb,currentColor 5%,transparent);
-      border-color:transparent}
-    html.sc-dc-streaming .sc-placeholder::before,
-    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
-      position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
-      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
-    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
-    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
-      background:color-mix(in srgb,currentColor 8%,transparent)}
-    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
-      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
-    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
-      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
-      border-radius:2px;box-sizing:border-box;color:transparent;
-      user-select:none}
-    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
-      color:color-mix(in srgb,currentColor 50%,transparent);
-      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
-      padding:0 3px}
-    .sc-host.sc-has-error{position:relative}
-    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
-      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
-      border-radius:4px;white-space:pre-wrap;pointer-events:none}
-    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
-       in sync until dc-runtime regains a build step. */
-    @media print {
-      @page { margin: 0.5cm; }
-      figure, table { break-inside: avoid; }
-      #dc-root, #dc-root > .sc-host { height: auto; }
-      *, *::before, *::after {
-        print-color-adjust: exact; -webkit-print-color-adjust: exact;
-        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
-        animation-delay: -99s !important; animation-duration: .001s !important;
-        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
-        animation-play-state: running !important; transition-duration: 0s !important;
-      }
-    }
-  </style><style>
-    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
-      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
-      border-radius:2px;box-sizing:border-box;overflow:hidden}
-    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
-    html.sc-dc-streaming .sc-placeholder,
-    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
-      background:color-mix(in srgb,currentColor 5%,transparent);
-      border-color:transparent}
-    html.sc-dc-streaming .sc-placeholder::before,
-    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
-      position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
-      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
-    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
-    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
-      background:color-mix(in srgb,currentColor 8%,transparent)}
-    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
-      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
-    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
-      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
-      border-radius:2px;box-sizing:border-box;color:transparent;
-      user-select:none}
-    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
-      color:color-mix(in srgb,currentColor 50%,transparent);
-      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
-      padding:0 3px}
-    .sc-host.sc-has-error{position:relative}
-    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
-      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
-      border-radius:4px;white-space:pre-wrap;pointer-events:none}
-    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
-       in sync until dc-runtime regains a build step. */
-    @media print {
-      @page { margin: 0.5cm; }
-      figure, table { break-inside: avoid; }
-      #dc-root, #dc-root > .sc-host { height: auto; }
-      *, *::before, *::after {
-        print-color-adjust: exact; -webkit-print-color-adjust: exact;
-        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
-        animation-delay: -99s !important; animation-duration: .001s !important;
-        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
-        animation-play-state: running !important; transition-duration: 0s !important;
-      }
-    }
-  </style><style>
-    .sc-placeholder{background:color-mix(in srgb,currentColor 8%,transparent);
-      border:1px solid color-mix(in srgb,currentColor 50%,transparent);
-      border-radius:2px;box-sizing:border-box;overflow:hidden}
-    @keyframes sc-shine{0%{background-position:100% 50%}100%{background-position:0% 50%}}
-    html.sc-dc-streaming .sc-placeholder,
-    html.sc-dc-streaming .sc-interp.sc-missing{position:relative;
-      background:color-mix(in srgb,currentColor 5%,transparent);
-      border-color:transparent}
-    html.sc-dc-streaming .sc-placeholder::before,
-    html.sc-dc-streaming .sc-interp.sc-missing::before{content:'';
-      position:absolute;inset:0;pointer-events:none;
-      background:linear-gradient(90deg,rgba(217,119,87,0) 25%,rgba(247,225,211,.95) 37%,rgba(217,119,87,0) 63%);
-      background-size:400% 100%;animation:sc-shine 1.4s ease infinite}
-    html.sc-dc-streaming .sc-placeholder:nth-child(n+9 of .sc-placeholder)::before,
-    html.sc-dc-streaming .sc-interp.sc-missing:nth-child(n+9 of .sc-interp.sc-missing)::before{animation:none;
-      background:color-mix(in srgb,currentColor 8%,transparent)}
-    .sc-placeholder-error{padding:4px 8px;font:11px/1.4 ui-monospace,monospace;
-      color:color-mix(in srgb,currentColor 70%,transparent);word-break:break-word}
-    .sc-interp.sc-missing{display:inline-block;width:2em;height:1em;overflow:hidden;
-      vertical-align:text-bottom;background:rgba(255,255,255,.3);border:1px solid rgba(0,0,0,.5);
-      border-radius:2px;box-sizing:border-box;color:transparent;
-      user-select:none}
-    .sc-interp.sc-unresolved{font-family:ui-monospace,monospace;font-size:.85em;
-      color:color-mix(in srgb,currentColor 50%,transparent);
-      background:color-mix(in srgb,currentColor 10%,transparent);border-radius:3px;
-      padding:0 3px}
-    .sc-host.sc-has-error{position:relative}
-    .sc-logic-error{position:absolute;top:8px;left:8px;z-index:2147483647;max-width:60ch;
-      padding:6px 10px;background:#b00020;color:#fff;font:12px/1.4 ui-monospace,monospace;
-      border-radius:4px;white-space:pre-wrap;pointer-events:none}
-    /* Mirrors PRINT_BASELINE_CSS in apps/web deck-stage-export.ts — keep both
-       in sync until dc-runtime regains a build step. */
-    @media print {
-      @page { margin: 0.5cm; }
-      figure, table { break-inside: avoid; }
-      #dc-root, #dc-root > .sc-host { height: auto; }
-      *, *::before, *::after {
-        print-color-adjust: exact; -webkit-print-color-adjust: exact;
-        backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
-        animation-delay: -99s !important; animation-duration: .001s !important;
-        animation-iteration-count: 1 !important; animation-fill-mode: both !important;
-        animation-play-state: running !important; transition-duration: 0s !important;
-      }
-    }
-  </style>
+<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://www.somosecooa.com.br/profissionais">
@@ -192,12 +12,11 @@
 <meta property="og:description" content="Conheça os 31 profissionais autônomos que atuam na ecooa: medicina, nutrição, biomedicina, psicologia, fisioterapia, odontologia, enfermagem, farmácia e terapia integrativa.">
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<script src="./support.js"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script><style>x-dc{display:none!important}</style><script src="/assets/vendor/react-18.3.1.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script><script src="/assets/vendor/react-dom-18.3.1.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>
 <title data-dc-tpl="1">Profissionais · ecooa · 31 especialistas em Moinhos de Vento, Porto Alegre</title><meta name="description" content="Conheça os 31 profissionais autônomos que atuam na ecooa: medicina, nutrição, biomedicina, psicologia, fisioterapia, odontologia, enfermagem, farmácia e terapia integrativa." data-dc-tpl="2"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="3"><style data-dc-tpl="4">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
     --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
-    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#83817B;
+    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#6B6964;
     --grafite:#63615C; --tinta:#46443F; --escuro:#2B2926;
     --muted:#66645E; --legenda:#5C5A55; --sobre-escuro:rgba(240,238,233,.92);
     --rule:rgba(70,68,63,.16); --rule-forte:rgba(70,68,63,.3);
@@ -219,11 +38,11 @@
   @keyframes ec-sobe { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
   @keyframes ec-fade { from { opacity:0; } to { opacity:1; } }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } * { animation-duration:.001ms !important; transition-duration:.001ms !important; } }
-</style><script src="dados-ecooa.js" data-dc-tpl="5"></script><style data-dc-tpl="1">
+</style><style data-dc-tpl="1">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
     --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
-    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#83817B;
+    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#6B6964;
     --grafite:#63615C; --tinta:#46443F; --escuro:#2B2926;
     --muted:#66645E; --legenda:#5C5A55; --sobre-escuro:rgba(240,238,233,.92);
     --rule:rgba(70,68,63,.16); --rule-forte:rgba(70,68,63,.3);
@@ -252,7 +71,7 @@
   *, *::before, *::after { box-sizing: border-box; }
   :root {
     --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
-    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#83817B;
+    --prata:#C6C4BF; --aluminio:#A5A39D; --grafite-claro:#6B6964;
     --grafite:#63615C; --tinta:#46443F; --escuro:#2B2926;
     --muted:#66645E; --legenda:#5C5A55; --sobre-escuro:rgba(240,238,233,.92);
     --rule:rgba(70,68,63,.16); --rule-forte:rgba(70,68,63,.3);
@@ -290,7 +109,7 @@
     transition: none !important;
   }
 }
-[data-perfil]:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+[data-perfil]:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
 
 /* Modal de perfil */
 .pf-ov {
@@ -318,7 +137,7 @@
   display: flex; align-items: center; justify-content: center;
   box-shadow: rgba(43, 41, 38, .16) 0 6px 18px;
 }
-.pf-x:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+.pf-x:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
 .pf-foto { position: relative; min-height: 340px; background: #e9e7e2; }
 .pf-foto img {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -332,7 +151,7 @@
 }
 .pf-corpo { padding: clamp(30px, 4vw, 58px) clamp(24px, 3.4vw, 56px); }
 .pf-marca {
-  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #86836f;
+  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #5C5A55;
 }
 .pf-nome {
   margin: 12px 0 0; font-family: var(--serif, Georgia, serif); font-weight: 400;
@@ -345,13 +164,13 @@
   border-top: 1px solid rgba(134, 131, 111, .24); padding-top: 22px;
 }
 .pf-bloco dt {
-  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #86836f;
+  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #5C5A55;
   margin-bottom: 5px;
 }
 .pf-bloco dd { margin: 0; font-size: 14px; line-height: 1.6; color: #2b2926; }
 .pf-rot {
   margin: 30px 0 0; font-size: 9.5px; letter-spacing: .16em;
-  text-transform: uppercase; color: #86836f;
+  text-transform: uppercase; color: #5C5A55;
 }
 .pf-conduta { margin: 14px 0 0; max-width: 48ch; font-size: 15px; line-height: 1.68; color: #46443f; }
 .pf-conduta p { margin: 0; }
@@ -382,8 +201,8 @@
   [data-mob-acoes], [data-mob-painel] { display: none !important; }
 }
 [data-mob-painel][hidden] { display: none !important; }
-#mob-btn:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
-[data-mob-painel] a:focus-visible { outline: 2px solid #86836f; outline-offset: -2px; }
+#mob-btn:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
+[data-mob-painel] a:focus-visible { outline: 2px solid #5C5A55; outline-offset: -2px; }
 
 /* mosaico de profissionais: 8 / 6 / 4 / 3 nos limites 1100 / 760 / 480 */
 @media (max-width: 1099px) { [data-mosaico] { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; } }
@@ -471,7 +290,7 @@
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
   <div data-dc-tpl="3" style="background: rgba(240, 238, 233, 0.66); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid var(--rule);">
     <div data-dc-tpl="4" style="max-width: 1600px; margin: 0px auto; padding: 0px clamp(20px, 3.2vw, 56px); height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
-      <a data-dc-tpl="5" href="./" aria-label="ecooa, ir para o início" style="flex: 0 0 auto; display: block;" data-alvo-curto=""><img data-dc-tpl="6" src="assets/logo/ecooa-wordmark.svg" alt="ecooa" style="width: 98px; opacity: 0.9;"></a>
+      <a data-dc-tpl="5" href="./" aria-label="ecooa, ir para o início" style="flex: 0 0 auto; display: block;" data-alvo-curto=""><img width="236" height="44" data-dc-tpl="6" src="assets/logo/ecooa-wordmark.svg" alt="ecooa" style="width: 98px; opacity: 0.9;"></a>
 
       
         <nav data-dc-tpl="8" aria-label="Navegação principal" style="display: flex; align-items: center; gap: clamp(13px, 1.8vw, 30px);" data-nav-desktop="">
@@ -643,19 +462,19 @@
     <div data-dc-tpl="15" style="max-width: 1600px; margin: 0px auto; padding: 16px clamp(20px, 3.2vw, 56px); display: flex; flex-wrap: wrap; gap: 9px; align-items: center;">
       <span data-dc-tpl="16" style="margin-right: 8px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);" data-miudo="">filtrar</span>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="true" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(99, 97, 92); color: rgb(240, 238, 233); box-shadow: rgba(60, 58, 54, 0.5) 2px 2px 6px inset;" data-filtro="todos"><span class="sc-interp">todos</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">31</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="true" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(99, 97, 92); color: rgb(240, 238, 233); box-shadow: rgba(60, 58, 54, 0.5) 2px 2px 6px inset;" data-filtro="todos"><span class="sc-interp">todos</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">31</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="medicina"><span class="sc-interp">medicina</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">5</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="medicina"><span class="sc-interp">medicina</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">5</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="nutricao"><span class="sc-interp">nutrição</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">12</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="nutricao"><span class="sc-interp">nutrição</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">12</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="estetica"><span class="sc-interp">estética</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">9</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="estetica"><span class="sc-interp">estética</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">9</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="fisioterapia"><span class="sc-interp">fisioterapia</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">1</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="fisioterapia"><span class="sc-interp">fisioterapia</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">1</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="saude-mental"><span class="sc-interp">saúde mental</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">3</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="saude-mental"><span class="sc-interp">saúde mental</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">3</span></span></button>
       
-        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="terapia-integrativa"><span class="sc-interp">terapia integrativa</span> <span data-dc-tpl="19" style="opacity: 0.6; font-size: 11px;"><span class="sc-interp">1</span></span></button>
+        <button data-dc-tpl="18" type="button" aria-pressed="false" style="border: 0px; border-radius: 999px; cursor: pointer; min-height: 40px; padding: 0px 20px; font-size: 12.5px; letter-spacing: 0.03em; background: rgb(250, 249, 247); color: rgb(99, 97, 92); box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px, rgba(255, 255, 255, 0.98) -5px -5px 12px;" data-filtro="terapia-integrativa"><span class="sc-interp">terapia integrativa</span> <span data-dc-tpl="19" style="opacity: 0.9; font-size: 11px;"><span class="sc-interp">1</span></span></button>
       
     </div>
   </div>
@@ -667,7 +486,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gustavo Gehrke" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="gustavo-gehrke">
             
-              <img data-dc-tpl="26" src="assets/retratos/gustavo-gehrke pb.webp" alt="Retrato de Gustavo Gehrke" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1024" height="1270" data-dc-tpl="26" src="assets/retratos/gustavo-gehrke pb.webp" alt="Retrato de Gustavo Gehrke" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -713,7 +532,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Larissa Wiebbelling" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="larissa-wiebbelling">
             
-              <img data-dc-tpl="26" src="assets/retratos/larissa pb.webp" alt="Retrato de Larissa Wiebbelling" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1298" data-dc-tpl="26" src="assets/retratos/larissa pb.webp" alt="Retrato de Larissa Wiebbelling" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -725,7 +544,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Yale Jerônimo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="yale-jeronimo">
             
-              <img data-dc-tpl="26" src="assets/retratos/yale pb.webp" alt="Retrato de Yale Jerônimo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1275" data-dc-tpl="26" src="assets/retratos/yale pb.webp" alt="Retrato de Yale Jerônimo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -771,7 +590,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Müller T. Machado" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="vitoria-machado">
             
-              <img data-dc-tpl="26" src="assets/retratos/vitoria-machado pb.webp" alt="Retrato de Vitória Müller T. Machado" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1327" data-dc-tpl="26" src="assets/retratos/vitoria-machado pb.webp" alt="Retrato de Vitória Müller T. Machado" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -783,7 +602,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Renata Bohn Engel" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="renata-bohn-engel">
             
-              <img data-dc-tpl="26" src="assets/retratos/renata pb.webp" alt="Retrato de Renata Bohn Engel" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1290" data-dc-tpl="26" src="assets/retratos/renata pb.webp" alt="Retrato de Renata Bohn Engel" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -829,7 +648,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jessica Stein" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jessica-stein">
             
-              <img data-dc-tpl="26" src="assets/retratos/jessica .webp" alt="Retrato de Jessica Stein" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1239" data-dc-tpl="26" src="assets/retratos/jessica .webp" alt="Retrato de Jessica Stein" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -841,7 +660,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriano Flesch Lenz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="adriano-lenz">
             
-              <img data-dc-tpl="26" src="assets/retratos/Adriano pb.webp" alt="Retrato de Adriano Flesch Lenz" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1024" height="1351" data-dc-tpl="26" src="assets/retratos/Adriano pb.webp" alt="Retrato de Adriano Flesch Lenz" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -887,7 +706,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Giancarla Rochemback" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="giancarla-rochemback">
             
-              <img data-dc-tpl="26" src="assets/retratos/giancarla fp.webp" alt="Retrato de Giancarla Rochemback" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1334" data-dc-tpl="26" src="assets/retratos/giancarla fp.webp" alt="Retrato de Giancarla Rochemback" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -899,7 +718,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Maria Luísa Serrano Beltran Borges" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="maria-luisa-borges">
             
-              <img data-dc-tpl="26" src="assets/retratos/maria-luisa pb.webp" alt="Retrato de Maria Luísa Serrano Beltran Borges" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1275" data-dc-tpl="26" src="assets/retratos/maria-luisa pb.webp" alt="Retrato de Maria Luísa Serrano Beltran Borges" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -945,7 +764,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Daniel Forster" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="daniel-forster">
             
-              <img data-dc-tpl="26" src="assets/retratos/daniel pb.webp" alt="Retrato de Daniel Forster" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1024" height="1322" data-dc-tpl="26" src="assets/retratos/daniel pb.webp" alt="Retrato de Daniel Forster" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -957,7 +776,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Vitória Serpa da Silva" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="vitoria-serpa">
             
-              <img data-dc-tpl="26" src="assets/retratos/vitoria-serpa pb.webp" alt="Retrato de Vitória Serpa da Silva" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1304" data-dc-tpl="26" src="assets/retratos/vitoria-serpa pb.webp" alt="Retrato de Vitória Serpa da Silva" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1003,7 +822,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Nasser Salem" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="nasser-salem">
             
-              <img data-dc-tpl="26" src="assets/retratos/nasser pb.webp" alt="Retrato de Nasser Salem" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1341" data-dc-tpl="26" src="assets/retratos/nasser pb.webp" alt="Retrato de Nasser Salem" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1015,7 +834,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Marvin Marques" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="marvin-marques">
             
-              <img data-dc-tpl="26" src="assets/retratos/marvin.webp" alt="Retrato de Marvin Marques" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1268" data-dc-tpl="26" src="assets/retratos/marvin.webp" alt="Retrato de Marvin Marques" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1061,7 +880,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Gabrieli Klagenberg Avila" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="gabrieli-avila">
             
-              <img data-dc-tpl="26" src="assets/retratos/gabrielli fp.webp" alt="Retrato de Gabrieli Klagenberg Avila" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1298" data-dc-tpl="26" src="assets/retratos/gabrielli fp.webp" alt="Retrato de Gabrieli Klagenberg Avila" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1073,7 +892,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Camila Cadore" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="camila-cadore">
             
-              <img data-dc-tpl="26" src="assets/retratos/camila fp.webp" alt="Retrato de Camila Cadore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1246" data-dc-tpl="26" src="assets/retratos/camila fp.webp" alt="Retrato de Camila Cadore" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1119,7 +938,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Verena Cattani" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="verena-cattani">
             
-              <img data-dc-tpl="26" src="assets/retratos/verena pb.webp" alt="Retrato de Verena Cattani" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1334" data-dc-tpl="26" src="assets/retratos/verena pb.webp" alt="Retrato de Verena Cattani" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1131,7 +950,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Lara Caye" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="lara-caye">
             
-              <img data-dc-tpl="26" src="assets/retratos/lara-caye pb.webp" alt="Retrato de Lara Caye" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1298" data-dc-tpl="26" src="assets/retratos/lara-caye pb.webp" alt="Retrato de Lara Caye" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1177,7 +996,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Danusa Pires" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="danusa-pires">
             
-              <img data-dc-tpl="26" src="assets/retratos/danusa fp.webp" alt="Retrato de Danusa Pires" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1290" data-dc-tpl="26" src="assets/retratos/danusa fp.webp" alt="Retrato de Danusa Pires" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1189,7 +1008,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Viviane Fagundes" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="viviane-fagundes">
             
-              <img data-dc-tpl="26" src="assets/retratos/viviane pb.webp" alt="Retrato de Viviane Fagundes" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1261" data-dc-tpl="26" src="assets/retratos/viviane pb.webp" alt="Retrato de Viviane Fagundes" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1235,7 +1054,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Natálie Queiroz" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="natalie-queiroz">
             
-              <img data-dc-tpl="26" src="assets/retratos/natalie pb.webp" alt="Retrato de Natálie Queiroz" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1312" data-dc-tpl="26" src="assets/retratos/natalie pb.webp" alt="Retrato de Natálie Queiroz" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1247,7 +1066,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Susan Flach" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="susan-flach">
             
-              <img data-dc-tpl="26" src="assets/retratos/susan pb.webp" alt="Retrato de Susan Flach" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1210" data-dc-tpl="26" src="assets/retratos/susan pb.webp" alt="Retrato de Susan Flach" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1293,7 +1112,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Letícia Melo" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="leticia-melo">
             
-              <img data-dc-tpl="26" src="assets/retratos/leticia.webp" alt="Retrato de Letícia Melo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1312" data-dc-tpl="26" src="assets/retratos/leticia.webp" alt="Retrato de Letícia Melo" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1305,7 +1124,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Eduarda Schoenmeier" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="eduarda-schoenmeier">
             
-              <img data-dc-tpl="26" src="assets/retratos/eduarda pb.webp" alt="Retrato de Eduarda Schoenmeier" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1023" height="1352" data-dc-tpl="26" src="assets/retratos/eduarda pb.webp" alt="Retrato de Eduarda Schoenmeier" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1351,7 +1170,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Tais de la Rosa" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="tais-de-la-rosa">
             
-              <img data-dc-tpl="26" src="assets/retratos/Tais pb.webp" alt="Retrato de Tais de la Rosa" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1024" height="1307" data-dc-tpl="26" src="assets/retratos/Tais pb.webp" alt="Retrato de Tais de la Rosa" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1363,7 +1182,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Karine Ellwanger" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="karine-ellwanger">
             
-              <img data-dc-tpl="26" src="assets/retratos/karine fp.webp" alt="Retrato de Karine Ellwanger" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1348" data-dc-tpl="26" src="assets/retratos/karine fp.webp" alt="Retrato de Karine Ellwanger" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1409,7 +1228,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jennifer Adam" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jennifer-adam">
             
-              <img data-dc-tpl="26" src="assets/retratos/jennifer fp.webp" alt="Retrato de Jennifer Adam" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1246" data-dc-tpl="26" src="assets/retratos/jennifer fp.webp" alt="Retrato de Jennifer Adam" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1421,7 +1240,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Jamylle Farias" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="jamylle-farias">
             
-              <img data-dc-tpl="26" src="assets/retratos/jamylle pb.webp" alt="Retrato de Jamylle Farias" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1327" data-dc-tpl="26" src="assets/retratos/jamylle pb.webp" alt="Retrato de Jamylle Farias" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1467,7 +1286,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Adriana" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="adriana">
             
-              <img data-dc-tpl="26" src="assets/retratos/adriana pb.webp" alt="Retrato de Adriana" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1188" data-dc-tpl="26" src="assets/retratos/adriana pb.webp" alt="Retrato de Adriana" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1479,7 +1298,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Manuela Sinigaglia Vanti" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="manuela-vanti">
             
-              <img data-dc-tpl="26" src="assets/retratos/manuela pb.webp" alt="Retrato de Manuela Sinigaglia Vanti" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1246" data-dc-tpl="26" src="assets/retratos/manuela pb.webp" alt="Retrato de Manuela Sinigaglia Vanti" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1525,7 +1344,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Augusto Kauer da Silveira" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="augusto-kauer">
             
-              <img data-dc-tpl="26" src="assets/retratos/augusto pb.webp" alt="Retrato de Augusto Kauer da Silveira" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1024" height="1248" data-dc-tpl="26" src="assets/retratos/augusto pb.webp" alt="Retrato de Augusto Kauer da Silveira" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1537,7 +1356,7 @@
         
           <button data-dc-tpl="24" type="button" aria-label="Ver o perfil de Francielle Machado Beria" style="position: absolute; inset: 0px; width: 100%; height: 100%; padding: 0px; border: 0px; background: var(--nevoa); cursor: pointer; overflow: hidden; display: block;" data-perfil="francielle-beria">
             
-              <img data-dc-tpl="26" src="assets/retratos/francielly fp.webp" alt="Retrato de Francielle Machado Beria" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
+              <img width="1000" height="1304" data-dc-tpl="26" src="assets/retratos/francielly fp.webp" alt="Retrato de Francielle Machado Beria" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: var(--foto);">
             
             
           </button>
@@ -1615,7 +1434,7 @@
         </nav>
 
         <div data-dc-tpl="29" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; text-align: center;">
-          <img data-dc-tpl="30" src="assets/logo/ecooa-wordmark-white.svg" alt="ecooa" style="width: clamp(200px, 21vw, 320px); opacity: 0.96;">
+          <img width="236" height="44" data-dc-tpl="30" src="assets/logo/ecooa-wordmark-white.svg" alt="ecooa" style="width: clamp(200px, 21vw, 320px); opacity: 0.96;">
           <span data-dc-tpl="31" style="display: block; width: 44px; height: 1px; background: var(--prata);"></span>
           <span data-dc-tpl="32" style="font-family: var(--serif); font-size: 19px; line-height: 1.3; color: var(--fundo);">o cuidado que ecooa</span>
         </div>
@@ -1654,6 +1473,7 @@
 
   
   </div></div></div>
+<script src="dados-ecooa.js"></script>
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900}}">
 const D = () => (typeof window !== 'undefined' && window.ECOOA) || { profissionais: [], grupos: [] };
 

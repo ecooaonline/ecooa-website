@@ -40,7 +40,7 @@ const CSS = `
     transition: none !important;
   }
 }
-[data-perfil]:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+[data-perfil]:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
 
 /* Modal de perfil */
 .pf-ov {
@@ -68,7 +68,7 @@ const CSS = `
   display: flex; align-items: center; justify-content: center;
   box-shadow: rgba(43, 41, 38, .16) 0 6px 18px;
 }
-.pf-x:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
+.pf-x:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
 .pf-foto { position: relative; min-height: 340px; background: #e9e7e2; }
 .pf-foto img {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -82,7 +82,7 @@ const CSS = `
 }
 .pf-corpo { padding: clamp(30px, 4vw, 58px) clamp(24px, 3.4vw, 56px); }
 .pf-marca {
-  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #86836f;
+  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #5C5A55;
 }
 .pf-nome {
   margin: 12px 0 0; font-family: var(--serif, Georgia, serif); font-weight: 400;
@@ -95,13 +95,13 @@ const CSS = `
   border-top: 1px solid rgba(134, 131, 111, .24); padding-top: 22px;
 }
 .pf-bloco dt {
-  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #86836f;
+  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #5C5A55;
   margin-bottom: 5px;
 }
 .pf-bloco dd { margin: 0; font-size: 14px; line-height: 1.6; color: #2b2926; }
 .pf-rot {
   margin: 30px 0 0; font-size: 9.5px; letter-spacing: .16em;
-  text-transform: uppercase; color: #86836f;
+  text-transform: uppercase; color: #5C5A55;
 }
 .pf-conduta { margin: 14px 0 0; max-width: 48ch; font-size: 15px; line-height: 1.68; color: #46443f; }
 .pf-conduta p { margin: 0; }

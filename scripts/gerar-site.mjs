@@ -76,7 +76,7 @@ try {
 
 /* 3. religa o comportamento */
 console.log('');
-for (const etapa of ['nav-links.mjs', 'menus.mjs', 'mosaico.mjs', 'mobile.mjs', 'conversao.mjs']) {
+for (const etapa of ['nav-links.mjs', 'menus.mjs', 'mosaico.mjs', 'mobile.mjs', 'conversao.mjs', 'limpeza.mjs']) {
   const saida = execFileSync('node', [path.join(RAIZ, 'scripts', etapa)], {
     encoding: 'utf8',
   });

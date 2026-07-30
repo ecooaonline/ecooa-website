@@ -71,8 +71,8 @@ const CSS = `<style>
   [data-mob-acoes], [data-mob-painel] { display: none !important; }
 }
 [data-mob-painel][hidden] { display: none !important; }
-#mob-btn:focus-visible { outline: 2px solid #86836f; outline-offset: 2px; }
-[data-mob-painel] a:focus-visible { outline: 2px solid #86836f; outline-offset: -2px; }
+#mob-btn:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
+[data-mob-painel] a:focus-visible { outline: 2px solid #5C5A55; outline-offset: -2px; }
 
 /* mosaico de profissionais: 8 / 6 / 4 / 3 nos limites 1100 / 760 / 480 */
 @media (max-width: 1099px) { [data-mosaico] { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; } }
