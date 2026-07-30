@@ -4,6 +4,11 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://www.somosecooa.com.br',
+  // O site publicado e o 3.0 estatico, que `npm run build` copia de deploy/ para
+  // dist/. O projeto Astro nao esta publicado. Antes os dois builds gravavam em
+  // dist/ e o ultimo a rodar vencia, o que ja fez o site errado ir para o ar.
+  // Saidas separadas: nao ha mais como um sobrescrever o outro.
+  outDir: './dist-astro',
   // Redirects de URLs antigas já publicadas:
   // - slugs de especialidade com acento (percent-encoded) → slugs limpos
   // - psiquiatria (especialidade removida até haver psiquiatra no quadro) → ecooa-mind

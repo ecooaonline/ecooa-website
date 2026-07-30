@@ -1,9 +1,31 @@
-# Cabeçalhos para hospedagens que os suportam (Cloudflare). No GitHub Pages o
-# arquivo é ignorado, sem efeito colateral.
+# Cabecalhos de producao. A Cloudflare os aplica; no GitHub Pages o arquivo e
+# ignorado sem efeito colateral.
+#
+# 'unsafe-eval' foi removido no P06: o runtime que compilava JSX no navegador
+# (support.js + Babel) saiu do site, e nenhum codigo publicado usa eval.
 /*
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self'; frame-src https://www.google.com https://maps.google.com; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# Assets versionados por conteudo: cache longo e imutavel.
+# Sem isto o Lighthouse cobra "use efficient cache lifetimes" e cada visita
+# rebaixa as 48 imagens da home.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML: sempre revalida, para que uma correcao chegue na proxima visita.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Os dados dos profissionais mudam com o conteudo, nao com o build.
+/dados-ecooa.js
+  Cache-Control: public, max-age=3600, must-revalidate
 
 /sw.js
   Cache-Control: no-cache, no-store, must-revalidate

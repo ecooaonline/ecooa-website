@@ -22,9 +22,23 @@ if (!existsSync(origem)) {
   process.exit(1);
 }
 
-for (const obrigatorio of ['index.html', 'support.js', 'dados-ecooa.js', 'CNAME']) {
+// Arquivos sem os quais publicar seria pior que não publicar.
+// support.js saiu desta lista no P06: o runtime que compilava JSX no navegador
+// foi removido do site, e exigir o arquivo quebrava o build do zero.
+for (const obrigatorio of ['index.html', 'dados-ecooa.js', 'CNAME', 'robots.txt', 'sitemap.xml']) {
   if (!existsSync(path.join(origem, obrigatorio))) {
     console.error(`ERRO: deploy/${obrigatorio} não existe. Publicação abortada.`);
+    process.exit(1);
+  }
+}
+
+// O runtime não pode voltar sem que alguém decida: ele reintroduz eval e 3,3 MB.
+for (const proibido of ['support.js', 'assets/vendor/babel-standalone-7.29.0.min.js']) {
+  if (existsSync(path.join(origem, proibido))) {
+    console.error(
+      `ERRO: deploy/${proibido} voltou. Foi removido no P06 por peso e por depender de eval.\n` +
+        '      Se o retorno for intencional, ajuste esta lista em scripts/build-site.mjs.'
+    );
     process.exit(1);
   }
 }
