@@ -328,7 +328,9 @@ try {
           porTitulo[a.titulo] = a;
         });
         let n = 0;
-        [...document.querySelectorAll('button')].forEach((bt) => {
+        // os cards viraram links para as paginas reais dos artigos
+        [...document.querySelectorAll('a, button')].forEach((bt) => {
+          if (bt.closest('header, footer')) return;
           const t = bt.textContent.replace(/\s+/g, ' ').trim();
           const achado = Object.keys(porTitulo).find((tit) => t.indexOf(tit) >= 0);
           if (!achado) return;

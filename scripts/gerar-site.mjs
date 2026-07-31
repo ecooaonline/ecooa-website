@@ -43,10 +43,15 @@ fs.mkdirSync(TMP, { recursive: true });
 for (const pg of [...PAGINAS, 'Sobrancelha.dc.html', 'Rodape.dc.html']) {
   fs.copyFileSync(path.join(FONTE, pg), path.join(TMP, pg));
 }
-for (const f of ['support.js', 'dados-ecooa.js']) {
-  fs.copyFileSync(path.join(DEPLOY, f), path.join(TMP, f));
-}
+// O runtime (support.js + React + Babel) vive em src-site-3/runtime/ e so
+// existe aqui, no momento da geracao. Ele NAO vai para deploy/: o P06 removeu
+// o runtime do site publicado e o build barra o retorno dele.
+fs.copyFileSync(path.join(FONTE, 'runtime', 'support.js'), path.join(TMP, 'support.js'));
+fs.copyFileSync(path.join(DEPLOY, 'dados-ecooa.js'), path.join(TMP, 'dados-ecooa.js'));
 fs.cpSync(path.join(DEPLOY, 'assets'), path.join(TMP, 'assets'), { recursive: true });
+fs.cpSync(path.join(FONTE, 'runtime', 'vendor'), path.join(TMP, 'assets', 'vendor'), {
+  recursive: true,
+});
 
 /* 2. servidor local e pré-renderização */
 const servidor = require('child_process').spawn('python3', ['-m', 'http.server', String(PORTA)], {
@@ -90,7 +95,12 @@ for (const etapa of [
   'mosaico.mjs',
   'mobile.mjs',
   'conversao.mjs',
+  'match.mjs',
   'limpeza.mjs',
+  'retoques.mjs',
+  'areas.mjs',
+  'artigos.mjs',
+  'sitemap.mjs',
 ]) {
   const saida = execFileSync('node', [path.join(RAIZ, 'scripts', etapa)], {
     encoding: 'utf8',

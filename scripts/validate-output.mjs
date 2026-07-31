@@ -60,8 +60,8 @@ if (!existsSync(join(DIST, 'sitemap.xml'))) {
   for (const u of FORA_DO_SITEMAP) {
     if (locs.some((l) => l.startsWith(u))) erro(`pagina noindex dentro do sitemap: ${u}`);
   }
-  if (locs.length < ROTAS.length) {
-    erro(`sitemap com ${locs.length} URLs, abaixo das ${ROTAS.length} rotas estrategicas`);
+  if (locs.length < 31) {
+    erro(`sitemap com ${locs.length} URLs, esperado ao menos 31 (9 rotas + 8 areas + 14 artigos)`);
   } else {
     ok(`${locs.length} URLs no sitemap, todas as rotas estrategicas presentes`);
   }
@@ -70,6 +70,30 @@ if (!existsSync(join(DIST, 'sitemap.xml'))) {
 for (const obrigatorio of ['CNAME', 'robots.txt', 'dados-ecooa.js', '_headers']) {
   if (!existsSync(join(DIST, obrigatorio))) erro(`${obrigatorio} ausente do output`);
 }
+
+/* paginas reais criadas em 2026-07-31: 8 areas e 14 artigos */
+const AREAS = [
+  'medicina',
+  'estetica-facial',
+  'estetica-corporal',
+  'tricologia',
+  'transplante-capilar',
+  'nutricao',
+  'saude-mental',
+  'saude-integrativa',
+];
+let faltamAreas = AREAS.filter((a) => !existsSync(join(DIST, 'especialidades', a, 'index.html')));
+if (faltamAreas.length) erro(`paginas de area ausentes: ${faltamAreas.join(', ')}`);
+else ok('8 paginas de especialidade presentes');
+const nArtigos = existsSync(join(DIST, 'blog'))
+  ? readdirSync(join(DIST, 'blog'), { withFileTypes: true }).filter((d) => d.isDirectory()).length
+  : 0;
+if (nArtigos < 14) erro(`so ${nArtigos} paginas de artigo, esperado 14`);
+else ok(`${nArtigos} paginas de artigo presentes`);
+if (!existsSync(join(DIST, 'especialidades', 'index.html')))
+  erro('indice de /especialidades/ ausente (diretorio esconderia a listagem)');
+if (!existsSync(join(DIST, 'blog', 'index.html')))
+  erro('indice de /blog/ ausente (diretorio esconderia a listagem)');
 
 /* ── 2. o runtime removido no P06 nao pode voltar ──────────────────── */
 console.log('Runtime:');
@@ -106,6 +130,10 @@ console.log('Conversao:');
     else if (!s.includes('wa.me/5551991460909')) erro(`${pg}: destino do WhatsApp ausente`);
     else ok(`${pg}: formulario de lead envia para o WhatsApp`);
   }
+
+  const matchPg = html.get('qual-profissional-procurar.html') || '';
+  if (!matchPg.includes('data-match-pronto')) erro('ecooa.match sem o comportamento religado');
+  else ok('ecooa.match religado');
 
   for (const [pg, minimo] of [
     ['profissionais.html', 7],
@@ -204,15 +232,14 @@ console.log('Guardiao regulatorio:');
   if (invalidos.length) erro(`estado de registro invalido: ${invalidos.join(', ')}`);
   else ok(`${estados.length} registros, todos com estado valido`);
 
+  /* decisao do dono em 2026-07-31: numero valido aparece limpo, sem ressalva;
+     sem numero, o campo nao aparece. A ressalva nao pode voltar por acidente. */
   const home = html.get('index.html') || '';
-  if (estados.includes('a-confirmar') && !home.includes('a confirmar')) {
-    erro('ha registro a confirmar, mas o modal nao exibe a ressalva');
-  }
-  if (estados.includes('a-adicionar') && !home.includes('registro a adicionar')) {
-    erro('ha registro a adicionar, mas o modal nao exibe a ressalva');
+  if (/registro a adicionar|· a confirmar/.test(home)) {
+    erro('a ressalva de registro voltou ao modal, contra a decisao de 2026-07-31');
   }
   const contagem = validos.map((v) => `${estados.filter((e) => e === v).length} ${v}`).join(', ');
-  ok(`ressalva de registro no modal (${contagem})`);
+  ok(`registro exibido limpo (${contagem})`);
 }
 
 console.log('');

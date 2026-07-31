@@ -138,9 +138,7 @@ const MODAL = `
 
 const JS = `
 <script>
-/* Modal de perfil do profissional. Dados de window.ECOOA.profissionais.
-   Regra obrigatoria do registro: o texto exibido depende do campo estado.
-   Publicidade em saude, a ressalva nunca e omitida. */
+/* Modal de perfil do profissional. Dados de window.ECOOA.profissionais. */
 (function () {
   var ov = document.getElementById('pf-ov');
   var pn = document.getElementById('pf-pn');
@@ -151,9 +149,9 @@ const JS = `
   var origem = null;
 
   function textoRegistro(p) {
-    if (p.estado === 'confirmado') return p.registro;
-    if (p.estado === 'a-confirmar') return p.registro + ' \\u00b7 a confirmar';
-    return 'registro a adicionar';
+    /* decisao do dono em 2026-07-31: numero valido aparece limpo; sem numero,
+       o bloco inteiro some (bloco() ja descarta valor vazio) */
+    return p.estado === 'a-adicionar' ? '' : p.registro;
   }
 
   function bloco(rotulo, valor) {

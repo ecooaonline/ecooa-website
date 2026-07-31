@@ -66,7 +66,10 @@ for (const nome of paginas) {
 
   const original = html;
 
-  // 1. marca os gatilhos: <a href="especialidades.html" ...>especialidades ▾</a>
+  // 1. gatilhos. Pedido do dono em 2026-07-31: clicar na PALAVRA navega para a
+  //    pagina cheia; a seta ao lado abre o submenu. "mais" nao tem pagina, entao
+  //    o botao inteiro segue abrindo o painel.
+  const DESTINOS = { especialidades: 'especialidades.html', profissionais: 'profissionais.html' };
   for (const [rotulo, chave] of Object.entries(GATILHOS)) {
     const re = new RegExp(
       `<(a|button)([^>]*?)>(\\s*${rotulo}\\s*(?:<[^>]+>[^<]*</[^>]+>\\s*)?)</\\1>`,
@@ -75,7 +78,19 @@ for (const nome of paginas) {
     html = html.replace(re, (m, tag, attrs, miolo) => {
       if (/data-menu=/.test(attrs)) return m;
       const limpo = attrs.replace(/\shref="[^"]*"/i, '');
-      return `<button type="button" data-menu="${chave}" aria-expanded="false"${limpo}>${miolo}</button>`;
+      const destino = DESTINOS[chave];
+      if (!destino) {
+        return `<button type="button" data-menu="${chave}" aria-expanded="false"${limpo}>${miolo}</button>`;
+      }
+      // separa o texto da seta
+      const soRotulo = miolo.replace(/<span[^>]*>[^<]*<\/span>/i, '').trim();
+      return (
+        `<span style="display:inline-flex; align-items:center; gap:4px;">` +
+        `<a href="${destino}"${limpo}>${soRotulo}</a>` +
+        `<button type="button" data-menu="${chave}" aria-expanded="false" aria-label="abrir opções de ${chave}"` +
+        ` style="background:none; border:0; cursor:pointer; padding:8px 4px; font-size:8px; opacity:.55; color:inherit;">▼</button>` +
+        `</span>`
+      );
     });
   }
 
@@ -83,7 +98,12 @@ for (const nome of paginas) {
   const fimHeader = html.indexOf('</header>');
   if (fimHeader > 0) {
     const blocos = Object.entries(painies)
-      .map(([chave, markup]) => markup.replace(/^<(\w+)/, `<$1 data-painel="${chave}" hidden`))
+      .map(([chave, markup]) =>
+        markup
+          .replace(/^<(\w+)/, `<$1 data-painel="${chave}" hidden`)
+          // paginas reais por area, criadas em 2026-07-31
+          .replace(/href="especialidades\.html#([a-z-]+)"/g, 'href="especialidades/$1/"')
+      )
       .join('\n');
     html = html.slice(0, fimHeader) + blocos + '\n' + html.slice(fimHeader);
   }

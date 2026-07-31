@@ -57,7 +57,7 @@
     <div style="max-width:1180px; margin:0 auto;">
       <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>ecooa.match</div>
       <h1 style="margin:26px 0 0; max-width:17ch; font-family:var(--serif); font-weight:400; font-size:clamp(36px,5.4vw,80px); line-height:.98; letter-spacing:-.026em; color:var(--tinta); text-wrap:pretty;">Busca por IA para encontrar o profissional certo.</h1>
-      <p style="margin:26px 0 0; max-width:58ch; font-size:17px; line-height:1.68;">Escolha como prefere começar. Nos dois caminhos você recebe uma leitura do que entendemos, os caminhos possíveis e quem atende cada um deles.</p>
+      <p style="margin:26px 0 0; max-width:58ch; font-size:17px; line-height:1.68;">Escolha como prefere começar. Nos dois caminhos, você descreve o que busca e recebe a indicação dos profissionais mais adequados para a sua queixa, entre as especialidades da ecooa em Porto Alegre.</p>
     </div>
   </section>
 
@@ -71,7 +71,7 @@
             <span style="display:block; margin-top:20px; max-width:18ch; font-family:var(--serif); font-size:clamp(24px,2.4vw,34px); line-height:1.1; color:var(--tinta);">Escreva o que você procura.</span>
             <span style="display:block; margin-top:16px; max-width:38ch; font-size:15px; line-height:1.64; color:var(--muted);">Uma frase basta. Por exemplo: procuro médico para implante hormonal, ou meu cabelo está caindo muito.</span>
           </span>
-          <span style="display:inline-flex; align-items:center; gap:10px; font-size:11.5px; letter-spacing:.16em; color:var(--grafite);">escrever <span aria-hidden="true">→</span></span>
+          <span style="display:inline-flex; align-items:center; gap:10px; min-height:50px; padding:0 30px; border-radius:999px; background:var(--nuvem); font-size:11.5px; letter-spacing:.16em; color:var(--grafite); box-shadow:var(--relevo-botao); align-self:flex-start;">escrever <span aria-hidden="true">→</span></span>
         </button>
         <button type="button" onClick="{{ vaiPerguntas }}" style="text-align:left; border:0; cursor:pointer; background:var(--elevado); padding:clamp(28px,3vw,46px); box-shadow:var(--relevo); display:flex; flex-direction:column; justify-content:space-between; gap:30px; min-height:280px;">
           <span style="display:block;">
@@ -79,10 +79,12 @@
             <span style="display:block; margin-top:20px; max-width:18ch; font-family:var(--serif); font-size:clamp(24px,2.4vw,34px); line-height:1.1; color:var(--tinta);">Responda cinco perguntas curtas.</span>
             <span style="display:block; margin-top:16px; max-width:38ch; font-size:15px; line-height:1.64; color:var(--muted);">Com a opção de dizer que ainda não sabe em todas elas. Leva menos de um minuto.</span>
           </span>
-          <span style="display:inline-flex; align-items:center; gap:10px; font-size:11.5px; letter-spacing:.16em; color:var(--grafite);">começar <span aria-hidden="true">→</span></span>
+          <span style="display:inline-flex; align-items:center; gap:10px; min-height:50px; padding:0 30px; border-radius:999px; background:var(--nuvem); font-size:11.5px; letter-spacing:.16em; color:var(--grafite); box-shadow:var(--relevo-botao); align-self:flex-start;">começar <span aria-hidden="true">→</span></span>
         </button>
       </div>
-      <p style="margin:26px auto 0; max-width:70ch; font-size:13px; line-height:1.66; color:var(--legenda);">O ecooa.match orienta a escolha do profissional e não faz diagnóstico, não indica tratamento e não substitui uma consulta. Em caso de urgência, procure atendimento médico imediato.</p>
+      <p style="margin:26px auto 0; max-width:70ch; font-size:13px; line-height:1.66; color:var(--legenda);">O ecooa.match orienta a escolha do profissional.
+          <button type="button" data-leia-mais aria-expanded="false" style="border:0; background:none; cursor:pointer; padding:0; font-size:13px; color:var(--grafite); text-decoration:underline; text-underline-offset:3px;">leia mais</button>
+          <span data-leia-resto hidden> Ele não faz diagnóstico, não indica tratamento e não substitui uma consulta. Em caso de urgência, procure atendimento médico imediato.</span></p>
     </section>
   </sc-if>
 
@@ -143,7 +145,9 @@
             </sc-for>
           </div>
         </div>
-        <p style="margin:26px auto 0; max-width:70ch; font-size:13px; line-height:1.66; color:var(--legenda);">O ecooa.match orienta a escolha do profissional e não faz diagnóstico, não indica tratamento e não substitui uma consulta. Em caso de urgência, procure atendimento médico imediato.</p>
+        <p style="margin:26px auto 0; max-width:70ch; font-size:13px; line-height:1.66; color:var(--legenda);">O ecooa.match orienta a escolha do profissional.
+          <button type="button" data-leia-mais aria-expanded="false" style="border:0; background:none; cursor:pointer; padding:0; font-size:13px; color:var(--grafite); text-decoration:underline; text-underline-offset:3px;">leia mais</button>
+          <span data-leia-resto hidden> Ele não faz diagnóstico, não indica tratamento e não substitui uma consulta. Em caso de urgência, procure atendimento médico imediato.</span></p>
       </div>
     </section>
   </sc-if>
@@ -235,9 +239,8 @@
 const D = () => (typeof window !== 'undefined' && window.ECOOA) || { profissionais: [], especialidades: [] };
 
 function reg(p) {
-  if (p.estado === 'confirmado') return p.registro;
-  if (p.estado === 'a-confirmar') return p.registro + ' · a confirmar';
-  return 'registro a adicionar';
+  // decisao do dono em 2026-07-31: numero valido aparece limpo; sem numero, nada.
+  return p.estado === 'a-adicionar' ? '' : p.registro;
 }
 
 const PERGUNTAS = [

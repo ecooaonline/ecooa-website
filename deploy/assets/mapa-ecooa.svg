@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="Mapa estilizado de Moinhos de Vento com a ecooa na Rua Mariante, 180">
+  <defs>
+    <style>
+      .rua { stroke:#FDFDFC; fill:none; stroke-linecap:round; }
+      .nome { font-family:"Helvetica Neue","Avenir Next","Segoe UI",Arial,sans-serif; fill:#5C5A55; letter-spacing:.14em; text-transform:uppercase; }
+    </style>
+  </defs>
+  <rect width="1200" height="520" fill="#E9E7E2"/>
+  <g class="rua" stroke-width="26">
+    <path d="M-40 120 L1240 84"/>
+    <path d="M-40 300 L1240 264"/>
+    <path d="M-40 470 L1240 434"/>
+    <path d="M180 -20 L240 540"/>
+    <path d="M520 -20 L580 540"/>
+    <path d="M860 -20 L920 540"/>
+  </g>
+  <path d="M-40 300 L1240 264" stroke="#DEDCD6" stroke-width="34" fill="none" stroke-linecap="round"/>
+  <g>
+    <rect x="905" y="96" width="300" height="150" rx="8" fill="#DEDCD6"/>
+    <g fill="none" stroke="#C6C4BF" stroke-width="2">
+      <circle cx="960" cy="150" r="17"/><circle cx="1030" cy="180" r="22"/><circle cx="1105" cy="140" r="15"/><circle cx="1160" cy="195" r="18"/>
+    </g>
+    <text x="955" y="235" class="nome" font-size="15">praça japão</text>
+  </g>
+  <text x="70" y="330" class="nome" font-size="17" transform="rotate(-1.6 70 330)">rua mariante</text>
+  <text x="70" y="152" class="nome" font-size="14" transform="rotate(-1.6 70 152)">rua padre chagas</text>
+  <g transform="translate(600,242)">
+    <circle cx="0" cy="96" r="46" fill="rgba(70,68,63,.12)"/>
+    <path d="M0 96 C -34 52 -40 20 -20 0 C -8 -11 8 -11 20 0 C 40 20 34 52 0 96 Z" fill="#46443F"/>
+    <circle cx="0" cy="12" r="15" fill="#F0EEE9"/>
+  </g>
+  <g transform="translate(600,150)">
+    <rect x="-118" y="-34" width="236" height="52" rx="26" fill="#46443F"/>
+    <text x="0" y="-2" text-anchor="middle" font-family="Iowan Old Style,Palatino,Georgia,serif" font-size="24" fill="#F0EEE9">ecooa</text>
+    <text x="0" y="13" text-anchor="middle" class="nome" font-size="9" fill="#DEDCD6">RUA MARIANTE, 180 · 9º ANDAR</text>
+  </g>
+  <text x="600" y="492" text-anchor="middle" class="nome" font-size="12">toque para abrir no google maps</text>
+</svg>

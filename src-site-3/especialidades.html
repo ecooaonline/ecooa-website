@@ -67,12 +67,12 @@
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1px; background:var(--stone); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
         <sc-for list="{{ lista }}" as="e" hint-placeholder-count="8">
-          <button type="button" onClick="{{ e.abrir }}" style="text-align:left; border:0; cursor:pointer; background:var(--nuvem); padding:clamp(30px,3vw,48px) clamp(24px,2.4vw,38px); min-height:270px; display:block;">
+          <a href="{{ e.href }}" style="text-align:left; background:var(--nuvem); padding:clamp(30px,3vw,48px) clamp(24px,2.4vw,38px); min-height:270px; display:block;">
             <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">{{ e.marca }}</span>
             <span style="display:block; margin-top:20px; font-family:var(--serif); font-size:clamp(26px,2.4vw,38px); line-height:1.04; color:var(--tinta);">{{ e.nome }}</span>
             <span style="display:block; margin-top:16px; max-width:38ch; font-size:14.5px; line-height:1.64; color:var(--muted);">{{ e.resumo }}</span>
-            <span style="display:block; margin-top:24px; font-size:12px; letter-spacing:.05em; color:var(--legenda);">{{ e.qtd }}</span>
-          </button>
+            <span style="display:block; margin-top:24px; font-size:12px; letter-spacing:.05em; color:var(--legenda);">{{ e.qtd }} · conhecer a área →</span>
+          </a>
         </sc-for>
       </div>
 
@@ -245,7 +245,7 @@ class Component extends DCLogic {
       return {
         nome: e.nome, marca: e.marca, resumo: e.resumo,
         qtd: n === 1 ? '1 profissional' : n + ' profissionais',
-        abrir: () => this.abre(e.slug),
+        href: 'especialidades/' + e.slug + '/',
       };
     });
 

@@ -61,7 +61,7 @@
           <span style="display:block; width:74px; height:1px; background:var(--aluminio);"></span>
           <h1 style="margin:34px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(40px,8.4vw,128px); line-height:.92; letter-spacing:-.03em; color:var(--tinta);">editorial</h1>
           <p style="margin:20px 0 0; font-size:13px; letter-spacing:.14em; color:var(--legenda);">leituras que ajudam a decidir</p>
-          <p style="margin:34px 0 0; max-width:62ch; font-size:17px; line-height:1.68;">Textos escritos a partir da prática de consultório, sem promessa e sem atalho. A ideia é que você chegue à consulta com melhores perguntas.</p>
+          <p style="margin:34px 0 0; max-width:62ch; font-size:17px; line-height:1.68;">Saúde, nutrição, estética, tricologia, longevidade e saúde mental explicadas por quem atende na ecooa, em Porto Alegre. Conteúdo com base científica, atualizado e sem promessa, para você entender o seu caso, comparar caminhos e chegar à consulta com as perguntas certas.</p>
         </div>
       </section>
 
@@ -74,7 +74,7 @@
 
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:1px; background:var(--stone); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
         <sc-for list="{{ lista }}" as="a" hint-placeholder-count="9">
-          <button type="button" onClick="{{ a.abrir }}" style="text-align:left; border:0; cursor:pointer; background:var(--nuvem); padding:clamp(30px,3vw,46px) clamp(24px,2.4vw,38px); min-height:260px; display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
+          <a href="{{ a.href }}" style="text-align:left; background:var(--nuvem); padding:clamp(30px,3vw,46px) clamp(24px,2.4vw,38px); min-height:260px; display:flex; flex-direction:column; justify-content:space-between; gap:24px;">
             <span style="display:block;">
               <span style="display:block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--legenda);">{{ a.area }}</span>
               <span style="display:block; margin-top:18px; max-width:26ch; font-family:var(--serif); font-size:clamp(22px,2.1vw,30px); line-height:1.14; color:var(--tinta);">{{ a.titulo }}</span>
@@ -82,9 +82,9 @@
             </span>
             <span style="display:block; padding-top:16px; border-top:1px solid var(--stone);">
               <span style="display:block; font-size:13px; color:var(--grafite); font-style:italic;">{{ a.autor }}</span>
-              <span style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-top:8px; font-size:12px; letter-spacing:.04em; color:var(--legenda);"><span>{{ a.data }}</span><span>{{ a.tempo }}</span></span>
+              <span style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-top:8px; font-size:12px; letter-spacing:.04em; color:var(--legenda);"><span>{{ a.data }}</span><span style="color:var(--grafite);">leia mais →</span></span>
             </span>
-          </button>
+          </a>
         </sc-for>
       </div>
     </div>
@@ -179,9 +179,8 @@ const D = () => (typeof window !== 'undefined' && window.ECOOA) || { artigos: []
 function autorDe(slug) {
   const p = (D().profissionais || []).filter((x) => x.slug === slug)[0];
   if (!p) return null;
-  const registro = p.estado === 'confirmado' ? p.registro
-    : p.estado === 'a-confirmar' ? p.registro + ' · a confirmar'
-    : 'registro a adicionar';
+  // decisao do dono em 2026-07-31: numero valido aparece limpo; sem numero, nada.
+  const registro = p.estado === 'a-adicionar' ? '' : p.registro;
   return { nome: p.nome, primeiro: p.primeiro, classe: p.classe, registro: registro, area: p.area, foto: p.foto, bio: p.bio };
 }
 
@@ -274,9 +273,9 @@ class Component extends DCLogic {
       lista: visiveis.map((a) => {
         const au = autorDe(a.autor);
         return {
-          area: a.area, titulo: a.titulo, resumo: a.resumo, tempo: a.tempo,
+          area: a.area, titulo: a.titulo, resumo: a.resumo,
           data: dataLonga(a.data), autor: au ? 'por ' + au.nome : '',
-          abrir: () => this.abre(a.slug),
+          href: 'blog/' + a.slug + '/',
         };
       }),
       art: atual

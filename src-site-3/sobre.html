@@ -70,7 +70,7 @@
       <div style="flex:1.2 1 368px; max-width:70ch;">
         <p style="margin:0; font-size:17px; line-height:1.78;">A ecooa nasceu de uma pergunta simples: por que medicina, nutrição, estética e psicologia não conversam entre si?</p>
         <p style="margin:22px 0 0; font-size:17px; line-height:1.78;">Em 2021, os sócios fundadores Gustavo Gehrke, médico, Jessica Stein, nutricionista, e Scheila Andrzejewski, médica, decidiram construir um espaço onde os profissionais trabalham juntos, e não em silos. Um lugar em que o paciente não precisa repetir sua história a cada consulta, porque a equipe já se conhece, já se comunica e já cuida de forma integrada.</p>
-        <p style="margin:22px 0 0; font-size:17px; line-height:1.78;">O nome veio dessa ideia: o cuidado que <em style="font-family:var(--serif); font-style:italic; color:var(--grafite);">ecoa</em>. Um cuidado que não termina na porta do consultório e que se multiplica entre profissionais, entre áreas e entre pessoas.</p>
+        <p style="margin:22px 0 0; font-size:17px; line-height:1.78;">O nome veio dessa ideia: o cuidado que ecoa. Um cuidado que não termina na porta do consultório e que se multiplica entre profissionais, entre áreas e entre pessoas. Como dizem as nossas bandeiras, não nos definimos pela competição: queremos que as nossas ideias ecoem e inspirem outros profissionais que sonham em empreender na saúde.</p>
         <p style="margin:22px 0 0; font-size:17px; line-height:1.78;">Hoje, sob a liderança de Gustavo e Jessica, a ecooa é uma clínica multidisciplinar em Moinhos de Vento, com mais de 30 profissionais. O princípio permanece o mesmo: saúde de verdade acontece quando há conexão entre as pessoas.</p>
       </div>
     </div>
@@ -83,8 +83,8 @@
       <h2 style="margin:22px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(31px,4vw,58px); line-height:1.02; letter-spacing:-.016em; color:var(--fundo);">Nove bandeiras. Intactas.</h2>
       <div style="margin-top:clamp(40px,5vw,68px); display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:clamp(22px,2.4vw,40px);">
         <sc-for list="{{ bandeiras }}" as="b" hint-placeholder-count="9">
-          <div style="padding-top:20px; border-top:1px solid rgba(240,238,233,.28); min-height:120px;">
-            <span style="display:block; font-family:var(--serif); font-size:24px; line-height:1; color:var(--prata);">{{ b.n }}</span>
+          <div style="position:relative; padding-top:20px; border-top:1px solid rgba(240,238,233,.28); min-height:120px; overflow:hidden;">
+            <span style="position:relative; z-index:1; display:block; font-family:var(--serif); font-size:24px; line-height:1; color:var(--prata);">{{ b.n }}</span>
             <strong style="display:block; margin-top:16px; max-width:26ch; font-size:16px; font-weight:400; line-height:1.4; color:var(--fundo);">{{ b.texto }}</strong>
           </div>
         </sc-for>
@@ -116,30 +116,20 @@
       <h2 style="margin:22px 0 0; max-width:15ch; font-family:var(--serif); font-weight:400; font-size:clamp(31px,4vw,58px); line-height:1.02; letter-spacing:-.016em; color:var(--tinta);">Quem faz a ecooa existir.</h2>
     </div>
     <div style="display:grid; grid-template-columns:{{ colunas }}; gap:1px; background:var(--stone); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
-      <div style="position:relative; background:var(--nevoa); min-height:clamp(320px,38vw,540px); overflow:hidden;">
-        <img src="assets/retratos/gustavo fp.webp" alt="Retrato de Gustavo Gehrke Rodrigues" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
+      <div style="position:relative; background:var(--nevoa); min-height:clamp(320px,38vw,540px); overflow:hidden; display:flex; align-items:center; justify-content:center;">
+        <!-- espaco reservado para a fotografia dos socios, aguardando o arquivo -->
+        <img src="assets/logo/ecooa-wordmark.svg" alt="" aria-hidden="true" style="width:clamp(140px,16vw,220px); opacity:.16;">
       </div>
       <div style="background:var(--nuvem); display:flex; align-items:center; padding:clamp(28px,3.4vw,60px);">
         <div>
           <span style="display:block; width:34px; height:1px; background:var(--aluminio);"></span>
-          <h3 style="margin:22px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(26px,2.4vw,38px); line-height:1.06; color:var(--tinta);">Gustavo Gehrke Rodrigues</h3>
-          <p style="margin:14px 0 0; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">médico · sócio fundador</p>
-          <p style="margin:20px 0 0; max-width:44ch; font-size:15.5px; line-height:1.7;">Medicina do esporte, longevidade, performance e hormoniologia. Conduz a visão clínica e institucional da ecooa.</p>
-          <p style="margin:14px 0 0; font-size:13.5px; color:var(--legenda);">CRM-RS 35.822 · a confirmar</p>
-        </div>
-      </div>
-      <div style="background:var(--nuvem); display:flex; align-items:center; padding:clamp(28px,3.4vw,60px); order:{{ ordemTextoJ }};">
-        <div>
-          <span style="display:block; width:34px; height:1px; background:var(--aluminio);"></span>
-          <h3 style="margin:22px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(26px,2.4vw,38px); line-height:1.06; color:var(--tinta);">Jessica Stein</h3>
-          <p style="margin:14px 0 0; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">nutricionista · sócia e diretora de ensino</p>
-          <p style="margin:20px 0 0; max-width:44ch; font-size:15.5px; line-height:1.7;">Nutricionista e professora de pós-graduação. Lidera o braço educacional da ecooa e responde pela experiência da clínica.</p>
-          <p style="margin:14px 0 0; font-size:13.5px; color:var(--legenda);">CRN 9495</p>
+          <h3 style="margin:22px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(26px,2.4vw,38px); line-height:1.06; color:var(--tinta);">Gustavo Gehrke e Jessica Stein são a ecooa.</h3>
+          <p style="margin:14px 0 0; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);">sócios fundadores</p>
+          <p style="margin:20px 0 0; max-width:52ch; font-size:15.5px; line-height:1.7;">Médico e nutricionista, os sócios conduzem a clínica desde 2021 com atenção aos mínimos detalhes, do acolhimento na recepção ao padrão de cada consultório. No Moinhos de Vento, em Porto Alegre, abriram as portas para profissionais que sonham em atender seus pacientes em um espaço de alto padrão, regulamentado e bem localizado.</p>
+          <p style="margin:14px 0 0; max-width:52ch; font-size:15.5px; line-height:1.7;">A gestão e as responsabilidades que uma clínica exige ficam sob os cuidados da equipe ecooa, que zela pela qualidade da experiência e pelo respeito à carreira de cada um. Conhecidos por serem incansáveis, os dois entendem que empreender em saúde exige inteligência, estratégia, relacionamento e resiliência, e seguem disponíveis para indicar atalhos a quem constrói a própria trajetória dentro da casa.</p>
+          <p style="margin:14px 0 0; font-size:13.5px; color:var(--legenda);">Gustavo Gehrke · CRM-RS 35.822 &nbsp;·&nbsp; Jessica Stein · CRN 9495</p>
           <a href="mentorias.html" style="margin-top:22px; display:inline-flex; align-items:center; gap:8px; font-size:13.5px; color:var(--grafite); border-bottom:1px solid var(--rule-forte); padding-bottom:3px;">conhecer a ecooa.cademy <span aria-hidden="true">→</span></a>
         </div>
-      </div>
-      <div style="position:relative; background:var(--nevoa); min-height:clamp(320px,38vw,540px); overflow:hidden; order:{{ ordemFotoJ }};">
-        <img src="assets/retratos/jessica .webp" alt="Retrato de Jessica Stein" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
       </div>
     </div>
   </section>
@@ -147,8 +137,8 @@
   <!-- quem recebe -->
   <section style="padding:clamp(64px,8vw,120px) clamp(20px,3.2vw,56px); background:var(--nevoa);">
     <div style="max-width:1600px; margin:0 auto; display:flex; flex-wrap:wrap; gap:clamp(32px,5vw,80px); align-items:center;">
-      <div style="flex:0 0 auto; width:clamp(180px,24vw,280px); position:relative; overflow:hidden; background:var(--stone);">
-        <img src="assets/retratos/rafaella pb.webp" alt="Retrato de Rafaella, secretária da ecooa" style="width:100%; aspect-ratio:2/3; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
+      <div style="flex:0 0 auto; width:clamp(180px,22vw,260px); max-width:70vw; margin:0 auto; position:relative; overflow:hidden; background:var(--stone); aspect-ratio:2/3;">
+        <img src="assets/retratos/rafaella pb.webp" alt="Retrato de Rafaella, secretária da ecooa" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
       </div>
       <div style="flex:1 1 368px; min-width:0;">
         <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>quem recebe você</div>
@@ -179,17 +169,6 @@
         <div style="position:relative; overflow:hidden; background:var(--nevoa); min-height:180px;">
           <img src="assets/fotos-tratadas/mind-perola-fria.webp" alt="Sala de atendimento da ecooa" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:var(--foto);" loading="lazy">
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- fechamento -->
-  <section style="padding:clamp(64px,8vw,120px) clamp(20px,3.2vw,56px); background:var(--alt);">
-    <div style="max-width:1600px; margin:0 auto; display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between;">
-      <h2 style="margin:0; flex:1 1 368px; max-width:18ch; font-family:var(--serif); font-weight:400; font-size:clamp(30px,3.8vw,52px); line-height:1.02; letter-spacing:-.016em; color:var(--tinta);">Venha conhecer a ecooa.</h2>
-      <div style="flex:0 0 auto; display:flex; flex-wrap:wrap; gap:14px;">
-        <a href="https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20ecooa" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; min-height:54px; padding:0 34px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">agendar</a>
-        <a href="profissionais.html" style="display:inline-flex; align-items:center; min-height:54px; padding:0 34px; border-radius:999px; background:var(--alt); color:var(--grafite); font-size:11.5px; letter-spacing:.16em; box-shadow:var(--relevo-botao);">ver os profissionais</a>
       </div>
     </div>
   </section>
