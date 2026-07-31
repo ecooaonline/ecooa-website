@@ -111,9 +111,13 @@ const CSS = `<style>
 /* sobre e profissionais: duas colunas empilham em 860 */
 @media (max-width: 859px) {
   [data-duas-colunas] { grid-template-columns: 1fr !important; }
-  /* empilhado, o retrato vem antes do texto, como no desenho original */
-  [data-ordem-texto] { order: 2 !important; }
-  [data-ordem-foto] { order: 1 !important; }
+  /* Empilhado, o retrato vem antes do texto, PAR A PAR. A ordem precisa ser
+     crescente ao longo da lista inteira: order e global no grid, e valores
+     repetidos (1/2 por par) agrupavam todas as fotos longe dos seus nomes,
+     defeito visto pelo dono em 2026-08-01. Cada par carrega o proprio indice
+     na variavel --par, marcada na geracao. */
+  [data-mob-par][data-ordem-foto] { order: calc(var(--par) * 2 + 1) !important; }
+  [data-mob-par][data-ordem-texto] { order: calc(var(--par) * 2 + 2) !important; }
 }
 
 /* rodape: contato e links centralizam abaixo de 760 */
@@ -260,19 +264,27 @@ try {
         });
         duas.forEach((g) => {
           g.setAttribute('data-duas-colunas', '');
-          // empilhado, o retrato precisa vir antes do texto em cada par
+          // Empilhado, o retrato precisa vir antes do texto em cada par.
+          // TODO par ganha o proprio indice em --par: a ordem do CSS e global
+          // no grid, entao ela precisa crescer par a par pela lista inteira.
           const filhos = [...g.children];
+          let par = 0;
           for (let i = 0; i < filhos.length; i += 2) {
             const a = filhos[i];
             const c = filhos[i + 1];
             if (!c) break;
-            const aTemFoto = !!a.querySelector('img');
-            const cTemFoto = !!c.querySelector('img');
-            // so age quando o par e um texto e uma foto, e o texto vem primeiro
-            if (!aTemFoto && cTemFoto) {
-              a.setAttribute('data-ordem-texto', '');
-              c.setAttribute('data-ordem-foto', '');
-            }
+            const aTemFoto = !!a.querySelector('[data-perfil] img, img');
+            const cTemFoto = !!c.querySelector('[data-perfil] img, img');
+            if (aTemFoto === cTemFoto) continue; // par sem foto+texto: nao mexe
+            const foto = aTemFoto ? a : c;
+            const texto = aTemFoto ? c : a;
+            foto.setAttribute('data-ordem-foto', '');
+            foto.setAttribute('data-mob-par', '');
+            foto.style.setProperty('--par', String(par));
+            texto.setAttribute('data-ordem-texto', '');
+            texto.setAttribute('data-mob-par', '');
+            texto.style.setProperty('--par', String(par));
+            par++;
           }
         });
         if (duas.length) feito.push(`empilha em 860 (${duas.length} grade)`);

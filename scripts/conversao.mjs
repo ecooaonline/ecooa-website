@@ -148,21 +148,35 @@ const JS_FILTROS = `<script>
       if (mostra) visiveis++;
     });
 
-    /* alternancia recalculada sobre o que ficou visivel */
+    /* Alternancia recalculada sobre o que ficou visivel.
+       NUNCA com a propriedade order: order reordena a grade INTEIRA, nao a
+       linha, e embaralhava retrato de um com o nome de outro (defeito visto
+       pelo dono em 2026-08-01). Em duas colunas, cada par visivel recebe
+       linha e coluna explicitas; em uma coluna e na lista completa, os
+       posicionamentos sao limpos e vale a ordem natural do documento. */
     var pares = [].slice.call(document.querySelectorAll('[data-item-grupo]')).filter(function (e) {
-      return !e.hidden;
+      return !e.hidden && e.getAttribute('data-item-par');
     });
+    var duasColunas = window.matchMedia('(min-width: 860px)').matches;
     pares.forEach(function (el, i) {
-      var irmao = el.getAttribute('data-item-par');
-      if (!irmao) return;
-      var outro = document.querySelector('[data-item-idpar="' + irmao + '"]');
+      var outro = document.querySelector('[data-item-idpar="' + el.getAttribute('data-item-par') + '"]');
       if (!outro) return;
-      /* linha par: retrato primeiro. linha impar: texto primeiro. */
-      var fotoAntes = i % 2 === 0;
       var foto = el.querySelector('img') ? el : outro;
       var texto = foto === el ? outro : el;
-      foto.style.order = fotoAntes ? '1' : '2';
-      texto.style.order = fotoAntes ? '2' : '1';
+      foto.style.order = '';
+      texto.style.order = '';
+      if (grupo === 'todos' || !duasColunas) {
+        foto.style.gridRow = '';
+        foto.style.gridColumn = '';
+        texto.style.gridRow = '';
+        texto.style.gridColumn = '';
+        return;
+      }
+      var fotoAntes = i % 2 === 0;
+      foto.style.gridRow = String(i + 1);
+      texto.style.gridRow = String(i + 1);
+      foto.style.gridColumn = fotoAntes ? '1' : '2';
+      texto.style.gridColumn = fotoAntes ? '2' : '1';
     });
 
     var contador = document.querySelector('[data-filtro-contador]');
@@ -180,6 +194,15 @@ const JS_FILTROS = `<script>
       }
     });
   });
+
+  /* trocar de largura com filtro ativo exige reposicionar */
+  var mq = window.matchMedia('(min-width: 860px)');
+  var aoMudar = function () {
+    var ativo = document.querySelector('[data-filtro][aria-pressed="true"]');
+    if (ativo) alterna(ativo.getAttribute('data-filtro'));
+  };
+  if (mq.addEventListener) mq.addEventListener('change', aoMudar);
+  else if (mq.addListener) mq.addListener(aoMudar);
 
   /* estado inicial pelo hash, como no original */
   var h = (window.location.hash || '').replace('#', '');

@@ -142,9 +142,13 @@
 /* sobre e profissionais: duas colunas empilham em 860 */
 @media (max-width: 859px) {
   [data-duas-colunas] { grid-template-columns: 1fr !important; }
-  /* empilhado, o retrato vem antes do texto, como no desenho original */
-  [data-ordem-texto] { order: 2 !important; }
-  [data-ordem-foto] { order: 1 !important; }
+  /* Empilhado, o retrato vem antes do texto, PAR A PAR. A ordem precisa ser
+     crescente ao longo da lista inteira: order e global no grid, e valores
+     repetidos (1/2 por par) agrupavam todas as fotos longe dos seus nomes,
+     defeito visto pelo dono em 2026-08-01. Cada par carrega o proprio indice
+     na variavel --par, marcada na geracao. */
+  [data-mob-par][data-ordem-foto] { order: calc(var(--par) * 2 + 1) !important; }
+  [data-mob-par][data-ordem-texto] { order: calc(var(--par) * 2 + 2) !important; }
 }
 
 /* rodape: contato e links centralizam abaixo de 760 */
@@ -486,11 +490,11 @@
       <h2 data-dc-tpl="50" style="margin: 22px 0px 0px; max-width: 15ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 58px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Quem faz a ecooa existir.</h2>
     </div>
     <div data-dc-tpl="51" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--stone); border-top: 1px solid var(--stone); border-bottom: 1px solid var(--stone);" data-duas-colunas="">
-      <div data-dc-tpl="52" style="position: relative; background: var(--nevoa); min-height: clamp(320px, 38vw, 540px); overflow: hidden; display: flex; align-items: center; justify-content: center;">
+      <div data-dc-tpl="52" style="position: relative; background: var(--nevoa); min-height: clamp(320px, 38vw, 540px); overflow: hidden; display: flex; align-items: center; justify-content: center; --par: 0;" data-ordem-foto="" data-mob-par="">
         
         <img width="236" height="44" data-dc-tpl="53" src="assets/logo/ecooa-wordmark.svg" alt="" aria-hidden="true" style="width: clamp(140px, 16vw, 220px); opacity: 0.16;">
       </div>
-      <div data-dc-tpl="54" style="background: var(--nuvem); display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px);">
+      <div data-dc-tpl="54" style="background: var(--nuvem); display: flex; align-items: center; padding: clamp(28px, 3.4vw, 60px); --par: 0;" data-ordem-texto="" data-mob-par="">
         <div data-dc-tpl="55">
           <span data-dc-tpl="56" style="display: block; width: 34px; height: 1px; background: var(--aluminio);"></span>
           <h3 data-dc-tpl="57" style="margin: 22px 0px 0px; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, 2.4vw, 38px); line-height: 1.06; color: var(--tinta);">Gustavo Gehrke e Jessica Stein são a ecooa.</h3>

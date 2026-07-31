@@ -142,9 +142,13 @@
 /* sobre e profissionais: duas colunas empilham em 860 */
 @media (max-width: 859px) {
   [data-duas-colunas] { grid-template-columns: 1fr !important; }
-  /* empilhado, o retrato vem antes do texto, como no desenho original */
-  [data-ordem-texto] { order: 2 !important; }
-  [data-ordem-foto] { order: 1 !important; }
+  /* Empilhado, o retrato vem antes do texto, PAR A PAR. A ordem precisa ser
+     crescente ao longo da lista inteira: order e global no grid, e valores
+     repetidos (1/2 por par) agrupavam todas as fotos longe dos seus nomes,
+     defeito visto pelo dono em 2026-08-01. Cada par carrega o proprio indice
+     na variavel --par, marcada na geracao. */
+  [data-mob-par][data-ordem-foto] { order: calc(var(--par) * 2 + 1) !important; }
+  [data-mob-par][data-ordem-texto] { order: calc(var(--par) * 2 + 2) !important; }
 }
 
 /* rodape: contato e links centralizam abaixo de 760 */
