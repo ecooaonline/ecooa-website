@@ -100,6 +100,7 @@ for (const etapa of [
   'retoques.mjs',
   'areas.mjs',
   'artigos.mjs',
+  'personaliza.mjs',
   'sitemap.mjs',
 ]) {
   const saida = execFileSync('node', [path.join(RAIZ, 'scripts', etapa)], {
