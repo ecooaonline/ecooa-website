@@ -286,7 +286,7 @@ export const AREAS = [
   {
     slug: 'nutricao',
     nome: 'Nutrição',
-    marca: 'ecooa.med',
+    marca: 'ecooa.working',
     titulo: 'Nutrição ajustada à sua rotina real.',
     sub: 'Doze nutricionistas com focos diferentes: emagrecimento, hipertrofia, nutrição clínica, esportiva, materno-infantil, vegetariana e comportamental.',
     meta: 'Nutricionista em Moinhos de Vento, Porto Alegre: emagrecimento, hipertrofia, nutrição clínica, esportiva, vegetariana, materno-infantil e comportamental. Presencial e online.',
@@ -398,7 +398,7 @@ export const AREAS = [
   {
     slug: 'saude-integrativa',
     nome: 'Saúde integrativa',
-    marca: 'ecooa.med',
+    marca: 'ecooa.health',
     titulo: 'Cuidado integrativo, junto do acompanhamento clínico.',
     sub: 'Osteopatia, práticas ortomoleculares, reposição de nutrientes e terapias complementares, sempre em diálogo com o cuidado médico, nunca no lugar dele.',
     meta: 'Saúde integrativa em Porto Alegre: osteopatia adulto e infantil, práticas ortomoleculares, reposição de nutrientes e terapias complementares integradas ao cuidado clínico.',

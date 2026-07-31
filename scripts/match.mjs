@@ -272,7 +272,7 @@ const JS = String.raw`
     corpo.appendChild(el('span', 'display:block; margin-top:10px; font-size:13.5px; line-height:1.62; color:#66645E;', [p.primeiro + ' atua com ' + p.area + '. ' + bio1]));
     var acoes = el('span', 'display:flex; flex-wrap:wrap; gap:10px; margin-top:16px;');
     var ag = document.createElement('a');
-    ag.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá, usei o ecooa.match e gostaria de agendar com ' + p.nome + ' na ecooa.');
+    ag.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá! Usei o ecooa.match no site e gostaria de agendar uma consulta com ' + p.nome + '. Poderiam me orientar sobre os próximos passos?');
     ag.target = '_blank'; ag.rel = 'noopener noreferrer';
     ag.style.cssText = 'display:inline-flex; align-items:center; min-height:44px; padding:0 22px; border-radius:999px; background:#63615C; color:#F0EEE9; font-size:10.5px; letter-spacing:.14em;';
     ag.textContent = 'agendar com ' + p.primeiro;
@@ -300,7 +300,7 @@ const JS = String.raw`
       .map(function (k) { return { campo: ROTULOS[k], valor: s.respostas[k].rotulo }; });
     var resumo = veioDeTexto ? 'Escrevi no site: ' + s.frase
       : respostas.map(function (r) { return r.campo + ': ' + r.valor; }).join('. ');
-    var waGeral = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá, usei o ecooa.match no site. ' + resumo + '. Gostaria de orientação sobre o próximo passo.');
+    var waGeral = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá! Usei o ecooa.match no site. ' + resumo + '. Qual profissional a equipe me indica para o meu caso?');
 
     var carta = el('div', CARTA);
     carta.appendChild(el('span', 'display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['o que entendemos']));

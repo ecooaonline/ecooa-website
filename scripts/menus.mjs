@@ -10,7 +10,25 @@ const DEPLOY = path.join(RAIZ, 'deploy');
 const painies = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src-site-3/menus.json'), 'utf8'));
 
 // rótulo do gatilho -> chave do painel
-const GATILHOS = { especialidades: 'especialidades', profissionais: 'profissionais', mais: 'mais' };
+const GATILHOS = {
+  especialidades: 'especialidades',
+  profissionais: 'profissionais',
+  editorial: 'editorial',
+  mais: 'mais',
+};
+
+/* Painel do editorial, pedido pelo dono em 2026-08-01. Os "mais repercutidos"
+   sao tres artigos escolhidos; os posts do Instagram ganharao links diretos
+   quando o dono os enviar (por ora, o perfil). */
+const PAINEL_EDITORIAL = `<div style="background: var(--nuvem); border-bottom: 1px solid var(--rule); box-shadow: rgba(70, 68, 63, 0.14) 0px 26px 60px; animation: 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0s 1 normal both running ec-sobe;">
+  <div style="max-width: 1600px; margin: 0px auto; padding: 38px clamp(20px, 3.2vw, 56px) 42px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--stone);">
+    <a href="blog.html" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span style="display: block; font-family: var(--serif); font-size: 20px; color: var(--tinta);">últimas notícias</span><span style="display: block; margin-top: 4px; font-size: 11.5px; color: var(--legenda);">todos os textos do editorial</span></a>
+    <a href="https://instagram.com/somos.ecooa" target="_blank" rel="noopener noreferrer" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span style="display: block; font-family: var(--serif); font-size: 20px; color: var(--tinta);">últimas do Instagram</span><span style="display: block; margin-top: 4px; font-size: 11.5px; color: var(--legenda);">@somos.ecooa</span></a>
+    <a href="blog/implante-hormonal-subcutaneo/" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span style="display: block; font-size: 9.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--legenda);">mais repercutida</span><span style="display: block; margin-top: 8px; font-family: var(--serif); font-size: 16px; line-height: 1.3; color: var(--tinta);">Implante hormonal subcutâneo: o que é e quando tem indicação</span></a>
+    <a href="blog/queda-de-cabelo-causas/" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span style="display: block; font-size: 9.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--legenda);">mais repercutida</span><span style="display: block; margin-top: 8px; font-family: var(--serif); font-size: 16px; line-height: 1.3; color: var(--tinta);">Queda de cabelo: o que investigar antes de tratar</span></a>
+    <a href="blog/canetas-emagrecedoras-nutricao/" style="background: var(--nuvem); padding: 20px 22px; display: block;"><span style="display: block; font-size: 9.5px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--legenda);">mais repercutida</span><span style="display: block; margin-top: 8px; font-family: var(--serif); font-size: 16px; line-height: 1.3; color: var(--tinta);">Canetas emagrecedoras: o que a nutrição precisa sustentar</span></a>
+  </div>
+</div>`;
 
 const JS = `
 <script>
@@ -49,6 +67,38 @@ const JS = `
     if (!dentro) fecharTodos(null);
   });
 
+  /* Pedido do dono em 2026-08-01: no desktop o submenu abre ao passar o mouse,
+     sem exigir clique na seta. A palavra continua navegando no clique. No toque
+     nada muda: abre pela seta. */
+  if (window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var relogio = null;
+    function abre(nome, gatilho) {
+      window.clearTimeout(relogio);
+      var painel = document.querySelector('[data-painel="' + nome + '"]');
+      if (!painel) return;
+      fecharTodos(nome);
+      gatilho.setAttribute('aria-expanded', 'true');
+      painel.hidden = false;
+    }
+    function agendaFechar() {
+      window.clearTimeout(relogio);
+      relogio = window.setTimeout(function () { fecharTodos(null); }, 220);
+    }
+    gatilhos.forEach(function (gatilho) {
+      var nome = gatilho.getAttribute('data-menu');
+      /* a zona de hover e o par palavra+seta quando ele existe */
+      var zona = gatilho.parentElement && gatilho.parentElement.tagName === 'SPAN'
+        ? gatilho.parentElement
+        : gatilho;
+      zona.addEventListener('mouseenter', function () { abre(nome, gatilho); });
+      zona.addEventListener('mouseleave', agendaFechar);
+    });
+    painies.forEach(function (p) {
+      p.addEventListener('mouseenter', function () { window.clearTimeout(relogio); });
+      p.addEventListener('mouseleave', agendaFechar);
+    });
+  }
+
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') fecharTodos(null);
   });
@@ -69,7 +119,11 @@ for (const nome of paginas) {
   // 1. gatilhos. Pedido do dono em 2026-07-31: clicar na PALAVRA navega para a
   //    pagina cheia; a seta ao lado abre o submenu. "mais" nao tem pagina, entao
   //    o botao inteiro segue abrindo o painel.
-  const DESTINOS = { especialidades: 'especialidades.html', profissionais: 'profissionais.html' };
+  const DESTINOS = {
+    especialidades: 'especialidades.html',
+    profissionais: 'profissionais.html',
+    editorial: 'blog.html',
+  };
   for (const [rotulo, chave] of Object.entries(GATILHOS)) {
     const re = new RegExp(
       `<(a|button)([^>]*?)>(\\s*${rotulo}\\s*(?:<[^>]+>[^<]*</[^>]+>\\s*)?)</\\1>`,
@@ -104,7 +158,7 @@ for (const nome of paginas) {
           // paginas reais por area, criadas em 2026-07-31
           .replace(/href="especialidades\.html#([a-z-]+)"/g, 'href="especialidades/$1/"')
       )
-      .join('\n');
+      .join('\n') + '\n' + PAINEL_EDITORIAL.replace(/^<div/, '<div data-painel="editorial" hidden');
     html = html.slice(0, fimHeader) + blocos + '\n' + html.slice(fimHeader);
   }
 

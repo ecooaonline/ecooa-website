@@ -51,7 +51,7 @@ const PAINEL_MOBILE = `<div data-mob-painel id="mob-painel" hidden style="backgr
     <a href="sublocacao.html" style="background:var(--nuvem); padding:16px 6px; font-size:17px; color:var(--tinta);">sublocação</a>
   </div>
   <div style="padding:0 clamp(20px,5vw,32px) 30px;">
-    <a href="https://wa.me/5551991460909?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20ecooa" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; min-height:54px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em;">agendar</a>
+    <a href="https://wa.me/5551991460909?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.%20Poderiam%20me%20orientar%20sobre%20o%20melhor%20caminho%3F" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; min-height:54px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em;">agendar</a>
   </div>
 </div>`;
 

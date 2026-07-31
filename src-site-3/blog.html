@@ -289,8 +289,8 @@ class Component extends DCLogic {
               autorBio: au ? au.bio : '', autorPrimeiro: au ? au.primeiro : '',
               autorCta: au ? 'agendar com ' + au.primeiro : 'agendar',
               autorFotos: au && au.foto ? [{ foto: au.foto, alt: 'Retrato de ' + au.nome }] : [],
-              autorWa: au ? 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá, li o texto "' + atual.titulo + '" no site da ecooa e gostaria de agendar uma avaliação com ' + au.nome + '.') : '',
-              wa: 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá, li o texto "' + atual.titulo + '" no site da ecooa e gostaria de agendar uma avaliação.'),
+              autorWa: au ? 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá! Li o texto "' + atual.titulo + '" no site da ecooa e gostaria de agendar uma consulta com ' + au.nome + ', que assina o texto. Poderiam me orientar sobre os próximos passos?') : '',
+              wa: 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá! Li o texto "' + atual.titulo + '" no site da ecooa e gostaria de uma avaliação sobre o tema. Qual profissional a equipe me indica?'),
             };
           })()
         : {},

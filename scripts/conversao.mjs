@@ -350,7 +350,7 @@ try {
       pedacos.push(
         jsLead(
           'ec',
-          'Ola, tenho interesse na ecooa.cademy.',
+          'Olá! Vim pelo site da ecooa e tenho interesse na ecooa.cademy.',
           [
             ['nome', 'Nome'],
             ['mail', 'E-mail'],
@@ -367,7 +367,7 @@ try {
       pedacos.push(
         jsLead(
           'sb',
-          'Ola, tenho interesse na sublocacao de sala na ecooa.',
+          'Olá! Vim pelo site da ecooa e tenho interesse na sublocação de sala.',
           [
             ['nome', 'Nome'],
             ['mail', 'E-mail'],

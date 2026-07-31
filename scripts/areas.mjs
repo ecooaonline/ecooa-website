@@ -111,7 +111,7 @@ function paginaArea(a) {
     ECOOA.profissionais.filter((p) => (p.esp || []).includes(a.slug)),
     a.slug
   );
-  const waArea = `https://wa.me/${WA}?text=${encodeURIComponent(`Olá, gostaria de agendar uma avaliação em ${a.nome.toLowerCase()} na ecooa.`)}`;
+  const waArea = `https://wa.me/${WA}?text=${encodeURIComponent(`Olá! Vim pelo site da ecooa e gostaria de agendar uma avaliação em ${a.nome.toLowerCase()}. Qual profissional a equipe me indica para o meu caso?`)}`;
 
   const faqJson = JSON.stringify({
     '@context': 'https://schema.org',

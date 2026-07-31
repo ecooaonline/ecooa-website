@@ -212,7 +212,11 @@ const JS = `
     cta.textContent = 'agendar com ' + (p.primeiro || p.nome);
     cta.href =
       'https://wa.me/5551991460909?text=' +
-      encodeURIComponent('Olá, gostaria de agendar com ' + p.nome + ' na ecooa.');
+      encodeURIComponent(
+        'Olá! Vim pelo site da ecooa e gostaria de agendar uma consulta com ' +
+          p.nome +
+          '. Poderiam me orientar sobre os próximos passos?'
+      );
 
     ov.hidden = false;
     document.documentElement.style.overflow = 'hidden';

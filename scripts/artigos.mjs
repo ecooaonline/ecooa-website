@@ -65,7 +65,9 @@ function paginaArtigo(a) {
     .sort((x, y) => (x.area === a.area ? -1 : 0) - (y.area === a.area ? -1 : 0))
     .slice(0, 3);
 
-  const waArtigo = `https://wa.me/${WA}?text=${encodeURIComponent(`Olá, li o texto "${a.titulo}" no site da ecooa e gostaria de agendar uma avaliação.`)}`;
+  const waArtigo = au
+    ? `https://wa.me/${WA}?text=${encodeURIComponent(`Olá! Li o texto "${a.titulo}" no site da ecooa e gostaria de agendar uma consulta com ${au.nome}, que assina o texto. Poderiam me orientar sobre os próximos passos?`)}`
+    : `https://wa.me/${WA}?text=${encodeURIComponent(`Olá! Li o texto "${a.titulo}" no site da ecooa e gostaria de uma avaliação sobre o tema. Qual profissional a equipe me indica?`)}`;
 
   const jsonld = JSON.stringify({
     '@context': 'https://schema.org',

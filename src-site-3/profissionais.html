@@ -256,7 +256,7 @@ class Component extends DCLogic {
             registro: textoRegistro(p), temRegistro: !!textoRegistro(p), area: p.area, bio: p.bio, conduta: p.conduta,
             atendimento: p.atendimento, foto: p.foto || '', semFoto: !p.foto,
             inicial: p.nome.charAt(0), alt: 'Retrato de ' + p.nome,
-            wa: 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá, gostaria de agendar uma avaliação com ' + p.nome + ' na ecooa'),
+            wa: 'https://wa.me/5551991460909?text=' + encodeURIComponent('Olá! Vim pelo site da ecooa e gostaria de agendar uma consulta com ' + p.nome + '. Poderiam me orientar sobre os próximos passos?'),
           }
         : {},
     };
