@@ -326,7 +326,7 @@ footer :focus-visible, [style*="background:#2B2926"] :focus-visible,
 </style>
 </head>
 <body>
-<a class="ec-pular" href="#conteudo">pular para o conteúdo</a>
+<a class="ec-pular" href="/profissionais/camila-cadore/#conteudo">pular para o conteúdo</a>
 <div id="dc-root"><div class="sc-host" data-sc-name="profissionais"><div data-dc-tpl="6" style="background: var(--nuvem); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
   <div data-dc-tpl="3" style="background: rgba(240, 238, 233, 0.66); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid var(--rule);">
@@ -1141,11 +1141,16 @@ class Component extends DCLogic {
     s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
     document.head.appendChild(s);
   }
+  /* Quem recusou nao carrega o GTM. O aviso diz "nada e ativado sem a sua
+     escolha", e carregar o contentor mesmo apos a recusa faria da frase uma
+     mentira, ainda que o Consent Mode bloqueasse o armazenamento. */
+  function podeCarregar() { return lido() === 'aceito'; }
+  function tentaCarregar() { if (podeCarregar()) carregaGTM(); }
   ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
-    window.addEventListener(ev, carregaGTM, { once: true, passive: true });
+    window.addEventListener(ev, tentaCarregar, { once: true, passive: true });
   });
-  if (document.readyState === 'complete') setTimeout(carregaGTM, 4000);
-  else window.addEventListener('load', function () { setTimeout(carregaGTM, 4000); });
+  if (document.readyState === 'complete') setTimeout(tentaCarregar, 4000);
+  else window.addEventListener('load', function () { setTimeout(tentaCarregar, 4000); });
 
   /* ── contexto da página, para todo evento nascer situado ── */
   var pagina = (location.pathname.replace(/^\/|\/$/g, '') || 'home');
@@ -1177,7 +1182,7 @@ class Component extends DCLogic {
       destino: 'recepcao',
       posicao: a.closest('footer') ? 'rodape' : a.closest('header') ? 'cabecalho' : 'corpo'
     });
-    carregaGTM();
+    tentaCarregar();
   }, true);
 
   /* ── conversão: envio dos três formulários ── */
@@ -1188,7 +1193,7 @@ class Component extends DCLogic {
     var tipo = f.querySelector('input[type=email]') && !f.querySelector('input[type=tel]')
       ? 'newsletter' : 'lead';
     evento('form_submit', { formulario: tipo });
-    carregaGTM();
+    tentaCarregar();
   }, true);
 
   /* ── uso do ecooa.match. O termo digitado NÃO é enviado: é dado de saúde.
@@ -1214,7 +1219,7 @@ class Component extends DCLogic {
         if (/agendar com/.test(links[j].textContent)) nomes.push(links[j].textContent.replace('agendar com ', '').trim());
       }
       evento('match_resultado', { bloco: bloco, indicados: nomes.join(','), total: nomes.length });
-      carregaGTM();
+      tentaCarregar();
     });
     obs.observe(document.body, { childList: true, subtree: true });
   }

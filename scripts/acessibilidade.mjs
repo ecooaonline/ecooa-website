@@ -111,12 +111,22 @@ for (const arq of anda(DEPLOY)) {
     semMain++;
   }
 
+  /* O href do link de pular NAO pode ser so "#conteudo": as paginas de area,
+     de artigo e de perfil trazem <base href="/">, e com ele um fragmento puro
+     resolve para "/#conteudo", ou seja, joga o visitante na home. O destino
+     precisa ser o caminho da propria pagina, que tiramos do canonical. */
   const iniBody = html.indexOf('<body');
   if (iniBody >= 0) {
+    const temBase = /<base href="\/">/.test(html);
+    let destino = '#conteudo';
+    if (temBase) {
+      const can = html.match(/<link rel="canonical" href="https:\/\/[^/]+([^"]*)"/);
+      destino = (can ? can[1] : '/') + '#conteudo';
+    }
     const fimTagBody = html.indexOf('>', iniBody) + 1;
     html =
       html.slice(0, fimTagBody) +
-      '\n<a class="ec-pular" href="#conteudo">pular para o conteúdo</a>' +
+      `\n<a class="ec-pular" href="${destino}">pular para o conteúdo</a>` +
       html.slice(fimTagBody);
   }
 

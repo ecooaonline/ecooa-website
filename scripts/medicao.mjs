@@ -11,7 +11,10 @@
 //  1. LGPD primeiro. Consent Mode v2 com TODO armazenamento negado por padrão.
 //     Nenhum cookie de análise antes do aceite. Um aviso discreto pede a
 //     escolha, que fica salva em localStorage. Recusar é tão fácil quanto
-//     aceitar, e a decisão pode ser trocada depois pelo rodapé.
+//     aceitar. Quem recusa não carrega o GTM, ponto: o aviso diz que nada é
+//     ativado sem a escolha, e isso precisa ser verdade. Ainda NÃO existe um
+//     ponto de troca da decisão depois do aceite, e isso está registrado em
+//     docs/mythos/PENDENCIAS-DO-DONO.md porque exige elemento visível novo.
 //  2. Performance preservada. O GTM só entra depois do primeiro gesto real
 //     (rolagem, toque, clique, tecla) ou 4s após o load, o que vier primeiro.
 //     Assim ele nunca disputa banda com o LCP. É o "interaction-only" que o
@@ -84,11 +87,16 @@ const JS = String.raw`
     s.src = 'https://www.googletagmanager.com/gtm.js?id=${GTM}';
     document.head.appendChild(s);
   }
+  /* Quem recusou nao carrega o GTM. O aviso diz "nada e ativado sem a sua
+     escolha", e carregar o contentor mesmo apos a recusa faria da frase uma
+     mentira, ainda que o Consent Mode bloqueasse o armazenamento. */
+  function podeCarregar() { return lido() === 'aceito'; }
+  function tentaCarregar() { if (podeCarregar()) carregaGTM(); }
   ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
-    window.addEventListener(ev, carregaGTM, { once: true, passive: true });
+    window.addEventListener(ev, tentaCarregar, { once: true, passive: true });
   });
-  if (document.readyState === 'complete') setTimeout(carregaGTM, 4000);
-  else window.addEventListener('load', function () { setTimeout(carregaGTM, 4000); });
+  if (document.readyState === 'complete') setTimeout(tentaCarregar, 4000);
+  else window.addEventListener('load', function () { setTimeout(tentaCarregar, 4000); });
 
   /* ── contexto da página, para todo evento nascer situado ── */
   var pagina = (location.pathname.replace(/^\/|\/$/g, '') || 'home');
@@ -120,7 +128,7 @@ const JS = String.raw`
       destino: 'recepcao',
       posicao: a.closest('footer') ? 'rodape' : a.closest('header') ? 'cabecalho' : 'corpo'
     });
-    carregaGTM();
+    tentaCarregar();
   }, true);
 
   /* ── conversão: envio dos três formulários ── */
@@ -131,7 +139,7 @@ const JS = String.raw`
     var tipo = f.querySelector('input[type=email]') && !f.querySelector('input[type=tel]')
       ? 'newsletter' : 'lead';
     evento('form_submit', { formulario: tipo });
-    carregaGTM();
+    tentaCarregar();
   }, true);
 
   /* ── uso do ecooa.match. O termo digitado NÃO é enviado: é dado de saúde.
@@ -157,7 +165,7 @@ const JS = String.raw`
         if (/agendar com/.test(links[j].textContent)) nomes.push(links[j].textContent.replace('agendar com ', '').trim());
       }
       evento('match_resultado', { bloco: bloco, indicados: nomes.join(','), total: nomes.length });
-      carregaGTM();
+      tentaCarregar();
     });
     obs.observe(document.body, { childList: true, subtree: true });
   }

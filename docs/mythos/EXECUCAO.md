@@ -43,8 +43,18 @@ morto saíram. Com o teste falhando, o job `deploy`, que depende de `build`,
 
 Corrigido no commit `fb6306a`. O gate agora confere o que de fato existe
 (`index.html`, `dados-ecooa.js`, `CNAME`, `sitemap.xml`, `robots.txt`,
-`404.html`), proíbe CDN externo em toda a pasta, impede o retorno do runtime
-morto e roda o `validate-output.mjs` **antes** de publicar.
+`404.html`), proíbe CDN externo em toda a pasta e impede o retorno do runtime
+morto.
+
+**Correção de um erro meu, registrado porque o revisor magno o apontaria de
+qualquer forma:** no mesmo commit eu havia acrescentado uma chamada ao
+`validate-output.mjs` dentro do job de publicação. Aquele job não tem
+`setup-node` e não gera `dist/`, então o passo falharia sempre e o deploy
+voltaria a nunca executar, exatamente o defeito que eu acabara de corrigir.
+Removido no commit `9426147`. O gate completo roda no `ci.yml`, que tem o
+ambiente certo, e que a partir de 2026-08-01 dispara também em push para
+`main`, e não só em pull request. Antes disso ele era pulado em todo commit,
+porque o trabalho vem sendo entregue por push direto.
 
 Fica uma pergunta que só o dono responde, registrada como Bloqueio 1: qual é a
 origem de publicação configurada em `Settings > Pages`.

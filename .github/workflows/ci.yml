@@ -1,6 +1,12 @@
 name: CI
 
+# Ate 2026-08-01 este workflow so disparava em pull_request. Como o trabalho
+# vem sendo entregue por push direto em main, os sete gates foram pulados em
+# todos os commits: o validate-output.mjs, que existe justamente para impedir
+# regressao, nunca chegou a rodar em CI. Agora dispara tambem em push.
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
