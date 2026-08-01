@@ -38,12 +38,21 @@ depois de mexer no próprio trabalho não vale como medição.
 
 ### Lighthouse por página, medido no laboratório
 
-| Página | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Área de especialidade (medicina) | 100 | 100 | 100 | 100 | 1,7 s | 0 |
-| Artigo (queda de cabelo) | 100 | 100 | 100 | 100 | 1,7 s | 0 |
-| Perfil de profissional (Natálie) | 98 | 100 | 100 | 100 | 2,3 s | 0 |
-| Home | 91 | 96 | 100 | 100 | 3,3 s | 0 |
+| Página | Performance | Acessibilidade | Boas práticas | SEO |
+| --- | ---: | ---: | ---: | ---: |
+| Área de especialidade (medicina) | 100 | 100 | 100 | 100 |
+| Artigo (queda de cabelo) | 100 | 100 | 100 | 100 |
+| Perfil de profissional (Natálie) | 98 | 100 | 100 | 100 |
+| Localização | 94 | 100 | 100 | 100 |
+| Home | 92 | 100 | 100 | 100 |
+| Profissionais | 92 | 100 | 100 | 100 |
+
+**Acessibilidade, boas práticas e SEO fecharam em 100 em todas as páginas
+medidas.** A performance no laboratório fica entre 92 e 100 por limitação do
+próprio laboratório: o servidor de teste não envia compressão nem
+`Cache-Control`, e o Lighthouse cobra isso como se fosse falha do site. Na
+medição real do domínio, feita pelo dono, a home marcava 100 no desktop e 95 no
+celular.
 
 As páginas que nasceram ou foram reescritas nesta sessão são hoje as melhores do
 site nos quatro eixos. O que ainda pesa nelas é artefato do laboratório: o
@@ -54,14 +63,40 @@ isso como se fosse falha do site.
 
 | Momento | Nós críticos | Graves | Moderados | Leves |
 | --- | ---: | ---: | ---: | ---: |
-| Depois das correções | 0 | 2 | 0 | 0 |
+| Antes | 0 | 2 | 0 | 0 |
+| **Depois** | **0** | **0** | **0** | **0** |
 
-Os dois nós graves restantes são o mesmo defeito: na faixa grafite do
-ecooa.match, na home, o número "07" e o rótulo "orientação e conexão" usam
-prata sobre grafite, o que dá 3,55:1 contra o mínimo de 4,5:1. A correção
-(trocar prata por névoa, que dá 5,01:1) **não foi aplicada**: o dono pediu, no
-fim da sessão, que nenhuma mudança de aparência fosse feita sem a ordem dele.
-Fica como apontamento.
+Os dois nós graves eram o mesmo defeito: na faixa grafite do ecooa.match, na
+home, o número "07" e o rótulo "orientação e conexão" usavam prata sobre
+grafite, 3,55:1 contra o mínimo de 4,5:1. Com autorização do dono, a cor passou
+a névoa, 5,01:1. **O axe-core agora acusa zero em todas as categorias.**
+
+### Navegação agêntica
+
+O Lighthouse 13 mede se o site é legível e operável por agentes de IA. Antes,
+duas auditorias aplicáveis e quatro como "não aplicável", porque nada estava
+implementado.
+
+Uma frente de pesquisa leu o código-fonte do Lighthouse v13.4.1 antes de
+escrever qualquer linha, e o achado corrige a expectativa: **três das quatro
+auditorias dependem do NAVEGADOR**, via `artifacts.WebMCP.isSupported`, e duas
+delas são informativas, com peso forçado a zero em `core/scoring.js`. A
+auditoria de `llms.txt` é a única que o site sozinho converte em aprovação
+contada.
+
+| Item | Antes | Depois |
+| --- | --- | --- |
+| `/llms.txt` | não existia | 13,4 KB, passa nos três testes exatos do código |
+| `/llms-full.txt` | não existia | conteúdo essencial embutido |
+| Ferramentas WebMCP | 0 | 4, todas só de consulta |
+| Formulários anotados | 0 | 13, com `toolname` e `tooldescription` |
+| Campos com `name` | 0 | todos |
+| `toolautosubmit` | ausente | **proibido pelo gate** |
+| Placar esperado | 2/2 | 3/3, e 4/4 em Chrome com WebMCP |
+
+Decisão registrada: o atributo `toolautosubmit` permitiria a um agente enviar
+formulário sem a pessoa. Não é usado em lugar nenhum e o gate reprova se
+aparecer. Em saúde, quem aperta o botão é a pessoa.
 
 ---
 
