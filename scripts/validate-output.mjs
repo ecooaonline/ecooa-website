@@ -307,7 +307,10 @@ console.log('Dados estruturados:');
 /* ── 9. medicao e consentimento ────────────────────────────────────── */
 console.log('Medicao:');
 {
-  const semMedicao = [...html].filter(([, s]) => !s.includes('data-medicao-ecooa'));
+  /* a 404 fica de fora de proposito: pagina de erro nao mede audiencia */
+  const semMedicao = [...html].filter(
+    ([f, s]) => f !== '404.html' && !s.includes('data-medicao-ecooa')
+  );
   if (semMedicao.length) erro(`sem camada de medicao: ${semMedicao.map(([f]) => f).join(', ')}`);
   else ok(`medicao presente nas ${html.size} paginas da raiz`);
 

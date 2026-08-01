@@ -1,6 +1,7 @@
 <!doctype html>
-<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head>
+<html data-a11y-ecooa data-conv-pronto data-mob-pronto="" lang="pt-BR"><head>
 <meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://www.somosecooa.com.br/">
 <link rel="icon" type="image/svg+xml" href="assets/logo/ecooa-mark.svg">
@@ -90,7 +91,7 @@
   img { display:block; max-width:100%; }
   a { color:inherit; text-decoration:none; }
   button { font:inherit; color:inherit; }
-  :focus-visible { outline:2px solid #C6C4BF; outline-offset:3px; }
+  :focus-visible { outline: 2px solid #46443F; outline-offset:3px; }
 </style>
 <style>
 /* Mosaico de profissionais: hover no desktop, legenda sempre visivel no toque. */
@@ -291,8 +292,43 @@
   background: #FAF9F7; color: #66645E; font-size: 15px; line-height: 1.6;
 }
 </style>
+<style data-a11y-ecooa>
+/* Anel de foco visível de verdade. O tom anterior (#C6C4BF) media 1,45:1
+   contra o fundo dominante, abaixo do mínimo de 3:1 da WCAG 1.4.11. */
+:focus-visible { outline: 2px solid #46443F !important; outline-offset: 3px !important; }
+/* Em superfície escura o mesmo anel precisa clarear para continuar visível. */
+footer :focus-visible, [style*="background:#2B2926"] :focus-visible,
+[style*="background: #2B2926"] :focus-visible { outline-color: #F0EEE9 !important; }
+
+/* Pular para o conteúdo: invisível até receber foco. */
+.ec-pular {
+  position: absolute; left: 12px; top: -60px; z-index: 10000;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px;
+  border-radius: 999px; background: #46443F; color: #F0EEE9;
+  font-size: 12px; letter-spacing: .12em; text-decoration: none;
+  transition: top .18s ease;
+}
+.ec-pular:focus { top: 12px; }
+
+/* Respeita quem pediu menos movimento no sistema. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}
+
+/* Modo de alto contraste do sistema: garante borda onde a cor sozinha
+   carregava a informação. */
+@media (forced-colors: active) {
+  a, button, summary, input, [role="option"] { forced-color-adjust: none; }
+  :focus-visible { outline: 3px solid Highlight !important; }
+  button, .ec-pular, [role="option"] { border: 1px solid ButtonText; }
+}
+</style>
 </head>
 <body>
+<a class="ec-pular" href="#conteudo">pular para o conteúdo</a>
 <div id="dc-root"><div class="sc-host" data-sc-name="index"><div data-dc-tpl="6" style="background: var(--fundo); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
   <div data-dc-tpl="3" style="background: rgba(240, 238, 233, 0.66); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid var(--rule);">
@@ -461,15 +497,17 @@
   <div style="padding:0 clamp(20px,5vw,32px) 30px;">
     <a href="https://wa.me/5551991460909?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.%20Poderiam%20me%20orientar%20sobre%20o%20melhor%20caminho%3F" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; min-height:54px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em;">agendar</a>
   </div>
-</div></header></div>
+</div></header>
+<main id="conteudo" tabindex="-1">
+</div>
 
   
-  <section data-dc-tpl="8" id="topo" style="position: relative; background: var(--fundo) url('assets/ressonancia/01-ressonancia.webp') center bottom / cover no-repeat; background-blend-mode: multiply; padding-top: 76px;">
+  <section data-dc-tpl="8" id="topo" style="position: relative; background: var(--fundo) url('assets/ressonancia/01-ressonancia.webp') center bottom / cover no-repeat; background-blend-mode: multiply; padding-top: 76px;" aria-labelledby="sec-1">
     <div data-dc-tpl="9" style="display: flex; flex-wrap: wrap; align-items: stretch; min-height: clamp(560px, 88vh, 900px);">
       <div data-dc-tpl="10" style="flex: 1 1 420px; min-width: 0px; display: flex; align-items: center; padding: clamp(56px, 7vw, 104px) clamp(20px, 4vw, 88px);">
         <div data-dc-tpl="11" style="max-width: 640px; width: 100%;">
           <span data-dc-tpl="12" style="display: inline-flex; padding: 11px 17px; border: 1px solid rgba(255, 255, 255, 0.8); background: rgba(253, 253, 252, 0.42); backdrop-filter: blur(14px); box-shadow: rgb(255, 255, 255) 1px 1px 0px inset, rgba(150, 147, 140, 0.14) 0px 8px 20px; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grafite);" data-miudo="">Porto Alegre · Moinhos de Vento</span>
-          <h1 data-dc-tpl="13" style="margin: 32px 0px 0px; max-width: 13ch; font-family: var(--serif); font-weight: 400; font-size: clamp(46px, 6.2vw, 100px); line-height: 0.95; letter-spacing: -0.026em; color: var(--tinta); text-wrap: pretty;">Escolher com critério já é cuidar.</h1>
+          <h1 id="sec-1" data-dc-tpl="13" style="margin: 32px 0px 0px; max-width: 13ch; font-family: var(--serif); font-weight: 400; font-size: clamp(46px, 6.2vw, 100px); line-height: 0.95; letter-spacing: -0.026em; color: var(--tinta); text-wrap: pretty;">Escolher com critério já é cuidar.</h1>
           <p data-dc-tpl="14" style="margin: 30px 0px 0px; max-width: 50ch; font-size: clamp(16px, 1.25vw, 18.5px); line-height: 1.66; color: var(--muted);">Saúde, estética e longevidade conduzidas por profissionais independentes que dividem o mesmo padrão de ética e de excelência. Você chega com o que dói. Sai com um plano.</p>
           <div data-dc-tpl="15" style="margin-top: 42px; display: flex; flex-wrap: wrap; gap: 14px;">
             <a data-dc-tpl="16" href="https://wa.me/5551991460909?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.%20Poderiam%20me%20orientar%20sobre%20o%20melhor%20caminho%3F" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0px 34px; border-radius: 999px; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;">agendar</a>
@@ -485,7 +523,7 @@
   </section>
 
   
-  <section data-dc-tpl="21" id="sobre" style="background: var(--alt);">
+  <section data-dc-tpl="21" id="sobre" style="background: var(--alt);" aria-labelledby="sec-2">
     <div data-dc-tpl="22" style="display: flex; flex-wrap: wrap-reverse; align-items: stretch;">
       <div data-dc-tpl="23" style="flex: 1 1 420px; min-width: 0px; min-height: clamp(320px, 46vh, 620px); position: relative; overflow: hidden;">
         <img width="1200" height="1800" data-dc-tpl="24" src="assets/fotos/ecooa-011.webp" alt="Consultório da ecooa, com mesa de atendimento, vista para a cidade e luz natural" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center 36%; filter: var(--foto);">
@@ -493,7 +531,7 @@
       <div data-dc-tpl="25" style="flex: 1.15 1 420px; min-width: 0px; display: flex; align-items: center; padding: clamp(56px, 7vw, 120px) clamp(20px, 4vw, 88px);">
         <div data-dc-tpl="26" style="max-width: 640px;">
           <div data-dc-tpl="27" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="28" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>o hub</div>
-          <h2 data-dc-tpl="29" style="margin: 22px 0px 0px; max-width: 17ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 58px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta); text-wrap: pretty;">Mais de 30 profissionais. Um mesmo padrão.</h2>
+          <h2 id="sec-2" data-dc-tpl="29" style="margin: 22px 0px 0px; max-width: 17ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 58px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta); text-wrap: pretty;">Mais de 30 profissionais. Um mesmo padrão.</h2>
           <p data-dc-tpl="30" style="margin: 26px 0px 0px; max-width: 56ch; font-size: 17px; line-height: 1.68;">A ecooa não é um consultório que cresceu. É uma clínica multidisciplinar em Moinhos de Vento, Porto Alegre, construída para reunir especialistas autônomos que já são bons no que fazem, e oferecer a eles contexto, estrutura e hospitalidade à altura do próprio trabalho.</p>
           <p data-dc-tpl="31" style="margin: 18px 0px 0px; max-width: 56ch; font-size: 17px; line-height: 1.68;">Medicina, nutrição, psicologia e estética integradas em um só endereço, com atendimento presencial e online. Saúde, estética e longevidade tratadas por quem conversa entre si, e não em salas isoladas.</p>
           <p data-dc-tpl="32" style="margin: 18px 0px 0px; max-width: 56ch; font-size: 17px; line-height: 1.68;">Para quem chega com uma dor, isso significa uma coisa simples: a indicação vem de dentro, com critério, e não de uma lista.</p>
@@ -509,12 +547,12 @@
   </section>
 
   
-  <section data-dc-tpl="46" id="especialidades" style="padding: clamp(72px, 9vw, 140px) clamp(20px, 3.2vw, 56px); background: var(--fundo) url('assets/ressonancia/02-origem.webp') center / cover no-repeat; background-blend-mode: multiply;">
+  <section data-dc-tpl="46" id="especialidades" style="padding: clamp(72px, 9vw, 140px) clamp(20px, 3.2vw, 56px); background: var(--fundo) url('assets/ressonancia/02-origem.webp') center / cover no-repeat; background-blend-mode: multiply;" aria-labelledby="sec-3">
     <div data-dc-tpl="47" style="max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="48" style="display: flex; flex-wrap: wrap; gap: 44px; align-items: flex-end; justify-content: space-between;">
         <div data-dc-tpl="49" style="flex: 1 1 368px; min-width: 0px;">
           <div data-dc-tpl="50" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="51" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>as expressões</div>
-          <h2 data-dc-tpl="52" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 58px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Uma marca. Sete portas de entrada.</h2>
+          <h2 id="sec-3" data-dc-tpl="52" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 58px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Uma marca. Sete portas de entrada.</h2>
         </div>
         <p data-dc-tpl="53" style="flex: 1 1 368px; max-width: 46ch; font-size: 16px; line-height: 1.66;">Medicina, estética, nutrição, saúde mental, saúde integrativa e desenvolvimento profissional: cada expressão da ecooa cuida de uma dimensão da sua saúde, no mesmo endereço em Moinhos de Vento e com o mesmo critério. Você escolhe a porta de entrada, e as áreas conversam entre si quando o seu cuidado pede mais de um olhar.</p>
       </div>
@@ -579,10 +617,10 @@
   </section>
 
   
-  <section data-dc-tpl="69" style="padding: clamp(76px, 9vw, 148px) clamp(20px, 3.2vw, 56px); background: var(--grafite);">
+  <section data-dc-tpl="69" style="padding: clamp(76px, 9vw, 148px) clamp(20px, 3.2vw, 56px); background: var(--grafite);" aria-labelledby="sec-4">
     <div data-dc-tpl="70" style="max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="71" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sobre-escuro);"><span data-dc-tpl="72" style="width: 20px; height: 1px; background: var(--prata); display: block;"></span>como a ecooa cuida</div>
-      <h2 data-dc-tpl="73" style="margin: 22px 0px 0px; max-width: 20ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 56px); line-height: 1.02; letter-spacing: -0.016em; color: var(--fundo);">Cinco movimentos entre a sua dúvida e uma direção confiável.</h2>
+      <h2 id="sec-4" data-dc-tpl="73" style="margin: 22px 0px 0px; max-width: 20ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 56px); line-height: 1.02; letter-spacing: -0.016em; color: var(--fundo);">Cinco movimentos entre a sua dúvida e uma direção confiável.</h2>
       <div data-dc-tpl="74" style="margin-top: clamp(40px, 5vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(24px, 2.6vw, 40px);">
         
           <div data-dc-tpl="76" style="padding-top: 24px; border-top: 1px solid rgba(240, 238, 233, 0.28);">
@@ -620,12 +658,12 @@
   </section>
 
   
-  <section data-dc-tpl="80" id="profissionais" style="background: var(--nuvem);">
+  <section data-dc-tpl="80" id="profissionais" style="background: var(--nuvem);" aria-labelledby="sec-5">
     <div data-dc-tpl="81" style="padding: clamp(64px, 8vw, 120px) clamp(20px, 3.2vw, 56px) clamp(34px, 4vw, 54px); max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="82" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between;">
         <div data-dc-tpl="83" style="flex: 1 1 368px; min-width: 0px;">
           <div data-dc-tpl="84" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="85" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>quem atende</div>
-          <h2 data-dc-tpl="86" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.2vw, 60px); line-height: 1.01; letter-spacing: -0.018em; color: var(--tinta);">Pessoas, antes de especialidades.</h2>
+          <h2 id="sec-5" data-dc-tpl="86" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.2vw, 60px); line-height: 1.01; letter-spacing: -0.018em; color: var(--tinta);">Pessoas, antes de especialidades.</h2>
         </div>
         <p data-dc-tpl="87" style="flex: 1 1 368px; max-width: 44ch; font-size: 15px; line-height: 1.64;">Trinta e um profissionais autônomos, de nove classes diferentes, reunidos pelo mesmo critério. <span data-ponteiro="">Passe o mouse para ver quem é.</span><span data-toque="">Toque para ver quem é.</span></p>
       </div>
@@ -923,11 +961,11 @@
   </section>
 
   
-  <section data-dc-tpl="100" id="match" style="padding: clamp(72px, 9vw, 140px) clamp(20px, 3.2vw, 56px); background: var(--nevoa) url('assets/ressonancia/03-resposta.webp') center / cover no-repeat; background-blend-mode: multiply;">
+  <section data-dc-tpl="100" id="match" style="padding: clamp(72px, 9vw, 140px) clamp(20px, 3.2vw, 56px); background: var(--nevoa) url('assets/ressonancia/03-resposta.webp') center / cover no-repeat; background-blend-mode: multiply;" aria-labelledby="sec-6">
     <div data-dc-tpl="101" style="max-width: 1600px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: clamp(36px, 5vw, 84px); align-items: center;">
       <div data-dc-tpl="102" style="flex: 1 1 368px; min-width: 0px;">
         <div data-dc-tpl="103" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="104" style="width: 20px; height: 1px; background: var(--grafite); display: block;"></span>ecooa.match</div>
-        <h2 data-dc-tpl="105" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 54px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Não sabe por onde começar. A gente organiza com você.</h2>
+        <h2 id="sec-6" data-dc-tpl="105" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 54px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Não sabe por onde começar. A gente organiza com você.</h2>
         <p data-dc-tpl="106" style="margin: 26px 0px 0px; max-width: 52ch; font-size: 16.5px; line-height: 1.66;">Descreva com as suas palavras o que você procura, ou responda algumas perguntas curtas. Nos dois caminhos você recebe uma leitura do que entendemos, os caminhos possíveis e quem atende cada um deles.</p>
         <p data-dc-tpl="107" style="margin: 18px 0px 0px; max-width: 52ch; font-size: 13.5px; line-height: 1.6; color: var(--legenda);">Orienta a escolha e não substitui uma consulta. Nenhum diagnóstico é feito aqui.</p>
         <a data-dc-tpl="108" href="qual-profissional-procurar.html" style="margin-top: 34px; display: inline-flex; align-items: center; min-height: 52px; padding: 0px 32px; border-radius: 999px; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;">começar a busca</a>
@@ -949,12 +987,12 @@
   </section>
 
   
-  <section data-dc-tpl="118" id="localizacao" style="background: var(--fundo);">
+  <section data-dc-tpl="118" id="localizacao" style="background: var(--fundo);" aria-labelledby="sec-7">
     <div data-dc-tpl="119" style="padding: clamp(64px, 8vw, 120px) clamp(20px, 3.2vw, 56px) clamp(34px, 4vw, 54px); max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="120" style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-end; justify-content: space-between;">
         <div data-dc-tpl="121" style="flex: 1 1 368px; min-width: 0px;">
           <div data-dc-tpl="122" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="123" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>nosso espaço</div>
-          <h2 data-dc-tpl="124" style="margin: 22px 0px 0px; max-width: 15ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 56px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Um andar inteiro pensado para o tempo da consulta.</h2>
+          <h2 id="sec-7" data-dc-tpl="124" style="margin: 22px 0px 0px; max-width: 15ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 56px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Um andar inteiro pensado para o tempo da consulta.</h2>
         </div>
         <div data-dc-tpl="125" style="flex: 1 1 368px; max-width: 46ch;">
           <p data-dc-tpl="126" style="margin: 0px; font-size: 16px; line-height: 1.66;">Travertino, madeira real, luz que entra e a cidade ao fundo. Nove salas equipadas, uma recepção que acolhe sem pressa e café moído na hora.</p>
@@ -1006,7 +1044,7 @@
   </section>
 
   
-  <section data-dc-tpl="134" id="sublocacao" style="background: var(--alt);">
+  <section data-dc-tpl="134" id="sublocacao" style="background: var(--alt);" aria-labelledby="sec-8">
     <div data-dc-tpl="135" style="display: flex; flex-wrap: wrap-reverse; align-items: stretch;">
       <div data-dc-tpl="136" style="flex: 1 1 420px; min-width: 0px; min-height: clamp(340px, 50vh, 660px); position: relative; overflow: hidden; background: var(--nevoa);">
         <img width="959" height="1639" data-dc-tpl="137" src="assets/fotos-tratadas/fachada-perola-fria.webp" alt="Fachada do edifício onde fica a ecooa, em Moinhos de Vento" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center 26%; filter: var(--foto);">
@@ -1014,7 +1052,7 @@
       <div data-dc-tpl="138" style="flex: 1 1 420px; min-width: 0px; display: flex; align-items: center; padding: clamp(56px, 7vw, 120px) clamp(20px, 4vw, 88px);">
         <div data-dc-tpl="139" style="max-width: 560px;">
           <div data-dc-tpl="140" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="141" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>para profissionais</div>
-          <h2 data-dc-tpl="142" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.8vw, 52px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Um endereço à altura do trabalho que você já faz.</h2>
+          <h2 id="sec-8" data-dc-tpl="142" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 3.8vw, 52px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Um endereço à altura do trabalho que você já faz.</h2>
           <p data-dc-tpl="143" style="margin: 26px 0px 0px; max-width: 52ch; font-size: 16.5px; line-height: 1.66;">Sublocação de salas para profissionais autônomos de saúde e estética, com secretaria, hospitalidade, endereço em Moinhos de Vento e uma comunidade que indica por competência.</p>
           <p data-dc-tpl="144" style="margin: 18px 0px 0px; max-width: 52ch; font-size: 16.5px; line-height: 1.66;">Antes de qualquer proposta, uma conversa de compatibilidade. O ecossistema só funciona quando o padrão é comum.</p>
           <a data-dc-tpl="145" href="sublocacao.html" style="margin-top: 34px; display: inline-flex; align-items: center; min-height: 52px; padding: 0px 32px; border-radius: 999px; background: var(--alt); color: var(--grafite); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: var(--relevo-botao);">conhecer a sublocação</a>
@@ -1024,11 +1062,11 @@
   </section>
 
   
-  <section data-dc-tpl="146" id="mentorias" style="padding: clamp(72px, 9vw, 132px) clamp(20px, 3.2vw, 56px); background: var(--fundo) url('assets/ressonancia/05-intervalo.webp') center / cover no-repeat; background-blend-mode: multiply;">
+  <section data-dc-tpl="146" id="mentorias" style="padding: clamp(72px, 9vw, 132px) clamp(20px, 3.2vw, 56px); background: var(--fundo) url('assets/ressonancia/05-intervalo.webp') center / cover no-repeat; background-blend-mode: multiply;" aria-labelledby="sec-9">
     <div data-dc-tpl="147" style="max-width: 1600px; margin: 0px auto; display: flex; flex-wrap: wrap-reverse; gap: clamp(32px, 4vw, 64px); align-items: center;">
       <div data-dc-tpl="148" style="flex: 1.2 1 380px; min-width: 0px;">
         <div data-dc-tpl="149" style="display: inline-flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="150" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>ecooa.cademy</div>
-        <h2 data-dc-tpl="151" style="margin: 22px 0px 0px; max-width: 20ch; font-family: var(--serif); font-weight: 400; font-size: clamp(29px, 3.4vw, 46px); line-height: 1.06; color: var(--tinta);">Formação para quem atende, conduzida por quem atende.</h2>
+        <h2 id="sec-9" data-dc-tpl="151" style="margin: 22px 0px 0px; max-width: 20ch; font-family: var(--serif); font-weight: 400; font-size: clamp(29px, 3.4vw, 46px); line-height: 1.06; color: var(--tinta);">Formação para quem atende, conduzida por quem atende.</h2>
         <p data-dc-tpl="152" style="margin: clamp(24px, 2.4vw, 34px) 0px 0px; max-width: 56ch; font-size: 16.5px; line-height: 1.68;">Mentorias e cursos construídos a partir da prática real de consultório, com o mesmo padrão de excelência que orienta toda a clínica.</p>
         <p data-dc-tpl="153" style="margin: 18px 0px 0px; font-size: 14px; color: var(--legenda);">Com Jessica Stein, sócia e diretora de ensino.</p>
         <a data-dc-tpl="154" href="mentorias.html" style="margin-top: 32px; display: inline-flex; align-items: center; min-height: 52px; padding: 0px 32px; border-radius: 999px; background: var(--fundo); color: var(--grafite); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: var(--relevo-botao);">ver as mentorias</a>
@@ -1040,12 +1078,12 @@
   </section>
 
   
-  <section data-dc-tpl="157" id="editorial" style="padding: clamp(72px, 9vw, 140px) clamp(20px, 3.2vw, 56px); background: var(--alt) url('assets/ressonancia/04-propagacao.webp') center / cover no-repeat; background-blend-mode: multiply;">
+  <section data-dc-tpl="157" id="editorial" style="padding: clamp(72px, 9vw, 140px) clamp(20px, 3.2vw, 56px); background: var(--alt) url('assets/ressonancia/04-propagacao.webp') center / cover no-repeat; background-blend-mode: multiply;" aria-labelledby="sec-10">
     <div data-dc-tpl="158" style="max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="159" style="display: flex; flex-wrap: wrap; gap: 44px; align-items: flex-end; justify-content: space-between;">
         <div data-dc-tpl="160" style="flex: 1 1 368px; min-width: 0px;">
           <div data-dc-tpl="161" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="162" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>editorial</div>
-          <h2 data-dc-tpl="163" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 54px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Leituras que ajudam a decidir.</h2>
+          <h2 id="sec-10" data-dc-tpl="163" style="margin: 22px 0px 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(31px, 4vw, 54px); line-height: 1.02; letter-spacing: -0.016em; color: var(--tinta);">Leituras que ajudam a decidir.</h2>
         </div>
         <a data-dc-tpl="164" href="blog.html" style="font-size: 13.5px; color: var(--grafite); border-bottom: 1px solid var(--rule-forte); padding-bottom: 3px;" data-alvo-curto="">ver todos os textos</a>
       </div>
@@ -1077,11 +1115,11 @@
   </section>
 
   
-  <section data-dc-tpl="172" style="position: relative; min-height: clamp(440px, 62vh, 620px); display: flex; align-items: center; overflow: hidden; background: var(--nevoa);">
+  <section data-dc-tpl="172" style="position: relative; min-height: clamp(440px, 62vh, 620px); display: flex; align-items: center; overflow: hidden; background: var(--nevoa);" aria-labelledby="sec-11">
     <img width="800" height="533" data-dc-tpl="173" src="assets/fotos/reuniao-edit.webp" alt="Profissionais da ecooa em conversa de trabalho, com a cidade ao fundo" loading="lazy" style="position: absolute; inset: 0px; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; filter: var(--foto);">
     <div data-dc-tpl="174" style="position: absolute; inset: 0px; background: linear-gradient(96deg, rgba(30, 28, 26, 0.88) 0%, rgba(30, 28, 26, 0.66) 46%, rgba(30, 28, 26, 0.24) 100%);"></div>
     <div data-dc-tpl="175" style="position: relative; z-index: 2; width: 100%; max-width: 1600px; margin: 0px auto; padding: clamp(48px, 7vw, 92px) clamp(20px, 3.2vw, 56px);">
-      <h2 data-dc-tpl="176" style="margin: 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(33px, 4.8vw, 70px); line-height: 1; letter-spacing: -0.02em; color: rgb(255, 255, 255); text-wrap: pretty;">Chegue com o que dói. Saia com um plano.</h2>
+      <h2 id="sec-11" data-dc-tpl="176" style="margin: 0px; max-width: 16ch; font-family: var(--serif); font-weight: 400; font-size: clamp(33px, 4.8vw, 70px); line-height: 1; letter-spacing: -0.02em; color: rgb(255, 255, 255); text-wrap: pretty;">Chegue com o que dói. Saia com um plano.</h2>
       <p data-dc-tpl="177" style="margin: 24px 0px 0px; max-width: 50ch; font-size: 17px; line-height: 1.62; color: rgba(255, 255, 255, 0.93);">A primeira conversa serve para entender o seu momento e apontar o caminho. Sem pressa e sem empurrar procedimento.</p>
       <div data-dc-tpl="178" style="margin-top: 38px; display: flex; flex-wrap: wrap; gap: 14px;">
         <a data-dc-tpl="179" href="https://wa.me/5551991460909?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o.%20Poderiam%20me%20orientar%20sobre%20o%20melhor%20caminho%3F" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; min-height: 54px; padding: 0px 34px; border-radius: 999px; background: var(--fundo); color: var(--tinta); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(20, 18, 16, 0.3) 6px 8px 20px;">agendar</a>
@@ -1092,17 +1130,17 @@
 
   <div class="sc-host" data-sc-name="Rodape" data-dc-tpl="181"><div data-dc-tpl="2" style="font-family: var(--sans);">
   
-  <section data-dc-tpl="3" style="padding: clamp(56px, 7vw, 96px) clamp(20px, 3.2vw, 56px); background: var(--nevoa);">
+  <section data-dc-tpl="3" style="padding: clamp(56px, 7vw, 96px) clamp(20px, 3.2vw, 56px); background: var(--nevoa);" aria-labelledby="sec-12">
     <div data-dc-tpl="4" style="max-width: 1600px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: clamp(30px, 4vw, 72px); align-items: center; justify-content: space-between;">
       <div data-dc-tpl="5" style="flex: 1 1 368px; min-width: 0px;">
         <div data-dc-tpl="6" style="display: flex; align-items: center; gap: 10px; font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--legenda);"><span data-dc-tpl="7" style="width: 20px; height: 1px; background: var(--aluminio); display: block;"></span>editorial ecooa</div>
-        <h2 data-dc-tpl="8" style="margin: 18px 0px 0px; max-width: 22ch; font-family: var(--serif); font-weight: 400; font-size: clamp(25px, 2.8vw, 36px); line-height: 1.08; color: var(--tinta);">Novidades de saúde, estética e longevidade, sempre atualizadas, para você acompanhar as últimas tendências com critério.</h2>
+        <h2 id="sec-12" data-dc-tpl="8" style="margin: 18px 0px 0px; max-width: 22ch; font-family: var(--serif); font-weight: 400; font-size: clamp(25px, 2.8vw, 36px); line-height: 1.08; color: var(--tinta);">Novidades de saúde, estética e longevidade, sempre atualizadas, para você acompanhar as últimas tendências com critério.</h2>
         <p data-dc-tpl="9" style="margin: 14px 0px 0px; max-width: 50ch; font-size: 14.5px; line-height: 1.66; color: var(--muted);">Sem promoção, sem urgência e sem repetir o que já está em todo lugar. Você pode sair quando quiser.</p>
       </div>
       <form data-dc-tpl="10" style="flex: 1 1 368px; max-width: 520px; display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
         <div data-dc-tpl="11" style="flex: 1 1 240px;">
           <label data-dc-tpl="12" for="ec-news" style="display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--legenda);">seu e-mail</label>
-          <input data-dc-tpl="13" id="ec-news" type="email" required="" placeholder="nome@email.com" style="margin-top: 10px; width: 100%; min-height: 52px; padding: 0px 20px; border: 0px; background: var(--fundo); color: var(--tinta); font-family: var(--sans); font-size: 15px; box-shadow: var(--afundado);">
+          <input data-dc-tpl="13" id="ec-news" type="email" required="" placeholder="nome@email.com" style="margin-top: 10px; width: 100%; min-height: 52px; padding: 0px 20px; border: 0px; background: var(--fundo); color: var(--tinta); font-family: var(--sans); font-size: 15px; box-shadow: var(--afundado);" autocomplete="email">
         </div>
         <button data-dc-tpl="14" type="submit" style="flex: 0 0 auto; min-height: 52px; padding: 0px 30px; border: 0px; border-radius: 999px; cursor: pointer; background: var(--grafite); color: var(--fundo); font-size: 11.5px; letter-spacing: 0.16em; box-shadow: rgba(150, 147, 140, 0.32) 5px 5px 12px;"><span class="sc-interp">assinar</span></button>
         <p data-dc-tpl="15" style="flex: 1 1 100%; margin: 2px 0px 0px; font-size: 12px; line-height: 1.55; color: var(--legenda);"><span class="sc-interp" data-news-aviso="">Guardamos apenas o seu e-mail, e só para enviar o editorial.</span></p>
@@ -1110,7 +1148,9 @@
     </div>
   </section>
 
-  <footer data-dc-tpl="16" style="background: var(--grafite) url(&quot;data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' sc-camel-view-box='0 0 240 120'&gt;&lt;g fill='none' stroke-width='1.1'&gt;&lt;path d='M0 12 Q 60 0 120 12 T 240 12' stroke='%236B6964'/&gt;&lt;path d='M0 32 Q 60 20 120 32 T 240 32' stroke='%235C5A55'/&gt;&lt;path d='M0 52 Q 60 40 120 52 T 240 52' stroke='%236B6964'/&gt;&lt;path d='M0 72 Q 60 60 120 72 T 240 72' stroke='%235C5A55'/&gt;&lt;path d='M0 92 Q 60 80 120 92 T 240 92' stroke='%236B6964'/&gt;&lt;path d='M0 112 Q 60 100 120 112 T 240 112' stroke='%235C5A55'/&gt;&lt;/g&gt;&lt;/svg&gt;&quot;) repeat; color: var(--sobre-escuro); padding: clamp(56px, 7vw, 92px) clamp(20px, 3.2vw, 56px) 34px;">
+  
+</main>
+<footer data-dc-tpl="16" style="background: var(--grafite) url(&quot;data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' sc-camel-view-box='0 0 240 120'&gt;&lt;g fill='none' stroke-width='1.1'&gt;&lt;path d='M0 12 Q 60 0 120 12 T 240 12' stroke='%236B6964'/&gt;&lt;path d='M0 32 Q 60 20 120 32 T 240 32' stroke='%235C5A55'/&gt;&lt;path d='M0 52 Q 60 40 120 52 T 240 52' stroke='%236B6964'/&gt;&lt;path d='M0 72 Q 60 60 120 72 T 240 72' stroke='%235C5A55'/&gt;&lt;path d='M0 92 Q 60 80 120 92 T 240 92' stroke='%236B6964'/&gt;&lt;path d='M0 112 Q 60 100 120 112 T 240 112' stroke='%235C5A55'/&gt;&lt;/g&gt;&lt;/svg&gt;&quot;) repeat; color: var(--sobre-escuro); padding: clamp(56px, 7vw, 92px) clamp(20px, 3.2vw, 56px) 34px;">
     <div data-dc-tpl="17" style="max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="18" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(40px, 5vw, 70px); align-items: start;">
         <nav data-dc-tpl="19" aria-label="Navegação do rodapé" style="display: grid; gap: 13px; align-content: start; justify-items: start;" data-rodape-links="">
@@ -1369,6 +1409,7 @@ class Component extends DCLogic {
       <p class="pf-rot">como conduz o cuidado</p>
       <div class="pf-conduta" id="pf-conduta"></div>
       <a class="pf-cta" id="pf-cta" href="#" target="_blank" rel="noopener noreferrer"></a>
+      <a class="pf-pagina" id="pf-pagina" href="#" style="display:inline-flex; align-items:center; min-height:44px; margin-left:14px; font-size:11.5px; letter-spacing:.1em; color:#5C5A55; text-decoration:underline; text-underline-offset:4px;">ver a página completa →</a>
     </div>
   </div>
 </div>
@@ -1453,6 +1494,11 @@ class Component extends DCLogic {
           p.nome +
           '. Poderiam me orientar sobre os próximos passos?'
       );
+
+    /* caminho para a página individual, que traz a conduta inteira e as
+       queixas que a pessoa atende, com o que ela faz em cada uma */
+    var pag = document.getElementById('pf-pagina');
+    if (pag) pag.href = 'profissionais/' + p.slug + '/';
 
     ov.hidden = false;
     document.documentElement.style.overflow = 'hidden';
@@ -1545,6 +1591,171 @@ class Component extends DCLogic {
         'Abrimos um e-mail ja preenchido para voce enviar. A inscricao vale quando ele chegar.';
     }
   });
+})();
+</script>
+<script type="application/ld+json" data-ld-ecooa>{"@context":"https://schema.org","@graph":[{"@type":"MedicalClinic","@id":"https://www.somosecooa.com.br/#clinica","name":"ecooa","alternateName":"Clínica ecooa","url":"https://www.somosecooa.com.br/","logo":"https://www.somosecooa.com.br/assets/logo/ecooa-wordmark.svg","image":"https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp","description":"Clínica multidisciplinar de saúde em Moinhos de Vento, Porto Alegre. Medicina, nutrição, saúde mental, saúde integrativa, tricologia, transplante capilar e estética, com profissionais autônomos que respondem tecnicamente pelo próprio trabalho.","telephone":"+55-51-99146-0909","email":"ecooa.adm@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Rua Mariante, 180, 9º andar","addressLocality":"Porto Alegre","addressRegion":"RS","postalCode":"90430-180","addressCountry":"BR"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"20:00"}],"areaServed":[{"@type":"City","name":"Porto Alegre"},{"@type":"AdministrativeArea","name":"Rio Grande do Sul"}],"sameAs":["https://www.instagram.com/somos.ecooa/"],"hasMap":"https://www.google.com/maps/search/?api=1&query=ecooa%20Rua%20Mariante%20180%20Moinhos%20de%20Vento%20Porto%20Alegre","availableService":[{"@type":"Service","name":"Medicina","url":"https://www.somosecooa.com.br/especialidades/medicina/"},{"@type":"Service","name":"Estética facial","url":"https://www.somosecooa.com.br/especialidades/estetica-facial/"},{"@type":"Service","name":"Estética corporal","url":"https://www.somosecooa.com.br/especialidades/estetica-corporal/"},{"@type":"Service","name":"Tricologia","url":"https://www.somosecooa.com.br/especialidades/tricologia/"},{"@type":"Service","name":"Transplante capilar","url":"https://www.somosecooa.com.br/especialidades/transplante-capilar/"},{"@type":"Service","name":"Nutrição","url":"https://www.somosecooa.com.br/especialidades/nutricao/"},{"@type":"Service","name":"Saúde mental","url":"https://www.somosecooa.com.br/especialidades/saude-mental/"},{"@type":"Service","name":"Saúde integrativa","url":"https://www.somosecooa.com.br/especialidades/saude-integrativa/"}],"knowsAbout":["Medicina","Estética facial","Estética corporal","Tricologia","Transplante capilar","Nutrição","Saúde mental","Saúde integrativa"]},{"@type":"WebSite","@id":"https://www.somosecooa.com.br/#site","url":"https://www.somosecooa.com.br/","name":"ecooa","inLanguage":"pt-BR","publisher":{"@id":"https://www.somosecooa.com.br/#clinica"},"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.somosecooa.com.br/qual-profissional-procurar?q={search_term_string}"},"query-input":"required name=search_term_string"}}]}</script>
+
+<script data-medicao-ecooa>
+/* Medição ecooa. JavaScript comum, sem eval, sem dependência externa além do
+   próprio GTM, que só carrega depois do consentimento e do primeiro gesto. */
+(function () {
+  var CHAVE = 'ecooa-consentimento';
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.ecooaGtag = gtag;
+
+  /* Consent Mode v2: tudo negado antes de qualquer escolha. */
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
+
+  function lido() {
+    try { return localStorage.getItem(CHAVE); } catch (e) { return null; }
+  }
+  function grava(v) {
+    try { localStorage.setItem(CHAVE, v); } catch (e) { /* modo privado */ }
+  }
+  function concede() {
+    gtag('consent', 'update', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'granted'
+    });
+  }
+  if (lido() === 'aceito') concede();
+
+  /* ── carregamento tardio do GTM ── */
+  var carregado = false;
+  function carregaGTM() {
+    if (carregado) return;
+    carregado = true;
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
+    document.head.appendChild(s);
+  }
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, carregaGTM, { once: true, passive: true });
+  });
+  if (document.readyState === 'complete') setTimeout(carregaGTM, 4000);
+  else window.addEventListener('load', function () { setTimeout(carregaGTM, 4000); });
+
+  /* ── contexto da página, para todo evento nascer situado ── */
+  var pagina = (location.pathname.replace(/^\/|\/$/g, '') || 'home');
+  var perfil = /^profissionais\/(.+)$/.exec(pagina);
+  var area = /^especialidades\/(.+)$/.exec(pagina);
+  var artigo = /^blog\/(.+)$/.exec(pagina);
+  var CTX = {
+    pagina: pagina,
+    tipo: perfil ? 'perfil' : area ? 'area' : artigo ? 'artigo' : 'institucional',
+    profissional: perfil ? perfil[1] : undefined,
+    area: area ? area[1] : undefined,
+    artigo: artigo ? artigo[1] : undefined
+  };
+  function evento(nome, extra) {
+    var d = { event: nome };
+    for (var k in CTX) if (CTX[k]) d[k] = CTX[k];
+    for (var j in extra) if (extra[j] !== undefined) d[j] = extra[j];
+    window.dataLayer.push(d);
+  }
+  window.ecooaEvento = evento;
+
+  /* ── conversão: todo clique de WhatsApp, com o contexto ── */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if (!a) return;
+    var texto = (a.textContent || '').trim().slice(0, 60);
+    evento('whatsapp_click', {
+      rotulo: texto,
+      destino: 'recepcao',
+      posicao: a.closest('footer') ? 'rodape' : a.closest('header') ? 'cabecalho' : 'corpo'
+    });
+    carregaGTM();
+  }, true);
+
+  /* ── conversão: envio dos três formulários ── */
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || f.tagName !== 'FORM') return;
+    if (f.querySelector('#ec-queixa')) return; /* busca do match, tratada abaixo */
+    var tipo = f.querySelector('input[type=email]') && !f.querySelector('input[type=tel]')
+      ? 'newsletter' : 'lead';
+    evento('form_submit', { formulario: tipo });
+    carregaGTM();
+  }, true);
+
+  /* ── uso do ecooa.match. O termo digitado NÃO é enviado: é dado de saúde.
+        Vai apenas o bloco de queixa entendido, que é categoria editorial. ── */
+  var ultimoChip = '';
+  function observaMatch() {
+    var alvo = document.querySelector('[data-match-pronto], body');
+    if (!alvo || !window.MutationObserver) return;
+    var obs = new MutationObserver(function () {
+      var chip = null;
+      var divs = document.querySelectorAll('div');
+      for (var i = 0; i < divs.length; i++) {
+        if (divs[i].textContent.indexOf('entendemos:') === 0 && divs[i].children.length >= 2) { chip = divs[i]; break; }
+      }
+      if (!chip) return;
+      var partes = chip.textContent.split('→');
+      var bloco = (partes[1] || '').trim();
+      if (!bloco || bloco === ultimoChip) return;
+      ultimoChip = bloco;
+      var nomes = [];
+      var links = document.querySelectorAll('a');
+      for (var j = 0; j < links.length; j++) {
+        if (/agendar com/.test(links[j].textContent)) nomes.push(links[j].textContent.replace('agendar com ', '').trim());
+      }
+      evento('match_resultado', { bloco: bloco, indicados: nomes.join(','), total: nomes.length });
+      carregaGTM();
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.getElementById('ec-queixa') || /qual-profissional/.test(location.pathname)) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observaMatch);
+    else observaMatch();
+  }
+
+  /* ── aviso de consentimento, discreto e reversível ── */
+  function aviso() {
+    if (lido()) return;
+    var caixa = document.createElement('div');
+    caixa.setAttribute('role', 'region');
+    caixa.setAttribute('aria-label', 'Aviso de privacidade');
+    caixa.style.cssText = 'position:fixed; left:12px; right:12px; bottom:12px; z-index:9998; max-width:560px; margin:0 auto; padding:16px 18px; border-radius:16px; background:rgba(253,253,252,.9); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); box-shadow:0 18px 40px rgba(70,68,63,.18), inset 0 0 0 1px rgba(255,255,255,.6); display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; font-family:var(--sans, system-ui);';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0; flex:1 1 260px; font-size:13px; line-height:1.55; color:#5C5A55;';
+    txt.appendChild(document.createTextNode('Usamos medição de audiência para entender o que ajuda quem chega até aqui. Nada é ativado sem a sua escolha. '));
+    var link = document.createElement('a');
+    link.href = 'politicas.html';
+    link.textContent = 'políticas';
+    link.style.cssText = 'color:#46443F; text-decoration:underline; text-underline-offset:3px;';
+    txt.appendChild(link);
+    txt.appendChild(document.createTextNode('.'));
+    caixa.appendChild(txt);
+    function botao(rotulo, cheio, acao) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = rotulo;
+      b.style.cssText = 'flex:0 0 auto; min-height:40px; padding:0 20px; border:0; border-radius:999px; cursor:pointer; font-size:10.5px; letter-spacing:.14em; ' +
+        (cheio ? 'background:#63615C; color:#F0EEE9;' : 'background:#F0EEE9; color:#63615C; box-shadow:3px 3px 8px rgba(150,147,140,.3), -3px -3px 8px rgba(255,255,255,.95);');
+      b.addEventListener('click', acao);
+      return b;
+    }
+    caixa.appendChild(botao('recusar', false, function () { grava('recusado'); caixa.remove(); }));
+    caixa.appendChild(botao('aceitar', true, function () { grava('aceito'); concede(); carregaGTM(); caixa.remove(); }));
+    document.body.appendChild(caixa);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aviso);
+  else aviso();
 })();
 </script>
 </body></html>

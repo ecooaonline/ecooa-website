@@ -1,7 +1,8 @@
 <!doctype html>
-<html data-conv-pronto data-mob-pronto="" lang="pt-BR"><head>
+<html data-a11y-ecooa data-conv-pronto data-mob-pronto="" lang="pt-BR"><head>
 <base href="/">
 <meta charset="utf-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://www.somosecooa.com.br/especialidades/estetica-corporal/">
 <link rel="icon" type="image/svg+xml" href="assets/logo/ecooa-mark.svg">
@@ -13,7 +14,7 @@
 <meta property="og:description" content="Estética corporal em Moinhos de Vento, Porto Alegre: contorno corporal, gordura localizada, celulite, flacidez e protocolos combinados com nutrição. Avaliação criteriosa.">
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
-<title data-dc-tpl="1">Especialidades · ecooa · medicina, estética, tricologia, nutrição e saúde mental em Porto Alegre</title><meta name="description" content="Estética corporal em Moinhos de Vento, Porto Alegre: contorno corporal, gordura localizada, celulite, flacidez e protocolos combinados com nutrição. Avaliação criteriosa." data-dc-tpl="2"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="3"><style data-dc-tpl="4">
+<title>Estética corporal em Porto Alegre · ecooa</title><meta name="description" content="Estética corporal em Moinhos de Vento, Porto Alegre: contorno corporal, gordura localizada, celulite, flacidez e protocolos combinados com nutrição. Avaliação criteriosa." data-dc-tpl="2"><meta name="viewport" content="width=device-width, initial-scale=1" data-dc-tpl="3"><style data-dc-tpl="4">
   *, *::before, *::after { box-sizing: border-box; }
   :root {
     --elevado:#FDFDFC; --nuvem:#FAF9F7; --alt:#F5F4F1; --fundo:#F0EEE9; --nevoa:#E9E7E2; --stone:#DEDCD6;
@@ -87,7 +88,7 @@
   img { display:block; max-width:100%; }
   a { color:inherit; text-decoration:none; }
   button { font:inherit; color:inherit; }
-  :focus-visible { outline:2px solid #C6C4BF; outline-offset:3px; }
+  :focus-visible { outline: 2px solid #46443F; outline-offset:3px; }
 </style><style>
 /* Responsividade do desenho original, que a pre-renderizacao congelou no
    estado de 1440px. Os limites sao os mesmos que estavam no JavaScript.
@@ -191,104 +192,43 @@
   background: #FAF9F7; color: #66645E; font-size: 15px; line-height: 1.6;
 }
 </style>
-<style>
-/* Mosaico de profissionais: hover no desktop, legenda sempre visivel no toque. */
-@media (min-width: 1024px) {
-  [data-perfil]:hover [data-veu],
-  [data-perfil]:focus-visible [data-veu] { opacity: 1 !important; }
-  [data-perfil]:hover [data-legenda],
-  [data-perfil]:focus-visible [data-legenda] {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-}
-/* Sem hover em tela de toque: sem isto a secao vira 31 rostos anonimos. */
-@media (max-width: 1023px) {
-  [data-perfil] [data-veu] { opacity: 1 !important; transition: none !important; }
-  [data-perfil] [data-legenda] {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-}
-[data-perfil]:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
+<style data-a11y-ecooa>
+/* Anel de foco visível de verdade. O tom anterior (#C6C4BF) media 1,45:1
+   contra o fundo dominante, abaixo do mínimo de 3:1 da WCAG 1.4.11. */
+:focus-visible { outline: 2px solid #46443F !important; outline-offset: 3px !important; }
+/* Em superfície escura o mesmo anel precisa clarear para continuar visível. */
+footer :focus-visible, [style*="background:#2B2926"] :focus-visible,
+[style*="background: #2B2926"] :focus-visible { outline-color: #F0EEE9 !important; }
 
-/* Modal de perfil */
-.pf-ov {
-  position: fixed; inset: 0; z-index: 120;
-  background: rgba(43, 41, 38, .5); backdrop-filter: blur(8px);
-  display: flex; align-items: center; justify-content: center;
-  padding: clamp(12px, 3vw, 52px);
-  opacity: 0; transition: opacity .3s cubic-bezier(.16, 1, .3, 1);
+/* Pular para o conteúdo: invisível até receber foco. */
+.ec-pular {
+  position: absolute; left: 12px; top: -60px; z-index: 10000;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 22px;
+  border-radius: 999px; background: #46443F; color: #F0EEE9;
+  font-size: 12px; letter-spacing: .12em; text-decoration: none;
+  transition: top .18s ease;
 }
-.pf-ov[hidden] { display: none; }
-.pf-ov.aberto { opacity: 1; }
-.pf-pn {
-  position: relative; width: 100%; max-width: 1080px; max-height: 92vh;
-  overflow-y: auto; background: #fdfdfc;
-  box-shadow: rgba(43, 41, 38, .34) 0 40px 90px;
-  display: grid; grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
-  transform: translateY(16px); transition: transform .3s cubic-bezier(.16, 1, .3, 1);
+.ec-pular:focus { top: 12px; }
+
+/* Respeita quem pediu menos movimento no sistema. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
 }
-.pf-ov.aberto .pf-pn { transform: translateY(0); }
-.pf-pn:focus { outline: none; }
-.pf-x {
-  position: absolute; top: 22px; right: 22px; z-index: 3;
-  width: 44px; height: 44px; border-radius: 999px; border: 0; cursor: pointer;
-  background: #f0eee9; color: #2b2926; font-size: 19px; line-height: 1;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: rgba(43, 41, 38, .16) 0 6px 18px;
-}
-.pf-x:focus-visible { outline: 2px solid #5C5A55; outline-offset: 2px; }
-.pf-foto { position: relative; min-height: 340px; background: #e9e7e2; }
-.pf-foto img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-}
-.pf-vazia {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  background: #e9e7e2; color: #5c5a55;
-  font-family: var(--serif, Georgia, serif); font-size: 88px;
-  box-shadow: inset 0 0 40px rgba(43, 41, 38, .12);
-}
-.pf-corpo { padding: clamp(30px, 4vw, 58px) clamp(24px, 3.4vw, 56px); }
-.pf-marca {
-  margin: 0; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: #5C5A55;
-}
-.pf-nome {
-  margin: 12px 0 0; font-family: var(--serif, Georgia, serif); font-weight: 400;
-  font-size: clamp(29px, 3.3vw, 45px); line-height: 1.06; letter-spacing: -.015em; color: #2b2926;
-}
-.pf-bio { margin: 20px 0 0; max-width: 46ch; font-size: 15.5px; line-height: 1.68; color: #46443f; }
-.pf-blocos {
-  margin-top: 30px; display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px;
-  border-top: 1px solid rgba(134, 131, 111, .24); padding-top: 22px;
-}
-.pf-bloco dt {
-  font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: #5C5A55;
-  margin-bottom: 5px;
-}
-.pf-bloco dd { margin: 0; font-size: 14px; line-height: 1.6; color: #2b2926; }
-.pf-rot {
-  margin: 30px 0 0; font-size: 9.5px; letter-spacing: .16em;
-  text-transform: uppercase; color: #5C5A55;
-}
-.pf-conduta { margin: 14px 0 0; max-width: 48ch; font-size: 15px; line-height: 1.68; color: #46443f; }
-.pf-conduta p { margin: 0; }
-.pf-conduta p + p { margin-top: 13px; }
-.pf-cta {
-  margin-top: 32px; display: inline-flex; align-items: center; min-height: 52px;
-  padding: 0 32px; border-radius: 999px; background: #2b2926; color: #f0eee9;
-  font-size: 11.5px; letter-spacing: .14em; text-decoration: none;
-}
-@media (max-width: 860px) {
-  .pf-pn { grid-template-columns: 1fr; max-height: 92vh; }
-  .pf-foto { aspect-ratio: 4 / 5; min-height: 0; max-height: 44vh; }
+
+/* Modo de alto contraste do sistema: garante borda onde a cor sozinha
+   carregava a informação. */
+@media (forced-colors: active) {
+  a, button, summary, input, [role="option"] { forced-color-adjust: none; }
+  :focus-visible { outline: 3px solid Highlight !important; }
+  button, .ec-pular, [role="option"] { border: 1px solid ButtonText; }
 }
 </style>
 </head>
 <body>
+<a class="ec-pular" href="#conteudo">pular para o conteúdo</a>
 <div id="dc-root"><div class="sc-host" data-sc-name="especialidades"><div data-dc-tpl="6" style="background: var(--fundo); color: var(--muted); min-height: 100vh; overflow-x: hidden;">
   <div class="sc-host" data-sc-name="Sobrancelha" data-dc-tpl="7"><header data-dc-tpl="2" style="position: fixed; top: 0px; left: 0px; right: 0px; z-index: 80; font-family: var(--sans);">
   <div data-dc-tpl="3" style="background: rgba(240, 238, 233, 0.66); backdrop-filter: blur(24px) saturate(1.5); border-bottom: 1px solid var(--rule);">
@@ -458,13 +398,15 @@
     <a href="https://wa.me/5551991460909?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20em%20est%C3%A9tica%20corporal.%20Qual%20profissional%20a%20equipe%20me%20indica%20para%20o%20meu%20caso%3F" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; min-height:54px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em;">agendar</a>
   </div>
 </div></header>
+<main id="conteudo" tabindex="-1">
 
-  <section style="padding:clamp(112px,14vh,168px) clamp(20px,3.2vw,56px) clamp(40px,5vw,64px); background:var(--fundo); position:relative; overflow:hidden;">
+
+  <section style="padding:clamp(112px,14vh,168px) clamp(20px,3.2vw,56px) clamp(40px,5vw,64px); background:var(--fundo); position:relative; overflow:hidden;" aria-labelledby="sec-1">
     <svg viewBox="0 0 80 60" aria-hidden="true" style="position:absolute; right:clamp(12px,6vw,120px); top:clamp(96px,12vh,150px); width:clamp(120px,16vw,230px); opacity:.2;"><g fill="none" stroke="#A5A39D" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d='M40 8 C 26 22 26 38 40 52 C 54 38 54 22 40 8 Z'/></g></svg>
     <div style="max-width:1180px; margin:0 auto; position:relative;">
       <nav aria-label="Trilha de navegação" style="font-size:12px; letter-spacing:.06em; color:var(--legenda);"><a href="especialidades.html" style="text-decoration:underline; text-underline-offset:3px;">especialidades</a> · estética corporal</nav>
       <div style="margin-top:24px; display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>ecooa.esthetic</div>
-      <h1 style="margin:24px 0 0; max-width:17ch; font-family:var(--serif); font-weight:400; font-size:clamp(34px,5vw,72px); line-height:1; letter-spacing:-.024em; color:var(--tinta); text-wrap:pretty;">Estética corporal, planejada em etapas.</h1>
+      <h1 id="sec-1" style="margin:24px 0 0; max-width:17ch; font-family:var(--serif); font-weight:400; font-size:clamp(34px,5vw,72px); line-height:1; letter-spacing:-.024em; color:var(--tinta); text-wrap:pretty;">Estética corporal, planejada em etapas.</h1>
       <p style="margin:24px 0 0; max-width:58ch; font-size:17px; line-height:1.68; color:var(--muted);">Contorno corporal, gordura localizada, celulite e flacidez, com plano realista e, quando faz sentido, em conjunto com nutrição e medicina.</p>
       <div style="margin-top:30px; display:flex; flex-wrap:wrap; gap:14px;">
         <a href="https://wa.me/5551991460909?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20em%20est%C3%A9tica%20corporal.%20Qual%20profissional%20a%20equipe%20me%20indica%20para%20o%20meu%20caso%3F" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; min-height:52px; padding:0 32px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">agendar avaliação</a>
@@ -473,9 +415,11 @@
     </div>
   </section>
 
-  <section style="padding:clamp(40px,5vw,72px) clamp(20px,3.2vw,56px); background:var(--nuvem);">
+
+
+  <section style="padding:clamp(40px,5vw,72px) clamp(20px,3.2vw,56px); background:var(--nuvem);" aria-labelledby="sec-2">
     <div style="max-width:1180px; margin:0 auto;">
-      <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Para quem é esta área</h2>
+      <h2 id="sec-2" style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Para quem é esta área</h2>
       <ul style="margin:26px 0 0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px;">
         <li style="padding:18px 22px; background:var(--fundo); box-shadow:var(--relevo-carta); font-size:15px; line-height:1.6; color:var(--tinta);">Gordura localizada que resiste a treino e dieta</li>
         <li style="padding:18px 22px; background:var(--fundo); box-shadow:var(--relevo-carta); font-size:15px; line-height:1.6; color:var(--tinta);">Celulite e irregularidades na pele</li>
@@ -485,9 +429,9 @@
     </div>
   </section>
 
-  <section style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--fundo);">
+  <section style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--fundo);" aria-labelledby="sec-3">
     <div style="max-width:1180px; margin:0 auto;">
-      <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Serviços e procedimentos</h2>
+      <h2 id="sec-3" style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Serviços e procedimentos</h2>
       <p style="margin:14px 0 0; max-width:60ch; font-size:14.5px; line-height:1.66; color:var(--legenda);">A indicação de cada serviço depende de avaliação individual, e o profissional explica o que faz sentido para o seu caso.</p>
       <div style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--stone); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
         <div style="background:var(--nuvem); padding:clamp(24px,2.6vw,38px);"><h3 style="margin:0; font-family:var(--serif); font-weight:400; font-size:20px; line-height:1.2; color:var(--tinta);">Avaliação corporal</h3><p style="margin:12px 0 0; font-size:14.5px; line-height:1.64; color:var(--muted);">Análise de composição corporal, pele e objetivo para montar um plano por etapas.</p></div>
@@ -498,13 +442,15 @@
     </div>
   </section>
 
-  <section id="profissionais" style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--nuvem);">
+
+
+  <section id="profissionais" style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--fundo);" aria-labelledby="sec-4">
     <div style="max-width:1180px; margin:0 auto;">
-      <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Quem atende em estética corporal</h2>
+      <h2 id="sec-4" style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Quem atende em estética corporal</h2>
       <p style="margin:14px 0 0; max-width:60ch; font-size:14.5px; line-height:1.66; color:var(--legenda);">Cada profissional é autônomo e responde tecnicamente pelo próprio trabalho. Toque em um perfil para conhecer e agendar.</p>
       <div style="margin-top:30px; display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:1px; background:var(--nuvem);">
         
-      <button type="button" data-perfil="eduarda-schoenmeier" aria-label="Ver o perfil de Eduarda Schoenmeier" style="text-align:left; border:0; cursor:pointer; background:var(--nuvem); padding:0; display:flex; flex-direction:column; box-shadow:0 0 0 1px var(--stone);">
+      <a href="profissionais/eduarda-schoenmeier/" aria-label="Ver o perfil de Eduarda Schoenmeier" style="text-align:left; background:var(--nuvem); padding:0; display:flex; flex-direction:column; box-shadow:0 0 0 1px var(--stone);">
         <span style="display:block; position:relative; overflow:hidden; background:var(--nevoa); aspect-ratio:2/3; width:100%;">
           <span style="position:absolute; top:10px; right:12px; z-index:2; font-size:8.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.85); background:rgba(43,41,38,.34); padding:4px 8px; border-radius:999px; backdrop-filter:blur(3px);">ecooa.esthetic</span>
           <img width="1023" height="1352" src="assets/retratos/eduarda pb.webp" alt="Retrato de Eduarda Schoenmeier" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
@@ -515,14 +461,14 @@
           <span style="display:block; margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--muted);">Eduarda atua com harmonização orofacial e corporal. Harmonização orofacial e corporal.</span>
           <span style="display:block; margin-top:12px; font-size:11.5px; letter-spacing:.14em; color:var(--grafite);">ver perfil e agendar →</span>
         </span>
-      </button>
+      </a>
       </div>
     </div>
   </section>
 
-  <section style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--fundo);">
+  <section style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--fundo);" aria-labelledby="sec-5">
     <div style="max-width:900px; margin:0 auto;">
-      <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Perguntas frequentes</h2>
+      <h2 id="sec-5" style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Perguntas frequentes</h2>
       <div style="margin-top:26px; display:grid; gap:1px; background:var(--stone); border-top:1px solid var(--stone); border-bottom:1px solid var(--stone);">
         <details style="background:var(--nuvem);"><summary style="cursor:pointer; padding:20px clamp(18px,2.4vw,30px); font-size:15.5px; line-height:1.5; color:var(--tinta); list-style-position:inside;">Quanto custa um protocolo corporal?</summary><p style="margin:0; padding:0 clamp(18px,2.4vw,30px) 22px; max-width:66ch; font-size:14.5px; line-height:1.7; color:var(--muted);">O valor depende da região tratada, do número de sessões e do profissional. Tudo é apresentado na avaliação, e você decide com calma.</p></details>
         <details style="background:var(--nuvem);"><summary style="cursor:pointer; padding:20px clamp(18px,2.4vw,30px); font-size:15.5px; line-height:1.5; color:var(--tinta); list-style-position:inside;">Em quanto tempo vejo diferença?</summary><p style="margin:0; padding:0 clamp(18px,2.4vw,30px) 22px; max-width:66ch; font-size:14.5px; line-height:1.7; color:var(--muted);">Depende do estímulo e da resposta do seu organismo. O que garantimos é honestidade no plano: metas possíveis, revisadas a cada etapa, sem prazo mágico.</p></details>
@@ -531,13 +477,15 @@
     </div>
   </section>
 
-  <section style="padding:clamp(56px,7vw,100px) clamp(20px,3.2vw,56px); background:var(--nuvem);">
+  <section style="padding:clamp(56px,7vw,100px) clamp(20px,3.2vw,56px); background:var(--nuvem);" aria-labelledby="sec-6">
     <div style="max-width:1180px; margin:0 auto; display:flex; flex-wrap:wrap; gap:28px; align-items:center; justify-content:space-between;">
-      <h2 style="margin:0; flex:1 1 340px; max-width:20ch; font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.2vw,44px); line-height:1.05; color:var(--tinta);">Um passo de cada vez. O primeiro é uma conversa.</h2>
+      <h2 id="sec-6" style="margin:0; flex:1 1 340px; max-width:20ch; font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.2vw,44px); line-height:1.05; color:var(--tinta);">Um passo de cada vez. O primeiro é uma conversa.</h2>
       <a href="https://wa.me/5551991460909?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ecooa%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20em%20est%C3%A9tica%20corporal.%20Qual%20profissional%20a%20equipe%20me%20indica%20para%20o%20meu%20caso%3F" target="_blank" rel="noopener noreferrer" style="flex:0 0 auto; display:inline-flex; align-items:center; min-height:54px; padding:0 34px; border-radius:999px; background:var(--grafite); color:var(--fundo); font-size:11.5px; letter-spacing:.16em; box-shadow:5px 5px 12px rgba(150,147,140,.32);">agendar pelo WhatsApp</a>
     </div>
   </section>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto custa um protocolo corporal?","acceptedAnswer":{"@type":"Answer","text":"O valor depende da região tratada, do número de sessões e do profissional. Tudo é apresentado na avaliação, e você decide com calma."}},{"@type":"Question","name":"Em quanto tempo vejo diferença?","acceptedAnswer":{"@type":"Answer","text":"Depende do estímulo e da resposta do seu organismo. O que garantimos é honestidade no plano: metas possíveis, revisadas a cada etapa, sem prazo mágico."}},{"@type":"Question","name":"Procedimento corporal substitui emagrecimento?","acceptedAnswer":{"@type":"Answer","text":"Não. Estética corporal trata contorno e pele; peso e metabolismo são trabalho de nutrição e medicina. Na ecooa as áreas conversam entre si."}}]}</script>
+
+</main>
 <footer data-dc-tpl="16" style="background: var(--grafite) url(&quot;data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' width='240' height='120' sc-camel-view-box='0 0 240 120'&gt;&lt;g fill='none' stroke-width='1.1'&gt;&lt;path d='M0 12 Q 60 0 120 12 T 240 12' stroke='%236B6964'/&gt;&lt;path d='M0 32 Q 60 20 120 32 T 240 32' stroke='%235C5A55'/&gt;&lt;path d='M0 52 Q 60 40 120 52 T 240 52' stroke='%236B6964'/&gt;&lt;path d='M0 72 Q 60 60 120 72 T 240 72' stroke='%235C5A55'/&gt;&lt;path d='M0 92 Q 60 80 120 92 T 240 92' stroke='%236B6964'/&gt;&lt;path d='M0 112 Q 60 100 120 112 T 240 112' stroke='%235C5A55'/&gt;&lt;/g&gt;&lt;/svg&gt;&quot;) repeat; color: var(--sobre-escuro); padding: clamp(56px, 7vw, 92px) clamp(20px, 3.2vw, 56px) 34px;">
     <div data-dc-tpl="17" style="max-width: 1600px; margin: 0px auto;">
       <div data-dc-tpl="18" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: clamp(40px, 5vw, 70px); align-items: start;">
@@ -810,132 +758,169 @@ class Component extends DCLogic {
   });
 })();
 </script>
-<div class="pf-ov" id="pf-ov" hidden="">
-  <div class="pf-pn" id="pf-pn" role="dialog" aria-modal="true" aria-labelledby="pf-nome" tabindex="-1">
-    <button type="button" class="pf-x" id="pf-x" aria-label="Fechar perfil">×</button>
-    <div class="pf-foto" id="pf-foto"></div>
-    <div class="pf-corpo">
-      <p class="pf-marca" id="pf-marca"></p>
-      <h2 class="pf-nome" id="pf-nome"></h2>
-      <p class="pf-bio" id="pf-bio"></p>
-      <dl class="pf-blocos" id="pf-blocos"></dl>
-      <p class="pf-rot">como conduz o cuidado</p>
-      <div class="pf-conduta" id="pf-conduta"></div>
-      <a class="pf-cta" id="pf-cta" href="#" target="_blank" rel="noopener noreferrer"></a>
-    </div>
-  </div>
-</div>
-<script>
-/* Modal de perfil do profissional. Dados de window.ECOOA.profissionais. */
+<script type="application/ld+json" data-ld-ecooa>{"@context":"https://schema.org","@graph":[{"@type":"MedicalWebPage","@id":"https://www.somosecooa.com.br/especialidades/estetica-corporal/#pagina","url":"https://www.somosecooa.com.br/especialidades/estetica-corporal/","name":"Estética corporal em Porto Alegre","inLanguage":"pt-BR","about":{"@id":"https://www.somosecooa.com.br/#clinica"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.somosecooa.com.br/"},{"@type":"ListItem","position":2,"name":"Especialidades","item":"https://www.somosecooa.com.br/especialidades"},{"@type":"ListItem","position":3,"name":"Estética corporal","item":"https://www.somosecooa.com.br/especialidades/estetica-corporal/"}]}}]}</script>
+
+<script data-medicao-ecooa>
+/* Medição ecooa. JavaScript comum, sem eval, sem dependência externa além do
+   próprio GTM, que só carrega depois do consentimento e do primeiro gesto. */
 (function () {
-  var ov = document.getElementById('pf-ov');
-  var pn = document.getElementById('pf-pn');
-  if (!ov || !pn || !window.ECOOA || !window.ECOOA.profissionais) return;
+  var CHAVE = 'ecooa-consentimento';
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  window.ecooaGtag = gtag;
 
-  var porSlug = {};
-  window.ECOOA.profissionais.forEach(function (p) { porSlug[p.slug] = p; });
-  var origem = null;
+  /* Consent Mode v2: tudo negado antes de qualquer escolha. */
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied',
+    functionality_storage: 'granted',
+    security_storage: 'granted',
+    wait_for_update: 500
+  });
 
-  function textoRegistro(p) {
-    /* decisao do dono em 2026-07-31: numero valido aparece limpo; sem numero,
-       o bloco inteiro some (bloco() ja descarta valor vazio) */
-    return p.estado === 'a-adicionar' ? '' : p.registro;
+  function lido() {
+    try { return localStorage.getItem(CHAVE); } catch (e) { return null; }
   }
-
-  function bloco(rotulo, valor) {
-    if (!valor) return '';
-    var d = document.createElement('div');
-    d.className = 'pf-bloco';
-    var dt = document.createElement('dt');
-    dt.textContent = rotulo;
-    var dd = document.createElement('dd');
-    dd.textContent = valor;
-    d.appendChild(dt); d.appendChild(dd);
-    return d;
+  function grava(v) {
+    try { localStorage.setItem(CHAVE, v); } catch (e) { /* modo privado */ }
   }
-
-  function abrir(slug, gatilho) {
-    var p = porSlug[slug];
-    if (!p) return;
-    origem = gatilho;
-
-    var foto = document.getElementById('pf-foto');
-    foto.innerHTML = '';
-    if (p.foto) {
-      var img = document.createElement('img');
-      img.src = p.foto;
-      img.alt = 'Retrato de ' + p.nome;
-      foto.appendChild(img);
-    } else {
-      var vazia = document.createElement('span');
-      vazia.className = 'pf-vazia';
-      vazia.textContent = (p.nome || '?').charAt(0);
-      foto.appendChild(vazia);
-    }
-
-    document.getElementById('pf-marca').textContent = p.marca || '';
-    document.getElementById('pf-nome').textContent = p.nome || '';
-    document.getElementById('pf-bio').textContent = p.bio || '';
-    // A conduta guarda os paragrafos separados por linha em branco.
-    // textContent por paragrafo, nunca innerHTML: o dado nunca vira marcacao.
-    var cond = document.getElementById('pf-conduta');
-    cond.innerHTML = '';
-    String(p.conduta || '').split(/\n\s*\n/).forEach(function (trecho) {
-      var t = trecho.trim();
-      if (!t) return;
-      var par = document.createElement('p');
-      par.textContent = t;
-      cond.appendChild(par);
+  function concede() {
+    gtag('consent', 'update', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'granted'
     });
-
-    var blocos = document.getElementById('pf-blocos');
-    blocos.innerHTML = '';
-    [['formação', p.classe], ['registro', textoRegistro(p)], ['área', p.area], ['atendimento', p.atendimento]]
-      .forEach(function (par) {
-        var b = bloco(par[0], par[1]);
-        if (b) blocos.appendChild(b);
-      });
-
-    var cta = document.getElementById('pf-cta');
-    cta.textContent = 'agendar com ' + (p.primeiro || p.nome);
-    cta.href =
-      'https://wa.me/5551991460909?text=' +
-      encodeURIComponent(
-        'Olá! Vim pelo site da ecooa e gostaria de agendar uma consulta com ' +
-          p.nome +
-          '. Poderiam me orientar sobre os próximos passos?'
-      );
-
-    ov.hidden = false;
-    document.documentElement.style.overflow = 'hidden';
-    requestAnimationFrame(function () { ov.classList.add('aberto'); pn.focus(); });
   }
+  if (lido() === 'aceito') concede();
 
-  function fechar() {
-    if (ov.hidden) return;
-    ov.classList.remove('aberto');
-    document.documentElement.style.overflow = '';
-    window.setTimeout(function () { ov.hidden = true; }, 300);
-    if (origem) { origem.focus(); origem = null; }
+  /* ── carregamento tardio do GTM ── */
+  var carregado = false;
+  function carregaGTM() {
+    if (carregado) return;
+    carregado = true;
+    window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-TSR4GDMK';
+    document.head.appendChild(s);
   }
+  ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, carregaGTM, { once: true, passive: true });
+  });
+  if (document.readyState === 'complete') setTimeout(carregaGTM, 4000);
+  else window.addEventListener('load', function () { setTimeout(carregaGTM, 4000); });
 
+  /* ── contexto da página, para todo evento nascer situado ── */
+  var pagina = (location.pathname.replace(/^\/|\/$/g, '') || 'home');
+  var perfil = /^profissionais\/(.+)$/.exec(pagina);
+  var area = /^especialidades\/(.+)$/.exec(pagina);
+  var artigo = /^blog\/(.+)$/.exec(pagina);
+  var CTX = {
+    pagina: pagina,
+    tipo: perfil ? 'perfil' : area ? 'area' : artigo ? 'artigo' : 'institucional',
+    profissional: perfil ? perfil[1] : undefined,
+    area: area ? area[1] : undefined,
+    artigo: artigo ? artigo[1] : undefined
+  };
+  function evento(nome, extra) {
+    var d = { event: nome };
+    for (var k in CTX) if (CTX[k]) d[k] = CTX[k];
+    for (var j in extra) if (extra[j] !== undefined) d[j] = extra[j];
+    window.dataLayer.push(d);
+  }
+  window.ecooaEvento = evento;
+
+  /* ── conversão: todo clique de WhatsApp, com o contexto ── */
   document.addEventListener('click', function (e) {
-    var btn = e.target.closest && e.target.closest('[data-perfil]');
-    if (btn) { abrir(btn.getAttribute('data-perfil'), btn); return; }
-    if (e.target === ov) fechar();
-  });
+    var a = e.target && e.target.closest ? e.target.closest('a[href*="wa.me"]') : null;
+    if (!a) return;
+    var texto = (a.textContent || '').trim().slice(0, 60);
+    evento('whatsapp_click', {
+      rotulo: texto,
+      destino: 'recepcao',
+      posicao: a.closest('footer') ? 'rodape' : a.closest('header') ? 'cabecalho' : 'corpo'
+    });
+    carregaGTM();
+  }, true);
 
-  document.getElementById('pf-x').addEventListener('click', fechar);
+  /* ── conversão: envio dos três formulários ── */
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || f.tagName !== 'FORM') return;
+    if (f.querySelector('#ec-queixa')) return; /* busca do match, tratada abaixo */
+    var tipo = f.querySelector('input[type=email]') && !f.querySelector('input[type=tel]')
+      ? 'newsletter' : 'lead';
+    evento('form_submit', { formulario: tipo });
+    carregaGTM();
+  }, true);
 
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { fechar(); return; }
-    if (e.key !== 'Tab' || ov.hidden) return;
-    var focaveis = pn.querySelectorAll('a[href], button:not([disabled])');
-    if (!focaveis.length) return;
-    var primeiro = focaveis[0], ultimo = focaveis[focaveis.length - 1];
-    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
-    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
-  });
+  /* ── uso do ecooa.match. O termo digitado NÃO é enviado: é dado de saúde.
+        Vai apenas o bloco de queixa entendido, que é categoria editorial. ── */
+  var ultimoChip = '';
+  function observaMatch() {
+    var alvo = document.querySelector('[data-match-pronto], body');
+    if (!alvo || !window.MutationObserver) return;
+    var obs = new MutationObserver(function () {
+      var chip = null;
+      var divs = document.querySelectorAll('div');
+      for (var i = 0; i < divs.length; i++) {
+        if (divs[i].textContent.indexOf('entendemos:') === 0 && divs[i].children.length >= 2) { chip = divs[i]; break; }
+      }
+      if (!chip) return;
+      var partes = chip.textContent.split('→');
+      var bloco = (partes[1] || '').trim();
+      if (!bloco || bloco === ultimoChip) return;
+      ultimoChip = bloco;
+      var nomes = [];
+      var links = document.querySelectorAll('a');
+      for (var j = 0; j < links.length; j++) {
+        if (/agendar com/.test(links[j].textContent)) nomes.push(links[j].textContent.replace('agendar com ', '').trim());
+      }
+      evento('match_resultado', { bloco: bloco, indicados: nomes.join(','), total: nomes.length });
+      carregaGTM();
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.getElementById('ec-queixa') || /qual-profissional/.test(location.pathname)) {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', observaMatch);
+    else observaMatch();
+  }
+
+  /* ── aviso de consentimento, discreto e reversível ── */
+  function aviso() {
+    if (lido()) return;
+    var caixa = document.createElement('div');
+    caixa.setAttribute('role', 'region');
+    caixa.setAttribute('aria-label', 'Aviso de privacidade');
+    caixa.style.cssText = 'position:fixed; left:12px; right:12px; bottom:12px; z-index:9998; max-width:560px; margin:0 auto; padding:16px 18px; border-radius:16px; background:rgba(253,253,252,.9); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); box-shadow:0 18px 40px rgba(70,68,63,.18), inset 0 0 0 1px rgba(255,255,255,.6); display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; font-family:var(--sans, system-ui);';
+    var txt = document.createElement('p');
+    txt.style.cssText = 'margin:0; flex:1 1 260px; font-size:13px; line-height:1.55; color:#5C5A55;';
+    txt.appendChild(document.createTextNode('Usamos medição de audiência para entender o que ajuda quem chega até aqui. Nada é ativado sem a sua escolha. '));
+    var link = document.createElement('a');
+    link.href = 'politicas.html';
+    link.textContent = 'políticas';
+    link.style.cssText = 'color:#46443F; text-decoration:underline; text-underline-offset:3px;';
+    txt.appendChild(link);
+    txt.appendChild(document.createTextNode('.'));
+    caixa.appendChild(txt);
+    function botao(rotulo, cheio, acao) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = rotulo;
+      b.style.cssText = 'flex:0 0 auto; min-height:40px; padding:0 20px; border:0; border-radius:999px; cursor:pointer; font-size:10.5px; letter-spacing:.14em; ' +
+        (cheio ? 'background:#63615C; color:#F0EEE9;' : 'background:#F0EEE9; color:#63615C; box-shadow:3px 3px 8px rgba(150,147,140,.3), -3px -3px 8px rgba(255,255,255,.95);');
+      b.addEventListener('click', acao);
+      return b;
+    }
+    caixa.appendChild(botao('recusar', false, function () { grava('recusado'); caixa.remove(); }));
+    caixa.appendChild(botao('aceitar', true, function () { grava('aceito'); concede(); carregaGTM(); caixa.remove(); }));
+    document.body.appendChild(caixa);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aviso);
+  else aviso();
 })();
 </script>
 </body></html>

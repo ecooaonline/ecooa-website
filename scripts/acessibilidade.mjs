@@ -148,6 +148,11 @@ for (const arq of anda(DEPLOY)) {
     /aria-live|role="search"/.test(attrs) ? m : `<form${attrs}>`
   );
 
+  /* reescreve o anel de foco fraco na origem, em vez de so sobrepor: deixar a
+     regra antiga viva confunde quem le o CSS e engana qualquer auditoria que
+     procure pelo valor ruim */
+  html = html.replace(/outline:\s*2px solid #C6C4BF/gi, 'outline: 2px solid #46443F');
+
   html = html.replace('</head>', CSS + '\n</head>');
   html = html.replace('<html', `<html ${MARCA}`);
   fs.writeFileSync(arq, html, 'utf8');
