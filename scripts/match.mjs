@@ -25,6 +25,10 @@
 //   8. A página abre direto na busca por texto (sem tela de escolha); as cinco
 //      perguntas viram uma ajuda da IA dentro da tela. Autocompletar próprio:
 //      abre a partir de 3 letras em painel de vidro fosco (backdrop blur).
+//   9. No resultado, o botão ao lado do campo é "ajuda por IA" e abre as
+//      perguntas mantendo a frase (Enter no campo refaz a busca); o antigo
+//      "afinar com as perguntas" saiu e "falar com nossa equipe" abre o
+//      WhatsApp com o resumo da busca.
 //
 // Uso: node scripts/match.mjs
 import fs from 'node:fs';
@@ -506,7 +510,7 @@ const JS = String.raw`
 
   /* autocompletar proprio: abre a partir de 3 letras, painel de vidro fosco
      (o datalist nativo nao aceita estilo) */
-  function campoBusca(valor, aoEnviar) {
+  function campoBusca(valor, aoEnviar, aoGuiar) {
     var form = el('form', 'display:flex; flex-wrap:wrap; gap:12px; align-items:center;');
     var wrap = el('div', 'position:relative; flex:1 1 320px;');
     var campo = document.createElement('input');
@@ -564,8 +568,17 @@ const JS = String.raw`
       else if (e.key === 'Enter' && foco >= 0) { e.preventDefault(); itens[foco].click(); }
       else if (e.key === 'Escape') fecha();
     });
-    var enviar = el('button', BTN_CHEIO + 'flex:0 0 auto;', [valor ? 'refinar' : 'ver sugestão']);
-    enviar.type = 'submit';
+    /* no resultado, o botao ao lado do campo abre as perguntas guiadas;
+       editar a frase e dar Enter refaz a busca */
+    var enviar;
+    if (valor && aoGuiar) {
+      enviar = el('button', BTN_CHEIO + 'flex:0 0 auto;', ['ajuda por IA']);
+      enviar.type = 'button';
+      enviar.addEventListener('click', aoGuiar);
+    } else {
+      enviar = el('button', BTN_CHEIO + 'flex:0 0 auto;', ['ver sugestão']);
+      enviar.type = 'submit';
+    }
     form.appendChild(wrap);
     form.appendChild(enviar);
     form.addEventListener('submit', function (e) {
@@ -800,7 +813,10 @@ const JS = String.raw`
       }));
       carta.appendChild(topoBusca);
       var busca = el('div', 'margin:18px 0 26px;');
-      busca.appendChild(campoBusca(s.frase, buscar));
+      busca.appendChild(campoBusca(s.frase, buscar, function () {
+        s.modo = 'perguntas'; s.passo = 0; s.respostas = {};
+        render(); sobe();
+      }));
       carta.appendChild(busca);
     }
 
@@ -854,19 +870,10 @@ const JS = String.raw`
       [caminho.desc + ' Abaixo estão os profissionais indicados para começar, na ordem que a casa sugere. A escolha final é sua.']));
 
     var acoes = el('div', 'margin-top:30px; display:flex; flex-wrap:wrap; gap:14px;');
-    if (veioDeTexto && !respostas.length) {
-      var refinar = el('button', BTN_CHEIO, ['afinar com as perguntas']);
-      refinar.type = 'button';
-      refinar.addEventListener('click', function () {
-        s.modo = 'perguntas'; s.passo = 0; s.respostas = {};
-        render(); sobe();
-      });
-      acoes.appendChild(refinar);
-    }
     var wa = document.createElement('a');
     wa.href = waGeral; wa.target = '_blank'; wa.rel = 'noopener noreferrer';
-    wa.style.cssText = veioDeTexto && !respostas.length ? BTN_SUAVE : BTN_CHEIO;
-    wa.textContent = 'falar com a ecooa sobre isso';
+    wa.style.cssText = BTN_CHEIO;
+    wa.textContent = 'falar com nossa equipe';
     acoes.appendChild(wa);
     if (!veioDeTexto) {
       var refaz = el('button', BTN_SUAVE, ['fazer outra busca']);
