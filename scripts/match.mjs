@@ -132,6 +132,33 @@ const JS = String.raw`
     if (!/[aeiou]/.test(limpo)) return true; /* sem vogal: teclado batido */
     return false;
   }
+  /* Sofrimento agudo e ideacao suicida. A lista e proposital de alta
+     precisao: cada termo aqui e inequivoco em portugues do Brasil, porque um
+     falso positivo assusta quem so tem uma dor nas costas, e um falso negativo
+     cala justamente quem mais precisa ouvir. Na duvida entre os dois erros, a
+     lista prefere errar mostrando o aviso, entao termos amplos entram, e
+     termos ambiguos ficam de fora. */
+  var URGENCIA = [
+    'suicidio', 'suicida', 'me matar', 'quero morrer', 'vontade de morrer',
+    'nao quero mais viver', 'nao quero viver', 'nao aguento mais viver',
+    'tirar a minha vida', 'tirar minha vida', 'acabar com a minha vida',
+    'dar fim na minha vida', 'sumir dessa vida', 'melhor sem mim',
+    'automutilacao', 'me cortar', 'me machucar de proposito', 'me ferir'
+  ];
+  function ehUrgencia(frase) {
+    var t = normaliza(frase);
+    /* "morrer de dor", "morrer de fome", "morrer de rir": em portugues do
+       Brasil isso e figura de linguagem, nao ideacao. Tratar como urgencia
+       assustaria quem so tem enxaqueca. */
+    var idiomatico = / (quero |vou |to |estou |ta |esta )?morre(r|ndo) de [a-z]/.test(t);
+    for (var i = 0; i < URGENCIA.length; i++) {
+      if (t.indexOf(' ' + URGENCIA[i]) < 0) continue;
+      if (idiomatico && (URGENCIA[i] === 'quero morrer' || URGENCIA[i] === 'vontade de morrer')) continue;
+      return true;
+    }
+    return false;
+  }
+
   function interpreta(frase) {
     var t = normaliza(frase);
     /* Dois estagios. Primeiro a AREA vence pelo placar somado dos seus grupos:
@@ -606,6 +633,38 @@ const JS = String.raw`
     var waGeral = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá! Usei o ecooa.match no site. ' + resumo + ' Qual profissional a equipe me indica para o meu caso?');
 
     var carta = el('div', CARTA);
+
+    /* ── AVISO DE URGÊNCIA ──────────────────────────────────────────────
+       Esta ferramenta aceita texto livre sobre saúde. Alguém pode escrever
+       sofrimento agudo ou ideação suicida aqui, e a resposta certa nesse
+       momento não é uma lista de profissionais com agenda: é o caminho para
+       ajuda imediata, agora. O tribunal ético apontou que o único aviso de
+       urgência do site ficava recolhido justamente nesta tela.
+       Aparece antes de tudo, sem alarde e sem julgamento, e não substitui o
+       resto da resposta. Autorizado pelo dono em 2026-08-01. */
+    if (veioDeTexto && ehUrgencia(s.frase)) {
+      var soc = el('div', 'margin:0 0 26px; padding:22px 24px; border-left:3px solid #63615C; background:#F0EEE9;');
+      soc.setAttribute('role', 'alert');
+      soc.appendChild(el('p', 'margin:0; font-family:var(--serif); font-size:clamp(19px,2.2vw,24px); line-height:1.3; color:#46443F;', ['Se você está em sofrimento agora, fale com alguém agora.']));
+      soc.appendChild(el('p', 'margin:12px 0 0; max-width:60ch; font-size:15px; line-height:1.7; color:#46443F;', ['O CVV atende 24 horas por dia, de graça e em sigilo, por telefone e por chat. Não é preciso estar em crise para ligar, e não é preciso explicar nada antes.']));
+      var linhas = el('div', 'margin-top:16px; display:flex; flex-wrap:wrap; gap:10px 14px;');
+      var tel = document.createElement('a');
+      tel.href = 'tel:188';
+      tel.style.cssText = 'display:inline-flex; align-items:center; min-height:46px; padding:0 24px; border-radius:999px; background:#46443F; color:#F0EEE9; font-size:12px; letter-spacing:.12em;';
+      tel.textContent = 'ligar 188 · CVV';
+      linhas.appendChild(tel);
+      var chat = document.createElement('a');
+      chat.href = 'https://www.cvv.org.br/';
+      chat.target = '_blank';
+      chat.rel = 'noopener noreferrer';
+      chat.style.cssText = 'display:inline-flex; align-items:center; min-height:46px; font-size:13px; color:#46443F; text-decoration:underline; text-underline-offset:4px;';
+      chat.textContent = 'conversar por chat no site do CVV';
+      linhas.appendChild(chat);
+      soc.appendChild(linhas);
+      soc.appendChild(el('p', 'margin:14px 0 0; font-size:13px; line-height:1.6; color:#5C5A55;', ['Se há risco imediato à vida, ligue 192 (SAMU) ou vá ao pronto-socorro mais próximo. Abaixo seguem os profissionais da ecooa, para o cuidado continuado.']));
+      carta.appendChild(soc);
+      anuncia('Aviso de urgência: se você está em sofrimento agora, o CVV atende 24 horas pelo telefone 188.');
+    }
 
     /* campo de busca editavel dentro do resultado, decisao do dono */
     if (veioDeTexto) {

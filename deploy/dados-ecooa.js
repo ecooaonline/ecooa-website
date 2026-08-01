@@ -24,7 +24,7 @@
       classe:'Médica', grupo:'medicina', marca:'ecooa.med · ecooa.esthetic', papel:'',
       registro:'CRM-RS 49.185', estado:'confirmado', area:'tricologia e alopecias',
       esp:['medicina','tricologia'],
-      bio:'Médica tricologista, empreendedora e especialista no diagnóstico e tratamento médico das alopecias. Atua com queda de cabelo, doenças do couro cabeludo, saúde dos fios e estética capilar.',
+      bio:'Médica tricologista, com atuação no diagnóstico e tratamento médico das alopecias. Atua com queda de cabelo, doenças do couro cabeludo, saúde dos fios e estética capilar.',
       conduta:'Com olhar médico para as doenças do cabelo e do couro cabeludo, Yale conduz pacientes que enfrentam queda capilar, afinamento dos fios, alopecias, alterações inflamatórias e perda de densidade.\n\nSua abordagem integra avaliação clínica, investigação diagnóstica, análise do couro cabeludo e definição de estratégias individualizadas para tratar a causa do problema e melhorar a qualidade dos fios desde a raiz.\n\nAtendendo em Porto Alegre e também em sua clínica em Gramado, Yale oferece uma experiência de cuidado capilar que une medicina, tricologia e estética, com orientação clara, acompanhamento próximo e foco em saúde, aprendizado e evolução durante o tratamento.',
       atendimento:'presencial' },
     { slug:'vitoria-machado', nome:'Vitória Müller T. Machado', primeiro:'Vitória', foto:P+'vitoria-machado pb.webp',
