@@ -842,6 +842,8 @@ class Component extends DCLogic {
 
 
 
+
+
 <script>
 /* ecooa.match 3.0, JavaScript comum, sem eval. */
 (function () {
@@ -864,67 +866,99 @@ class Component extends DCLogic {
   var SINTOMAS = [
     { id: 'dor-musculo', rotulo: 'dor musculoesquelética', area: 'saude-integrativa',
       pros: ['natalie-queiroz', 'gustavo-gehrke', 'adriano-lenz', 'adriana', 'augusto-kauer'],
-      termos: ['dor', 'dores', 'dolorido', 'doendo', 'doi', 'cotovelo', 'joelho', 'ombro', 'costas', 'coluna', 'lombar', 'lombalgia', 'cervical', 'nuca', 'pescoco', 'punho', 'pulso', 'tornozelo', 'quadril', 'articulacao', 'articulacoes', 'muscular', 'musculo', 'tensao', 'torcicolo', 'lesao', 'tendinite', 'bursite', 'hernia de disco', 'nervo ciatico', 'ciatico', 'ciatica', 'travado', 'travada', 'contratura', 'fibromialgia', 'artrose', 'artrite', 'canelite', 'fascite', 'esporao', 'dormencia', 'formigamento', 'panturrilha', 'escapula', 'costela'] },
+      termos: ['dor', 'dores', 'dolorido', 'doendo', 'doi', 'cotovelo', 'joelho', 'ombro', 'costas', 'coluna', 'lombar', 'lombalgia', 'cervical', 'nuca', 'pescoco', 'punho', 'pulso', 'tornozelo', 'quadril', 'articulacao', 'articulacoes', 'muscular', 'musculo', 'tensao', 'torcicolo', 'lesao', 'tendinite', 'bursite', 'hernia de disco', 'nervo ciatico', 'ciatico', 'ciatica', 'travado', 'travada', 'contratura', 'fibromialgia', 'artrose', 'artrite', 'canelite', 'fascite', 'esporao', 'dormencia', 'formigamento', 'panturrilha', 'escapula', 'costela', 'entorse', 'entorses', 'distensao', 'estiramento', 'luxacao', 'menisco', 'ligamento', 'manguito rotador', 'fascite plantar', 'dor ao correr', 'dor no treino', 'lesao no joelho', 'dor no calcanhar', 'joanete'] },
     { id: 'postura-movimento', rotulo: 'postura e movimento', area: 'saude-integrativa',
       pros: ['natalie-queiroz', 'gustavo-gehrke', 'adriana'],
-      termos: ['postura', 'postural', 'escoliose', 'cifose', 'mobilidade', 'alongamento', 'reabilitacao', 'fisioterapia', 'fisioterapeuta', 'osteopatia', 'osteopata', 'quiropraxia', 'rpg', 'movimento limitado', 'amplitude'] },
+      termos: ['postura', 'postural', 'escoliose', 'cifose', 'mobilidade', 'alongamento', 'reabilitacao', 'fisioterapia', 'fisioterapeuta', 'osteopatia', 'osteopata', 'quiropraxia', 'rpg', 'movimento limitado', 'amplitude', 'ma postura', 'corcunda', 'ombros caidos', 'diastase'] },
     { id: 'bebe', rotulo: 'cuidado com bebês e amamentação', area: 'saude-integrativa',
       leitura: 'Você busca cuidado osteopático e de amamentação para o seu bebê.',
       pros: ['natalie-queiroz', 'jessica-stein'],
-      termos: ['osteopatia para bebe', 'osteopatia infantil', 'osteopata para bebe', 'bebe', 'bebes', 'recem nascido', 'recem-nascido', 'amamentacao', 'amamentar', 'pega no peito', 'colica do bebe', 'refluxo do bebe', 'torcicolo congenito', 'assimetria craniana', 'plagiocefalia'] },
+      termos: ['osteopatia para bebe', 'osteopatia infantil', 'osteopata para bebe', 'bebe', 'bebes', 'recem nascido', 'recem-nascido', 'amamentacao', 'amamentar', 'pega no peito', 'colica do bebe', 'refluxo do bebe', 'torcicolo congenito', 'assimetria craniana', 'plagiocefalia', 'meu bebe nao dorme', 'bebe chora muito', 'gases do bebe'] },
     { id: 'integrativa', rotulo: 'terapias integrativas', area: 'saude-integrativa',
       leitura: 'Você busca um cuidado complementar ao que já faz.',
       pros: ['adriana', 'camila-cadore', 'danusa-pires'],
-      termos: ['integrativa', 'integrativo', 'holistico', 'holistica', 'biorressonancia', 'terapia complementar', 'acupuntura', 'auriculoterapia', 'reiki', 'aromaterapia', 'enxaqueca', 'dor de cabeca', 'cefaleia', 'soroterapia', 'soro de vitaminas'] },
+      termos: ['integrativa', 'integrativo', 'holistico', 'holistica', 'biorressonancia', 'terapia complementar', 'acupuntura', 'auriculoterapia', 'reiki', 'aromaterapia', 'soroterapia', 'soro de vitaminas', 'terapias naturais', 'medicina alternativa', 'equilibrio energetico'] },
+    { id: 'enxaqueca', rotulo: 'dor de cabeça e enxaqueca', area: 'saude-integrativa',
+      leitura: 'Você quer tratar dores de cabeça que voltam sempre.',
+      pros: ['adriana', 'natalie-queiroz', 'gustavo-gehrke'],
+      termos: ['enxaqueca', 'dor de cabeca', 'cefaleia', 'migranea', 'dor atras dos olhos', 'cabeca latejando'] },
     { id: 'hormonal', rotulo: 'saúde hormonal', area: 'medicina',
       pros: ['gustavo-gehrke', 'adriano-lenz', 'verena-cattani', 'danusa-pires', 'camila-cadore'],
-      termos: ['hormonio', 'hormonal', 'hormonios', 'reposicao hormonal', 'implante hormonal', 'chip hormonal', 'menopausa', 'climaterio', 'perimenopausa', 'testosterona', 'estradiol', 'progesterona', 'tireoide', 'hipotireoidismo', 'hipertireoidismo', 'sop', 'ovario policistico', 'libido', 'andropausa', 'ciclo menstrual', 'menstruacao', 'tpm'] },
+      termos: ['hormonio', 'hormonal', 'hormonios', 'reposicao hormonal', 'implante hormonal', 'chip hormonal', 'menopausa', 'climaterio', 'perimenopausa', 'testosterona', 'estradiol', 'progesterona', 'tireoide', 'hipotireoidismo', 'hipertireoidismo', 'sop', 'ovario policistico', 'libido', 'andropausa', 'ciclo menstrual', 'menstruacao', 'tpm', 'ondas de calor', 'fogachos', 'calorao', 'caloroes', 'testosterona baixa', 'hashimoto', 'nodulo na tireoide', 'menstruacao atrasada'] },
     { id: 'metabolico', rotulo: 'metabolismo e peso', area: 'medicina',
       pros: ['gustavo-gehrke', 'jessica-stein', 'marvin-marques', 'daniel-forster', 'nasser-salem'],
-      termos: ['emagrecer', 'emagrecimento', 'perder peso', 'perda de peso', 'obesidade', 'sobrepeso', 'metabolismo', 'metabolico', 'caneta', 'canetas', 'ozempic', 'mounjaro', 'wegovy', 'saxenda', 'tirzepatida', 'semaglutida', 'compulsao por doce', 'efeito sanfona', 'gordura no figado', 'esteatose', 'resistencia a insulina'] },
+      termos: ['emagrecer', 'emagrecimento', 'perder peso', 'perda de peso', 'obesidade', 'sobrepeso', 'metabolismo', 'metabolico', 'caneta', 'canetas', 'ozempic', 'mounjaro', 'wegovy', 'saxenda', 'tirzepatida', 'semaglutida', 'compulsao por doce', 'efeito sanfona', 'resistencia a insulina', 'nao consigo emagrecer', 'engordando sem motivo', 'metabolismo lento', 'remedio para emagrecer', 'injecao para emagrecer'] },
+    { id: 'cardiometabolico', rotulo: 'saúde cardiometabólica', area: 'medicina',
+      leitura: 'Você quer cuidar de pressão, colesterol e glicose antes que virem problema maior.',
+      pros: ['gustavo-gehrke', 'marvin-marques', 'verena-cattani', 'daniel-forster'],
+      termos: ['pressao alta', 'hipertensao', 'colesterol', 'colesterol alto', 'triglicerideos', 'diabetes', 'pre diabetes', 'glicemia', 'glicose alta', 'acido urico', 'gordura no figado', 'esteatose', 'sindrome metabolica'] },
     { id: 'investigacao', rotulo: 'investigação clínica', area: 'medicina',
       pros: ['gustavo-gehrke', 'jessica-stein', 'adriano-lenz', 'maria-luisa-borges', 'verena-cattani'],
-      termos: ['exame', 'exames', 'check up', 'checkup', 'sangue', 'laboratorio', 'diagnostico', 'investigar', 'medico', 'medica', 'clinico geral', 'consulta medica', 'segunda opiniao', 'colesterol', 'diabetes', 'glicemia', 'pressao alta', 'hipertensao', 'anemia', 'vitamina', 'vitaminas', 'imunidade', 'infeccao', 'inflamacao', 'longevidade', 'envelhecimento', 'prevencao', 'doenca cronica'] },
+      termos: ['exame', 'exames', 'check up', 'checkup', 'sangue', 'laboratorio', 'diagnostico', 'investigar', 'medico', 'medica', 'clinico geral', 'consulta medica', 'segunda opiniao', 'infeccao', 'inflamacao', 'longevidade', 'envelhecimento', 'prevencao', 'doenca cronica', 'check up completo', 'exame de sangue alterado', 'exames alterados', 'hemograma'] },
+    { id: 'imunidade', rotulo: 'imunidade e vitaminas', area: 'medicina',
+      leitura: 'Você quer entender por que a imunidade anda baixa e repor o que falta.',
+      pros: ['gustavo-gehrke', 'adriano-lenz', 'danusa-pires', 'camila-cadore'],
+      termos: ['imunidade', 'imunidade baixa', 'gripes de repeticao', 'resfriados de repeticao', 'herpes de repeticao', 'vitamina', 'vitaminas', 'vitamina d', 'ferritina', 'ferritina baixa', 'anemia', 'carencia de vitaminas', 'deficiencia de vitamina'] },
     { id: 'energia-sono', rotulo: 'energia, sono e disposição', area: 'medicina',
       pros: ['gustavo-gehrke', 'danusa-pires', 'adriano-lenz', 'maria-luisa-borges', 'augusto-kauer'],
-      termos: ['cansaco', 'cansada', 'cansado', 'fadiga', 'exaustao', 'sem energia', 'disposicao', 'insonia', 'sono ruim', 'dormir mal', 'apneia', 'ronco', 'performance', 'rendimento'] },
+      termos: ['cansaco', 'cansada', 'cansado', 'fadiga', 'exaustao', 'sem energia', 'disposicao', 'insonia', 'sono ruim', 'dormir mal', 'apneia', 'ronco', 'performance', 'rendimento', 'nao consigo dormir', 'acordo cansado', 'sono picado', 'melatonina', 'sonolencia', 'indisposicao', 'sem disposicao', 'moleza'] },
+    { id: 'digestivo', rotulo: 'digestão e estômago', area: 'medicina',
+      leitura: 'Você quer resolver uma queixa digestiva que incomoda no dia a dia.',
+      pros: ['gustavo-gehrke', 'camila-cadore', 'verena-cattani', 'jessica-stein'],
+      termos: ['azia', 'queimacao', 'refluxo', 'gastrite', 'ma digestao', 'digestao', 'estomago', 'dor no estomago', 'enjoo', 'nausea', 'empachamento', 'arrotos', 'h pylori'] },
+    { id: 'saude-da-mulher', rotulo: 'saúde da mulher', area: 'medicina',
+      leitura: 'Você quer cuidar de ciclo, cólica e saúde feminina com investigação de verdade.',
+      pros: ['gustavo-gehrke', 'verena-cattani', 'camila-cadore', 'jessica-stein'],
+      termos: ['endometriose', 'colica menstrual', 'colicas menstruais', 'menstruacao irregular', 'ciclo irregular', 'candidiase de repeticao', 'fertilidade', 'dificuldade para engravidar', 'mioma'] },
+    { id: 'retencao', rotulo: 'inchaço e retenção de líquido', area: 'medicina',
+      leitura: 'Você quer entender e reduzir o inchaço que não vai embora.',
+      pros: ['gustavo-gehrke', 'camila-cadore', 'verena-cattani', 'danusa-pires'],
+      termos: ['inchaco', 'inchaco nas pernas', 'retencao de liquido', 'pernas inchadas', 'pes inchados', 'corpo inchado'] },
     { id: 'pele-clinica', rotulo: 'pele e rosto', area: 'estetica-facial',
       pros: ['vitoria-machado', 'renata-bohn-engel', 'tais-de-la-rosa', 'susan-flach', 'jennifer-adam'],
-      termos: ['pele', 'acne', 'espinha', 'espinhas', 'cravos', 'mancha', 'manchas', 'melasma', 'rosto', 'facial', 'face', 'dermatologista', 'dermatologia', 'skincare', 'poro', 'poros', 'peeling', 'melanose', 'rosacea', 'dermatite', 'cicatriz de acne'] },
+      termos: ['pele', 'acne', 'espinha', 'espinhas', 'cravos', 'mancha', 'manchas', 'melasma', 'rosto', 'facial', 'face', 'dermatologista', 'dermatologia', 'skincare', 'poro', 'poros', 'peeling', 'melanose', 'rosacea', 'dermatite', 'cicatriz de acne', 'pele oleosa', 'pele seca', 'pele sensivel', 'pinta', 'pintas', 'sinal na pele', 'verruga', 'psoriase', 'vitiligo', 'foliculite', 'alergia na pele', 'coceira na pele', 'limpeza de pele', 'microagulhamento', 'bolinhas no rosto', 'cicatriz'] },
     { id: 'harmonizacao', rotulo: 'harmonização facial', area: 'estetica-facial',
       pros: ['leticia-melo', 'tais-de-la-rosa', 'eduarda-schoenmeier', 'jamylle-farias', 'karine-ellwanger'],
-      termos: ['ruga', 'rugas', 'linhas de expressao', 'botox', 'toxina botulinica', 'preenchimento', 'acido hialuronico', 'harmonizacao facial', 'harmonizacao', 'hof', 'rejuvenescimento', 'flacidez facial', 'olheira', 'olheiras', 'labios', 'labio', 'bioestimulador'] },
+      termos: ['ruga', 'rugas', 'linhas de expressao', 'botox', 'toxina botulinica', 'preenchimento', 'acido hialuronico', 'harmonizacao facial', 'harmonizacao', 'hof', 'rejuvenescimento', 'flacidez facial', 'olheira', 'olheiras', 'labios', 'labio', 'bioestimulador', 'preenchimento labial', 'rinomodelacao', 'skinbooster', 'bigode chines', 'sorriso gengival', 'suor excessivo', 'hiperidrose', 'full face', 'fios de sustentacao', 'botox preventivo'] },
+    { id: 'atm-bruxismo', rotulo: 'bruxismo e ATM', area: 'estetica-facial',
+      leitura: 'Você quer alívio para o aperto e o desgaste do bruxismo.',
+      pros: ['jamylle-farias', 'leticia-melo', 'tais-de-la-rosa'],
+      termos: ['bruxismo', 'atm', 'ranger os dentes', 'apertar os dentes', 'dor na mandibula', 'mandibula estalando', 'disfuncao da atm'] },
     { id: 'corpo-estetica', rotulo: 'contorno corporal', area: 'estetica-corporal',
       pros: ['eduarda-schoenmeier', 'jennifer-adam', 'tais-de-la-rosa'],
       termos: ['flacidez na barriga', 'barriga flacida', 'secar a barriga', 'celulite', 'gordura localizada', 'contorno corporal', 'flacidez corporal', 'flacidez', 'bumbum', 'gluteo', 'gluteos', 'abdomen', 'culote', 'medidas', 'estrias', 'drenagem', 'massagem modeladora', 'papada'] },
     { id: 'cabelo', rotulo: 'saúde capilar', area: 'tricologia',
       pros: ['danusa-pires', 'yale-jeronimo', 'viviane-fagundes', 'susan-flach', 'larissa-wiebbelling'],
-      termos: ['cabelo caindo', 'caindo cabelo', 'cabelo', 'cabelos', 'queda de cabelo', 'queda capilar', 'calvicie', 'alopecia', 'alopecias', 'careca', 'couro cabeludo', 'capilar', 'tricologia', 'tricologista', 'caspa', 'dermatite seborreica', 'seborreia', 'fio', 'fios', 'rarefacao', 'entradas', 'afinamento', 'minoxidil', 'teste genetico capilar', 'coceira na cabeca', 'oleosidade no cabelo'] },
+      termos: ['cabelo caindo', 'caindo cabelo', 'cabelo', 'cabelos', 'queda de cabelo', 'queda capilar', 'calvicie', 'alopecia', 'alopecias', 'careca', 'couro cabeludo', 'capilar', 'tricologia', 'tricologista', 'caspa', 'dermatite seborreica', 'seborreia', 'fio', 'fios', 'rarefacao', 'entradas', 'afinamento', 'minoxidil', 'teste genetico capilar', 'coceira na cabeca', 'oleosidade no cabelo', 'alopecia areata', 'alopecia androgenetica', 'efluvio', 'efluvio telogeno', 'queda de cabelo pos parto', 'queda de cabelo feminina', 'cabelo quebrando', 'cabelo fino', 'cabelo ralo', 'calvicie masculina', 'calvicie feminina', 'coceira no couro cabeludo', 'descamacao', 'cabelo nao cresce'] },
     { id: 'transplante', rotulo: 'transplante capilar', area: 'transplante-capilar',
       pros: ['larissa-wiebbelling', 'yale-jeronimo', 'danusa-pires', 'viviane-fagundes'],
-      termos: ['transplante', 'transplante capilar', 'implante capilar', 'enxerto capilar', 'fue', 'cirurgia capilar', 'transplante de barba', 'transplante de sobrancelha', 'fio longo', 'sem raspagem'] },
+      termos: ['transplante', 'transplante capilar', 'implante capilar', 'enxerto capilar', 'fue', 'cirurgia capilar', 'transplante de barba', 'transplante de sobrancelha', 'fio longo', 'sem raspagem', 'transplante feminino', 'implante de cabelo', 'restauracao capilar'] },
     { id: 'alimentacao', rotulo: 'alimentação e nutrição', area: 'nutricao',
       pros: ['jessica-stein', 'marvin-marques', 'nasser-salem', 'verena-cattani', 'gabrieli-avila'],
-      termos: ['nutricao', 'nutricionista', 'dieta', 'alimentacao', 'comer', 'cardapio', 'intestino', 'intestinal', 'constipacao', 'prisao de ventre', 'refluxo', 'gastrite', 'intolerancia', 'lactose', 'gluten', 'suplemento', 'suplementacao', 'ortomolecular', 'endometriose', 'reeducacao alimentar'] },
+      termos: ['nutricao', 'nutricionista', 'dieta', 'alimentacao', 'comer', 'cardapio', 'intolerancia', 'lactose', 'gluten', 'suplemento', 'suplementacao', 'ortomolecular', 'reeducacao alimentar', 'alimentacao saudavel', 'dieta low carb', 'jejum intermitente', 'dieta cetogenica', 'perder barriga', 'pos bariatrica', 'bariatrica', 'plano alimentar', 'alergia alimentar', 'dieta flexivel'] },
+    { id: 'intestino', rotulo: 'saúde intestinal', area: 'nutricao',
+      leitura: 'Você quer um intestino que funcione sem drama.',
+      pros: ['camila-cadore', 'verena-cattani', 'jessica-stein', 'gustavo-gehrke', 'gabrieli-avila'],
+      termos: ['intestino', 'intestinal', 'intestino preso', 'constipacao', 'prisao de ventre', 'gases', 'estufamento', 'disbiose', 'sii', 'intestino irritavel', 'probiotico', 'probioticos', 'diarreia', 'barriga inchada'] },
     { id: 'hipertrofia', rotulo: 'massa muscular e performance', area: 'nutricao',
       pros: ['lara-caye', 'maria-luisa-borges', 'vitoria-serpa', 'giancarla-rochemback', 'daniel-forster'],
-      termos: ['hipertrofia', 'massa muscular', 'ganhar massa', 'ganho de massa', 'nutricao esportiva', 'dieta para treino', 'atleta', 'esportiva', 'creatina', 'whey', 'definicao muscular', 'bulking', 'cutting'] },
+      termos: ['hipertrofia', 'massa muscular', 'ganhar massa', 'ganho de massa', 'nutricao esportiva', 'dieta para treino', 'atleta', 'esportiva', 'creatina', 'whey', 'definicao muscular', 'bulking', 'cutting', 'ganhar peso', 'engordar com saude', 'dificuldade de engordar', 'muito magro', 'massa magra', 'melhorar no treino'] },
     { id: 'materno-infantil', rotulo: 'nutrição materno-infantil', area: 'nutricao',
       pros: ['jessica-stein', 'natalie-queiroz'],
-      termos: ['nutricao na gravidez', 'nutricao para gestante', 'nutricao infantil', 'nutricionista infantil', 'gestante', 'gravida', 'gestacao', 'gravidez', 'tentante', 'introducao alimentar', 'crianca', 'criancas', 'infantil', 'seletividade alimentar', 'meu filho nao come', 'lactacao'] },
+      termos: ['nutricao na gravidez', 'nutricao para gestante', 'nutricao infantil', 'nutricionista infantil', 'gestante', 'gravida', 'gestacao', 'gravidez', 'tentante', 'introducao alimentar', 'crianca', 'criancas', 'infantil', 'seletividade alimentar', 'meu filho nao come', 'lactacao', 'nutricao para criancas', 'meu filho so come besteira'] },
     { id: 'vegetariana', rotulo: 'alimentação vegetariana e vegana', area: 'nutricao',
       pros: ['jessica-stein', 'camila-cadore', 'verena-cattani', 'gabrieli-avila', 'daniel-forster'],
-      termos: ['vegetariano', 'vegetariana', 'vegano', 'vegana', 'veganismo', 'plant based', 'sem carne', 'b12'] },
+      termos: ['vegetariano', 'vegetariana', 'vegano', 'vegana', 'veganismo', 'plant based', 'sem carne', 'b12', 'proteina vegetal', 'dieta vegana', 'parar de comer carne'] },
     { id: 'comportamento-alimentar', rotulo: 'comportamento alimentar', area: 'nutricao',
       pros: ['gabrieli-avila', 'francielle-beria', 'manuela-vanti', 'jessica-stein', 'marvin-marques'],
-      termos: ['compulsao alimentar', 'compulsao', 'beliscar', 'ansiedade e comida', 'comer emocional', 'relacao com a comida', 'transtorno alimentar'] },
+      termos: ['compulsao alimentar', 'compulsao', 'beliscar', 'ansiedade e comida', 'comer emocional', 'relacao com a comida', 'transtorno alimentar', 'comer escondido', 'descontar na comida', 'fome emocional', 'vicio em doce', 'beliscando o dia todo'] },
     { id: 'psico-esporte', rotulo: 'psicologia do esporte', area: 'saude-mental',
       leitura: 'Você busca preparo mental para treinar e competir melhor.',
       pros: ['augusto-kauer'],
-      termos: ['psicologia do esporte', 'psicologo do esporte', 'psicologa do esporte', 'psicologia esportiva', 'pressao em competicao', 'ansiedade pre competicao', 'mentalidade de atleta', 'desempenho mental'] },
+      termos: ['psicologia do esporte', 'psicologo do esporte', 'psicologa do esporte', 'psicologia esportiva', 'pressao em competicao', 'ansiedade pre competicao', 'mentalidade de atleta', 'desempenho mental', 'medo de competir', 'nervosismo em competicao', 'psicologo esportivo'] },
     { id: 'mente', rotulo: 'saúde mental', area: 'saude-mental',
       pros: ['francielle-beria', 'manuela-vanti', 'augusto-kauer', 'adriana', 'gabrieli-avila'],
-      termos: ['perdi minha mae', 'perdi meu pai', 'falecimento', 'nao aguento mais', 'nao to conseguindo', 'nao estou conseguindo', 'cansado da cabeca', 'cansada da cabeca', 'esgotado', 'esgotada', 'depressao pos parto', 'depresao', 'anciedade', 'ansiedade', 'ansioso', 'ansiosa', 'depressao', 'deprimido', 'deprimida', 'terapia', 'psicologo', 'psicologa', 'psicologia', 'psicoterapia', 'mente', 'emocional', 'estresse', 'stress', 'burnout', 'esgotamento', 'luto', 'panico', 'sindrome do panico', 'autoestima', 'neuropsicologia', 'tdah', 'tristeza', 'angustia', 'medo', 'fobia', 'relacionamento', 'separacao', 'divorcio', 'autoconhecimento', 'crise'] }
+      termos: ['perdi minha mae', 'perdi meu pai', 'falecimento', 'nao aguento mais', 'nao to conseguindo', 'nao estou conseguindo', 'cansado da cabeca', 'cansada da cabeca', 'esgotado', 'esgotada', 'depressao pos parto', 'depresao', 'anciedade', 'ansiedade', 'ansioso', 'ansiosa', 'depressao', 'deprimido', 'deprimida', 'terapia', 'psicologo', 'psicologa', 'psicologia', 'psicoterapia', 'mente', 'emocional', 'estresse', 'stress', 'burnout', 'esgotamento', 'luto', 'panico', 'sindrome do panico', 'autoestima', 'neuropsicologia', 'tdah', 'tristeza', 'angustia', 'medo', 'fobia', 'relacionamento', 'separacao', 'divorcio', 'autoconhecimento', 'crise', 'crise de ansiedade', 'ataque de panico', 'transtorno de ansiedade', 'ansiedade generalizada', 'toc', 'fobia social', 'timidez', 'procrastinacao', 'sindrome do impostor', 'dependencia emocional', 'termino de namoro', 'nervosismo', 'desmotivacao', 'apatia', 'solidao', 'insonia por ansiedade', 'mente acelerada', 'pensamentos acelerados', 'preocupacao excessiva', 'cansaco mental', 'saude mental'] }
   ];
 
   /* porta de investigacao: queixa de saude nao mapeada nunca fica sem resposta */
@@ -1057,6 +1091,53 @@ class Component extends DCLogic {
       'adriana': 'Com terapias integrativas, Adriana oferece um cuidado complementar ao processo terapêutico, trabalhando o equilíbrio do organismo.',
       'gabrieli-avila': 'Na nutrição comportamental, Gabrieli entra quando a ansiedade atravessa a alimentação.'
     },
+    enxaqueca: {
+      'adriana': 'Com biorressonância e terapias integrativas, Adriana trabalha gatilhos e o equilíbrio do organismo nas dores de cabeça recorrentes.',
+      'natalie-queiroz': 'Através da osteopatia, Natálie trata tensões de pescoço e crânio que alimentam dores de cabeça e enxaqueca.',
+      'gustavo-gehrke': 'Gustavo investiga a dor de cabeça com anamnese e exames, afastando causas que precisam de tratamento médico.'
+    },
+    cardiometabolico: {
+      'gustavo-gehrke': 'Gustavo acompanha pressão, colesterol e glicose com avaliação médica e exames, tratando antes que vire doença maior.',
+      'marvin-marques': 'Na nutrição clínica, Marvin monta o plano alimentar para baixar colesterol e glicose de forma sustentável.',
+      'verena-cattani': 'Na nutrição clínica, Verena ajusta a alimentação do dia a dia para proteger coração e metabolismo.',
+      'daniel-forster': 'Na nutrição clínica e esportiva, Daniel une alimentação e movimento para melhorar os seus marcadores.'
+    },
+    imunidade: {
+      'gustavo-gehrke': 'Gustavo investiga imunidade baixa e carências de vitaminas com anamnese e exames, e trata a causa.',
+      'adriano-lenz': 'Pela nutrição ortomolecular, Adriano repõe vitaminas e minerais em falta com alimentação e suplementação.',
+      'danusa-pires': 'Danusa realiza a reposição de nutrientes por soroterapia, indicada a partir de avaliação e exames.',
+      'camila-cadore': 'Na nutrição funcional, Camila fortalece a imunidade cuidando de alimentação, intestino e rotina.'
+    },
+    digestivo: {
+      'gustavo-gehrke': 'Gustavo investiga azia, refluxo e queixas do estômago com anamnese e exames, tratando a causa e não só o sintoma.',
+      'camila-cadore': 'Na nutrição funcional, Camila ajusta a alimentação para acalmar a digestão, do estômago ao intestino.',
+      'verena-cattani': 'Na nutrição clínica, Verena monta um plano alimentar que respeita a sua digestão no dia a dia.',
+      'jessica-stein': 'Na nutrição clínica, Jessica adapta refeições e horários para reduzir refluxo e má digestão.'
+    },
+    'saude-da-mulher': {
+      'gustavo-gehrke': 'Gustavo investiga cólica forte, ciclo irregular e endometriose com anamnese e exames, e conduz o tratamento.',
+      'verena-cattani': 'Na nutrição clínica, Verena adapta a alimentação aos ciclos e às fases da saúde da mulher.',
+      'camila-cadore': 'Na nutrição funcional, Camila trabalha alimentação e rotina como apoio no cuidado de endometriose e ciclos difíceis.',
+      'jessica-stein': 'Na nutrição clínica, Jessica acompanha da tentante à gestante, ajustando o plano a cada fase.'
+    },
+    retencao: {
+      'gustavo-gehrke': 'Gustavo investiga o inchaço com anamnese e exames, afastando causas hormonais, renais e circulatórias.',
+      'camila-cadore': 'Na nutrição funcional, Camila ajusta sal, hidratação e alimentação para reduzir a retenção.',
+      'verena-cattani': 'Na nutrição clínica, Verena organiza o dia a dia alimentar para desinchar de forma consistente.',
+      'danusa-pires': 'Danusa complementa o cuidado com reposição de nutrientes por soroterapia, quando indicada por avaliação.'
+    },
+    intestino: {
+      'camila-cadore': 'Na nutrição funcional e integrativa, Camila investiga intestino preso, gases e desconforto, trabalhando a causa pela alimentação.',
+      'verena-cattani': 'Na nutrição clínica, Verena organiza fibras, água e rotina para o intestino voltar a funcionar.',
+      'jessica-stein': 'Na nutrição clínica, Jessica ajusta o plano alimentar para regularizar o intestino sem radicalismo.',
+      'gustavo-gehrke': 'Gustavo entra com anamnese e exames quando o intestino pede avaliação médica.',
+      'gabrieli-avila': 'Na nutrição comportamental, Gabrieli trabalha os hábitos que atrapalham a rotina intestinal.'
+    },
+    'atm-bruxismo': {
+      'jamylle-farias': 'Cirurgiã-dentista, Jamylle avalia bruxismo e ATM com domínio da anatomia da face, e conduz o tratamento adequado.',
+      'leticia-melo': 'Na harmonização orofacial, Letícia usa toxina para aliviar a tensão do aperto e do ranger dos dentes, quando indicado.',
+      'tais-de-la-rosa': 'Na harmonização orofacial, Tais avalia a musculatura da face e monta o plano de alívio e manutenção.'
+    },
     geral: {
       'gustavo-gehrke': 'Gustavo investiga a sua queixa através da anamnese, do exame físico quando necessário e de exames complementares, e encaminha dentro da casa quando outra área for o caminho.'
     }
@@ -1186,6 +1267,13 @@ class Component extends DCLogic {
 
   /* ── estado ── */
   var s = { modo: null, passo: 0, respostas: {}, texto: '', grupo: null, frase: '' };
+
+  /* no celular a experiencia e outra: linhas compactas com rosto, nome e o
+     porque da indicacao, sem os quadros grandes do desktop */
+  var mqMovel = window.matchMedia('(max-width:700px)');
+  var aoMudarMovel = function () { if (s.modo) render(); };
+  if (mqMovel.addEventListener) mqMovel.addEventListener('change', aoMudarMovel);
+  else if (mqMovel.addListener) mqMovel.addListener(aoMudarMovel);
 
   var telaEscolha = document.querySelector('[data-match-escolha]');
   if (!telaEscolha) return;
@@ -1348,37 +1436,72 @@ class Component extends DCLogic {
 
   /* ── resultado ── */
 
-  /* card do almanaque: foto pequena focada no rosto (object-position no topo,
-     para nunca cortar a cabeça), nome, profissão e registro, e o texto do que
-     este profissional faz para este bloco de queixa. */
-  function cardResultado(p, grupo, i) {
-    var registro = p.estado === 'a-adicionar' ? '' : p.registro;
+  function waCard(p, grupo) {
+    var msg = grupo && grupo.rotulo
+      ? 'Olá! Usei o ecooa.match no site sobre ' + grupo.rotulo + ' e gostaria de agendar uma consulta com ' + p.nome + '. Poderiam me orientar sobre os próximos passos?'
+      : 'Olá! Usei o ecooa.match no site e gostaria de agendar uma consulta com ' + p.nome + '. Poderiam me orientar sobre os próximos passos?';
+    return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+  }
+  function textoDe(p, grupo) {
     var texto = (grupo && grupo.id && TEXTOS[grupo.id] && TEXTOS[grupo.id][p.slug]) || null;
     if (!texto) {
       var bio1 = String(p.bio || '').split(/(?<=\.)\s/)[0] || '';
       texto = p.primeiro + ' atua com ' + p.area + '. ' + bio1;
     }
-    var area = grupo ? grupo.area : null;
-    var card = el('div', 'background:#FAF9F7; box-shadow:0 0 0 1px #DEDCD6; padding:clamp(18px,2.6vw,30px); display:flex; gap:clamp(14px,2vw,24px); align-items:flex-start;');
-    card.appendChild(el('span', 'flex:0 0 auto; padding-top:2px; font-family:var(--serif); font-size:13px; color:#8C8A84;', ['0' + (i + 1)]));
-    var moldura = el('span', 'display:block; flex:0 0 clamp(72px,9vw,96px); width:clamp(72px,9vw,96px); aspect-ratio:1; position:relative; overflow:hidden; background:#E9E7E2;');
+    return texto;
+  }
+  function fotoDe(p, tamanho) {
+    var moldura = el('span', 'display:block; flex:0 0 ' + tamanho + '; width:' + tamanho + '; aspect-ratio:1; position:relative; overflow:hidden; background:#E9E7E2;');
     if (p.foto) {
       var img = document.createElement('img');
       img.src = p.foto; img.alt = 'Retrato de ' + p.nome; img.loading = 'lazy';
       img.style.cssText = 'position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);';
       moldura.appendChild(img);
     }
+    return moldura;
+  }
+
+  /* card compacto do celular: rosto redondo, nome e o porque, em linhas */
+  function cardMovel(p, grupo, i) {
+    var registro = p.estado === 'a-adicionar' ? '' : p.registro;
+    var card = el('div', 'padding:18px 0 20px; display:flex; gap:14px; align-items:flex-start; border-top:1px solid #E3E1DB;');
+    var moldura = fotoDe(p, '58px');
+    moldura.style.borderRadius = '50%';
     card.appendChild(moldura);
+    var corpo = el('span', 'display:block; flex:1 1 0; min-width:0;');
+    var linhaNome = el('span', 'display:flex; align-items:baseline; gap:8px;');
+    linhaNome.appendChild(el('span', 'font-size:10px; letter-spacing:.14em; color:#8C8A84;', ['0' + (i + 1)]));
+    linhaNome.appendChild(el('span', 'font-family:var(--serif); font-size:17.5px; line-height:1.18; color:#46443F;', [p.nome]));
+    corpo.appendChild(linhaNome);
+    corpo.appendChild(el('span', 'display:block; margin-top:4px; font-size:9px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:#5C5A55;', [p.classe + (registro ? ' · ' + registro : '')]));
+    corpo.appendChild(el('span', 'display:block; margin-top:8px; font-size:13px; line-height:1.58; color:#66645E;', [textoDe(p, grupo)]));
+    var ag = document.createElement('a');
+    ag.href = waCard(p, grupo);
+    ag.target = '_blank'; ag.rel = 'noopener noreferrer';
+    ag.style.cssText = 'display:inline-flex; align-items:center; margin-top:12px; min-height:38px; padding:0 18px; border-radius:999px; background:#63615C; color:#F0EEE9; font-size:10px; letter-spacing:.13em;';
+    ag.textContent = 'agendar com ' + p.primeiro;
+    corpo.appendChild(ag);
+    card.appendChild(corpo);
+    return card;
+  }
+
+  /* card do almanaque no desktop: foto pequena focada no rosto (object-position
+     no topo, para nunca cortar a cabeça), nome, profissão e registro, e o texto
+     do que este profissional faz para este bloco de queixa. */
+  function cardResultado(p, grupo, i) {
+    if (mqMovel.matches) return cardMovel(p, grupo, i);
+    var registro = p.estado === 'a-adicionar' ? '' : p.registro;
+    var area = grupo ? grupo.area : null;
+    var card = el('div', 'background:#FAF9F7; box-shadow:0 0 0 1px #DEDCD6; padding:clamp(18px,2.6vw,30px); display:flex; gap:clamp(14px,2vw,24px); align-items:flex-start;');
+    card.appendChild(el('span', 'flex:0 0 auto; padding-top:2px; font-family:var(--serif); font-size:13px; color:#8C8A84;', ['0' + (i + 1)]));
+    card.appendChild(fotoDe(p, 'clamp(72px,9vw,96px)'));
     var corpo = el('span', 'display:block; flex:1 1 180px; min-width:0;');
     corpo.appendChild(el('span', 'display:block; font-family:var(--serif); font-size:clamp(19px,2vw,22px); line-height:1.14; color:#46443F;', [p.nome]));
     corpo.appendChild(el('span', 'display:block; margin-top:6px; font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:#5C5A55;', [p.classe + (registro ? ' · ' + registro : '') + (p.marca ? ' · ' + p.marca : '')]));
-    corpo.appendChild(el('span', 'display:block; margin-top:10px; max-width:64ch; font-size:14px; line-height:1.66; color:#66645E;', [texto]));
+    corpo.appendChild(el('span', 'display:block; margin-top:10px; max-width:64ch; font-size:14px; line-height:1.66; color:#66645E;', [textoDe(p, grupo)]));
     var acoes = el('span', 'display:flex; flex-wrap:wrap; align-items:center; gap:8px 16px; margin-top:14px;');
     var ag = document.createElement('a');
-    var msg = grupo && grupo.rotulo
-      ? 'Olá! Usei o ecooa.match no site sobre ' + grupo.rotulo + ' e gostaria de agendar uma consulta com ' + p.nome + '. Poderiam me orientar sobre os próximos passos?'
-      : 'Olá! Usei o ecooa.match no site e gostaria de agendar uma consulta com ' + p.nome + '. Poderiam me orientar sobre os próximos passos?';
-    ag.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+    ag.href = waCard(p, grupo);
     ag.target = '_blank'; ag.rel = 'noopener noreferrer';
     ag.style.cssText = 'display:inline-flex; align-items:center; min-height:42px; padding:0 22px; border-radius:999px; background:#63615C; color:#F0EEE9; font-size:10.5px; letter-spacing:.14em;';
     ag.textContent = 'agendar com ' + p.primeiro;
@@ -1516,14 +1639,16 @@ class Component extends DCLogic {
         [online ? 'Priorizamos quem atende também no formato online, como você pediu.' : 'Na ordem indicada pela casa para a sua queixa, com o que cada um faz por ela.']));
       sec.appendChild(cab);
       var faixa = el('div', 'padding:0 clamp(20px,3.2vw,56px); max-width:1600px; margin:0 auto;');
-      var lista = el('div', 'display:grid; grid-template-columns:1fr; gap:1px; max-width:1040px; border-top:1px solid #DEDCD6; border-bottom:1px solid #DEDCD6; background:#FAF9F7;');
+      var lista = el('div', mqMovel.matches
+        ? 'display:block; border-bottom:1px solid #E3E1DB;'
+        : 'display:grid; grid-template-columns:1fr; gap:1px; max-width:1040px; border-top:1px solid #DEDCD6; border-bottom:1px solid #DEDCD6; background:#FAF9F7;');
       visiveis.forEach(function (p, i) { lista.appendChild(cardResultado(p, grupo, i)); });
       faixa.appendChild(lista);
-      if (pool.length > LIMITE || (grupo.id === 'perguntas' && grupo.area)) {
+      if (pool.length > LIMITE || (grupo.id === 'perguntas' && grupo.area) || mqMovel.matches) {
         var mais = document.createElement('a');
         mais.href = 'especialidades/' + grupo.area + '/';
         mais.style.cssText = 'display:inline-flex; align-items:center; margin-top:18px; font-size:11.5px; letter-spacing:.1em; color:#5C5A55; text-decoration:underline; text-underline-offset:4px;';
-        mais.textContent = 'ver todos os profissionais desta área →';
+        mais.textContent = 'entenda esta área · todos os profissionais →';
         faixa.appendChild(mais);
       }
       sec.appendChild(faixa);
