@@ -322,6 +322,30 @@ console.log('Medicao:');
   else ok('GTM so carrega apos gesto do visitante ou 4s');
 }
 
+/* ── 10. acessibilidade estrutural (P09) ──────────────────────────── */
+console.log('Acessibilidade:');
+{
+  const semMain = [...html].filter(([, s]) => !/<main id="conteudo"/.test(s));
+  if (semMain.length) erro(`sem landmark main: ${semMain.map(([f]) => f).join(', ')}`);
+  else ok(`main unico em todas as ${html.size} paginas`);
+
+  const semPular = [...html].filter(([, s]) => !s.includes('class="ec-pular"'));
+  if (semPular.length) erro(`sem link de pular navegacao: ${semPular.map(([f]) => f).join(', ')}`);
+  else ok('link de pular para o conteudo em todas');
+
+  /* o anel de foco fraco nao pode voltar: media 1,45:1 */
+  const foscas = [...html].filter(([, s]) => /outline:\s*2px solid #C6C4BF/i.test(s));
+  if (foscas.length) erro(`anel de foco de baixo contraste em: ${foscas.map(([f]) => f).join(', ')}`);
+  else ok('anel de foco com contraste suficiente');
+
+  const matchPg = html.get('qual-profissional-procurar.html') || '';
+  if (!/role', 'combobox'|role="combobox"/.test(matchPg))
+    erro('campo de busca do match sem semantica de combobox');
+  else ok('autocomplete do match com semantica de combobox');
+  if (!/aria-live/.test(matchPg)) erro('match sem regiao viva para anunciar o resultado');
+  else ok('resultado do match anunciado por regiao viva');
+}
+
 console.log('');
 if (falhas) {
   console.error(`FALHOU: ${falhas} violacao(oes).`);

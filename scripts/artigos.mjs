@@ -7,6 +7,7 @@
 // Roda DEPOIS de limpeza.mjs. Uso: node scripts/artigos.mjs
 import fs from 'node:fs';
 import path from 'node:path';
+import { CORPOS } from './corpos-artigos.mjs';
 
 const RAIZ = '/home/user/ecooa-website';
 const DEPLOY = path.join(RAIZ, 'deploy');
@@ -52,12 +53,21 @@ function paginaArtigo(a) {
   const url = `${DOMINIO}/blog/${a.slug}/`;
   const au = autorDe(a.autor);
   const registro = au ? (au.estado === 'a-adicionar' ? '' : au.registro) : '';
-  const corpoHtml = (a.corpo || [])
-    .map(([tipo, texto]) =>
-      tipo === 'h'
-        ? `<h2 style="margin:40px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.4vw,32px); line-height:1.16; color:var(--tinta);">${esc(texto)}</h2>`
-        : `<p style="margin:20px 0 0; font-size:16.5px; line-height:1.78; color:var(--muted);">${esc(texto)}</p>`
-    )
+  /* O corpo vive em scripts/corpos-artigos.mjs, que só existe em tempo de
+     geração. Antes ele morava em deploy/dados-ecooa.js, arquivo carregado em
+     TODA página do site: colocar 14 textos longos ali engordaria o site
+     inteiro para servir o texto de uma página só. */
+  const blocos = CORPOS[a.slug] || a.corpo || [];
+  const corpoHtml = blocos
+    .map(([tipo, texto]) => {
+      if (tipo === 'h') {
+        return `<h2 style="margin:40px 0 0; font-family:var(--serif); font-weight:400; font-size:clamp(22px,2.4vw,32px); line-height:1.16; color:var(--tinta);">${esc(texto)}</h2>`;
+      }
+      if (tipo === 'destaque') {
+        return `<p style="margin:34px 0 6px; padding:22px 26px; background:var(--nuvem); border-left:2px solid var(--aluminio); font-family:var(--serif); font-size:clamp(19px,2vw,24px); line-height:1.42; color:var(--tinta);">${esc(texto)}</p>`;
+      }
+      return `<p style="margin:20px 0 0; font-size:16.5px; line-height:1.78; color:var(--muted);">${esc(texto)}</p>`;
+    })
     .join('\n      ');
 
   const relacionados = ECOOA.artigos

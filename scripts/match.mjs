@@ -215,6 +215,15 @@ const JS = String.raw`
   var palco = document.createElement('div');
   telaEscolha.parentNode.insertBefore(palco, telaEscolha.nextSibling);
 
+  /* o resultado da busca troca sem recarregar a pagina. Sem uma regiao viva,
+     quem usa leitor de tela nao fica sabendo que alguma coisa mudou. */
+  var locutor = document.createElement('p');
+  locutor.setAttribute('role', 'status');
+  locutor.setAttribute('aria-live', 'polite');
+  locutor.style.cssText = 'position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;';
+  palco.parentNode.insertBefore(locutor, palco);
+  function anuncia(t) { locutor.textContent = t; }
+
   function el(tag, estilo, filhos) {
     var n = document.createElement(tag);
     if (estilo) n.style.cssText = estilo;
@@ -243,30 +252,65 @@ const JS = String.raw`
   function campoBusca(valor, aoEnviar, aoGuiar) {
     var form = el('form', 'display:flex; flex-wrap:wrap; gap:12px; align-items:center;');
     var wrap = el('div', 'position:relative; flex:1 1 320px;');
+    /* rotulo real, escondido visualmente: leitor de tela precisa saber o que
+       o campo pede, e placeholder nao e rotulo (WCAG 3.3.2) */
+    var rot = el('label', 'position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;', ['Descreva a sua queixa ou o procedimento que procura']);
+    rot.setAttribute('for', 'ec-queixa');
+    wrap.appendChild(rot);
     var campo = document.createElement('input');
     campo.type = 'text';
     campo.id = 'ec-queixa';
     campo.placeholder = 'digite sua queixa, o procedimento que quer conhecer ou uma palavra-chave';
     campo.autocomplete = 'off';
+    /* semantica de combobox: sem ela o painel de sugestoes nao existe para
+       quem usa leitor de tela (WCAG 4.1.2) */
+    campo.setAttribute('role', 'combobox');
+    campo.setAttribute('aria-expanded', 'false');
+    campo.setAttribute('aria-controls', 'ec-sugestoes-painel');
+    campo.setAttribute('aria-autocomplete', 'list');
+    campo.setAttribute('aria-haspopup', 'listbox');
     campo.style.cssText = CAMPO;
     campo.value = valor || '';
     wrap.appendChild(campo);
-    var painel = el('div', 'position:absolute; left:0; right:0; top:calc(100% + 10px); z-index:60; display:none; padding:8px; border-radius:18px; background:rgba(253,253,252,.68); -webkit-backdrop-filter:blur(18px) saturate(1.5); backdrop-filter:blur(18px) saturate(1.5); box-shadow:0 24px 48px rgba(70,68,63,.18), 0 2px 8px rgba(70,68,63,.08), inset 0 0 0 1px rgba(255,255,255,.6);');
+    var painel = el('div', 'position:absolute; left:0; right:0; top:calc(100% + 10px); z-index:60; display:none; padding:8px; border-radius:18px; background:rgba(253,253,252,.86); -webkit-backdrop-filter:blur(18px) saturate(1.5); backdrop-filter:blur(18px) saturate(1.5); box-shadow:0 24px 48px rgba(70,68,63,.18), 0 2px 8px rgba(70,68,63,.08), inset 0 0 0 1px rgba(255,255,255,.6);');
+    painel.id = 'ec-sugestoes-painel';
+    painel.setAttribute('role', 'listbox');
+    painel.setAttribute('aria-label', 'Sugestões de queixa');
     wrap.appendChild(painel);
+    /* aviso para leitor de tela: quantas sugestoes apareceram (WCAG 4.1.3) */
+    var aviso = el('span', 'position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;');
+    aviso.setAttribute('aria-live', 'polite');
+    wrap.appendChild(aviso);
     var itens = [];
     var foco = -1;
-    function fecha() { painel.style.display = 'none'; painel.innerHTML = ''; itens = []; foco = -1; }
+    function fecha() {
+      painel.style.display = 'none';
+      painel.innerHTML = '';
+      itens = [];
+      foco = -1;
+      campo.setAttribute('aria-expanded', 'false');
+      campo.removeAttribute('aria-activedescendant');
+    }
     function pinta() {
       itens.forEach(function (b, i) {
-        b.style.background = i === foco ? 'rgba(233,231,226,.92)' : 'transparent';
+        var ativo = i === foco;
+        /* contraste real do realce: o cinza anterior ficava em 1,2:1 */
+        b.style.background = ativo ? '#DAD7D0' : 'transparent';
+        b.style.boxShadow = ativo ? 'inset 0 0 0 1px #8C8A84' : 'none';
+        b.setAttribute('aria-selected', ativo ? 'true' : 'false');
+        if (ativo) campo.setAttribute('aria-activedescendant', b.id);
       });
+      if (foco < 0) campo.removeAttribute('aria-activedescendant');
     }
     function abre(lista) {
       painel.innerHTML = '';
       itens = []; foco = -1;
-      lista.forEach(function (t) {
+      lista.forEach(function (t, i) {
         var b = el('button', 'display:block; width:100%; text-align:left; border:0; cursor:pointer; padding:11px 14px; border-radius:12px; background:transparent; font-family:var(--sans); font-size:14.5px; line-height:1.4; color:#46443F;', [t]);
         b.type = 'button';
+        b.id = 'ec-sug-' + i;
+        b.setAttribute('role', 'option');
+        b.setAttribute('aria-selected', 'false');
         b.addEventListener('mousedown', function (e) { e.preventDefault(); });
         b.addEventListener('click', function () {
           campo.value = t; s.texto = t; fecha(); aoEnviar(t);
@@ -276,6 +320,10 @@ const JS = String.raw`
         itens.push(b);
       });
       painel.style.display = lista.length ? 'block' : 'none';
+      campo.setAttribute('aria-expanded', lista.length ? 'true' : 'false');
+      aviso.textContent = lista.length
+        ? lista.length + (lista.length === 1 ? ' sugestão disponível' : ' sugestões disponíveis')
+        : '';
     }
     function sugere() {
       var q = normaliza(campo.value).trim();
@@ -290,7 +338,12 @@ const JS = String.raw`
     }
     campo.addEventListener('input', function () { s.texto = campo.value; sugere(); });
     campo.addEventListener('focus', sugere);
-    campo.addEventListener('blur', function () { setTimeout(fecha, 140); });
+    /* so fecha quando o foco sai de verdade do conjunto campo mais painel:
+       o setTimeout anterior derrubava o painel mesmo quando o foco ia para
+       uma sugestao, e jogava o teclado de volta ao corpo da pagina */
+    wrap.addEventListener('focusout', function (e) {
+      if (!wrap.contains(e.relatedTarget)) fecha();
+    });
     campo.addEventListener('keydown', function (e) {
       if (painel.style.display === 'none') return;
       if (e.key === 'ArrowDown') { e.preventDefault(); foco = (foco + 1) % itens.length; pinta(); }
@@ -567,6 +620,7 @@ const JS = String.raw`
       /* texto sem sentido: pede outra frase, com o campo ja acima */
       carta.appendChild(el('span', 'display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['o que entendemos']));
       carta.appendChild(el('p', 'margin:22px 0 0; max-width:40ch; font-family:var(--serif); font-size:clamp(24px,2.8vw,38px); line-height:1.16; color:#46443F;', ['Não consegui ler a sua frase. Pode tentar de novo?']));
+      anuncia('Não consegui ler a sua frase. Tente com outras palavras ou responda as perguntas guiadas.');
       carta.appendChild(el('p', 'margin:22px 0 0; max-width:64ch; font-size:15.5px; line-height:1.7; color:#66645E;', ['Edite o texto acima com outras palavras, escolha um exemplo, ou responda as perguntas guiadas. A recepção também resolve na hora.']));
       var acoes0 = el('div', 'margin-top:28px; display:flex; flex-wrap:wrap; gap:14px;');
       var pg0 = el('button', BTN_CHEIO, ['responder as perguntas']);
@@ -633,6 +687,12 @@ const JS = String.raw`
     /* profissionais indicados, formato almanaque */
     var pool = poolDe(grupo, online);
     var visiveis = pool.slice(0, LIMITE);
+    anuncia(
+      visiveis.length
+        ? 'Resultado pronto: ' + (grupo.rotulo ? grupo.rotulo + '. ' : '') + visiveis.length +
+            (visiveis.length === 1 ? ' profissional indicado.' : ' profissionais indicados.')
+        : 'Nenhum profissional indicado para esta busca.'
+    );
     if (visiveis.length) {
       var sec = el('section', 'background:#FAF9F7; padding-bottom:clamp(56px,7vw,100px);');
       var cab = el('div', 'padding:clamp(48px,6vw,96px) clamp(20px,3.2vw,56px) clamp(30px,4vw,48px); max-width:1600px; margin:0 auto;');

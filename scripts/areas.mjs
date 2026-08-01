@@ -142,6 +142,17 @@ function paginaArea(a) {
     </div>
   </section>
 
+${
+    (a.intro || []).length
+      ? `
+  <section style="padding:clamp(40px,5vw,72px) clamp(20px,3.2vw,56px); background:var(--fundo);">
+    <div style="max-width:760px; margin:0 auto;">
+      ${a.intro.map((t) => `<p style="margin:0 0 20px; font-size:17px; line-height:1.76; color:var(--muted);">${esc(t)}</p>`).join('\n      ')}
+    </div>
+  </section>`
+      : ''
+  }
+
   <section style="padding:clamp(40px,5vw,72px) clamp(20px,3.2vw,56px); background:var(--nuvem);">
     <div style="max-width:1180px; margin:0 auto;">
       <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Para quem é esta área</h2>
@@ -161,7 +172,26 @@ function paginaArea(a) {
     </div>
   </section>
 
-  <section id="profissionais" style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--nuvem);">
+${
+    (a.comoFunciona || []).length
+      ? `
+  <section style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--nuvem);">
+    <div style="max-width:1180px; margin:0 auto;">
+      <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Como funciona, do primeiro contato ao acompanhamento</h2>
+      <ol style="margin:30px 0 0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; counter-reset:etapa;">
+        ${a.comoFunciona
+          .map(
+            ([t, d], i) =>
+              `<li style="padding:26px 28px; background:var(--fundo); box-shadow:var(--relevo-carta);"><span style="display:block; font-family:var(--serif); font-size:13px; color:var(--legenda);">0${i + 1}</span><h3 style="margin:12px 0 0; font-family:var(--serif); font-weight:400; font-size:19px; line-height:1.2; color:var(--tinta);">${esc(t)}</h3><p style="margin:10px 0 0; font-size:14.5px; line-height:1.66; color:var(--muted);">${esc(d)}</p></li>`
+          )
+          .join('\n        ')}
+      </ol>
+    </div>
+  </section>`
+      : ''
+  }
+
+  <section id="profissionais" style="padding:clamp(48px,6vw,88px) clamp(20px,3.2vw,56px); background:var(--fundo);">
     <div style="max-width:1180px; margin:0 auto;">
       <h2 style="margin:0; font-family:var(--serif); font-weight:400; font-size:clamp(24px,2.8vw,38px); line-height:1.08; color:var(--tinta);">Quem atende em ${esc(a.nome.toLowerCase())}</h2>
       <p style="margin:14px 0 0; max-width:60ch; font-size:14.5px; line-height:1.66; color:var(--legenda);">Cada profissional é autônomo e responde tecnicamente pelo próprio trabalho. Toque em um perfil para conhecer e agendar.</p>
