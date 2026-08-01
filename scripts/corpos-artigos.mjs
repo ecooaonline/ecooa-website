@@ -951,5 +951,287 @@ export const CORPOS = {
       "p",
       "Se a avaliação apontar que o caminho é outro, isso é dito com todas as letras, e também é um resultado. Se apontar que faz sentido, a proposta vem explicada, com um plano que tem critério de revisão. Nada disso precisa ser decidido hoje."
     ]
+  ],
+  "interpretacao-exames-bioquimicos": [
+    [
+      "p",
+      "O resultado chega por e-mail antes da consulta. Você abre, corre o olho pela coluna da direita e para na linha que veio marcada. Ou não para em nenhuma: está tudo dentro da faixa, e o cansaço continua igual. Nos dois casos a sensação é a mesma, a de que aquele papel deveria explicar alguma coisa e não explica. Vale contar como ele é construído."
+    ],
+    [
+      "h",
+      "A faixa de referência descreve uma população"
+    ],
+    [
+      "p",
+      "Aquela coluna de valores normais não veio de um estudo sobre você. Ela é construída estatisticamente, a partir de um grupo de pessoas consideradas saudáveis, e delimita o intervalo onde a maior parte desse grupo se encontra. Descreve o que é comum, não o que é ideal. Por construção, parte das pessoas saudáveis cai fora dele, e algumas com um problema em curso caem dentro."
+    ],
+    [
+      "p",
+      "Some a isso o fato de que a referência muda de laboratório para laboratório, porque depende do método usado na dosagem. Comparar o mesmo marcador feito em dois lugares diferentes, sem olhar a unidade e a faixa impressa em cada laudo, é fonte silenciosa de susto e de tranquilidade falsa."
+    ],
+    [
+      "destaque",
+      "Referência é o que é comum em um grupo. Não é um selo de saúde, e não é uma promessa sobre você."
+    ],
+    [
+      "h",
+      "Um valor é uma foto, não um filme"
+    ],
+    [
+      "p",
+      "Boa parte dos marcadores oscila. Jejum, hidratação, horário da coleta, uma noite ruim de sono, um treino pesado no dia anterior, uma virose na semana passada, fase do ciclo menstrual, medicações e suplementos em uso: tudo isso mexe no número, e alguns marcadores são bem mais sensíveis a isso do que outros. Um ponto isolado carrega ruído junto com a informação."
+    ],
+    [
+      "p",
+      "Por isso, diante de uma alteração pequena, sem queixa e sem história que a acompanhe, repetir o exame em condições melhores é uma das condutas possíveis, e essa escolha cabe ao profissional que avalia o caso, não ao laudo lido em casa. A direção de dois ou três pontos ao longo do tempo diz mais do que qualquer um deles isolado."
+    ],
+    [
+      "h",
+      "O exame responde à pergunta que foi feita"
+    ],
+    [
+      "p",
+      "No raciocínio clínico o exame vem depois da conversa, não antes. Alguém escuta a queixa, monta hipóteses e pede a dosagem para confirmar, afastar ou dimensionar uma delas. Com pergunta clara, o resultado tem muito mais poder de mudar a conduta, seja ele qual for. É ela que define, inclusive, se um valor limítrofe deve preocupar."
+    ],
+    [
+      "p",
+      "Sem pergunta, pedindo um painel largo por pedir, acontece o contrário. Aumenta a chance de aparecer um valor discretamente fora sem nada por trás, e a partir dele começa uma sequência: novo exame, encaminhamento, espera, às vezes um procedimento, quase sempre semanas de preocupação. Isso custa dinheiro, tempo e sossego, e raramente entra na conta de quem defende pedir tudo."
+    ],
+    [
+      "destaque",
+      "Exame demais sem pergunta nenhuma não produz mais segurança. Produz mais achado sem significado."
+    ],
+    [
+      "h",
+      "Dentro da faixa e mal, fora da faixa e bem"
+    ],
+    [
+      "p",
+      "Estar dentro da faixa e mal assim mesmo é uma cena frequente no consultório, com o laudo na mão. A queixa é real e merece investigação. Só que normal no papel significa coisas diferentes: um quadro no início, que ainda não repercutiu no marcador; um marcador que não era o certo para a pergunta; ou uma causa que exame de sangue não capta. Sono fragmentado, ingestão abaixo do que a rotina exige, anos de restrição, treino sem recuperação, sofrimento psíquico e dor persistente cansam de verdade, e nenhum tem linha no laudo. Nada disso se conclui sozinho diante do resultado: reconhecer essas possibilidades serve para direcionar a avaliação, não para dispensá-la."
+    ],
+    [
+      "p",
+      "Existe discussão técnica legítima entre especialistas sobre pontos de corte de alguns marcadores, sempre ancorada em evidência e em contexto clínico. Isso é diferente de estreitar faixas por conta própria até que quase todo mundo apareça como portador de alguma coisa. Quando o alvo vira o número, o risco é tratar o exame com afinco e deixar a pessoa do mesmo jeito."
+    ],
+    [
+      "p",
+      "O caminho contrário também acontece, e assusta bastante. Marcadores de inflamação podem subir em quadros agudos comuns e voltar ao normal por conta própria. Enzimas musculares podem refletir treino recente. Outros valores variam com massa muscular, gestação e medicação em uso. Um resultado ligeiramente fora, em alguém sem sintoma e sem fator de risco, nem sempre muda a conduta, e a escolha entre repetir, observar com prazo definido ou investigar é de quem avalia a pessoa inteira, nunca do leitor diante do laudo. O corpo não funciona por pontos de corte: a linha existe para organizar decisões, não porque algo muda de natureza de um décimo para o outro."
+    ],
+    [
+      "h",
+      "Onde entra a nutrição, e onde ela não entra"
+    ],
+    [
+      "p",
+      "No meu campo, o exame ajuda a checar coerência entre o que a pessoa come e o que o corpo mostra, a definir prioridades do plano alimentar e a acompanhar resposta ao longo dos meses. Não substitui a conversa sobre rotina, apetite, treino, sono e história alimentar, que costuma explicar mais do que a coluna de valores. Em alimentação vegetariana, alguns marcadores merecem atenção específica, decidida olhando o que está no prato e há quanto tempo."
+    ],
+    [
+      "p",
+      "Há um limite de escopo, e ele existe a favor de quem consulta. O que eu leio no exame é o que a nutrição responde, dentro do que o meu registro profissional permite. Diagnóstico e prescrição de medicamento são do médico, e quando o quadro aponta para lá, encaminhar faz parte do trabalho. Suplementar por reflexo, só porque um número apareceu na parte de baixo da faixa, também não é conduta que eu adote. Antes vem entender se falta ingestão, se há algo atrapalhando o aproveitamento daquele nutriente, ou se aquele valor não precisava ser mexido."
+    ],
+    [
+      "h",
+      "O que acompanhar depois, se algo mudar"
+    ],
+    [
+      "p",
+      "Quando alguma coisa é ajustada, o intervalo até repetir o exame depende do ritmo biológico do marcador. Alguns respondem em poucas semanas, outros levam meses para refletir qualquer mudança, e repetir cedo demais produz conclusão errada e despesa evitável. Sempre que possível, mesmo laboratório e mesmas condições de coleta, para a comparação valer."
+    ],
+    [
+      "p",
+      "E o acompanhamento não é só do papel. Energia ao longo do dia, sono, treino, apetite, medidas e a própria adesão ao plano contam como desfecho. Se o número melhorou e a pessoa segue mal, ou se nada se moveu depois de um tempo razoável, o que precisa ser revisto é a hipótese, e não insistir na mesma tentativa que já não funcionou."
+    ],
+    [
+      "p",
+      "Se você está com um resultado aberto agora, procurando na internet a sigla que veio marcada, a informação que falta quase nunca está lá. Ela está no seu contexto: no que você come, em como dorme, nos exames anteriores e no motivo pelo qual aquele painel foi pedido. Esse cruzamento é individual e não se faz por texto, e nada do que está aqui substitui a avaliação profissional do seu caso. Se fizer sentido, traga os exames, inclusive os antigos, para uma avaliação. O caminho pode ser ajustar alimentação e rotina, repetir com calma antes de decidir, ou encaminhar para outra área. As três são respostas legítimas, e nenhuma dá para prometer antes."
+    ]
+  ],
+  "ansiedade-como-identificar-tratar": [
+    [
+      "p",
+      "A dúvida quase sempre chega do mesmo jeito. A pessoa não parou a vida, continua trabalhando e cumprindo o dia. Mas dorme mal, acorda com o peito apertado, revisa conversas que já aconteceram e ensaia conversas que talvez nunca aconteçam. Em algum momento ela pergunta, quase sempre pedindo desculpas antes: isso é só o meu jeito ou já é alguma coisa? A pergunta é boa. A resposta não é um número numa escala."
+    ],
+    [
+      "h",
+      "Ansiedade não é defeito, é antecipação"
+    ],
+    [
+      "p",
+      "Medo responde ao que está acontecendo. Ansiedade responde ao que pode acontecer. O corpo se prepara antes: o coração acelera, a respiração encurta, os músculos tensionam, a atenção estreita e varre o ambiente atrás de sinais de problema. Isso é útil. É o que faz alguém revisar o relatório antes de enviar ou ensaiar uma conversa difícil. Uma pessoa sem nenhuma ansiedade não seria mais saudável, seria menos protegida."
+    ],
+    [
+      "p",
+      "O sistema fica caro quando dispara com frequência alta, demora demais para desligar ou liga diante de coisas sem ameaça real. Aí o corpo passa boa parte do dia num estado desenhado para durar minutos. Cansaço, irritabilidade, dificuldade de concentração e sono ruim costumam vir junto, e não são fraqueza. São a conta de um alarme que não desarma."
+    ],
+    [
+      "h",
+      "Onde a linha costuma passar"
+    ],
+    [
+      "p",
+      "Na avaliação feita em consulta, o que pesa raramente é a intensidade isolada. Pesa há quanto tempo aquilo dura, quanto esforço a pessoa gasta para manter a aparência de normalidade, se a resposta é desproporcional ao que a disparou e, principalmente, o quanto a vida foi encolhendo em volta. Descrever esses elementos aqui não transforma o texto em régua de medir: eles orientam o raciocínio de quem avalia, com a história inteira na frente, e não fecham diagnóstico à distância."
+    ],
+    [
+      "p",
+      "Esse último ponto é o que mais orienta o raciocínio clínico. A ansiedade costuma se sustentar por evitação. A pessoa deixa de apresentar, deixa de dirigir na avenida, deixa de ir ao jantar, checa várias vezes, pede confirmação a quem confia. Cada uma dessas manobras alivia na hora. E cada alívio ensina ao cérebro que o perigo era real e que só não aconteceu porque ela evitou. A hipótese nunca chega a ser testada, então nunca é revista."
+    ],
+    [
+      "destaque",
+      "O que transforma ansiedade em transtorno raramente é o tamanho do medo. É o tamanho da vida que a pessoa vai entregando para não senti-lo."
+    ],
+    [
+      "h",
+      "Antes de chamar de ansiedade"
+    ],
+    [
+      "p",
+      "Nem todo quadro que se parece com ansiedade é ansiedade. Alterações de tireoide, anemia, dor crônica, apneia e outras causas de sono fragmentado, uso e retirada de substâncias, cafeína em excesso e efeitos de certos medicamentos podem produzir sintomas físicos parecidos. Investigar e descartar essas causas é trabalho médico, não psicológico. Por isso a avaliação psicológica não substitui a médica, e em boa parte dos casos as duas precisam conversar."
+    ],
+    [
+      "p",
+      "Há ainda os quadros que se confundem entre si. Depressão e ansiedade aparecem juntas com frequência, e a condução muda conforme o que está sustentando o quadro. Luto recente pode se apresentar como ansiedade e pede outro tipo de trabalho, mais lento, menos focado em corrigir pensamento. Quando a queixa principal envolve atenção, memória ou organização, a avaliação neuropsicológica ajuda a distinguir o que é efeito da ansiedade sobre a cognição do que é uma característica anterior a ela. Não é exame de rotina, é recurso para quando essa dúvida específica existe."
+    ],
+    [
+      "h",
+      "O que a terapia faz de concreto"
+    ],
+    [
+      "p",
+      "Na terapia cognitivo-comportamental, o trabalho começa mapeando situações reais: o que aconteceu, o que passou pela cabeça naquele instante, o que o corpo fez, o que a pessoa fez em seguida. Esse mapa costuma revelar padrões que ninguém enxerga de dentro, porque acontecem rápido demais."
+    ],
+    [
+      "p",
+      "A partir daí, duas frentes. Uma trabalha as interpretações, não para trocar pensamento ruim por bonito, e sim para checar se aquela leitura se sustenta diante da evidência. A outra trabalha o comportamento: aproximação gradual e combinada daquilo que vem sendo evitado, com redução progressiva das manobras de segurança. As duas caminham juntas, e o peso de cada uma se define caso a caso. A aproximação gradual ocupa lugar central porque a experiência direta chega ao sistema de alarme por um caminho que a conversa sozinha não percorre. Isso descreve o método, não antecipa desfecho: como cada pessoa responde só se sabe acompanhando."
+    ],
+    [
+      "p",
+      "Vale dizer o que isso custa. Há tarefa entre as sessões, e quando elas não acontecem o processo costuma andar pouco. E há um período em que a sensação piora antes de melhorar, porque encostar no que se evita gera ansiedade por definição. Combinado, dosado e previsto, isso deixa de ser risco e vira método. Imposto sem preparo, faz a pessoa abandonar, e com razão."
+    ],
+    [
+      "h",
+      "O que a terapia não resolve"
+    ],
+    [
+      "p",
+      "Terapia não corrige situação. Se alguém vive sob assédio no trabalho, violência doméstica, insegurança financeira concreta ou sobrecarga de cuidado sem rede, a ansiedade pode ser uma leitura correta de um contexto ruim. Tratar isso como distorção de pensamento é erro clínico, e desrespeitoso. O trabalho aí passa por proteção, decisão e recursos, não por reinterpretação."
+    ],
+    [
+      "p",
+      "Há também quadros em que a psicoterapia isolada não dá conta do momento. Sintomas intensos, sono muito comprometido, crises frequentes, incapacidade de sustentar a rotina ou presença de ideias de morte pedem avaliação psiquiátrica, e a decisão sobre medicação é do médico, em consulta, com o caso na frente. Combinar tratamentos não é fracasso da terapia, é adequação ao quadro. Havendo risco imediato, o caminho é procurar atendimento de urgência no mesmo dia, pelo pronto-socorro mais próximo, pelo SAMU (192) ou pelo CVV (188), e não esperar a próxima sessão."
+    ],
+    [
+      "h",
+      "Tempo, expectativa e o depois"
+    ],
+    [
+      "p",
+      "Não existe prazo honesto dito de antemão, e qualquer número prometido por aqui seria invenção. Quadros mais delimitados costumam exigir menos tempo de trabalho do que quadros longos, com mais de uma condição associada ou história de trauma, mas isso é uma tendência descrita em termos gerais e não diz nada sobre um caso específico. O que dá para combinar desde o início é a forma de conferir: metas concretas, revisadas periodicamente. Se nada se move, isso é informação, e serve para rever a formulação, ajustar o método ou encaminhar. Insistir sem revisar não é persistência."
+    ],
+    [
+      "p",
+      "E existe o depois. A ansiedade tende a reaparecer em fases de estresse, e isso não significa que o tratamento falhou. Por isso a parte final do processo costuma incluir espaçamento das sessões, reconhecimento dos sinais de recaída e um plano para quando eles voltarem. Terminar sabendo operar sozinho o que se aprendeu é parte do objetivo do trabalho, não uma garantia de que ajuda nunca mais será necessária."
+    ],
+    [
+      "destaque",
+      "O objetivo do tratamento não é uma vida sem ansiedade. É trabalhar para que ela deixe de decidir sozinha o que você faz."
+    ],
+    [
+      "p",
+      "Se você leu até aqui reconhecendo situações parecidas com as suas, isso não fecha diagnóstico nenhum. Daqui não dá para dizer se é um período difícil que vai passar, se é um quadro que pede tratamento ou se é outra coisa vestida de ansiedade. Isso se responde olhando o caso, com a sua história junto, em consulta. Uma primeira conversa serve para isso: entender o que está acontecendo e decidir, com informação, se este é o caminho ou se é outro. Quando procurar, e com quem, continua sendo uma escolha sua."
+    ]
+  ],
+  "saude-capilar-feminina": [
+    [
+      "p",
+      "A conversa costuma começar de dois jeitos. Ou o cabelo não parece cair mais do que antes, mas o rabo de cavalo afinou e a risca do meio abriu. Ou a queda aumentou de forma clara, no banho e no travesseiro, e alguém já disse que é estresse, que passa. As duas são reais, e não são a mesma coisa: têm mecanismos, exames e prazos diferentes. Confundir uma com a outra costuma custar tempo, porque o cuidado acaba mirando o que não é o ponto principal do quadro."
+    ],
+    [
+      "h",
+      "O cabelo responde com atraso"
+    ],
+    [
+      "p",
+      "Cada fio tem seu ciclo: uma fase longa de crescimento, uma transição curta e um período de repouso. O fio em repouso não cai no dia em que para de crescer, fica preso até ser empurrado pelo fio novo que nasce embaixo. Por isso um evento que abala o corpo, uma cirurgia, um parto, uma dieta restritiva, uma perda de peso rápida, a troca de um anticoncepcional, só aparece no ralo semanas ou meses depois."
+    ],
+    [
+      "p",
+      "Isso muda o raciocínio. Quem procura a causa no mês em que está caindo olha para o lugar errado da linha do tempo. E quando o gatilho enfim aparece, boa parte dele já pode ter se resolvido sozinha. Aí o trabalho costuma ser acompanhar e dar suporte, em vez de intervir com força sobre um processo que já está mudando de fase."
+    ],
+    [
+      "destaque",
+      "O cabelo conta o que aconteceu com o corpo alguns meses atrás, não o que está acontecendo hoje."
+    ],
+    [
+      "h",
+      "Cair e afinar são coisas diferentes"
+    ],
+    [
+      "p",
+      "Na queda difusa por eflúvio, muitos fios entram em repouso ao mesmo tempo e caem juntos. O fio que cai tem calibre normal, e a densidade costuma se recuperar quando a causa é identificada e tratada, em ritmo que varia de pessoa para pessoa. No padrão de origem genética o fio não cai em massa: ele afina, ciclo após ciclo, e a fase de crescimento encurta. O couro cabeludo aparece na risca central e o comprimento não se sustenta como antes."
+    ],
+    [
+      "p",
+      "A queda feminina costuma se apresentar de forma diferente da masculina. Em geral não há entrada em golfo nem falha redonda. O que se perde é densidade, e densidade demora a ser levada a sério pelos outros. Na prática, as duas coisas podem conviver: um eflúvio pode ser o episódio que revela um padrão que já vinha em silêncio. A tricoscopia ajuda a descrever o que o olho nu não alcança, como a diferença de calibre entre fios da mesma área. Descrever não é concluir: quem fecha o diagnóstico é o médico."
+    ],
+    [
+      "h",
+      "Ferro, tireoide e pós-parto"
+    ],
+    [
+      "p",
+      "Não faço diagnóstico por texto, não solicito exames e não prescrevo. O que dá para dizer é o que costuma entrar na investigação conduzida pelo médico: reserva de ferro, função da tireoide, quadro hormonal, estado nutricional e medicações em uso. Um valor dentro da faixa de referência não encerra a conversa. Faixa de referência é população, não é a sua história, e quem interpreta o conjunto é o médico."
+    ],
+    [
+      "p",
+      "O pós-parto tem lógica própria, e costuma assustar. Na gestação, a proporção de fios em crescimento aumenta e a queda diária diminui, o que dá a sensação de cabelo mais cheio. Depois do parto, esse grupo entra em repouso quase junto e cai quase junto. Costuma ser autolimitado, o que não significa ignorar nem dispensar avaliação: perda de sangue no parto, amamentação e sono fragmentado somam outros fatores no mesmo período."
+    ],
+    [
+      "h",
+      "O que o teste genético responde, e o que não responde"
+    ],
+    [
+      "p",
+      "Trabalho com testes genéticos capilares, e é por isso que preciso ser clara sobre o alcance deles. O teste olha variantes associadas à sensibilidade do folículo a andrógenos e ao metabolismo de alguns micronutrientes. Isso é informação de predisposição, não de conduta. O quanto essa leitura muda o que se faz na prática ainda está em discussão, e não vale igual para toda variante nem para toda pessoa. Pode contribuir para decidir com que atenção acompanhar alguém, sobretudo quem tem histórico familiar forte e ainda não perdeu densidade visível, sempre dentro de uma avaliação maior."
+    ],
+    [
+      "p",
+      "O que ele não faz: não diz por que você está caindo agora. Não substitui exame de sangue, avaliação do couro cabeludo nem avaliação médica, e não fecha diagnóstico sozinho. Lido isolado, engana nos dois sentidos: assusta quem tem predisposição e talvez nunca a expresse, e tranquiliza quem tem um problema ativo que nada tem a ver com herança."
+    ],
+    [
+      "destaque",
+      "Nenhum exame, sozinho, explica uma queda. Ele entra numa história que já tem tempo, contexto e couro cabeludo dentro."
+    ],
+    [
+      "h",
+      "Quando o caminho não é a tricologia estética"
+    ],
+    [
+      "p",
+      "Existe um grupo de situações em que meu papel é reconhecer e encaminhar, não tratar. Nada do que vem a seguir diz, por si só, o que a pessoa tem, e nada aqui serve de autodiagnóstico: falhas bem delimitadas que surgem rápido, vermelhidão que não passa, dor ou ardência forte, recuo da linha frontal com perda de sobrancelhas, área lisa e brilhante sem os pontinhos dos folículos. O que essas situações indicam é que quem precisa olhar é um médico, e que essa avaliação não é para deixar para depois, porque parte das alopecias é cicatricial e nesses casos o tempo até a consulta pesa."
+    ],
+    [
+      "p",
+      "A queda também é, às vezes, a parte visível de outra coisa. Quando aparece junto de restrição alimentar, exaustão prolongada ou sofrimento que já ocupa o dia inteiro, tratar só o fio é tratar o que dá menos trabalho."
+    ],
+    [
+      "h",
+      "Tempo, expectativa e o que costuma incomodar"
+    ],
+    [
+      "p",
+      "O fio cresce devagar. Qualquer avaliação séria de resposta se mede em meses, não em semanas, e nesse intervalo a pessoa continua vendo cabelo na mão. É a parte mais difícil, e é melhor saber antes de começar do que descobrir no meio."
+    ],
+    [
+      "p",
+      "Duas coisas precisam ser ditas na primeira conversa. Em algumas abordagens pode haver aumento temporário da queda no início, porque os fios em repouso são empurrados pelo crescimento novo, e isso costuma ser lido como piora. E quando existe componente de padrão, nada do que se faz elimina a predisposição: interrompido o cuidado, a tendência volta a se expressar. Não é estratégia comercial, é o funcionamento do folículo."
+    ],
+    [
+      "p",
+      "O acompanhamento é o que separa avaliação de impressão. Fotografia padronizada: mesmo ponto, mesma luz, mesma repartição. Tricoscopia comparativa nas mesmas áreas. Reavaliação dos exames no intervalo que o médico definir. Sem registro, a comparação vira memória, e memória com cabelo é péssima: esquece-se de que ponto se partiu e enxerga-se só o que falta."
+    ],
+    [
+      "p",
+      "Quem chega até aqui costuma já ter pesquisado bastante e ainda ficar com a dúvida que nenhum texto resolve: em qual desses cenários o seu caso se encaixa. Isso não se responde por artigo, porque depende de olhar o seu couro cabeludo, ouvir o que aconteceu nos últimos meses e ler os seus exames. O que dá para afirmar é que a queda em mulheres com frequência tem mais de uma camada, e que entender o quadro antes de agir é o que permite escolher o caminho com mais critério. Se fizer sentido, a avaliação individual é o lugar dessa conversa. E se o caminho for outro, também está certo."
+    ]
   ]
 };
