@@ -162,7 +162,7 @@ execução.
 | clicar no link do Instagram do rodapé | 0 |
 | abrir a ficha de um profissional | 0 |
 | chegar com `?utm_source=...&gclid=...` | 0 |
-| clique em telefone | impossível: 0 links `tel:` em todo o deploy |
+| clique em telefone | impossível: 0 links `tel:` em todo o deploy, o número existe só como texto nas 67 páginas |
 
 Da matriz de `EVENTS_TRACKING_PLAN.md`, faltam doze:
 `form_submit_attempt`, `form_submit_success`, `form_submit_error`,
@@ -454,7 +454,7 @@ intenção comercial local do editorial inteiro.
 | 9 | alto | Dimensão `pagina` fragmentada: eventos com `mentorias.html`, canonical `/mentorias`, 52 links internos com `.html` | `scripts/medicao.mjs:94` | sim |
 | 10 | alto | 12 dos 15 eventos planejados não existem; sem `scroll_depth`, `engaged_time`, `professional_view`, `instagram_click`, `outbound_click` | `scripts/medicao.mjs` | sim |
 | 11 | alto | 29 páginas sem medição (28 pontes + 404), justamente as de tráfego legado; o redirecionamento same-origin apaga a origem externa | `scripts/medicao.mjs:220` | sim |
-| 12 | alto | Zero links `tel:` no site; telefone só como texto em 69 páginas, sem clique e sem evento em mobile | pós-processadores | sim |
+| 12 | alto | Zero links `tel:` no site; telefone só como texto nas 67 páginas reais, sem clique e sem evento em mobile | pós-processadores | sim |
 | 13 | médio | NAP divergente no schema: 31 perfis com `Rua Mariante, 180` sem `@id`, sem CEP e sem telefone, contra `Rua Mariante, 180, 9º andar` nas 3 canônicas | `scripts/estruturados.mjs` | sim |
 | 14 | médio | Visitante que sai antes de 4 s sem gesto nunca é contado; não há `page_view` no `dataLayer` | `scripts/medicao.mjs:90` | sim |
 | 15 | médio | Sem `geo`, sem `priceRange`, sem `aggregateRating`, sem `review` em nenhuma página; `hasMap` aponta para URL de busca, não de `place` | `scripts/estruturados.mjs` | parcial |
