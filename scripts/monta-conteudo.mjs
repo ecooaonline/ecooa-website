@@ -25,6 +25,36 @@ const RAIZ = '/home/user/ecooa-website';
 const SCRATCH =
   '/tmp/claude-0/-home-user-ecooa-website/c124791a-4739-57eb-9519-83a1feaf8b01/scratchpad';
 
+/* Os agentes gravam o resultado em arquivo, mas o retorno estruturado deles
+   também fica registrado no journal do workflow. Ler os dois evita perder o
+   trabalho do guardião regulatório caso ele tenha respondido sem gravar. */
+const DOJORNAL = new Map();
+function carregaJornais() {
+  const raiz =
+    '/root/.claude/projects/-home-user-ecooa-website/c124791a-4739-57eb-9519-83a1feaf8b01/subagents/workflows';
+  if (!fs.existsSync(raiz)) return;
+  for (const dir of fs.readdirSync(raiz)) {
+    const j = path.join(raiz, dir, 'journal.jsonl');
+    if (!fs.existsSync(j)) continue;
+    for (const linha of fs.readFileSync(j, 'utf8').split('\n')) {
+      if (!linha.trim()) continue;
+      let ev;
+      try {
+        ev = JSON.parse(linha);
+      } catch {
+        continue;
+      }
+      if (ev.type !== 'result' || !ev.result) continue;
+      const r = ev.result;
+      if (!r.slug) continue;
+      const anterior = DOJORNAL.get(r.slug);
+      /* o veredito do guardião ganha do rascunho do redator */
+      if (!anterior || r.corpo_final || r.conteudo_final) DOJORNAL.set(r.slug, r);
+    }
+  }
+}
+carregaJornais();
+
 function leJson(dir, slug, campoFinal) {
   for (const nome of [`${slug}.final.json`, `${slug}.json`]) {
     const arq = path.join(dir, nome);
@@ -36,6 +66,11 @@ function leJson(dir, slug, campoFinal) {
     } catch {
       /* arquivo pela metade: tenta o próximo */
     }
+  }
+  const doJornal = DOJORNAL.get(slug);
+  if (doJornal) {
+    const v = campoFinal && doJornal[campoFinal] ? doJornal[campoFinal] : doJornal.corpo || doJornal;
+    if (v) return { dado: v, origem: 'journal' };
   }
   return null;
 }
