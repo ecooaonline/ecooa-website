@@ -22,6 +22,9 @@
 //      cardiometabólico, saúde da mulher, inchaço, bruxismo/ATM, enxaqueca)
 //      e vocabulário ampliado em todos os blocos. No celular o resultado vira
 //      lista compacta (rosto redondo, nome, porquê), diferente do desktop.
+//   8. A página abre direto na busca por texto (sem tela de escolha); as cinco
+//      perguntas viram uma ajuda da IA dentro da tela. Autocompletar próprio:
+//      abre a partir de 3 letras em painel de vidro fosco (backdrop blur).
 //
 // Uso: node scripts/match.mjs
 import fs from 'node:fs';
@@ -380,7 +383,7 @@ const JS = String.raw`
   var ROTULOS = { motivo: 'o que te trouxe', tempo: 'há quanto tempo', historico: 'histórico', preferencia: 'atendimento', ritmo: 'expectativa' };
   var POR_MOTIVO = { saude: 'medicina', dor: 'saude-integrativa', imagem: 'estetica-facial', cabelo: 'tricologia', alimentacao: 'nutricao', mente: 'saude-mental', 'nao-sei': 'medicina' };
   var EXEMPLOS = ['dor nas costas que não passa', 'meu cabelo está caindo muito', 'quero emagrecer com acompanhamento', 'preciso de terapia para ansiedade', 'procuro médico para implante hormonal'];
-  var SUGESTOES = ['dor nas costas', 'dor no joelho', 'dor de cabeça frequente', 'queda de cabelo', 'caspa e coceira', 'transplante capilar', 'quero emagrecer', 'ganhar massa muscular', 'nutrição na gravidez', 'alimentação vegetariana', 'compulsão alimentar', 'ansiedade', 'burnout e esgotamento', 'terapia', 'manchas na pele', 'botox e preenchimento', 'harmonização facial', 'celulite e flacidez', 'menopausa', 'reposição hormonal', 'cansaço sem explicação', 'insônia', 'check-up com exames', 'osteopatia para bebê', 'má postura'];
+  var SUGESTOES = ['dor nas costas', 'dor no joelho', 'dor de cabeça frequente', 'enxaqueca', 'dor de barriga', 'hérnia de disco', 'má postura', 'osteopatia para bebê', 'queda de cabelo', 'queda de cabelo pós-parto', 'caspa e coceira', 'calvície', 'transplante capilar', 'quero emagrecer', 'canetas de emagrecimento', 'não consigo emagrecer', 'ganhar massa muscular', 'nutrição esportiva', 'nutrição na gravidez', 'alimentação vegetariana', 'compulsão alimentar', 'intestino preso', 'azia e refluxo', 'gastrite', 'check-up com exames', 'pressão alta', 'colesterol alto', 'diabetes', 'gordura no fígado', 'imunidade baixa', 'vitamina D baixa', 'cansaço sem explicação', 'insônia', 'menopausa', 'reposição hormonal', 'tireoide', 'SOP', 'endometriose', 'fertilidade', 'inchaço e retenção', 'manchas na pele', 'melasma', 'acne', 'botox e preenchimento', 'harmonização facial', 'preenchimento labial', 'bruxismo', 'limpeza de pele', 'celulite e flacidez', 'gordura localizada', 'ansiedade', 'depressão', 'burnout e esgotamento', 'crise de pânico', 'TDAH', 'terapia', 'psicologia do esporte', 'luto'];
 
   /* ── interpretacao ── */
   function semAcento(t) {
@@ -501,33 +504,73 @@ const JS = String.raw`
     return b;
   }
 
-  /* datalist unico para o autocompletar */
-  var dl = document.createElement('datalist');
-  dl.id = 'ec-sugestoes';
-  SUGESTOES.forEach(function (t) {
-    var o = document.createElement('option');
-    o.value = t;
-    dl.appendChild(o);
-  });
-  document.body.appendChild(dl);
-
+  /* autocompletar proprio: abre a partir de 3 letras, painel de vidro fosco
+     (o datalist nativo nao aceita estilo) */
   function campoBusca(valor, aoEnviar) {
     var form = el('form', 'display:flex; flex-wrap:wrap; gap:12px; align-items:center;');
+    var wrap = el('div', 'position:relative; flex:1 1 320px;');
     var campo = document.createElement('input');
     campo.type = 'text';
     campo.id = 'ec-queixa';
-    campo.setAttribute('list', 'ec-sugestoes');
     campo.placeholder = 'digite sua queixa, o procedimento que quer conhecer ou uma palavra-chave';
     campo.autocomplete = 'off';
-    campo.style.cssText = CAMPO + 'flex:1 1 320px;';
+    campo.style.cssText = CAMPO;
     campo.value = valor || '';
-    campo.addEventListener('input', function () { s.texto = campo.value; });
+    wrap.appendChild(campo);
+    var painel = el('div', 'position:absolute; left:0; right:0; top:calc(100% + 10px); z-index:60; display:none; padding:8px; border-radius:18px; background:rgba(253,253,252,.68); -webkit-backdrop-filter:blur(18px) saturate(1.5); backdrop-filter:blur(18px) saturate(1.5); box-shadow:0 24px 48px rgba(70,68,63,.18), 0 2px 8px rgba(70,68,63,.08), inset 0 0 0 1px rgba(255,255,255,.6);');
+    wrap.appendChild(painel);
+    var itens = [];
+    var foco = -1;
+    function fecha() { painel.style.display = 'none'; painel.innerHTML = ''; itens = []; foco = -1; }
+    function pinta() {
+      itens.forEach(function (b, i) {
+        b.style.background = i === foco ? 'rgba(233,231,226,.92)' : 'transparent';
+      });
+    }
+    function abre(lista) {
+      painel.innerHTML = '';
+      itens = []; foco = -1;
+      lista.forEach(function (t) {
+        var b = el('button', 'display:block; width:100%; text-align:left; border:0; cursor:pointer; padding:11px 14px; border-radius:12px; background:transparent; font-family:var(--sans); font-size:14.5px; line-height:1.4; color:#46443F;', [t]);
+        b.type = 'button';
+        b.addEventListener('mousedown', function (e) { e.preventDefault(); });
+        b.addEventListener('click', function () {
+          campo.value = t; s.texto = t; fecha(); aoEnviar(t);
+        });
+        b.addEventListener('mouseenter', function () { foco = itens.indexOf(b); pinta(); });
+        painel.appendChild(b);
+        itens.push(b);
+      });
+      painel.style.display = lista.length ? 'block' : 'none';
+    }
+    function sugere() {
+      var q = normaliza(campo.value).trim();
+      if (q.replace(/\s/g, '').length < 3) { fecha(); return; }
+      var comeca = [], contem = [];
+      SUGESTOES.forEach(function (t) {
+        var n = normaliza(t).trim();
+        if (n.indexOf(q) === 0) comeca.push(t);
+        else if (n.indexOf(q) >= 0) contem.push(t);
+      });
+      abre(comeca.concat(contem).slice(0, 7));
+    }
+    campo.addEventListener('input', function () { s.texto = campo.value; sugere(); });
+    campo.addEventListener('focus', sugere);
+    campo.addEventListener('blur', function () { setTimeout(fecha, 140); });
+    campo.addEventListener('keydown', function (e) {
+      if (painel.style.display === 'none') return;
+      if (e.key === 'ArrowDown') { e.preventDefault(); foco = (foco + 1) % itens.length; pinta(); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); foco = (foco - 1 + itens.length) % itens.length; pinta(); }
+      else if (e.key === 'Enter' && foco >= 0) { e.preventDefault(); itens[foco].click(); }
+      else if (e.key === 'Escape') fecha();
+    });
     var enviar = el('button', BTN_CHEIO + 'flex:0 0 auto;', [valor ? 'refinar' : 'ver sugestão']);
     enviar.type = 'submit';
-    form.appendChild(campo);
+    form.appendChild(wrap);
     form.appendChild(enviar);
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      fecha();
       aoEnviar(campo.value);
     });
     return form;
@@ -559,13 +602,10 @@ const JS = String.raw`
     return s.frase && s.grupo ? PERGUNTAS.slice(1) : PERGUNTAS;
   }
 
-  /* ── tela: com as suas palavras ── */
+  /* ── tela inicial: com as suas palavras ── */
   function renderTexto() {
     var carta = el('div', CARTA);
-    var topo = el('div', 'display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;');
-    topo.appendChild(el('span', 'font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['com as suas palavras']));
-    topo.appendChild(voltarBtn('voltar', function () { s.modo = null; render(); sobe(); }));
-    carta.appendChild(topo);
+    carta.appendChild(el('span', 'display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['com as suas palavras']));
     carta.appendChild(el('h2', 'margin:26px 0 0; max-width:22ch; font-family:var(--serif); font-weight:400; font-size:clamp(25px,3vw,42px); line-height:1.1; color:#46443F;', ['O que você procura?']));
     carta.appendChild(el('p', 'margin:14px 0 0; max-width:56ch; font-size:15px; line-height:1.64; color:#66645E;', ['Escreva com naturalidade. Não precisa saber o nome do procedimento nem da especialidade.']));
     var caixa = el('div', 'margin-top:26px;');
@@ -584,6 +624,21 @@ const JS = String.raw`
     });
     exBloco.appendChild(linha);
     carta.appendChild(exBloco);
+
+    /* as perguntas viram uma ajuda da IA, nao uma bifurcacao */
+    var guia = el('div', 'margin-top:30px; padding-top:24px; border-top:1px solid rgba(70,68,63,.16); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px 20px;');
+    var guiaTxt = el('div', 'flex:1 1 300px;');
+    guiaTxt.appendChild(el('span', 'display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['prefere ser guiado?']));
+    guiaTxt.appendChild(el('p', 'margin:8px 0 0; max-width:48ch; font-size:13.5px; line-height:1.6; color:#66645E;', ['A IA também pode te conduzir: cinco perguntas rápidas e a sugestão sai pronta, sem você precisar escrever nada.']));
+    guia.appendChild(guiaTxt);
+    var gb = el('button', BTN_SUAVE + 'flex:0 0 auto;', ['deixar a IA me guiar']);
+    gb.type = 'button';
+    gb.addEventListener('click', function () {
+      s.modo = 'perguntas'; s.passo = 0; s.respostas = {}; s.frase = ''; s.grupo = null;
+      render(); sobe();
+    });
+    guia.appendChild(gb);
+    carta.appendChild(guia);
     palco.appendChild(el('section', SECAO, [el('div', MIOLO, [carta])]));
   }
 
@@ -594,10 +649,10 @@ const JS = String.raw`
     var carta = el('div', CARTA);
     var topo = el('div', 'display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;');
     topo.appendChild(el('span', 'font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['pergunta ' + (s.passo + 1) + ' de ' + pendentes.length]));
-    topo.appendChild(voltarBtn(s.passo > 0 ? 'voltar' : (s.frase ? 'voltar ao resultado' : 'trocar de caminho'), function () {
+    topo.appendChild(voltarBtn(s.passo > 0 ? 'voltar' : (s.frase ? 'voltar ao resultado' : 'voltar à busca'), function () {
       if (s.passo > 0) s.passo--;
       else if (s.frase) s.modo = 'resultado';
-      else s.modo = null;
+      else s.modo = 'texto';
       render();
     }));
     carta.appendChild(topo);
@@ -740,7 +795,7 @@ const JS = String.raw`
       var topoBusca = el('div', 'display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap;');
       topoBusca.appendChild(el('span', 'font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['a sua busca']));
       topoBusca.appendChild(voltarBtn('recomeçar', function () {
-        s.modo = null; s.passo = 0; s.respostas = {}; s.texto = ''; s.grupo = null; s.frase = '';
+        s.modo = 'texto'; s.passo = 0; s.respostas = {}; s.texto = ''; s.grupo = null; s.frase = '';
         render(); sobe();
       }));
       carta.appendChild(topoBusca);
@@ -817,7 +872,7 @@ const JS = String.raw`
       var refaz = el('button', BTN_SUAVE, ['fazer outra busca']);
       refaz.type = 'button';
       refaz.addEventListener('click', function () {
-        s.modo = null; s.passo = 0; s.respostas = {}; s.texto = ''; s.grupo = null; s.frase = '';
+        s.modo = 'texto'; s.passo = 0; s.respostas = {}; s.texto = ''; s.grupo = null; s.frase = '';
         render(); sobe();
       });
       acoes.appendChild(refaz);
@@ -858,16 +913,10 @@ const JS = String.raw`
     }
   }
 
-  /* ── gatilhos da tela de escolha ── */
-  var botoes = telaEscolha.querySelectorAll('button');
-  if (botoes[0]) botoes[0].addEventListener('click', function () {
-    s.modo = 'texto'; s.frase = ''; s.grupo = null; s.respostas = {};
-    render(); sobe();
-  });
-  if (botoes[1]) botoes[1].addEventListener('click', function () {
-    s.modo = 'perguntas'; s.passo = 0; s.respostas = {}; s.frase = ''; s.grupo = null; s.texto = '';
-    render(); sobe();
-  });
+  /* ── a pagina abre direto na busca; a tela antiga de escolha fica oculta ── */
+  telaEscolha.hidden = true;
+  s.modo = 'texto';
+  render();
 
   /* ── leia mais do aviso legal ── */
   document.querySelectorAll('[data-leia-mais]').forEach(function (b) {
