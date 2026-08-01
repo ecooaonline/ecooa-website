@@ -322,6 +322,48 @@ console.log('Medicao:');
   else ok('GTM so carrega apos gesto do visitante ou 4s');
 }
 
+/* ── 9b. titulo unico por pagina ───────────────────────────────────
+   Ate 2026-08-01, 22 das 31 URLs compartilhavam <title>: os geradores
+   procuravam por "<title>" e a tag real vinha como <title data-dc-tpl="1">,
+   entao a troca nunca acontecia. Os 14 artigos herdavam o titulo do editorial
+   e as 8 areas o de especialidades. */
+console.log('Titulos:');
+{
+  const titulos = new Map();
+  const varre = (dir, prefixo) => {
+    if (!existsSync(dir)) return;
+    for (const d of readdirSync(dir, { withFileTypes: true })) {
+      if (!d.isDirectory()) continue;
+      const f = join(dir, d.name, 'index.html');
+      if (!existsSync(f)) continue;
+      const m = readFileSync(f, 'utf8').match(/<title[^>]*>([\s\S]*?)<\/title>/);
+      const t = m ? m[1].trim() : '(sem titulo)';
+      titulos.set(`${prefixo}/${d.name}`, t);
+    }
+  };
+  for (const [f, s] of html) {
+    const m = s.match(/<title[^>]*>([\s\S]*?)<\/title>/);
+    titulos.set(f, m ? m[1].trim() : '(sem titulo)');
+  }
+  varre(join(DIST, 'especialidades'), 'especialidades');
+  varre(join(DIST, 'blog'), 'blog');
+  varre(join(DIST, 'profissionais'), 'profissionais');
+
+  const porTitulo = new Map();
+  for (const [pg, t] of titulos) {
+    if (!porTitulo.has(t)) porTitulo.set(t, []);
+    porTitulo.get(t).push(pg);
+  }
+  const repetidos = [...porTitulo].filter(([, pgs]) => pgs.length > 1);
+  if (repetidos.length) {
+    for (const [t, pgs] of repetidos.slice(0, 4)) {
+      erro(`titulo repetido em ${pgs.length} paginas ("${t.slice(0, 50)}"): ${pgs.slice(0, 3).join(', ')}`);
+    }
+  } else {
+    ok(`${titulos.size} paginas, todos os titulos unicos`);
+  }
+}
+
 /* ── 10. acessibilidade estrutural (P09) ──────────────────────────── */
 console.log('Acessibilidade:');
 {

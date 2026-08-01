@@ -238,7 +238,7 @@ ${
   <script type="application/ld+json">${trilhaJson}</script>`;
 
   let html = shell;
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titulo)}</title>`);
+  html = html.replace(/<title[^>]*>[\s\S]*?<\/title>/, `<title>${esc(titulo)}</title>`);
   html = html.replace(
     /<meta name="description" content="[^"]*"/,
     `<meta name="description" content="${esc(meta)}"`

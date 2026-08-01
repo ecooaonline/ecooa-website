@@ -221,7 +221,7 @@ ${
   /* monta a partir do shell */
   let html = shell;
   const titulo = `${a.nome} em Porto Alegre · ecooa`;
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titulo)}</title>`);
+  html = html.replace(/<title[^>]*>[\s\S]*?<\/title>/, `<title>${esc(titulo)}</title>`);
   html = html.replace(
     /<meta name="description" content="[^"]*"/,
     `<meta name="description" content="${esc(a.meta)}"`

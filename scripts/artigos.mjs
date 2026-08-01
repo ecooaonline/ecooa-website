@@ -134,7 +134,7 @@ function paginaArtigo(a) {
 
   let html = shell;
   const titulo = `${a.titulo} · editorial ecooa`;
-  html = html.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(titulo)}</title>`);
+  html = html.replace(/<title[^>]*>[\s\S]*?<\/title>/, `<title>${esc(titulo)}</title>`);
   html = html.replace(
     /<meta name="description" content="[^"]*"/,
     `<meta name="description" content="${esc(a.resumo)}"`
