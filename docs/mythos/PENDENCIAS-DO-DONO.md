@@ -55,6 +55,46 @@ Nesta sessão foi instalada a camada de medição (`scripts/medicao.mjs`), com:
 - eventos de conversão no `dataLayer`: `whatsapp_click` (com página,
   profissional, área e posição do botão), `form_submit` e `match_resultado`.
 
+### Antes das tags, a política de segurança precisa deixar o dado sair
+
+**Isto é pré-requisito. Sem isto, tudo o que vier depois mede zero.**
+
+A auditoria de aquisição achou o seguinte: a política de segurança que está
+valendo em produção **não é** a do arquivo `deploy/_headers`. O GitHub Pages
+ignora esse arquivo. A política real vem de uma **regra de painel da
+Cloudflare**, que não está no repositório e diverge da declarada em sete
+diretivas.
+
+Essa regra **não tem `connect-src`**. Com o padrão `default-src 'self'`, todo
+envio do GA4 para fora do domínio é bloqueado pelo navegador. Ou seja: o
+contêiner carrega, as tags disparam, e **nenhum dado chega**. O mesmo bloqueio
+derruba o modo Preview do GTM, então você nem consegue depurar.
+
+**O que fazer, no painel da Cloudflare, antes de mexer no GTM:**
+
+Acrescentar à CSP, no mínimo:
+
+```
+connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
+frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com;
+script-src ... https://www.googletagmanager.com;
+```
+
+E, já que a regra vai ser tocada, aproveitar para fechar o que falta:
+`frame-ancestors 'none'` (hoje o site pode ser embutido em iframe de terceiro),
+`base-uri 'self'`, `form-action 'self' https://wa.me` e um `report-uri` para
+que violação em produção seja reportada a alguém, o que hoje não acontece.
+
+O arquivo `deploy/_headers` já foi atualizado nesta sessão com a versão
+correta, e serve de referência para copiar. Ele passa a valer sozinho no dia do
+cutover para a Cloudflare Workers (Bloqueio 6).
+
+**Como verificar:** abrir o site, F12, aba Console. Se aparecer erro de CSP
+citando `google-analytics`, ainda está bloqueado. Depois, GTM Preview deve
+conectar.
+
+### Depois disso, as tags
+
 **O que só você pode fazer:** entrar em tagmanager.google.com, no contêiner
 `GTM-TSR4GDMK`, e criar as tags. Sem isso o contêiner carrega e não mede nada.
 
@@ -198,3 +238,31 @@ Cada item aqui tem dono humano e nenhum tem substituto técnico. Quando um for
 resolvido, me diga e eu removo daqui, aplico a mudança no site e registro em
 `docs/mythos/EXECUCAO.md`. O que a IA conseguiu fazer sozinha já foi feito e
 não aparece nesta lista.
+
+---
+
+## Bloqueio 9 · Decisões de aparência que estão à sua espera
+
+Em 2026-08-01, já no fim da execução, você pediu que nenhuma mudança de
+aparência fosse feita sem a sua ordem. A partir dali, tudo virou apontamento.
+Estes itens estão **parados**, aguardando você:
+
+1. **Contraste na faixa do ecooa.match, na home.** O número "07" e o rótulo
+   "orientação e conexão" usam prata sobre grafite, o que dá 3,55:1 contra o
+   mínimo de 4,5:1 da WCAG. Trocar prata por névoa resolve, com 5,01:1. É a
+   única falha de acessibilidade que resta: com ela o axe-core acusa dois nós
+   graves, sem ela acusa **zero** em oito páginas medidas. A correção foi
+   aplicada, medida e **revertida** quando você pediu.
+2. **O aviso de privacidade cobre o botão flutuante do WhatsApp no celular.**
+   O aviso aparece uma vez por visitante, mas enquanto está na tela ele
+   sobrepõe o botão de conversão. Resolver é subir o botão enquanto o aviso
+   existe, ou ancorar o aviso mais abaixo.
+
+Além destes dois, sete outras mudanças de aparência entraram **antes** do seu
+pedido e seguem no ar: o próprio aviso de privacidade, o link "pular para o
+conteúdo" (só visível ao usar Tab), o anel de foco mais escuro (só visível ao
+navegar por teclado), os cards das páginas de área passando a levar à página do
+profissional em vez de abrir modal, o link "ver a página completa" dentro do
+modal, as duas seções novas nas páginas de área (abertura e "como funciona"), e
+o texto dos 14 artigos e das 8 áreas. Nenhuma foi revertida, porque reverter
+sem a sua ordem seria o mesmo erro na direção oposta.
