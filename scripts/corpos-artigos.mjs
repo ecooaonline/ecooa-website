@@ -583,5 +583,373 @@ export const CORPOS = {
       "p",
       "Se você leu até aqui, é provável que já tenha tentado mais de uma vez. A pergunta que sobra não é sobre força de vontade. É se existe alguma coisa diferente para olhar dessa vez. Isso eu não tenho como responder por um texto. Uma primeira conversa serve para entender o que está acontecendo no seu caso, o que faz sentido tratar primeiro e, com honestidade, se o caminho é comigo, com outro profissional, ou com mais de um. Dizer isso na primeira sessão também é parte do trabalho."
     ]
+  ],
+  "nutricao-esportiva-performance": [
+    [
+      "p",
+      "Quem treina a sério costuma chegar à consulta com uma lista pronta. Um pré-treino que o colega elogiou, um termogênico do feed, a dúvida sobre treinar em jejum antes do longão. Quase nunca a lista começa pelo que se come nas horas em volta da sessão, e é aí que boa parte do rendimento costuma ser ganha ou perdida. Suplemento mexe na margem, e a margem costuma aparecer depois que a base está de pé."
+    ],
+    [
+      "h",
+      "Rendimento se sustenta na energia disponível"
+    ],
+    [
+      "p",
+      "Antes de macronutriente ou horário, existe uma conta silenciosa: o que sobra de energia depois que o treino cobra a parte dele. O corpo usa esse resto para tudo o que não é treino. Reparo de tecido, sistema imune, osso, produção hormonal, sono. Quando ele fica pequeno por semanas seguidas, raramente soa alarme. O corte é discreto. A recuperação tende a alongar, o sono costuma piorar, a lesão ocasional pode virar recorrente, o ciclo menstrual pode mudar ou sumir, e o rendimento às vezes cai justo quando o volume sobe. Nenhum desses sinais, isolado, aponta uma causa, e ciclo menstrual que muda ou some pede avaliação médica, não conclusão tirada de leitura."
+    ],
+    [
+      "p",
+      "Na prática clínica, isso aparece com frequência em quem quer duas coisas ao mesmo tempo, treinar mais e pesar menos. As duas metas são legítimas e tendem a competir entre si dentro da mesma janela. Boa parte do trabalho é decidir qual vem primeiro e por quanto tempo, conforme o esporte, o calendário de competição, o histórico de lesão e quanto a pessoa consegue comer num dia comum de trabalho."
+    ],
+    [
+      "h",
+      "Carboidrato é dose, e a dose muda com o treino"
+    ],
+    [
+      "p",
+      "Carboidrato deixou de ser tratado como nutriente e virou posição ideológica. A fisiologia é mais simples: é o combustível que o músculo usa rápido, e a reserva é limitada. Esforço intenso e esforço prolongado dependem bastante dela. Com a reserva baixa o corpo não para, mas tende a entregar menos potência e a sustentar por menos tempo o ritmo alvo, e a percepção de esforço costuma subir para a mesma carga. A pessoa sente que treinou mal e não entende por quê."
+    ],
+    [
+      "p",
+      "Por isso a quantidade não deveria ser fixa. Um treino técnico curto e uma sessão longa em intensidade não pedem a mesma coisa, ainda que a balança esteja igual nos dois dias. Periodizar a alimentação junto do treino é isso: a comida acompanha o que a semana pede, sobe onde a exigência sobe, recua onde o treino é leve. Quanto sobe e quanto recua não se resolve por regra geral, e sim em avaliação individual. É um ajuste discreto, sem apelo de protocolo, e costuma pesar bastante na sensação dentro da sessão."
+    ],
+    [
+      "destaque",
+      "A pergunta útil quase nunca é o que tomar. É o que a sua semana de treino está cobrando."
+    ],
+    [
+      "h",
+      "Proteína: o total do dia e a distribuição"
+    ],
+    [
+      "p",
+      "A proteína entra em outra lógica. Não é a fonte principal de combustível, é matéria-prima de reparo e de adaptação. O treino abre um período em que o músculo tende a responder melhor à oferta de aminoácidos, e essa resposta parece funcionar mais em pulsos do que em acúmulo. Concentrar quase tudo no jantar tende a aproveitar menos esse mecanismo do que distribuir ao longo do dia. A necessidade de quem treina costuma ser maior que a da população geral, e maior ainda em restrição energética, recuperação de lesão, atletas mais velhos e alimentação vegetariana ou vegana. Quanto exatamente, e de onde tirar sem virar obrigação, é conta individual, feita em consulta."
+    ],
+    [
+      "h",
+      "O que o suplemento faz, e o que ele não faz"
+    ],
+    [
+      "p",
+      "Entre tudo o que é vendido como suplemento esportivo, é pequena a parte que reúne evidência consistente de efeito sobre performance, e essa parte não costuma mudar muito de um ano para outro. A distância entre o catálogo inteiro e essa lista curta é onde costuma ficar boa parte do dinheiro gasto e da frustração. Mesmo entre os que têm evidência, o efeito é de margem, num tipo específico de esforço, e tende a desaparecer quando o sono está curto e a alimentação está aquém."
+    ],
+    [
+      "p",
+      "Duas coisas não aparecem no rótulo. A primeira é a interação com o resto da rotina: um estimulante pode ajudar dentro do treino e cobrar caro no sono da mesma noite, e boa parte da adaptação acontece durante o sono. A segunda é a contaminação cruzada, que pesa para quem compete sob controle antidoping, porque, pelas regras em vigor, a responsabilidade pela substância encontrada recai sobre o atleta. O que se usa, se é que se usa algo, depende de avaliação individual, de exames quando há indicação, da fase de treino e do que a pessoa já toma, inclusive medicamentos prescritos por médico."
+    ],
+    [
+      "destaque",
+      "Quando se come menos do que o treino cobra, dificilmente algum suplemento dá conta da diferença."
+    ],
+    [
+      "h",
+      "O que a nutrição esportiva não resolve"
+    ],
+    [
+      "p",
+      "Ela não conserta treino mal distribuído. Se a semana empilha sessões intensas sem espaço de recuperação, dificilmente um ajuste alimentar segura essa conta, e a conversa passa a ser com quem prescreve o treino. Também não substitui sono. E há sinais que pedem outro profissional antes de qualquer plano alimentar: queda de rendimento com cansaço desproporcional, palidez, falta de ar em esforços antes tranquilos, ciclo menstrual que sumiu, fraturas por estresse repetidas, dor que não passa. Nenhum deles, isolado, fecha um diagnóstico, e essa separação não se faz por leitura de lista: é avaliação médica com exames, não ajuste de cardápio. Do mesmo modo, quando a relação com a comida ou com o corpo está causando sofrimento, controle excessivo, culpa, compulsão, o caminho passa por psicologia e às vezes por psiquiatria."
+    ],
+    [
+      "h",
+      "O custo real, e o que se acompanha depois"
+    ],
+    [
+      "p",
+      "A parte que ninguém conta: dá trabalho. Comer o suficiente em dia de treino pesado exige planejamento, compra, preparo e, no começo, desconforto real de volume. Quem passou anos comendo menos do que precisava costuma estranhar o estômago cheio antes de treinar, e o intestino pode levar semanas para se acostumar. Por isso nada novo se testa em dia de prova. E a balança pode subir nos primeiros dias por retenção de água, o que, por si só, não indica que algo tenha piorado."
+    ],
+    [
+      "p",
+      "Depois que o plano começa vem a parte que decide se ele se sustenta. Acompanhar é olhar o que mudou dentro do treino, não só no espelho: potência no fim da sessão, ritmo sustentado, recuperação entre séries e entre dias, sono, humor. Exames solicitados e interpretados por quem tem essa atribuição, quando há indicação clínica. E revisão programada, porque o plano que serve na base não serve na semana de competição nem no retorno de uma lesão."
+    ],
+    [
+      "p",
+      "Se você chegou até aqui procurando a resposta sobre um suplemento específico e não encontrou, é porque ela não existe em formato de artigo. Depende do seu esporte, da sua fase, dos seus exames e do que você consegue sustentar numa semana real, com trabalho, deslocamento e sono contado. O básico bem feito, ajustado ao que o seu treino cobra, costuma ser o ponto de partida, e vem antes de qualquer coisa comprada por indicação de terceiros."
+    ],
+    [
+      "p",
+      "Se fizer sentido olhar isso com calma, uma avaliação individual é o lugar dessa conversa. E se a conclusão for que o ponto crítico está no treino, no sono ou em algo que precisa de investigação médica, é isso que eu vou dizer. Nem sempre a resposta está no prato, e faz parte do trabalho reconhecer quando não está."
+    ]
+  ],
+  "transplante-capilar-porto-alegre": [
+    [
+      "p",
+      "Quase todo mundo que senta na minha frente para falar de transplante capilar já fez o mesmo percurso antes. Comparou fotos antigas com a do documento novo, mediu a testa com os dedos, leu sobre técnicas em fóruns e chegou com uma pergunta pronta: de quantos fios eu preciso. A pergunta que vem antes dessa é outra. Se a cirurgia é o passo certo, e se é agora. Boa parte das avaliações que faço termina sem indicação cirúrgica imediata, e isso raramente é má notícia. É o que costuma separar um resultado que envelhece bem de um arrependimento difícil de desfazer."
+    ],
+    [
+      "h",
+      "A cirurgia move cabelo, ela não cria cabelo"
+    ],
+    [
+      "p",
+      "O transplante retira unidades foliculares de uma região que costuma ser geneticamente menos sensível à ação hormonal, em geral a faixa posterior e lateral da cabeça, e as reposiciona onde houve rarefação. O folículo carrega consigo o comportamento da região de origem, e por isso tende a se manter no lugar novo. É também por isso que a conta é fechada: nenhum fio é fabricado, todos são deslocados."
+    ],
+    [
+      "p",
+      "Isso resolve boa parte das dúvidas sobre indicação. Quando alguém pede densidade de adolescente numa área ampla, com uma doadora modesta, o que está sendo pedido não existe. O planejamento é uma decisão sobre onde gastar um recurso limitado, e ela é irreversível."
+    ],
+    [
+      "destaque",
+      "Todo transplante consome um recurso que não se repõe. A área doadora é finita, e o que sai dela não volta."
+    ],
+    [
+      "h",
+      "Antes de operar, é preciso saber por que caiu"
+    ],
+    [
+      "p",
+      "Nem toda queda tem a mesma natureza, e nenhuma técnica cirúrgica corrige um diagnóstico errado. Existem quadros de rarefação progressiva de padrão hormonal. Existem quedas difusas disparadas por doença, cirurgia, restrição alimentar, alteração de tireoide, pós-parto. E existem alopecias em que o folículo é destruído por inflamação e substituído por tecido cicatricial. Cada cenário pede uma conduta diferente, e parte deles pode ser conduzida sem cirurgia nenhuma. Diferenciar um do outro não se faz pelo espelho nem por foto."
+    ],
+    [
+      "p",
+      "A avaliação combina tricoscopia, história clínica detalhada, exames laboratoriais e, em parte dos casos, biópsia do couro cabeludo. Não é burocracia. Transplantar sobre uma alopecia cicatricial em atividade tende a terminar em perda dos enxertos, porque o processo que destruiu os folículos originais atua sobre os novos. E operar em fase de queda intensa sem controle pode acelerar a rarefação em volta da área tratada, o que dá a impressão de que a cirurgia piorou tudo."
+    ],
+    [
+      "h",
+      "A área doadora define o que é possível"
+    ],
+    [
+      "p",
+      "Densidade por centímetro quadrado, calibre do fio, contraste entre cabelo e pele, elasticidade do couro cabeludo e extensão previsível da perda futura. São esses fatores, e não o desejo de quem opera nem de quem é operado, que definem quantas unidades podem sair sem deixar a doadora ralada, e quanta área elas cobrem bem."
+    ],
+    [
+      "p",
+      "A idade pesa muito aqui. Um homem no início dos vinte anos, com queda rápida e história familiar de calvície extensa, está no meio de um processo que ainda vai avançar por décadas. Cobrir a linha frontal agora pode parecer ótimo por alguns anos e depois deixar uma faixa de cabelo isolada, cercada de couro cabeludo descoberto, com a doadora já consumida. Nesses casos a conduta costuma ser estabilizar clinicamente, acompanhar e reavaliar quando já dá para enxergar o desenho da perda."
+    ],
+    [
+      "destaque",
+      "A cirurgia cobre uma área. Ela não interrompe a calvície que continua acontecendo em volta do que foi coberto."
+    ],
+    [
+      "h",
+      "Quando o caminho é outro, ou é o mesmo mais tarde"
+    ],
+    [
+      "p",
+      "Há situações em que a resposta honesta é que não existe indicação agora, e são situações que aparecem na avaliação, não na conclusão de quem se olha no espelho: queda ativa ainda sem controle clínico, doença de couro cabeludo em atividade, condição sistêmica descompensada, cicatrização comprometida, expectativa que a anatomia disponível não sustenta. Nenhuma dessas é sentença definitiva. Muitas vezes o que está em discussão é a sequência das etapas."
+    ],
+    [
+      "p",
+      "Existe ainda um cenário mais delicado, o da pessoa cujo sofrimento com a própria imagem é desproporcional ao que aparece no exame. Cirurgia não trata isso. Operar assim costuma produzir insatisfação independentemente da qualidade técnica do resultado, e o pedido seguinte tende a ser por mais uma sessão. Quando percebo esse desenho, prefiro falar abertamente e sugerir acompanhamento antes de qualquer decisão cirúrgica."
+    ],
+    [
+      "h",
+      "O custo em tempo, e o que se sente no meio do caminho"
+    ],
+    [
+      "p",
+      "O procedimento ocupa boa parte de um dia, com anestesia local, e a pessoa permanece acordada. A dor costuma ser menor do que a maioria imagina, mas o procedimento é longo e cansa. Os primeiros dias trazem inchaço, crostas e uma aparência que a maioria prefere não levar para o trabalho. Depois vem a parte que quase ninguém antecipa: os fios transplantados caem nas primeiras semanas. É esperado, e na maior parte dos casos o folículo permanece no lugar, mas a sensação de ter voltado à estaca zero é real."
+    ],
+    [
+      "p",
+      "Segue-se um período de aparente nada. O crescimento recomeça devagar, com fios finos e distribuição desigual, e o resultado só pode ser julgado com honestidade perto de completar um ano. Quem precisa estar apresentável para uma data específica deve contar esse tempo de trás para frente antes de marcar."
+    ],
+    [
+      "h",
+      "O que pode não sair como planejado, e o que vem depois"
+    ],
+    [
+      "p",
+      "A sobrevida dos enxertos varia entre pessoas e entre regiões da mesma cabeça. Parte dos casos precisa de uma segunda sessão para chegar à densidade combinada, e isso deve ser dito antes, não depois. Foliculite, dormência transitória na doadora e vermelhidão prolongada em peles claras estão entre as ocorrências previstas, que costumam ser manejáveis com acompanhamento. Cicatrizes puntiformes existem, costumam ser pequenas, e podem aparecer se o cabelo for raspado bem curto. Mas há um erro que costuma dar bastante trabalho para corrigir, e ele não é técnico. É uma linha frontal desenhada baixa ou reta demais, que parece boa aos trinta anos e denuncia a cirurgia aos cinquenta."
+    ],
+    [
+      "p",
+      "O acompanhamento também não termina na alta. Os fios nativos ao redor do enxerto seguem sujeitos ao mesmo processo que já os vinha afinando. Manter o tratamento clínico indicado para o seu caso, com retornos programados e ajustes ao longo do tempo, é o que ajuda a preservar o conjunto. Sem isso o resultado tende a envelhecer de forma irregular, com a área transplantada firme e o entorno rareando, e uma nova cirurgia entra em pauta antes da hora."
+    ],
+    [
+      "p",
+      "Se você leu até aqui, provavelmente já percebeu que a sua dúvida não é sobre técnica. É sobre valer a pena. O tempo parado, o dinheiro, a exposição durante a recuperação e a preocupação concreta de terminar pior do que está hoje. Isso não tem resposta genérica, porque depende do seu couro cabeludo, do estágio da queda e do que você espera ver no espelho daqui a vinte anos. O que uma avaliação individual oferece é uma leitura franca do seu caso, inclusive para dizer que a cirurgia não é o caminho, quando não for. Nada do que está escrito aqui substitui essa avaliação. E se a sua conclusão for esperar, é uma resposta legítima."
+    ]
+  ],
+  "rejuvenescimento-facial-porto-alegre": [
+    [
+      "p",
+      "Quem marca uma avaliação de rejuvenescimento facial quase sempre chega com um procedimento já decidido. Viu num vídeo, ouviu de alguém. Só que a queixa dita em palavras raramente é a queixa que o espelho devolve. A pessoa fala em preencher um sulco, e o que de fato incomoda é parecer cansada em toda foto, inclusive nas semanas em que dormiu bem. São problemas diferentes, e é aí que nasce a distância entre um resultado que agrada e um que não."
+    ],
+    [
+      "h",
+      "O rosto não envelhece em uma camada só"
+    ],
+    [
+      "p",
+      "A pele perde colágeno, elastina e capacidade de reter água, o que aparece como textura irregular, perda de brilho e linhas finas. Os compartimentos de gordura não mudam de forma uniforme: alguns esvaziam, outros descem. A musculatura mais usada nas expressões marca sulcos com os anos. E a estrutura óssea, alicerce de tudo isso, também se reabsorve, e os tecidos de cima perdem apoio."
+    ],
+    [
+      "p",
+      "Duas pessoas podem apontar o mesmo ponto do rosto e estar falando de coisas distintas. Um sulco pode vir de perda de volume acima dele, de pele fina, de dinâmica muscular, de perda de suporte ósseo, ou de tudo junto. Tratar o sulco sem entender de onde ele veio às vezes melhora pouco, às vezes deixa a região pesada. Por isso a avaliação olha o rosto inteiro, em repouso e em movimento."
+    ],
+    [
+      "h",
+      "Por que a avaliação pesa mais do que a técnica escolhida"
+    ],
+    [
+      "p",
+      "Técnica é pré-requisito, não diferencial. Ela responde à pergunta de como aplicar. As perguntas que definem o resultado são outras: onde, quanto, em que ordem e se vale fazer. Essas quatro só têm resposta depois de avaliar aquele rosto, aquela história e aquela expectativa."
+    ],
+    [
+      "p",
+      "A avaliação passa por proporções e assimetrias, que todo mundo tem e que ficam mais visíveis depois de qualquer intervenção. Inclui saber o que já foi aplicado antes e como o rosto respondeu, porque produto antigo ainda presente muda a decisão de hoje. Inclui histórico de saúde, medicações, sol, peso e sono, que interferem no resultado e na durabilidade. E inclui entender o que a pessoa quer mudar e, com o mesmo cuidado, o que ela quer preservar do próprio rosto."
+    ],
+    [
+      "destaque",
+      "Boa parte de uma consulta bem feita é decidir o que não fazer, e em que ordem fazer o resto."
+    ],
+    [
+      "h",
+      "Plano por etapas, e por que quase nunca faço tudo de uma vez"
+    ],
+    [
+      "p",
+      "Trabalho com plano por etapas: defino o que entra primeiro, o que só faz sentido depois e o que talvez nem precise entrar. Em geral vale começar pelo que dá sustentação e pela qualidade da pele, deixando o refinamento para quando a base está resolvida. Refinar sobre base que ainda vai mudar é retrabalho."
+    ],
+    [
+      "p",
+      "Há um motivo técnico por trás disso. Nas primeiras semanas o rosto está edemaciado, e o que se vê ali não é o resultado. Avaliar sobre inchaço leva a decisões erradas, quase sempre no sentido de colocar mais do que era necessário. Mexer numa região também muda a percepção da vizinha: tratado o terço médio, o terço inferior pode passar a incomodar, ou pode parar de incomodar."
+    ],
+    [
+      "p",
+      "E se tudo é feito junto e alguma coisa não agrada, não há como saber o que causou. O custo é tempo: um plano costuma se desenrolar por meses, com retornos no meio. Quem quer resolver tudo numa tarde vai me ouvir dizer que não é assim."
+    ],
+    [
+      "h",
+      "O que isso não resolve"
+    ],
+    [
+      "p",
+      "Procedimento injetável não substitui cirurgia. Diante de excesso importante de pele e flacidez avançada, preenchedores, bioestimuladores e fios entregam melhora parcial, e insistir nessa via tende a gerar peso e aparência artificial. O caminho honesto ali é avaliação com cirurgia plástica, mesmo que a pessoa tenha chegado procurando outra coisa. O inverso também vale: mancha, textura e vermelhidão pedem tratamento de pele, e preenchimento nenhum resolve isso."
+    ],
+    [
+      "p",
+      "Há também o que não é da estética. Cansaço aparente que não passa, mudança de pele junto com queda de cabelo, variação de peso sem explicação: isso pede avaliação médica primeiro, porque pode haver causa clínica por trás, e tratar só o que aparece adia a investigação. Nomear a causa não é meu papel, encaminhar é. E quando cada retorno traz uma área nova para corrigir, e nenhum ajuste parece bastar, prefiro pausar o plano e sugerir uma conversa com a psicologia antes de seguir aplicando. Não é diagnóstico meu, é cuidado com a ordem das coisas."
+    ],
+    [
+      "h",
+      "O que pode dar errado, e o que você vai sentir"
+    ],
+    [
+      "p",
+      "Hematoma, inchaço, sensibilidade local e assimetria temporária estão entre os eventos esperados, e não são, por si só, sinal de complicação. Variam com a área, a técnica e a pessoa. Nos primeiros dias é comum o rosto parecer estranho para quem se olha, e é por isso que não se agenda procedimento na véspera de um evento importante. O resultado se assenta ao longo de semanas."
+    ],
+    [
+      "p",
+      "Existem intercorrências mais raras e mais sérias, principalmente com preenchedores, ligadas à vascularização da face. Por isso anatomia, escolha de produto e registro do que foi aplicado não são burocracia, e por isso importa ter para quem ligar. Dor que aumenta em vez de diminuir, mudança de cor ou palidez na região tratada e qualquer alteração visual depois de uma aplicação são motivos para procurar atendimento imediatamente, sem esperar a data do retorno."
+    ],
+    [
+      "p",
+      "Sobre a sensação: em geral se usa anestésico tópico antes da aplicação, e o desconforto costuma ser tolerável, mas varia bastante entre pessoas e entre regiões. Prefiro dizer isso a prometer que não dói."
+    ],
+    [
+      "h",
+      "O depois também é tratamento"
+    ],
+    [
+      "p",
+      "A reavaliação faz parte do plano, não é cortesia. O retorno serve para ver o resultado já assentado, comparar com o registro feito antes, ajustar o que precisa e decidir o próximo passo. Em muitos retornos a decisão é não fazer nada, e isso também é conduta."
+    ],
+    [
+      "p",
+      "Fora do consultório, o que ajuda a sustentar o resultado é o básico e um pouco chato: fotoproteção diária, rotina de pele orientada por quem acompanha a sua pele, sono e estabilidade de peso. Rosto que oscila muito de peso perde referência de contorno, e isso muda a indicação. Os intervalos de manutenção se definem caso a caso, não por calendário."
+    ],
+    [
+      "destaque",
+      "Manutenção não é repetir o que já foi feito. É reavaliar se aquilo ainda faz sentido para o rosto que você tem agora."
+    ],
+    [
+      "p",
+      "Se você chegou até aqui, provavelmente continua com a dúvida que trouxe: se é o seu caso, se é a hora, se vale. Isso não se responde por um texto. A avaliação existe para chegar a uma resposta honesta, inclusive quando ela é que não é agora, que o caminho é outro profissional, ou que o que te incomoda talvez responda a algo mais simples do que você imaginava. Sair de uma avaliação sem nenhum procedimento agendado é um desfecho possível, e legítimo."
+    ]
+  ],
+  "osteopatia-o-que-e-para-quem": [
+    [
+      "p",
+      "Quem procura uma avaliação osteopática raramente chega no começo da história. Chega depois de meses de dor, depois de um exame que não explicou o que sente, depois de uma melhora que não se sustentou. Ou chega com um bebê no colo e uma pergunta que ninguém respondeu direito, como por que ele vira sempre a cabeça para o mesmo lado. A dúvida costuma ser a mesma: por que isso continua acontecendo, se ninguém encontrou nada de errado."
+    ],
+    [
+      "p",
+      "A osteopatia parte de uma pergunta diferente da que o exame de imagem responde. A imagem mostra a estrutura em um instante, e faz isso bem. A avaliação osteopática olha função: quanto cada região se move, em que direção deixa de se mover e o que o resto do corpo passou a fazer para cobrir a diferença. As duas leituras se somam, não competem. O trabalho é feito com as mãos, mas o que o sustenta é o raciocínio que vem antes."
+    ],
+    [
+      "h",
+      "A avaliação vem antes da técnica"
+    ],
+    [
+      "p",
+      "Primeiro vem a história. Quando a dor apareceu, o que piora, o que alivia, se muda com o sono, com o estresse, com o treino, com o trabalho. Cirurgias, entorses antigas, quedas, partos, cicatrizes. Cada um desses eventos deixa rastro na forma como o corpo distribui carga."
+    ],
+    [
+      "p",
+      "Depois vem o exame físico. Como você fica em pé quando não está pensando nisso, como senta, como respira, como gira, o que muda quando o peso passa de um lado ao outro. Testes de mobilidade, comparação entre os lados, palpação de tecidos. É desse mapa que sai a hipótese, e da hipótese sai a escolha das técnicas. Duas pessoas com a mesma queixa podem sair da avaliação com planos bem diferentes."
+    ],
+    [
+      "p",
+      "Esse rodeio existe porque o corpo é bom em compensar. Quando uma articulação perde amplitude, as vizinhas assumem parte da tarefa e dão conta por um tempo. A que passa a trabalhar além do que lhe cabe costuma ser a que dói, não a que se limitou primeiro. Um tornozelo rígido desde uma entorse antiga pode mudar a forma como o quadril e a lombar absorvem cada passo. Isso não torna a dor imaginária. Ajuda a entender por que, em parte dos casos, olhar apenas o ponto que dói não dá conta da história inteira."
+    ],
+    [
+      "destaque",
+      "Nem sempre o corpo reclama no lugar onde o problema começou."
+    ],
+    [
+      "h",
+      "O que acontece na sessão, e o que se costuma sentir"
+    ],
+    [
+      "p",
+      "As técnicas variam. Existem manipulações articulares rápidas, que podem produzir o som de estalo, e há muito trabalho lento sobre músculos, fáscias e articulações, com pressão sustentada ou movimento passivo. O estalo não é medida de sucesso nem prova de que funcionou. A escolha depende do que a avaliação encontrou, da sua idade, do seu histórico e da sua tolerância."
+    ],
+    [
+      "p",
+      "Sobre o que se sente: alguns pontos ficam sensíveis ao toque e trabalhar neles incomoda enquanto dura. Depois da sessão é comum aparecer cansaço, corpo pesado ou dor difusa leve por um ou dois dias, sobretudo nas primeiras sessões. Costuma passar sozinho. O que não é esperado é dor forte, dor que aumenta de forma progressiva, formigamento novo ou perda de força depois do atendimento. Se acontecer, o certo é entrar em contato, não esperar a próxima sessão, e procurar avaliação médica se o quadro for intenso ou não ceder."
+    ],
+    [
+      "h",
+      "Bebês: outra régua, e limites claros"
+    ],
+    [
+      "p",
+      "O acompanhamento de bebês usa toque leve e sustentado. Não tem manipulação brusca, não tem estalo, não tem força. As queixas que mais chegam são preferência marcada de rotação da cabeça, dificuldade de se acomodar, desconforto durante a mamada, tensão na hora de estender o corpo. São motivos de procura, não critérios para concluir nada em casa: o que está acontecendo com cada bebê só se define em avaliação, e junto com o pediatra."
+    ],
+    [
+      "p",
+      "Aqui é preciso ser honesta sobre o alcance. Em quadros de restrição de mobilidade e assimetria postural, a resposta ao trabalho manual pode ser acompanhada de perto, com reavaliação a cada retorno, o que não é o mesmo que garantir resultado. Em outros temas, como cólica, o debate sobre o tamanho real do efeito segue aberto, e prometer resultado nesse terreno seria desonesto. Dificuldade de amamentação quase nunca tem causa única: envolve pega, produção, frênulo e posicionamento, e o trabalho é dividido com o pediatra e com quem acompanha a mamada. Bebê que não ganha peso, que tem febre ou que muda de comportamento de forma importante precisa de avaliação pediátrica primeiro."
+    ],
+    [
+      "h",
+      "O que a osteopatia não resolve"
+    ],
+    [
+      "p",
+      "Não trata doença sistêmica nem substitui investigação médica. Não é caminho para fratura, infecção, processo inflamatório em atividade, suspeita de tumor nem para quadros com perda neurológica progressiva, que pedem avaliação médica com prioridade. Escoliose estrutural não é corrigida com terapia manual, ainda que mobilidade e desconforto possam ser trabalhados. E vértebra não sai do lugar nem é recolocada: o que se trabalha é mobilidade, tolerância de carga e coordenação do movimento."
+    ],
+    [
+      "p",
+      "Há também os casos em que a osteopatia ajuda, mas não é o eixo. Dor mantida por sono ruim persistente, por sobrecarga emocional ou por perda importante de força costuma responder pouco, e por pouco tempo, ao trabalho manual isolado, porque o que a sustenta está em outro lugar. Reconhecer isso e encaminhar faz parte do atendimento."
+    ],
+    [
+      "destaque",
+      "Uma avaliação honesta também serve para dizer que o caminho é outro."
+    ],
+    [
+      "h",
+      "Quantas sessões, e o que continua depois"
+    ],
+    [
+      "p",
+      "Não existe número fixo, e qualquer resposta fechada antes da avaliação seria chute. O que existe é critério: se depois de algumas sessões não houver mudança verificável, na dor, na amplitude de movimento ou na capacidade de fazer o que estava difícil, a hipótese precisa ser revista, ou o caso precisa de outro profissional. Quadros recentes costumam responder mais rápido; dores de meses ou anos envolvem tecido adaptado, hábitos consolidados e um sistema nervoso mais sensível, e aí o tempo é outro, com uma dedicação de agenda que é justo conhecer antes de começar."
+    ],
+    [
+      "p",
+      "A parte que menos se fala é que o intervalo entre as sessões pesa tanto quanto a sessão. Mobilidade ganhada sem carga, sem força e sem mudança na forma de usar o corpo tende a se perder. Por isso o plano quase sempre inclui movimento orientado, ajuste de rotina e, muitas vezes, trabalho conjunto com fisioterapia de fortalecimento ou com quem conduz o treino. Depender de atendimento semanal por tempo indeterminado para se manter funcional é sinal de que algo precisa mudar no plano."
+    ],
+    [
+      "h",
+      "Se a sua dúvida é se o seu caso é disso"
+    ],
+    [
+      "p",
+      "Se você chegou até aqui, provavelmente não está atrás de entusiasmo. Está tentando entender se vale tentar de novo. Isso não se resolve por texto. A osteopatia tende a fazer mais sentido quando a queixa tem componente de movimento e de função, e saber se esse é o seu caso depende de avaliação individual."
+    ],
+    [
+      "p",
+      "Se a avaliação apontar que o caminho é outro, isso é dito com todas as letras, e também é um resultado. Se apontar que faz sentido, a proposta vem explicada, com um plano que tem critério de revisão. Nada disso precisa ser decidido hoje."
+    ]
   ]
 };
