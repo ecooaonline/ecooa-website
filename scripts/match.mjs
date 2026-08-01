@@ -865,16 +865,17 @@ const JS = String.raw`
       carta.appendChild(grade);
     }
 
-    carta.appendChild(el('p', 'margin:26px 0 0; max-width:64ch; font-size:15.5px; line-height:1.7; color:#66645E;',
-      ['Abaixo estão os profissionais indicados para você. A escolha final é sua, mas nossa equipe está pronta para te ajudar.']));
-
-    var acoes = el('div', 'margin-top:30px; display:flex; flex-wrap:wrap; gap:14px;');
+    /* frase unica com o contato da equipe como texto-link sublinhado */
+    var par = el('p', 'margin:26px 0 0; max-width:64ch; font-size:15.5px; line-height:1.7; color:#66645E;',
+      ['Abaixo estão os profissionais indicados para você. A escolha final é sua, mas nossa equipe está pronta para te ajudar. ']);
     var wa = document.createElement('a');
     wa.href = waGeral; wa.target = '_blank'; wa.rel = 'noopener noreferrer';
-    wa.style.cssText = BTN_CHEIO;
-    wa.textContent = 'falar com nossa equipe';
-    acoes.appendChild(wa);
+    wa.style.cssText = 'color:#46443F; font-weight:600; text-decoration:underline; text-underline-offset:4px;';
+    wa.textContent = 'Falar com nossa equipe';
+    par.appendChild(wa);
+    carta.appendChild(par);
     if (!veioDeTexto) {
+      var acoes = el('div', 'margin-top:30px; display:flex; flex-wrap:wrap; gap:14px;');
       var refaz = el('button', BTN_SUAVE, ['fazer outra busca']);
       refaz.type = 'button';
       refaz.addEventListener('click', function () {
@@ -882,8 +883,8 @@ const JS = String.raw`
         render(); sobe();
       });
       acoes.appendChild(refaz);
+      carta.appendChild(acoes);
     }
-    carta.appendChild(acoes);
     palco.appendChild(el('section', 'padding:0 clamp(20px,3.2vw,56px) clamp(40px,5vw,64px); background:#F0EEE9;', [el('div', MIOLO, [carta])]));
 
     /* profissionais indicados, formato almanaque */
