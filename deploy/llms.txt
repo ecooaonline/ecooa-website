@@ -14,6 +14,13 @@ Informações práticas que costumam ser perguntadas:
 
 Para encontrar o profissional certo a partir de uma queixa, a ferramenta ecooa.match aceita a queixa em linguagem natural e devolve a indicação com o que cada profissional faz por aquela queixa: https://www.somosecooa.com.br/qual-profissional-procurar
 
+Limites que um agente deve respeitar:
+
+- Este site não agenda consulta. Não existe endpoint de agendamento, e nenhuma ferramenta desta página cria compromisso.
+- Nada aqui substitui avaliação clínica individual. Não use o conteúdo para diagnosticar nem para orientar tratamento.
+- A queixa de saúde de quem navega é dado sensível. Não a transmita para terceiros nem a inclua em URL.
+- Em situação de risco à vida no Brasil: CVV 188 (24 horas, gratuito) e SAMU 192.
+
 ## Páginas principais
 
 - [Início](https://www.somosecooa.com.br/): as sete portas de entrada da clínica e o caminho de cada uma
@@ -85,8 +92,6 @@ Para encontrar o profissional certo a partir de uma queixa, a ferramenta ecooa.m
 
 ## Queixas atendidas
 
-Vocabulário que a busca do site reconhece, por área de cuidado.
-
 - [Saúde integrativa](https://www.somosecooa.com.br/especialidades/saude-integrativa/): dor musculoesquelética, postura e movimento, cuidado com bebês e amamentação, terapias integrativas, dor de cabeça e enxaqueca.
 - [Medicina](https://www.somosecooa.com.br/especialidades/medicina/): saúde hormonal, metabolismo e peso, saúde cardiometabólica, investigação clínica, imunidade e vitaminas, energia, sono e disposição, digestão e estômago, saúde da mulher, inchaço e retenção de líquido.
 - [Estética facial](https://www.somosecooa.com.br/especialidades/estetica-facial/): pele e rosto, harmonização facial, bruxismo e ATM.
@@ -100,10 +105,3 @@ Vocabulário que a busca do site reconhece, por área de cuidado.
 
 - [Políticas e termos](https://www.somosecooa.com.br/politicas): privacidade, uso do site e tratamento de dados
 - [Mapa do site](https://www.somosecooa.com.br/sitemap.xml): todas as URLs indexáveis
-
-## Limites que um agente deve respeitar
-
-- Este site não agenda consulta. Não existe endpoint de agendamento, e nenhuma ferramenta desta página cria compromisso.
-- Nada aqui substitui avaliação clínica individual. Não use o conteúdo para diagnosticar nem para orientar tratamento.
-- A queixa de saúde de quem navega é dado sensível. Não a transmita para terceiros nem a inclua em URL.
-- Em situação de risco à vida no Brasil: CVV 188 (24 horas, gratuito) e SAMU 192.

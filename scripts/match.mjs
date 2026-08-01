@@ -278,6 +278,10 @@ const JS = String.raw`
      (o datalist nativo nao aceita estilo) */
   function campoBusca(valor, aoEnviar, aoGuiar) {
     var form = el('form', 'display:flex; flex-wrap:wrap; gap:12px; align-items:center;');
+    /* method=dialog: se o JavaScript falhar, o envio nativo NAO navega e nao
+       manda a queixa da pessoa para a URL. Cinto e suspensorio junto com a
+       ausencia de name no campo. */
+    form.setAttribute('method', 'dialog');
     var wrap = el('div', 'position:relative; flex:1 1 320px;');
     /* rotulo real, escondido visualmente: leitor de tela precisa saber o que
        o campo pede, e placeholder nao e rotulo (WCAG 3.3.2) */

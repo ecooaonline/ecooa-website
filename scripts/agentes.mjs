@@ -42,9 +42,17 @@ const indexavel = (rel) => {
 };
 
 /* ── 1. llms.txt ──────────────────────────────────────────────────────
-   Formato de llmstxt.org: um H1 com o nome, um blockquote com o resumo,
-   texto livre opcional, e seções H2 com listas de links no formato
-   [título](url): descrição. */
+   Formato de llmstxt.org: H1 com o nome, blockquote com o resumo, texto livre
+   sem cabeçalho, e seções H2 com listas de links no formato
+   [título](url): descrição.
+   Regra que derruba arquivos e que já derrubou este: DENTRO de uma seção H2,
+   TODA linha de lista precisa do hyperlink markdown. O parser de referência
+   (llms_txt2ctx) chama .groupdict() direto no resultado do re.search, então
+   uma linha sem link estoura AttributeError. Por isso os limites de uso vivem
+   no preâmbulo, onde a spec autoriza parágrafos e listas de qualquer tipo.
+   E ficam ANTES de `## Optional` de propósito: Optional é a única seção com
+   semântica definida, e é a que um agente pode pular quando precisa de
+   contexto curto. Regra de saúde não pode ficar depois dela. */
 const perfis = ECOOA.profissionais.filter((p) => indexavel(`profissionais/${p.slug}/index.html`));
 
 const llms = `# ecooa
@@ -62,6 +70,13 @@ Informações práticas que costumam ser perguntadas:
 - Não há agendamento automático no site. Todo agendamento passa pela recepção, pelo WhatsApp.
 
 Para encontrar o profissional certo a partir de uma queixa, a ferramenta ecooa.match aceita a queixa em linguagem natural e devolve a indicação com o que cada profissional faz por aquela queixa: ${D}/qual-profissional-procurar
+
+Limites que um agente deve respeitar:
+
+- Este site não agenda consulta. Não existe endpoint de agendamento, e nenhuma ferramenta desta página cria compromisso.
+- Nada aqui substitui avaliação clínica individual. Não use o conteúdo para diagnosticar nem para orientar tratamento.
+- A queixa de saúde de quem navega é dado sensível. Não a transmita para terceiros nem a inclua em URL.
+- Em situação de risco à vida no Brasil: CVV 188 (24 horas, gratuito) e SAMU 192.
 
 ## Páginas principais
 
@@ -101,8 +116,6 @@ ${ECOOA.artigos
 
 ## Queixas atendidas
 
-Vocabulário que a busca do site reconhece, por área de cuidado.
-
 ${(() => {
   const porArea = {};
   for (const g of SINTOMAS) {
@@ -119,18 +132,14 @@ ${(() => {
 
 - [Políticas e termos](${D}/politicas): privacidade, uso do site e tratamento de dados
 - [Mapa do site](${D}/sitemap.xml): todas as URLs indexáveis
-
-## Limites que um agente deve respeitar
-
-- Este site não agenda consulta. Não existe endpoint de agendamento, e nenhuma ferramenta desta página cria compromisso.
-- Nada aqui substitui avaliação clínica individual. Não use o conteúdo para diagnosticar nem para orientar tratamento.
-- A queixa de saúde de quem navega é dado sensível. Não a transmita para terceiros nem a inclua em URL.
-- Em situação de risco à vida no Brasil: CVV 188 (24 horas, gratuito) e SAMU 192.
 `;
 
 fs.writeFileSync(path.join(DEPLOY, 'llms.txt'), llms, 'utf8');
 
-/* ── 2. llms-full.txt: o mesmo mapa, com o conteúdo essencial embutido ── */
+/* ── 2. llms-full.txt: o mesmo mapa, com o conteúdo essencial embutido.
+   Usa a MESMA lista filtrada do llms.txt. Publicar aqui os cinco profissionais
+   que estão fora do índice por falta de registro faria deste arquivo a porta
+   dos fundos de uma decisão do tribunal ético. ── */
 const cheio =
   llms +
   `
@@ -147,7 +156,7 @@ casada entre áreas.
 
 ## O que cada profissional atende
 
-${ECOOA.profissionais
+${perfis
   .map((p) => {
     const blocos = SINTOMAS.filter((g) => (g.pros || []).includes(p.slug)).map((g) => g.rotulo);
     return `### ${p.nome}\n${p.classe}${p.estado !== 'a-adicionar' && p.registro ? `, ${p.registro}` : ''}. ${p.area}.\n${p.bio || ''}\n${blocos.length ? `Queixas: ${blocos.join(', ')}.` : ''}`;
@@ -206,7 +215,13 @@ const FORMULARIOS = [
   },
 ];
 
-/* nome e rótulo de cada campo, para o esquema nascer descrito */
+/* Nome e rótulo de cada campo, para o esquema nascer descrito.
+   O campo #ec-queixa do ecooa.match está FORA desta lista de propósito. Dar
+   `name` a ele faria um envio nativo, se o JavaScript falhar, mandar
+   `?queixa=<a queixa da pessoa>` para a URL, recriando exatamente o defeito
+   que o tribunal ético vetou e que o commit 506de9a removeu. Aquele formulário
+   também não é exposto como ferramenta, então o `name` não traria ganho
+   nenhum: só risco. */
 const CAMPOS = {
   'ec-news': ['email', 'E-mail para receber o editorial da ecooa'],
   'ec-nome': ['nome', 'Nome de quem tem interesse na mentoria'],
@@ -215,7 +230,6 @@ const CAMPOS = {
   'sb-nome': ['nome', 'Nome de quem tem interesse na sublocação'],
   'sb-mail': ['email', 'E-mail para contato sobre a sublocação'],
   'sb-classe': ['profissao', 'Profissão ou conselho de classe, opcional'],
-  'ec-queixa': ['queixa', 'Queixa ou procedimento procurado, em linguagem natural'],
 };
 
 const FERRAMENTAS = `
@@ -383,6 +397,13 @@ for (const arq of anda(DEPLOY)) {
     if (!/\sname=/.test(novo)) {
       novo = novo.replace(/\s*\/?>$/, ` name="${nome}">`);
       camposNomeados++;
+    }
+    /* A ordem de resolução do Chromium para a descrição do parâmetro é
+       toolparamdescription, depois <label>, depois aria-description. O `title`
+       NÃO está nessa ordem: sozinho, deixa a validação de esquema em 0,5,
+       abaixo do limiar de 0,9, e essa é a única auditoria WebMCP que pontua. */
+    if (!/\stoolparamdescription=/.test(novo)) {
+      novo = novo.replace(/\s*\/?>$/, ` toolparamdescription="${titulo}">`);
     }
     if (!/\stitle=/.test(novo)) novo = novo.replace(/\s*\/?>$/, ` title="${titulo}">`);
     return novo;
