@@ -8,4 +8,7 @@ Allow: /
 Disallow: /404
 Disallow: /404.html
 
+# Mapa em markdown para agentes de IA, no formato llmstxt.org
+# https://www.somosecooa.com.br/llms.txt
+
 Sitemap: https://www.somosecooa.com.br/sitemap.xml

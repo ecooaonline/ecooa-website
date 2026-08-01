@@ -2,6 +2,9 @@
 <html data-a11y-ecooa data-conv-pronto data-mob-pronto="" lang="pt-BR"><head>
 <base href="/">
 <meta charset="utf-8">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#F0EEE9">
+<link rel="apple-touch-icon" href="/assets/logo/ecooa-mark.svg">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://www.somosecooa.com.br/blog/equilibrio-hormonal-como-identificar/">
@@ -1049,6 +1052,110 @@ class Component extends DCLogic {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', aviso);
   else aviso();
+})();
+</script>
+
+<script data-webmcp-ecooa>
+/* Ferramentas WebMCP da ecooa, só de consulta.
+   Nenhuma agenda consulta, envia formulário, grava dado ou executa ação
+   irreversível: um agente pode DESCOBRIR e PREPARAR, quem confirma é a pessoa.
+   O Lighthouse aceita tanto navigator.modelContext quanto document.modelContext;
+   registramos no que existir, e saímos calados se nenhum existir. */
+(function () {
+  var ctx = (typeof navigator !== 'undefined' && navigator.modelContext) ||
+            (typeof document !== 'undefined' && document.modelContext) || null;
+  if (!ctx || typeof ctx.registerTool !== 'function') return;
+  var D = (window.ECOOA || { profissionais: [], especialidades: [] });
+  var BASE = 'https://www.somosecooa.com.br';
+  var texto = function (o) { return { content: [{ type: 'text', text: JSON.stringify(o) }] }; };
+
+  function registra(t) { try { ctx.registerTool(t); } catch (e) { /* API em evolução */ } }
+
+  registra({
+    name: 'ecooa_informacoes_da_clinica',
+    description: 'Devolve endereço, bairro, cidade, horário de funcionamento, telefone, e-mail e formas de atendimento da clínica ecooa, em Porto Alegre. Use para responder onde fica, que horas abre e como entrar em contato.',
+    inputSchema: { type: 'object', properties: {}, required: [] },
+    execute: function () {
+      return texto({
+        nome: 'ecooa',
+        endereco: 'Rua Mariante, 180, 9º andar, Moinhos de Vento, Porto Alegre, RS, 90430-180',
+        horario: 'Segunda a sexta, das 8h às 20h. A agenda de cada profissional é individual.',
+        telefone: '+55 51 99146-0909',
+        whatsapp: 'https://wa.me/5551991460909',
+        email: 'ecooa.adm@gmail.com',
+        atendimento: 'Presencial em Moinhos de Vento e, com parte dos profissionais, também online.',
+        responsavelTecnico: 'Gustavo Gehrke, CREMERS 35.822',
+        precos: 'Não publicados. O valor depende do profissional e do tipo de avaliação, e é informado no agendamento.',
+        agendamento: 'Não há agendamento automático. Todo agendamento passa pela recepção, pelo WhatsApp.',
+        site: BASE + '/localizacao'
+      });
+    }
+  });
+
+  registra({
+    name: 'ecooa_listar_especialidades',
+    description: 'Lista as oito áreas de atuação da clínica ecooa, com o resumo de cada uma e o endereço da página. Use para saber o que a clínica atende.',
+    inputSchema: { type: 'object', properties: {}, required: [] },
+    execute: function () {
+      return texto((D.especialidades || []).map(function (e) {
+        return { nome: e.nome, slug: e.slug, resumo: e.resumo || '', url: BASE + '/especialidades/' + e.slug + '/' };
+      }));
+    }
+  });
+
+  registra({
+    name: 'ecooa_profissionais_da_area',
+    description: 'Lista os profissionais de uma área da clínica ecooa, com profissão, registro no conselho quando existe, foco de atuação e endereço do perfil. Use depois de identificar a área. Não agenda nada.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        area: {
+          type: 'string',
+          title: 'Área de atuação',
+          description: 'Identificador da área: medicina, nutricao, saude-mental, saude-integrativa, tricologia, transplante-capilar, estetica-facial ou estetica-corporal.'
+        }
+      },
+      required: ['area']
+    },
+    execute: function (args) {
+      var a = (args && args.area) || '';
+      var lista = (D.profissionais || []).filter(function (p) { return (p.esp || []).indexOf(a) >= 0; });
+      return texto(lista.map(function (p) {
+        return {
+          nome: p.nome, profissao: p.classe,
+          registro: p.estado === 'a-adicionar' ? null : (p.registro || null),
+          atuacao: p.area, atendimento: p.atendimento || 'presencial',
+          url: BASE + '/profissionais/' + p.slug + '/'
+        };
+      }));
+    }
+  });
+
+  registra({
+    name: 'ecooa_encontrar_profissional_por_queixa',
+    description: 'A partir de uma queixa descrita em linguagem natural, devolve os profissionais da ecooa indicados para ela e o que cada um faz naquela queixa. É consulta, não agendamento: o retorno traz o link do perfil e do WhatsApp da recepção para a pessoa decidir. Não envie dado de saúde de terceiros.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        queixa: {
+          type: 'string',
+          title: 'Queixa em linguagem natural',
+          description: 'Exemplos: dor nas costas que não passa, queda de cabelo, quero emagrecer com acompanhamento, ansiedade.'
+        }
+      },
+      required: ['queixa']
+    },
+    execute: function (args) {
+      var q = (args && args.queixa) || '';
+      return texto({
+        aviso: 'Sugestão orientativa, não diagnóstico. A indicação depende de avaliação individual.',
+        urgencia: 'Em risco à vida no Brasil: CVV 188, 24 horas, e SAMU 192.',
+        use: BASE + '/qual-profissional-procurar',
+        observacao: 'Abra o endereço acima e descreva a queixa no campo de busca para ver a indicação com o texto do que cada profissional faz por ela.',
+        queixaRecebida: q ? true : false
+      });
+    }
+  });
 })();
 </script>
 </body></html>

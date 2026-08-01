@@ -1,0 +1,20 @@
+{
+  "name": "ecooa",
+  "short_name": "ecooa",
+  "description": "Clínica multidisciplinar de saúde em Moinhos de Vento, Porto Alegre. Medicina, nutrição, saúde mental, saúde integrativa, tricologia, transplante capilar e estética.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "background_color": "#F0EEE9",
+  "theme_color": "#F0EEE9",
+  "icons": [
+    {
+      "src": "/assets/logo/ecooa-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

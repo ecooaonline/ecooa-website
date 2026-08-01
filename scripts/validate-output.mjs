@@ -395,6 +395,50 @@ console.log('Acessibilidade:');
   else ok('resultado do match anunciado por regiao viva');
 }
 
+/* ── 11. navegacao agentica ────────────────────────────────────────
+   Criterios lidos do codigo do Lighthouse v13.4.1: a auditoria llms-txt faz
+   exatamente tres testes sobre /llms.txt, todos por regex ou tamanho. Se um
+   falhar, a categoria perde a unica auditoria que o site sozinho controla. */
+console.log('Navegacao agentica:');
+{
+  const arq = join(DIST, 'llms.txt');
+  if (!existsSync(arq)) {
+    erro('llms.txt ausente da raiz');
+  } else {
+    const t = readFileSync(arq, 'utf8');
+    if (!/^\s*#\s+.+/m.test(t)) erro('llms.txt sem H1 no formato "# Titulo"');
+    else if (!/\[.+\]\(.+\)/.test(t)) erro('llms.txt sem nenhum link markdown [texto](url)');
+    else if (t.length < 50) erro(`llms.txt com ${t.length} caracteres, minimo 50`);
+    else ok(`llms.txt passa nos tres testes do Lighthouse (${t.length} caracteres)`);
+  }
+  for (const f of ['llms-full.txt', 'site.webmanifest']) {
+    if (!existsSync(join(DIST, f))) erro(`${f} ausente`);
+  }
+
+  /* WebMCP declarativo: toolname e tooldescription no form, e todo campo com
+     name. Faltar qualquer um dos tres e ERROR na validacao de esquema. */
+  let anotados = 0;
+  let semNome = 0;
+  for (const [, s2] of html) {
+    for (const tag of s2.match(/<form\b[^>]*>/g) || []) {
+      if (/toolname=/.test(tag) && /tooldescription=/.test(tag)) anotados++;
+    }
+    for (const tag of s2.match(/<input\b[^>]*>/g) || []) {
+      if (/type="(hidden|submit|button)"/i.test(tag)) continue;
+      if (!/\sname=/.test(tag)) semNome++;
+    }
+  }
+  if (anotados < 11) erro(`so ${anotados} formularios com toolname e tooldescription`);
+  else ok(`${anotados} formularios anotados para WebMCP`);
+  if (semNome) erro(`${semNome} campos de formulario sem atributo name (esquema invalido)`);
+  else ok('todo campo de formulario com name');
+
+  /* toolautosubmit deixaria o agente enviar sem a pessoa. Em saude, nao. */
+  const auto = [...html].filter(([, s2]) => /toolautosubmit/.test(s2));
+  if (auto.length) erro(`toolautosubmit presente em: ${auto.map(([f]) => f).join(', ')}`);
+  else ok('nenhum formulario permite envio automatico por agente');
+}
+
 console.log('');
 if (falhas) {
   console.error(`FALHOU: ${falhas} violacao(oes).`);

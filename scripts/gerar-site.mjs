@@ -105,6 +105,7 @@ for (const etapa of [
   'acessibilidade.mjs',
   'redirects.mjs',
   'medicao.mjs',
+  'agentes.mjs',
   'personaliza.mjs',
   'sitemap.mjs',
 ]) {

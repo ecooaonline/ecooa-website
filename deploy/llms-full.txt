@@ -1,0 +1,277 @@
+# ecooa
+
+> Clínica multidisciplinar de saúde em Moinhos de Vento, Porto Alegre. Reúne 31 profissionais autônomos em oito áreas: medicina, nutrição, saúde mental, saúde integrativa, tricologia, transplante capilar, estética facial e estética corporal. Cada profissional responde tecnicamente pelo próprio trabalho.
+
+Informações práticas que costumam ser perguntadas:
+
+- Endereço: Rua Mariante, 180, 9º andar, Moinhos de Vento, Porto Alegre, RS, 90430-180
+- Horário: segunda a sexta, das 8h às 20h. A agenda de cada profissional é individual.
+- Contato: (51) 99146-0909 (WhatsApp) e ecooa.adm@gmail.com
+- Atendimento presencial em Porto Alegre e, com parte dos profissionais, também online
+- Responsável técnico: Gustavo Gehrke, CREMERS 35.822
+- O site não publica preços. O valor depende do profissional e do tipo de avaliação, e é informado no agendamento.
+- Não há agendamento automático no site. Todo agendamento passa pela recepção, pelo WhatsApp.
+
+Para encontrar o profissional certo a partir de uma queixa, a ferramenta ecooa.match aceita a queixa em linguagem natural e devolve a indicação com o que cada profissional faz por aquela queixa: https://www.somosecooa.com.br/qual-profissional-procurar
+
+## Páginas principais
+
+- [Início](https://www.somosecooa.com.br/): as sete portas de entrada da clínica e o caminho de cada uma
+- [Sobre](https://www.somosecooa.com.br/sobre): história, as nove bandeiras da casa e como a ecooa se organiza
+- [Especialidades](https://www.somosecooa.com.br/especialidades): as oito áreas de atuação
+- [Profissionais](https://www.somosecooa.com.br/profissionais): os 31 profissionais, com filtro por área
+- [Busca por queixa (ecooa.match)](https://www.somosecooa.com.br/qual-profissional-procurar): descreva a queixa e receba a indicação
+- [Localização](https://www.somosecooa.com.br/localizacao): endereço, horário, como chegar e acessibilidade
+- [Editorial](https://www.somosecooa.com.br/blog): textos assinados pelos profissionais da casa
+- [Mentorias](https://www.somosecooa.com.br/mentorias): formação para profissionais de saúde, ecooa.cademy
+- [Sublocação](https://www.somosecooa.com.br/sublocacao): sala para profissionais de saúde em Moinhos de Vento
+
+## Especialidades
+
+- [Medicina](https://www.somosecooa.com.br/especialidades/medicina/): Medicina metabólica, hormônios, longevidade e performance, com tempo de consulta e leitura de exames explicada.
+- [Estética facial](https://www.somosecooa.com.br/especialidades/estetica-facial/): Dermatologia, harmonização orofacial e refinamento, com indicação honesta e resultado que preserva a expressão.
+- [Estética corporal](https://www.somosecooa.com.br/especialidades/estetica-corporal/): Contorno, firmeza e cuidado corporal, planejados em etapas e integrados ao acompanhamento nutricional e clínico.
+- [Tricologia](https://www.somosecooa.com.br/especialidades/tricologia/): Investigação e tratamento da queda de cabelo e das doenças do couro cabeludo, com equipe médica, biomédica e de enfermagem.
+- [Transplante capilar](https://www.somosecooa.com.br/especialidades/transplante-capilar/): Cirurgia capilar conduzida por médica, com investigação prévia e critério claro sobre quem tem e quem não tem indicação.
+- [Nutrição](https://www.somosecooa.com.br/especialidades/nutricao/): Nutrição clínica, esportiva, comportamental, vegetariana e funcional. Doze profissionais, cada um com um foco, para que a conduta caiba na sua rotina.
+- [Saúde mental](https://www.somosecooa.com.br/especialidades/saude-mental/): Psicologia clínica, do esporte e neuropsicologia. Escuta sem pressa, presencial e online.
+- [Saúde integrativa](https://www.somosecooa.com.br/especialidades/saude-integrativa/): Cuidado complementar que caminha junto do acompanhamento clínico, nunca no lugar dele.
+
+## Profissionais
+
+- [Gustavo Gehrke](https://www.somosecooa.com.br/profissionais/gustavo-gehrke/): Médico, CRM-RS 35.822. metabolismo, emagrecimento e hormônios.
+- [Larissa Wiebbelling](https://www.somosecooa.com.br/profissionais/larissa-wiebbelling/): Médica, CRM-RS 55.504. transplante capilar e tricologia médica.
+- [Yale Jerônimo](https://www.somosecooa.com.br/profissionais/yale-jeronimo/): Médica, CRM-RS 49.185. tricologia e alopecias.
+- [Vitória Müller T. Machado](https://www.somosecooa.com.br/profissionais/vitoria-machado/): Médica dermatologista, CRM-RS 43.712 · RQE 42.218. dermatologia clínica e estética.
+- [Renata Bohn Engel](https://www.somosecooa.com.br/profissionais/renata-bohn-engel/): Médica dermatologista, CRM-RS 48.838 · RQE 46.857. dermatologia clínica e estética.
+- [Jessica Stein](https://www.somosecooa.com.br/profissionais/jessica-stein/): Nutricionista, CRN 9495. nutrição clínica, vegetariana e emagrecimento.
+- [Adriano Flesch Lenz](https://www.somosecooa.com.br/profissionais/adriano-lenz/): Nutricionista, CRN-2 7844D. nutrição e práticas ortomoleculares.
+- [Maria Luísa Serrano Beltran Borges](https://www.somosecooa.com.br/profissionais/maria-luisa-borges/): Nutricionista, CRN-2 12076P. nutrição esportiva e alta performance.
+- [Daniel Forster](https://www.somosecooa.com.br/profissionais/daniel-forster/): Nutricionista, CRN2 20541. nutrição clínica e esportiva.
+- [Vitória Serpa da Silva](https://www.somosecooa.com.br/profissionais/vitoria-serpa/): Nutricionista, CRN-2 12000P. nutrição esportiva.
+- [Nasser Salem](https://www.somosecooa.com.br/profissionais/nasser-salem/): Nutricionista, CRN2 19914D. nutrição esportiva e emagrecimento.
+- [Camila Cadore](https://www.somosecooa.com.br/profissionais/camila-cadore/): Nutricionista, CRN/RS 8447. nutrição funcional e integrativa.
+- [Verena Cattani](https://www.somosecooa.com.br/profissionais/verena-cattani/): Nutricionista, CRN 2 19692. nutrição clínica.
+- [Danusa Pires](https://www.somosecooa.com.br/profissionais/danusa-pires/): Enfermeira, COREN-RS 395164. tricologia estética e reposição de nutrientes.
+- [Viviane Fagundes](https://www.somosecooa.com.br/profissionais/viviane-fagundes/): Biomédica, CRBM 2565. tricologia estética e testes genéticos capilares.
+- [Natálie Queiroz](https://www.somosecooa.com.br/profissionais/natalie-queiroz/): Osteopata e fisioterapeuta, CREFITO-5 271577-F. osteopatia adulto e infantil.
+- [Susan Flach](https://www.somosecooa.com.br/profissionais/susan-flach/): Biomédica, CRBM-5 4182. tricologia e gerenciamento da pele.
+- [Letícia Melo](https://www.somosecooa.com.br/profissionais/leticia-melo/): Biomédica, CRBM-RS 627. harmonização orofacial.
+- [Eduarda Schoenmeier](https://www.somosecooa.com.br/profissionais/eduarda-schoenmeier/): Biomédica esteta, CRBM 7243. harmonização orofacial e corporal.
+- [Tais de la Rosa](https://www.somosecooa.com.br/profissionais/tais-de-la-rosa/): Farmacêutica, CRF-RS 588527. harmonização orofacial e saúde da pele.
+- [Karine Ellwanger](https://www.somosecooa.com.br/profissionais/karine-ellwanger/): Biomédica esteta, CRBM-5 7474. harmonização orofacial.
+- [Jennifer Adam](https://www.somosecooa.com.br/profissionais/jennifer-adam/): Biomédica esteta, CRBM-5 8600. harmonização orofacial e rejuvenescimento.
+- [Jamylle Farias](https://www.somosecooa.com.br/profissionais/jamylle-farias/): Cirurgiã-dentista, CRO-RS 30124. harmonização orofacial.
+- [Manuela Sinigaglia Vanti](https://www.somosecooa.com.br/profissionais/manuela-vanti/): Psicóloga, CRP 07/34596. terapia cognitivo-comportamental.
+- [Augusto Kauer da Silveira](https://www.somosecooa.com.br/profissionais/augusto-kauer/): Psicólogo, CRP 07/28516. psicologia do esporte.
+- [Francielle Machado Beria](https://www.somosecooa.com.br/profissionais/francielle-beria/): Psicóloga, CRP 07/29944. terapia cognitivo-comportamental e neuropsicologia.
+
+## Editorial
+
+- [Implante hormonal subcutâneo: o que é e quando tem indicação](https://www.somosecooa.com.br/blog/implante-hormonal-subcutaneo/): Como funciona a liberação contínua, quais critérios clínicos sustentam a indicação e o que precisa ser acompanhado depois. Assinado por Gustavo Gehrke, médico.
+- [Canetas emagrecedoras: o que a nutrição precisa sustentar](https://www.somosecooa.com.br/blog/canetas-emagrecedoras-nutricao/): Os análogos de GLP-1 mudaram o cenário do emagrecimento. O que eles resolvem, o que não resolvem, e por que a alimentação segue sendo decisiva. Assinado por Jessica Stein, nutricionista.
+- [Queda de cabelo: o que investigar antes de tratar](https://www.somosecooa.com.br/blog/queda-de-cabelo-causas/): As causas mais comuns, os exames que fazem diferença e por que o tratamento certo depende do diagnóstico. Assinado por Yale Jerônimo, médica.
+- [Menopausa e terapia hormonal: o que se sabe hoje](https://www.somosecooa.com.br/blog/menopausa-tratamento-hormonal/): Quando a reposição faz sentido, quais os critérios de indicação e o que precisa ser acompanhado ao longo do tempo. Assinado por Gustavo Gehrke, médico.
+- [Longevidade saudável começa nos marcadores certos](https://www.somosecooa.com.br/blog/longevidade-saudavel/): O que medir, com que frequência, e como transformar dado de exame em decisão de rotina. Assinado por Gustavo Gehrke, médico.
+- [Equilíbrio hormonal: como identificar que algo mudou](https://www.somosecooa.com.br/blog/equilibrio-hormonal-como-identificar/): Sinais que costumam ser normalizados, o que eles podem indicar e quando vale investigar. Assinado por Gustavo Gehrke, médico.
+- [Saúde mental e emagrecimento andam juntos](https://www.somosecooa.com.br/blog/saude-mental-emagrecimento/): Por que o acompanhamento psicológico muda o resultado de um processo de emagrecimento. Assinado por Manuela Sinigaglia Vanti, psicóloga.
+- [Nutrição esportiva: o que muda quando o treino é sério](https://www.somosecooa.com.br/blog/nutricao-esportiva-performance/): Periodização alimentar, recuperação e os erros mais comuns de quem treina forte. Assinado por Maria Luísa Serrano Beltran Borges, nutricionista.
+- [Transplante capilar: quem tem indicação e quem não tem](https://www.somosecooa.com.br/blog/transplante-capilar-porto-alegre/): Os critérios clínicos, o que o procedimento resolve e o que ele não resolve sozinho. Assinado por Larissa Wiebbelling, médica.
+- [Rejuvenescimento facial sem perder a expressão](https://www.somosecooa.com.br/blog/rejuvenescimento-facial-porto-alegre/): O que significa resultado discreto, e por que planejar o rosto inteiro importa mais do que tratar uma região. Assinado por Eduarda Schoenmeier, biomédica esteta.
+- [Osteopatia: o que é e para quem faz sentido](https://www.somosecooa.com.br/blog/osteopatia-o-que-e-para-quem/): Como a avaliação do corpo em movimento muda a leitura de uma dor persistente. Assinado por Natálie Queiroz, osteopata e fisioterapeuta.
+- [Seu exame não é um diagnóstico](https://www.somosecooa.com.br/blog/interpretacao-exames-bioquimicos/): Por que um número fora da faixa nem sempre é problema, e um dentro da faixa nem sempre é tranquilidade. Assinado por Jessica Stein, nutricionista.
+- [Ansiedade: quando deixa de ser só um dia difícil](https://www.somosecooa.com.br/blog/ansiedade-como-identificar-tratar/): Sinais, caminhos de tratamento e o que esperar das primeiras semanas de acompanhamento. Assinado por Francielle Machado Beria, psicóloga.
+- [Queda de cabelo em mulheres tem particularidades](https://www.somosecooa.com.br/blog/saude-capilar-feminina/): Hormônios, ferro, ciclo e estresse. O que a investigação precisa cobrir antes de qualquer protocolo. Assinado por Viviane Fagundes, biomédica.
+
+## Queixas atendidas
+
+Vocabulário que a busca do site reconhece, por área de cuidado.
+
+- [Saúde integrativa](https://www.somosecooa.com.br/especialidades/saude-integrativa/): dor musculoesquelética, postura e movimento, cuidado com bebês e amamentação, terapias integrativas, dor de cabeça e enxaqueca.
+- [Medicina](https://www.somosecooa.com.br/especialidades/medicina/): saúde hormonal, metabolismo e peso, saúde cardiometabólica, investigação clínica, imunidade e vitaminas, energia, sono e disposição, digestão e estômago, saúde da mulher, inchaço e retenção de líquido.
+- [Estética facial](https://www.somosecooa.com.br/especialidades/estetica-facial/): pele e rosto, harmonização facial, bruxismo e ATM.
+- [Estética corporal](https://www.somosecooa.com.br/especialidades/estetica-corporal/): contorno corporal.
+- [Tricologia](https://www.somosecooa.com.br/especialidades/tricologia/): saúde capilar.
+- [Transplante capilar](https://www.somosecooa.com.br/especialidades/transplante-capilar/): transplante capilar.
+- [Nutrição](https://www.somosecooa.com.br/especialidades/nutricao/): alimentação e nutrição, saúde intestinal, massa muscular e performance, nutrição materno-infantil, alimentação vegetariana e vegana, comportamento alimentar.
+- [Saúde mental](https://www.somosecooa.com.br/especialidades/saude-mental/): psicologia do esporte, saúde mental.
+
+## Optional
+
+- [Políticas e termos](https://www.somosecooa.com.br/politicas): privacidade, uso do site e tratamento de dados
+- [Mapa do site](https://www.somosecooa.com.br/sitemap.xml): todas as URLs indexáveis
+
+## Limites que um agente deve respeitar
+
+- Este site não agenda consulta. Não existe endpoint de agendamento, e nenhuma ferramenta desta página cria compromisso.
+- Nada aqui substitui avaliação clínica individual. Não use o conteúdo para diagnosticar nem para orientar tratamento.
+- A queixa de saúde de quem navega é dado sensível. Não a transmita para terceiros nem a inclua em URL.
+- Em situação de risco à vida no Brasil: CVV 188 (24 horas, gratuito) e SAMU 192.
+
+---
+
+# Conteúdo essencial
+
+## Como a ecooa se organiza
+
+A ecooa reúne profissionais autônomos num mesmo espaço em Moinhos de Vento. Cada
+um responde tecnicamente pelo próprio trabalho, e a casa organiza a passagem de
+um cuidado para outro quando o caso pede. Não há pacote fechado nem venda
+casada entre áreas.
+
+## O que cada profissional atende
+
+### Gustavo Gehrke
+Médico, CRM-RS 35.822. metabolismo, emagrecimento e hormônios.
+Sócio da ecooa, empreendedor e médico de abordagem clínica ampla. Atua com medicina metabólica, emagrecimento, saúde hormonal, performance, longevidade e acompanhamento de doenças crônicas.
+Queixas: dor musculoesquelética, postura e movimento, dor de cabeça e enxaqueca, saúde hormonal, metabolismo e peso, saúde cardiometabólica, investigação clínica, imunidade e vitaminas, energia, sono e disposição, digestão e estômago, saúde da mulher, inchaço e retenção de líquido, saúde intestinal.
+
+### Larissa Wiebbelling
+Médica, CRM-RS 55.504. transplante capilar e tricologia médica.
+Transplante capilar, transplante de barba, transplante de sobrancelha e tricologia. Atua com avaliação capilar, técnica sem raspagem, técnica com fio longo e acompanhamento completo do pré ao pós-procedimento.
+Queixas: saúde capilar, transplante capilar.
+
+### Yale Jerônimo
+Médica, CRM-RS 49.185. tricologia e alopecias.
+Médica tricologista, com atuação no diagnóstico e tratamento médico das alopecias. Atua com queda de cabelo, doenças do couro cabeludo, saúde dos fios e estética capilar.
+Queixas: saúde capilar, transplante capilar.
+
+### Vitória Müller T. Machado
+Médica dermatologista, CRM-RS 43.712 · RQE 42.218. dermatologia clínica e estética.
+Dermatologia clínica e estética.
+Queixas: pele e rosto.
+
+### Renata Bohn Engel
+Médica dermatologista, CRM-RS 48.838 · RQE 46.857. dermatologia clínica e estética.
+Dermatologia clínica e estética, do diagnóstico ao cuidado contínuo com a pele.
+Queixas: pele e rosto.
+
+### Jessica Stein
+Nutricionista, CRN 9495. nutrição clínica, vegetariana e emagrecimento.
+Sócia da ecooa, empreendedora e professora de pós-graduação. Atua com nutrição clínica, alimentação vegetariana e vegana, nutrição materno-infantil, acompanhamento de gestantes e crianças, emagrecimento e mentorias individuais para nutricionistas.
+Queixas: cuidado com bebês e amamentação, metabolismo e peso, investigação clínica, digestão e estômago, saúde da mulher, alimentação e nutrição, saúde intestinal, nutrição materno-infantil, alimentação vegetariana e vegana, comportamento alimentar.
+
+### Adriano Flesch Lenz
+Nutricionista, CRN-2 7844D. nutrição e práticas ortomoleculares.
+Nutricionista, mestre em Bioquímica e acadêmico de Medicina. Atua com nutrição clínica, hipertrofia, emagrecimento, composição corporal e práticas ortomoleculares.
+Queixas: dor musculoesquelética, saúde hormonal, investigação clínica, imunidade e vitaminas, energia, sono e disposição.
+
+### Giancarla Rochemback
+Nutricionista. nutrição clínica e esportiva.
+Nutrição clínica e esportiva.
+Queixas: massa muscular e performance.
+
+### Maria Luísa Serrano Beltran Borges
+Nutricionista, CRN-2 12076P. nutrição esportiva e alta performance.
+Nutrição esportiva e alta performance esportiva.
+Queixas: investigação clínica, energia, sono e disposição, massa muscular e performance.
+
+### Daniel Forster
+Nutricionista, CRN2 20541. nutrição clínica e esportiva.
+Nutrição clínica e esportiva, emagrecimento.
+Queixas: metabolismo e peso, saúde cardiometabólica, massa muscular e performance, alimentação vegetariana e vegana.
+
+### Vitória Serpa da Silva
+Nutricionista, CRN-2 12000P. nutrição esportiva.
+Nutrição esportiva.
+Queixas: massa muscular e performance.
+
+### Nasser Salem
+Nutricionista, CRN2 19914D. nutrição esportiva e emagrecimento.
+Nutrição esportiva, emagrecimento e performance sem modismo.
+Queixas: metabolismo e peso, alimentação e nutrição.
+
+### Marvin Marques
+Nutricionista. nutrição clínica e emagrecimento.
+Nutrição clínica e emagrecimento.
+Queixas: metabolismo e peso, saúde cardiometabólica, alimentação e nutrição, comportamento alimentar.
+
+### Gabrieli Klagenberg Avila
+Nutricionista. nutrição comportamental.
+Nutrição comportamental.
+Queixas: alimentação e nutrição, saúde intestinal, alimentação vegetariana e vegana, comportamento alimentar, saúde mental.
+
+### Camila Cadore
+Nutricionista, CRN/RS 8447. nutrição funcional e integrativa.
+Nutrição funcional e integrativa, saúde, família e conexão entre mente e corpo.
+Queixas: terapias integrativas, saúde hormonal, imunidade e vitaminas, digestão e estômago, saúde da mulher, inchaço e retenção de líquido, saúde intestinal, alimentação vegetariana e vegana.
+
+### Verena Cattani
+Nutricionista, CRN 2 19692. nutrição clínica.
+Nutrição clínica, saúde intestinal e cuidado nutricional na endometriose.
+Queixas: saúde hormonal, saúde cardiometabólica, investigação clínica, digestão e estômago, saúde da mulher, inchaço e retenção de líquido, alimentação e nutrição, saúde intestinal, alimentação vegetariana e vegana.
+
+### Lara Caye
+Nutricionista. nutrição esportiva e hipertrofia.
+Nutrição esportiva, hipertrofia e consultoria online.
+Queixas: massa muscular e performance.
+
+### Danusa Pires
+Enfermeira, COREN-RS 395164. tricologia estética e reposição de nutrientes.
+Tricologia estética, saúde do couro cabeludo e terapias de reposição de nutrientes. Atua no cuidado da queda capilar feminina, fortalecimento dos fios e melhora da densidade capilar.
+Queixas: terapias integrativas, saúde hormonal, imunidade e vitaminas, energia, sono e disposição, inchaço e retenção de líquido, saúde capilar, transplante capilar.
+
+### Viviane Fagundes
+Biomédica, CRBM 2565. tricologia estética e testes genéticos capilares.
+Tricologia estética e testes genéticos aplicados à saúde capilar. Atua na avaliação da queda de cabelo, no fortalecimento dos fios e no acompanhamento personalizado de tratamentos capilares.
+Queixas: saúde capilar, transplante capilar.
+
+### Natálie Queiroz
+Osteopata e fisioterapeuta, CREFITO-5 271577-F. osteopatia adulto e infantil.
+Osteopatia para adultos e crianças. Atua no cuidado de dores crônicas, lesões musculoesqueléticas, alterações de movimento, postura funcional e acompanhamento osteopático de bebês.
+Queixas: dor musculoesquelética, postura e movimento, cuidado com bebês e amamentação, dor de cabeça e enxaqueca, nutrição materno-infantil.
+
+### Susan Flach
+Biomédica, CRBM-5 4182. tricologia e gerenciamento da pele.
+Tricologia e gerenciamento da pele.
+Queixas: pele e rosto, saúde capilar.
+
+### Letícia Melo
+Biomédica, CRBM-RS 627. harmonização orofacial.
+Harmonização orofacial.
+Queixas: harmonização facial, bruxismo e ATM.
+
+### Eduarda Schoenmeier
+Biomédica esteta, CRBM 7243. harmonização orofacial e corporal.
+Harmonização orofacial e corporal.
+Queixas: harmonização facial, contorno corporal.
+
+### Tais de la Rosa
+Farmacêutica, CRF-RS 588527. harmonização orofacial e saúde da pele.
+Harmonização orofacial e saúde da pele com embasamento científico.
+Queixas: pele e rosto, harmonização facial, bruxismo e ATM, contorno corporal.
+
+### Karine Ellwanger
+Biomédica esteta, CRBM-5 7474. harmonização orofacial.
+Harmonização orofacial.
+Queixas: harmonização facial.
+
+### Jennifer Adam
+Biomédica esteta, CRBM-5 8600. harmonização orofacial e rejuvenescimento.
+Harmonização orofacial e rejuvenescimento.
+Queixas: pele e rosto, contorno corporal.
+
+### Jamylle Farias
+Cirurgiã-dentista, CRO-RS 30124. harmonização orofacial.
+Harmonização orofacial.
+Queixas: harmonização facial, bruxismo e ATM.
+
+### Adriana
+Terapeuta integrativa. terapia integrativa e biorressonância.
+Terapia integrativa e biorressonância.
+Queixas: dor musculoesquelética, postura e movimento, terapias integrativas, dor de cabeça e enxaqueca, saúde mental.
+
+### Manuela Sinigaglia Vanti
+Psicóloga, CRP 07/34596. terapia cognitivo-comportamental.
+Terapia cognitivo-comportamental, presencial e online.
+Queixas: comportamento alimentar, saúde mental.
+
+### Augusto Kauer da Silveira
+Psicólogo, CRP 07/28516. psicologia do esporte.
+Psicologia do esporte, para quem treina, compete ou vive sob pressão de resultado.
+Queixas: dor musculoesquelética, energia, sono e disposição, psicologia do esporte, saúde mental.
+
+### Francielle Machado Beria
+Psicóloga, CRP 07/29944. terapia cognitivo-comportamental e neuropsicologia.
+Terapia cognitivo-comportamental e neuropsicologia, presencial e online.
+Queixas: comportamento alimentar, saúde mental.
