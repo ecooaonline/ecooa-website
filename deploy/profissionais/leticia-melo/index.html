@@ -1087,10 +1087,12 @@ class Component extends DCLogic {
 })();
 </script>
 
-<script data-medicao-ecooa>
+<script data-medicao-ecooa data-medicao-ativa="false">
 /* Medição ecooa. JavaScript comum, sem eval, sem dependência externa além do
    próprio GTM, que só carrega depois do consentimento e do primeiro gesto. */
 (function () {
+  /* chave de ligar, controlada em scripts/medicao.mjs */
+  var ATIVA = false;
   var CHAVE = 'ecooa-consentimento';
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -1137,7 +1139,7 @@ class Component extends DCLogic {
   /* Quem recusou nao carrega o GTM. O aviso diz "nada e ativado sem a sua
      escolha", e carregar o contentor mesmo apos a recusa faria da frase uma
      mentira, ainda que o Consent Mode bloqueasse o armazenamento. */
-  function podeCarregar() { return lido() === 'aceito'; }
+  function podeCarregar() { return ATIVA && lido() === 'aceito'; }
   function tentaCarregar() { if (podeCarregar()) carregaGTM(); }
   ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
     window.addEventListener(ev, tentaCarregar, { once: true, passive: true });
@@ -1223,6 +1225,7 @@ class Component extends DCLogic {
 
   /* ── aviso de consentimento, discreto e reversível ── */
   function aviso() {
+    if (!ATIVA) return;
     if (lido()) return;
     var caixa = document.createElement('div');
     caixa.setAttribute('role', 'region');

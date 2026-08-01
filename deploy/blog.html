@@ -1050,10 +1050,12 @@ class Component extends DCLogic {
 </script>
 <script type="application/ld+json" data-ld-ecooa>{"@context":"https://schema.org","@graph":[{"@type":"Blog","@id":"https://www.somosecooa.com.br/blog#pagina","url":"https://www.somosecooa.com.br/blog","name":"Editorial ecooa","inLanguage":"pt-BR","publisher":{"@id":"https://www.somosecooa.com.br/#clinica"},"breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.somosecooa.com.br/"},{"@type":"ListItem","position":2,"name":"Editorial","item":"https://www.somosecooa.com.br/blog"}]},"blogPost":[{"@type":"BlogPosting","headline":"Implante hormonal subcutâneo: o que é e quando tem indicação","url":"https://www.somosecooa.com.br/blog/implante-hormonal-subcutaneo/","datePublished":"2026-07-27"},{"@type":"BlogPosting","headline":"Canetas emagrecedoras: o que a nutrição precisa sustentar","url":"https://www.somosecooa.com.br/blog/canetas-emagrecedoras-nutricao/","datePublished":"2026-07-27"},{"@type":"BlogPosting","headline":"Queda de cabelo: o que investigar antes de tratar","url":"https://www.somosecooa.com.br/blog/queda-de-cabelo-causas/","datePublished":"2026-06-18"},{"@type":"BlogPosting","headline":"Menopausa e terapia hormonal: o que se sabe hoje","url":"https://www.somosecooa.com.br/blog/menopausa-tratamento-hormonal/","datePublished":"2026-06-04"},{"@type":"BlogPosting","headline":"Longevidade saudável começa nos marcadores certos","url":"https://www.somosecooa.com.br/blog/longevidade-saudavel/","datePublished":"2026-05-21"},{"@type":"BlogPosting","headline":"Equilíbrio hormonal: como identificar que algo mudou","url":"https://www.somosecooa.com.br/blog/equilibrio-hormonal-como-identificar/","datePublished":"2026-05-07"},{"@type":"BlogPosting","headline":"Saúde mental e emagrecimento andam juntos","url":"https://www.somosecooa.com.br/blog/saude-mental-emagrecimento/","datePublished":"2026-04-23"},{"@type":"BlogPosting","headline":"Nutrição esportiva: o que muda quando o treino é sério","url":"https://www.somosecooa.com.br/blog/nutricao-esportiva-performance/","datePublished":"2026-04-09"},{"@type":"BlogPosting","headline":"Transplante capilar: quem tem indicação e quem não tem","url":"https://www.somosecooa.com.br/blog/transplante-capilar-porto-alegre/","datePublished":"2026-03-26"},{"@type":"BlogPosting","headline":"Rejuvenescimento facial sem perder a expressão","url":"https://www.somosecooa.com.br/blog/rejuvenescimento-facial-porto-alegre/","datePublished":"2026-03-12"},{"@type":"BlogPosting","headline":"Osteopatia: o que é e para quem faz sentido","url":"https://www.somosecooa.com.br/blog/osteopatia-o-que-e-para-quem/","datePublished":"2026-02-26"},{"@type":"BlogPosting","headline":"Seu exame não é um diagnóstico","url":"https://www.somosecooa.com.br/blog/interpretacao-exames-bioquimicos/","datePublished":"2026-02-12"},{"@type":"BlogPosting","headline":"Ansiedade: quando deixa de ser só um dia difícil","url":"https://www.somosecooa.com.br/blog/ansiedade-como-identificar-tratar/","datePublished":"2026-01-29"},{"@type":"BlogPosting","headline":"Queda de cabelo em mulheres tem particularidades","url":"https://www.somosecooa.com.br/blog/saude-capilar-feminina/","datePublished":"2026-01-15"}]}]}</script>
 
-<script data-medicao-ecooa>
+<script data-medicao-ecooa data-medicao-ativa="false">
 /* Medição ecooa. JavaScript comum, sem eval, sem dependência externa além do
    próprio GTM, que só carrega depois do consentimento e do primeiro gesto. */
 (function () {
+  /* chave de ligar, controlada em scripts/medicao.mjs */
+  var ATIVA = false;
   var CHAVE = 'ecooa-consentimento';
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -1100,7 +1102,7 @@ class Component extends DCLogic {
   /* Quem recusou nao carrega o GTM. O aviso diz "nada e ativado sem a sua
      escolha", e carregar o contentor mesmo apos a recusa faria da frase uma
      mentira, ainda que o Consent Mode bloqueasse o armazenamento. */
-  function podeCarregar() { return lido() === 'aceito'; }
+  function podeCarregar() { return ATIVA && lido() === 'aceito'; }
   function tentaCarregar() { if (podeCarregar()) carregaGTM(); }
   ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
     window.addEventListener(ev, tentaCarregar, { once: true, passive: true });
@@ -1186,6 +1188,7 @@ class Component extends DCLogic {
 
   /* ── aviso de consentimento, discreto e reversível ── */
   function aviso() {
+    if (!ATIVA) return;
     if (lido()) return;
     var caixa = document.createElement('div');
     caixa.setAttribute('role', 'region');

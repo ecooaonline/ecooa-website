@@ -319,6 +319,10 @@ console.log('Medicao:');
     erro('Consent Mode sem analytics_storage negado por padrao (LGPD)');
   else ok('consentimento negado por padrao, liberado so apos aceite');
 
+  /* a chave de ligar controla o aviso na tela e o carregamento do GTM */
+  const ativa = /data-medicao-ativa="true"/.test(home);
+  ok(ativa ? 'medicao LIGADA' : 'medicao desligada por chave (aviso nao aparece, GTM nao carrega)');
+
   /* o GTM nao pode entrar por tag estatica: ele so carrega apos gesto */
   if (/<script[^>]+src="https:\/\/www\.googletagmanager\.com/.test(home))
     erro('GTM carregado de forma estatica, fora do carregamento tardio');

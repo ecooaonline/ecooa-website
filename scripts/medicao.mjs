@@ -39,11 +39,40 @@ const DEPLOY = path.join(RAIZ, 'deploy');
 const GTM = 'GTM-TSR4GDMK';
 const MARCA = 'data-medicao-ecooa';
 
+/* ── CHAVE DE LIGAR A MEDIÇÃO ──────────────────────────────────────────
+ *
+ * Hoje: DESLIGADA. Nada aparece na tela e o GTM não carrega.
+ *
+ * Por que nasceu desligada. A banca de valor apontou um defeito crítico que
+ * eu mesmo criei: no celular, na primeira visita, o aviso de privacidade
+ * cobre o botão flutuante de WhatsApp, que é o ÚNICO caminho de conversão do
+ * site. Ao mesmo tempo, a auditoria de aquisição mostrou que a CSP que vale
+ * em produção (regra de painel da Cloudflare, não este repositório) não tem
+ * `connect-src`, então todo envio do GA4 é bloqueado pelo navegador. Ou seja,
+ * o aviso estava custando conversão para não entregar dado nenhum.
+ *
+ * O dono também pediu, em 2026-08-01, que nenhuma mudança de aparência fosse
+ * feita sem a ordem dele. Desligar devolve a tela ao estado original.
+ *
+ * Como ligar, na ordem:
+ *   1. corrigir a CSP no painel da Cloudflare (Bloqueio 2 de
+ *      docs/mythos/PENDENCIAS-DO-DONO.md), senão nada será medido;
+ *   2. criar as tags no contêiner GTM-TSR4GDMK;
+ *   3. resolver a sobreposição do aviso com o botão flutuante no celular;
+ *   4. trocar a linha abaixo para true e rodar `node scripts/gerar-site.mjs`.
+ *
+ * O dataLayer e os eventos continuam instalados e funcionando de qualquer
+ * forma: o que a chave controla é o aviso na tela e o carregamento do GTM.
+ */
+const MEDICAO_ATIVA = false;
+
 const JS = String.raw`
-<script ${MARCA}>
+<script ${MARCA} data-medicao-ativa="${MEDICAO_ATIVA}">
 /* Medição ecooa. JavaScript comum, sem eval, sem dependência externa além do
    próprio GTM, que só carrega depois do consentimento e do primeiro gesto. */
 (function () {
+  /* chave de ligar, controlada em scripts/medicao.mjs */
+  var ATIVA = ${MEDICAO_ATIVA};
   var CHAVE = 'ecooa-consentimento';
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -90,7 +119,7 @@ const JS = String.raw`
   /* Quem recusou nao carrega o GTM. O aviso diz "nada e ativado sem a sua
      escolha", e carregar o contentor mesmo apos a recusa faria da frase uma
      mentira, ainda que o Consent Mode bloqueasse o armazenamento. */
-  function podeCarregar() { return lido() === 'aceito'; }
+  function podeCarregar() { return ATIVA && lido() === 'aceito'; }
   function tentaCarregar() { if (podeCarregar()) carregaGTM(); }
   ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
     window.addEventListener(ev, tentaCarregar, { once: true, passive: true });
@@ -176,6 +205,7 @@ const JS = String.raw`
 
   /* ── aviso de consentimento, discreto e reversível ── */
   function aviso() {
+    if (!ATIVA) return;
     if (lido()) return;
     var caixa = document.createElement('div');
     caixa.setAttribute('role', 'region');
