@@ -18,30 +18,50 @@
 
 ## 1. Notas por dimensão
 
-| Dimensão | Antes | Depois | Base do "antes" |
-| --- | ---: | ---: | --- |
-| Performance e Core Web Vitals (P06) | 58 | a medir | limpo |
-| Acessibilidade WCAG (P09) | 52 | a medir | limpo |
-| SEO técnico (P10) | 44 | a medir | limpo |
-| Segurança técnica (P07) | 42 | a medir | limpo |
-| Conversão crítica (P04) | 57 | a medir | meio de voo |
-| Conteúdo, copy e E-E-A-T (P12) | 33 | a medir | meio de voo |
-| UX, UI e design system (P11) | a apurar | a medir | meio de voo |
-| Infra, CI/CD e DX (P03/P05/P08) | a apurar | a medir | meio de voo |
-| Analytics e aquisição (P14) | a apurar | a medir | meio de voo |
-| Ética e regulatório (P17) | a apurar | a medir | meio de voo |
+| Dimensão | Antes | Base do "antes" |
+| --- | ---: | --- |
+| Performance e Core Web Vitals (P06) | 58 | limpo |
+| Conversão crítica (P04) | 57 | meio de voo |
+| Acessibilidade WCAG (P09) | 52 | limpo |
+| Ética e regulatório (P17) | 46 | meio de voo |
+| SEO técnico (P10) | 44 | limpo |
+| UX, UI e design system (P11) | 44 | meio de voo |
+| Segurança técnica (P07) | 42 | limpo |
+| Infra, CI/CD e DX (P03/P05/P08) | 34 | meio de voo |
+| Conteúdo, copy e E-E-A-T (P12) | 33 | meio de voo |
+| Analytics e aquisição (P14) | 26 | meio de voo |
+| **Média** | **43,6** | |
 
-### Lighthouse por página, medido
+A nota "depois" por dimensão fica com os tribunais independentes (P13, P16, P17
+e P19), que auditam o resultado sem a mão de quem executou. Autoatribuir nota
+depois de mexer no próprio trabalho não vale como medição.
+
+### Lighthouse por página, medido no laboratório
 
 | Página | Performance | Acessibilidade | Boas práticas | SEO | LCP | CLS |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Home, celular, depois | 91 | 96 | 100 | 100 | 3,3 s | 0 |
-| Perfil de profissional, celular | 98 | 100 | 100 | 100 | 2,3 s | 0 |
+| Área de especialidade (medicina) | 100 | 100 | 100 | 100 | 1,7 s | 0 |
+| Artigo (queda de cabelo) | 100 | 100 | 100 | 100 | 1,7 s | 0 |
+| Perfil de profissional (Natálie) | 98 | 100 | 100 | 100 | 2,3 s | 0 |
+| Home | 91 | 96 | 100 | 100 | 3,3 s | 0 |
 
-As 31 páginas de profissional, que nasceram nesta sessão, são hoje as melhores
-páginas do site em todos os quatro eixos. O que ainda pesa nelas é artefato do
-laboratório: o servidor de teste não envia `Cache-Control` nem compressão, o
-que o Lighthouse cobra como se fosse falha do site.
+As páginas que nasceram ou foram reescritas nesta sessão são hoje as melhores do
+site nos quatro eixos. O que ainda pesa nelas é artefato do laboratório: o
+servidor de teste não envia `Cache-Control` nem compressão, e o Lighthouse cobra
+isso como se fosse falha do site.
+
+### axe-core em 8 páginas, celular 390x844
+
+| Momento | Nós críticos | Graves | Moderados | Leves |
+| --- | ---: | ---: | ---: | ---: |
+| Depois das correções | 0 | 2 | 0 | 0 |
+
+Os dois nós graves restantes são o mesmo defeito: na faixa grafite do
+ecooa.match, na home, o número "07" e o rótulo "orientação e conexão" usam
+prata sobre grafite, o que dá 3,55:1 contra o mínimo de 4,5:1. A correção
+(trocar prata por névoa, que dá 5,01:1) **não foi aplicada**: o dono pediu, no
+fim da sessão, que nenhuma mudança de aparência fosse feita sem a ordem dele.
+Fica como apontamento.
 
 ---
 
@@ -61,6 +81,9 @@ que o Lighthouse cobra como se fosse falha do site.
 | Profissionais com página própria | 0 | 31 |
 | CTAs de WhatsApp personalizados | 98 | 191 |
 | Invariantes travados no gate | 18 | 30 |
+| Palavras de corpo de artigo | 3.407 | 14.582 |
+| Palavras próprias nas 8 áreas | 2.129 | 11.034 |
+| Artigos com texto próprio | 2 de 14 | 14 de 14 |
 | Scripts do site sob análise estática | 0 de 17 | 17 de 17 |
 
 ### Defeitos que estavam invisíveis
@@ -79,6 +102,22 @@ que o Lighthouse cobra como se fosse falha do site.
 5. **Geração irreprodutível.** `playwright` e `sharp` nunca estiveram
    declarados. Num clone limpo, o site não se gera.
 6. **Doze artigos vazios.** Páginas indexadas com título e nada mais.
+
+### Violações regulatórias encontradas e corrigidas
+
+O conteúdo novo passou por um guardião adversarial que varre CFM 1.974/2011 e
+2.336/2023, COFEN, CFN, CFF, CRP e CFO procurando promessa de resultado,
+superlativo, sensacionalismo, mercantilização, prescrição a distância,
+autodiagnóstico, dado inventado e desvio de escopo profissional.
+
+| Frente | Violações encontradas e corrigidas |
+| --- | ---: |
+| 8 páginas de especialidade | 157 |
+| 12 artigos novos | 123 |
+| **Total** | **280** |
+
+O número justifica a segunda passagem: texto gerado por IA em saúde erra
+sobretudo em dado inventado e em escopo profissional, e erra em volume.
 
 ---
 
