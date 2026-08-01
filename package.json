@@ -48,6 +48,8 @@
     "esbuild": "0.28.1"
   },
   "devDependencies": {
+    "sharp": "^0.35.3",
+    "playwright": "^1.62.1",
     "@astrojs/check": "^0.9.9",
     "@typescript-eslint/eslint-plugin": "^8.65.0",
     "@typescript-eslint/parser": "^8.60.0",
