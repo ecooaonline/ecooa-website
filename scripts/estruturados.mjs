@@ -33,7 +33,7 @@ const ECOOA = global.window.ECOOA;
 const CLINICA_ID = `${D}/#clinica`;
 const ENDERECO = {
   '@type': 'PostalAddress',
-  streetAddress: 'Rua Mariante, 180, 9º andar',
+  streetAddress: 'Rua Mariante, 180, 9º andar, Moinhos de Vento',
   addressLocality: 'Porto Alegre',
   addressRegion: 'RS',
   postalCode: '90430-180',
@@ -274,6 +274,11 @@ for (const [arq, rota, nome, desc] of [
 for (const e of ECOOA.especialidades) {
   PLANO.set(`especialidades/${e.slug}/index.html`, () =>
     grafo([
+      /* a clinica precisa estar DEFINIDA na pagina que a referencia: um @id
+         solto aponta para entidade que nao existe naquele documento, e o
+         buscador descarta a ligacao. Sao as 8 paginas que disputam as buscas
+         comerciais locais, entao e onde mais importa. */
+      CLINICA,
       {
         '@type': 'MedicalWebPage',
         '@id': `${D}/especialidades/${e.slug}/#pagina`,

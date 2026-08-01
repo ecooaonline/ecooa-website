@@ -29,7 +29,18 @@ const RAIZ = '/home/user/ecooa-website';
 const DEPLOY = path.join(RAIZ, 'deploy');
 const DOMINIO = 'https://www.somosecooa.com.br';
 const WA = '5551991460909';
-const ENDERECO = { rua: 'Rua Mariante, 180', bairro: 'Moinhos de Vento', cidade: 'Porto Alegre', uf: 'RS' };
+/* Endereco EXATAMENTE igual ao da home e da pagina de localizacao. Divergencia
+   de NAP entre paginas do mesmo dominio derruba ranqueamento local, e o
+   parecer de presença local achou justamente isso: uma segunda versao do
+   endereco em 31 paginas. O bairro entra DENTRO do endereco postal, porque
+   e o que o Google usa para parear com o Perfil da Empresa. */
+const ENDERECO = {
+  rua: 'Rua Mariante, 180, 9º andar',
+  bairro: 'Moinhos de Vento',
+  cidade: 'Porto Alegre',
+  uf: 'RS',
+  cep: '90430-180',
+};
 
 global.window = {};
 await import(path.join(DEPLOY, 'dados-ecooa.js'));
@@ -127,9 +138,10 @@ function paginaPerfil(p) {
       url: DOMINIO + '/',
       address: {
         '@type': 'PostalAddress',
-        streetAddress: ENDERECO.rua,
+        streetAddress: `${ENDERECO.rua}, ${ENDERECO.bairro}`,
         addressLocality: ENDERECO.cidade,
         addressRegion: ENDERECO.uf,
+        postalCode: ENDERECO.cep,
         addressCountry: 'BR',
       },
     },
