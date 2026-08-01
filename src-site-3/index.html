@@ -10,7 +10,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://www.somosecooa.com.br/">
 <meta property="og:title" content="ecooa · clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre">
-<meta property="og:description" content="Clínica multidisciplinar em Moinhos de Vento, Porto Alegre. Medicina, nutrição, psicologia e estética integradas, com mais de 30 profissionais autônomos. Atendimento presencial e online.">
+<meta property="og:description" content="Clínica multidisciplinar em Moinhos de Vento, Porto Alegre: medicina, estética, nutrição, saúde mental, saúde integrativa e formação para profissionais, com mais de 30 especialistas autônomos. Presencial e online.">
 <meta property="og:image" content="https://www.somosecooa.com.br/assets/fotos/recepcao-hero.webp">
 <meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
@@ -19,7 +19,7 @@
 <x-dc>
 <helmet>
 <title>ecooa · clínica multidisciplinar de saúde, estética e longevidade em Moinhos de Vento, Porto Alegre</title>
-<meta name="description" content="Clínica multidisciplinar em Moinhos de Vento, Porto Alegre. Medicina, nutrição, psicologia e estética integradas, com mais de 30 profissionais autônomos. Atendimento presencial e online.">
+<meta name="description" content="Clínica multidisciplinar em Moinhos de Vento, Porto Alegre: medicina, estética, nutrição, saúde mental, saúde integrativa e formação para profissionais, com mais de 30 especialistas autônomos. Presencial e online.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   *, *::before, *::after { box-sizing: border-box; }
@@ -108,7 +108,7 @@
       <div style="display:flex; flex-wrap:wrap; gap:44px; align-items:flex-end; justify-content:space-between;">
         <div style="flex:1 1 368px; min-width:0;">
           <div style="display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--legenda);"><span style="width:20px; height:1px; background:var(--aluminio); display:block;"></span>as expressões</div>
-          <h2 style="margin:22px 0 0; max-width:16ch; font-family:var(--serif); font-weight:400; font-size:clamp(31px,4vw,58px); line-height:1.02; letter-spacing:-.016em; color:var(--tinta);">Uma marca. Seis portas de entrada.</h2>
+          <h2 style="margin:22px 0 0; max-width:16ch; font-family:var(--serif); font-weight:400; font-size:clamp(31px,4vw,58px); line-height:1.02; letter-spacing:-.016em; color:var(--tinta);">Uma marca. Sete portas de entrada.</h2>
         </div>
         <p style="flex:1 1 368px; max-width:46ch; font-size:16px; line-height:1.66;">Medicina, estética, nutrição, saúde mental, saúde integrativa e desenvolvimento profissional: cada expressão da ecooa cuida de uma dimensão da sua saúde, no mesmo endereço em Moinhos de Vento e com o mesmo critério. Você escolhe a porta de entrada, e as áreas conversam entre si quando o seu cuidado pede mais de um olhar.</p>
       </div>
@@ -123,6 +123,17 @@
           </a>
         </sc-for>
       </div>
+
+      <!-- ecooa.match: a setima porta, a que ajuda a escolher as outras -->
+      <a href="qual-profissional-procurar.html" style="margin-top:1px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:clamp(18px,2.4vw,34px); background:var(--grafite); padding:clamp(28px,3vw,46px) clamp(22px,2.6vw,40px); border:1px solid var(--stone); border-top:0;">
+        <span style="display:block; flex:1 1 380px; min-width:0;">
+          <span style="display:block; font-family:var(--serif); font-size:13px; color:var(--prata);">07</span>
+          <span style="display:block; margin-top:14px; font-family:var(--serif); font-size:clamp(24px,2.2vw,32px); line-height:1.05; color:var(--fundo);">ecooa.match</span>
+          <span style="display:block; margin-top:9px; font-size:10.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--prata);">orientação e conexão</span>
+          <span style="display:block; margin-top:14px; max-width:62ch; font-size:14.5px; line-height:1.64; color:var(--sobre-escuro);">Não sabe por qual porta entrar? Uma conversa guiada organiza a sua necessidade e aponta quem pode atender melhor.</span>
+        </span>
+        <span style="flex:0 0 auto; display:inline-flex; align-items:center; gap:10px; min-height:52px; padding:0 32px; border-radius:999px; background:var(--fundo); color:var(--grafite); font-size:11.5px; letter-spacing:.16em;">começar pela busca por IA <span aria-hidden="true">→</span></span>
+      </a>
     </div>
   </section>
 
@@ -435,7 +446,6 @@ class Component extends DCLogic {
         { n: '04', marca: 'ecooa.mind', area: 'saúde mental', href: 'especialidades/saude-mental/', texto: 'Psicologia clínica, do esporte e neuropsicologia. Escuta sem pressa, presencial e online.' },
         { n: '05', marca: 'ecooa.health', area: 'saúde integrativa', href: 'especialidades/saude-integrativa/', texto: 'Osteopatia, práticas ortomoleculares e terapias complementares, sempre em diálogo com o cuidado clínico.' },
         { n: '06', marca: 'ecooa.cademy', area: 'formação e mentoria', href: 'mentorias.html', texto: 'Mentorias e cursos para profissionais de saúde, a partir da prática real de consultório.' },
-        { n: '07', marca: 'ecooa.match', area: 'orientação e conexão', href: 'qual-profissional-procurar.html', texto: 'Uma conversa guiada que organiza a sua necessidade e aponta quem pode atender melhor.' },
       ],
       metodo: [
         { letra: 'E', titulo: 'Escuta com contexto', texto: 'Começar pela pessoa, não pelo procedimento. Objetivo, histórico e o que já foi tentado.' },
