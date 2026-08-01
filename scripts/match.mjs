@@ -844,7 +844,6 @@ const JS = String.raw`
     }
 
     carta.appendChild(el('span', 'display:block; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['o que entendemos']));
-    carta.appendChild(el('p', 'margin:22px 0 0; max-width:44ch; font-family:var(--serif); font-size:clamp(24px,2.8vw,38px); line-height:1.16; color:#46443F;', [grupo.leitura || caminho.leitura]));
 
     /* chip do porque, decisao do dono */
     if (veioDeTexto && grupo.rotulo) {
@@ -867,7 +866,7 @@ const JS = String.raw`
     }
 
     carta.appendChild(el('p', 'margin:26px 0 0; max-width:64ch; font-size:15.5px; line-height:1.7; color:#66645E;',
-      [caminho.desc + ' Abaixo estão os profissionais indicados para começar, na ordem que a casa sugere. A escolha final é sua.']));
+      ['Abaixo estão os profissionais indicados para você. A escolha final é sua, mas nossa equipe está pronta para te ajudar.']));
 
     var acoes = el('div', 'margin-top:30px; display:flex; flex-wrap:wrap; gap:14px;');
     var wa = document.createElement('a');
@@ -896,7 +895,7 @@ const JS = String.raw`
       cab.appendChild(el('div', 'display:flex; align-items:center; gap:10px; font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:#5C5A55;', ['caminho sugerido']));
       cab.appendChild(el('h2', 'margin:22px 0 0; max-width:20ch; font-family:var(--serif); font-weight:400; font-size:clamp(28px,3.4vw,48px); line-height:1.04; color:#46443F;', [caminho.titulo]));
       cab.appendChild(el('p', 'margin:18px 0 0; max-width:60ch; font-size:16px; line-height:1.68; color:#66645E;',
-        [online ? 'Priorizamos quem atende também no formato online, como você pediu.' : 'Na ordem indicada pela casa para a sua queixa, com o que cada um faz por ela.']));
+        [online ? 'Priorizamos quem atende também no formato online, como você pediu.' : 'Entenda como cada profissional indicado poderá te ajudar.']));
       sec.appendChild(cab);
       var faixa = el('div', 'padding:0 clamp(20px,3.2vw,56px); max-width:1600px; margin:0 auto;');
       var lista = el('div', mqMovel.matches
