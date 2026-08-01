@@ -54,7 +54,7 @@ const JS = String.raw`
   var SINTOMAS = [
     { id: 'dor-musculo', rotulo: 'dor musculoesquelética', area: 'saude-integrativa',
       pros: ['natalie-queiroz', 'gustavo-gehrke', 'adriano-lenz', 'adriana', 'augusto-kauer'],
-      termos: ['dor', 'dores', 'dolorido', 'doendo', 'doi', 'cotovelo', 'joelho', 'ombro', 'costas', 'coluna', 'lombar', 'lombalgia', 'cervical', 'nuca', 'pescoco', 'punho', 'pulso', 'tornozelo', 'quadril', 'articulacao', 'articulacoes', 'muscular', 'musculo', 'tensao', 'torcicolo', 'lesao', 'tendinite', 'bursite', 'hernia de disco', 'nervo ciatico', 'ciatico', 'ciatica', 'travado', 'travada', 'contratura', 'fibromialgia', 'artrose', 'artrite', 'canelite', 'fascite', 'esporao', 'dormencia', 'formigamento', 'panturrilha', 'escapula', 'costela', 'entorse', 'entorses', 'distensao', 'estiramento', 'luxacao', 'menisco', 'ligamento', 'manguito rotador', 'fascite plantar', 'dor ao correr', 'dor no treino', 'lesao no joelho', 'dor no calcanhar', 'joanete'] },
+      termos: ['dor', 'dores', 'dolorido', 'doendo', 'doi', 'cotovelo', 'joelho', 'ombro', 'costas', 'coluna', 'lombar', 'lombalgia', 'cervical', 'nuca', 'pescoco', 'punho', 'pulso', 'tornozelo', 'quadril', 'articulacao', 'articulacoes', 'muscular', 'musculo', 'tensao', 'torcicolo', 'lesao', 'tendinite', 'bursite', 'hernia de disco', 'nervo ciatico', 'ciatico', 'ciatica', 'travado', 'travada', 'contratura', 'fibromialgia', 'artrose', 'artrite', 'canelite', 'fascite', 'esporao', 'dormencia', 'formigamento', 'panturrilha', 'escapula', 'costela', 'entorse', 'entorses', 'distensao', 'estiramento', 'luxacao', 'menisco', 'ligamento', 'manguito rotador', 'fascite plantar', 'dor ao correr', 'dor no treino', 'lesao no joelho', 'dor no calcanhar', 'joanete', 'dor no corpo', 'dor generalizada'] },
     { id: 'postura-movimento', rotulo: 'postura e movimento', area: 'saude-integrativa',
       pros: ['natalie-queiroz', 'gustavo-gehrke', 'adriana'],
       termos: ['postura', 'postural', 'escoliose', 'cifose', 'mobilidade', 'alongamento', 'reabilitacao', 'fisioterapia', 'fisioterapeuta', 'osteopatia', 'osteopata', 'quiropraxia', 'rpg', 'movimento limitado', 'amplitude', 'ma postura', 'corcunda', 'ombros caidos', 'diastase'] },
@@ -82,7 +82,7 @@ const JS = String.raw`
       termos: ['pressao alta', 'hipertensao', 'colesterol', 'colesterol alto', 'triglicerideos', 'diabetes', 'pre diabetes', 'glicemia', 'glicose alta', 'acido urico', 'gordura no figado', 'esteatose', 'sindrome metabolica'] },
     { id: 'investigacao', rotulo: 'investigação clínica', area: 'medicina',
       pros: ['gustavo-gehrke', 'jessica-stein', 'adriano-lenz', 'maria-luisa-borges', 'verena-cattani'],
-      termos: ['exame', 'exames', 'check up', 'checkup', 'sangue', 'laboratorio', 'diagnostico', 'investigar', 'medico', 'medica', 'clinico geral', 'consulta medica', 'segunda opiniao', 'infeccao', 'inflamacao', 'longevidade', 'envelhecimento', 'prevencao', 'doenca cronica', 'check up completo', 'exame de sangue alterado', 'exames alterados', 'hemograma'] },
+      termos: ['exame', 'exames', 'check up', 'checkup', 'sangue', 'laboratorio', 'diagnostico', 'investigar', 'medico', 'medica', 'clinico geral', 'consulta medica', 'segunda opiniao', 'infeccao', 'inflamacao', 'longevidade', 'envelhecimento', 'prevencao', 'doenca cronica', 'check up completo', 'exame de sangue alterado', 'exames alterados', 'hemograma', 'dor no peito', 'dor de garganta', 'dor de ouvido', 'dor ao urinar', 'dor nos rins', 'dor no olho'] },
     { id: 'imunidade', rotulo: 'imunidade e vitaminas', area: 'medicina',
       leitura: 'Você quer entender por que a imunidade anda baixa e repor o que falta.',
       pros: ['gustavo-gehrke', 'adriano-lenz', 'danusa-pires', 'camila-cadore'],
@@ -93,11 +93,11 @@ const JS = String.raw`
     { id: 'digestivo', rotulo: 'digestão e estômago', area: 'medicina',
       leitura: 'Você quer resolver uma queixa digestiva que incomoda no dia a dia.',
       pros: ['gustavo-gehrke', 'camila-cadore', 'verena-cattani', 'jessica-stein'],
-      termos: ['azia', 'queimacao', 'refluxo', 'gastrite', 'ma digestao', 'digestao', 'estomago', 'dor no estomago', 'enjoo', 'nausea', 'empachamento', 'arrotos', 'h pylori'] },
+      termos: ['azia', 'queimacao', 'refluxo', 'gastrite', 'ma digestao', 'digestao', 'estomago', 'dor no estomago', 'dor de estomago', 'dor de barriga', 'dor na barriga', 'dor abdominal', 'dor no abdomen', 'barriga doendo', 'dor depois de comer', 'enjoo', 'nausea', 'empachamento', 'arrotos', 'h pylori'] },
     { id: 'saude-da-mulher', rotulo: 'saúde da mulher', area: 'medicina',
       leitura: 'Você quer cuidar de ciclo, cólica e saúde feminina com investigação de verdade.',
       pros: ['gustavo-gehrke', 'verena-cattani', 'camila-cadore', 'jessica-stein'],
-      termos: ['endometriose', 'colica menstrual', 'colicas menstruais', 'menstruacao irregular', 'ciclo irregular', 'candidiase de repeticao', 'fertilidade', 'dificuldade para engravidar', 'mioma'] },
+      termos: ['endometriose', 'colica menstrual', 'colicas menstruais', 'menstruacao irregular', 'ciclo irregular', 'candidiase de repeticao', 'fertilidade', 'dificuldade para engravidar', 'mioma', 'dor pelvica'] },
     { id: 'retencao', rotulo: 'inchaço e retenção de líquido', area: 'medicina',
       leitura: 'Você quer entender e reduzir o inchaço que não vai embora.',
       pros: ['gustavo-gehrke', 'camila-cadore', 'verena-cattani', 'danusa-pires'],
@@ -139,7 +139,7 @@ const JS = String.raw`
       termos: ['vegetariano', 'vegetariana', 'vegano', 'vegana', 'veganismo', 'plant based', 'sem carne', 'b12', 'proteina vegetal', 'dieta vegana', 'parar de comer carne'] },
     { id: 'comportamento-alimentar', rotulo: 'comportamento alimentar', area: 'nutricao',
       pros: ['gabrieli-avila', 'francielle-beria', 'manuela-vanti', 'jessica-stein', 'marvin-marques'],
-      termos: ['compulsao alimentar', 'compulsao', 'beliscar', 'ansiedade e comida', 'comer emocional', 'relacao com a comida', 'transtorno alimentar', 'comer escondido', 'descontar na comida', 'fome emocional', 'vicio em doce', 'beliscando o dia todo'] },
+      termos: ['compulsao alimentar', 'compulsao', 'beliscar', 'ansiedade e comida', 'comer emocional', 'relacao com a comida', 'transtorno alimentar', 'comer escondido', 'descontar na comida', 'fome emocional', 'vicio em doce', 'beliscando o dia todo', 'medo de comer'] },
     { id: 'psico-esporte', rotulo: 'psicologia do esporte', area: 'saude-mental',
       leitura: 'Você busca preparo mental para treinar e competir melhor.',
       pros: ['augusto-kauer'],
@@ -402,11 +402,21 @@ const JS = String.raw`
        perdia para um grupo unico mais fraco. Depois, dentro da area vencedora,
        o melhor grupo define chip e ranking; empate vai ao mais especifico. */
     var pesos = [];
+    /* "dor" e variantes sao genericos: sozinhos nao podem decidir a area.
+       "dor de barriga" nao e musculoesqueletica; a REGIAO decide o caminho.
+       Se a frase e "dor de/na <regiao>" e a regiao nao e do aparelho
+       locomotor, o grupo de dor nao pontua e a queixa vai para o bloco da
+       regiao, ou para a investigacao medica se a regiao nao for mapeada. */
+    var GENERICOS = { dor: 1, dores: 1, dolorido: 1, doendo: 1, doi: 1 };
     SINTOMAS.forEach(function (g) {
-      var peso = 0;
+      var peso = 0, especifico = false, generico = false;
       g.termos.forEach(function (k) {
-        if (t.indexOf(' ' + k + ' ') >= 0 || t.indexOf(' ' + k) >= 0) peso += k.length * (k.indexOf(' ') >= 0 ? 2 : 1);
+        if (t.indexOf(' ' + k + ' ') >= 0 || t.indexOf(' ' + k) >= 0) {
+          peso += k.length * (k.indexOf(' ') >= 0 ? 2 : 1);
+          if (GENERICOS[k]) generico = true; else especifico = true;
+        }
       });
+      if (g.id === 'dor-musculo' && generico && !especifico && / dor (de|do|da|no|na|nos|nas) /.test(t)) peso = 0;
       pesos.push(peso);
     });
     var porArea = {};
