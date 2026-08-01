@@ -1206,16 +1206,15 @@ class Component extends DCLogic {
     return form;
   }
 
-  /* a busca vive na URL: ?q=dor+nas+costas. Isso deixa o resultado
-     compartilhavel, permite linkar direto de uma pagina de area e alimenta o
-     SearchAction do dado estruturado. */
-  function gravaURL(frase) {
-    if (!window.history || !window.history.replaceState) return;
-    var base = location.pathname;
-    var nova = frase ? base + '?q=' + encodeURIComponent(frase) : base;
-    if (nova !== location.pathname + location.search) {
-      try { window.history.replaceState(null, '', nova); } catch (e) { /* file:// */ }
-    }
+  /* A busca NAO fica na URL. O tribunal etico apontou o defeito que eu havia
+     criado: a frase clinica literal do visitante ia para a barra de endereco e
+     para o historico do navegador, num aparelho que muitas vezes e
+     compartilhado, e a propria tela promete que a frase nao e armazenada.
+     Links de entrada com ?q= continuam funcionando, para campanha e para o
+     SearchAction, mas a URL e limpa assim que a busca roda. */
+  function limpaURL() {
+    if (!window.history || !window.history.replaceState || !location.search) return;
+    try { window.history.replaceState(null, '', location.pathname); } catch (e) { /* file:// */ }
   }
 
   function buscar(frase) {
@@ -1224,7 +1223,7 @@ class Component extends DCLogic {
     s.grupo = interpreta(frase);
     s.respostas = {};
     s.modo = 'resultado';
-    gravaURL(frase);
+    limpaURL();
     render();
     sobe();
   }

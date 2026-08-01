@@ -60,9 +60,9 @@ if (!existsSync(join(DIST, 'sitemap.xml'))) {
   for (const u of FORA_DO_SITEMAP) {
     if (locs.some((l) => l.startsWith(u))) erro(`pagina noindex dentro do sitemap: ${u}`);
   }
-  if (locs.length < 62) {
+  if (locs.length < 57) {
     erro(
-      `sitemap com ${locs.length} URLs, esperado ao menos 62 (9 rotas + 8 areas + 31 perfis + 14 artigos)`
+      `sitemap com ${locs.length} URLs, esperado ao menos 57 (9 rotas + 8 areas + 26 perfis indexaveis + 14 artigos)`
     );
   } else {
     ok(`${locs.length} URLs no sitemap, todas as rotas estrategicas presentes`);

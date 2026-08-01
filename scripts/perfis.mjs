@@ -260,6 +260,19 @@ ${
     /<meta property="og:image" content="[^"]*"/,
     `<meta property="og:image" content="${DOMINIO}/${encodeURI(p.foto)}"`
   );
+  /* Cinco profissionais ainda não têm número de registro (estado
+     'a-adicionar'). Dar a eles página própria indexada, com schema Person e
+     anúncio de atuação, aumenta a exposição de um risco que o tribunal ético
+     apontou: anunciar atuação em saúde sem o registro visível é frágil perante
+     os conselhos. Até o número chegar, a página existe e funciona para quem
+     recebe o link, mas não entra no índice nem no sitemap. Reverte sozinho
+     quando o registro for preenchido em deploy/dados-ecooa.js. */
+  if (p.estado === 'a-adicionar') {
+    html = html.replace(
+      '<head>',
+      '<head>\n<meta name="robots" content="noindex, follow">'
+    );
+  }
   html = html.replace('<head>', '<head>\n<base href="/">');
 
   const iniConteudo = html.indexOf('</header>') + '</header>'.length;
