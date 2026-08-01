@@ -7,7 +7,5 @@ Allow: /
 
 Disallow: /404
 Disallow: /404.html
-Disallow: /Sobrancelha.dc.html
-Disallow: /Rodape.dc.html
 
 Sitemap: https://www.somosecooa.com.br/sitemap.xml

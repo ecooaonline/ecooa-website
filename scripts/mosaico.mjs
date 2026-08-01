@@ -131,6 +131,7 @@ const MODAL = `
       <p class="pf-rot">como conduz o cuidado</p>
       <div class="pf-conduta" id="pf-conduta"></div>
       <a class="pf-cta" id="pf-cta" href="#" target="_blank" rel="noopener noreferrer"></a>
+      <a class="pf-pagina" id="pf-pagina" href="#" style="display:inline-flex; align-items:center; min-height:44px; margin-left:14px; font-size:11.5px; letter-spacing:.1em; color:#5C5A55; text-decoration:underline; text-underline-offset:4px;">ver a página completa →</a>
     </div>
   </div>
 </div>
@@ -217,6 +218,11 @@ const JS = `
           p.nome +
           '. Poderiam me orientar sobre os próximos passos?'
       );
+
+    /* caminho para a página individual, que traz a conduta inteira e as
+       queixas que a pessoa atende, com o que ela faz em cada uma */
+    var pag = document.getElementById('pf-pagina');
+    if (pag) pag.href = 'profissionais/' + p.slug + '/';
 
     ov.hidden = false;
     document.documentElement.style.overflow = 'hidden';

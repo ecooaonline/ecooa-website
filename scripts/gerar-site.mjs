@@ -100,6 +100,9 @@ for (const etapa of [
   'retoques.mjs',
   'areas.mjs',
   'artigos.mjs',
+  'perfis.mjs',
+  'estruturados.mjs',
+  'medicao.mjs',
   'personaliza.mjs',
   'sitemap.mjs',
 ]) {

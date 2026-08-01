@@ -11,7 +11,7 @@ if (!pares.length) {
   process.exit(1);
 }
 
-let s = fs.readFileSync(ARQ, 'utf8');
+const s = fs.readFileSync(ARQ, 'utf8');
 const ini = s.indexOf('const profissionais = [');
 const fim = s.indexOf('\n  ];', ini);
 if (ini < 0 || fim < 0) {

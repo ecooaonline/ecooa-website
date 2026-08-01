@@ -86,11 +86,15 @@ const ARTES = {
   'saude-integrativa': "<circle cx='32' cy='30' r='14'/><circle cx='48' cy='30' r='14'/>",
 };
 
+/* O card leva à página individual do profissional, não ao modal: a partir de
+   2026-08-01 cada profissional tem página própria, com conduta e queixas
+   atendidas. Além de ser mais informativo para o visitante, é o que dá ao
+   Google um caminho de rastreio para os 31 perfis. */
 function cardProfissional(p, area) {
   const registro = p.estado === 'a-adicionar' ? '' : p.registro;
   const convite = `${p.primeiro} atua com ${p.area}. ${String(p.bio || '').split(/(?<=\.)\s/)[0] || ''}`;
   return `
-      <button type="button" data-perfil="${p.slug}" aria-label="Ver o perfil de ${esc(p.nome)}" style="text-align:left; border:0; cursor:pointer; background:var(--nuvem); padding:0; display:flex; flex-direction:column; box-shadow:0 0 0 1px var(--stone);">
+      <a href="profissionais/${p.slug}/" aria-label="Ver o perfil de ${esc(p.nome)}" style="text-align:left; background:var(--nuvem); padding:0; display:flex; flex-direction:column; box-shadow:0 0 0 1px var(--stone);">
         <span style="display:block; position:relative; overflow:hidden; background:var(--nevoa); aspect-ratio:2/3; width:100%;">
           <span style="position:absolute; top:10px; right:12px; z-index:2; font-size:8.5px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.85); background:rgba(43,41,38,.34); padding:4px 8px; border-radius:999px; backdrop-filter:blur(3px);">${esc(p.marca)}</span>
           <img data-dim="${esc(p.foto)}" src="${esc(p.foto)}" alt="Retrato de ${esc(p.nome)}" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center top; filter:var(--foto);" loading="lazy">
@@ -101,7 +105,7 @@ function cardProfissional(p, area) {
           <span style="display:block; margin-top:10px; font-size:13.5px; line-height:1.6; color:var(--muted);">${esc(convite)}</span>
           <span style="display:block; margin-top:12px; font-size:11.5px; letter-spacing:.14em; color:var(--grafite);">ver perfil e agendar →</span>
         </span>
-      </button>`;
+      </a>`;
   void area;
 }
 
@@ -215,11 +219,13 @@ function paginaArea(a) {
   if (iniRodape < 0) throw new Error('rodapé não encontrado no shell');
   html = html.slice(0, iniConteudo) + '\n' + corpo + '\n' + html.slice(iniRodape);
 
-  /* modal de perfil */
-  if (!html.includes('pf-ov')) {
-    html = html.replace('</head>', MODAL_CSS + '\n</head>');
-    html = html.replace('</body>', MODAL_HTML + '\n' + MODAL_JS + '\n</body>');
-  }
+  /* O modal de perfil saiu destas páginas em 2026-08-01: os cards agora levam
+     à página individual do profissional, então o modal era código morto
+     pesando em oito páginas. Ele segue em profissionais.html, onde é a
+     interação principal. */
+  void MODAL_CSS;
+  void MODAL_HTML;
+  void MODAL_JS;
   return html;
 }
 

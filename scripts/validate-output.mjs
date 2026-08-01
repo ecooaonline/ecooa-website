@@ -60,8 +60,10 @@ if (!existsSync(join(DIST, 'sitemap.xml'))) {
   for (const u of FORA_DO_SITEMAP) {
     if (locs.some((l) => l.startsWith(u))) erro(`pagina noindex dentro do sitemap: ${u}`);
   }
-  if (locs.length < 31) {
-    erro(`sitemap com ${locs.length} URLs, esperado ao menos 31 (9 rotas + 8 areas + 14 artigos)`);
+  if (locs.length < 62) {
+    erro(
+      `sitemap com ${locs.length} URLs, esperado ao menos 62 (9 rotas + 8 areas + 31 perfis + 14 artigos)`
+    );
   } else {
     ok(`${locs.length} URLs no sitemap, todas as rotas estrategicas presentes`);
   }
@@ -82,7 +84,7 @@ const AREAS = [
   'saude-mental',
   'saude-integrativa',
 ];
-let faltamAreas = AREAS.filter((a) => !existsSync(join(DIST, 'especialidades', a, 'index.html')));
+const faltamAreas = AREAS.filter((a) => !existsSync(join(DIST, 'especialidades', a, 'index.html')));
 if (faltamAreas.length) erro(`paginas de area ausentes: ${faltamAreas.join(', ')}`);
 else ok('8 paginas de especialidade presentes');
 const nArtigos = existsSync(join(DIST, 'blog'))
@@ -240,6 +242,84 @@ console.log('Guardiao regulatorio:');
   }
   const contagem = validos.map((v) => `${estados.filter((e) => e === v).length} ${v}`).join(', ');
   ok(`registro exibido limpo (${contagem})`);
+}
+
+/* ── 7. paginas individuais de profissional ────────────────────────── */
+console.log('Perfis de profissional:');
+{
+  /* le a fonte de dados de verdade, em vez de adivinhar por regex: o arquivo
+     tem slug+nome tambem nas especialidades e nos artigos */
+  global.window = {};
+  await import(join(process.cwd(), DIST, 'dados-ecooa.js'));
+  const slugs = (global.window.ECOOA?.profissionais || []).map((p) => p.slug);
+  const dir = join(DIST, 'profissionais');
+  const faltam = slugs.filter((s) => !existsSync(join(dir, s, 'index.html')));
+  if (!slugs.length) erro('nao consegui ler os slugs de dados-ecooa.js');
+  else if (faltam.length) erro(`perfis ausentes (${faltam.length}): ${faltam.slice(0, 5).join(', ')}`);
+  else ok(`${slugs.length} paginas individuais de profissional presentes`);
+  if (!existsSync(join(dir, 'index.html')))
+    erro('indice de /profissionais/ ausente (diretorio esconderia a listagem)');
+
+  /* cada perfil precisa de conteudo proprio, nao so o shell herdado */
+  let magros = 0;
+  for (const s of slugs.slice(0, 31)) {
+    const f = join(dir, s, 'index.html');
+    if (!existsSync(f)) continue;
+    const t = readFileSync(f, 'utf8');
+    if (!t.includes('"@type":"Person"')) erro(`${s}: perfil sem schema Person`);
+    if (!/O que .* atende|Como .* conduz o cuidado/.test(t)) magros++;
+  }
+  if (magros > 2) erro(`${magros} perfis sem secao de conduta nem de queixas atendidas`);
+  else ok('perfis com conteudo proprio (conduta e queixas atendidas)');
+}
+
+/* ── 8. dados estruturados ─────────────────────────────────────────── */
+console.log('Dados estruturados:');
+{
+  const home = html.get('index.html') || '';
+  if (!home.includes('"@type":"MedicalClinic"')) erro('home sem a entidade MedicalClinic');
+  else ok('home com MedicalClinic (endereco, telefone, horario)');
+  if (!home.includes('"@type":"WebSite"')) erro('home sem WebSite');
+
+  /* CFM: nota agregada e depoimento em publicidade medica sao vedados */
+  const comNota = [];
+  for (const [f, s] of html) {
+    if (/"aggregateRating"|"@type":"Review"|"reviewRating"/.test(s)) comNota.push(f);
+  }
+  if (comNota.length) erro(`aggregateRating ou Review no schema (vedado ao CFM): ${comNota.join(', ')}`);
+  else ok('nenhum aggregateRating nem Review no schema');
+
+  /* todo JSON-LD precisa ser JSON valido, senao o Google descarta calado */
+  let quebrados = 0;
+  for (const [f, s] of html) {
+    for (const m of s.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) {
+      try {
+        JSON.parse(m[1]);
+      } catch {
+        erro(`${f}: JSON-LD invalido`);
+        quebrados++;
+      }
+    }
+  }
+  if (!quebrados) ok('todo JSON-LD das paginas da raiz e sintaticamente valido');
+}
+
+/* ── 9. medicao e consentimento ────────────────────────────────────── */
+console.log('Medicao:');
+{
+  const semMedicao = [...html].filter(([, s]) => !s.includes('data-medicao-ecooa'));
+  if (semMedicao.length) erro(`sem camada de medicao: ${semMedicao.map(([f]) => f).join(', ')}`);
+  else ok(`medicao presente nas ${html.size} paginas da raiz`);
+
+  const home = html.get('index.html') || '';
+  if (!/analytics_storage: 'denied'/.test(home))
+    erro('Consent Mode sem analytics_storage negado por padrao (LGPD)');
+  else ok('consentimento negado por padrao, liberado so apos aceite');
+
+  /* o GTM nao pode entrar por tag estatica: ele so carrega apos gesto */
+  if (/<script[^>]+src="https:\/\/www\.googletagmanager\.com/.test(home))
+    erro('GTM carregado de forma estatica, fora do carregamento tardio');
+  else ok('GTM so carrega apos gesto do visitante ou 4s');
 }
 
 console.log('');

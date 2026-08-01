@@ -72,6 +72,15 @@ for (const a of AREAS) {
     `Olá! Vim pelo site da ecooa e gostaria de agendar uma avaliação em ${a.nome.toLowerCase()}. Qual profissional a equipe me indica para o meu caso?`
   );
 }
+/* páginas individuais de profissional: todo CTA herdado (agendar do cabeçalho,
+   botão flutuante, menu do celular) passa a citar a pessoa daquele perfil */
+for (const p of ECOOA.profissionais) {
+  POR_PAGINA.set(
+    `profissionais/${p.slug}/index.html`,
+    `Olá! Vim pelo site da ecooa, li o perfil de ${p.nome} e gostaria de agendar uma consulta de ${p.area}. Poderiam me orientar sobre os próximos passos?`
+  );
+}
+
 for (const art of ECOOA.artigos) {
   const au = ECOOA.profissionais.find((p) => p.slug === art.autor) || null;
   POR_PAGINA.set(

@@ -28,6 +28,15 @@ if (fs.existsSync(areasDir)) {
     }
   }
 }
+const perfisDir = path.join(DEPLOY, 'profissionais');
+if (fs.existsSync(perfisDir)) {
+  for (const d of fs.readdirSync(perfisDir, { withFileTypes: true })) {
+    if (d.isDirectory() && fs.existsSync(path.join(perfisDir, d.name, 'index.html'))) {
+      urls.push(`/profissionais/${d.name}/`);
+    }
+  }
+}
+
 const blogDir = path.join(DEPLOY, 'blog');
 if (fs.existsSync(blogDir)) {
   for (const d of fs.readdirSync(blogDir, { withFileTypes: true })) {

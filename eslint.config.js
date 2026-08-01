@@ -59,6 +59,49 @@ export default [
     },
   },
 
+  // Scripts .mjs que GERAM o site publicado (deploy/). Até 2026-08-01 estes
+  // arquivos não tinham análise estática nenhuma: o ESLint só olhava para o
+  // projeto Astro, que não está no ar. Ou seja, o código que constrói o site
+  // real era o único sem rede de proteção.
+  {
+    files: ['**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        global: 'writable',
+        Buffer: 'readonly',
+        URL: 'readonly',
+        URLSearchParams: 'readonly',
+        TextEncoder: 'readonly',
+        TextDecoder: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        fetch: 'readonly',
+        structuredClone: 'readonly',
+        // estes scripts abrem um Chromium e passam funções que rodam DENTRO da
+        // página (page.evaluate). Ali valem os globais do navegador.
+        document: 'readonly',
+        window: 'readonly',
+        location: 'readonly',
+        navigator: 'readonly',
+        getComputedStyle: 'readonly',
+        requestAnimationFrame: 'readonly',
+        matchMedia: 'readonly',
+      },
+    },
+    rules: {
+      'no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      'no-undef': 'error',
+      'no-constant-condition': ['error', { checkLoops: false }],
+      'no-empty': ['error', { allowEmptyCatch: true }],
+      eqeqeq: ['warn', 'smart'],
+      'prefer-const': 'warn',
+    },
+  },
+
   // Scripts client em src/scripts/ — mais permissivo (sem parserOptions.project)
   {
     files: ['src/scripts/**/*.ts'],
