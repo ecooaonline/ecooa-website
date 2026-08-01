@@ -103,6 +103,7 @@ for (const etapa of [
   'perfis.mjs',
   'estruturados.mjs',
   'acessibilidade.mjs',
+  'redirects.mjs',
   'medicao.mjs',
   'personaliza.mjs',
   'sitemap.mjs',
