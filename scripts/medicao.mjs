@@ -228,6 +228,16 @@ for (const arq of anda(DEPLOY)) {
     puladas++;
     continue;
   }
+  /* Política de referenciador no próprio HTML, e não só em deploy/_headers,
+     que o GitHub Pages ignora. Sem ela, a busca do ecooa.match, que vive na
+     URL como ?q=, viajaria no cabeçalho Referer para qualquer destino externo,
+     inclusive o WhatsApp. Queixa de saúde não pode sair daqui de carona. */
+  if (!/name="referrer"/.test(html)) {
+    html = html.replace(
+      /<meta charset="[^"]*">/i,
+      (m) => m + '\n<meta name="referrer" content="strict-origin-when-cross-origin">'
+    );
+  }
   html = html.replace('</body>', JS + '</body>');
   fs.writeFileSync(arq, html, 'utf8');
   aplicadas++;

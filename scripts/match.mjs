@@ -593,9 +593,18 @@ const JS = String.raw`
 
     var respostas = Object.keys(ROTULOS).filter(function (k) { return s.respostas[k]; })
       .map(function (k) { return { campo: ROTULOS[k], valor: s.respostas[k].rotulo }; });
-    var resumo = veioDeTexto ? 'Escrevi no site: ' + s.frase
+    /* A frase que a pessoa digita é queixa clínica, ou seja, dado sensível de
+       saúde. Ela NÃO entra na URL do WhatsApp: uma URL viaja para a Meta, fica
+       no histórico do navegador e pode vazar por referenciador, tudo isso
+       antes de a pessoa conscientemente enviar a mensagem. E a própria tela
+       promete que a frase não é armazenada.
+       Vai apenas o bloco de queixa entendido, que é categoria editorial da
+       casa, não declaração da pessoa sobre si. Quem quiser detalhar, detalha
+       dentro da conversa, que é onde esse dado deve estar. */
+    var resumo = veioDeTexto
+      ? (grupo && grupo.rotulo ? 'Busquei por ' + grupo.rotulo + '.' : 'Fiz uma busca na ferramenta.')
       : respostas.map(function (r) { return r.campo + ': ' + r.valor; }).join('. ');
-    var waGeral = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá! Usei o ecooa.match no site. ' + resumo + '. Qual profissional a equipe me indica para o meu caso?');
+    var waGeral = 'https://wa.me/' + WA + '?text=' + encodeURIComponent('Olá! Usei o ecooa.match no site. ' + resumo + ' Qual profissional a equipe me indica para o meu caso?');
 
     var carta = el('div', CARTA);
 
