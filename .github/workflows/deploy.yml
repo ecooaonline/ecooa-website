@@ -35,8 +35,10 @@ jobs:
           test -f deploy/404.html
           ! grep -rq "unpkg.com" deploy/            # nada de CDN externo
           ! grep -rq "support\.js" deploy/*.html    # runtime morto não pode voltar
-      - name: Validar o output publicado
-        run: node scripts/validate-output.mjs
+      # O gate completo (scripts/validate-output.mjs) roda em ci.yml, que tem
+      # Node e faz o build para dist/ antes. Chamá-lo aqui, sem setup-node e
+      # sem dist/, reproduziria exatamente a falha que este arquivo acabou de
+      # corrigir: passo vermelho, job de deploy nunca executado.
       - uses: actions/upload-pages-artifact@v5
         with:
           path: deploy/
