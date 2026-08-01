@@ -22,13 +22,21 @@ jobs:
       # O site 3.0 é estático e não precisa de build: a pasta deploy/ é
       # publicada como está. O projeto Astro segue no repositório, mas
       # não é mais o que vai ao ar.
+      # O gate exigia deploy/support.js, apagado no P06 junto com os 3,3 MB de
+      # runtime morto. Com o arquivo fora, o passo falhava e o job de deploy
+      # nunca rodava. Agora conferimos o que de fato existe na publicação.
       - name: Conferir arquivos essenciais da publicação
         run: |
           test -f deploy/index.html
-          test -f deploy/support.js
           test -f deploy/dados-ecooa.js
-          test -f deploy/CNAME   # segura o domínio www.somosecooa.com.br
-          ! grep -rq "unpkg.com" deploy/support.js  # nada de CDN externo
+          test -f deploy/CNAME       # segura o domínio www.somosecooa.com.br
+          test -f deploy/sitemap.xml
+          test -f deploy/robots.txt
+          test -f deploy/404.html
+          ! grep -rq "unpkg.com" deploy/            # nada de CDN externo
+          ! grep -rq "support\.js" deploy/*.html    # runtime morto não pode voltar
+      - name: Validar o output publicado
+        run: node scripts/validate-output.mjs
       - uses: actions/upload-pages-artifact@v5
         with:
           path: deploy/
