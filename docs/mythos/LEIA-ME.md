@@ -106,7 +106,7 @@ números medidos e tabela de achados.
 
 | # | O que | Tempo | Trava o quê |
 |---|---|---|---|
-| 1 | CSP na Cloudflare | 30 min | **toda a medição** |
+| 1 | Conferir a CSP na Cloudflare (passo 0 leva 30 s) | 30 min | pode estar travando **toda a medição** |
 | 2 | Conferir Settings > Pages | 10 min | publicação |
 | 3 | Perfil da Empresa no Google | 2 h | **busca local, o maior fator** |
 | 4 | Tags no GTM (depois do 1) | 1 h | saber o que traz paciente |
@@ -134,8 +134,10 @@ construído até a porta e parou ali"*. Estes três itens são a porta.
 
 ## Como proceder, na prática
 
-**Hoje.** Abra `PENDENCIAS-DO-DONO.md`, faça o item 1 (30 minutos, Cloudflare) e
-o item 2 (10 minutos, GitHub). Só isso. Os dois juntos destravam a medição e
+**Hoje.** Abra `PENDENCIAS-DO-DONO.md` e comece pelo **passo 0 do item 1**: são
+30 segundos no `securityheaders.com` para descobrir se existe uma CSP no site.
+O resultado decide se você precisa mexer na Cloudflare ou pode pular direto. Em
+seguida, o item 2 (10 minutos, GitHub). Os dois juntos destravam a medição e
 confirmam que o site publica.
 
 **Esta semana.** Item 3, o Perfil da Empresa no Google. Reserve duas horas

@@ -16,7 +16,7 @@ você não fizer, e como conferir que deu certo. Se só tiver uma hora hoje, fa�
 
 | | O que é | Tempo seu | Sem isso... |
 |---|---|---|---|
-| **1** | Ajustar a segurança na Cloudflare | 30 min | nenhuma medição funciona, nunca |
+| **1** | Conferir a segurança na Cloudflare (comece pelo passo 0) | 30 min | pode estar travando toda a medição |
 | **2** | Conferir como o site publica | 10 min | mudanças podem não chegar ao ar |
 | **3** | Criar o perfil no Google | 2 h | você não aparece no mapa, e o mapa é onde a busca local acontece |
 | **4** | Ligar as tags no GTM | 1 h | você segue sem saber o que traz paciente |
@@ -32,35 +32,111 @@ você não fizer, e como conferir que deu certo. Se só tiver uma hora hoje, fa�
 
 ## 1. Ajustar a segurança na Cloudflare · 30 minutos
 
-**O que está errado.** A regra de segurança que vale no seu site não está no
-repositório: ela vive num painel da Cloudflare. E essa regra não deixa nenhum
-dado sair do navegador para o Google. Ou seja, você pode configurar o GTM
-perfeitamente e ainda assim **medir zero**, sem nenhuma mensagem de erro.
+> **Correção de uma instrução minha que estava mal escrita.** Na primeira versão
+> eu mandei "editar a regra da CSP" sem dizer onde se cria uma regra, e sem
+> antes mandar você **conferir se essa regra existe**. Eu não alcanço o seu
+> domínio deste ambiente, então parti de uma anotação antiga que dizia que a
+> Cloudflare aplicava uma CSP. Isso pode estar desatualizado. Comece pelo passo
+> zero: ele leva 30 segundos e muda tudo o que vem depois.
 
-**Onde ir.** Cloudflare → seu domínio → Rules → a regra que define
-`Content-Security-Policy`.
+### Passo 0 · Descobrir se existe CSP hoje · 30 segundos
 
-**O que colar.** Acrescente estes três pedaços:
+**Jeito mais fácil:** abra `https://securityheaders.com`, cole
+`https://www.somosecooa.com.br` e clique em Scan. Olhe a lista de cabeçalhos.
+
+**Ou pelo navegador:** abra o site, aperte **F12**, aba **Network** (Rede),
+recarregue a página, clique na primeira linha (o documento HTML), e procure em
+**Response Headers** por `content-security-policy`.
+
+Anote o resultado, porque ele define qual caminho seguir:
+
+| O que você viu | Vá para |
+|---|---|
+| **Não existe** `content-security-policy` | **Caminho B**. Nada está bloqueado, e a medição vai funcionar sem você mexer em nada agora |
+| **Existe** e não contém `connect-src` | **Caminho A**. É o cenário que eu supus, e precisa de ajuste |
+| **Existe** e já contém `connect-src` com `google-analytics` | está tudo certo, pule para o item 2 |
+
+---
+
+### Caminho B · Não existe CSP nenhuma
+
+**Boa notícia: a medição não está bloqueada.** Você pode ir direto para o item 4
+(criar as tags no GTM) que vai funcionar.
+
+Fica uma segunda notícia, menos boa: sem CSP, o site perde pontos em "Práticas
+recomendadas" no PageSpeed e fica sem uma camada de proteção. Mas isso **não é
+urgente** e se resolve sozinho quando você fizer a migração para Cloudflare
+Workers (item 7), porque aí o arquivo `deploy/_headers` do repositório passa a
+valer, e ele já está pronto e correto.
+
+Se quiser resolver antes da migração, siga o Caminho A e **crie** a regra do
+zero, com o texto que está lá.
+
+---
+
+### Caminho A · Criar ou editar a regra de CSP
+
+**Onde fica.** A Cloudflare mudou o painel algumas vezes, então vou dar os dois
+lugares. Você está com a tela de **Rules** aberta, que é o lugar certo.
+
+- **Painel novo:** Rules → aba **Overview** → botão **Create rule** → escolha
+  **Response Header Transform Rule**.
+- **Painel anterior:** Rules → **Transform Rules** → aba
+  **Modify Response Header** → **Create rule**.
+
+Se você não vê nenhum dos dois, procure no menu da esquerda por **Transform
+Rules**. As abas que você me mostrou (Settings, Managed Transforms, Bulk
+Redirects, URL Normalization) são vizinhas dela.
+
+**Como preencher:**
+
+1. **Rule name:** `CSP ecooa`
+2. **When incoming requests match:** escolha **All incoming requests**
+3. **Then:** ação **Set static**
+4. **Header name:** `Content-Security-Policy`
+5. **Value:** cole exatamente isto, em uma linha só:
 
 ```
-connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com;
-frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com;
-script-src 'self' 'unsafe-inline' https://www.googletagmanager.com;
+default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com; frame-src 'self' https://www.google.com https://maps.google.com https://www.googletagmanager.com; form-action 'self' https://wa.me; base-uri 'self'; object-src 'none'; frame-ancestors 'none'
 ```
 
-E, já que está lá, acrescente também estes, que fecham buracos de segurança:
+6. **Deploy**.
 
-```
-frame-ancestors 'none';
-base-uri 'self';
-form-action 'self' https://wa.me;
-```
+Esse texto é o mesmo que está em `deploy/_headers` no repositório, então quando
+a migração para Workers acontecer os dois vão dizer a mesma coisa.
 
-O arquivo `deploy/_headers` já tem a versão completa e correta, pode copiar de
-lá.
+---
 
-**Como saber que deu certo.** Abra o site, aperte F12, aba Console. Se não
-aparecer erro vermelho falando de `google-analytics`, funcionou.
+### Enquanto você está aí: dois botões de um clique
+
+Na aba **Managed Transforms** que você abriu, tudo está desligado. Dois valem
+ligar, e são só um clique cada:
+
+| Ligar | O que faz | Risco |
+|---|---|---|
+| **Remove "X-Powered-By" headers** | esconde qual tecnologia roda no servidor | nenhum |
+| **Add security headers** | adiciona HSTS, que obriga o navegador a usar HTTPS | **leia abaixo antes** |
+
+**Sobre o HSTS, com franqueza:** ele é bom e o PageSpeed cobra. Mas é um
+compromisso: depois de ligado, o navegador de quem já visitou o site recusa
+HTTP por um período, mesmo que você desligue. Como o site já roda todo em HTTPS,
+o risco prático é baixo. **Não** ative "preload" em lugar nenhum, porque essa é
+a parte que não tem volta fácil.
+
+Se preferir, deixe o HSTS para o dia da migração (item 7), quando você vai mexer
+em infraestrutura de qualquer forma. Ligar o "Remove X-Powered-By" pode ser
+agora, sem pensar duas vezes.
+
+---
+
+### Como saber que deu certo
+
+Rode o `securityheaders.com` de novo. Você deve ver
+`Content-Security-Policy` na lista.
+
+Depois, abra o site, F12, aba **Console**. Se aparecer erro vermelho citando
+`googletagmanager` ou `google-analytics`, alguma diretiva ficou faltando: me
+mande o texto do erro que eu digo qual.
 
 ---
 
@@ -124,7 +200,7 @@ painel lateral com endereço, horário e link do site.
 
 ## 4. Criar as tags no GTM · 1 hora
 
-**Faça o item 1 antes.** Sem ele, isto aqui não mede nada.
+**Faça o passo 0 do item 1 antes.** Se existir uma CSP sem `connect-src`, nada aqui vai medir. Se não existir CSP nenhuma, pode seguir direto.
 
 **O contexto.** O site nunca teve medição. O contêiner `GTM-TSR4GDMK` aparecia
 em dez documentos e em zero páginas. Eu instalei a camada inteira, com respeito
