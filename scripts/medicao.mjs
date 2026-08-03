@@ -43,23 +43,27 @@ const MARCA = 'data-medicao-ecooa';
  *
  * Hoje: DESLIGADA. Nada aparece na tela e o GTM não carrega.
  *
- * Por que nasceu desligada. A banca de valor apontou um defeito crítico que
- * eu mesmo criei: no celular, na primeira visita, o aviso de privacidade
- * cobre o botão flutuante de WhatsApp, que é o ÚNICO caminho de conversão do
- * site. Ao mesmo tempo, a auditoria de aquisição mostrou que a CSP que vale
- * em produção (regra de painel da Cloudflare, não este repositório) não tem
- * `connect-src`, então todo envio do GA4 é bloqueado pelo navegador. Ou seja,
- * o aviso estava custando conversão para não entregar dado nenhum.
+ * Por que nasceu desligada, e o que já mudou desde então.
+ *
+ * Motivo 1, RESOLVIDO em 2026-08-02: no celular o aviso cobria o botão
+ * flutuante de WhatsApp, que é o único caminho de conversão do site. A banca de
+ * valor chamou de defeito crítico, com razão. Agora, em tela estreita, o aviso
+ * sobe acima do botão e deixa a direita livre.
+ *
+ * Motivo 2, que era FALSO: eu afirmei que a CSP de produção não tinha
+ * `connect-src` e por isso bloquearia o GA4. Parti de uma anotação antiga de
+ * outra sessão e não podia verificar, porque este ambiente não alcança o
+ * domínio. O dono conferiu no securityheaders.com em 2026-08-02: a CSP real tem
+ * `connect-src 'self' https: wss:`, libera `googletagmanager` em `script-src` e
+ * em `frame-src`, e o site tira nota A. **A medição nunca esteve bloqueada.**
  *
  * O dono também pediu, em 2026-08-01, que nenhuma mudança de aparência fosse
- * feita sem a ordem dele. Desligar devolve a tela ao estado original.
+ * feita sem a ordem dele, e por isso a chave segue desligada.
  *
- * Como ligar, na ordem:
- *   1. corrigir a CSP no painel da Cloudflare (Bloqueio 2 de
- *      docs/mythos/PENDENCIAS-DO-DONO.md), senão nada será medido;
- *   2. criar as tags no contêiner GTM-TSR4GDMK;
- *   3. resolver a sobreposição do aviso com o botão flutuante no celular;
- *   4. trocar a linha abaixo para true e rodar `node scripts/gerar-site.mjs`.
+ * Falta só uma coisa para ligar:
+ *   1. criar as tags no contêiner GTM-TSR4GDMK (sem elas o contêiner carrega e
+ *      não mede nada);
+ *   2. trocar a linha abaixo para true e rodar `node scripts/gerar-site.mjs`.
  *
  * O dataLayer e os eventos continuam instalados e funcionando de qualquer
  * forma: o que a chave controla é o aviso na tela e o carregamento do GTM.
@@ -210,7 +214,14 @@ const JS = String.raw`
     var caixa = document.createElement('div');
     caixa.setAttribute('role', 'region');
     caixa.setAttribute('aria-label', 'Aviso de privacidade');
-    caixa.style.cssText = 'position:fixed; left:12px; right:12px; bottom:12px; z-index:9998; max-width:560px; margin:0 auto; padding:16px 18px; border-radius:16px; background:rgba(253,253,252,.9); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); box-shadow:0 18px 40px rgba(70,68,63,.18), inset 0 0 0 1px rgba(255,255,255,.6); display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; font-family:var(--sans, system-ui);';
+    /* No celular o aviso subia por cima do botao flutuante de WhatsApp, que e o
+       unico caminho de conversao do site. A banca de valor classificou isso
+       como defeito critico, com razao: nao se cobra consentimento cobrindo a
+       porta. Em tela estreita o aviso sobe acima do botao e deixa a direita
+       livre; em tela larga ele fica onde estava. */
+    var estreito = window.matchMedia && window.matchMedia('(max-width:700px)').matches;
+    caixa.style.cssText = 'position:fixed; left:12px; z-index:9998; max-width:560px; margin:0 auto; padding:16px 18px; border-radius:16px; background:rgba(253,253,252,.94); -webkit-backdrop-filter:blur(16px); backdrop-filter:blur(16px); box-shadow:0 18px 40px rgba(70,68,63,.18), inset 0 0 0 1px rgba(255,255,255,.6); display:flex; flex-wrap:wrap; gap:10px 14px; align-items:center; font-family:var(--sans, system-ui);' +
+      (estreito ? ' right:12px; bottom:96px;' : ' right:12px; bottom:12px;');
     var txt = document.createElement('p');
     txt.style.cssText = 'margin:0; flex:1 1 260px; font-size:13px; line-height:1.55; color:#5C5A55;';
     txt.appendChild(document.createTextNode('Usamos medição de audiência para entender o que ajuda quem chega até aqui. Nada é ativado sem a sua escolha. '));
