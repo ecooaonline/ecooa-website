@@ -17,9 +17,9 @@ você não fizer, e como conferir que deu certo. Se só tiver uma hora hoje, fa�
 | | O que é | Tempo seu | Sem isso... |
 |---|---|---|---|
 | ~~**1**~~ | ~~Segurança na Cloudflare~~ | ~~30 min~~ | **RESOLVIDO. Verificado nota A, nada a fazer** |
-| **1** | Resolver as duas publicações concorrentes (o site roda na Vercel, não no GitHub Pages) | 20 min | confusão futura e trabalho perdido |
+| ~~**1**~~ | ~~Publicação~~ | ~~20 min~~ | **RESOLVIDO. Vercel é o caminho, Pages despublicado** |
 | **3** | Criar o perfil no Google | 2 h | você não aparece no mapa, e o mapa é onde a busca local acontece |
-| **2** | Ligar as tags no GTM (**liberado, a CSP não bloqueia**) | 1 h | você segue sem saber o que traz paciente |
+| **1** | Criar a tag do GA4 no GTM | **15 min** | você segue sem saber o que traz paciente |
 | **5** | Conseguir 10 registros profissionais | variável | 5 perfis ficam fora do Google e há risco com os conselhos |
 | **6** | Advogado na política de privacidade | 1 a 2 semanas | o site publica um texto que se declara rascunho |
 | **7** | Mudar para Cloudflare Workers | 2 h técnicas | sem HTTPS reforçado, sem cache, sem redirect de verdade |
@@ -76,39 +76,21 @@ um dia você editar essa regra, aproveite e conserte.
 
 ---
 
-## 2. Duas publicações concorrentes · 20 minutos
+## 2. Publicação · RESOLVIDO em 2026-08-03
 
-**Descoberta que resolve o mistério.** Os cabeçalhos do seu site trazem
-`x-vercel-cache` e `x-vercel-id`. Ou seja: **o site é servido pela Vercel**,
-atrás da Cloudflare. Não pelo GitHub Pages.
+O site é servido pela **Vercel**, atrás da Cloudflare. O GitHub Pages publicava
+uma cópia quebrada em `ecooaonline.github.io/ecooa-website/`, que **o dono
+despublicou**.
 
-Isso explica por que o site continuou atualizando mesmo com a verificação do
-GitHub Pages quebrada, que eu corrigi ontem. Ela nunca foi o caminho real. A
-Vercel publica direto da branch `main`, e é por isso que tudo o que subi
-apareceu no ar.
+Do meu lado, já feito: o workflow `deploy.yml` foi removido do repositório. Ele
+publicava para o GitHub Pages, virou código morto e passaria a falhar a cada
+push agora que o Pages está desligado.
 
-**O problema:** existem hoje dois caminhos de publicação apontando para o mesmo
-domínio, e só um está em uso. Manter os dois é ter duas verdades: um dia alguém
-mexe no errado e passa horas sem entender por que nada muda.
+**A pasta publicada é `deploy/`**, e isso está provado, não suposto: todas as
+mudanças desta sessão vivem só em `deploy/`, e todas apareceram no ar. A raiz do
+repositório nem tem `index.html`.
 
-**O que fazer, 20 minutos:**
-
-1. Entre em `vercel.com`, abra o projeto da ecooa e confirme:
-   - qual branch publica (deve ser `main`);
-   - qual pasta é publicada (**precisa ser `deploy/`**, e vale a pena conferir);
-   - se o domínio `www.somosecooa.com.br` está apontado ali.
-2. No GitHub, abra **Settings → Pages** e veja o campo **Source**.
-   - Se estiver ativo, **desative**. Ele não serve o domínio e só gera confusão.
-3. Me avise o que encontrou. Se a Vercel é o caminho oficial, eu ajusto o
-   repositório para refletir isso: hoje o `deploy.yml` e vários documentos
-   dizem "GitHub Pages", e isso está errado.
-
-**Uma dúvida que só você resolve:** se a Vercel publica a pasta `deploy/`, tudo
-certo. Se ela publica a raiz do repositório, então o site no ar pode não ser o
-que penso que é. Confira essa configuração com atenção.
-
-**Como saber que deu certo.** Um projeto de publicação ativo, um só, e a
-documentação do repositório dizendo o nome dele.
+Nada a fazer aqui.
 
 ---
 

@@ -8,7 +8,7 @@ Sempre responder em português brasileiro (pt-BR).
 
 - Astro 6 (site estático)
 - TypeScript
-- GitHub Pages (deploy atual); migração para Cloudflare Workers decidida no P03
+- Vercel (deploy atual, atrás da Cloudflare); migração para Cloudflare Workers decidida no P03
 - Google Apps Script (formulários)
 - GTM-TSR4GDMK (analytics, interaction-only)
 
