@@ -49,14 +49,14 @@
   },
   "devDependencies": {
     "sharp": "^0.35.4",
-    "playwright": "^1.62.1",
+    "playwright": "^1.63.0",
     "@astrojs/check": "^0.9.10",
-    "@typescript-eslint/eslint-plugin": "^8.69.0",
+    "@typescript-eslint/eslint-plugin": "^8.70.0",
     "@typescript-eslint/parser": "^8.60.0",
-    "eslint": "^10.9.1",
+    "eslint": "^10.10.0",
     "eslint-plugin-astro": "^3.1.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.4.1",
+    "lint-staged": "^17.5.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3"
