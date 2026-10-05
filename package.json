@@ -48,15 +48,15 @@
     "esbuild": "0.28.1"
   },
   "devDependencies": {
-    "sharp": "^0.35.4",
+    "sharp": "^0.35.5",
     "playwright": "^1.63.0",
     "@astrojs/check": "^0.9.10",
-    "@typescript-eslint/eslint-plugin": "^8.70.1",
+    "@typescript-eslint/eslint-plugin": "^8.71.0",
     "@typescript-eslint/parser": "^8.60.0",
     "eslint": "^10.11.0",
     "eslint-plugin-astro": "^3.2.1",
     "husky": "^9.1.7",
-    "lint-staged": "^17.5.1",
+    "lint-staged": "^17.6.0",
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^0.14.1",
     "typescript": "^6.0.3"
