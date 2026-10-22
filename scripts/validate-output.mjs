@@ -444,6 +444,19 @@ console.log('Navegacao agentica:');
   else ok('nenhum formulario permite envio automatico por agente');
 }
 
+// O servidor estatico do Lighthouse nao aplica as rotas limpas do provedor.
+// Medir arquivos reais evita aceitar stubs ou falhar antes de obter metricas.
+for (const config of ['lighthouserc.json', 'lighthouserc.mobile.json']) {
+  const targets = JSON.parse(readFileSync(config, 'utf8')).ci.collect.url;
+  for (const target of targets) {
+    const file = join(DIST, new URL(target).pathname);
+    if (!existsSync(file)) erro(`${config}: alvo inexistente ${target}`);
+    else if (/<meta[^>]+http-equiv=["']refresh/i.test(readFileSync(file, 'utf8'))) {
+      erro(`${config}: alvo e stub de redirecionamento ${target}`);
+    }
+  }
+}
+
 console.log('');
 if (falhas) {
   console.error(`FALHOU: ${falhas} violacao(oes).`);
