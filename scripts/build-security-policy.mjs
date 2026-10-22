@@ -1,3 +1,4 @@
+import { parse } from 'parse5';
 // Build-time hashes allow only inline scripts present in this exact artifact.
 // Report-only is intentional until preview and edge injection are verified.
 import { createHash } from 'node:crypto';
@@ -14,16 +15,21 @@ async function htmlFiles(dir) {
   return files;
 }
 const hashes = new Set();
-for (const file of await htmlFiles(root)) {
-  const html = await readFile(file, 'utf8');
-  for (const match of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)) {
+function collect(node) {
+  if (node.tagName === 'script') {
+    const attrs = Object.fromEntries(node.attrs.map(({ name, value }) => [name, value]));
     if (
-      /\bsrc\s*=/i.test(match[1]) ||
-      /type\s*=\s*["'](?:application\/ld\+json|text\/x-dc)["']/i.test(match[1])
-    )
-      continue;
-    hashes.add("'sha256-" + createHash('sha256').update(match[2]).digest('base64') + "'");
+      !('src' in attrs) &&
+      !['application/ld+json', 'application/json', 'text/x-dc'].includes(attrs.type)
+    ) {
+      const text = (node.childNodes || []).map((child) => child.value || '').join('');
+      hashes.add("'sha256-" + createHash('sha256').update(text).digest('base64') + "'");
+    }
   }
+  for (const child of node.childNodes || []) collect(child);
+}
+for (const file of await htmlFiles(root)) {
+  collect(parse(await readFile(file, 'utf8')));
 }
 const file = path.join(root, '_headers');
 let headers = await readFile(file, 'utf8');
