@@ -4,14 +4,15 @@
       "staticDistDir": "./dist",
       "url": [
         "http://localhost/index.html",
-        "http://localhost/ecooa-med/index.html",
-        "http://localhost/ecooa-esthetic/index.html",
+        "http://localhost/especialidades.html",
+        "http://localhost/especialidades/medicina/index.html",
+        "http://localhost/especialidades/estetica-facial/index.html",
         "http://localhost/profissionais/gustavo-gehrke/index.html",
-        "http://localhost/profissionais/index.html",
-        "http://localhost/match/index.html",
-        "http://localhost/blog/index.html",
-        "http://localhost/contato/index.html",
-        "http://localhost/agendamento/index.html"
+        "http://localhost/profissionais.html",
+        "http://localhost/qual-profissional-procurar.html",
+        "http://localhost/blog.html",
+        "http://localhost/localizacao.html",
+        "http://localhost/sublocacao.html"
       ],
       "numberOfRuns": 1,
       "settings": {
@@ -37,14 +38,54 @@
     },
     "assert": {
       "assertions": {
-        "categories:performance": ["warn", { "minScore": 0.9 }],
-        "categories:accessibility": ["warn", { "minScore": 0.9 }],
-        "categories:best-practices": ["warn", { "minScore": 0.9 }],
-        "categories:seo": ["warn", { "minScore": 0.95 }],
-        "first-contentful-paint": ["warn", { "maxNumericValue": 3000 }],
-        "largest-contentful-paint": ["warn", { "maxNumericValue": 4000 }],
-        "cumulative-layout-shift": ["warn", { "maxNumericValue": 0.1 }],
-        "total-blocking-time": ["warn", { "maxNumericValue": 600 }],
+        "categories:performance": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "categories:accessibility": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "categories:best-practices": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "categories:seo": [
+          "warn",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "first-contentful-paint": [
+          "warn",
+          {
+            "maxNumericValue": 3000
+          }
+        ],
+        "largest-contentful-paint": [
+          "warn",
+          {
+            "maxNumericValue": 4000
+          }
+        ],
+        "cumulative-layout-shift": [
+          "warn",
+          {
+            "maxNumericValue": 0.1
+          }
+        ],
+        "total-blocking-time": [
+          "warn",
+          {
+            "maxNumericValue": 600
+          }
+        ],
         "uses-responsive-images": "warn",
         "uses-text-compression": "off",
         "unminified-css": "warn",

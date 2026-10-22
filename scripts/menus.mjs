@@ -151,14 +151,17 @@ for (const nome of paginas) {
   // 2. injeta os painéis logo antes do fim do <header>, escondidos
   const fimHeader = html.indexOf('</header>');
   if (fimHeader > 0) {
-    const blocos = Object.entries(painies)
-      .map(([chave, markup]) =>
-        markup
-          .replace(/^<(\w+)/, `<$1 data-painel="${chave}" hidden`)
-          // paginas reais por area, criadas em 2026-07-31
-          .replace(/href="especialidades\.html#([a-z-]+)"/g, 'href="especialidades/$1/"')
-      )
-      .join('\n') + '\n' + PAINEL_EDITORIAL.replace(/^<div/, '<div data-painel="editorial" hidden');
+    const blocos =
+      Object.entries(painies)
+        .map(([chave, markup]) =>
+          markup
+            .replace(/^<(\w+)/, `<$1 data-painel="${chave}" hidden`)
+            // paginas reais por area, criadas em 2026-07-31
+            .replace(/href="especialidades\.html#([a-z-]+)"/g, 'href="especialidades/$1/"')
+        )
+        .join('\n') +
+      '\n' +
+      PAINEL_EDITORIAL.replace(/^<div/, '<div data-painel="editorial" hidden');
     html = html.slice(0, fimHeader) + blocos + '\n' + html.slice(fimHeader);
   }
 

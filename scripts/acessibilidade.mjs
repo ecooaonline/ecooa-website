@@ -145,13 +145,16 @@ for (const arq of anda(DEPLOY)) {
 
   /* ── 3. nome acessível nas seções que já têm título ── */
   let n = 0;
-  html = html.replace(/<section\b([^>]*)>([\s\S]{0,2400}?)<h([12])\b([^>]*)>/g, (m, attrs, meio, nivel, hattrs) => {
-    if (/aria-label|aria-labelledby/.test(attrs)) return m;
-    if (/id=/.test(hattrs)) return m;
-    const id = 'sec-' + ++n;
-    secoes++;
-    return `<section${attrs} aria-labelledby="${id}">${meio}<h${nivel} id="${id}"${hattrs}>`;
-  });
+  html = html.replace(
+    /<section\b([^>]*)>([\s\S]{0,2400}?)<h([12])\b([^>]*)>/g,
+    (m, attrs, meio, nivel, hattrs) => {
+      if (/aria-label|aria-labelledby/.test(attrs)) return m;
+      if (/id=/.test(hattrs)) return m;
+      const id = 'sec-' + ++n;
+      secoes++;
+      return `<section${attrs} aria-labelledby="${id}">${meio}<h${nivel} id="${id}"${hattrs}>`;
+    }
+  );
 
   /* ── 4. região viva para o retorno dos formulários ── */
   html = html.replace(/<form\b([^>]*)>/g, (m, attrs) =>

@@ -6,7 +6,7 @@ on:
       - 'claude/**'
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 
 concurrency:
@@ -40,18 +40,11 @@ jobs:
               --base main \
               --head "$BRANCH" \
               --title "chore: merge $BRANCH" \
-              --body "PR automática gerada pelo workflow. Merge ocorre após todos os quality gates (CI) passarem." \
+              --body "PR automática gerada pelo workflow. Requer revisão humana e todos os quality gates antes do merge." \
               --draft=false)
             echo "PR criada: $PR_URL"
           else
             echo "PR existente: $PR_URL"
           fi
 
-          # Habilita auto-merge (squash) — só executa quando required checks passarem.
-          # Tolerante: se "Allow auto-merge" ainda não estiver habilitado nas settings
-          # do repositório, apenas avisa em vez de falhar o job.
-          if gh pr merge --auto --squash "$PR_URL"; then
-            echo "Auto-merge habilitado: $PR_URL"
-          else
-            echo "::warning::Auto-merge não pôde ser habilitado. Verifique se 'Allow auto-merge' está ligado em Settings > General > Pull Requests."
-          fi
+          echo "Revisão humana obrigatória; auto-merge não será ativado."

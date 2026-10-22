@@ -93,7 +93,10 @@ Limites que um agente deve respeitar:
 ## Especialidades
 
 ${ECOOA.especialidades
-  .map((e) => `- [${e.nome}](${D}/especialidades/${e.slug}/): ${(e.resumo || '').replace(/\s+/g, ' ').trim()}`)
+  .map(
+    (e) =>
+      `- [${e.nome}](${D}/especialidades/${e.slug}/): ${(e.resumo || '').replace(/\s+/g, ' ').trim()}`
+  )
   .join('\n')}
 
 ## Profissionais
@@ -124,7 +127,10 @@ ${(() => {
   const nome = {};
   ECOOA.especialidades.forEach((e) => (nome[e.slug] = e.nome));
   return Object.entries(porArea)
-    .map(([a, rots]) => `- [${nome[a] || a}](${D}/especialidades/${a}/): ${[...new Set(rots)].join(', ')}.`)
+    .map(
+      ([a, rots]) =>
+        `- [${nome[a] || a}](${D}/especialidades/${a}/): ${[...new Set(rots)].join(', ')}.`
+    )
     .join('\n');
 })()}
 

@@ -69,7 +69,8 @@ function leJson(dir, slug, campoFinal) {
   }
   const doJornal = DOJORNAL.get(slug);
   if (doJornal) {
-    const v = campoFinal && doJornal[campoFinal] ? doJornal[campoFinal] : doJornal.corpo || doJornal;
+    const v =
+      campoFinal && doJornal[campoFinal] ? doJornal[campoFinal] : doJornal.corpo || doJornal;
     if (v) return { dado: v, origem: 'journal' };
   }
   return null;
@@ -116,7 +117,12 @@ export const CORPOS = ${JSON.stringify(corpos, null, 2)};
 `;
   fs.writeFileSync(path.join(RAIZ, 'scripts', 'corpos-artigos.mjs'), cabecalho, 'utf8');
   const palavras = Object.values(corpos).reduce(
-    (n, b) => n + b.map((x) => x[1]).join(' ').split(/\s+/).length,
+    (n, b) =>
+      n +
+      b
+        .map((x) => x[1])
+        .join(' ')
+        .split(/\s+/).length,
     0
   );
   console.log(

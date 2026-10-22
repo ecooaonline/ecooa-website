@@ -248,8 +248,18 @@ PLANO.set('qual-profissional-procurar.html', () =>
 );
 
 for (const [arq, rota, nome, desc] of [
-  ['mentorias.html', 'mentorias', 'Mentorias ecooa.cademy', 'Mentoria e formação para profissionais de saúde.'],
-  ['sublocacao.html', 'sublocacao', 'Sublocação de sala na ecooa', 'Sublocação de sala para profissionais de saúde em Moinhos de Vento, Porto Alegre.'],
+  [
+    'mentorias.html',
+    'mentorias',
+    'Mentorias ecooa.cademy',
+    'Mentoria e formação para profissionais de saúde.',
+  ],
+  [
+    'sublocacao.html',
+    'sublocacao',
+    'Sublocação de sala na ecooa',
+    'Sublocação de sala para profissionais de saúde em Moinhos de Vento, Porto Alegre.',
+  ],
 ]) {
   PLANO.set(arq, () =>
     grafo([
@@ -340,13 +350,20 @@ for (const [de, para] of [
   const orig = path.join(DEPLOY, de);
   const dest = path.join(DEPLOY, para);
   if (!fs.existsSync(orig) || !fs.existsSync(dest)) continue;
-  const m = fs.readFileSync(orig, 'utf8').match(new RegExp(`<script type="application/ld\\+json" ${MARCA}>[\\s\\S]*?</script>`));
+  const m = fs
+    .readFileSync(orig, 'utf8')
+    .match(new RegExp(`<script type="application/ld\\+json" ${MARCA}>[\\s\\S]*?</script>`));
   if (!m) continue;
   let html = fs.readFileSync(dest, 'utf8');
-  html = html.replace(new RegExp(`<script type="application/ld\\+json" ${MARCA}>[\\s\\S]*?</script>\\n?`), '');
+  html = html.replace(
+    new RegExp(`<script type="application/ld\\+json" ${MARCA}>[\\s\\S]*?</script>\\n?`),
+    ''
+  );
   html = html.replace('</body>', m[0] + '\n</body>');
   fs.writeFileSync(dest, html, 'utf8');
   aplicadas++;
 }
 
-console.log(`dados estruturados: ${aplicadas} páginas marcadas${puladas ? `, ${puladas} inexistentes puladas` : ''}`);
+console.log(
+  `dados estruturados: ${aplicadas} páginas marcadas${puladas ? `, ${puladas} inexistentes puladas` : ''}`
+);

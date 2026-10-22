@@ -105,7 +105,10 @@ function anda(d) {
    exclamacao vira %21); o encodeURIComponent do JS o deixa literal.
    Procuramos nas duas formas e gravamos sempre na estrita. */
 const encStrito = (t) =>
-  encodeURIComponent(t).replace(/[!'()*]/g, (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase());
+  encodeURIComponent(t).replace(
+    /[!'()*]/g,
+    (c) => '%' + c.charCodeAt(0).toString(16).toUpperCase()
+  );
 const agulhas = [encStrito(GERAL), encodeURIComponent(GERAL)];
 let paginas = 0;
 let trocas = 0;
@@ -127,4 +130,6 @@ for (const arq of anda(DEPLOY)) {
   paginas++;
   trocas += n;
 }
-console.log(`CTAs personalizados: ${trocas} links em ${paginas} páginas; a mensagem geral fica só onde não há contexto`);
+console.log(
+  `CTAs personalizados: ${trocas} links em ${paginas} páginas; a mensagem geral fica só onde não há contexto`
+);
