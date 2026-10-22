@@ -1,7 +1,6 @@
 # Dependabot — atualizações automáticas de dependências.
 # Security-updates já vêm ligados por padrão no repositório; este arquivo
-# adiciona version-updates programados. PRs de patch/minor que passam no CI
-# são auto-mergeados por .github/workflows/dependabot-automerge.yml.
+# adiciona version-updates programados. PRs precisam de revisão antes do merge.
 version: 2
 updates:
   # Dependências npm (Astro, sitemap, tooling de dev)
@@ -40,3 +39,15 @@ updates:
     open-pull-requests-limit: 5
     commit-message:
       prefix: 'ci(deps)'
+
+  # Template independente: manter a cobertura fora do pacote de produção.
+  - package-ecosystem: npm
+    directory: '/template'
+    schedule:
+      interval: weekly
+      day: monday
+      time: '06:00'
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: 'build(deps-template)'

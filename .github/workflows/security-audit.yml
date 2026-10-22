@@ -23,5 +23,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            template/package-lock.json
       - run: npm ci --ignore-scripts
       - run: npm audit --audit-level=high
+      - run: npm ci --prefix template --ignore-scripts
+      - run: npm audit --prefix template --audit-level=high

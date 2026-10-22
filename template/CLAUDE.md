@@ -6,7 +6,7 @@ Sempre responder em português brasileiro (pt-BR).
 
 ## Stack
 
-- Astro 6 (site estático)
+- Astro 7 (site estático)
 - TypeScript strict
 - GitHub Pages ou Cloudflare Pages (deploy)
 - Google Apps Script (formulários backend)
