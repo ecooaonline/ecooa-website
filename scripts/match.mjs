@@ -827,9 +827,13 @@ if (html.includes(MARCA)) {
   const alvo = html.indexOf('>escrever <span');
   if (alvo < 0) throw new Error('tela de escolha não encontrada');
   const iniSecao = html.lastIndexOf('<section', alvo);
-  html = html.slice(0, iniSecao) + html.slice(iniSecao).replace('<section', '<section data-match-escolha', 1);
+  html =
+    html.slice(0, iniSecao) +
+    html.slice(iniSecao).replace('<section', '<section data-match-escolha', 1);
   html = html.replace('</body>', JS + '\n</body>');
   html = html.replace('<html', `<html ${MARCA}`);
   fs.writeFileSync(ARQ, html, 'utf8');
-  console.log('ecooa.match 3.0 religado: almanaque por bloco, rankings do dono, cards com texto por profissional');
+  console.log(
+    'ecooa.match 3.0 religado: almanaque por bloco, rankings do dono, cards com texto por profissional'
+  );
 }

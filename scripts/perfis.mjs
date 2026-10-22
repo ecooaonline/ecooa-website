@@ -94,9 +94,7 @@ function queixasDe(slug) {
 function exemplosDoBloco(rotulo) {
   const g = SINTOMAS.find((x) => x.rotulo === rotulo);
   if (!g) return [];
-  return (g.termos || [])
-    .filter((t) => t.length > 4 && !/^[a-z]{1,3}$/.test(t))
-    .slice(0, 6);
+  return (g.termos || []).filter((t) => t.length > 4 && !/^[a-z]{1,3}$/.test(t)).slice(0, 6);
 }
 
 function paginaPerfil(p) {
@@ -104,7 +102,9 @@ function paginaPerfil(p) {
   const registro = p.estado === 'a-adicionar' ? '' : p.registro;
   const queixas = queixasDe(p.slug);
   const artigos = ECOOA.artigos.filter((a) => a.autor === p.slug);
-  const areas = (p.esp || []).map((s) => ({ slug: s, nome: NOME_AREA[s] || s })).filter((a) => a.nome);
+  const areas = (p.esp || [])
+    .map((s) => ({ slug: s, nome: NOME_AREA[s] || s }))
+    .filter((a) => a.nome);
   const colegas = ECOOA.profissionais
     .filter((o) => o.slug !== p.slug && (o.esp || []).some((s) => (p.esp || []).includes(s)))
     .slice(0, 6);
@@ -115,7 +115,11 @@ function paginaPerfil(p) {
   )}`;
 
   const titulo = `${p.nome} · ${p.classe} em Porto Alegre · ecooa`;
-  const meta = `${p.nome}, ${p.classe.toLowerCase()}${registro ? ` (${registro})` : ''} na ecooa, em ${ENDERECO.bairro}, ${ENDERECO.cidade}. ${String(p.bio || '').split(/(?<=\.)\s/)[0] || ''} Agende pelo WhatsApp.`.slice(0, 180);
+  const meta =
+    `${p.nome}, ${p.classe.toLowerCase()}${registro ? ` (${registro})` : ''} na ecooa, em ${ENDERECO.bairro}, ${ENDERECO.cidade}. ${String(p.bio || '').split(/(?<=\.)\s/)[0] || ''} Agende pelo WhatsApp.`.slice(
+      0,
+      180
+    );
 
   const condutaPars = String(p.conduta || '')
     .split(/\n\n+/)
@@ -280,10 +284,7 @@ ${
      recebe o link, mas não entra no índice nem no sitemap. Reverte sozinho
      quando o registro for preenchido em deploy/dados-ecooa.js. */
   if (p.estado === 'a-adicionar') {
-    html = html.replace(
-      '<head>',
-      '<head>\n<meta name="robots" content="noindex, follow">'
-    );
+    html = html.replace('<head>', '<head>\n<meta name="robots" content="noindex, follow">');
   }
   html = html.replace('<head>', '<head>\n<base href="/">');
 
@@ -305,7 +306,10 @@ for (const p of ECOOA.profissionais) {
   for (const rel of new Set(alvos)) {
     const d = await dimensao(rel);
     if (d) {
-      html = html.replaceAll(`data-dim="${rel}" src="${rel}"`, `width="${d.w}" height="${d.h}" src="${rel}"`);
+      html = html.replaceAll(
+        `data-dim="${rel}" src="${rel}"`,
+        `width="${d.w}" height="${d.h}" src="${rel}"`
+      );
     } else {
       html = html.replaceAll(`data-dim="${rel}" `, '');
     }
@@ -324,6 +328,8 @@ fs.writeFileSync(path.join(DEPLOY, 'profissionais', 'index.html'), indice, 'utf8
 
 console.log(
   `perfis gerados: ${geradas}, mais o índice de /profissionais/` +
-    (semConduta.length ? `\n  sem conduta (página fica mais curta): ${semConduta.join(', ')}` : '') +
+    (semConduta.length
+      ? `\n  sem conduta (página fica mais curta): ${semConduta.join(', ')}`
+      : '') +
     (semQueixa.length ? `\n  sem queixa no almanaque: ${semQueixa.join(', ')}` : '')
 );

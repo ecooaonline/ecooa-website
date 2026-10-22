@@ -30,7 +30,8 @@ if (fs.existsSync(areasDir)) {
 }
 /* Página com meta robots noindex nunca entra no sitemap: pedir indexação de
    algo que se manda não indexar é sinal contraditório para o buscador. */
-const indexavel = (arq) => !/<meta name="robots" content="noindex/i.test(fs.readFileSync(arq, 'utf8'));
+const indexavel = (arq) =>
+  !/<meta name="robots" content="noindex/i.test(fs.readFileSync(arq, 'utf8'));
 
 const perfisDir = path.join(DEPLOY, 'profissionais');
 let perfisFora = 0;
@@ -59,4 +60,6 @@ const xml =
   urls.map((u) => `  <url><loc>${DOMINIO}${u}</loc><lastmod>${hoje}</lastmod></url>`).join('\n') +
   '\n</urlset>\n';
 fs.writeFileSync(path.join(DEPLOY, 'sitemap.xml'), xml, 'utf8');
-console.log(`sitemap: ${urls.length} URLs${perfisFora ? `, ${perfisFora} perfil(is) fora por noindex (registro pendente)` : ''}`);
+console.log(
+  `sitemap: ${urls.length} URLs${perfisFora ? `, ${perfisFora} perfil(is) fora por noindex (registro pendente)` : ''}`
+);

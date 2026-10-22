@@ -255,7 +255,8 @@ console.log('Perfis de profissional:');
   const dir = join(DIST, 'profissionais');
   const faltam = slugs.filter((s) => !existsSync(join(dir, s, 'index.html')));
   if (!slugs.length) erro('nao consegui ler os slugs de dados-ecooa.js');
-  else if (faltam.length) erro(`perfis ausentes (${faltam.length}): ${faltam.slice(0, 5).join(', ')}`);
+  else if (faltam.length)
+    erro(`perfis ausentes (${faltam.length}): ${faltam.slice(0, 5).join(', ')}`);
   else ok(`${slugs.length} paginas individuais de profissional presentes`);
   if (!existsSync(join(dir, 'index.html')))
     erro('indice de /profissionais/ ausente (diretorio esconderia a listagem)');
@@ -286,7 +287,8 @@ console.log('Dados estruturados:');
   for (const [f, s] of html) {
     if (/"aggregateRating"|"@type":"Review"|"reviewRating"/.test(s)) comNota.push(f);
   }
-  if (comNota.length) erro(`aggregateRating ou Review no schema (vedado ao CFM): ${comNota.join(', ')}`);
+  if (comNota.length)
+    erro(`aggregateRating ou Review no schema (vedado ao CFM): ${comNota.join(', ')}`);
   else ok('nenhum aggregateRating nem Review no schema');
 
   /* todo JSON-LD precisa ser JSON valido, senao o Google descarta calado */
@@ -364,7 +366,9 @@ console.log('Titulos:');
   const repetidos = [...porTitulo].filter(([, pgs]) => pgs.length > 1);
   if (repetidos.length) {
     for (const [t, pgs] of repetidos.slice(0, 4)) {
-      erro(`titulo repetido em ${pgs.length} paginas ("${t.slice(0, 50)}"): ${pgs.slice(0, 3).join(', ')}`);
+      erro(
+        `titulo repetido em ${pgs.length} paginas ("${t.slice(0, 50)}"): ${pgs.slice(0, 3).join(', ')}`
+      );
     }
   } else {
     ok(`${titulos.size} paginas, todos os titulos unicos`);
@@ -384,7 +388,8 @@ console.log('Acessibilidade:');
 
   /* o anel de foco fraco nao pode voltar: media 1,45:1 */
   const foscas = [...html].filter(([, s]) => /outline:\s*2px solid #C6C4BF/i.test(s));
-  if (foscas.length) erro(`anel de foco de baixo contraste em: ${foscas.map(([f]) => f).join(', ')}`);
+  if (foscas.length)
+    erro(`anel de foco de baixo contraste em: ${foscas.map(([f]) => f).join(', ')}`);
   else ok('anel de foco com contraste suficiente');
 
   const matchPg = html.get('qual-profissional-procurar.html') || '';

@@ -41,7 +41,7 @@ const updated = line.replace(
   "script-src 'self'",
   "script-src 'self' " + [...hashes].sort().join(' ')
 );
-if (Buffer.byteLength(updated) > 7500)
+if (updated.length > 2000)
   throw new Error('CSP exceeds conservative header budget; split by route before release');
 headers = headers.replace(line, updated);
 await writeFile(file, headers);
