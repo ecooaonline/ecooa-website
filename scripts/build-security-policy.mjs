@@ -48,3 +48,14 @@ await writeFile(file, headers);
 console.log(
   `CSP report-only: ${hashes.size} inline hashes, ${Buffer.byteLength(updated)} bytes. Enforcement unchanged.`
 );
+
+// Vercel reads project configuration before the build; keep committed hashes exact.
+const vercelConfig = JSON.parse(await readFile('vercel.json', 'utf8'));
+const vercelPolicy = vercelConfig.headers[0].headers.find(
+  ({ key }) => key === 'Content-Security-Policy-Report-Only'
+).value;
+if (vercelPolicy !== updated.trim().replace('Content-Security-Policy-Report-Only: ', '')) {
+  throw new Error(
+    'Update the versioned vercel.json report-only policy to match dist/_headers before deployment'
+  );
+}

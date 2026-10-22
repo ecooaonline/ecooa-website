@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy-Report-Only",
+          "value": "script-src 'self' 'sha256-11lJBSYL5DGxxptT5ahslH2WbUSP+6lONOeGQ7+zPqA=' 'sha256-5s/9mCrmXuUgWOKJkLpxjwBm6XcXQ/EaYC1OgsaWOVE=' 'sha256-6Bd/iT1GWSOdlKBIC0NCDPJgeewG9/IA5BplTctNd08=' 'sha256-IGDxRzYpsnsdlhlLPi3QHafeSLawDuqEXG36fEBKWDU=' 'sha256-IdceJTSW0ztM8D1rpFuaYdVj4eiRUIppRvZjIX1oFv4=' 'sha256-JgDGBhwhqPh4Ac3nQLfpiw+Z1jxvzqOOWPzha1UpG+E=' 'sha256-RTGzqjZKCIL5/MkyrsBpVXhJaXYo7P5uwGjGPTJnUog=' 'sha256-RyQTFfeCdj19nN5YGf7BecqZkNilq+0HX7EbV2K070o=' 'sha256-Sqy/tYNAW6m1O+0khD69ZZ9qNhuo9I9RLcbV0zd1PCk=' 'sha256-kB23lM8rQy1advaCRm2AyYwwM7eHipn/hn9wlg4mYCM=' 'sha256-o/bc4bSMgGfu+CRCu4boZLarwASv2WBq9E8k+V/wdGA=' 'sha256-oZPsTthoTJqxXSizRxEgn18FD5uqu9jVZ4djPlAmIRw=' 'sha256-qNDfsOs6IS5MtaSi92crQhVJwgi17JyrpMAgHf0ZMzk=' 'sha256-sU9msP9dmcUllq6Lxs9K8F/UpmttV1wcoxlkYwKmbGQ=' 'sha256-suYYc0cF3gWCu8OtaOR0eUVTwhhZeosCS1OjwkUdaww=' 'sha256-yReXs36P2wb+2UtXCELb8dreJj4iFmOdYgwyo/l2MO4=' https://www.googletagmanager.com https://*.google-analytics.com https://connect.facebook.net https://static.cloudflareinsights.com https://challenges.cloudflare.com; script-src-attr 'none'; object-src 'none'; base-uri 'self'"
+        }
+      ]
+    }
+  ]
+}
