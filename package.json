@@ -40,8 +40,8 @@
     ]
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.4",
-    "astro": "^7.4.0"
+    "@astrojs/sitemap": "^3.7.6",
+    "astro": "^7.4.13"
   },
   "overrides": {
     "yaml": "^2.8.3",
